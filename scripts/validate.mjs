@@ -7,13 +7,14 @@
  *   - every trap in skills/ship/references/traps.md has a Status line, and a
  *     "Checked" status carries a date
  *   - the plugin and marketplace JSON files parse
- *   - no long dashes (em or en) in any Markdown file
+ *   - no long dashes (em or en) in any Markdown file git does not ignore
  *
  * Run: node scripts/validate.mjs
  */
 
 import { readFileSync, readdirSync, statSync, existsSync } from 'node:fs';
 import { join, dirname, relative } from 'node:path';
+import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
@@ -27,6 +28,20 @@ function walk(dir, out = []) {
     else out.push(path);
   }
   return out;
+}
+
+// Files that will be published: tracked or new, skipping anything git ignores
+// (private local notes). Falls back to every file when git is unavailable.
+function repoFiles() {
+  try {
+    return execFileSync('git', ['ls-files', '-z', '--cached', '--others', '--exclude-standard'], { cwd: ROOT, encoding: 'utf8' })
+      .split('\0')
+      .filter(Boolean)
+      .map((f) => join(ROOT, f))
+      .filter((f) => existsSync(f));
+  } catch {
+    return walk(ROOT);
+  }
 }
 
 // Skills
@@ -83,7 +98,7 @@ for (const file of ['.claude-plugin/plugin.json', '.claude-plugin/marketplace.js
 }
 
 // Style
-for (const file of walk(ROOT).filter((f) => f.endsWith('.md'))) {
+for (const file of repoFiles().filter((f) => f.endsWith('.md'))) {
   readFileSync(file, 'utf8')
     .split('\n')
     .forEach((line, i) => {

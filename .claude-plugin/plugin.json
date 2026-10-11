@@ -2,7 +2,7 @@
   "name": "the-last-mile",
   "displayName": "The Last Mile",
   "version": "0.1.0",
-  "description": "Skills and templates that take an Expo app from idea to a launched, maintained product, extracted from apps that actually shipped.",
+  "description": "Skills and templates that take an Expo app from idea to a launched, maintained product, extracted from an app that actually shipped.",
   "author": {
     "name": "Dave Campbell",
     "url": "https://github.com/namedtoaster"

@@ -6,7 +6,7 @@
   |_| |_| |_|\___| |_____\__,_|___/\__| |_|  |_|_|_|\___|
 ```
 
-**From a working build to an app people pay for.** Skills and templates for Claude Code that take an Expo app through shipping, store review and the first users, extracted from apps that actually launched.
+**From a working build to an app people pay for.** Skills and templates for Claude Code that take an Expo app through shipping, store review and the first users, extracted from an app that actually launched.
 
 ![Version](https://img.shields.io/badge/version-0.1.0-blue) ![License](https://img.shields.io/badge/license-MIT-green) ![Stage](https://img.shields.io/badge/status-early-orange)
 
@@ -20,6 +20,8 @@
 | Starting a new app | `/the-last-mile:setup` | A short interview that writes your rules file, your first goal and a handoff file |
 | Building day to day | `/the-last-mile:session-end` | Checks run, docs and gotchas updated, only this session's files committed, pushed |
 | Getting into the stores | `/the-last-mile:ship` | A release checklist, version bump, store submission steps and the traps that catch first launches |
+
+The short forms `/setup`, `/session-end` and `/ship` work too, unless another plugin uses the same name.
 
 ## Install
 

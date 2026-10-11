@@ -25,7 +25,7 @@ Ask these in order. Skip any the project already answers.
 
 1. **What does the app do?** Ask for one sentence.
 2. **What is the loop?** The thing a person does, start to finish, that gives them
-   what they came for. Example: "save a recipe, plan the week, log the meal". If
+   what they came for. Example: "add a plant, get a reminder, mark it watered". If
    they cannot say it in one sentence, help them cut it down.
 3. **Who is it for?** One specific kind of person and the moment they reach for the app.
 4. **How should Claude talk to you?** Offer choices: short and direct; detailed with
@@ -35,10 +35,10 @@ Ask these in order. Skip any the project already answers.
    Default: a branch with a pull request, unless they work alone and prefer main.
 6. **What command runs your checks?** Default: whatever `package.json` defines as
    `check`, or lint, typecheck and test in that order. Offer to add a `check` script.
-7. **Do you use Mobbin?** Explain in one line: a paid library of real app screens,
-   recommended for design references. If yes, note that the reference-hunt skill will
-   use it; connecting it is a one time sign in. If no, skills fall back to screenshots.
-8. **What is your first 6 week goal?** Offer the default for their stage:
+   Run the command once before moving on. A first run can install tools or write
+   config files (Expo's linter does both); those changes belong to setup, and the
+   user should know whether the checks start clean.
+7. **What is your first 6 week goal?** Offer the default for their stage:
    - Idea only: "A working version of the loop on my own phone by <date>."
    - Working build: "Live in the App Store (and Google Play) by <date>."
    - Live: "First 100 people using it every week by <date>."

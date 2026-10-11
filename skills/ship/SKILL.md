@@ -17,6 +17,14 @@ official docs. If what you find differs from the reference, follow the current d
 tell the user what changed, and update the entry and its **Last checked** date.
 Console screens move often, so give navigation steps only from docs fetched now.
 
+## Scope
+
+Check the app's code, config, assets and docs, and the official store pages. Do not
+query or change live services (databases, payment dashboards, analytics, crash
+reporting) unless the user asks. If something looks risky there, note it as a
+question for the user instead. Keep the report to what blocks this release: list
+the blockers first, then passes in one line each.
+
 ## 1. Pre flight
 
 1. Run the project's check command. Everything must pass.
@@ -26,6 +34,12 @@ Console screens move often, so give navigation steps only from docs fetched now.
    (iOS, Android, or both). For each, check the app, not just the docs: for example,
    search the iOS build's text for "Google Play", or list the Android release
    manifest's permissions. Report anything that fails as a short list.
+4. Check the things a reviewer sees first:
+   - **Icon and splash:** open the icon and splash images and confirm they are the
+     app's own, not the Expo template.
+   - **Health, medical or nutrition content:** if the app shows doses, calorie or
+     macro figures, or health advice (including bundled sample content), confirm a
+     source is shown for it. Apple has rejected apps for this under 1.4.1.
 
 ## 2. Version bump
 
@@ -40,7 +54,8 @@ Console screens move often, so give navigation steps only from docs fetched now.
 
 ## 3. Build
 
-Ask which the user uses, and remember the answer in the rules file settings:
+If the rules file's **How builds are made** setting is filled in, use it. Otherwise
+ask which the user uses, and write the answer into that setting:
 
 - **iOS:** a local Xcode archive (Product, then Archive, then Distribute), or a
   cloud build service. Cloud build machines can lag behind the newest Xcode.
@@ -55,8 +70,9 @@ A release build is not the development build. Some code only fails here.
 - Work through **Verify on <version>** and tick items with evidence.
 - Open the app cold, sign in, reach the paywall, and confirm crash reporting
   receives a deliberate test error from this build.
-- On Android, real store prices only appear in a build installed from Play by a
-  licence tester. A locally installed build cannot show them.
+- On Android, real store prices only load for a Google account set up as a licence
+  tester in Play Console (signed in on the device, same package name), or in a build
+  installed from a Play testing track.
 
 ## 5. Submit
 

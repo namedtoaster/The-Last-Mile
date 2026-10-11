@@ -15,7 +15,7 @@ Read by the session-end and ship skills.
 | Push to | `<main, or a branch with a pull request>` |
 | Docs to review at session end | `CURRENT_WORK.md`, `GOALS.md`, `BACKLOG.md`, `FEATURES.md`, `docs/ALGORITHMS.md` |
 | Analytics check at session end | `<off>` |
-| Mobbin connected | `<yes or no>` |
+| How builds are made | `<not set yet; the ship skill asks the first time>` |
 
 ## How to talk to me
 
