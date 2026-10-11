@@ -9,7 +9,7 @@
     {
       "name": "the-last-mile",
       "source": "./",
-      "description": "Setup interview, session end, shipping to the App Store and Google Play, and the traps that catch first time app makers."
+      "description": "Nine skills for taking an Expo app from a working build to the App Store and Google Play: setup, session end, seeing changes work, design references, research, goals, porting features, shipping with sourced store traps, and fact checking."
     }
   ]
 }
