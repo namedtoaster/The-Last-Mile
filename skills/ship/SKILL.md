@@ -34,6 +34,8 @@ the blockers first, then passes in one line each.
    (iOS, Android, or both). For each, check the app, not just the docs: for example,
    search the iOS build's text for "Google Play", or list the Android release
    manifest's permissions. Report anything that fails as a short list.
+   Run the fact-check skill on those traps first, so the rules you check against
+   are current.
 4. Check the things a reviewer sees first:
    - **Icon and splash:** open the icon and splash images and confirm they are the
      app's own, not the Expo template.
@@ -67,7 +69,9 @@ A release build is not the development build. Some code only fails here.
 
 - Install the release build on a real device: TestFlight for iOS, an internal or
   closed testing track for Android.
-- Work through **Verify on <version>** and tick items with evidence.
+- Work through **Verify on <version>** and tick items with evidence. The see-it-work
+  skill's release build smoke run covers every screen at once, if the project has
+  it set up.
 - Open the app cold, sign in, reach the paywall, and confirm crash reporting
   receives a deliberate test error from this build.
 - On Android, real store prices only load for a Google account set up as a licence

@@ -42,7 +42,8 @@ Ask these in order. Skip any the project already answers.
    - Idea only: "A working version of the loop on my own phone by <date>."
    - Working build: "Live in the App Store (and Google Play) by <date>."
    - Live: "First 100 people using it every week by <date>."
-   Then ask for the one number that shows it is working, and up to 3 must dos.
+   Then ask for the one number that shows it is working, and 3 to 5 must dos. The set-goals skill's `references/stages.md` has fuller defaults
+   for each stage.
 
 ## What to write
 
@@ -60,6 +61,8 @@ them empty.
 ## Finish
 
 Show the user a short summary: the four files written, their goal and end date,
-and the three skills to use next (session-end every session, ship when getting
-into the stores, and setup again if anything about the answers changes). Then
+and the skills to use next: session-end every session, see-it-work to see a change
+working, reference-hunt before designing a screen, research before a decision,
+set-goals when the cycle ends, ship when getting into the stores, and setup again
+if anything about the answers changes. Then
 offer to commit the files, following the push choice from question 5.

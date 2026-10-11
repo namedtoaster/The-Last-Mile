@@ -1,0 +1,19 @@
+// Merge the "hooks" block below into .claude/settings.json (without these two comment lines).
+// After every Edit or Write, it runs scripts/ui-test-hook.sh, which runs the matching test.
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|MultiEdit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR/scripts/ui-test-hook.sh\"",
+            "timeout": 180,
+            "statusMessage": "Running matching UI test..."
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -20,28 +20,23 @@ both stores.
 
 ## Roadmap
 
-**Version 0.1 (this):** setup, session-end, ship, the traps reference and facts file.
+**Version 0.1 (this):** setup, session-end, see-it-work, reference-hunt, research,
+set-goals, port-feature, ship and fact-check, with the store traps reference, the
+facts file, and see-it-work's templates (including the test after edit hook).
 
 **Next skills:**
 
 | Skill | What it does | Source |
 | --- | --- | --- |
-| set-goals | Writes or renews the 6 week goal and closes the last cycle | Replaces separate weekly planning, quarter sync and progress review skills |
-| research | Answers a question and files it in the right existing doc first | The author's research skill |
-| reference-hunt | Finds how real apps solve a screen; short answer with links, full write up saved | The author's competitor design card skill, reworked |
-| port-feature | Brings a feature over from another of your own repos | The author's port skill |
-| prove-it | Shows a change working: component tests, seeded simulator screenshots, a smoke test of every screen, release build runs, browser preview for cloud sessions, end to end journeys, and content capture as an experimental recipe | The author's testing setup |
-| fact-check | Re-checks facts against current official docs and updates dates | New |
 | analytics | Sets up key events and a funnel, audits for orphaned or miscounted events | The author's analytics skills |
 | store-listing | Name, subtitle, keywords, screenshots | The author's store listing work |
 | creator-codes | Free premium codes for a creator's audience, with attribution | The author's referral code skill |
 | ugc-brief | Finding small creators, outreach, and a short brief | The author's outreach playbooks |
 | release-notes | Rewrites changes as notes users want to read | The author's release notes skill |
 
-**Also planned:** the test after edit hook, the release checklist check script, the
-"treat me as free" development switch, the test link that jumps to any seeded
-screen, the plugin that strips unwanted Android media permissions, Discord alerts,
-Railway notes, and a scheduled job that re-checks facts and opens a pull request.
+**Also planned:** the release checklist check script, the version bump script, the
+plugin that strips unwanted Android media permissions, Discord alerts, Railway
+notes, and a scheduled job that runs fact-check monthly and opens a pull request.
 
 ## How growth tactics went for the author
 

@@ -1,0 +1,31 @@
+# Copy to e2e/flows/<journey>.yaml. A journey starts where a real person starts
+# and asserts where it lands. Replace the ids with your own testIDs.
+# Run: maestro --device <udid> test -e APP_ID=<bundle id> e2e/flows/<journey>.yaml
+appId: ${APP_ID}
+---
+- launchApp:
+    stopApp: true
+# Let the cold start settle before acting. A link sent too early can be swallowed.
+- waitForAnimationToEnd
+- tapOn:
+    text: "Allow"
+    optional: true
+
+- extendedWaitUntil:
+    visible:
+      id: "screen-home"
+    timeout: 90000
+
+# The action under test, from the real entry point.
+- tapOn:
+    id: "add-item"
+- inputText: "Test item"
+- tapOn:
+    id: "save-item"
+
+# Assert the destination, then the words that matter there.
+- extendedWaitUntil:
+    visible:
+      id: "screen-item"
+    timeout: 15000
+- assertVisible: "Test item"

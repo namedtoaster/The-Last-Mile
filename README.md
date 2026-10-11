@@ -41,7 +41,7 @@ npx skills add namedtoaster/the-last-mile
 ## The basic workflow
 
 1. **Run setup once.** It asks one question at a time: what the app does, who it is for, how you want Claude to talk to you, how you push code, and your first 6 week goal.
-2. **Build.** Describe what the person sees and taps, ask for a test first, then look at it on a phone.
+2. **Build.** Describe what the person sees and taps. Use reference-hunt before designing a screen, and see-it-work to see each change working instead of trusting a passing test.
 3. **End every session with session end.** It runs your checks, records anything surprising as a dated gotcha, updates the docs, checks your goal and commits only what this session touched.
 4. **Ship with ship.** It checks the current store rules before telling you what to do, because they change.
 
@@ -49,11 +49,17 @@ npx skills add namedtoaster/the-last-mile
 
 | Skill | What it does |
 | --- | --- |
-| setup | Interview that writes the rules file, goals file and handoff file |
+| setup | Interview that writes the rules file, goals file, handoff file and release checklist |
 | session-end | Fully automatic wrap up: checks, docs, gotchas, goals, commit, push |
+| see-it-work | Shows a change working: tests written first, seeded simulator screenshots, a smoke test of every screen, release build runs |
+| reference-hunt | Finds how real apps solve a screen, from screens someone has actually seen, and saves a reference card |
+| research | Answers a question from official sources and files it where it will be read again |
+| set-goals | Writes the 6 week goal and closes the last cycle in a few lines |
+| port-feature | Brings a feature over from another of your own repos, adapted to this one |
 | ship | Release checklist, version bump, submission steps, and a reference of store traps with sources |
+| fact-check | Re-checks store rules and facts against the official pages and updates their dates |
 
-Coming next: reference-hunt (find how real apps solve a screen), research, set-goals, prove-it (see changes working on a simulator), fact-check (re-verify facts against official docs), and growth skills (analytics, store listing, creator codes, UGC briefs).
+Coming next: growth skills (analytics, store listing, creator codes, UGC briefs, release notes).
 
 ## Philosophy
 
@@ -65,6 +71,10 @@ Coming next: reference-hunt (find how real apps solve a screen), research, set-g
 ## Contributing
 
 Fixes, improvements to existing skills and new traps with sources are welcome by pull request. New skills start as an idea in Discussions. See [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Where this comes from
+
+Built while making [MyMealStream](https://mymealstream.com/), a meal planning app live on the App Store and Google Play.
 
 ## About the course
 

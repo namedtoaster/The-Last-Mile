@@ -1,0 +1,24 @@
+# Copy to e2e/smoke/_screen.yaml. One smoke case, reused for every screen.
+# The runner has already stopped the app and fired the test-seed link, so this
+# only brings the app forward (no restart, which would lose the seeded screen)
+# and waits for the screen's anchor. No taps: journeys do that.
+# Run: maestro --device <udid> test -e APP_ID=<bundle id> -e SCREEN_ID=screen-<id> e2e/smoke/_screen.yaml
+appId: ${APP_ID}
+---
+- launchApp:
+    stopApp: false
+
+# System dialogs that may sit on top of the screen. Optional, so absence is fine.
+- tapOn:
+    text: "OK"
+    optional: true
+- tapOn:
+    text: "Allow"
+    optional: true
+
+# 90 seconds, because a development build's cold start can take over 30.
+# The wait ends as soon as the anchor appears, so a healthy screen loses nothing.
+- extendedWaitUntil:
+    visible:
+      id: "${SCREEN_ID}"
+    timeout: 90000

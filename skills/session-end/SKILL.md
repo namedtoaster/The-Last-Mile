@@ -67,7 +67,8 @@ Read `GOALS.md`.
 - **Current cycle:** tick any must do finished this session. If the end date is near
   and must dos are open, say so plainly in one line.
 - **Cycle ended:** give one short reminder in the summary that it is time to close
-  this cycle and set the next one. Do not block or nag beyond that one line.
+  this cycle and set the next one with the set-goals skill. Do not block or nag
+  beyond that one line.
 
 ## 6. Commit only this session's files
 
