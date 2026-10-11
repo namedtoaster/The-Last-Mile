@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Suggest a new skill
+    url: https://github.com/namedtoaster/the-last-mile/discussions
+    about: New skills start as a discussion so the set stays coherent.
+  - name: Questions
+    url: https://github.com/namedtoaster/the-last-mile/discussions
+    about: Ask and answer questions in Discussions.

@@ -1,0 +1,15 @@
+{
+  "name": "the-last-mile",
+  "description": "The Last Mile: skills for shipping and running a real Expo app with Claude Code.",
+  "owner": {
+    "name": "Dave Campbell",
+    "url": "https://github.com/namedtoaster"
+  },
+  "plugins": [
+    {
+      "name": "the-last-mile",
+      "source": "./",
+      "description": "Setup interview, session end, shipping to the App Store and Google Play, and the traps that catch first time app makers."
+    }
+  ]
+}
