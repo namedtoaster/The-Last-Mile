@@ -78,7 +78,7 @@ Built while making [MyMealStream](https://mymealstream.com/), a meal planning ap
 
 ## About the course
 
-I'm putting together a course on how I actually did this: idea to an app in the App Store with paying users, built with Claude Code. I don't have a lot of users or a lot of money, but I got there, and I'm still refining the process as I go. The course will be exactly what I did, including what went wrong. If you'd be interested, give [this discussion](https://github.com/namedtoaster/the-last-mile/discussions) a thumbs up. No email, no sign up.
+I'm putting together a course on how I actually did this: idea to an app in the App Store with paying users, built with Claude Code. I don't have a lot of users or a lot of money, but I got there, and I'm still refining the process as I go. The course will be exactly what I did, including what went wrong. If you'd be interested, give [this discussion](https://github.com/namedtoaster/the-last-mile/discussions/1) a thumbs up. No email, no sign up.
 
 ## License
 
