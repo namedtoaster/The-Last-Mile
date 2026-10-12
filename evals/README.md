@@ -11,6 +11,8 @@ the change helped, the same way reference data shows whether a feature got bette
 | `expo-meal-tracker` | Expo | Google Play named on the iOS paywall, buying needs sign in, Google login with no private option, no account deletion, a library that adds photo permissions, calorie figures with no source, lorem ipsum |
 | `flutter-habit-tracker` | Flutter | Google Play named in shared text, Google login with no private option, no account deletion, photo permissions, an old target SDK, release signed with the debug key, a TODO on screen |
 | `capacitor-web-wrapper` | Capacitor | a website in a wrapper with nothing native, no privacy policy |
+| `native-ios-journal` | Native iOS (SwiftUI) | Google Play named in the iOS strings, Google login with no private option, no account deletion, no privacy manifest, a deployment target below Apple's minimum, buying only after sign in |
+| `native-android-budget` | Native Android (Kotlin) | an old target SDK, a photo permission, code shrinking off, accounts with no deletion, no privacy policy, a TODO string |
 | `expo-plant-log` | Expo | none. A control: anything reported as a blocker here is a false alarm |
 
 Each fixture's answer key is in `answers/`, outside the app, so a run never sees it.
@@ -55,7 +57,7 @@ Runs vary. Before trusting a change, run each fixture more than once.
 
 ## Next
 
-- Fixtures for React Native, native iOS, native Android and .NET MAUI.
+- Fixtures for React Native, .NET MAUI and Kotlin Multiplatform.
 - A second tier of real open source apps already in the stores, pinned to a commit,
   as a check for false alarms on real code.
 - Scoring the listing and privacy answers, not only the sweep.

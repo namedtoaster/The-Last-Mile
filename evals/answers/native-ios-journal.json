@@ -1,0 +1,23 @@
+{
+  "stack": "native-ios",
+  "expected": [
+    { "id": "other-platform-text", "file": "Localizable.strings", "match": ["google play", "android", "other platform", "2\\.3\\.10"] },
+    { "id": "social-login-needs-private-option", "file": "SignInView.swift", "match": ["sign in with apple", "apple sign", "4\\.8", "login service"] },
+    { "id": "account-deletion", "match": ["delet"] },
+    { "id": "privacy-manifest", "match": ["privacy manifest", "privacyinfo", "required reason"] },
+    { "id": "deployment-target", "file": "project.pbxproj", "match": ["deployment target", "ios 1[23]", "minimum ios"] },
+    { "id": "login-required-to-buy", "match": ["sign.?in", "login", "account", "5\\.1\\.1"] }
+  ],
+  "allowed": [
+    { "id": "ipad-layout", "match": ["ipad", "tablet", "2\\.4\\.1", "device family"] },
+    { "id": "restore-purchases", "match": ["restore"] },
+    { "id": "subscription-terms", "match": ["terms", "eula", "3\\.1\\.2", "subscription info"] },
+    { "id": "icon", "match": ["icon", "launch screen"] },
+    { "id": "privacy-policy-url", "match": ["privacy policy", "support url"] },
+    { "id": "privacy-labels", "match": ["privacy label", "privacy answers", "nutrition label"] },
+    { "id": "demo-account", "match": ["demo account", "review notes", "2\\.1"] },
+    { "id": "google-url-scheme", "match": ["url scheme", "client id", "gidclientid"] },
+    { "id": "xcode-version", "match": ["xcode", "sdk"] },
+    { "id": "build-number", "match": ["build number", "current_project_version"] }
+  ]
+}
