@@ -1,4 +1,4 @@
-package com.example.pennywise
+package app.pennywise.android
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity

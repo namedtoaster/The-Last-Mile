@@ -10,7 +10,7 @@
 				INFOPLIST_FILE = Moodly/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.moodly;
+				PRODUCT_BUNDLE_IDENTIFIER = com.moodlyapp.ios;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -23,7 +23,7 @@
 				INFOPLIST_FILE = Moodly/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.example.moodly;
+				PRODUCT_BUNDLE_IDENTIFIER = com.moodlyapp.ios;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

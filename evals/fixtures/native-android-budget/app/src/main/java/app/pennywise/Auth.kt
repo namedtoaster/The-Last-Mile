@@ -1,4 +1,4 @@
-package com.example.pennywise
+package app.pennywise.android
 
 import com.google.firebase.auth.FirebaseAuth
 

@@ -146,7 +146,10 @@ export function score(name, findingsText) {
     if (hit) hit.used = true;
     else missed.push(want.id);
   }
-  const extra = findings.filter((f) => !f.used && !(key.allowed || []).some((a) => matches(a.match, f.text)));
+  const sameProblem = (f, want) => matches(want.match, f.text) && (!want.file || lower(f.file).includes(lower(want.file)));
+  const extra = findings.filter(
+    (f) => !f.used && !key.expected.some((want) => sameProblem(f, want)) && !(key.allowed || []).some((a) => matches(a.match, f.text)),
+  );
   return {
     stackOk: lower(report.stack) === key.stack,
     found: key.expected.length - missed.length,

@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.pennywise"
+    namespace = "app.pennywise"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.pennywise"
+        applicationId = "app.pennywise.android"
         minSdk = 26
         targetSdk = 34
         versionCode = 1

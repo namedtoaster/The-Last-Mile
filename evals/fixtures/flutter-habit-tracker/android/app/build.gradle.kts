@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.streaky"
+    namespace = "io.streaky.app"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.streaky"
+        applicationId = "io.streaky.app"
         minSdk = 23
         targetSdk = 34
         versionCode = flutter.versionCode

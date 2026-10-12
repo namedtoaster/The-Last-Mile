@@ -1,24 +1,154 @@
 {
   "stack": "expo",
   "expected": [
-    { "id": "other-platform-text", "file": "app/paywall.tsx", "match": ["google play", "other platform", "2\\.3\\.10"] },
-    { "id": "buy-requires-account", "file": "app/paywall.tsx", "match": ["sign.?in", "account", "login", "5\\.1\\.1"] },
-    { "id": "social-login-needs-private-option", "file": "app/sign-in.tsx", "match": ["sign in with apple", "apple sign", "4\\.8", "login service"] },
-    { "id": "account-deletion", "file": "app/settings.tsx", "match": ["delet"] },
-    { "id": "photo-permissions", "file": "app.json", "match": ["read_media", "media.?library", "photo"] },
-    { "id": "health-sources", "file": "app/(tabs)/index.tsx", "match": ["source", "1\\.4\\.1", "calorie", "health", "nutrition"] },
-    { "id": "placeholder-text", "file": "app/settings.tsx", "match": ["lorem", "placeholder"] }
+    {
+      "id": "other-platform-text",
+      "file": "app/paywall.tsx",
+      "match": [
+        "google play",
+        "other platform",
+        "2\\.3\\.10"
+      ]
+    },
+    {
+      "id": "buy-requires-account",
+      "file": "app/paywall.tsx",
+      "match": [
+        "sign.?in",
+        "account",
+        "login",
+        "5\\.1\\.1"
+      ]
+    },
+    {
+      "id": "social-login-needs-private-option",
+      "file": "app/sign-in.tsx",
+      "match": [
+        "sign in with apple",
+        "apple sign",
+        "4\\.8",
+        "login service"
+      ]
+    },
+    {
+      "id": "account-deletion",
+      "file": "app/settings.tsx",
+      "match": [
+        "delet"
+      ]
+    },
+    {
+      "id": "photo-permissions",
+      "file": "app.json",
+      "match": [
+        "read_media",
+        "media.?library",
+        "photo"
+      ]
+    },
+    {
+      "id": "health-sources",
+      "file": "app/(tabs)/index.tsx",
+      "match": [
+        "source",
+        "1\\.4\\.1",
+        "calorie",
+        "health",
+        "nutrition"
+      ]
+    },
+    {
+      "id": "placeholder-text",
+      "file": "app/settings.tsx",
+      "match": [
+        "lorem",
+        "placeholder"
+      ]
+    }
   ],
   "allowed": [
-    { "id": "icon-missing", "match": ["icon"] },
-    { "id": "privacy-policy-url", "match": ["privacy policy", "support url"] },
-    { "id": "privacy-labels", "match": ["privacy label", "data safety", "privacy answers", "nutrition label"] },
-    { "id": "privacy-manifest", "match": ["privacy manifest", "privacyinfo", "required reason"] },
-    { "id": "ipad-layout", "match": ["ipad", "tablet", "2\\.4\\.1"] },
-    { "id": "demo-account", "match": ["demo account", "review notes", "2\\.1"] },
-    { "id": "restore-purchases", "match": ["restore"] },
-    { "id": "build-number", "match": ["build number", "buildnumber", "versioncode", "autoincrement"] },
-    { "id": "target-sdk", "match": ["target.?sdk", "api 3[56]"] },
-    { "id": "code-shrinking", "match": ["minif", "shrink", "r8"] }
+    {
+      "id": "icon-missing",
+      "match": [
+        "icon"
+      ]
+    },
+    {
+      "id": "privacy-policy-url",
+      "match": [
+        "privacy policy",
+        "support url"
+      ]
+    },
+    {
+      "id": "privacy-labels",
+      "match": [
+        "privacy label",
+        "data safety",
+        "privacy answers",
+        "nutrition label"
+      ]
+    },
+    {
+      "id": "privacy-manifest",
+      "match": [
+        "privacy manifest",
+        "privacyinfo",
+        "required reason"
+      ]
+    },
+    {
+      "id": "ipad-layout",
+      "match": [
+        "ipad",
+        "tablet",
+        "2\\.4\\.1"
+      ]
+    },
+    {
+      "id": "demo-account",
+      "match": [
+        "demo account",
+        "review notes",
+        "2\\.1"
+      ]
+    },
+    {
+      "id": "restore-purchases",
+      "match": [
+        "restore"
+      ]
+    },
+    {
+      "id": "build-number",
+      "match": [
+        "build number",
+        "buildnumber",
+        "versioncode",
+        "autoincrement"
+      ]
+    },
+    {
+      "id": "target-sdk",
+      "match": [
+        "target.?sdk",
+        "api 3[56]"
+      ]
+    },
+    {
+      "id": "code-shrinking",
+      "match": [
+        "minif",
+        "shrink",
+        "r8"
+      ]
+    },
+    {
+      "id": "media-library-request",
+      "match": [
+        "media library",
+        "photo picker"
+      ]
+    }
   ]
 }

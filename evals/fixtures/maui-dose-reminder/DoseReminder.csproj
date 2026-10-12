@@ -5,7 +5,7 @@
     <UseMaui>true</UseMaui>
     <SingleProject>true</SingleProject>
     <ApplicationTitle>Dose Reminder</ApplicationTitle>
-    <ApplicationId>com.example.dosereminder</ApplicationId>
+    <ApplicationId>health.dosereminder.app</ApplicationId>
     <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
     <ApplicationVersion>1</ApplicationVersion>
     <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">11.0</SupportedOSPlatformVersion>
