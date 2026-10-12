@@ -1,8 +1,8 @@
 {
   "name": "the-last-mile",
   "displayName": "The Last Mile",
-  "version": "0.1.0",
-  "description": "Skills and templates that take an Expo app from idea to a launched, maintained product, extracted from an app that actually shipped.",
+  "version": "0.2.0",
+  "description": "Ship any mobile app to the App Store and Google Play: a rejection sweep against sourced store traps, version bump, release build, store listing, upload and submit. Works with Expo, React Native, Flutter, native iOS and Android, Capacitor, .NET MAUI and wrapped web apps.",
   "author": {
     "name": "Dave Campbell",
     "url": "https://github.com/namedtoaster"
@@ -10,5 +10,17 @@
   "homepage": "https://github.com/namedtoaster/the-last-mile",
   "repository": "https://github.com/namedtoaster/the-last-mile",
   "license": "MIT",
-  "keywords": ["expo", "react-native", "app-store", "google-play", "shipping", "workflow"]
+  "keywords": [
+    "app-store",
+    "google-play",
+    "shipping",
+    "release",
+    "app-review",
+    "expo",
+    "react-native",
+    "flutter",
+    "capacitor",
+    "ios",
+    "android"
+  ]
 }

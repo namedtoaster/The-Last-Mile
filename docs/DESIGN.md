@@ -12,9 +12,12 @@ both stores.
 
 - **Audience:** people who already use Claude Code or another agent that reads
   skills.
-- **Stack:** Expo and React Native. Expo's official skills cover general Expo
-  knowledge; this repo links to them and adds the process, the business layer and
-  the traps.
+- **Stack:** any, for shipping. The ship skill works out the stack and follows its
+  official docs (`skills/ship/references/stacks.md`). Store rules are the same for
+  every stack, so the traps are too, apart from a stack specific section. Some of
+  the day to day skills, see-it-work most of all, are still Expo first.
+- **The hook is `/ship`.** Getting an AI built app into the stores is where most of
+  them stall, and nothing else owns that step.
 - **Tools first, not a journal.** Skills, scripts, templates and code to drop into
   an app.
 
