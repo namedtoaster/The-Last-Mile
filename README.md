@@ -6,7 +6,7 @@
   |_| |_| |_|\___| |_____\__,_|___/\__| |_|  |_|_|_|\___|
 ```
 
-## You built an app with AI. Now ship it.
+## Build it with AI. Ship it with one command.
 
 **One command takes your app from your laptop to the App Store and Google Play.**
 Any stack.
