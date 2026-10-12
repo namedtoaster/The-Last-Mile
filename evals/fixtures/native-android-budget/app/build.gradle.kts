@@ -6,7 +6,7 @@ plugins {
 }
 
 android {
-    namespace = "app.pennywise"
+    namespace = "app.pennywise.android"
     compileSdk = 35
 
     defaultConfig {

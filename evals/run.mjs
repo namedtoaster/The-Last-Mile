@@ -138,17 +138,30 @@ export function score(name, findingsText) {
   }
   const findings = (report.findings || []).map((f) => ({ ...f, text: lower(`${f.title} ${f.rule}`), used: false }));
 
-  const missed = [];
-  for (const want of key.expected) {
-    const hit = findings.find(
-      (f) => !f.used && matches(want.match, f.text) && (!want.file || lower(f.file).endsWith(lower(want.file)) || lower(f.file).includes(lower(want.file))),
-    );
-    if (hit) hit.used = true;
-    else missed.push(want.id);
+  // Pair each planted problem with at most one finding, trying every pairing
+  // (augmenting paths), so one broad finding can't take another problem's credit.
+  const fits = (f, want) => matches(want.match, f.text) && (!want.file || lower(f.file).includes(lower(want.file)));
+  const owner = new Array(findings.length).fill(-1);
+  function claim(w, seen) {
+    for (let i = 0; i < findings.length; i++) {
+      if (seen.has(i) || !fits(findings[i], key.expected[w])) continue;
+      seen.add(i);
+      if (owner[i] === -1 || claim(owner[i], seen)) {
+        owner[i] = w;
+        return true;
+      }
+    }
+    return false;
   }
-  const sameProblem = (f, want) => matches(want.match, f.text) && (!want.file || lower(f.file).includes(lower(want.file)));
+  const missed = [];
+  key.expected.forEach((want, w) => {
+    if (!claim(w, new Set())) missed.push(want.id);
+  });
+  owner.forEach((w, i) => {
+    if (w !== -1) findings[i].used = true;
+  });
   const extra = findings.filter(
-    (f) => !f.used && !key.expected.some((want) => sameProblem(f, want)) && !(key.allowed || []).some((a) => matches(a.match, f.text)),
+    (f) => !f.used && !key.expected.some((want) => fits(f, want)) && !(key.allowed || []).some((a) => matches(a.match, f.text)),
   );
   return {
     stackOk: lower(report.stack) === key.stack,
