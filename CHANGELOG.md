@@ -11,7 +11,7 @@
   says when a custom domain is worth it.
 - New trap: settle the bundle id and package name before the first upload. The Apple
   privacy trap now covers the link inside the app (5.1.1), and the Google closed test
-  trap says the page is silent on second apps.
+  trap now says it applies to every app on the account, not only the first.
 - fact-check keeps going when a page is blocked: other routes, a domain limited
   search as a lead, and the exact host to allow in the session's network settings.
 - ship works for any stack: Expo, React Native, Flutter, native iOS and Android,
