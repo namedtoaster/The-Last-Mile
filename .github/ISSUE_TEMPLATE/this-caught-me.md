@@ -6,7 +6,9 @@ labels: trap
 
 **What happened** (and roughly when):
 
-**Which store or tool:** App Store / Google Play / Expo / other
+**Which store:** App Store / Google Play
+
+**Your stack:** Expo / React Native / Flutter / native / Capacitor / other
 
 **What fixed it:**
 

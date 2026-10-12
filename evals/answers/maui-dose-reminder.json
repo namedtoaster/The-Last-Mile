@@ -1,0 +1,23 @@
+{
+  "stack": "maui",
+  "expected": [
+    { "id": "other-platform-text", "file": "MainPage.xaml", "match": ["google play", "android", "other platform", "2\\.3\\.10"] },
+    { "id": "health-sources", "match": ["source", "1\\.4\\.1", "dose", "medic", "health"] },
+    { "id": "deployment-target", "file": "DoseReminder.csproj", "match": ["deployment target", "ios 1[123]", "minimum ios", "supportedosplatformversion"] },
+    { "id": "target-sdk", "file": "AndroidManifest.xml", "match": ["target.?sdk", "api 3[456]", "android 1[56]"] },
+    { "id": "photo-permissions", "file": "AndroidManifest.xml", "match": ["read_media", "photo", "media"] },
+    { "id": "privacy-policy", "match": ["privacy policy"] }
+  ],
+  "allowed": [
+    { "id": "ipad-layout", "match": ["ipad", "tablet", "device family"] },
+    { "id": "medical-disclaimer", "match": ["disclaimer", "medical advice", "physician", "doctor"] },
+    { "id": "notification-permission", "match": ["notification"] },
+    { "id": "icon", "match": ["icon", "splash"] },
+    { "id": "privacy-labels", "match": ["privacy label", "data safety", "privacy answers"] },
+    { "id": "privacy-manifest", "match": ["privacy manifest", "privacyinfo", "required reason"] },
+    { "id": "support-url", "match": ["support url"] },
+    { "id": "copycat", "match": ["4\\.3", "spam", "minimum functionality", "4\\.2"] },
+    { "id": "input-validation", "match": ["validat", "weight", "maximum dose", "cap"] },
+    { "id": "dotnet-version", "match": ["net9", "\\.net", "xcode", "sdk version"] }
+  ]
+}

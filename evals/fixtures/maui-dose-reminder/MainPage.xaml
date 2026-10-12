@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DoseReminder.MainPage">
+    <VerticalStackLayout Padding="24" Spacing="12">
+        <Label Text="Dose Reminder" FontSize="28" />
+        <Entry x:Name="WeightEntry" Placeholder="Child's weight (kg)" Keyboard="Numeric" />
+        <Button Text="Work out the dose" Clicked="OnCalculate" />
+        <Label x:Name="DoseLabel" FontSize="20" />
+        <Button Text="Remind me in 6 hours" Clicked="OnRemind" />
+        <Label Text="Using Android too? Dose Reminder is on Google Play." FontSize="12" />
+    </VerticalStackLayout>
+</ContentPage>

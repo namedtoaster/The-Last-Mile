@@ -86,15 +86,26 @@ tree. A broad commit would sweep another session's changes into yours.
    updates above. Do not build it from `git status` alone.
 2. Run `git status --short` and confirm each file on your list is modified or new.
    Files that are dirty but not on your list belong to someone else; leave them.
-3. Stage exactly your files, then commit with the same explicit list of paths:
-   `git add -- <file> <file> ...`
-   `git commit -m "<plain sentence describing the change>" -- <file> <file> ...`
-   The `git add` is required: a commit with paths fails on files git has never
-   seen. Never `git add -A`, `git add .`, `git commit -a`, or a commit without paths.
-4. Run `git show --stat HEAD` and confirm only your files are in it. If something
-   else got in, undo with `git reset --soft HEAD~1` and commit again correctly.
-5. If a file you edited was also changed by someone else, stop and tell the user
-   instead of committing over it.
+3. For each file, run `git diff -- <file>` and compare every hunk with your own
+   edits. A file where every hunk is yours gets staged whole. A file that also
+   has hunks you did not write (someone else's edits, or edits that were there
+   before the session) gets staged one hunk at a time, so their edits stay in
+   the working tree uncommitted:
+   `git add -- <whole file> <whole file> ...`
+   `git diff -- <shared file> > /tmp/full.patch`, then copy it to
+   `/tmp/own.patch` keeping the `diff`/`---`/`+++` header and only your hunks
+   (each starts at an `@@` line), then `git apply --cached /tmp/own.patch`.
+   If one hunk mixes your lines with someone else's, or `git apply` refuses the
+   patch, stop and tell the user instead of committing over their work.
+   Never `git add -A`, `git add .`, `git commit -a`, or `git add` on a shared file.
+4. Run `git diff --cached --name-only` and confirm it lists exactly your files.
+   Unstage anything else with `git restore --staged -- <file>`. Then commit what
+   is staged: `git commit -m "<plain sentence describing the change>"`. Do not
+   pass paths to `git commit`: with paths, git commits the whole working copy of
+   those files and sweeps in the edits you just left out.
+5. Run `git show HEAD` and confirm it holds only your changes, and `git diff`
+   to confirm the edits you left out are still there. If something else got in,
+   undo with `git reset --soft HEAD~1` and commit again correctly.
 
 ## 7. Push and confirm the checks pass
 

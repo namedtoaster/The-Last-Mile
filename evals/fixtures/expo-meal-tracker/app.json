@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "Macro Buddy",
+    "slug": "macro-buddy",
+    "version": "1.0.0",
+    "icon": "./assets/icon.png",
+    "ios": { "bundleIdentifier": "app.macrobuddy", "supportsTablet": true },
+    "android": { "package": "app.macrobuddy" },
+    "plugins": ["expo-router", "expo-media-library", "@react-native-google-signin/google-signin"]
+  }
+}

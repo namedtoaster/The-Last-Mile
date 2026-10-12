@@ -1,0 +1,24 @@
+{
+  "stack": "react-native",
+  "expected": [
+    { "id": "other-platform-text", "file": "src/Feed.tsx", "match": ["google play", "android", "other platform", "2\\.3\\.10"] },
+    { "id": "social-login-needs-private-option", "file": "src/App.tsx", "match": ["sign in with apple", "apple sign", "4\\.8", "login service"] },
+    { "id": "account-deletion", "match": ["delet"] },
+    { "id": "photo-permissions", "file": "AndroidManifest.xml", "match": ["read_media", "photo", "media"] },
+    { "id": "target-sdk", "file": "android/build.gradle", "match": ["target.?sdk", "api 3[456]", "android 1[56]"] },
+    { "id": "code-shrinking", "file": "android/app/build.gradle", "match": ["minif", "shrink", "r8", "proguard", "optimi"] }
+  ],
+  "allowed": [
+    { "id": "privacy-policy", "match": ["privacy policy", "support url"] },
+    { "id": "privacy-labels", "match": ["privacy label", "data safety", "privacy answers", "nutrition label"] },
+    { "id": "privacy-manifest", "match": ["privacy manifest", "privacyinfo", "required reason"] },
+    { "id": "ugc-moderation", "match": ["user.?generated", "ugc", "1\\.2", "report", "block", "moderat"] },
+    { "id": "release-signing", "match": ["signing", "keystore", "upload key"] },
+    { "id": "tracking", "match": ["tracking", "att", "app tracking transparency", "5\\.1\\.2"] },
+    { "id": "icon", "match": ["icon"] },
+    { "id": "demo-account", "match": ["demo account", "review notes", "2\\.1"] },
+    { "id": "login-required", "match": ["login required", "sign.?in required", "without (an )?account", "5\\.1\\.1"] },
+    { "id": "build-number", "match": ["build number", "version.?code"] },
+    { "id": "ipad-layout", "match": ["ipad", "tablet"] }
+  ]
+}

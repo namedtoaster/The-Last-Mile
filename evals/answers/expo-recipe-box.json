@@ -1,0 +1,28 @@
+{
+  "stack": "expo",
+  "expected": [
+    { "id": "other-platform-text-in-translations", "file": "locales/en.json", "match": ["google play", "other platform", "2\\.3\\.10"] },
+    { "id": "deactivate-is-not-deletion", "match": ["delet", "deactivat"] },
+    { "id": "apple-sign-in-hidden-on-ios", "file": "app/sign-in.tsx", "match": ["sign in with apple", "apple sign", "apple button", "4\\.8", "login service"] },
+    { "id": "restore-needs-account", "file": "app/settings.tsx", "match": ["restore"] }
+  ],
+  "decoys": [
+    { "id": "store-name-chosen-per-platform", "file": "app/paywall.tsx", "match": ["google play", "other platform", "2\\.3\\.10"] },
+    { "id": "photo-permissions-blocked", "file": "app.json", "match": ["read_media", "photo permission", "media permission"] },
+    { "id": "nutrition-sources-linked", "file": "app/recipe.tsx", "match": ["source", "1\\.4\\.1"] }
+  ],
+  "allowed": [
+    { "id": "icon", "match": ["icon"] },
+    { "id": "privacy-policy-url", "match": ["privacy policy", "support url"] },
+    { "id": "privacy-labels", "match": ["privacy label", "data safety", "privacy answers", "nutrition label"] },
+    { "id": "privacy-manifest", "match": ["privacy manifest", "privacyinfo", "required reason"] },
+    { "id": "subscription-terms", "match": ["terms", "eula", "3\\.1\\.2", "auto.?renew"] },
+    { "id": "demo-account", "match": ["demo account", "review notes", "2\\.1"] },
+    { "id": "build-number", "match": ["build number", "buildnumber", "versioncode", "autoincrement"] },
+    { "id": "target-sdk", "match": ["target.?sdk", "api 3[56]"] },
+    { "id": "code-shrinking", "match": ["minif", "shrink", "r8"] },
+    { "id": "ipad", "match": ["ipad", "tablet"] },
+    { "id": "env-vars", "match": ["environment variable", "env", "supabase url"] },
+    { "id": "account-deletion-web", "match": ["web page", "web link", "deletion url"] }
+  ]
+}

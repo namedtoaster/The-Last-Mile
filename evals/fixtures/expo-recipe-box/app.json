@@ -1,0 +1,14 @@
+{
+  "expo": {
+    "name": "Recipe Box",
+    "slug": "recipe-box",
+    "version": "2.3.0",
+    "icon": "./assets/icon.png",
+    "ios": { "bundleIdentifier": "app.recipebox", "usesAppleSignIn": true, "supportsTablet": false },
+    "android": {
+      "package": "app.recipebox",
+      "blockedPermissions": ["android.permission.READ_MEDIA_IMAGES", "android.permission.READ_MEDIA_VIDEO"]
+    },
+    "plugins": ["expo-router", "expo-apple-authentication", "@react-native-google-signin/google-signin", "expo-localization"]
+  }
+}

@@ -1,0 +1,19 @@
+name: hush
+description: Sleep sounds and a nightly sleep score.
+version: 3.1.0+58
+environment:
+  sdk: ">=3.5.0 <4.0.0"
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl: any
+  firebase_core: ^3.6.0
+  firebase_auth: ^5.3.0
+  in_app_purchase: ^3.2.0
+  just_audio: ^0.9.40
+  image_picker: ^1.1.0
+flutter:
+  generate: true
+  uses-material-design: true

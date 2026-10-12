@@ -1,0 +1,24 @@
+{
+  "stack": "flutter",
+  "expected": [
+    { "id": "other-platform-text", "file": "lib/share.dart", "match": ["google play", "other platform", "2\\.3\\.10"] },
+    { "id": "social-login-needs-private-option", "file": "lib/sign_in.dart", "match": ["sign in with apple", "apple sign", "4\\.8", "login service"] },
+    { "id": "photo-permissions", "file": "AndroidManifest.xml", "match": ["read_media", "photo", "media"] },
+    { "id": "target-sdk", "file": "build.gradle.kts", "match": ["target.?sdk", "api 3[456]", "android 1[56]"] },
+    { "id": "placeholder-text", "file": "lib/main.dart", "match": ["todo", "placeholder"] },
+    { "id": "account-deletion", "match": ["delet"] },
+    { "id": "debug-signing", "file": "build.gradle.kts", "match": ["debug", "sign"] }
+  ],
+  "allowed": [
+    { "id": "code-shrinking", "match": ["minif", "shrink", "r8"] },
+    { "id": "compile-sdk", "match": ["compile.?sdk"] },
+    { "id": "photo-usage-text", "match": ["nsphotolibrary", "usage description", "purpose string"] },
+    { "id": "icon", "match": ["icon"] },
+    { "id": "privacy-policy-url", "match": ["privacy policy", "support url"] },
+    { "id": "privacy-labels", "match": ["privacy label", "data safety", "privacy answers", "nutrition label"] },
+    { "id": "privacy-manifest", "match": ["privacy manifest", "privacyinfo", "required reason"] },
+    { "id": "demo-account", "match": ["demo account", "review notes", "2\\.1"] },
+    { "id": "ipad-layout", "match": ["ipad", "tablet"] },
+    { "id": "copycat", "match": ["4\\.3", "spam", "copycat"] }
+  ]
+}

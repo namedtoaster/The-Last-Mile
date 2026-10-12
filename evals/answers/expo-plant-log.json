@@ -1,0 +1,14 @@
+{
+  "stack": "expo",
+  "expected": [],
+  "allowed": [
+    { "id": "icon", "match": ["icon", "splash"] },
+    { "id": "support-url", "match": ["support url"] },
+    { "id": "privacy-labels", "match": ["privacy label", "data safety", "privacy answers", "nutrition label"] },
+    { "id": "privacy-manifest", "match": ["privacy manifest", "privacyinfo", "required reason"] },
+    { "id": "build-number", "match": ["build number", "buildnumber", "versioncode", "autoincrement"] },
+    { "id": "target-sdk", "match": ["target.?sdk", "api 3[56]"] },
+    { "id": "code-shrinking", "match": ["minif", "shrink", "r8"] },
+    { "id": "notification-permission-timing", "match": ["notification"] }
+  ]
+}
