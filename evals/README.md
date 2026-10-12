@@ -15,11 +15,24 @@ the change helped, the same way reference data shows whether a feature got bette
 | `native-android-budget` | Native Android (Kotlin) | an old target SDK, a photo permission, code shrinking off, accounts with no deletion, no privacy policy, a TODO string |
 | `react-native-run-club` | React Native | Google Play named in shared text, Facebook login with no private option, no account deletion, photo and video permissions, an old target SDK, code shrinking off |
 | `maui-dose-reminder` | .NET MAUI | Google Play named in shared XAML, a medicine dose with no source, an iOS minimum below Apple's, an old target SDK, a photo permission it never uses, no privacy policy |
+| `expo-recipe-box` | Expo, harder | Google Play named only in a translation file, "deactivate" instead of delete, Sign in with Apple shown only on Android, restore purchases only when signed in. Decoys: a store name chosen per platform, photo permissions blocked in app config, nutrition figures that do link their sources |
+| `flutter-sleep-sounds` | Flutter, harder | Google Play named only in a translation file, an unsupported "clinically proven" claim, buying needs an account, an iOS minimum below Apple's set in the Podfile. Decoys: a store name chosen per platform, photo permissions removed in the manifest |
 | `expo-plant-log` | Expo | none. A control: anything reported as a blocker here is a false alarm |
 
 Each fixture's answer key is in `answers/`, outside the app, so a run never sees it.
-An answer key lists what should be found (`expected`) and things that are fair to
-mention either way (`allowed`), so they count neither for nor against.
+An answer key lists what should be found (`expected`), things that are fair to
+mention either way (`allowed`), so they count neither for nor against, and decoys
+(`decoys`): things that look like a problem but are handled correctly. Reporting a
+decoy as a blocker is a false alarm.
+
+## Real apps
+
+`real-apps.json` pins open source apps already live in the stores (Bluesky, Ice
+Cubes, Tusky) to a commit. They passed review, so a blocker reported on one is most
+likely a false alarm. Run them with `node evals/run.mjs --real`. They are cloned
+fresh for each run and cost more than the fixtures, since there is more code to read.
+When a run reports something on a real app that is fair to say, add it to that app's
+`allowed` list with a note in the commit; don't add things just to raise the score.
 
 ## Running it
 
@@ -60,6 +73,4 @@ Runs vary. Before trusting a change, run each fixture more than once.
 ## Next
 
 - A Kotlin Multiplatform fixture.
-- A second tier of real open source apps already in the stores, pinned to a commit,
-  as a check for false alarms on real code.
 - Scoring the listing and privacy answers, not only the sweep.

@@ -3,8 +3,9 @@
  * Runs the ship skill's rejection sweep on each fixture app and scores it against
  * the fixture's answer key, so a skill change can be compared with the last run.
  *
- *   node evals/run.mjs                        every fixture
- *   node evals/run.mjs expo-meal-tracker      one fixture
+ *   node evals/run.mjs                        every fixture (the small fake apps)
+ *   node evals/run.mjs --real                 the real apps in real-apps.json
+ *   node evals/run.mjs expo-meal-tracker      one fixture or real app by name
  *   node evals/run.mjs --rescore <run folder> score saved findings again, no API calls
  *
  * Options: --model <id>, --budget <usd per fixture, default 3>, --fact-check
@@ -44,12 +45,17 @@ const model = opt('--model', undefined);
 const budget = opt('--budget', '3');
 const rescore = opt('--rescore', undefined);
 const factCheck = flag('--fact-check');
+const realOnly = flag('--real');
 
-const PROMPT = `Use the ship skill from The Last Mile on the app in this folder, but only its
+const REAL = Object.fromEntries(
+  Object.entries(JSON.parse(readFileSync(join(EVALS, 'real-apps.json'), 'utf8'))).filter(([k]) => !k.startsWith('_')),
+);
+const FIRST_RELEASE = 'Assume a first release to both the App Store and Google Play, and that both developer accounts exist.';
+
+const prompt = (context) => `Use the ship skill from The Last Mile on the app in this folder, but only its
 first two steps: "Where you stand" and the rejection sweep.
 
-This is an automated evaluation, so nobody can answer questions. Assume a first
-release to both the App Store and Google Play, and that both developer accounts exist.
+This is an automated evaluation, so nobody can answer questions. ${context}
 ${factCheck ? '' : 'Skip the fact-check step and use the references as they are.\n'}Do not change, build or install anything, and do not commit. The only file you may
 write is ship-findings.json in this folder, shaped like this:
 
@@ -81,16 +87,28 @@ function runFixture(name, runDir) {
   const work = mkdtempSync(join(tmpdir(), `tlm-${name}-`));
   const app = join(work, 'app');
   const plugin = join(work, 'plugin');
-  cpSync(join(EVALS, 'fixtures', name), app, { recursive: true });
+  const real = REAL[name];
+  if (real) {
+    mkdirSync(app);
+    const g = (...a) => execFileSync('git', a, { cwd: app, stdio: 'pipe' });
+    g('init', '-q');
+    g('remote', 'add', 'origin', `https://github.com/${real.repo}.git`);
+    g('fetch', '-q', '--depth', '1', 'origin', real.commit);
+    g('checkout', '-q', 'FETCH_HEAD');
+  } else {
+    cpSync(join(EVALS, 'fixtures', name), app, { recursive: true });
+  }
   mkdirSync(plugin);
   cpSync(join(ROOT, '.claude-plugin'), join(plugin, '.claude-plugin'), { recursive: true });
   cpSync(join(ROOT, 'skills'), join(plugin, 'skills'), { recursive: true });
-  execFileSync('git', ['init', '-q'], { cwd: app });
-  execFileSync('git', ['add', '-A'], { cwd: app });
-  execFileSync('git', ['-c', 'user.name=eval', '-c', 'user.email=eval@example.com', 'commit', '-qm', 'fixture'], { cwd: app });
+  if (!real) {
+    execFileSync('git', ['init', '-q'], { cwd: app });
+    execFileSync('git', ['add', '-A'], { cwd: app });
+    execFileSync('git', ['-c', 'user.name=eval', '-c', 'user.email=eval@example.com', 'commit', '-qm', 'fixture'], { cwd: app });
+  }
 
   const cli = [
-    '-p', PROMPT,
+    '-p', prompt(real ? real.context : FIRST_RELEASE),
     '--plugin-dir', plugin,
     '--output-format', 'stream-json', '--verbose',
     '--max-budget-usd', budget,
@@ -160,8 +178,10 @@ export function score(name, findingsText) {
   owner.forEach((w, i) => {
     if (w !== -1) findings[i].used = true;
   });
+  // A decoy looks like a problem but is handled correctly. Flagging one is always a false alarm.
+  const isDecoy = (f) => (key.decoys || []).some((d) => fits(f, d));
   const extra = findings.filter(
-    (f) => !f.used && !key.expected.some((want) => fits(f, want)) && !(key.allowed || []).some((a) => matches(a.match, f.text)),
+    (f) => isDecoy(f) || (!f.used && !key.expected.some((want) => fits(f, want)) && !(key.allowed || []).some((a) => matches(a.match, f.text))),
   );
   return {
     stackOk: lower(report.stack) === key.stack,
@@ -199,8 +219,9 @@ if (rescore) {
     });
   print(rows);
 } else {
-  const all = readdirSync(join(EVALS, 'fixtures'));
-  const chosen = args.length ? args : all;
+  const fixtures = readdirSync(join(EVALS, 'fixtures'));
+  const all = [...fixtures, ...Object.keys(REAL)];
+  const chosen = args.length ? args : realOnly ? Object.keys(REAL) : fixtures;
   for (const name of chosen) if (!all.includes(name)) throw new Error(`No fixture named ${name}`);
 
   const stamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);

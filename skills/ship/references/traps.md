@@ -116,8 +116,8 @@ Stack specific traps are at the end.
 ### Some libraries add photo permissions Google rejects
 - **What happened:** a build was rejected in May 2026 under the Photo and Video Permissions policy. `expo-media-library` had silently added `READ_MEDIA_IMAGES` and `READ_MEDIA_VIDEO` to the manifest.
 - **Rule:** apps may request these permissions only when system pickers (like the Android Photo Picker) are not enough for the app's core functionality, with a declaration. Others should use the system photo picker.
-- **How to check:** list the permissions in the release build's merged manifest. Remove unwanted ones with `tools:node="remove"` in the app's manifest (in Expo, through a config plugin).
-- **Source:** [Play Console Help: Understanding Restricted Permissions with minimum scope alternatives (Photo and Video Permissions)](https://support.google.com/googleplay/android-developer/answer/14115180)
+- **How to check:** list the permissions in the release build's merged manifest. Remove unwanted ones with `tools:node="remove"` in the app's manifest. In Expo, list them under `android.blockedPermissions` in app config, which Expo's docs call the only way to remove permissions a library adds.
+- **Source:** [Play Console Help: Understanding Restricted Permissions with minimum scope alternatives (Photo and Video Permissions)](https://support.google.com/googleplay/android-developer/answer/14115180), [Expo: permissions](https://docs.expo.dev/guides/permissions/)
 - **Status:** Checked 2026-10-11 (official page opened and read).
 
 ### Apps with accounts need a web page for deleting them

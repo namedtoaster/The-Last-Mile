@@ -1,0 +1,12 @@
+{
+  "home.title": "Your recipes",
+  "home.empty": "Save a recipe from any website, or snap a photo of a cookbook page.",
+  "share.title": "Cooked something great?",
+  "share.cta": "Send it to a friend. Recipe Box is free on Google Play.",
+  "paywall.title": "Recipe Box Plus",
+  "paywall.body": "Unlimited recipes, meal plans and shopping lists.",
+  "settings.deactivate": "Deactivate account",
+  "settings.deactivate.confirm": "Your recipes will be hidden. Sign in again any time to reactivate.",
+  "settings.restore": "Restore purchases",
+  "nutrition.sources": "Where these numbers come from"
+}

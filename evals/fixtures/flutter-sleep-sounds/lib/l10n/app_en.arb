@@ -1,0 +1,11 @@
+{
+  "appTitle": "Hush",
+  "tonightTitle": "Tonight",
+  "sleepScore": "Sleep score: {score}",
+  "@sleepScore": { "placeholders": { "score": { "type": "int" } } },
+  "sleepScoreClaim": "Hush is clinically proven to help you fall asleep 40% faster.",
+  "rateTitle": "Sleeping better?",
+  "rateBody": "Leave us a review on Google Play. It really helps.",
+  "proTitle": "Hush Pro",
+  "proBody": "Every sound, offline, plus your weekly sleep report."
+}
