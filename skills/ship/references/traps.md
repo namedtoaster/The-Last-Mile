@@ -57,10 +57,10 @@ Stack specific traps are at the end.
 
 ### Support and privacy policy pages must exist before submitting
 - **What happened:** submission was blocked until the support and privacy pages existed.
-- **Rule:** App Store Connect requires a Support URL, and a Privacy Policy URL for iOS and macOS apps.
-- **How to check:** the listing's support URL and privacy policy URL both load.
-- **Source:** [App Store Connect Help: platform version information](https://developer.apple.com/help/app-store-connect/reference/app-information/platform-version-information)
-- **Status:** Checked 2026-10-11 (official page opened and read).
+- **Rule:** App Store Connect requires a Support URL, and a Privacy Policy URL for iOS and macOS apps. Apple's guidelines also require the privacy policy link inside the app, in an easily accessible manner, not only in the listing.
+- **How to check:** the listing's support URL and privacy policy URL both load, and the app itself links to the policy (a settings or about screen is enough; a paywall is a good second place). The link is baked into the build, so the page has to exist at its final address before the build is made.
+- **Source:** [App Store Connect Help: platform version information](https://developer.apple.com/help/app-store-connect/reference/app-information/platform-version-information), [App Review Guidelines, 5.1.1 Data Collection and Storage](https://developer.apple.com/app-store/review/guidelines/#5.1.1)
+- **Status:** Checked 2026-10-11 (platform version page opened and read). The in-app link: Checked 2026-10-12 (guidelines page opened and read).
 
 ### A website in an app wrapper gets rejected
 - **Rule:** Apple's guidelines say an app should include features, content and UI that elevate it beyond a repackaged website, and that apps shouldn't primarily be web clippings or a collection of links.
@@ -109,9 +109,9 @@ Stack specific traps are at the end.
 ### New personal accounts must run a closed test first
 - **What happened:** production access was refused in April 2026 because testers installed the app but did not use it; Android launch slipped by about six weeks.
 - **Rule:** a personal developer account created after 13 November 2023 must run a closed test with at least 12 testers opted in continuously for at least 14 days before applying for production. It was 20 testers until December 2024. A tester who opts out and back in only counts if their 14 days are consecutive, so leaving restarts their clock. Google's page covers personal accounts only; it does not say how organization accounts are treated.
-- **How to check:** start closed testing early, recruit more than 12 engaged testers, and ask them not to leave the test. Having fewer than 12 opted in is a listed reason Google asks for more testing; the page does not say whether a dip restarts the whole 14 days.
+- **How to check:** start closed testing early, recruit more than 12 engaged testers, and ask them not to leave the test. Having fewer than 12 opted in is a listed reason Google asks for more testing; the page does not say whether a dip restarts the whole 14 days. Google's page says these developers "must run a closed test for their app" and does not say whether a second app on an account that already passed must run it again. Plan as if it must, and check the new app's dashboard in Play Console, which shows whether production access is still locked for that app.
 - **Source:** [Play Console Help: app testing requirements for new personal developer accounts](https://support.google.com/googleplay/android-developer/answer/14151465)
-- **Status:** Checked 2026-10-11 (official page opened and read).
+- **Status:** Checked 2026-10-11 (official page opened and read). Whether it applies again to a later app: Needs a human (the page is silent; the app's Play Console dashboard shows it).
 
 ### Some libraries add photo permissions Google rejects
 - **What happened:** a build was rejected in May 2026 under the Photo and Video Permissions policy. `expo-media-library` had silently added `READ_MEDIA_IMAGES` and `READ_MEDIA_VIDEO` to the manifest.
@@ -157,6 +157,13 @@ Stack specific traps are at the end.
 - **Status:** Checked 2026-10-11 (official pages opened and read). That it was off in a real app is from experience.
 
 ## Builds and versions
+
+### Settle the app's id before the first upload
+- **What happened:** an app renamed after its first development builds still carried the old name in its bundle id and package name, weeks before its first store upload. The rename only cost a rebuild because nothing had been uploaded yet.
+- **Rule:** Google says to never change the application ID once the app is published, because Play treats an upload with a new ID as a completely different app. Apple ties an App Store Connect app record to its bundle ID in the same way.
+- **How to check:** before the first upload, confirm the bundle ID and package name use the final name, and the deep link scheme too. Changing them later means a new store listing with no reviews or users. A changed id also installs as a separate app on test phones, with its own local data, so testers start over. Keep local storage keys as they are when renaming; changing them wipes saved data.
+- **Source:** [Android Developers: configure the app module](https://developer.android.com/build/configure-app-module)
+- **Status:** Checked 2026-10-12 (official page opened and read). The Apple side is from experience: Apple's help pages opened on 2026-10-12 do not state it.
 
 ### Every upload needs a higher build number
 - **Rule:** Google Play will not accept a version code that has already been used, and Apple uses the build string to identify each build uniquely.
