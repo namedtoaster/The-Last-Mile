@@ -6,23 +6,22 @@
   |_| |_| |_|\___| |_____\__,_|___/\__| |_|  |_|_|_|\___|
 ```
 
-## Your app is shitty. Ship it anyway.
+## You built an app with AI. Now ship it.
 
-You vibe coded a never-before-seen app. So did everyone else. Same idea, same
-gradients, same "AI-powered" in the subtitle.
+**One command takes your app from your laptop to the App Store and Google Play.**
+Any stack.
 
-It's shitty. Period. It is what it is.
-
-But a shitty app in the App Store beats a perfect one on your laptop, because only
-one of them can get a user. And a user can turn into someone who pays you.
-
-So ship it. Except shipping is where vibe coded apps go to die: developer accounts,
+Building it was the fun part. Then comes the last mile: developer accounts,
 certificates, build numbers, screenshots in five sizes, privacy questionnaires, and
-a reviewer who rejects you for saying "Google Play" on your paywall.
+a reviewer who rejects you for saying "Google Play" on your paywall. It's where most
+AI built apps quietly stall.
 
-**`/ship` gets your shitty app into the App Store and Google Play.** Any stack. One
-command. Getting real users and paying users comes next, and that's where this repo
-is going.
+Your app doesn't need to be perfect. It needs to be in the store, because that's
+the only place it can get a user, and a user is the only person who can ever pay
+you for it.
+
+`/ship` handles the last mile. Getting real users and paying users comes next, and
+that's where this repo is going.
 
 ```
 /plugin marketplace add namedtoaster/the-last-mile
@@ -66,7 +65,7 @@ Apple and Google change them.
 
 ## What it won't do
 
-- **Make your app less shitty.** It gets you through review. That's the bar right now.
+- **Judge your idea.** It gets you through review. Whether people want the app is still up to you.
 - **Click "Submit for review" without asking you.**
 - **Make up store rules.** Every rule it checks has a link to Apple's or Google's own
   page. If it can't check one, it says so.
