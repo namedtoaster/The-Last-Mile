@@ -33,35 +33,35 @@ already holds other records. Hosts handle this three ways:
 
 | Registrar | Where DNS records are added | Bare domain to a hostname | Free email forwarding |
 | --- | --- | --- | --- |
-| Porkbun | Domain Management, the domain's DNS, Add Record | ALIAS record | Yes: up to 20 addresses per domain, no catch-all |
+| Porkbun | Domain Management, the domain's DNS, Add Record | ALIAS record (Porkbun calls it "ALIAS - CNAME flattening") | Yes: up to 20 addresses per domain, no catch-all |
 | Namecheap | Domain List, Manage, Advanced DNS, Host Records, Add New Record | ALIAS record | Check the current page |
 | Cloudflare | DNS records for the zone | CNAME at `@`, flattened automatically | Email Routing (needs Cloudflare DNS) |
-| GoDaddy | Domain Portfolio, the domain's DNS, Add New Record | No ALIAS: move DNS to Cloudflare, or use www | Check the current page |
-| Squarespace Domains | Domains, the domain, DNS, DNS Settings, Custom Records | No CNAME at `@` | Check the current page |
+| GoDaddy | Domain Portfolio, the domain, DNS, Add New Record | Railway lists GoDaddy as unable to: move DNS to Cloudflare, or use www | Check the current page |
+| Squarespace Domains | Domains, the domain, DNS, DNS Settings, Custom Records | Offers ALIAS records, but Railway lists Squarespace as unable to point the bare domain at it: test, or move DNS to Cloudflare | Check the current page |
 
 Sources and status:
 
-- Porkbun: [How to add DNS records](https://kb.porkbun.com/article/231-how-to-add-dns-records-on-porkbun), [Connecting a root domain when the host gives no IP](https://kb.porkbun.com/article/85-how-to-connect-your-root-domain-when-your-web-host-wont-provide-an-ip-address), [Email forwarding](https://kb.porkbun.com/article/10-how-to-set-up-email-forwarding-service). **Status:** Not yet checked (read through search results on 2026-10-12).
-- Namecheap: [Host records](https://www.namecheap.com/support/knowledgebase/article.aspx/434/2237/how-do-i-set-up-host-records-for-a-domain/), [ALIAS record](https://www.namecheap.com/support/knowledgebase/article.aspx/10128/2237/how-to-create-an-alias-record/). **Status:** Not yet checked.
-- Cloudflare: [Zone apex record](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-zone-apex/), [Email Routing](https://developers.cloudflare.com/email-service/get-started/route-emails/). **Status:** Not yet checked.
-- GoDaddy: [Add a CNAME record](https://www.godaddy.com/en/help/add-a-cname-record-19236). **Status:** Not yet checked.
-- Squarespace: [DNS records for web hosting](https://support.squarespace.com/hc/en-us/articles/31119879125645-DNS-records-for-web-hosting). **Status:** Not yet checked.
+- Porkbun: [How to add DNS records](https://kb.porkbun.com/article/231-how-to-add-dns-records-on-porkbun), [Connecting a root domain when the host gives no IP](https://kb.porkbun.com/article/85-how-to-connect-your-root-domain-when-your-web-host-wont-provide-an-ip-address), [Email forwarding](https://kb.porkbun.com/article/10-how-to-set-up-email-forwarding-service). **Status:** Checked 2026-10-12 (saved copy of the official page).
+- Namecheap: [Host records](https://www.namecheap.com/support/knowledgebase/article.aspx/434/2237/how-do-i-set-up-host-records-for-a-domain/), [ALIAS record](https://www.namecheap.com/support/knowledgebase/article.aspx/10128/2237/how-to-create-an-alias-record/). **Status:** Checked 2026-10-12 (saved copy of the official page).
+- Cloudflare: [Zone apex record](https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-zone-apex/), [Email Routing](https://developers.cloudflare.com/email-service/get-started/route-emails/). **Status:** Checked 2026-10-12 (saved copy of the official page).
+- GoDaddy: [Add a CNAME record](https://www.godaddy.com/en/help/add-a-cname-record-19236). **Status:** Checked 2026-10-12 (saved copy of the official page).
+- Squarespace: [DNS records for web hosting](https://support.squarespace.com/hc/en-us/articles/31119879125645-DNS-records-for-web-hosting). **Status:** Checked 2026-10-12 (saved copy of the official page).
 
 ## Hosts
 
 | Host | What it asks for |
 | --- | --- |
-| Railway | A CNAME to the target Railway shows, plus a TXT record to verify. No fixed IP, so the bare domain needs ALIAS or a flattened CNAME. |
-| Vercel | The values shown in the project's domain settings. Vercel suggests www as the main address. |
+| Railway | A CNAME to the target Railway shows, plus a TXT record to verify; without the TXT the domain answers 404. The bare domain needs a provider with CNAME flattening or ALIAS (Railway names Cloudflare, Namecheap, DNSimple and bunny.net; not GoDaddy, Route 53, Azure, Hostinger, NameSilo, Hurricane Electric or Squarespace). |
+| Vercel | The values shown in the project's domain settings. |
 | Netlify | ALIAS, ANAME or flattened CNAME at the bare domain, or an A record to its published IP. |
 | GitHub Pages | A records to GitHub's published IPs for the bare domain, CNAME for www to `<user>.github.io`. |
 
 Sources and status:
 
-- Railway: [Working with domains](https://docs.railway.com/networking/domains/working-with-domains). **Status:** Not yet checked.
-- Vercel: [Set up a custom domain](https://vercel.com/docs/domains/set-up-custom-domain). **Status:** Not yet checked.
-- Netlify: [Configure external DNS](https://docs.netlify.com/manage/domains/configure-domains/configure-external-dns/). **Status:** Not yet checked.
-- GitHub Pages: [Managing a custom domain](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site). **Status:** Not yet checked.
+- Railway: [Working with domains](https://docs.railway.com/networking/domains/working-with-domains). **Status:** Checked 2026-10-12 (saved copy of the official page).
+- Vercel: [Set up a custom domain](https://vercel.com/docs/domains/set-up-custom-domain). **Status:** Checked 2026-10-12 (saved copy of the official page).
+- Netlify: [Configure external DNS](https://docs.netlify.com/manage/domains/configure-domains/configure-external-dns/). **Status:** Checked 2026-10-12 (saved copy of the official page).
+- GitHub Pages: [Managing a custom domain](https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site). **Status:** Checked 2026-10-12 (saved copy of the official page).
 
 ## After adding records
 
