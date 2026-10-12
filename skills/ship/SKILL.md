@@ -66,6 +66,7 @@ Work this out from the files before asking anything, then show it in a few lines
    email on it, invite or share links that open the app (universal links and App
    Links need a site the developer controls), or a name that should not move later.
    Ask which the user has; if neither, put the pages on the plan as an early task.
+   `references/domains.md` covers registrars, hosts and email forwarding.
 
 End this step with a short plan: the steps ahead, which ones need the user, and the
 first thing only they can do (often paying for an account), so they can start it now.

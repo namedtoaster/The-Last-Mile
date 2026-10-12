@@ -2,6 +2,9 @@
 
 ## 0.2.0 (unreleased)
 
+- New domains reference for ship: when a domain is worth it, the bare domain DNS
+  rule, and where to add records and email forwarding at Porkbun, Namecheap,
+  Cloudflare, GoDaddy and Squarespace, for Railway, Vercel, Netlify and GitHub Pages.
 - A weekly job saves a text copy of every official page the traps cite into
   `sources/` on the `snapshots` branch, and fact-check reads it when a session's network blocks the page
   (cloud sessions block Google's help site by default). No settings needed, and a
