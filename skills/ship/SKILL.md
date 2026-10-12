@@ -1,107 +1,174 @@
 ---
 name: ship
-description: Take an Expo app build to the App Store and Google Play. Walks the release checklist, bumps the version, builds and tests the release build, prepares submission, and checks the known store traps against current official docs. Use when the user wants to release, submit, upload, publish, cut a build, or respond to an App Store or Google Play rejection.
+description: Take any mobile app, on any stack, from a working build to the App Store and Google Play. Works out the stack, sweeps the code for known rejection traps, fixes what it can, bumps the version, builds and tests the release, writes the store listing and privacy answers, uploads and submits with the user's yes, and handles rejections. Works for Expo, React Native, Flutter, native iOS and Android, Capacitor, .NET MAUI, Kotlin Multiplatform, and web apps that need wrapping first. Use when the user wants to ship, release, submit, upload, publish, get into the App Store or Google Play, cut a build, or respond to a rejection.
 ---
 
 # Ship
 
-Read the project's rules file **Settings** table first, then `references/traps.md`
-and `references/facts.md` in this skill's folder.
+Get the app out of the user's laptop and into the stores. Many users have never shipped
+before and built the app with AI, so explain each step in plain words and never assume
+they know what a provisioning profile, a version code or an app bundle is.
+
+Read these in this skill's folder before starting:
+
+- `references/stacks.md`: where each stack keeps its version, and how it builds and uploads.
+- `references/traps.md`: things that got real apps rejected, with sources.
+- `references/facts.md`: numbers that change (fees, limits, deadlines).
 
 ## The one rule
 
 **Store rules change. Never state one from memory.** Before telling the user what a
-store requires, or how to find something in App Store Connect or Play Console,
-open the source link for it in `references/traps.md` or search the current
-official docs. If what you find differs from the reference, follow the current docs,
-tell the user what changed, and update the entry and its **Last checked** date.
-Console screens move often, so give navigation steps only from docs fetched now.
+store requires, or how to find something in App Store Connect or Play Console, open
+the source link for it in the references or search the current official docs. If what
+you find differs from the reference, follow the current docs, tell the user what
+changed, and update the entry and its **Last checked** date. Console screens move
+often, so give navigation steps only from docs fetched now.
 
-## Scope
+## Where answers are kept
 
-Check the app's code, config, assets and docs, and the official store pages. Do not
-query or change live services (databases, payment dashboards, analytics, crash
-reporting) unless the user asks. If something looks risky there, note it as a
-question for the user instead. Keep the report to what blocks this release: list
-the blockers first, then passes in one line each.
+If the project has a rules file (`CLAUDE.md` or `AGENTS.md`) with a **Settings** table,
+read it and keep shipping answers there. If not, keep them in `SHIPPING.md` at the
+project root, created from `templates/shipping.md`, so the next release starts where
+this one ended. Do not require the setup skill; `/ship` must work on a project that has
+never seen The Last Mile.
 
-## 1. Pre flight
+## Scope and permission
 
-1. Run the project's check command. Everything must pass.
-2. Open `RELEASE_TEST_CHECKLIST.md`. Report how many items in the current
-   **Verify on** block are unticked, and which ones block shipping.
-3. Walk the traps in `references/traps.md` that apply to this app and this release
-   (iOS, Android, or both). For each, check the app, not just the docs: for example,
-   search the iOS build's text for "Google Play", or list the Android release
-   manifest's permissions. Report anything that fails as a short list.
-   Run the fact-check skill on those traps first, so the rules you check against
-   are current.
-4. Check the things a reviewer sees first:
-   - **Icon and splash:** open the icon and splash images and confirm they are the
-     app's own, not the Expo template.
-   - **Health, medical or nutrition content:** if the app shows doses, calorie or
-     macro figures, or health advice (including bundled sample content), confirm a
-     source is shown for it. Apple has rejected apps for this under 1.4.1.
+- Check the app's code, config, assets and docs, and the official store pages.
+- Do not query or change live services (databases, payment dashboards, analytics)
+  unless the user asks. Note anything risky there as a question instead.
+- **Ask before anything that leaves the machine:** uploading a build, uploading
+  metadata or screenshots, and above all submitting for review. Say what will be sent
+  and where, then wait for a yes. A yes covers that one step, not the rest.
+- Never paste or print signing keys, passwords or API keys. Point to where they live.
+
+## 0. Where you stand
+
+Work this out from the files before asking anything, then show it in a few lines:
+
+1. **Stack:** match the project against the detection table in `references/stacks.md`.
+   If it is a web app with no native project, follow that file's web app section
+   first: it needs a native wrapper, and Apple rejects wrappers that add nothing over
+   the website (see the minimum functionality trap).
+2. **Platforms:** iOS, Android or both. Ask if unclear.
+3. **First release or update:** look for an existing bundle ID or package name, a
+   previous version tag, or ask.
+4. **Accounts:** for a first release, ask whether the user has an Apple Developer
+   Program membership and a Google Play developer account. Fees and the closed testing
+   rule for new personal Google accounts are in `references/facts.md`; tell the user
+   early, because the Google one can delay an Android launch by weeks.
+
+End this step with a short plan: the steps ahead, which ones need the user, and the
+first thing only they can do (often paying for an account), so they can start it now.
+
+## 1. Rejection sweep
+
+This is the step that saves days. Run the fact-check skill on the traps that apply, so
+the rules are current, then check each one **against the app, not the docs**:
+
+- Search the iOS build's bundled text for other platforms' names, list the Android
+  release manifest's permissions, open the icon and splash, find the account deletion
+  screen, try to buy without signing in. `references/stacks.md` says where each stack
+  keeps these.
+- Walk every trap under **Apple** and **Google Play** that applies, and the section for
+  this stack under **Stack specific**.
+- Also check what a reviewer sees first: the icon and splash are the app's own, not a
+  template's; nothing says "lorem ipsum", "TODO" or "test"; every button on the first
+  screens does something.
+
+Report blockers first, each with the file and line, the rule and its source, then the
+passes in one line each. Offer to fix the blockers that are code. Fix them one at a
+time and show each change.
 
 ## 2. Version bump
 
-- Bump the user facing version: patch for fixes, minor for new features.
-- Bump the build number. Both stores reject a build number they have already seen,
-  so keep one counter shared by iOS and Android and always increase it.
-- `app.json` is the usual source of truth. If the native folders are committed,
-  confirm the native version fields match it after the bump.
-- Move the release checklist's **Pending** items into a new **Verify on <version>**
-  block and drop the previous one.
+- Bump the user facing version: patch for fixes, minor for new features, 1.0.0 for a
+  first release.
+- Bump the build number. Both stores reject a build number they have already seen, so
+  keep one counter shared by iOS and Android and always increase it.
+- `references/stacks.md` lists where each stack keeps both. If a value is set in more
+  than one place, confirm they agree after the bump.
+- If the project has `RELEASE_TEST_CHECKLIST.md`, move its **Pending** items into a new
+  **Verify on <version>** block and drop the previous one.
 - Commit the bump on its own.
 
 ## 3. Build
 
-If the rules file's **How builds are made** setting is filled in, use it. Otherwise
-ask which the user uses, and write the answer into that setting:
+If the settings record how builds are made, use that. Otherwise offer the default for
+the stack from `references/stacks.md`, explain it in one line, and record the answer.
 
-- **iOS:** a local Xcode archive (Product, then Archive, then Distribute), or a
-  cloud build service. Cloud build machines can lag behind the newest Xcode.
-- **Android:** an app bundle (`.aab`), built locally or in the cloud.
+- iOS needs a Mac with Xcode for a local build. Without one, a cloud build service is
+  the way (Expo's EAS Build, Codemagic, Xcode Cloud, GitHub Actions on macOS).
+- Android needs an app bundle (`.aab`), signed with an upload key. If the user has no
+  upload key yet, explain that losing it is serious, then help create and back it up.
+- Check the build meets the stores' current minimums (Xcode and SDK version for Apple,
+  target API level for Google) in `references/facts.md`.
 
 ## 4. Test the release build
 
 A release build is not the development build. Some code only fails here.
 
-- Install the release build on a real device: TestFlight for iOS, an internal or
-  closed testing track for Android.
-- Work through **Verify on <version>** and tick items with evidence. The see-it-work
-  skill's release build smoke run covers every screen at once, if the project has
-  it set up.
-- Open the app cold, sign in, reach the paywall, and confirm crash reporting
-  receives a deliberate test error from this build.
-- On Android, real store prices only load for a Google account set up as a licence
-  tester in Play Console (signed in on the device, same package name), or in a build
-  installed from a Play testing track.
+- Install it on a real device: TestFlight for iOS, an internal testing track for
+  Android.
+- Open the app cold, go through the main thing it does start to finish, sign in, reach
+  any paywall, and buy in the sandbox if it sells anything.
+- If the project has `RELEASE_TEST_CHECKLIST.md`, work through **Verify on <version>**
+  and tick items with evidence. The see-it-work skill can smoke test every screen.
+- If crash reporting is installed, confirm a deliberate test error from this build
+  arrives.
 
-## 5. Submit
+## 5. Store listing
 
-Prepare, then let the user press the final button:
+Draft everything in `templates/store-listing.md`, saved as `store/listing.md` in the
+project (or wherever the project keeps it), and show the user before uploading.
 
-- **Release notes:** written for users, not a commit log.
-- **App Store Connect:** screenshots for every required device size, privacy labels
-  that match what the app actually collects, support and privacy policy URLs.
-- **Play Console:** the Data safety form, the account deletion link, and any
-  permission declarations. A new personal developer account must finish closed
-  testing before it can publish to production; see the traps reference.
+- **Copy:** name, subtitle, keywords, descriptions and release notes, within the
+  limits in `references/facts.md`. Write for the person who would use the app, from
+  what the code actually does. Nothing it cannot do yet.
+- **Screenshots:** the sizes each store requires today (check `references/facts.md`,
+  then the official page). Capture them from a simulator or emulator with realistic
+  content, not an empty state. The see-it-work skill can seed data and capture them.
+- **Privacy answers:** list every SDK and every network call that sends data
+  (analytics, crash reporting, ads, sign in, payments, the app's own server). Map each
+  to the data types Apple's privacy labels and Play's Data safety form ask about, and
+  draft the answers. Mark each one as found in code or a guess, and tell the user the
+  answers are theirs to confirm: they are a legal statement.
+- **Privacy policy and support pages:** both must load. If the user has none, draft a
+  privacy policy from the privacy answers and suggest a place to host it.
+- **Review notes:** if the app has sign in, a demo account the reviewer can use, and
+  how to reach anything hidden behind a purchase or a setting.
 
-## 6. If the review comes back rejected
+## 6. Upload and submit
 
-1. Read the message. It names a guideline number.
+Follow the upload path for the stack in `references/stacks.md`. Ask before each upload.
+
+- **Command line first.** Use the stack's own tool (`eas submit`, Xcode's upload,
+  Gradle Play Publisher, fastlane) when the project has it, or offer to set it up.
+  fastlane's `deliver` and `supply` can upload listing text and screenshots too.
+- **What only the user can do** (and say so plainly): enrolling and paying for
+  developer accounts, accepting agreements, tax and banking, creating API keys, and any
+  form the stores only offer in their consoles. Check the current docs for which forms
+  are console only before saying so. For each, give the steps from docs fetched now,
+  then wait.
+- **Submit for review** only when the user says to. Then tell them what happens next
+  and roughly how long, from the stores' current pages.
+
+## 7. If the review comes back rejected
+
+1. Read the message. It names a guideline or a policy.
 2. Fix only what it asks for. Unrelated changes invite new questions.
-3. Reply in the review conversation in two or three polite sentences saying what
-   changed. If the reviewer misunderstood, explain with a screenshot.
-4. Resubmit.
-5. Add the rejection to the project's gotchas with the date and the guideline, and
-   if it would catch other apps, suggest contributing it as a trap to The Last Mile.
+3. Draft a reply in two or three polite sentences saying what changed. If the reviewer
+   misunderstood, explain with a screenshot.
+4. Bump the build number, rebuild, upload and resubmit, asking before each upload.
+5. Record the rejection with its date and guideline in the project's gotchas or
+   `SHIPPING.md`. If it would catch other apps, offer to open a "This caught me" issue
+   on The Last Mile (`namedtoaster/the-last-mile`), with the guideline and no private
+   details.
 
-## 7. After it ships
+## 8. After it ships
 
-- Clear the shipped **Verify on** block from the release checklist and update the
-  **Last release** line with the version, the date, and how many items were verified.
+- Record the release in the settings: version, build number, date, store links.
+- Clear the shipped **Verify on** block from the release checklist, if there is one.
 - Tag the release in git (`v<version>`), if the project tags releases.
-- Note the release in `CURRENT_WORK.md`.
+- Tell the user it's live, with the store links. Then one line on what comes next:
+  shipping was the last mile, and getting people to use it is the next one.
