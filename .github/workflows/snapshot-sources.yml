@@ -1,6 +1,7 @@
 name: Snapshot official sources
 
-# Saves a text copy of every official page the ship references cite into sources/,
+# Saves a text copy of every official page the ship references cite into sources/
+# on the snapshots branch (main only takes pull requests),
 # so sessions whose network blocks a store's help site can still read the rule.
 # A changed file in the commit means the page changed: re-check that trap.
 
@@ -24,8 +25,16 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - run: node scripts/snapshot-sources.mjs | tee snapshot-report.txt
-      - name: Commit if anything changed
+      - name: Check out the snapshots branch
+        run: |
+          if git fetch -q origin snapshots; then
+            git worktree add -B snapshots out origin/snapshots
+          else
+            git worktree add --orphan -b snapshots out
+          fi
+      - run: SNAPSHOT_DIR=out/sources node scripts/snapshot-sources.mjs | tee snapshot-report.txt
+      - name: Commit to the snapshots branch if anything changed
+        working-directory: out
         run: |
           git add sources
           if git diff --cached --quiet; then
@@ -34,6 +43,6 @@ jobs:
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
-          { echo "Snapshot official sources $(date -u +%F)"; echo; grep -E '^(NEW|CHANGED|FAILED)' snapshot-report.txt || true; } > msg.txt
-          git commit -q -F msg.txt
-          git push
+          { echo "Snapshot official sources $(date -u +%F)"; echo; grep -E '^(NEW|CHANGED|FAILED)' ../snapshot-report.txt || true; } > ../msg.txt
+          git commit -q -F ../msg.txt
+          git push origin snapshots

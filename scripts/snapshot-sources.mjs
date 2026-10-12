@@ -10,7 +10,8 @@
  *     when its text last changed, and the error if the fetch failed
  *
  * A failed fetch keeps the previous copy. Nothing else in the repo is touched.
- * Runs weekly in .github/workflows/snapshot-sources.yml, which commits the result.
+ * Runs weekly in .github/workflows/snapshot-sources.yml, which commits the result to
+ * the snapshots branch (main only takes pull requests). SNAPSHOT_DIR sets the folder.
  *
  * Run: node scripts/snapshot-sources.mjs
  */
@@ -21,7 +22,7 @@ import { fileURLToPath } from 'node:url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const REFS = join(ROOT, 'skills', 'ship', 'references');
-const OUT = join(ROOT, 'sources');
+const OUT = process.env.SNAPSHOT_DIR ?? join(ROOT, 'sources');
 const INDEX = join(OUT, 'index.json');
 const today = new Date().toISOString().slice(0, 10);
 

@@ -39,8 +39,8 @@ otherwise write "From experience" or "Needs a human".
    in order and say which one you used:
    - **The Last Mile's saved copy.** A weekly job saves a text copy of every page the
      ship references cite. Read `sources/index.json` in The Last Mile
-     (`https://raw.githubusercontent.com/namedtoaster/the-last-mile/main/sources/index.json`,
-     or the local clone), find the URL, and read its `file` from the same place.
+     (`https://raw.githubusercontent.com/namedtoaster/the-last-mile/snapshots/sources/index.json`,
+     on the `snapshots` branch), find the URL, and read `sources/<file>` from the same branch.
      GitHub is reachable from cloud sessions by default, so this needs no settings.
      The copy counts as the page opened on its `fetched` date: set **Checked
      <fetched date> (saved copy of the official page)**. If `fetched` is more than a
