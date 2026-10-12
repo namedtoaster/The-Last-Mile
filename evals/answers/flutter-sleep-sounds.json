@@ -1,27 +1,166 @@
 {
   "stack": "flutter",
   "expected": [
-    { "id": "other-platform-text-in-translations", "file": "app_en.arb", "match": ["google play", "other platform", "2\\.3\\.10"] },
-    { "id": "unsupported-health-claim", "match": ["clinically", "40%", "1\\.4\\.1", "claim", "health", "accuracy"] },
-    { "id": "buy-requires-account", "file": "pro.dart", "match": ["sign.?in", "account", "login", "5\\.1\\.1"] },
-    { "id": "deployment-target", "file": "Podfile", "match": ["deployment target", "ios 1[23]", "minimum ios", "platform :ios"] }
+    {
+      "id": "other-platform-text-in-translations",
+      "file": "app_en.arb",
+      "match": [
+        "google play",
+        "other platform",
+        "2\\.3\\.10"
+      ]
+    },
+    {
+      "id": "unsupported-health-claim",
+      "match": [
+        "clinically",
+        "40%",
+        "1\\.4\\.1",
+        "claim",
+        "health",
+        "accuracy"
+      ]
+    },
+    {
+      "id": "buy-requires-account",
+      "file": "pro.dart",
+      "match": [
+        "sign.?in",
+        "account",
+        "login",
+        "5\\.1\\.1"
+      ]
+    },
+    {
+      "id": "deployment-target",
+      "file": "Podfile",
+      "match": [
+        "deployment target",
+        "ios 1[23]",
+        "minimum ios",
+        "platform :ios"
+      ]
+    }
   ],
   "decoys": [
-    { "id": "store-name-chosen-per-platform", "file": "tonight.dart", "match": ["google play", "other platform", "2\\.3\\.10"] },
-    { "id": "photo-permissions-removed", "file": "AndroidManifest.xml", "match": ["read_media", "photo permission", "media permission"] }
+    {
+      "id": "store-name-chosen-per-platform",
+      "file": "tonight.dart",
+      "match": [
+        "google play",
+        "other platform",
+        "2\\.3\\.10"
+      ]
+    },
+    {
+      "id": "photo-permissions-removed",
+      "file": "AndroidManifest.xml",
+      "match": [
+        "read_media",
+        "photo permission",
+        "media permission"
+      ]
+    }
   ],
   "allowed": [
-    { "id": "foreground-service", "match": ["foreground service", "foreground_service"] },
-    { "id": "deletion-placement", "match": ["delet"] },
-    { "id": "icon", "match": ["icon"] },
-    { "id": "privacy-policy-url", "match": ["privacy policy", "support url"] },
-    { "id": "privacy-labels", "match": ["privacy label", "data safety", "privacy answers", "nutrition label"] },
-    { "id": "privacy-manifest", "match": ["privacy manifest", "privacyinfo", "required reason"] },
-    { "id": "subscription-terms", "match": ["terms", "eula", "3\\.1\\.2", "auto.?renew", "subscription"] },
-    { "id": "demo-account", "match": ["demo account", "review notes", "2\\.1"] },
-    { "id": "target-sdk", "match": ["target.?sdk", "api 3[56]"] },
-    { "id": "code-shrinking", "match": ["minif", "shrink", "r8"] },
-    { "id": "unused-image-picker", "match": ["image_picker", "image picker", "photo library usage"] },
-    { "id": "background-audio", "match": ["background audio", "uibackgroundmodes", "audio"] }
+    {
+      "id": "foreground-service",
+      "match": [
+        "foreground service",
+        "foreground_service"
+      ]
+    },
+    {
+      "id": "deletion-placement",
+      "match": [
+        "delet"
+      ]
+    },
+    {
+      "id": "icon",
+      "match": [
+        "icon"
+      ]
+    },
+    {
+      "id": "privacy-policy-url",
+      "match": [
+        "privacy policy",
+        "support url"
+      ]
+    },
+    {
+      "id": "privacy-labels",
+      "match": [
+        "privacy label",
+        "data safety",
+        "privacy answers",
+        "nutrition label"
+      ]
+    },
+    {
+      "id": "privacy-manifest",
+      "match": [
+        "privacy manifest",
+        "privacyinfo",
+        "required reason"
+      ]
+    },
+    {
+      "id": "subscription-terms",
+      "match": [
+        "terms",
+        "eula",
+        "3\\.1\\.2",
+        "auto.?renew",
+        "subscription"
+      ]
+    },
+    {
+      "id": "demo-account",
+      "match": [
+        "demo account",
+        "review notes",
+        "2\\.1"
+      ]
+    },
+    {
+      "id": "target-sdk",
+      "match": [
+        "target.?sdk",
+        "api 3[56]"
+      ]
+    },
+    {
+      "id": "code-shrinking",
+      "match": [
+        "minif",
+        "shrink",
+        "r8"
+      ]
+    },
+    {
+      "id": "unused-image-picker",
+      "match": [
+        "image_picker",
+        "image picker",
+        "photo library usage"
+      ]
+    },
+    {
+      "id": "background-audio",
+      "match": [
+        "background audio",
+        "uibackgroundmodes",
+        "audio"
+      ]
+    },
+    {
+      "id": "privacy-policy",
+      "match": [
+        "privacy policy"
+      ],
+      "note": "Correct: the fixture has none and Google requires one."
+    }
   ]
 }

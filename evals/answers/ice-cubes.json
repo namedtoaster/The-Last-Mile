@@ -1,5 +1,15 @@
 {
   "stack": "native-ios",
   "expected": [],
-  "allowed": []
+  "allowed": [
+    {
+      "id": "privacy-manifest",
+      "match": [
+        "privacy manifest",
+        "privacyinfo",
+        "required reason"
+      ],
+      "note": "Disputed (2026-10-12). True that the repo has no PrivacyInfo.xcprivacy while using UserDefaults, and Apple's page says such uploads aren't accepted, yet the app is live. Unresolved."
+    }
+  ]
 }

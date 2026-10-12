@@ -76,6 +76,11 @@ the rules are current, then check each one **against the app, not the docs**:
   template's; nothing says "lorem ipsum", "TODO" or "test"; every button on the first
   screens does something.
 
+For an update to an app that is already live, some rules allow exceptions granted in
+the store consoles (for example, Google's declarations for photo and video
+permissions). Before calling one of those a blocker, ask whether the app already has
+the exception; if nobody can say, report it as a question, not a blocker.
+
 Report blockers first, each with the file and line, the rule and its source, then the
 passes in one line each. Offer to fix the blockers that are code. Fix them one at a
 time and show each change.

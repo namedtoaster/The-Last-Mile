@@ -1,5 +1,16 @@
 {
   "stack": "expo",
   "expected": [],
-  "allowed": []
+  "allowed": [
+    {
+      "id": "media-permissions",
+      "match": [
+        "read_media",
+        "media-library",
+        "media library",
+        "photo"
+      ],
+      "note": "Disputed (2026-10-12). True that expo-media-library adds the permissions and none are blocked, but a social app can keep them with an approved Play Console declaration, so not a clear blocker."
+    }
+  ]
 }

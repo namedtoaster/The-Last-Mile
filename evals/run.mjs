@@ -154,7 +154,7 @@ export function score(name, findingsText) {
   } catch {
     return { error: 'no readable ship-findings.json' };
   }
-  const findings = (report.findings || []).map((f) => ({ ...f, text: lower(`${f.title} ${f.rule}`), used: false }));
+  const findings = (report.findings || []).map((f) => ({ ...f, text: lower(`${f.title} ${f.rule}`), titleText: lower(f.title), used: false }));
 
   // Pair each planted problem with at most one finding, trying every pairing
   // (augmenting paths), so one broad finding can't take another problem's credit.
@@ -178,8 +178,11 @@ export function score(name, findingsText) {
   owner.forEach((w, i) => {
     if (w !== -1) findings[i].used = true;
   });
-  // A decoy looks like a problem but is handled correctly. Flagging one is always a false alarm.
-  const isDecoy = (f) => (key.decoys || []).some((d) => fits(f, d));
+  // A decoy looks like a problem but is handled correctly. Flagging one is always a
+  // false alarm. Decoys are judged on the title alone: a rule's name can mention a
+  // store without the finding being about that.
+  const isDecoy = (f) =>
+    (key.decoys || []).some((d) => matches(d.match, f.titleText) && (!d.file || lower(f.file).includes(lower(d.file))));
   const extra = findings.filter(
     (f) => isDecoy(f) || (!f.used && !key.expected.some((want) => fits(f, want)) && !(key.allowed || []).some((a) => matches(a.match, f.text))),
   );
