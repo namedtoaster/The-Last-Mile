@@ -252,7 +252,7 @@
     "file": "support.google.com/googleplay/android-developer/answer/14115180.txt",
     "changed": "2026-10-12",
     "fetched": "2026-10-12",
-    "finalUrl": "https://support.google.com/googleplay/android-developer/answer/16935362?hl=en&visit_id=639274109317917828-3607750581&rd=1"
+    "finalUrl": "https://support.google.com/googleplay/android-developer/answer/16935362?hl=en&visit_id=639274122978734378-2209679790&rd=1"
   },
   "https://support.google.com/googleplay/android-developer/answer/14151465": {
     "file": "support.google.com/googleplay/android-developer/answer/14151465.txt",
@@ -277,5 +277,70 @@
     "changed": "2026-10-12",
     "fetched": "2026-10-12",
     "finalUrl": "https://support.google.com/googleplay/android-developer/answer/9866151?hl=en"
+  },
+  "https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-zone-apex/": {
+    "file": "developers.cloudflare.com/dns/manage-dns-records/how-to/create-zone-apex.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://developers.cloudflare.com/email-service/get-started/route-emails/": {
+    "file": "developers.cloudflare.com/email-service/get-started/route-emails.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site": {
+    "file": "docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://docs.netlify.com/manage/domains/configure-domains/configure-external-dns/": {
+    "file": "docs.netlify.com/manage/domains/configure-domains/configure-external-dns.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://docs.railway.com/networking/domains/working-with-domains": {
+    "file": "docs.railway.com/networking/domains/working-with-domains.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://kb.porkbun.com/article/10-how-to-set-up-email-forwarding-service": {
+    "file": "kb.porkbun.com/article/10-how-to-set-up-email-forwarding-service.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://kb.porkbun.com/article/231-how-to-add-dns-records-on-porkbun": {
+    "file": "kb.porkbun.com/article/231-how-to-add-dns-records-on-porkbun.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://kb.porkbun.com/article/85-how-to-connect-your-root-domain-when-your-web-host-wont-provide-an-ip-address": {
+    "file": "kb.porkbun.com/article/85-how-to-connect-your-root-domain-when-your-web-host-wont-provide-an-ip-address.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://support.squarespace.com/hc/en-us/articles/31119879125645-DNS-records-for-web-hosting": {
+    "file": "support.squarespace.com/hc/en-us/articles/31119879125645-DNS-records-for-web-hosting.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://vercel.com/docs/domains/set-up-custom-domain": {
+    "file": "vercel.com/docs/domains/set-up-custom-domain.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://www.godaddy.com/en/help/add-a-cname-record-19236": {
+    "file": "www.godaddy.com/en/help/add-a-cname-record-19236.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://www.namecheap.com/support/knowledgebase/article.aspx/10128/2237/how-to-create-an-alias-record/": {
+    "file": "www.namecheap.com/support/knowledgebase/article-aspx/10128/2237/how-to-create-an-alias-record.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://www.namecheap.com/support/knowledgebase/article.aspx/434/2237/how-do-i-set-up-host-records-for-a-domain/": {
+    "file": "www.namecheap.com/support/knowledgebase/article-aspx/434/2237/how-do-i-set-up-host-records-for-a-domain.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
   }
 }

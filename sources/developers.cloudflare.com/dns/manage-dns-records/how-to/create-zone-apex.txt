@@ -1,0 +1,74 @@
+Source: https://developers.cloudflare.com/dns/manage-dns-records/how-to/create-zone-apex/
+Fetched: 2026-10-12
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+When you add a domain to Cloudflare, you may also need to create or review the DNS record on your zone apex. Zone apex refers to the domain (example.com) or subdomain (blog.example.com) that you are adding to Cloudflare.
+
+Usually, the zone apex record makes your domain accessible by visitors. In this case, the necessary record type (A, AAAA, or CNAME) and its content will depend on the provider that hosts your website or application. If you are using Cloudflare Pages, refer to Custom domains. If you are using other providers, look for their guidance on how to connect domains managed on external DNS services.
+
+### ANAME or ALIAS
+
+ANAME or ALIAS are DNS records used by specific DNS providers. If your previous provider was using ANAME or ALIAS, you can recreate these records on Cloudflare as CNAME records. Cloudflare's CNAME flattening1 allows you to create CNAME records at your zone apex, removing the need for those other record types.
+
+## Footnotes
+
+A process in which Cloudflare returns an IP address instead of the target hostname that a CNAME record points to. ↩
+
+## Zone apex record
+
+To create a zone apex record, use @ for the record Name, as in the following example.
+
+Type |
+Name |
+IPv4 address |
+Proxy status |
+
+A |
+@ |
+192.0.2.1 |
+Proxied |
+
+In the Cloudflare dashboard, go to the DNS Records page.
+
+Go to Records ↗
+
+Select Add record.
+
+Select A, AAAA, or CNAME as the record Type, according to your needs:
+
+- To point to an IPv4 address, select A, use your zone apex (@) for the record Name, and insert the IPv4 address in the respective field.
+
+- To point to an IPv6 address, select AAAA, use your zone apex (@) for the record Name, and insert the IPv6 address in the respective field.
+
+- To point to a fully qualified domain name (FQDN) ↗︎ (such as your-site.host.example.com), select CNAME, use your zone apex (@) for the record Name, and insert the fully qualified domain name in the Target field.
+
+Specify the The proxy status of a DNS record defines whether requests for your domain will route through Cloudflare (proxied) or not (DNS-only).
+
+" class="glossary-tooltip" tabindex="0" data-astro-cid-hklyqugd>Proxy status and The duration for which a cached copy of a resource is considered valid before it needs to be refreshed or revalidated.
+
+" class="glossary-tooltip" tabindex="0" data-astro-cid-hklyqugd>TTL according to your needs.
+
+Select Save to confirm.
+
+Use the Create DNS Record API endpoint.
+For field definitions, refer to the API documentation (visible once you select the record type under the request body specification).
+
+- To point to an IPv4 address, select A Record, use your zone apex (@) for the field name, and use the IPv4 address for the field content.
+
+- To point to an IPv6 address, select AAAA Record, use your zone apex (@) for the field name, and use the IPv6 address for the field content.
+
+- To point to a fully qualified domain name (FQDN) ↗︎ (such as your-site.host.example.com), select CNAME Record, use your zone apex (@) for the field name, and use the fully qualified domain name for the field content.
+
+## Domain redirects
+
+Once you create a domain, you may want to route that traffic to other places.
+
+For more guidance, refer to Redirect domain to subdomain or Redirect one domain to another.
+
+## Get free SSL certificates
+
+While DNS is what communicates where your website or application can be reached, SSL/TLS is what enables websites and applications to establish connections in a secure way.
+
+If your domain is not correctly covered by an SSL/TLS certificate, your visitors will find a warning on their browser stating that your website or application is not secure.
+
+Cloudflare offers free, unshared, publicly trusted Universal SSL certificates to all Cloudflare domains.

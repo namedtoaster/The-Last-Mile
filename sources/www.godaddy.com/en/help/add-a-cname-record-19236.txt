@@ -1,0 +1,68 @@
+Source: https://www.godaddy.com/en/help/add-a-cname-record-19236
+Fetched: 2026-10-12
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+Applies to: Domains
+
+## Domains Help
+
+# Add a CNAME record
+CNAME records use a domain prefix, such as blog or shop, to connect your domain to a different domain name. If you need to add a domain prefix that connects to an IP address, add a subdomain instead.
+
+Example: The most common CNAME is www, with the @ symbol entered for the Value field. This will make www.mycoolnewbusiness.com load to the same webpage as the root domain, mycoolnewbusiness.com.
+
+- Sign in to your GoDaddy Domain Portfolio. (Need help logging in? Find your username or password.)
+
+- Select an individual domain to access the Domain Settings page.
+
+- Select DNS to view your DNS records.
+
+- Select Add New Record and then select CNAME from the Type menu.
+
+- Enter the details for your new CNAME record.
+
+- Name: The hostname or prefix of the record, without the domain name, such as blog or shop. The Name must follow these guidelines:
+
+- Periods (.) are allowed but not as the first or last character
+
+- Consecutive periods (…) are not allowed
+
+- Cannot begin or end with a hyphen (-)
+
+- Cannot be the @ symbol
+
+- Not already in use by another record
+
+- 63 characters in a row not separated by a period (.)
+
+Example: 63characters.63characters.coolexample.com
+
+- 255 characters maximum
+
+- Value: The URL you are setting as the destination for the host. Type @ to point directly to your root domain name.
+
+- TTL (Time to Live): The amount of time the server should cache information before refreshing. The default setting is 1 hour.
+
+- (Optional) Select Add More Records to add multiple DNS records at the same time. If you change your mind, select Delete to remove any records that haven't been saved yet.
+
+- Select Save to add your new record. If you added multiple records at the same time, select Save All Records.
+
+- Domains with Domain Protection require additional identity verification. If you've had 2-step verification (2SV) turned on for at least 24 hours, enter the code we sent via SMS, or enter the code from your authenticator app. Otherwise, enter the one-time password we sent to the email address on your GoDaddy account.
+
+Most DNS changes take effect within an hour but could take up to 48 hours to update globally.
+
+## Related steps
+
+- Edit or delete an existing CNAME record in your zone file.
+
+- Keep your Domain Portfolio organized with folders.
+
+- Quickly manage settings for your domains by using domain profiles.
+
+## More info
+
+- Turn on auto-renew to continue your domain registration uninterrupted.
+
+- Set up 2-step verification for the best security on your domains and account.
+
+### Share this article

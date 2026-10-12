@@ -1,0 +1,186 @@
+Source: https://support.squarespace.com/hc/en-us/articles/31119879125645-DNS-records-for-web-hosting
+Fetched: 2026-10-12
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+## Sections
+
+#### Add your web hosting resource records.
+This guide explains how to add A, AAAA, ALIAS and CNAME records to a Squarespace-managed domain, or a third-party domain connected to a Squarespace website via Nameserver Connect.
+Tip: If your third-party domain is connected via DNS Connect, edit your DNS settings in your third-party domain provider account instead of following this guide.
+
+Note: Our scope of support for DNS records is limited. We can help with showing you where to add records to your DNS settings. We can’t provide technical advice about DNS records or information about how DNS records work with other services. If you need more help, you can get peer-to-peer help in the Domains section of the Squarespace Forum or contact the service you're trying to connect, using our sample message.
+
+## A records
+A records point a domain name to the IP address of the hosting server.
+Tip: If you’re using an A record to point a Squarespace subdomain, follow the steps in our pointing guide.
+
+To add an A record:
+
+- Open your domains dashboard and click the domain name. If you have multiple Squarespace domains, you'll manage their DNS records separately.
+
+- Click DNS, and then click DNS Settings.
+
+- Scroll down to Custom Records.
+
+- Click Add record.
+
+- Enter your current password, or if you have two-factor authentication (2FA) enabled, reauthenticate your account using your 2FA method and click Continue.
+
+- In the Type dropdown menu, select A.
+
+- In the Name field, enter the name record you’re pointing to.
+
+- In the IP Address field, enter the IP address you’re pointing to.
+
+- Click Save to add the record to your settings.
+
+## AAAA
+An AAAA record points a domain name to an IP address. You'll need an AAAA record to point to a specific IPv6 address of a server.
+To add an AAAA record:
+
+- Open your domains dashboard and click the domain name. If you have multiple Squarespace domains, you'll manage their DNS records separately.
+
+- Click DNS, and then click DNS Settings.
+
+- Scroll down to Custom Records.
+
+- Click Add record.
+
+- Enter your current password, or if you have two-factor authentication (2FA) enabled, reauthenticate your account using your 2FA method and click Continue.
+
+- In the Type dropdown menu, select AAAA.
+
+- In the Name field, enter the name record you’re pointing to. If you don't have a name value, you can leave the field blank or enter @ to point the AAAA record to your domain.
+
+- In the IPv6 Address field, enter the IPv6 address you’re pointing to.
+
+- Click Save to add the record to your settings.
+
+Tip: If you see an error stating that your IPv6 address is invalid, it may be compressed. You can use AAAA record lookup tools (like dnschecker.org) to find the full record.
+
+## ALIAS
+An ALIAS record points one domain to another domain.
+To add an ALIAS record:
+
+- Open your domains dashboard and click the domain name. If you have multiple Squarespace domains, you'll manage their DNS records separately.
+
+- Click DNS, and then click DNSSEC.
+
+- Ensure the toggle beside DNS Security Extensions is switched off.
+
+- Click DNS Settings.
+
+- Scrol down to Custom Records.
+
+- Click Add record.
+
+- Enter your current password, or if you have two-factor authentication (2FA) enabled, reauthenticate your account using your 2FA method and click Continue.
+
+- In the Type dropdown menu, select ALIAS.
+
+- In the Name field, enter @.
+
+- In the Data field, enter the domain name you're pointing to, like example.com.
+
+- Click Save to add the record to your settings.
+
+## CNAME
+A CNAME record points a subdomain — which is anything that appears before your root domain, including “www” — to another domain name. CNAME records should always point to a URL. The URL can't contain special characters such as slashes (/) or colons (:).
+You might need a CNAME record to:
+
+- Run special services (such as FTP)
+
+- Verify domain ownership for a third-party service
+
+- Ensure Google services like Ads and Analytics work. If your domain has migrated from Google Domains, we automatically add a unique CNAME record ending in .googlehosted.com.
+
+If you’re using a CNAME record to point a Squarespace subdomain, follow the steps in our pointing guide instead.
+To add a CNAME record:
+
+- Open your domains dashboard and click the domain name. If you have multiple Squarespace domains, you'll manage their DNS records separately.
+
+- Click DNS, and then click DNS Settings.
+
+- Scroll down to Custom Records.
+
+- Click Add record.
+
+- Enter your current password, or if you have two-factor authentication (2FA) enabled, reauthenticate your account using your 2FA method and click Continue.
+
+- In the Type dropdown menu, select CNAME.
+
+- In the Name field, enter the name record you’re pointing. It's not possible to add a CNAME with @ in the Name field.
+
+- In the Data field, enter URL you’re pointing to.
+
+- Click Save to add the record to your settings.
+
+## Squarespace default records
+Squarespace default records point your domain to your Squarespace site. When you register a domain with Squarespace, connect a domain via Nameserver Connect, or transfer a domain into Squarespace, the Squarespace defaults are added automatically. If your domain isn't connecting to your site and the DNS records are missing, you need to add the records to your domain.
+To add Squarespace default records:
+
+- Open your domains dashboard.
+
+- Click the domain you're working to connect.
+
+- Click DNS in the side panel.
+
+- Click Add preset.
+
+- Enter your current password, or if you have two-factor authentication (2FA) enabled, reauthenticate your account using your 2FA method and click Continue.
+
+- Select Squarespace defaults.
+
+### Remove Squarespace default records
+You can remove the Squarespace default records to disconnect your domain from your site. Keep in mind, if you remove these records, any PayPal Payment Links won't work.
+To remove your Squarespace default records:
+
+- Open your domains dashboard.
+
+- Click the domain you're editing.
+
+- Click DNS in the side panel.
+
+- Under DNS Settings, click the red trash can next to Squarespace Defaults.
+
+- Enter your current password, or if you have two-factor authentication (2FA) enabled, reauthenticate your account using your 2FA method and click Continue.
+
+- In the pop-up window, click Delete to confirm.
+
+## Connect your domain to a cloud platform
+Netlify, Railway, and Vercel provide everything you need to build, host, and scale web applications, without managing servers or complex infrastructure. To connect your domain to one, use the DNS preset. It automatically adds the A record and CNAME your domain needs to complete the connection. Follow Netlify, Railway, or Vercel's instructions to finish the setup on their end.
+To add the DNS preset:
+
+- Open your domains dashboard.
+
+- Click the domain you want to use.
+
+- Click DNS in the side panel.
+
+- Click Add Preset.
+
+- Enter your current password, or if you have two-factor authentication (2FA) enabled, reauthenticate your account using your 2FA method and click Continue.
+
+- In the preset dropdown menu, select Netlify, Railway, or Vercel.
+
+## Troubleshooting
+For help resolving DNS record issues, visit Troubleshooting issues with DNS records.
+
+Was this article helpful?
+
+Yes
+No
+
+72 out of 188 found this helpful
+
+## Related articles
+
+Edit your domain's DNS records
+
+Pointing a Squarespace domain
+
+Nameserver connect vs. DNS connect
+
+Add a third-party email preset
+
+Troubleshooting issues with DNS records

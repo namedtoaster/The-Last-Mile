@@ -1,0 +1,48 @@
+Source: https://www.namecheap.com/support/knowledgebase/article.aspx/10128/2237/how-to-create-an-alias-record/
+Fetched: 2026-10-12
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+Subtotal
+$0.00
+
+View Cart
+
+$USD$ U.S. Dollar€ Euro£ British PoundC$ Canadian DollarsA$ Australian DollarsRs Indian Rupees¥ China Yuan RMBMore Info
+
+### How to create an ALIAS record
+An ALIAS record (also known as ANAME)is a virtual host record type which is used to point one domain name to another one, almost the same as a CNAME. The important difference is that ALIAS can coexist with other records on that name. An ALIAS record can also be used if you wish to alias the root domain to another service (which you cannot do with a CNAME record).
+
+In short, an ALIAS record allows you to specify a hostname in your DNS records which then resolve to the correct A/AAAA records at the time of a request.
+
+It is possible to set up an ALIAS record on domains that are using our BasicDNS, FreeDNS or PremiumDNS.
+
+NOTE: Before creating an ALIAS record, please check there are no CNAME, URL Redirect (Unmasked/Masked/Permanent), A or AAAA records set for the same Host (e.g., yourdomain.tld or example.yourdomain.tld). Such records can conflict with each other, thus, we recommend removing them if you want to have ALIAS.
+
+### To set up an ALIAS record, follow these steps:
+
+1. Sign in to your Namecheap account.
+
+2. Select Domain List from the left sidebar and click the Manage button next to your domain:
+
+3. Navigate to the Advanced DNS tab at the top of the page and find the Host Records section. Click the Add New Record button:
+
+4. Select ALIAS record from the drop-down menu for Type, put @ (your bare domain, e.g., yourdomain.tld) for Host and enter the needed value (e.g., example.com) into the Value line:
+
+The default TTL for ALIAS records is 5 minutes. You can select it from the drop-down (only 1 min or 5 min are available):
+
+More details on hosts you can use can be found in the "How do I create a subdomain for my domain?" article.
+
+5. Click on the Save All Changes button each time you need to save the record:
+
+Once all settings are made, wait for 30 minutes for the host records to be accepted globally.
+
+Updated
+4/9/2025
+Viewed
+52708 times
+
+Need help? We're always here for you.
+
+Go to Live Chat page
+
+notmyip

@@ -1,0 +1,204 @@
+Source: https://vercel.com/docs/domains/set-up-custom-domain
+Fetched: 2026-10-12
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+## On this page
+
+- Quick reference
+- 1. Check your existing domains
+- 2. Add the domain to your project
+- 3. Check what DNS records are needed
+- 4. Configure DNS records
+- 5. Verify DNS configuration
+- 6. Verify SSL certificate
+- 7. Test the domain
+- When you're using an external DNS provider
+- Related
+
+Copy pageCopy page
+
+# Setting up a custom domain
+
+Copy pageCopy page
+
+Use this guide to add a custom domain to your Vercel project from the CLI, configure DNS records, and verify that everything is working. To do the same from the dashboard instead (Settings → Domains on your project), see Adding & Configuring a Custom Domain.
+
+This guide requires a linked Vercel project. Run
+vercel link in your project directory if you haven't already.
+
+## Quick reference
+
+Use this block when you already know what you're doing and want the full command sequence. Replace my-site with your project name. Replace your_project_ip and your_project_cname_target with the recommended values from domain verification or your project's Settings → Domains. The vercel dns add commands apply to domains using Vercel's nameservers. For external DNS, add the records through your provider's interface.
+
+terminal
+
+# 1. Check your existing domains
+vercel domains ls
+
+# 2. Add the domain to your project (one arg when run from a linked project)
+vercel domains add example.com
+
+# 3. Check what DNS records are needed
+vercel domains verify example.com --project my-site
+
+# 4. Configure DNS records (apex domain)
+vercel dns add example.com '@' A your_project_ip
+
+# 4b. OR add the subdomain to your project and configure DNS records (subdomain)
+vercel domains add www.example.com
+vercel domains verify www.example.com --project my-site
+vercel dns add example.com www CNAME your_project_cname_target
+
+# 5. Verify DNS configuration
+vercel domains verify example.com --project my-site
+# If you also configured the subdomain, run:
+# vercel domains verify www.example.com --project my-site
+
+# 6. Verify SSL certificate was provisioned
+vercel certs ls
+
+# 7. Test the domain
+vercel httpstat /
+vercel curl /
+
+## 1. Check your existing domains
+
+List the domains already configured on your team to avoid conflicts:
+
+terminal
+
+vercel domains ls
+
+This shows all domains across your projects, including their DNS status and verification state.
+
+## 2. Add the domain to your project
+
+Add your custom domain. From a linked project, vercel domains add takes a single argument (the domain). To target a different project (or when running outside of a linked directory), pass the project name as a second argument.
+
+terminal
+
+vercel domains add example.com
+
+If the domain is already assigned to another project in your team, use the --force flag to reassign it:
+
+terminal
+
+vercel domains add example.com --force
+
+For a www subdomain, add that separately:
+
+terminal
+
+vercel domains add www.example.com
+
+If you add both example.com and www.example.com, configure a redirect from one to the other in your Vercel project settings to avoid duplicate content.
+
+## 3. Check what DNS records are needed
+
+After adding the domain, check its DNS configuration and any recommended changes. Replace my-site with your project name:
+
+terminal
+
+vercel domains verify example.com --project my-site
+
+The result reports DNS configuration and ownership verification status, with recommended records when DNS changes are needed. Use the record values from this result or your project's Settings → Domains. Use vercel domains inspect for domain information and project associations.
+
+For a subdomain, run verification for the full hostname, such as vercel domains verify www.example.com --project my-site. The --project option scopes the DNS recommendations to your project.
+
+## 4. Configure DNS records
+
+The records you add depend on whether you're configuring an apex domain (like example.com) or a subdomain (like www.example.com).
+
+For an apex domain, replace your_project_ip with the recommended IPv4 address and add an A record:
+
+terminal
+
+vercel dns add example.com '@' A your_project_ip
+
+For a subdomain, replace your_project_cname_target with the recommended target and add a CNAME record:
+
+terminal
+
+vercel dns add example.com www CNAME your_project_cname_target
+
+Use the values recommended for your domain, including its project-specific
+CNAME target. These commands work when your domain's nameservers point to
+Vercel. If you manage DNS with an external provider, add the recommended
+records through your provider's dashboard instead.
+
+For Vercel-managed DNS, confirm that Vercel lists the records you added:
+
+terminal
+
+vercel dns ls
+
+## 5. Verify DNS configuration
+
+After applying the recommended records at your DNS provider, check the domain again:
+
+terminal
+
+vercel domains verify example.com --project my-site
+
+The command exits with a non-zero status when the domain is misconfigured or needs ownership verification. Follow the reported next steps, then run verification again. DNS changes can take time to propagate. Verified ownership alone does not mean the DNS configuration is valid.
+
+## 6. Verify SSL certificate
+
+Vercel automatically provisions an SSL certificate after DNS verification succeeds. Check that the certificate was issued:
+
+terminal
+
+vercel certs ls
+
+Look for your domain in the output. The certificate typically provisions within a few minutes of DNS verification.
+
+## 7. Test the domain
+
+Verify your domain is serving traffic correctly:
+
+terminal
+
+vercel httpstat /
+
+This shows a full timing breakdown for a request to your production deployment. If you need to check the response body:
+
+terminal
+
+vercel curl /
+
+## When you're using an external DNS provider
+
+If your domain's nameservers point to an external DNS provider (like Cloudflare or Route 53), you can't use vercel dns add to configure records. Instead:
+
+- Add the domain to your project with vercel domains add example.com
+
+- Run vercel domains verify example.com --project my-site (replace my-site with your project name) or open your project's Settings → Domains to get the recommended records
+
+- Add and save those records through your external DNS provider's interface
+
+- After DNS propagation, run vercel domains verify example.com --project my-site again to check configuration and ownership verification status
+
+For a subdomain, use its full hostname in both verification commands. Use the recommended project-specific target when creating a CNAME record.
+
+## Related
+
+- vercel domains
+
+- vercel dns
+
+- vercel certs
+
+- Domains overview
+
+- Deploying a project from the CLI
+
+Last updated August 11, 2026
+Related Vercel documentation
+
+Previous
+Troubleshooting Domains
+
+Next
+Using Domains API
+
+Was this helpful?

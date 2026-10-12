@@ -1,0 +1,124 @@
+Source: https://www.namecheap.com/support/knowledgebase/article.aspx/434/2237/how-do-i-set-up-host-records-for-a-domain/
+Fetched: 2026-10-12
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+Subtotal
+$0.00
+
+View Cart
+
+$USD$ U.S. Dollar€ Euro£ British PoundC$ Canadian DollarsA$ Australian DollarsRs Indian Rupees¥ China Yuan RMBMore Info
+
+### How do I set up host records for a domain?
+
+The Host Records section is available only for the domains using Namecheap BasicDNS, FreeDNS or PremiumDNS.
+
+To check which nameservers your domain is using, go to your Namecheap dashboard under Domain List. Click on Manage under theDomain tab,next to the domain in question and scroll down to the Nameservers section. This will show whether you're using Namecheap's default nameservers or custom (third-party) nameservers.
+
+If you see no option to manage the DNS records in the Advanced DNS section, your domain is pointed to a third-party nameservers OR our hosting nameservers (dns1.namecheaphosting.com, dns2.namecheaphosting.com). Hence, you need to add/update the DNS records at your current DNS provider or in your cPanel.
+
+To set up host records for your domain in Advanced DNS, use the following instructions:
+
+1. Sign into your Namecheap account.
+
+2. Select Domain List from the left sidebar and click Manage next to your domain:
+
+3. Select the Advanced DNS tab at the top of the page:
+
+4. In the Host Records section, click the Add New Record button (cannot edit Host Records?):
+
+Host: If you need to create a record for a bare domain (e.g., mydomain.tld), it is needed to put @ in this field.
+In case you need to create a record for any subdomain (like www.mydomain.tld or blog.mydomain.tld) should be created, put only the name of your subdomain into the Host field without adding the domain itself. Thus, the record for www.mydomain.tld should have only www in the Host:
+
+TTL: The TTL value of 1800 seconds (30 minutes) means that, if a DNS record was changed on nameservers, DNS servers around the world can still be showing the old value from their cache for up to 30 minutes after the change.
+Our default TTL is 30 minutes (5 minutes for ALIAS records). You can select it from the drop-down or just leave it "Automatic".
+
+HTTPS: this toggle is shown for A A, ALIAS and CNAME records on domains and subdomains that have an SSL certificate activated with web-based automation. Using the HTTPS toggle, you can enable or disable the SSL automation on CDN for a particular domain or subdomain. More details are here.
+
+Here are the types of records that can be created on our DNS servers, along with a brief description of each:
+
+Address Record Type
+| Description
+|
+A (Address)
+| Allows you to associate a host with an IPv4 address. The IP address that you use does not have to be on your network.
+For example, you can have the host record for www pointed to 207.46.130.14 (the address for the Microsoft website).
+|
+AAAA (IPv6)
+
+| Allows you to associate a host with an IPv6 address. The IP address that you use does not have to be on your network.
+For example, you can have the host record for www pointed to 2001:0db8:11a3:09d7:1f34:8a2e:07a0:765d
+
+|
+MXE (Mail Easy)
+| Allows you to specify the address of your mail server. When you use a mail record, you must use an IP address in the address field.
+Note to professional users: Creating a mail record actually creates both the MX and A records in DNS. Also, when using multiple mail servers, a preference value of 10 is used on all entries.
+|
+MX (Mail)
+| MX (Mail) can be either a host name under your domain name (for example, mail3), or the name of a mail server (for example, mail.yahoo.com).
+When using a mail server name, it should end with a period ("."). If you forget to add it, the system will do it automatically.
+
+|
+CNAME
+| Is used to associate a host name with another host. The host that you wish to point to does not have to be on your network.
+Please don't set up CNAME for a naked domain (@ hostname) since it may affect the operation of the domain's MX records and, consequently, the email service.
+
+|
+NS
+| Are primarily used if you want to divide your domain into
+subdomains.
+
+Subdomains indicate that you are delegating a portion of a domain name to a different group of nameservers, thus creating NS records to point the hostname (name of the subdomain) to different name servers. |
+URL Redirect
+| Standard method for URL Forwarding. When users type in your domain name, they are redirected to the web server that hosts your pages.
+One drawback of this option is that the browser will display the URL that is on the actual web page, not your domain name.
+
+You can prevent this by using the URL Frame method instead (see below).
+|
+URL Redirect (301)
+
+(Available on BasicDNS, FreeDNS and PremiumDNS only)
+| Preferred way to redirect URLs since it informs search engines that the URL has moved permanently. The new URL page should then be shown instead of the old URL in the search results, while still maintaining the page rank of the old URL.
+
+|
+URL Frame
+| Similar to URL Redirect except that instead of redirecting the client to your web page, the web page is displayed in a frame from our web server.
+With this option, the browser will display your domain name (for example, www.yourdomain.tld) and not the actual URL of the page's host (for example, http://home.infospace.com/user33).
+|
+Wildcard record
+| The star * record is a wildcard record which is used to include any records or subdomains that you have not specified to catch typos or mistakes.
+|
+SRV record
+| Service record is a specification of data in the Domain Name System defining the location (i.e., the port number) of servers for specified services (e.g., Minecraft).
+|
+TXT record
+| Provides the ability to associate some text with a host or other name. Many TXT records can be added for a fully qualified domain name.
+
+Usually, TXT record is used for SPF (Sender Policy Framework), DKIM (DomainKeys Identified E-mail) and DMARC (Domain-based Message Authentication, Reporting and Conformance) purposes. TXT records were originally developed to contain human readable information about a domain or server.
+
+|
+CAA record
+| Certification Authority Authorization (CAA) is a DNS record, which allows a domain name holder to specify the preferred Certification Authorities (CAs) to issue certificates for that domain, hence making no other CAs authorized to do that. More information can be found here.
+|
+ALIAS (ANAME) record
+
+| It is a virtual host record type which is used to point one domain name to another one, almost the same as CNAME. But the important difference here is that ALIAS can coexist with other records on that name.
+An ALIAS record can also be used if you wish to alias the root domain to another service (which is impossible with the help of a CNAME record).
+|
+
+That's it!
+If you have any questions or need assistance, our Support Team is available 24/7 to help you.
+
+### Associated articles
+What type of DNS records can I manage?
+
+Updated
+3/31/2026
+Viewed
+305096 times
+
+Need help? We're always here for you.
+
+Go to Live Chat page
+
+notmyip

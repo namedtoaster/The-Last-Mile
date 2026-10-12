@@ -1,0 +1,83 @@
+Source: https://kb.porkbun.com/article/10-how-to-set-up-email-forwarding-service
+Fetched: 2026-10-12
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+# How to Set Up Email Forwarding Service
+
+Porkbun offers two ways to make a custom email address for your domain: email forwards and hosted email. Our email forwarding service is free, but your replies will show as having been sent from your personal email address.
+
+### Note
+
+Wildcard or catchall email forwarding addresses are not supported.
+
+If you also want to send replies from your custom email address, you'll need to set up a hosted email account to create an email address inbox using your domain instead.
+
+## Setting Up Email Forwarding Service
+
+Learning how to set up email forwarding at Porkbun is easy! Simply follow these steps to start your free email forwarding service:
+
+1
+
+Log in to your Porkbun account and you will arrive at the Domain Management screen. If you're already logged in, click on ACCOUNT in the top-right corner and select "Domain Management" from the list.
+
+2
+
+Locate the domain you're setting up email forwarding on. To the right of the domain name is a row of icons. Click on the envelope icon under the "EMAIL" column.
+
+3
+
+You'll be taken to the "Email Hosting and Forwarding" page. On the right side of the screen, locate the "Porkbun Email Forwarding" section.
+
+4
+
+In the section labeled "Create a New Forwarding Address", you can create the email forwarding addresses for your domain. In the first field, specify the username for your email address (the part that goes before the "@" symbol). In the second field, type in the email address you want emails to be forwarded to.
+
+After entering the new email and the forwarding destination, click on "Create Email Forward".
+
+5
+
+The page will refresh and you'll see a new section labeled "Current Forwards" which contains your new email forwarding address. You can create up to 20 for free on each domain.
+
+### Tip
+
+You can configure one email forwarding address to send to multiple recipients, as shown in the screenshot above.
+
+Congratulations! You’ve successfully set up your email forwarding service and are now the owner of one very unique email address automatically forwarded to your existing account. You can repeat this process to create up to 20 active email forwards per domain.
+
+### Warning
+
+If you wish to send a test email to the forward you created, make sure it is from an address different from the one you are forwarding to. This will prevent a "feedback loop" effect.
+
+If you run into any issues with your new email forwarding address, feel free to reach out to Support for assistance. You can also check out our guide on getting your email working when your domain's nameservers/DNS are hosted elsewhere.
+
+## FAQs on How to Set Up Email Forwarding Service
+
+### What is email forwarding and how does it work?
+
+Email forwarding lets you create a custom email address using your domain that automatically forwards messages to your existing personal email. It's a free domain feature at Porkbun and you get up to 20 forwarding addresses per domain. However, replies will show as coming from your personal email, not your custom address.
+
+### What's the difference between email forwarding and hosted email?
+
+Email forwarding redirects messages to your existing inbox, but replies come from your personal email address. Hosted email creates an actual inbox for your custom domain address so you can send and receive directly from it. Choose forwarding for free basic functionality or hosted email if you need to send from your custom address.
+
+### How many email forwarding addresses can I create?
+
+You can create up to 20 free email forwarding addresses per domain at Porkbun. You can also configure one forwarding address to send to multiple recipients if needed. There's no cost for this service.
+
+### Can I use catchall or wildcard email forwarding?
+
+No, wildcard or catchall email forwarding addresses are not currently supported. You'll need to create individual forwarding addresses for each email you want to use. Each domain allows up to 20 forwarding addresses.
+
+### Why isn't my email forwarding working?
+
+Make sure you're testing from an email address different from the forwarding destination to avoid feedback loops. If your domain's nameservers or DNS are hosted elsewhere, you may need additional configuration. Check Porkbun's guide on using email when DNS is hosted externally or contact support for help.
+
+### Can I use Porkbun email forwarding while hosting my email with another provider (like Google Workspace, iCloud, or Zoho) on the same domain?
+
+No. Your domain's incoming email is routed by its MX records, and a domain can only have one set of MX records pointing to a single mail provider. Porkbun email forwarding requires your MX records to point to Porkbun, while a third-party email host requires them to point to their servers, so you can't have some addresses forwarded by Porkbun and others delivered to a different provider on the same domain at the same time.
+
+You'll need to choose one provider for all of that domain's email:
+
+- Keep everything at Porkbun: you can freely combine Porkbun email hosting and Porkbun email forwarding on the same domain, since both use Porkbun's mail servers.
+
+- Move to a third-party host: once you point your MX records to the new provider, Porkbun's forwarding for that domain stops working. You'd recreate those forwards as aliases with your new provider instead.

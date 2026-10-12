@@ -1,0 +1,59 @@
+Source: https://kb.porkbun.com/article/85-how-to-connect-your-root-domain-when-your-web-host-wont-provide-an-ip-address
+Fetched: 2026-10-12
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+# How to connect your root domain when your web host won't provide an IP address
+
+So, you want to connect your Porkbun domain to a third-party site, but they don't provide an IP address—but they do provide a hostname. No problem! We have two possible ways we can do it: via CNAME flattening (aka ALIAS records) or via URL forwarding.
+
+### CNAME flattening (ALIAS record) method
+
+Use this method if your web server will respond to requests for your root domain. If your web host wants you to instead URL forward the root domain to www, skip ahead to the next section.
+
+1
+
+Log in. You should arrive at the Domain Management screen. If you're already logged in, click on ACCOUNT in the top-right corner and select Domain Management.
+
+2
+
+Click the Details drop-down list, and select "Edit" next to DNS Records.
+
+3
+
+First, we'll add the "ALIAS - CNAME flattening" record. This record will have a blank host field. The answer will be the hostname provided by your hosting company.
+
+4
+
+Now we'll add a CNAME record, with the Host field set to "www" and the Answer set to the hostname provided by your company.
+
+In the end, you should have an ALIAS record for the root domain, and a CNAME record for the subdomain.
+
+### URL Forwarding method
+
+If your web hosting company specifically requests you forward your root domain to "www" here's how to do it:
+
+1
+
+Log in. You should arrive at the Domain Management screen. If you're already logged in, click your username in the top-right corner and select Domain Management.
+
+2
+
+Click the drop-down list to the far right of your domain. Then click the "Edit" option next to URL Forwarding.
+
+3
+
+From there, enter http:// or https:// followed by www. yourdomain.
+
+4
+
+Now we want to delete the "wildcard" record that was created. This is a CNAME record that has an asterisk (*) in the Host field. To do this, return to the Details menu, and select "Edit" next to DNS Records.
+
+5
+
+Locate the CNAME record and delete it. To do this, select the garbage icon to the far right. Don't delete the one without the asterisk.
+
+6
+
+Once deleted, replace that record with a new CNAME record. This record will have "www" in the Host field. The answer will be the hostname provided by your hosting company.
+
+That's it! Now, if someone types in http://yourdomain.example in their browser, it will URL forward on to https://www.yourname.example and the CNAME record will send the browser to the IP address of your web server.
