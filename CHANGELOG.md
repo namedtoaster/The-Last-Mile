@@ -2,6 +2,12 @@
 
 ## 0.1.0 (unreleased)
 
+- improve-skill: fix a skill that misfired, from inside the project where it
+  happened, as a pull request here. session-end now lists skill problems.
+- sync: a script and a GitHub workflow that copy the skills into a project's
+  `.claude/skills/`, so cloud sessions on the phone and web can use them.
+- The plugin no longer pins a version, so installs follow each commit instead of
+  staying on a cached copy until the number changes.
 - First public version with nine skills: setup, session-end, see-it-work,
   reference-hunt, research, set-goals, port-feature, ship and fact-check.
 - see-it-work templates: the test after edit hook, a test only seed link, smoke cases

@@ -21,7 +21,7 @@ both stores.
 ## Roadmap
 
 **Version 0.1 (this):** setup, session-end, see-it-work, reference-hunt, research,
-set-goals, port-feature, ship and fact-check, with the store traps reference, the
+set-goals, port-feature, ship, fact-check and improve-skill, with the store traps reference, the
 facts file, and see-it-work's templates (including the test after edit hook).
 
 **Next skills:**

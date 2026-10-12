@@ -32,6 +32,8 @@ The short forms `/setup`, `/session-end` and `/ship` work too, unless another pl
 /plugin install the-last-mile@the-last-mile
 ```
 
+**Cloud sessions** (Claude Code on the web and the Claude app on your phone) do not load plugins. Copy the skills into your project instead and keep them in sync: see [sync/README.md](sync/README.md).
+
 **Other agents that read skills** (Cursor, Codex, Gemini CLI and others):
 
 ```
@@ -58,6 +60,7 @@ npx skills add namedtoaster/the-last-mile
 | port-feature | Brings a feature over from another of your own repos, adapted to this one |
 | ship | Release checklist, version bump, submission steps, and a reference of store traps with sources |
 | fact-check | Re-checks store rules and facts against the official pages and updates their dates |
+| improve-skill | Fixes a skill that misfired, from the project where it happened, as a pull request here |
 
 Coming next: growth skills (analytics, store listing, creator codes, UGC briefs, release notes).
 

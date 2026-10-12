@@ -9,7 +9,7 @@
     {
       "name": "the-last-mile",
       "source": "./",
-      "description": "Nine skills for taking an Expo app from a working build to the App Store and Google Play: setup, session end, seeing changes work, design references, research, goals, porting features, shipping with sourced store traps, and fact checking."
+      "description": "Ten skills for taking an Expo app from a working build to the App Store and Google Play: setup, session end, seeing changes work, design references, research, goals, porting features, shipping with sourced store traps, fact checking, and improving the skills from the projects that use them."
     }
   ]
 }
