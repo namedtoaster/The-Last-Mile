@@ -1,0 +1,50 @@
+Source: https://mobbin.com/pricing
+Fetched: 2026-10-12
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+$10
+per monthbilled yearly
+
+Get Pro
+For 1 member only
+
+- All apps & sitesAll apps & sites
+- Flows
+- Animations
+- Unlimited collections
+- AI creditsAI credits
+- Deep SearchDeep Search
+- MCPMCP
+- Hide screen footers
+
+$16
+per member/monthbilled yearly
+
+Create team
+For 1 or more members
+
+Everything in Pro plus
+
+- Invite teammates
+- Shared collections & comments
+- Team management
+- Centralized billing
+- 2x AI credits2x AI credits
+- Slack integrationSlack integrationSoon
+- API access
+- SOC 2 Reports
+- Optional add-onsOptional add-ons
+
+Custom
+
+Contact us
+Unlimited members
+
+Everything in Team plus
+
+- Advanced security
+- Priority support
+- Privacy controls
+- SAML & SCIM
+- Invoice/PO billing
+- Enterprise tools early access

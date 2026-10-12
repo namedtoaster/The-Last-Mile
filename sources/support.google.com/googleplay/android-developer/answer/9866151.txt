@@ -1,0 +1,438 @@
+Source: https://support.google.com/googleplay/android-developer/answer/9866151
+Fetched: 2026-10-12
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+# Add preview assets to showcase your app
+By adding preview assets that showcase your app's features and functionality on its store listing page, you can help your app attract new users on Google Play.
+
+Feature graphic, screenshots, short description, and videos are used to highlight and promote your app on Google Play and other Google promotional channels.
+
+## Manage preview assets
+
+Before adding preview assets to your app’s store listing, note:
+
+- Assets are shown on your store listing across all test tracks after you add them to your store listing.
+
+- You can uncheck the "External marketing” box on your app's Store settings page (Grow users > Store presence > Store settings) to restrict the promotion of your app across Google-owned properties.
+
+You can manage your app’s preview assets on the Main store listing page (Grow users > Store presence > Main store listing) in Play Console. You can upload images and add a preview video in the “Graphics” section.
+
+Note: By making your app available on Google Play, you grant Google license to use your app's assets (including your app icon, screenshots, and videos) for promotional purposes You're enabling Google Play to showcase your app in the best possible light. We may use these assets to highlight your app on the Play Store, in promotional campaigns, and across other Google services. This helps us reach more users and highlight the unique features of your app. You can find more details about this in the Developer Distribution Agreement (6. Brand Features and Publicity).
+
+## Preview asset usage and content guidelines
+
+Different preview assets have different requirements and will be shown on different surfaces. Please read the content below to understand how your assets will be used, and what you need to keep in mind when adding assets to your Google Play store listing.
+
+### Content guidelines: Requirements and recommendations
+
+- “Requirements” listed on this page are mandatory; failure to meet requirements may result in removal or suspension from Google Play.
+
+- Guidelines listed under "Highly recommended" on this page can help make your app or game more eligible for recommendation and promotion throughout Google Play. Failure to comply with these guidelines will not impact your store listing page, but may result in changes to how your preview assets appear on Google Play or limit promotional opportunities.
+
+- All content must comply with our Developer Program Policies.
+
+### Preview assets
+
+App icon
+
+You must provide an app icon to publish your store listing. The app icon does not replace your app's launcher icon but should be a higher-fidelity, higher-resolution version that follows Google Play's icon design specifications.
+
+### Usage
+
+Your app icon is used in various locations on Google Play, including your store listing, search results, and top charts.
+
+### Content guidelines
+
+#### Requirements
+
+- 32-bit PNG (with alpha)
+
+- Dimensions: 512px by 512px
+
+- Maximum file size: 1024KB
+
+- Meets Google Play's icon design specifications
+
+- Do not include badges or text that suggest ranking, price, Google Play categories, or otherwise mislead users. For more information, see Metadata policy.
+
+Short description
+
+You must provide a short description to publish your store listing. Your short description is a quick synopsis meant to spark user interest by outlining your app or game’s key value.
+
+### Usage
+
+Your short description is the first text users see when looking at your app's detail page on the Play Store app and can be expanded by users to view your app's full description.
+
+Your short description can appear in locations beyond your store listing, so any user should be able to use it to quickly understand the core purpose of your app or game.
+
+### Content guidelines
+
+#### Requirements
+
+- 80 character limit
+
+#### Highly recommended
+
+- Summarize the core function or purpose of your app or game in simple and concise language, highlighting any aspects that make it unique.
+
+- For apps, unique aspects could be differentiating features, functionalities, content, and benefits
+
+- For games, unique aspects could be gameplay, mechanics, player modes, social features, IP, theme and setting, story, and connectivity (such as offline/online).
+
+- Avoid slang or jargon, unless it is a language that would come naturally to your target users.
+
+- Avoid duplication and redundancy of messaging across your short description, screenshots, feature graphics, or developer video. Keep in mind that these assets may be shown side by side.
+
+- Reflect the latest state of your app or game.
+
+- Avoid time-sensitive copy that can become outdated quickly to reduce the need to update.
+
+- Do not use language that is not related to the function or purpose of your app, including:
+
+- Language that reflects or suggests Google Play performance, ranking, accolades or awards, user testimonials, or price and promotional information, for example, “Best," “#1,” “Top,” “New,” “Discount,” “Sale,” or “Million Downloads.”
+
+- Call-to-actions, for example, “download now,” “install now,” “play now,” or “try now.”
+
+- Unnecessary keywords in an attempt to improve search results; it will not impact ranking and provides a bad user experience.
+
+- Localize your description as appropriate for different markets and languages.
+
+- Ensure your short description is correctly formatted:
+
+- Only use periods at the end of sentences if your short description contains multiple sentences.
+
+- Use spaces if needed between words, periods (.), commas (,) and special characters (for example, &).
+
+- Do not include special characters, line breaks, emojis, emoticons, repeated punctuation (for example, ?, !!, ?!, !?!, <>, \\, --,***, +_+, …, ((, !!, $%^, ~&~, ~~~), or symbols (for example, ★ or ☆).
+
+- Only standard characters as used in the spelling, grammar, and idiom of your language are allowed (for example, ¿, æ, Ø, or ¡ ).
+
+- If applicable, exceptions are allowed for Copyright (©), Registered Trademark (®), and Trademark (™) reasons.
+
+- Do not use capitalization for emphasis:
+
+- Capitalize as is standard for the language you’re writing in.
+
+- Acronyms can be written in capitals.
+
+- Only capitalize your app name if your Google Play listing app name is also capitalized.
+
+Feature graphic
+
+You must provide a feature graphic to publish your store listing. Your feature graphic is a powerful tool to convey app or game experiences and attract new users.
+
+### Usage
+
+Your feature graphic is displayed in various places on Google Play, including:
+
+- As a cover image for your preview video, if present. This does not apply to Spatial Android XR videos.
+
+- For apps, we show a collection of apps in a large format with your feature graphic, including ads.
+
+- For games, we show groups of recommended games in a large format featuring preview videos and screenshots, where we show your feature graphic.
+
+### Content guidelines
+
+#### Requirements
+
+- JPEG or 24-bit PNG (no alpha)
+
+- Dimensions: 1024px by 500px
+
+#### Highly recommended
+
+- Use graphics that convey app or game experiences, and highlight the core value proposition, relevant context, or story-telling elements if needed.
+
+- Do not use prominent branding that is similar to your app icon, as this will cause duplications when shown in context with your app icon. Optimize for branding elements that serve as an extension of your app icon.
+
+- Avoid overloading the graphic with fine details. These will not be visible on many phone screens.
+
+- Place content to prioritize key elements and avoid cutoff zones.
+
+- Keep prominent visuals and the focal point towards the center of the graphic:
+
+- Avoid placing key elements (for example, brand logo, app name, primary slogan, and main UI) in the cutoff zones (the red areas in the example below), it may be cut off depending on the UI format.
+
+- Some formats may use additional UI overlays. Failure to comply with the focal point and cutoff zones may result in ineligibility to appear in these formats.
+
+- Restrict background elements to the edges of the graphic.
+
+- Consider using more vibrant colors in your graphics to build interest and excitement, and avoid using pure white or dark gray. These colors can blend in with the Play Store background.
+
+- Use a similar or complementary color theme and style in the feature graphic, app icon, and in the app itself, so users can immediately associate them with your app and brand.
+
+- Avoid using pure white, black, or dark gray as these colors can easily blend in with Google Play’s background.
+
+- Localize your graphic and branding text as appropriate for different markets and languages.
+
+- Avoid any content that reflects or suggests Google Play performance, ranking, user testimonials, accolades or awards, or price and promotional information. For example, do not use words like “Best,” “#1,” “Top,” “New,” “Free,” “Discount,” “Sale,” or “Million Downloads.”
+
+- Avoid time-sensitive content that can become outdated quickly to reduce the need to update.
+
+- Time-bound content (like holiday-specific updates) should be swapped in and out in a timely manner.
+
+- Avoid inappropriate or repetitive image elements, such as:
+
+- Third-party trademarked characters or logos without proper permission.
+
+- Device imagery (as this can become obsolete quickly or alienate some users).
+
+- Google Play or any other store’s badge or icon.
+
+Include alt text with each graphic asset. Alt text is important for screen-reader users who cannot see your uploaded assets. For that reason, using alt text descriptions of each graphic asset will greatly enhance your app’s visibility among users of assistive technology. Here are some tips for writing alt text:
+
+Don’t use “photo of” or “image of”; screen readers already provide this information.
+
+Use context to identify the important part of the image, using 140 characters or less. For example, “The transaction complete screen.”
+
+Screenshots
+
+Use screenshots to convey capabilities, the look and feel, and the experience of your app to potential users for better app discovery. You can add up to 8 screenshots for each supported device type. Supported device types include phones, tablets (7-inch and 10-inch), Chromebooks, Android TVs, Wear OS watches, Android Automotive OS cars, and Android XR headsets.
+
+To upload screenshots for different device types, under Graphics scroll to your device-specific section:
+
+- Large screens:
+
+- For Chromebook and tablets, you can add a minimum of 4 screenshots to demonstrate your in-app experience.
+
+- Upload screenshots between 1,080 and 7,680px
+
+- Use a 16:9 aspect ratio for landscape and a 9:16 aspect ratio for portrait
+
+- Exclude additional text that is not part of your core app experience, as this can get cut off on Play homepages on certain screen sizes
+
+- Don't forget to optimize your app quality for large screens by reviewing our app quality checklist
+
+- Wear OS: If you’re distributing an app to Wear OS devices, your Wear OS app's store listing on Google Play must:
+
+- Contain at least one screenshot that accurately depicts the current version of the app on Wear OS.
+
+- Provide screenshots showing only the app interface.
+
+- Not position the screenshots within device frames, or include additional text, graphics, or backgrounds that are not part of the interface of the app.
+
+- Include screenshots with a 1:1 aspect ratio and with a minimum size of 384 x 384 pixels.
+
+- If your app offers Tiles, then we recommend sharing a screenshot of Tiles functionality.
+
+- Don’t include transparent backgrounds or masking.
+
+- Wear OS watch faces: Your watch face's store listing on Google Play must:
+
+- Contain at least one screenshot that accurately depicts the current version of the watch face.
+
+- Show more than one of the available permutations, if the watch face is customizable.
+
+- Provide screenshots showing only the watch face experience.
+
+- Not position the screenshots within device frames, or include additional text, graphics, or backgrounds that are not part of the interface of the app.
+
+- Include screenshots with a 1:1 aspect ratio and with a minimum size of 384 x 384 pixels.
+
+- Don’t include transparent backgrounds or masking.
+
+- Android TV: If you distribute an app to Android TV devices, you need to add at least one Android TV screenshot before you can publish your app.
+
+- An Android TV banner image is also required.
+
+- TV screenshots will only be displayed on Android TV devices.
+
+- Android Automotive OS: If you distribute an app to Android Automotive OS devices, screenshot requirements vary depending on your app's category.
+
+- Screenshots are required for apps that are not in one of the parked app categories.
+
+- Screenshots are optional for apps in one of the parked app categories, but are recommended if your app has any car-specific functionality or if it differs significantly from the experience on mobile or tablet.
+
+- Screenshots must depict the generic system UI and cannot include screenshots specific to an individual vehicle model or OEM (Original Equipment Manufacturer).
+
+- Take screenshots using a generic system image. Use the Android Automotive OS emulator's Automotive (1024p landscape) and Automotive Portrait hardware profiles to take screenshots at the required resolutions.
+
+- Screenshots must accurately depict the appearance of your app on Android Automotive OS.
+
+- If you provide Android Automotive OS screenshots, you must provide at least 2 portraits (800 px by 1,280 px) and 2 landscape (1,024 px by 768 px) screenshots.
+
+- Android XR: To showcase your app, you must upload between 4 and 8 screenshots. Screenshots must be PNG or JPEG, up to 8 MB each, 8:5 aspect ratio.
+
+- Recommended image resolution: 3840x2400 (minimum 1920x1200).
+
+### Usage
+
+Screenshots may be displayed throughout Google Play, for instance in search or on the homepage, in addition to your store listing on Google Play. When Google Play displays both your preview video and screenshots together, for example on your store listing page, and if your preview video is available then your screenshots will be shown after the preview video, followed left-to-right by the screenshots best suited for the device the user is browsing on.
+
+### Content guidelines
+
+#### Requirements
+
+You must provide a minimum of two screenshots across different device types to publish your store listing:
+
+- JPEG or 24-bit PNG (no alpha)
+
+- Minimum dimension: 320px
+
+- Maximum dimension: 3840px
+
+- The maximum dimension of your screenshot can't be more than twice as long as the minimum dimension.
+
+#### Highly recommended
+
+- Some sections of Google Play show groups of recommended apps and games in a large format using screenshots. To be eligible for recommendations in formats that use screenshots, the following guidelines are a requirement:
+
+- For apps, you must provide at least four screenshots with minimum 1080px resolution. These should be 16:9 for landscape (minimum 1920x1080px) screenshots and 9:16 for portrait screenshots (minimum 1080x1920px).
+
+- For games you must provide at least three 16:9 landscape screenshots (minimum 1920x1080px) or three 9:16 portrait screenshots (minimum 1080x1920px). Make sure that these screenshots depict the in-game experience so users can get a sense of what the gameplay will be like if they download and play
+
+- Screenshots must demonstrate the actual in-app or in-game experience, focusing on the core features and content so users can anticipate what the app or game experience will be like.
+
+- Use captured footage of the app or game itself. Do not include people interacting with the device (for example, fingers tapping on the device), unless the core gameplay or app usage is off-device.
+
+- Stylized screenshots that break UI across multiple uploaded images are allowed, but prioritize UI in the first three screenshots as much as possible.
+
+- Add taglines only if necessary to convey the key characteristics of the app or game. Taglines should not take up more than 20% of the image.
+
+- Do not include any content that reflects or suggests Google Play performance, ranking, accolades or awards, user testimonials, or price and promotional information. For example, do not use words like “Best,” “#1,” “Top,” “New,” “Discount,” “Sale,” or “Million Downloads.”
+
+- Avoid adding any form of call-to-action, for example, "Download now," "Install now," "Play now," or "Try now."
+
+- Avoid overloading the screenshot with text in small font sizes or backgrounds that compete with the text. These will not be visible on many phone screens.
+
+- Avoid time-sensitive tagline or content that can become outdated quickly to reduce the need to update.
+
+- Time-bound content (like holiday-specific updates) should be swapped in and out in a timely manner.
+
+- Localize your graphic and branding text as appropriate for different markets and languages.
+
+- In-game UI does not need to be localized per market, but any additional taglines or text overlays should be localized.
+
+- Edit excess elements in the notification bar before submitting. Do not show service providers or notifications. The battery, WiFi, and cell service logos should be full.
+
+- Use high-quality images with the proper aspect ratio.
+
+- Do not include screenshots that are blurry, distorted, or pixelated in a way that is not an intentional aspect of your brand.
+
+- Do not include images that are stretched or compressed.
+
+- Rotate screenshots appropriately. Do not upload images upside down, sideways, or otherwise skewed.
+
+- Avoid inappropriate or repetitive image elements, such as:
+
+- Third-party trademarked characters or logos without proper permission.
+
+- Device imagery (as this can become obsolete quickly or alienate some users).
+
+- Google Play or any other store’s badge or icon.
+
+Include alt text with each screenshot. Alt text is important for screen-reader users who cannot see your uploaded screenshots. For that reason, using alt text descriptions will greatly enhance your app’s visibility among users of assistive technology. Here are some tips for writing alt text:
+
+Don’t use “photo of” or “image of”; screen readers already provide this information.
+
+Use context to identify the important part of the image, using 140 characters or less. For example, “The transaction complete screen.”
+
+Preview video
+
+A preview video is effective to show the capabilities, look and feel, and experience of your app to potential users for better app discovery and decision making. It is not required, but we highly recommend providing a preview video for games particularly. Your game requires a preview video to be shown in certain parts of Google Play.
+
+You can add one preview video to your store listing by entering a YouTube URL in the "preview video" field.
+
+- Use a video's YouTube URL, not a YouTube playlist or channel URL.
+
+- Do not add extra parameters like timecodes in the YouTube URL.
+
+- Provide a localized video tailored for users in different markets around the world.
+
+Android XR: You can provide up to two more videos
+
+- Spatial Android XR video [optional]: Add a video for an immersive preview of your features by entering a YouTube URL. This video must be 360°, 180° or 3D, be public or unlisted, ads must be turned off, and it must not be age restricted. This video will utilize the YouTube thumbnail as its cover image. This video will show up only on the Playstore on XR Headsets.
+
+- Learn more about creating 360° or 180° videos and 3D (stereoscopic) on YouTube. Unity developers can also use the Unity Movie Recorder to generate spatial videos.
+
+- Non-spatial Android XR video [optional]: Add a video by entering a YouTube URL. This video must be public or unlisted, ads must be turned off, and it must not be age restricted. This video will show up only on the Play Store on XR Headsets and the XR-specific section of your listing’s detail page on mobile and tablets. If both a regular “preview video” and a Non-spatial Android XR video are uploaded, the Non-spatial Android XR video will overwrite the regular preview video on the Play Store on XR Headsets.
+
+### Asset usage
+
+Your preview video is displayed before your screenshots on your app’s store listing on Google Play. Users can watch your preview video by tapping on the play button that overlays on your feature graphic.
+
+In addition, besides Spatial Android XR videos,the following may apply to how your preview video can appear on Google Play:
+
+- Your preview video may also be displayed on both home and search page.
+
+- Your preview video may autoplay inline with muted audio up to 30 seconds depending on the user device, setting, network connection, and surface area. Whenever your video does not autoplay, a play button is overlaid on your feature graphic.
+
+- For games, some sections of Google Play show groups of recommended games in a large format using preview videos.
+
+### Content guidelines
+
+#### Requirements
+
+- Disable ads for your video to be shown on Google Play. When users browse Google Play, we want them to see a video about your app, not someone else’s ad, as this can be confusing for users. To disable ads, you’ll need to:
+
+- Turn off monetization in your video, or
+
+- Upload a different video without monetization claims and update the URL in Play Console.
+
+Important: If your video uses copyrighted content, turning off monetization for your video may not be enough to prevent ads. In that case, you will need to use a different video (without copyrighted content that has monetization claims).
+
+- Set your video’s privacy setting to public or unlisted. Do not set it to private.
+
+- Do not use an age-restricted video.
+
+- Make sure that your video is embeddable on Google Play.
+
+#### Highly recommended
+
+- Your video should set the right expectations and demonstrate the value of your app or game over similar titles.
+
+- Show the actual in-app or in-game experience, focusing on the core features and content as early as possible within the first 10 seconds of the video.
+
+- Aim for at least 80% of the video to be representative of the user experience.
+
+- Limit title screens, logos, cutscenes, or other pre-rendered or promotional content.
+
+- When using pre-rendered footage, cutscenes and graphical assets should be accessory to and supportive of the actual in-game experience.
+
+- Keep your videos short and concise because only the first 30 seconds autoplays. Users can continue watching the full video by tapping it but we recommend keeping your video short.
+
+- Do not include people interacting with the device (for example, fingers tapping on the device), unless the core gameplay or app usage is off-device.
+
+- Make sure that your video is of high production quality with a high level of polish. Your video does not need to be professionally made, but the pacing, visual effects, sound effects/music, transitions and text overlays should be smooth and work seamlessly together.
+
+- Create a video in either landscape or portrait, both orientations are supported on the store listing page.
+
+- Choose a video orientation that best matches the app experience.
+
+- Do not leave black bars on either side of a portrait video.
+
+- Use a high-quality YouTube thumbnail for Spatial Android XR videos, as this thumbnail will be utilized as the cover image in the Play Store on XR headsets. Refer to the ‘Highly recommended’ steps in the Feature graphic section when applicable for additional recommendations regarding this thumbnail image.
+
+- Consider using copy to give the user context if the video is muted (for example, when autoplayed). When using copy:
+
+- Do not include any content that reflects or suggests Google Play performance, ranking, accolades or awards, user testimonials, or price and promotional information. For example, do not use words like “Best,” “#1,” “Top,” “New,” “Discount,” “Sale,” or “Million Downloads.” Awards from Google Play such as “Best Of” are allowed to be displayed.
+
+- Do not use call-to-actions, for example, "Download now," "Install now," "Play now," or "Try now."
+
+- Make sure that the text is legible by using readable fonts, proper font size, and displaying the text long enough for the user to read it.
+
+- Avoid time-sensitive content or taglines that can become outdated quickly to reduce the need to update.
+
+- Time-bound content (like holiday-specific updates) should be swapped in and out in a timely manner.
+
+- Properly localize the video including the UI, taglines, and audio.
+
+Use captions for preview videos to help users who are deaf or hard of hearing, as well as those in loud environments.
+
+TV banner
+
+A banner asset is required to publish an Android TV-enabled app. When you're creating a banner asset, think of it like your app’s icon on Android TV.
+
+Note: Your app's banner asset will only be displayed on Android TV devices.
+
+### Content guidelines
+
+#### Requirements
+
+- JPEG or 24-bit PNG (no alpha)
+
+- Dimensions: 1280px by 720px
+
+## Was this helpful?
+How can we improve it?
+YesNo

@@ -1,0 +1,841 @@
+Source: https://developer.android.com/studio/publish/app-signing
+Fetched: 2026-10-12
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+Android Developers
+
+Develop
+
+Android Studio
+
+IDE guides
+
+# Sign your app
+
+Stay organized with collections
+
+Save and categorize content based on your preferences.
+
+Android requires that all APKs be digitally signed with a certificate before
+they are installed on a device or updated. When releasing using Android App
+Bundles, you need to sign your app bundle with an upload
+key before uploading it to the Play Console, and Play App Signing takes care of
+the rest. For apps distributing using APKs on the Play Store or on other
+stores, you must manually sign your APKs for upload.
+
+This page guides you through some important concepts related to app signing and
+security, how to sign your app for release to Google Play using Android Studio,
+and how to configure Play App Signing.
+
+The following is a high-level overview of the steps you might need to take to
+sign and publish a new app to Google Play:
+
+- Generate an upload key and keystore
+
+- Sign your app with your upload key
+
+- Configure Play App Signing
+
+- Upload your app to Google Play
+
+- Prepare & roll out release of your app
+
+If instead your app is already published to the Google Play Store with an
+existing app signing key, or you would like to choose the app signing key for a
+new app instead of having Google generate it, follow these steps:
+
+- Sign your app with your app’s signing key.
+
+- Upload your app’s signing key to Play App Signing.
+
+- (Recommended) Generate and register an upload certificate
+for future updates to your app
+
+- Upload your app to Google Play
+
+- Prepare & roll out release of your app
+
+This page also explores how to manage your own keys for when uploading your app
+to other app stores. If you do not use Android Studio or would rather sign your
+app from the command line, learn about how to use
+apksigner.
+
+Note: If you are building a Wear OS app, the process for signing the app can
+differ from the process described on this page. See the information about
+packaging and publishing Wear OS
+apps.
+
+## Play App Signing
+
+With Play App Signing, Google manages and protects your app's signing
+key for you and uses it to sign your APKs for distribution. And, because app
+bundles defer building and signing APKs to the Google Play Store, you need to
+configure Play App Signing before you upload your app bundle. Doing so
+lets you benefit from the following:
+
+- Use the Android App Bundle and support Google Play’s advanced delivery modes.
+The Android App Bundle makes your app much smaller, your releases simpler,
+and makes it possible to use feature modules and offer instant experiences.
+
+- Increase the security of your signing key, and make it possible to use a
+separate upload key to sign the app bundle you upload to Google Play.
+
+- Key upgrade lets you change your app signing key in
+case your existing one is compromised or if you need to migrate to a
+cryptographically stronger key
+
+Note: In order to ensure security, after you configure Play App Signing with
+either an auto-generated key, or a key that you supply, you cannot retrieve a
+copy of your app's signing key and Google may retain a backup copy of the key
+for disaster recovery purposes.
+
+Play App Signing uses two keys: the app signing key and the upload
+key, which are described in further detail in the section about Keys and
+keystores. You keep the upload key and use it to sign
+your app for upload to the Google Play Store. Google uses the upload certificate
+to verify your identity, and signs your APK(s) with your app signing key for
+distribution as shown in figure 1. By using a separate upload key you can
+request an upload key reset
+if your key is ever lost or compromised.
+
+By comparison, for apps that have not opted in to Play
+App Signing, if you lose your app’s signing key, you lose the ability to update your app.
+
+Important: If you want to use the same signing key
+across multiple stores, make sure to provide your own signing key when you
+configure Play App Signing, instead of having Google generate
+one for you.
+
+Figure 1. Signing an app with Play App Signing
+
+Your keys are stored on the same infrastructure that Google uses to store its
+own keys, where they are protected by Google’s Key Management Service. You can
+learn more about Google’s technical infrastructure by reading the
+Google Cloud Security Whitepapers.
+
+When you use Play App Signing, if you lose your upload key, or if it
+is compromised, you can request an upload key reset in the Play Console.
+Because your app signing key is secured by Google, you can
+continue to upload new versions of your app as updates to the original app, even
+if you change upload keys. To learn more, read Reset a lost or compromised
+private upload key.
+
+The next section describes some important terms and concepts related to app
+signing and security. If you’d rather skip ahead and learn how to prepare your
+app for upload to the Google Play Store, go to Sign your app for
+release.
+
+### Keystores, keys, and certificates
+
+Java Keystores (.jks or .keystore) are binary files that serve as repositories
+of certificates and private keys.
+
+A public key certificate (.der or .pem files), also known as a digital
+certificate or an identity certificate, contains the public key of a
+public/private key pair, as well as some other metadata identifying the owner
+(for example, name and location) who holds the corresponding private key.
+
+The following are the different types of keys you should understand:
+
+- App signing key: The key that is used to sign APKs that are installed on a
+user's device. As part of Android’s secure update model, the signing key never
+changes during the lifetime of your app. The app signing key is private and must
+be kept secret. You can, however, share the certificate that is generated
+using your app signing key.
+
+- Upload key: The key you use to sign the app bundle or APK before you
+upload it for app signing with Google Play. You must
+keep the upload key secret. However, you can share the certificate that
+is generated using your upload key. You may generate an upload key in one of the
+following ways:
+
+- If you choose for Google to generate the app signing key for you when you
+opt in, then the key you use to sign your app for release is
+designated as your upload key.
+
+- If you provide the app signing key to Google when opting in your new or
+existing app, then you have the option to generate a new upload key during or
+after opting in for increased security.
+
+- If you do not generate a new upload key, you continue to use your app
+signing key as your upload key to sign each release.
+
+Tip: To keep your keys secure, it’s a good idea to make sure your app
+signing key and upload key are different.
+
+### Working with API providers
+
+You can download the certificate for the app signing key and your upload
+key from the Release > Setup > App signing page in the Play Console. This is used to register public key(s) with
+API providers; it's intended to be shared, as it does not contain your private
+key.
+
+A certificate fingerprint is a short and unique representation of a
+certificate that is often requested by API providers alongside the package name
+to register an app to use their service. The MD5, SHA-1 and SHA-256 fingerprints
+of the upload and app signing certificates can be found on the app signing page
+of the Play Console. Other fingerprints can also be computed by downloading the
+original certificate (.der) from the same page.
+
+## Sign your debug build
+
+When running or debugging your project from the IDE, Android Studio
+automatically signs your app with a debug certificate generated by the Android
+SDK tools. The first time you run or debug your project in Android Studio, the
+IDE automatically creates the debug keystore and certificate in
+$HOME/.android/debug.keystore, and sets the keystore and key passwords.
+
+Tip: Your project's debug keystore may not be located in the default
+location. To confirm the location of your project's keystore in Android
+Studio 2024.2.1:
+
+- Open the Gradle Tool Window.
+
+- Select your proiect.
+
+- Expand the Gradle settings tree starting from app
+( app > tasks > android ).
+
+- Under android, select signingReport.
+
+- The Signing Report appears in the lower panel. Look for the line that
+starts with Store. This tells you the location of the
+debug.keystore file.
+
+Because the debug certificate is created by the build tools and is insecure by
+design, most app stores (including the Google Play Store) do not accept apps
+signed with a debug certificate for publishing.
+
+Android Studio automatically stores your debug signing information in a signing
+configuration so you do not have to enter it every time you debug. A signing
+configuration is an object consisting of all of the necessary information to
+sign your app, including the keystore location, keystore password, key name, and
+key password.
+
+For more information about how to build and run apps for debugging, see Build
+and Run Your App.
+
+### Expiry of the debug certificate
+
+The self-signed certificate used to sign your app for debugging has an
+expiration date of 30 years from its creation date. When the certificate
+expires, you get a build error.
+
+To fix this problem, simply delete the debug.keystore file stored in one of
+the following locations:
+
+- ~/.android/ on OS X and Linux
+
+- C:\Documents and Settings\user\.android\ on
+Windows XP
+
+- C:\Users\user\.android\ on Windows Vista and
+Windows 7, 8, and 10
+
+The next time you build and run a debug version of your app, Android Studio
+regenerates a new keystore and debug key.
+
+## Sign your app for release to Google Play
+
+When you are ready to publish your app, you need to sign your app and upload it
+to an app store, such as Google Play. When publishing your app to Google Play
+for the first time, you must also configure Play App Signing. Play App Signing
+is optional for apps created before August 2021. This section shows you how to
+properly sign your app for release and configure Play App Signing.
+
+### Generate an upload key and keystore
+
+If you don't already have an upload key, which is useful when configuring Play
+App Signing, you can generate one using Android Studio as follows:
+
+- In the menu bar, click Build > Generate Signed Bundle/APK.
+
+- In the Generate Signed Bundle or APK dialog, select
+Android App Bundle or APK and click Next.
+
+- Below the field for Key store path, click Create new.
+
+- On the New Key Store window, provide the following information for your
+keystore and key, as shown in figure 2.
+
+Figure 2. Create a new upload key and keystore in Android Studio.
+
+- Keystore
+
+- Key store path: Select the location where your keystore should be created.
+Also, a file name should be added to the end of the location path with
+the .jks extension.
+
+- Password: Create and confirm a secure password for your keystore.
+
+- Key
+
+- Alias: Enter an identifying name for your key.
+
+- Password: Create and confirm a secure password for your key. This
+should be the same as your keystore password. (Please refer to the known issue
+for more information)
+
+- Validity (years): Set the length of time in years that your key will
+be valid. Your key should be valid for at least 25 years, so you can sign
+app updates with the same key through the lifespan of your app.
+
+- Certificate: Enter some information about yourself for your
+certificate. This information is not displayed in your app, but is included
+in your certificate as part of the APK.
+
+- Once you complete the form, click OK.
+
+- If you would like to build and sign your app with your upload key, continue
+to the section about how to
+Sign your app with your upload key. If you only want to
+generate the key and keystore, click Cancel.
+
+### Sign your app with your key
+
+If you already have an upload key, use it to sign your app. If instead your app
+is already signed and published to the Google Play store with an existing app
+signing key, use it to sign your app. You can later generate and register a
+separate upload key with Google Play to sign and upload
+subsequent updates to your app.
+
+To sign your app using Android Studio, follow these steps:
+
+- If you don’t currently have the Generate Signed Bundle or APK dialog
+open, click Build > Generate Signed Bundle/APK.
+
+- In the Generate Signed Bundle or APK dialog, select either Android App
+Bundle or APK and click Next.
+
+- Select a module from the drop down.
+
+- Specify the path to your keystore, the alias for your key, and enter the
+passwords for both. If you haven't yet prepared your upload keystore
+and key, first Generate an upload key and keystore and then
+return to complete this step.
+
+Figure 3. Sign your app with your upload key.
+
+Note: For increased security, Google Play is introducing a new process to
+upload signing keys, and the option Export encrypted key in Android
+Studio is being deprecated. If you're signing an app with an existing app
+signing key, and you'd like to opt your app in to Play App Signing, see
+Opt in an existing app for the process to encrypt and
+export your signing key.
+
+- Click Next.
+
+- In the next window (shown in figure 4), select a destination folder for your
+signed app, select the build type, choose the product flavor(s) if applicable.
+
+- If you are building and signing an APK, you need to select which Signature
+Versions you want your app to support. To learn more, read about
+app signing schemes
+
+Note: Google Play supports
+APK Signature Scheme v3
+for APKs that aren't already published with an existing
+signing certificate lineage.
+
+- Click Create.
+
+Note: If your project uses product flavors, you can select multiple product
+flavors while holding down the Control key on Windows/Linux, or the
+Command key on Mac OSX. Android Studio will generate a separate APK or
+app bundle for each product flavor you select.
+
+Figure 5. Click the link in the popup to analyze or locate your app
+bundle.
+
+After Android Studio finishes building your signed app, you can either
+locate or analyze your app by clicking on the appropriate option in the
+pop-up notification, as shown in figure 5.
+
+Now you’re ready to opt your app in to Play App Signing and upload
+your app for release. If you’re new to the app publishing process, you may want
+to read the Launch overview. Otherwise,
+continue to the page about how to Upload your app to the Play
+Console.
+
+## Using Play App Signing
+
+As described earlier in this page, configuring
+Play App Signing is required to
+sign your app for distribution through Google Play (except for apps
+created before August 2021, which may continue distributing self-signed APKs).
+The steps you need to take depend on whether your app has not yet been
+published to Google Play, or your app is already signed and was published before
+August 2021 using an existing app signing key.
+
+### Configure a new app
+
+To configure signing for an app that has not yet been published to Google Play,
+proceed as follows:
+
+- If you haven’t already done so, generate an upload key and
+sign your app with that upload key.
+
+- Sign in to your Play Console.
+
+- Follow the steps to prepare & roll out your release
+to create a new release.
+
+- After you choose a release track, configure app signing under the App
+signing section as follows:
+
+- To have Google Play generate an app signing key for you and use it to sign
+your app, you don't have to do anything. The key you use to sign your first
+release becomes your upload key, and you should use it to sign future
+releases.
+
+- To use the same key as another app on your developer account, select
+Change app signing key > Use the same key as another app in this
+account, select an app, and then click Continue.
+
+- To provide your own signing key for Google to use when signing your app,
+select Change app signing key and select one of the Export and
+upload options that lets you securely upload a private key and its public
+certificate.
+
+Note: If you haven't already accepted the Terms of
+Service, you are
+required to review the terms and select Accept to continue.
+In the section called App Bundles, click Browse
+files to locate and upload the app you signed using your upload key. For more
+information about releasing your app, refer to
+prepare & roll out your release.
+When you release your app after configuring Play App Signing,
+Google Play generates (unless you upload an existing key) and manages your app’s
+signing key for you. Simply sign subsequent updates to your app using your app’s
+upload key before uploading it to Google Play.
+
+If you need to create a new upload key for you app, go to the section about how
+to Reset a lost or compromised private upload key.
+
+### Opt in an existing app
+
+If you’re updating an app that’s already published to Google Play using an
+existing app signing key, you can opt in to Play App Signing as
+follows:
+
+- Sign in to your Play Console and
+navigate to your app.
+
+- On the left menu, click Release > Setup > App signing.
+
+- If applicable, review the Terms of Service and select Accept.
+
+- Select one of the options that best describes the signing key you want to
+upload to Google Play and follow the instructions that are shown. For
+example, if you are using a Java Keystore for your signing key, select
+Upload a new app signing key from Java Keystore and follow the
+instructions to download and run the PEPK tool, and upload the generated file
+with your encrypted key.
+
+- Click Enroll.
+
+You should now see a page with the details of your app’s signing and upload
+certificates. Google Play now signs your app with your existing key when
+deploying it to users. However, one of the most important benefits to Play App
+Signing is the ability to separate the key you use to sign the
+artifact you upload to Google Play from the key that Google Play uses to sign
+your app for distribution to users. So, consider following the steps in the next
+section to generate and register a separate upload key.
+
+#### Generate and register an upload certificate
+
+When you're publishing an app that is not signed by an upload key, the Google
+Play Console provides the option to register one for future updates to the app.
+Although this is an optional step, it’s recommended that you publish your app
+with a key that’s separate from the one Google Play uses to distribute your app
+to users. That way, Google keeps your signing key secure, and you have the
+option to reset a lost or compromised private upload key.
+This section describes how to create an upload key, generate an upload
+certificate from it, and register that certificate with Google Play for future
+updates of your app.
+
+The following describes the situations in which you see the option to register
+an upload certificate in the Play Console:
+
+- When you publish a new app that’s signed with a signing key and opt it in to
+Play App Signing.
+
+- When you are about to publish an existing app that’s already opted in to Play
+App Signing, but it is signed using its signing key.
+
+If you are not publishing an update to an existing app that’s already opted in
+to Play App Signing, and you’d like to register an upload certificate,
+complete the steps below and continue on to the section about how to
+reset a lost or compromised private upload key.
+
+If you haven’t already done so,
+generate an upload key and keystore.
+
+After you create your upload key and keystore, you need to generate a public
+certificate from your upload key using
+keytool,
+with the following command:
+
+$ keytool -export -rfc
+-keystore your-upload-keystore.jks
+-alias upload-alias
+-file output_upload_certificate.pem
+
+Now that you have your upload certificate, register it with Google when prompted
+in the Play Console or when resetting your upload key.
+
+#### Upgrade your app signing key
+
+In some circumstances, you might want to change your app's signing key. For
+example, because you want a cryptographically stronger key or your signing key
+has been compromised. However, because users can only update your app if the
+update is signed with the same signing key, it's difficult to change the signing
+key for an app that's already published.
+
+If you publish your app to Google Play, you can upgrade the signing key for your
+published app through the Play Console—your new key is used to sign installs
+and app updates on Android 13 and higher, while your older app signing key is
+used to sign updates for users on earlier versions of Android.
+
+To learn more, read
+Upgrade your app signing key.
+
+### Reset a lost or compromised private upload key
+
+If you lost your private upload key or your private key has been compromised,
+you can create a new one and
+request an upload key reset
+in the Play console.
+
+Note: Resetting your upload key will not affect the app signing key that Google
+Play uses to re-sign APKs before delivering to users.
+
+### Configure the build process to automatically sign your app
+
+In Android Studio, you can configure your project to sign the release version
+of your app automatically during the build process by creating a signing
+configuration and assigning it to your release build type. A signing
+configuration consists of a keystore location, keystore password, key alias, and
+key password. To create a signing configuration and assign it to your release
+build type using Android Studio, complete the following steps:
+
+- In the Project window, right click on your app and click
+Open Module Settings.
+
+- On the Project Structure window, under
+Modules in the left panel, click the module you would like
+to sign.
+
+- Click the Signing tab, then click Add
+.
+
+Select your keystore file, enter a name for this signing configuration
+(as you may create more than one), and enter the required information.
+
+Figure 7. The window for creating a new signing
+configuration.
+
+- Click the Build Types tab.
+
+- Click the release build.
+
+Under Signing Config, select the signing configuration
+you just created.
+
+Figure 8. Select a signing configuration in Android
+Studio.
+
+- Click OK.
+
+Now every time you build your release build type by selecting an option under
+Build > Build Bundle(s) / APK(s) in Android Studio, the
+IDE will sign your app automatically, using the signing configuration you
+specified. You can find your signed APK or app bundle in the
+build/outputs/ directory inside the project directory for the
+module you are building.
+
+When you create a signing configuration, your signing information is included
+in plain text in your Gradle build files. If you are working in a team or
+sharing your code publicly, you should keep your signing information secure
+by removing it from the build files and storing it separately. You can read
+more about how to remove your signing information from your build files in
+Remove Signing Information from Your Build
+Files. For more about keeping your signing information secure, see
+Keep your key secure, below.
+
+### Sign each product flavor differently
+
+If your app uses product flavors and you would like to sign each flavor
+differently, you can create additional signing configurations and assign them
+by flavor:
+
+- In the Project window, right click on your app and click
+Open Module Settings.
+
+- On the Project Structure window, under
+Modules in the left panel, click the module you would like
+to sign.
+
+- Click the Signing tab, then click Add
+.
+
+Select your keystore file, enter a name for this signing configuration
+(as you may create more than one), and enter the required information.
+
+Figure 10. The window for creating a new signing
+configuration.
+
+- Repeat steps 3 and 4 as necessary until you have created all your signing
+configurations.
+
+- Click the Flavors tab.
+
+- Click the flavor you would like to configure, then select the appropriate
+signing configuration from the Signing Config dropdown menu.
+
+Figure 11. Configure signing settings by product flavor.
+
+Repeat to configure any additional product flavors.
+
+- Click OK.
+
+You can also specify your signing settings in Gradle configuration files. For
+more information, see Configuring Signing Settings.
+
+## Run a signing report
+
+To get signing information for each of your app's variants, run the Gradle
+signingReport task in Android Studio:
+
+- Select View > Tool Windows > Gradle to open the Gradle tool window
+
+- Select YourApp > Tasks > android > signingReport to run the report
+
+Note: If you don't see signingReport in the list of Gradle tasks, open the
+Android Studio settings dialog by selecting File > Settings
+(Android Studio > Settings on macOS), select Experimental, then under
+the Gradle heading, clear any checkboxes that limit the types of tasks included
+in the Gradle task list.
+
+## Manage your own signing key
+
+If you choose not to opt in to Play App Signing (only for apps created
+before August 2021), you can manage your own app signing key and keystore.
+Keep in mind, you are responsible for securing the key and the keystore.
+Additionally, your app will not be able to support Android App Bundles,
+Play Feature Delivery and Play Asset Delivery.
+
+When you are ready to create your own key and keystore, make sure you first
+choose a strong password for your keystore and a separate strong password for
+each private key stored in the keystore. You must keep your keystore in a safe
+and secure place. If you lose access to your app signing key or your key is
+compromised, Google cannot retrieve the app signing key for you, and you will
+not be able to release new versions of your app to users as updates to the
+original app. For more information, see
+Keep your key secure, below.
+
+If you manage your own app signing key and keystore, when you sign your APK, you
+will sign it locally using your app signing key and upload the signed APK
+directly to the Google Play Store for distribution as shown in figure 12.
+
+Figure 12. Signing an app when you manage your own app signing key
+
+When you use
+Play App Signing,
+Google keeps your signing key safe, and ensures your apps are
+correctly signed and able to receive updates throughout their lifespans.
+However, if you decide to manage your app signing key yourself, there are a few
+considerations you should keep in mind.
+
+## Signing considerations
+
+You should sign your app with the same certificate throughout its expected
+lifespan. There are several reasons why you should do so:
+
+- App upgrade: When the system is installing an update to an app, it
+compares the certificate(s) in the new version with those in the existing
+version. The system allows the update if the certificates match. If you sign the
+new version with a different certificate, you must assign a different package
+name to the app—in this case, the user installs the new version as a completely
+new app.
+
+- App modularity: Android allows APKs signed by the same certificate to run
+in the same process, if the apps so request, so that the system treats them as a
+single app. In this way you can deploy your app in modules, and users can update
+each of the modules independently.
+
+- Code/data sharing through permissions: Android provides signature-based
+permissions enforcement, so that an app can expose functionality to another app
+that is signed with a specified certificate. By signing multiple APKs with the
+same certificate and using signature-based permissions checks, your apps can
+share code and data in a secure manner.
+
+If you plan to support upgrades for an app, ensure that your app signing key has
+a validity period that exceeds the expected lifespan of that app. A validity
+period of 25 years or more is recommended. When your key's validity period
+expires, users will no longer be able to seamlessly upgrade to new versions of
+your app.
+
+If you plan to publish your apps on Google Play, the key you use to sign your
+app must have a validity period ending after 22 October 2033. Google Play
+enforces this requirement to ensure that users can seamlessly upgrade apps when
+new versions are available.
+
+### Keep your key secure
+
+If you choose to manage and secure your app signing key and keystore yourself
+(instead of opting in to
+Play App Signing), securing your app
+signing key is of critical
+importance, both to you and to the user. If you allow someone to use your key,
+or if you leave your keystore and passwords in an unsecured location such that a
+third-party could find and use them, your authoring identity and the trust of
+the user are compromised.
+
+Note: If you use Play App Signing, your app signing key is kept secure
+using Google's infrastructure. You should still keep your upload key secure as
+described below. If your upload key is compromised, you can
+request an upload key reset in the Play Console.
+If a third party should manage to take your app signing key without your knowledge or
+permission, that person could sign and distribute apps that maliciously replace
+your authentic apps or corrupt them. Such a person could also sign and
+distribute apps under your identity that attack other apps or the system itself,
+or corrupt or steal user data.
+
+Your private key is required for signing all future versions of your app. If you
+lose or misplace your key, you will not be able to publish updates to your
+existing app. You cannot regenerate a previously generated key.
+
+Your reputation as a developer entity depends on your securing your app signing
+key properly, at all times, until the key is expired. Here are some tips for
+keeping your key secure:
+
+- Select strong passwords for the keystore and key.
+
+- Do not give or lend anyone your private key, and do not let unauthorized
+persons know your keystore and key passwords.
+
+- Keep the keystore file containing your private key in a safe, secure place.
+
+In general, if you follow common-sense precautions when generating, using, and
+storing your key, it will remain secure.
+
+#### Remove signing information from your build files
+
+When you create a signing configuration, Android Studio adds your signing
+information in plain text to the module's build.gradle files. If
+you are working with a team or open-sourcing your code, you should move this
+sensitive information out of the build files so it is not easily accessible
+to others. To do this, you should create a separate properties file to store
+secure information and refer to that file in your build files as follows:
+
+- Create a signing configuration, and assign it to one or more build types.
+These instructions assume you have configured a single signing configuration
+for your release build type, as described in Configure
+the build process to automatically sign your app, above.
+
+- Create a file named keystore.properties in the root
+directory of your project. This file should contain your signing information,
+as follows:
+
+storePassword=myStorePassword
+keyPassword=mykeyPassword
+keyAlias=myKeyAlias
+storeFile=myStoreFileLocation
+
+- In your module's build.gradle file, add code to load your
+keystore.properties file before the android {}
+block.
+
+### Groovy
+
+...
+
+// Create a variable called keystorePropertiesFile, and initialize it to your
+// keystore.properties file, in the rootProject folder.
+def keystorePropertiesFile = rootProject.file("keystore.properties")
+
+// Initialize a new Properties() object called keystoreProperties.
+def keystoreProperties = new Properties()
+
+// Load your keystore.properties file into the keystoreProperties object.
+keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+
+android {
+...
+}
+
+### Kotlin
+
+...
+import java.util.Properties
+import java.io.FileInputStream
+
+// Create a variable called keystorePropertiesFile, and initialize it to your
+// keystore.properties file, in the rootProject folder.
+val keystorePropertiesFile = rootProject.file("keystore.properties")
+
+// Initialize a new Properties() object called keystoreProperties.
+val keystoreProperties = Properties()
+
+// Load your keystore.properties file into the keystoreProperties object.
+keystoreProperties.load(FileInputStream(keystorePropertiesFile))
+
+android {
+...
+}
+
+Note: You could choose to store your
+keystore.properties file in another location (for example,
+in the module folder rather than the root folder for the project, or on
+your build server if you are using a continuous integration tool). In
+that case, you should modify the code above to correctly initialize
+keystorePropertiesFile using your actual
+keystore.properties file's location.
+
+- You can refer to properties stored in keystoreProperties
+using the syntax keystoreProperties['propertyName'].
+Modify the signingConfigs block of your module's
+build.gradle file to reference the signing information stored in
+keystoreProperties using this syntax.
+
+### Groovy
+
+android {
+signingConfigs {
+config {
+keyAlias keystoreProperties['keyAlias']
+keyPassword keystoreProperties['keyPassword']
+storeFile file(keystoreProperties['storeFile'])
+storePassword keystoreProperties['storePassword']
+}
+}
+...
+}
+
+### Kotlin
+
+android {
+signingConfigs {
+create("config") {
+keyAlias = keystoreProperties["keyAlias"] as String
+keyPassword = keystoreProperties["keyPassword"] as String
+storeFile = file(keystoreProperties["storeFile"] as String)
+storePassword = keystoreProperties["storePassword"] as String
+}
+}
+...
+}
+
+- Open the Build Variants tool window and ensure that the
+release build type is selected.
+
+- Select an option under Build > Build Bundle(s) / APK(s) to build
+either an APK or app bundle of your release build.
+You should see the build output in the
+build/outputs/ directory for your module.
+
+Because your build files no longer contain sensitive information, you can now
+include them in source control or upload them to a shared codebase. Be sure
+to keep the keystore.properties file secure. This may include
+removing it from your source control system.

@@ -1,0 +1,633 @@
+Source: https://docs.expo.dev/versions/latest/sdk/build-properties/
+Fetched: 2026-10-12
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+This documentation is available as Markdown for AI agents and LLMs. See the full Markdown index or append .md to any documentation URL.
+
+# Expo BuildProperties
+A config plugin that allows customizing native build properties during prebuild.
+Android
+iOS
+tvOS
+
+Ask AI
+
+GitHub
+
+npm
+
+Changelog
+
+Recommended version:~57.0.22
+
+Copy page
+
+expo-build-properties is a config plugin configuring the native build properties
+of your android/gradle.properties and ios/Podfile.properties.json directories during Prebuild.
+
+This config plugin configures how Prebuild command generates the native android and ios directories
+and therefore cannot be used with projects that don't run npx expo prebuild (bare projects).
+
+## Installation
+
+TerminalnpmyarnpnpmbunCopy
+
+- npx expo install expo-build-properties
+
+- yarn expo install expo-build-properties
+
+- pnpm expo install expo-build-properties
+
+- bun expo install expo-build-properties
+
+If you are installing this in an existing React Native app, make sure to install expo in your project.
+
+## Usage
+
+### Example app.json with config plugin
+
+app.json
+
+app.config.js
+
+app.jsonCopy
+
+{
+"expo": {
+"plugins": [
+[
+"expo-build-properties",
+{
+"android": {
+"compileSdkVersion": 37,
+"targetSdkVersion": 36,
+"buildToolsVersion": "37.0.0"
+},
+"ios": {
+"deploymentTarget": "16.4"
+}
+}
+]
+]
+}
+}
+
+app.config.jsCopy
+
+export default {
+expo: {
+plugins: [
+[
+'expo-build-properties',
+{
+android: {
+compileSdkVersion: 37,
+targetSdkVersion: 36,
+buildToolsVersion: '37.0.0',
+},
+ios: {
+deploymentTarget: '16.4',
+},
+},
+],
+],
+},
+};
+
+### All configurable properties
+
+PluginConfigType interface represents currently available configuration properties.
+
+## API
+
+## Methods
+
+### BuildProperties.resolveConfigValue(config, platform, key)
+Android
+iOS
+tvOS
+
+Parameter | Type |
+config | PluginConfigType |
+platform | 'android' | 'ios' |
+key | K |
+
+Resolves a shared config value with platform-specific override.
+Platform-specific values take precedence over top-level values.
+Returns:
+SharedBuildConfigFields[K]
+
+### BuildProperties.withBuildProperties(config, props)
+Android
+iOS
+tvOS
+
+Parameter | Type | Description |
+config | ExpoConfig | Expo config for application.
+
+|
+props | PluginConfigType | Configuration for the build properties plugin.
+
+|
+
+Config plugin allowing customizing native Android and iOS build properties for managed apps.
+Returns:
+ExpoConfig
+
+## Interfaces
+
+### AndroidMavenRepository
+Android
+
+Property | Type | Description |
+authentication(optional) | 'basic' | 'digest' | 'header' | The authentication scheme to use when accessing the Maven repository.
+
+|
+credentials(optional) | AndroidMavenRepositoryCredentials | The credentials to use when accessing the Maven repository.
+May be of type PasswordCredentials, HttpHeaderCredentials, or AWSCredentials.
+See: The authentication schemes section of Gradle documentation for more information.
+
+|
+url | string | The URL of the Maven repository.
+
+|
+
+### AndroidMavenRepositoryAWSCredentials
+Android
+
+The Android Maven repository credentials for AWS S3.
+
+Property | Type | Description |
+accessKey | string | The credential value. You can also pass "System.getenv('ENV_VAR_NAME')" to get the value from an environment variable.
+
+|
+secretKey | string | The credential value. You can also pass "System.getenv('ENV_VAR_NAME')" to get the value from an environment variable.
+
+|
+sessionToken(optional) | string | The credential value. You can also pass "System.getenv('ENV_VAR_NAME')" to get the value from an environment variable.
+
+|
+
+### AndroidMavenRepositoryHttpHeaderCredentials
+Android
+
+The Android Maven repository credentials that are passed as HTTP headers.
+
+Property | Type | Description |
+name | string | The credential value. You can also pass "System.getenv('ENV_VAR_NAME')" to get the value from an environment variable.
+
+|
+value | string | The credential value. You can also pass "System.getenv('ENV_VAR_NAME')" to get the value from an environment variable.
+
+|
+
+### AndroidMavenRepositoryPasswordCredentials
+Android
+
+The Android Maven repository credentials for basic authentication.
+
+Property | Type | Description |
+password | string | The credential value. You can also pass "System.getenv('ENV_VAR_NAME')" to get the value from an environment variable.
+
+|
+username | string | The credential value. You can also pass "System.getenv('ENV_VAR_NAME')" to get the value from an environment variable.
+
+|
+
+### ExtraIosPodDependency
+iOS
+
+Interface representing extra CocoaPods dependency.
+See: Podfile syntax reference
+
+Property | Type | Description |
+branch(optional) | string | The git branch to fetch. See the git property for more information.
+
+|
+commit(optional) | string | The git commit to fetch. See the git property for more information.
+
+|
+configurations(optional) | string[] | Build configurations for which the pod should be installed.
+Example
+['Debug', 'Release']
+
+|
+git(optional) | string | Use the bleeding edge version of a Pod.
+Example
+{
+"name": "AFNetworking",
+"git": "https://github.com/gowalla/AFNetworking.git",
+"tag": "0.7.0"
+}
+
+This acts like to add this pod dependency statement:
+
+pod 'AFNetworking', :git => 'https://github.com/gowalla/AFNetworking.git', :tag => '0.7.0'
+
+|
+modular_headers(optional) | boolean | Whether this pod should use modular headers.
+
+|
+name | string | Name of the pod.
+
+|
+path(optional) | string | Custom local filesystem path to add the dependency.
+Example
+~/Documents/AFNetworking
+
+|
+podspec(optional) | string | Custom podspec path.
+Example
+https://example.com/JSONKit.podspec
+
+|
+source(optional) | string | Custom source to search for this dependency.
+Example
+https://github.com/CocoaPods/Specs.git
+
+|
+tag(optional) | string | The git tag to fetch. See the git property for more information.
+
+|
+testspecs(optional) | string[] | Test specs can be optionally included via the :testspecs option. By default, none of a Pod's test specs are included.
+Example
+['UnitTests', 'SomeOtherTests']
+
+|
+version(optional) | string | Version of the pod.
+CocoaPods supports various versioning options.
+Example
+~> 0.1.2
+
+|
+
+### PluginConfigType
+Android
+iOS
+tvOS
+
+Extends: SharedBuildConfigFields
+Interface representing base build properties configuration.
+
+Property | Type | Description |
+android(optional) | PluginConfigTypeAndroid | Only for: Android
+
+Interface representing available configuration for Android native build properties.
+
+|
+ios(optional) | PluginConfigTypeIos | Only for: iOS
+
+Interface representing available configuration for iOS native build properties.
+
+|
+
+### PluginConfigTypeAndroid
+Android
+
+Extends: SharedBuildConfigFields
+Interface representing available configuration for Android native build properties.
+
+Property | Type | Description |
+buildArchs(optional) | string[] | Override the default reactNativeArchitectures list of ABIs to build in gradle.properties.
+Default:["armeabi-v7a", "arm64-v8a", "x86", "x86_64"]
+See: Android documentation for more information.
+
+Example
+["arm64-v8a", "x86_64"]
+
+|
+buildFromSource(optional) | boolean | Deprecated: Use buildReactNativeFromSource instead.
+
+Enable building React Native from source. Turning this on will significantly increase the build times.
+Default:false
+
+|
+buildToolsVersion(optional) | string | Override the default buildToolsVersion version number in build.gradle.
+
+|
+cmakeVersion(optional) | string | Override the CMake version, applied to the app and all autolinked native modules.
+
+|
+compileSdkVersion(optional) | number | Override the default compileSdkVersion version number in build.gradle.
+
+|
+enableBundleCompression(optional) | boolean | Enable JavaScript Bundle compression. Turning this on will result in a smaller APK size but may have slower app startup times.
+Default:false
+See: Faster App Startup
+
+|
+enableMinifyInReleaseBuilds(optional) | boolean | Enable R8 in release builds to obfuscate Java code and reduce app size.
+
+|
+enablePngCrunchInReleaseBuilds(optional) | boolean | Enable crunchPngs in release builds to optimize PNG files.
+This property is enabled by default, but "might inflate PNG files that are already compressed", so you may want to disable it if you do your own PNG optimization.
+Default:true
+
+|
+enableShrinkResourcesInReleaseBuilds(optional) | boolean | Enable shrinkResources in release builds to remove unused resources from the app.
+This property should be used in combination with enableMinifyInReleaseBuilds.
+
+|
+exclusiveMavenMirror(optional) | string | Specifies a single Maven repository to be used as an exclusive mirror for all dependency resolution.
+When set, all other Maven repositories will be ignored and only this repository will be used to fetch dependencies.
+See: Using a Maven Mirror
+
+|
+extraMavenRepos(optional) | (string | AndroidMavenRepository)[] | Add extra maven repositories to all gradle projects.
+
+Takes an array of objects or strings.
+Strings are passed as the url property of the object with no credentials or authentication scheme.
+
+This adds the following code to android/build.gradle:
+
+allprojects {
+repositories {
+maven {
+url "https://foo.com/maven-releases"
+}
+}
+
+By using an AndroidMavenRepository object, you can specify credentials and an authentication scheme.
+
+allprojects {
+repositories {
+maven {
+url "https://foo.com/maven-releases"
+credentials {
+username = "bar"
+password = "baz"
+}
+authentication {
+basic(BasicAuthentication)
+}
+}
+}
+}
+
+See: Gradle documentation
+
+|
+extraProguardRules(optional) | string | Append custom Proguard rules to android/app/proguard-rules.pro.
+
+|
+gifEnabled(optional) | boolean | Enable GIF support in React Native's <Image> component. This property does not affect
+expo-image, which uses Glide on Android.
+Default:true
+See: Optimizing app size
+
+|
+kotlinVersion(optional) | string | Override the Kotlin version used when building the app.
+
+|
+manifestQueries(optional) | PluginConfigTypeAndroidQueries | Specifies the set of other apps that an app intends to interact with. These other apps are specified by package name,
+by intent signature, or by provider authority.
+See: Android documentation
+
+|
+minSdkVersion(optional) | number | Override the default minSdkVersion version number in build.gradle.
+
+|
+networkInspector(optional) | boolean | Enable the Network Inspector.
+Default:true
+
+|
+packagingOptions(optional) | PluginConfigTypeAndroidPackagingOptions | Interface representing available configuration for Android Gradle plugin PackagingOptions.
+
+|
+targetSdkVersion(optional) | number | Override the default targetSdkVersion version number in build.gradle.
+
+|
+useDayNightTheme(optional) | boolean | Changes the apps theme to a DayNight variant to correctly support dark mode.
+See: Android documentation
+
+|
+useLegacyPackaging(optional) | boolean | Instructs the Android Gradle plugin to compress native libraries in the APK using the legacy packaging system.
+Default:false
+See: Android documentation
+
+|
+usePrecompiledHeaders(optional) | boolean | Enable precompiled headers (PCH) for Android native builds.
+When enabled, creates a custom CMakeLists.txt with PCH support for all autolinked
+native libraries, significantly speeding up C++ compilation by pre-compiling
+commonly used React Native headers.
+
+Can also be enabled by setting the EXPO_USE_ANDROID_PRECOMPILED_HEADERS=1 environment variable.
+
+Note: This feature is experimental and might not work with all native libraries.
+
+Default:false
+
+|
+usesCleartextTraffic(optional) | boolean | Indicates whether the app intends to use cleartext network traffic.
+
+For Android 8 and below, the default platform-specific value is true.
+For Android 9 and above, the default platform-specific value is false.
+See: Android documentation
+
+|
+webpAnimated(optional) | boolean | Enable animated WebP support in React Native's <Image> component. Requires webpEnabled
+to also be true. iOS does not support animated WebP via React Native's <Image>.
+Default:false
+See: Optimizing app size
+
+|
+webpEnabled(optional) | boolean | Enable WebP support in React Native's <Image> component. This property does not affect
+expo-image, which uses Glide on Android.
+Default:true
+See: Optimizing app size
+
+|
+
+### PluginConfigTypeAndroidPackagingOptions
+Android
+
+Interface representing available configuration for Android Gradle plugin PackagingOptions.
+
+Property | Type | Description |
+doNotStrip(optional) | string[] | Array of patterns for native libraries that should not be stripped of debug symbols.
+
+|
+exclude(optional) | string[] | Array of patterns for native libraries that should be excluded from being packaged in the APK.
+
+|
+merge(optional) | string[] | Array of patterns for native libraries where all occurrences are concatenated and packaged in the APK.
+
+|
+pickFirst(optional) | string[] | Array of patterns for native libraries where only the first occurrence is packaged in the APK.
+
+|
+
+### PluginConfigTypeAndroidQueries
+Android
+
+Property | Type | Description |
+intent(optional) | PluginConfigTypeAndroidQueriesIntent[] | Specifies an intent filter signature. Your app can discover other apps that have matching <intent-filter> elements.
+These intents have restrictions compared to typical intent filter signatures.
+See: Android documentation for more information.
+
+|
+package(optional) | string[] | Specifies one or more apps that your app intends to access. These other apps might integrate with your app, or your app might use services that these other apps provide.
+
+|
+provider(optional) | string[] | Specifies one or more content provider authorities. Your app can discover other apps whose content providers use the specified authorities.
+There are some restrictions on the options that you can include in this <provider> element, compared to a typical <provider> manifest element.
+You may only specify the android:authorities attribute.
+
+|
+
+### PluginConfigTypeAndroidQueriesData
+Android
+
+Property | Type | Description |
+host(optional) | string | Specify a URI authority host that is handled
+
+|
+mimeType(optional) | string | Specify a MIME type that is handled
+
+|
+scheme(optional) | string | Specify a URI scheme that is handled
+
+|
+
+### PluginConfigTypeAndroidQueriesIntent
+Android
+
+Property | Type | Description |
+action(optional) | string | A string naming the action to perform. Usually one of the platform-defined values, such as SEND or VIEW.
+See: Android documentation for more information.
+
+|
+category(optional) | string | string[] | Provides an additional way to characterize the activity handling the intent,
+usually related to the user gesture or location from which it's started.
+
+|
+data(optional) | PluginConfigTypeAndroidQueriesData | A description of the data associated with the intent.
+
+|
+
+### PluginConfigTypeIos
+iOS
+
+Extends: SharedBuildConfigFields
+Interface representing available configuration for iOS native build properties.
+
+Property | Type | Description |
+ccacheEnabled(optional) | boolean | Enable C++ compiler cache for iOS builds.
+
+This speeds up compiling C++ code by caching the results of previous compilations.
+See: React Native's documentation on local caches and
+Ccache documentation.
+
+|
+deploymentTarget(optional) | string | Deprecated: use built-in ios.deploymentTarget property instead (SDK 56 and greater).
+
+Override the default iOS "Deployment Target" version in the following projects:
+
+- in CocoaPods projects,
+
+- PBXNativeTarget with "com.apple.product-type.application" productType in the app project.
+
+|
+enableSceneSupport(optional) | boolean | Adopt the UIKit scene lifecycle in an Expo SDK 57 iOS project, as required by the iOS 27 SDK (Xcode 27).
+When true, the AppDelegate exposes its ExpoReactNativeFactory, React Native startup moves to Expo's
+scene delegate, and the scene manifest is added to Info.plist. When false, these changes are reverted.
+
+Only the standard SDK 57 Swift AppDelegate template is supported. Requires Expo SDK 57.0.23 or newer.
+
+Expo SDK 58 and newer include scene lifecycle support, so this property is no longer required and can be removed.
+
+|
+extraPods(optional) | ExtraIosPodDependency[] | Add extra CocoaPods dependencies for all targets.
+
+This configuration is responsible for adding the new Pod entries to ios/Podfile.
+Example
+Creating entry in the configuration like below:
+
+[
+{
+name: "Protobuf",
+version: "~> 3.14.0",
+}
+]
+
+Will produce the following entry in the generated ios/Podfile:
+
+pod 'Protobuf', '~> 3.14.0'
+
+|
+forceStaticLinking(optional) | string[] | List of CocoaPods that should be linked statically instead of as frameworks.
+
+This is only relevant when use_frameworks! is enabled. Some pods—
+especially React Native prebuilt binaries—can fail due to modular header
+issues when built as dynamic frameworks. Declaring them here ensures they
+are linked statically, avoiding those compatibility problems.
+
+This property is consumed by the use_expo_modules function in
+expo-modules-autolinking.
+
+|
+networkInspector(optional) | boolean | Enable the Network Inspector.
+Default:true
+
+|
+privacyManifestAggregationEnabled(optional) | boolean | Enable aggregation of Privacy Manifests (PrivacyInfo.xcprivacy) from
+CocoaPods resource bundles. If enabled, the manifests will be merged into a
+single file. If not enabled, developers will need to manually aggregate them.
+See: Privacy manifests guide
+and Apple's documentation on Privacy manifest files.
+
+|
+useFrameworks(optional) | 'static' | 'dynamic' | Enable use_frameworks!
+in Podfile to use frameworks instead of static libraries for Pods.
+
+|
+usePrecompiledModules(optional) | boolean | Enable using precompiled Expo modules (XCFrameworks) instead of building from source.
+When enabled, sets the EXPO_USE_PRECOMPILED_MODULES environment variable to 1
+during pod install, which causes matching modules to be linked as vendored frameworks.
+Default:true
+
+|
+
+### SharedBuildConfigFields
+Android
+iOS
+tvOS
+
+Shared build configuration fields that can be set at the top level
+or overridden per-platform. Platform-specific values take precedence.
+
+Property | Type | Description |
+buildReactNativeFromSource(optional) | boolean | Enable building React Native from source. Turning this on will significantly increase the build times.
+
+On iOS, this controls support for precompiled React Native iOS dependencies (ReactNativeDependencies.xcframework).
+Setting this value to true will enable building React Native from source and disable the use of precompiled xcframeworks.
+This feature is available from React Native 0.80 and later when using the new architecture.
+From React Native 0.81, this setting will also control the use of a precompiled React Native Core (React.xcframework).
+Default:false
+See: Precompiled React Native for iOS: Faster builds are coming in 0.81 for more information.
+
+|
+reactNativeReleaseLevel(optional) | 'stable' | 'canary' | 'experimental' | The React Native release level to use for the project.
+This can be used to enable different sets of internal React Native feature flags.
+Default:'stable'
+
+|
+useHermesV1(optional) | boolean | Enable Hermes V1 engine. Turning on will provide faster startup times, improved runtime
+performance, and reduced memory usage.
+
+Hermes V1 is the default JavaScript engine starting in React Native 0.84.
+Set this to false to use the legacy Hermes engine instead, which also
+requires setting buildReactNativeFromSource to true.
+Default:true
+See: Hermes V1 as Default
+
+|
+
+## Types
+
+### AndroidMavenRepositoryCredentials
+Android
+
+Literal type: union
+
+Acceptable values are: AndroidMavenRepositoryPasswordCredentials | AndroidMavenRepositoryHttpHeaderCredentials | AndroidMavenRepositoryAWSCredentials

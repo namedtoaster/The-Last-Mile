@@ -1,0 +1,232 @@
+Source: https://support.google.com/googleplay/android-developer/answer/14151465
+Fetched: 2026-10-12
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+# App testing requirements for new personal developer accounts
+This article provides developers with personal Google Play Console accounts created after November 13, 2023, with an overview of required testing workflows, available testing tracks, and guidance for applying for production access. Before you can make your app publicly available to users on Google Play, you must fulfill minimum testing requirements and complete your app setup in Play Console.
+
+## Testing requirements for personal accounts
+
+Testing is an integral part of the app development process. By running tests against your app consistently, you can verify your app's correctness, functional behavior, and usability before releasing it publicly. This minimizes technical and user experience issues and helps you to release the best version of your app. Developers who regularly use Play Console testing tools prior to publishing provide higher quality experiences that can lead to higher ratings and greater success on Google Play.
+
+Google Play requires personal developer accounts created after November 13, 2023, to test their apps before those apps are eligible for distribution on Google Play. Certain features in Play Console, such as Production (Test and release > Production) and Pre-registration (Test and release > Testing > Pre-registration), remain disabled until developers meet these testing requirements.
+
+### Overview of testing requirements
+
+Developers with personal accounts created after November 13, 2023, must run a closed test for their app with a minimum of 12 testers who have been opted in continuously for at least 14 days. When you meet these criteria, you can apply for production access on the Dashboard in Play Console to distribute your app on Google Play. When you apply, you answer questions to help clarify your app design, testing process, and production readiness.
+
+Review the following sections for details about testing tracks, track requirements, and the production access process..
+
+## Testing tracks and requirements
+
+Play Console provides different testing tracks so that you can gradually ramp up testing and improve your app before reaching users on Google Play.
+
+- Internal testing: Before completing your app setup, you can quickly distribute builds to a small group of trusted testers. This helps identify issues and gather early feedback. Builds are normally available to testers within seconds of being added in Play Console. Internal testing is optional, but recommended as a starting point.
+
+- Closed testing: With closed testing, you can share your app with a targeted group of users that you control. This allows you to fix issues and ensure that your app complies with Google Play policy before launch. You must run a closed test before applying to publish your app to production. At least 12 testers must be opted in to your closed test when you apply for production access, and they must have been opted in continuously for the preceding 14 days. You can start a closed test after completing your app setup.
+
+- Open testing: Surfaces your app's test version on Google Play, allowing anyone to join your testing program and submit private feedback. Before selecting this option, verify that your app and store listing are ready for public visibility on Google Play. Open testing becomes available after you gain production access.
+
+- Production: Makes your app available to users on Google Play. Before applying for production access, you must run a closed test that meets Google Play criteria. When applying, you must answer questions about your closed test. At least 12 testers must be opted in to your closed test continuously for the preceding 14 days when you apply for production access.
+
+Summary of testing requirements per track
+
+Refer to the following table to review the purpose and access requirements for each testing track.
+
+Track type |
+Purpose |
+Requirements to access track |
+
+Internal testing |
+Distribute builds to a small group of trusted testers to identify issues and get early feedback (before or after completing app setup). |
+None. |
+
+Closed testing |
+Share your app with a wide group of users that you control to fix issues and ensure compliance with Google Play policies before launch. |
+Complete app setup. |
+
+Open testing |
+
+Surface your app's test version on Google Play so anyone can join your test and submit private feedback.
+
+|
+Gain access to production. |
+
+Production |
+Make your app available to users on Google Play. |
+
+Run a closed test with at least 12 opted-in testers continuously for 14 days. Once criteria are met, apply for production access in Play Console by answering some questions about your testing, your app, and its production readiness.
+
+|
+
+## Best practices for closed testing
+
+To design, develop, and distribute Android apps, refer to the following resources and guidance:
+
+### Tester recruitment
+
+The most common way to recruit testers is to use personal and professional networks. Reach out to friends, family, colleagues, or classmates to ask them to test your app. Connect with communities where potential users exist to recruit active testers. For example, if you build an app for fitness enthusiasts, consider approaching local clubs or connecting with your target users in online groups. You can also post about your app on social media and invite followers to sign up for testing.
+
+Recruit a diverse group of testers to identify bugs and usability issues that might affect specific user groups or device types. Recruit testers who represent your app's intended future audience. For example, if you develop a productivity app for businesses, recruit business professionals from various target industries. The closer your test users align with your target audience, the more useful feedback you receive.
+
+### Tester engagement
+
+Provide beta testers with clear instructions on how to test your app and report bugs. Specify the type of feedback you want to collect. Encourage testers to use as many features as possible to provide holistic feedback.
+
+Provide a clear feedback channel, such as email, a website, or a messaging forum. Testers can also provide private feedback directly through Google Play.
+
+Important: Inform your testers that they need to remain opted in to your closed test continuously for at least 14 days.
+
+### User feedback collection and review
+
+To view and respond to user feedback in Play Console, follow these steps:
+
+- Sign in to Play Console, select your app, and go to the Testing feedback page (Monitor and improve > Ratings and reviews > Testing feedback).
+
+- Select how you want to browse feedback:
+
+- Filter: To view feedback based on criteria such as date, language, reply state, app version, or device type, select from the available filter options.
+
+- Search: To search for specific keywords in user feedback, use the search box.
+
+Tip: Maintain a record of received feedback. Reviewing feedback regularly helps identify recurring themes and prioritize future improvements. You must summarize your testing feedback when applying for production access.
+
+### Act on user feedback
+
+Throughout your testing period, respond to tester feedback and resolve identified bugs to achieve the following goals:
+
+- Improve your app's user experience
+
+- Increase the likelihood of a successful production access application
+
+- Reduce negative reviews when distributing your app on Google Play
+
+### Advanced testing resources
+
+The guidance in this article serves as a baseline for understanding core testing workflows. Explore advanced testing techniques to optimize app quality as your development process evolves. For details, see testing apps on Android and the fundamentals of testing on the Android Developers site.
+
+Play Console provides tools to help identify technical issues. Set up and run a pre-launch report to proactively identify issues before reaching users through a detailed report listing warnings, errors, and performance issues.
+
+## Run closed tests
+
+To learn how to set up and configure a closed test, see Set up an open, closed, or internal test.
+
+## Apply for production access
+
+To apply for production access after fulfilling closed testing requirements, do the following:
+
+- Open the Dashboard in Play Console.
+
+- Click Apply for production.
+
+Answer the required questions about your closed test, your app, and its production readiness. The application form contains three sections:
+
+- 'About your closed test'
+
+- 'About your app/game'
+
+- 'About your production readiness'
+
+Refer to the following sections for details on completing each part of the application.
+
+Part 1: About your closed test
+
+Information provided in the 'About your closed test' section helps verify that apps have been thoroughly tested before publication on Google Play. This process protects users from low-quality apps, prevents malware distribution, and reduces fraud.
+
+To complete this section, follow these steps:
+
+- Select an option indicating how easy it was to recruit testers for your app.
+
+- Provide details about tester engagement during your closed test, including:
+
+- Whether testers used all available app features
+
+- Whether tester usage matched expected production user behavior, including details on any observed differences
+
+- Summarize the feedback received from testers and describe how feedback was collected.
+
+- Click Next.
+
+Important: If you click Discard or leave the page without clicking Next, your changes are not saved.
+
+Part 2: About your app/game
+
+Information provided in the 'About your app/game' section provides context about your app or game. Your answers are not displayed publicly on Google Play and do not affect app visibility, Play Console feature access, or eligibility for developer programs.
+
+To complete this section, follow these steps:
+
+- Specify the target audience for your app or game. Be as specific as possible.
+
+- Describe your app or game value proposition:
+
+- For apps: Describe how your app provides value to users. For details, see app quality on Google Play on the Android Developers site.
+
+- For games: Describe what makes your game unique.
+
+- Select an estimated install range for your app or game during its first year.
+
+- Click Next.
+
+Important: If you click Discard or leave the page without clicking Next, your changes are not saved.
+
+Part 3: About your production readiness
+
+Information provided in the 'About your production readiness' section helps evaluate whether your app or game is prepared for production release.
+
+To complete this section, follow these steps:
+
+- Describe any changes made to your app or game based on what you learned from your closed test.
+
+- Describe how you determined that your app or game was ready for production.
+
+- Click Apply.
+
+- Important: If you click Discard or quit without applying for production access, your changes won't be saved.
+
+Important: If you click Discard or leave the page without clicking Apply, your changes are not saved.
+
+## Next steps after applying for production access
+
+After you submit your application for production access, Google reviews your submission. When the review completes, an email notification is sent to the account owner. Review usually takes seven days or less, but can occasionally take longer.
+
+If your app requires additional testing, you may need to continue running your closed test. Reasons for required continued testing include having fewer than 12 opted-in testers or insufficient tester engagement during the testing period.
+
+### Ensure policy compliance
+
+It is your responsibility to ensure your app is fully compliant with all Google Play Developer Content Policies before submitting it for production access. Google evaluates production apps for policy adherence, but review is not a troubleshooting step. Submitting non-compliant apps expecting reviewers to identify issues leads to rejections, review delays, and lengthier appeal processes.
+
+Before applying, double-check that your app adheres to all policy requirements, paying close attention to these common areas:
+
+- App content and features: Verify that all content, features, and monetization models comply with Google Play policies.
+
+- App targeting and content rating: Confirm that your target age group and store listing settings accurately reflect your app's target audience and content.
+
+- Functional reliability: Ensure your app is stable and free from broken functionality, crashes, or missing screens.
+
+- Test credentials: If your app requires user authentication, provide valid, working login credentials in Play Console so reviewers can fully test your app's features.
+
+### Application review outcomes
+
+When your application is approved, you can access your app's Production page (Test and release > Production) and distribute your app to users on Google Play. You can also access Open testing (Test and release > Testing > Open testing). Continue testing your app thoroughly before publishing production updates.
+
+## Frequently asked questions
+
+What does continuous 14-day opt-in mean for testers?
+
+Testers who opt in, test for fewer than 14 days, and then opt out do not count toward the requirement. If a tester opts out and opts back in later, the 14 days must be consecutive to count toward the minimum requirement of 12 continuous opted-in testers.
+
+Are there additional testing best practices?
+
+Continue running closed tests while resolving user-reported issues and bugs. Updating your app in closed testing before releasing to production helps minimize low ratings and negative reviews.
+
+Consider inviting closed testers to a messaging group where feedback can be shared among participants. Testers can provide context that helps you prioritize app or game updates.
+
+In addition to fixing crashes and technical bugs, evaluate the overall user experience. For details, see Build high-quality apps and games.
+
+Are there Play Console resources to help me succeed on Google Play?
+
+To explore Play Console's features and news, visit the Google Play Console site. You can also complete free online training courses for app developers on Google Play Academy.
+
+## Was this helpful?
+How can we improve it?
+YesNo

@@ -1,0 +1,1523 @@
+Source: https://support.google.com/googleplay/android-developer/answer/10787469
+Fetched: 2026-10-12
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+# Provide information for Google Play's Data safety section
+Google Play's Data safety section provides developers with a transparent way to show users if and how they collect, share, and protect user data, before users install an app. Developers are required to tell us about their apps' privacy and security practices by completing a form in Play Console. This information is then shown on your app's store listing on Google Play.
+
+This article provides an overview of the Data safety form requirements, guidance for completing the form, and information about any recent or upcoming changes.
+
+Collapse all Expand all
+
+## Overview
+
+The Data safety section on Google Play is a simple way for you to help people understand what user data your app collects or shares, and to showcase your app’s key privacy and security practices. This information helps users make more informed choices when deciding which apps to install.
+
+All developers must declare how they collect and handle user data for the apps they publish on Google Play, and provide details about how they protect this data through security practices like encryption. This includes data collected and handled through any third-party libraries or SDKs used in their apps. You may want to refer to your SDK providers’ published Data safety information for details. Check Google Play SDK Index to see if your provider has provided a link to their guidance.
+
+You can provide this information through the Data safety form on the App content page in Play Console. After you complete and submit the Data safety form, Google Play reviews the information you provide as part of the app review process. It's then shown on your store listing to help Google Play users understand how you collect and share data before they download your app.
+
+You alone are responsible for making complete and accurate declarations in your app’s store listing on Google Play. Google Play reviews apps across all policy requirements; however we cannot make determinations on behalf of the developers of how they handle user data. Only you possess all the information required to complete the Data safety form. When Google becomes aware of a discrepancy between your app behavior and your declaration, we may take appropriate action, including enforcement action.
+
+You can expand the section below to see how your store listing looks to Google Play users, and notifications and updates users may see if you make certain changes to your app's Data safety section.
+
+What users will see if your app shares user data
+
+Note: Images are examples and subject to change
+
+What users will see if your app doesn't collect or share any user data
+
+Users will see the following information if your app doesn't collect or share any user data with other companies or organizations:
+
+Users will see the following information if your app doesn't share any user data with other companies or organizations:
+
+Note: Images are examples and subject to change
+
+### Which developers need to complete the Data safety form in Play Console?
+
+All developers that have an app published on Google Play must complete the Data safety form, including apps on closed, open, or production testing tracks. This also applies to pregranted and preloaded apps that update through Google Play.
+
+Apps that are active on internal testing tracks are exempt from inclusion in the data safety section. Apps that are exclusively active on this track do not need to complete the Data safety form.
+
+Even developers with apps that do not collect any user data must complete this form and provide a link to their privacy policy. In this case, the completed form and privacy policy can indicate that no user data is collected or shared.
+
+System services and private apps do not need to complete the Data safety form.
+
+While a global form is required for each app defined at the app package level, developers may exclude old artifacts from their form. This is applicable for artifacts with effective target SdkVersion below 21 where the majority of the app’s active user install base (90%+) is on artifacts with effective target SdkVersion 21 or higher.
+
+## Getting your information ready
+
+Before you provide information for Google Play's Data safety section, we recommend that you:
+
+- Read and understand the requirements for completing the Data safety form in Play Console and complying with our User Data policy.
+
+- Ensure that you've added a privacy policy; this is required to complete the Data safety form and have your data safety information shown to users.
+
+- Review how your app collects and shares user data and your app’s security practices. In particular, check your app’s declared permissions and the APIs that your app uses.
+
+- In addition to reviewing how your app collects and shares user data, you should also review how any third-party code (such as third-party libraries or SDKs) in your app collects and shares such data. It's your responsibility to ensure that any such code used in your app is compliant with Play Developer Program policies. You must reflect data collection or sharing carried out by such third-party code in the Data safety form for your app.
+
+- Watch the Google Play PolicyBytes Data safety form walkthrough video below, which takes you through all the resources and steps required to complete the Data safety form.
+
+Watch the Data safety form walkthrough video
+
+This video takes you through all the resources and steps required to complete the Data safety form.
+
+Google Play PolicyBytes - Data safety form walkthrough
+
+## What developers need to disclose in the Data safety form
+
+This section explains what information you need to disclose in the Data safety form in Play Console, and lists the user data types and purposes you can select.
+
+### What developers need to declare across data types
+
+Click on the sections below to expand or collapse them.
+
+Data collection
+
+"Collect" means transmitting data from your app off a user’s device. Please note the following guidelines:
+
+- Libraries and SDKs: This includes user data transmitted off device from your app by libraries and/or SDKs used in your app, irrespective of whether data is transmitted to you or a third-party server.
+
+- Webview: It also includes user data collected from a webview which has been opened from your app, if your app is in control of the code/behavior delivered through that webview.
+
+- You do not need to declare data collection from a webview in which users are navigating the open web.
+
+- Ephemeral processing: User data transmitted off device that is processed ephemerally needs to be included in your form response, but if it meets the standard below, it will not be disclosed in your app’s Data safety section on Google Play.
+
+- Processing data "ephemerally" means accessing and using it while the data is only stored in memory and retained for no longer than necessary to service the specific request in real-time.
+
+- For example, a weather app that transmits user location off the device to fetch the current weather at the user's location but only uses location data in memory and does not store that data once the request has been fulfilled, can treat its transient use of location as ephemeral. However, using data to build advertising profiles or other user profiles cannot be treated as ephemeral and must be declared as collection or sharing for the relevant purposes.
+
+- Pseudonymous data: User data collected pseudonymously must be disclosed. For example, data that can reasonably be re-associated with a user must be disclosed.
+
+#### Not in scope for data collection
+
+The following use cases do not need to be disclosed as collected:
+
+- On-device access/processing: User data accessed by your app that is only processed locally on the user’s device and not sent off device does not need to be disclosed.
+
+- End-to-end encryption: User data that is sent off device, but that is unreadable by you or anyone other than the sender and recipient as a result of end-to-end encryption does not need to be disclosed.
+
+- The encrypted data must not be readable by any intermediary entity, including the developer, and only sender and recipient may have necessary keys.
+
+Data sharing
+
+"Sharing" refers to transferring user data collected from your app to a third party. This includes user data transferred:
+
+- Off-device, such as server to server transfers. For example, if you transfer user data collected from your app from your server to a third-party server.
+
+- On-device transfer to another app. Transferring user data from your app to another app directly on the device. In this case, you must disclose data sharing in your Data safety section declarations even if your app does not transmit the data off the user’s device.
+
+- From your app libraries and SDKs. Transferring data collected from your app off a user’s device directly to a third party via libraries and/or SDKs included in your app.
+
+- From webview which has been opened through your app. Transferring user data to a third party via a webview which has been opened from your app, if your app is in control of code/behavior delivered through that webview.
+
+- You do not need to declare data sharing from a webview in which users are navigating the open web.
+
+The following types of data transfers do not need to be disclosed as "sharing":
+
+- Service providers. Transferring user data to a "service provider" that processes it on behalf of the developer.
+
+- "Service provider" means an entity that processes user data on behalf of the developer and based on the developer’s instructions.
+
+- Legal purposes. Transferring user data for specific legal purposes, such as in response to a legal obligation or government requests.
+
+- User-initiated action or prominent disclosure and user consent. Transferring user data to a third party based on a specific user-initiated action, where the user reasonably expects the data to be shared, or based on a prominent in-app disclosure and consent that meets the requirements described in our User Data policy.
+
+- Anonymous data. Transferring user data that has been fully anonymized so that it can no longer be associated with an individual user.
+
+First and third parties.
+
+- "First party" means the primary organization responsible for processing data collected by the app, which is typically the organization publishing the app on Google Play and appearing on the store listing.
+
+- The first party has an obligation to make reasonably clear to users which organization is primarily responsible for processing data collected by the app.
+
+- "Third party" means any organization other than the first party or its service providers.
+
+Data handling
+
+You can also disclose whether each data type collected by your app is "optional" or "required." "Optional" includes the ability to opt into or opt out of data collection. For example, you can declare a data type as "optional" where a user has control over its collection and can use the app without providing it; or where a user chooses whether to manually provide that data type. If your app’s primary functionality requires the data type, you should declare that data as "required."
+
+You can declare that your app collects certain data optionally only if all users – regardless of device or region – can either optionally provide information, opt-out, or opt-in to have the data collected.
+
+Examples of optional data collection include:
+
+- A social media app that asks for a user's birthday for marketing communication, but that info is not required – the user can still sign up without providing that information.
+
+- User data that is only collected when a user signs in where users have the ability to engage with the app without being signed-in.
+
+Other app and data disclosures
+
+The Data safety section is also an opportunity for you to showcase your app’s privacy and security practices to your users. For example, you can highlight the following information:
+
+- Encryption in transit: Is data collected or shared by your app using encryption in transit to protect the flow of user data from the end user’s device to the server.
+
+- Some apps are designed to let users transfer data to another site or service. For example, a messaging app may give users an option to send an SMS message through their mobile services provider, which maintains different encryption practices. These apps may declare in their Data safety section that data is transferred over a secure connection as long as they use best industry standards to safely encrypt data while it travels between a user’s device and the app’s servers.
+
+- Deletion request mechanism: Does your app provide a way for users to request deletion of their data?
+
+Committed to follow the Families policy (available March 2022 to applicable apps)
+
+Apps that have children as a target audience must follow Google Play's Families policy requirements. If your app falls in this category and you’ve reviewed its compliance with the Families policy requirements, you can choose to display a badge on your Data safety section stating that you have "Committed to follow the Play Families Policy."
+
+To display the badge, go to the "Security practices" section of your Data safety form and click Go to Target audience and content to opt-in
+
+Independent security review (available to all apps)
+
+You may choose to declare in your Data safety form that your app has been independently validated against a global security standard. This is an optional review undertaken and paid for by developers. Through MASA (Mobile Application Security Assessment) developers can work directly with a Google Authorized Lab to have their apps evaluated against OWASP’s MASVS (Mobile Application Security Verification Standard). The third-party organizations performing the reviews are doing so on the developer’s behalf.
+
+If you're interested in participating, you can contact a Google Authorized Lab directly to initiate the testing process. Once the lab has verified your app satisfies all security requirements, you can choose to display a badge on your Data safety section stating that you have completed the "Independent Security Review."
+
+Authorized Labs have a dedicated practice area around mobile app security and provide comprehensive security testing capabilities and experience. These labs also comply with ISO 17025 or an equivalent industry-recognized standard. If you meet this criteria and are interested in becoming a lab partner, please complete and submit this form with your company details.
+
+Important: This independent review may not be scoped to verify the accuracy and completeness of your Data safety declarations. Even if you use third-party tools to diagnose your app’s security controls, you remain solely responsible for making complete and accurate declarations in your app’s store listing on Google Play.
+
+Unified Payments Interface Badge (UPI)
+
+The Unified Payments Interface (UPI) is an instant money transfer system, developed by the National Payments Corporation of India (NPCI), a RBI-regulated entity. If you currently utilize this payments transfer system, you can choose to declare so in your Data safety form. If you are interested in participating or have questions, you can contact NCPI directly for eligibility criteria on how to have your app accredited. Apps with this accreditation may be eligible to display a badge on their Play Store listing verifying that NPCI has validated this app’s implementation of UPI. The badge will read "Offers Payments through UPI," and will not appear to users unless you indicate so by opting in within the Data safety form in Play Console. The badge is only visible to Google Play users based in India.
+
+### Data types and purposes
+
+Click on the sections below to expand or collapse them.
+
+Data types
+
+Developers will be asked to provide collection, sharing, and other practices for a range of user data types, as well as the purposes for which you use that data.
+
+Category |
+Data type |
+Description |
+
+Location
+
+|
+
+Approximate location
+
+|
+
+User or device physical location to an area greater than or equal to 3 square kilometers, such as the city a user is in, or location provided by Android’s ACCESS_COARSE_LOCATION permission.
+
+Note: Approximate location that is inferred, such as via IP address or Access Point Name, must be disclosed here.
+
+|
+
+Precise location
+
+|
+
+User or device physical location within an area less than 3 square kilometers, such as location provided by Android’s ACCESS_FINE_LOCATION permission.
+
+Note: Precise location that is inferred, such as via IP address or Access Point Name, must be disclosed here.
+
+|
+
+Personal info |
+Name |
+How a user refers to themselves, such as their first or last name, or nickname. |
+
+Email address |
+A user’s email address. |
+
+User IDs
+
+|
+Identifiers that relate to an identifiable person. For example, an account ID, account number, or account name. |
+
+Address
+
+|
+A user’s address, such as a mailing or home address. |
+
+Phone number
+
+|
+A user’s phone number. |
+
+Race and ethnicity
+
+|
+Information about a user’s race or ethnicity. |
+
+Political or religious beliefs
+
+|
+Information about a user’s political or religious beliefs. |
+
+Sexual orientation
+
+|
+Information about a user’s sexual orientation. |
+
+Other info
+
+|
+
+Any other personal information such as date of birth, gender identity, veteran status, etc.
+
+|
+
+Financial info
+
+|
+
+User payment info
+
+|
+Information about a user’s financial accounts such as credit card number. |
+
+Purchase history
+
+|
+Information about purchases or transactions a user has made. |
+
+Credit score
+
+|
+Information about a user’s credit score. |
+
+Other financial info
+
+|
+Any other financial information such as user salary or debts. |
+
+Health and fitness
+
+|
+
+Health info
+
+|
+Information about a user's health, such as medical records or symptoms. |
+
+Fitness info
+
+|
+Information about a user's fitness, such as exercise or other physical activity. |
+
+Messages
+
+|
+
+Emails
+
+|
+A user’s emails including the email subject line, sender, recipients, and the content of the email. |
+
+SMS or MMS
+
+|
+A user’s text messages including the sender, recipients, and the content of the message. |
+
+Other in-app messages
+
+|
+Any other types of messages. For example, instant messages or chat content. |
+
+Photos and videos
+
+|
+
+Photos
+
+|
+A user’s photos. |
+
+Videos
+
+|
+A user’s videos. |
+
+Audio files
+
+|
+
+Voice or sound recordings
+
+|
+A user’s voice such as a voicemail or a sound recording. |
+
+Music files
+
+|
+A user’s music files. |
+
+Other audio files
+
+|
+Any other user-created or user-provided audio files. |
+
+Files and docs
+
+|
+
+Files and docs
+
+|
+A user’s files or documents, or information about their files or documents such as file names. |
+
+Calendar
+
+|
+
+Calendar events
+
+|
+Information from a user’s calendar such as events, event notes, and attendees. |
+
+Contacts
+
+|
+
+Contacts
+
+|
+Information about the user’s contacts such as contact names, message history, and social graph information like usernames, contact recency, contact frequency, interaction duration and call history. |
+
+App activity
+
+|
+
+App interactions
+
+|
+
+Information about how a user interacts with the app. For example, the number of times they visit a page, screenshots taken, or sections they tap on.
+
+|
+
+In-app search history
+
+|
+Information about what a user has searched for in your app. |
+
+Installed apps
+
+|
+Information about the apps installed on a user's device. |
+
+Other user-generated content
+
+|
+Any other user-generated content not listed here, or in any other section. For example, user bios, notes, or open-ended responses. |
+
+Other actions
+
+|
+Any other user activity or actions in-app not listed here such as gameplay, likes, and dialog options. |
+
+Web browsing
+
+|
+
+Web browsing history
+
+|
+Information about the websites a user has visited. |
+
+App info and performance
+
+|
+
+Crash logs
+
+|
+Crash log data from your app. For example, the number of times your app has crashed, stack traces, or other information directly related to a crash. |
+
+Diagnostics
+
+|
+Information about the performance of your app. For example battery life, loading time, latency, framerate, or any technical diagnostics. |
+
+Other app performance data
+
+|
+Any other app performance data not listed here. |
+
+Device or other IDs
+
+|
+
+Device or other IDs
+
+|
+Identifiers that relate to an individual device, browser or app. For example, an IMEI number, MAC address, Widevine Device ID, Firebase installation ID, or advertising identifier. |
+
+Purposes
+
+Data purpose |
+Description |
+Example |
+
+App functionality |
+Used for features that are available in the app |
+For example to enable app features, or authenticate users. |
+
+Analytics |
+
+Used to collect data about how users use the app or how it performs
+
+|
+For example, to see how many users are using a particular feature, to monitor app health, to diagnose and fix bugs or crashes, or to make future performance improvements. |
+
+Developer communications |
+Used to send news or notifications about the app or the developer. |
+For example, sending a push notification to inform users about an important security update, or informing users about new features of the app. |
+
+Advertising or marketing |
+Used to display or target ads or marketing communications, or measuring ad performance |
+For example, displaying ads in your app, sending push notifications to promote other products or services, or sharing data with advertising partners. |
+
+Fraud prevention, security, and compliance |
+
+Used for fraud prevention, security, or compliance with laws.
+
+|
+
+For example, monitoring failed login attempts to identify possible fraudulent activity.
+
+|
+
+Personalization |
+Used to customize your app, such as showing recommended content or suggestions. |
+
+For example, suggesting playlists based on the user's listening habits or delivering local news based on the user’s location.
+
+|
+
+Account management |
+Used for the setup or management of a user’s account with the developer. |
+For example, to enable users to create accounts or add information to an account the developer provides for use across its services, log in to your app, or verify their credentials. |
+
+## Completing the Data safety form in Play Console
+
+You can tell us about your app’s privacy and security practices in the Data safety form on the App content page in Play Console.
+
+### Overview
+
+First, you'll be asked whether your app collects or shares certain types of user data. This is where you let us know whether your app collects or shares any of the required user data types. If it does, you'll be asked some questions about your privacy and security practices. If you're unsure about any of these questions, you can save your form as a draft at any time and return to it later.
+
+Next, you'll answer some questions about each type of user data. If your app does collect or share any of the required user data types, you'll be asked to select them. For each type of data, you'll be asked questions about how the data is used and handled.
+
+Before you submit, you'll see a preview of what will be shown to users on your store listing. After you submit, the information you provided will be reviewed by Google as part of the app review process.
+
+Google’s review process is not designed to verify the accuracy and completeness of your data safety declarations. While we may detect certain discrepancies in your declarations and we will be taking appropriate enforcement measures when we do, only you possess all the information required to complete the Data safety form. You alone are responsible for making complete and accurate declarations in your app’s store listing on Google Play.
+
+### Complete and submit your form
+
+When you're ready to start, here's how you complete and submit your Data safety form in Play Console:
+
+- Open Play Console and go to the App content page.
+
+- Under "Data safety," select Start.
+
+- Before you start the form, read the "Overview" section. This provides information about the questions you'll be asked, and the information you'll need to provide. When you've finished reading and are ready to get started, select Next to move on to the next section.
+
+- In the "Data collection and security" section, review the list of required user data types that you need to disclose. If your app collects or shares any of the required user data types, select Yes. If not, select No.
+
+- If you selected Yes, confirm the following by answering Yes or No:
+
+- Whether or not all of the user data collected by your app is encrypted in transit.
+
+- Whether or not you provide a way for users to request that their data is deleted.
+
+- Select Next to move on to the next section.
+
+- In the "Data types" section, select all of the user data types collected or shared by your app. When you're finished, select Next to move on to the next section. You must [complete this section in accordance with the data collection and sharing guidance above.
+
+- In the "Data usage and handling" section, answer questions about how the data is used and handled for each user data type your app collects or shares. Next to each user data type, select Start to answer the questions. When you're finished, select Next to move on to the next section.
+
+- Note: You can change the user data types that are selected by going back to the previous section and changing your selections.
+
+- After answering all questions, the "Store listing preview" section previews the information that will be shown to users on Google Play based on the form answers you've provided. Review this information.
+
+- If you're ready to submit your completed form, select Submit. If you want to go back and change something, you can select Back to amend your answers. If you're not sure about something, you can select Save as draft and return to the form later. If you select Discard changes, you'll need to start the form again.
+
+### Import or export your form responses
+
+You can export your form responses to a CSV file. You can also download a sample CSV, complete the form offline, and import your completed form from the CSV.
+
+Click here to download a sample CSV.
+
+Understand the CSV format
+
+The CSV contains one row per response. Responses for multiple choice and single choice questions span multiple rows, matching the number of available choices. To respond to a question, enter TRUE or FALSE in the corresponding cell in the "Response value" column, or you can leave the cell blank if the question is optional or you're responding to a multiple choice question. The column "Answer requirement" indicates whether or not a response is mandatory, and can contain the following values:
+
+- OPTIONAL: Not required — can be left blank.
+
+- REQUIRED: Mandatory — you must provide a response value
+
+- MULTIPLE_CHOICE: You can provide a response value of TRUE to at least one of the response choices for the corresponding question ID. You can leave other responses blank.
+
+- SINGLE_CHOICE: You can provide a response value of TRUE to one of the response choices for the corresponding question ID. You can leave other responses blank.
+
+- MAYBE_REQUIRED: You only required when certain conditions are met, e.g. based on the answer to a previous question
+
+The table below provides an example for the “Name” and “Approximate location” sections of the Data safety form. It contains:
+
+- A multiple choice question
+
+- A required question
+
+- An optional question
+
+Question ID
+
+(machine readable)
+
+|
+Response
+
+(machine readable) |
+Response value |
+Answer requirement |
+Human-friendly question label |
+
+PSL_DATA_
+
+TYPES_
+
+PERSONAL |
+
+PSL_NAME |
+TRUE |
+MULTIPLE_
+
+CHOICE |
+
+Personal info
+
+Name |
+
+... |
+|
+|
+|
+|
+
+PSL_DATA_
+
+TYPES_
+
+LOCATION |
+
+PSL_
+
+APPROX_
+
+LOCATION |
+
+TRUE |
+MULTIPLE_
+
+CHOICE |
+
+Location
+
+Approximate location |
+
+... |
+|
+|
+|
+|
+
+PSL_DATA_USAGE_
+
+RESPONSES:
+
+PSL_NAME:
+
+PSL_DATA_USAGE_
+
+COLLECTION_AND_
+
+SHARING |
+
+PSL_DATA_
+
+USAGE_ONLY_
+
+COLLECTED |
+
+TRUE |
+
+MULTIPLE_
+
+CHOICE |
+
+Data usage and handling (Name)
+
+Is this data collected, shared, or both?
+
+Collected |
+
+PSL_DATA_USAGE_
+
+RESPONSES:
+
+PSL_NAME:
+
+PSL_DATA_USAGE_
+
+COLLECTION_AND_
+
+SHARING |
+
+PSL_DATA_
+
+USAGE_ONLY_
+
+SHARED |
+|
+
+MULTIPLE_
+
+CHOICE |
+
+Data usage and handling (Name)
+
+Is this data collected, shared, or both?
+
+Shared |
+
+PSL_DATA_USAGE_
+
+RESPONSES:
+
+PSL_NAME:
+
+PSL_DATA_USAGE_
+
+EPHEMERAL |
+|
+
+TRUE |
+
+MAYBE_
+
+REQUIRED |
+
+Data usage and handling (Name)
+
+Is this data processed ephemerally? |
+
+PSL_DATA_USAGE_
+
+RESPONSES:
+
+PSL_NAME:
+
+DATA_USAGE_USER_
+
+CONTROL |
+
+PSL_DATA_
+
+USAGE_USER_
+
+CONTROL_
+
+OPTIONAL |
+
+TRUE |
+
+SINGLE_
+
+CHOICE |
+
+Data usage and handling (Name)
+
+Is this data required for your app, or can users choose whether it's collected?
+
+Users can choose whether this data is collected |
+
+PSL_DATA_USAGE_
+
+RESPONSES:
+
+PSL_NAME:
+
+DATA_USAGE_USER_
+
+CONTROL |
+
+PSL_DATA_
+
+USAGE_USER_
+
+CONTROL_
+
+REQUIRED |
+|
+
+SINGLE_
+
+CHOICE |
+
+Data usage and handling (Name)
+
+Is this data required for your app, or can users choose whether it's collected?
+
+Data collection is required (users can't turn off this data collection) |
+
+PSL_DATA_USAGE_
+
+RESPONSES:
+
+PSL_NAME:
+
+DATA_USAGE_
+
+COLLECTION_
+
+PURPOSE |
+
+PSL_APP_
+
+FUNCTIONALITY |
+
+TRUE |
+
+MULTIPLE_
+
+CHOICE |
+
+Data usage and handling (Name)
+
+Why is this user data collected? Select all that apply.
+
+App functionality |
+
+PSL_DATA_USAGE_
+
+RESPONSES:
+
+PSL_NAME:
+
+DATA_USAGE_
+
+COLLECTION_
+
+PURPOSE |
+
+PSL_ANALYTICS |
+
+TRUE |
+
+MULTIPLE_
+
+CHOICE |
+
+Data usage and handling (Name)
+
+Why is this user data collected? Select all that apply.
+
+Analytics |
+
+PSL_DATA_USAGE_
+
+RESPONSES:
+
+PSL_NAME:
+
+DATA_USAGE_
+
+COLLECTION_
+
+PURPOSE |
+
+PSL_DEVELOPER_
+
+COMMUNICATIONS |
+|
+
+MULTIPLE_
+
+CHOICE |
+
+Data usage and handling (Name)
+
+Why is this user data collected? Select all that apply.
+
+Developer communications |
+
+PSL_DATA_USAGE_
+
+RESPONSES:
+
+PSL_NAME:
+
+DATA_USAGE_
+
+COLLECTION_
+
+PURPOSE |
+
+PSL_FRAUD_
+
+PREVENTION_
+
+SECURITY |
+|
+
+MULTIPLE_
+
+CHOICE |
+
+Data usage and handling (Name)
+
+Why is this user data collected? Select all that apply.
+
+Fraud prevention, security, and compliance |
+
+PSL_DATA_USAGE_
+
+RESPONSES:
+
+PSL_NAME:
+
+DATA_USAGE_
+
+COLLECTION_
+
+PURPOSE |
+
+PSL_ADVERTISING |
+|
+
+MULTIPLE_
+
+CHOICE |
+
+Data usage and handling (Name)
+
+Why is this user data collected? Select all that apply.
+
+Advertising or marketing |
+
+PSL_DATA_USAGE_
+
+RESPONSES:
+
+PSL_NAME:
+
+DATA_USAGE_
+
+COLLECTION_
+
+PURPOSE |
+
+PSL_
+
+PERSONALIZATION |
+|
+
+MULTIPLE_
+
+CHOICE |
+
+Data usage and handling (Name)
+
+Why is this user data collected? Select all that apply.
+
+Personalization |
+
+PSL_DATA_USAGE_
+
+RESPONSES:
+
+PSL_NAME:
+
+DATA_USAGE_
+
+COLLECTION_
+
+PURPOSE |
+
+PSL_ACCOUNT_
+
+MANAGEMENT |
+|
+
+MULTIPLE_
+
+CHOICE |
+
+Data usage and handling (Name)
+
+Why is this user data collected? Select all that apply.
+
+Account management |
+
+PSL_DATA_USAGE_
+
+RESPONSES:
+
+PSL_NAME:
+
+DATA_USAGE_
+
+SHARING_
+
+PURPOSE |
+
+PSL_APP_
+
+FUNCTIONALITY |
+|
+
+MULTIPLE_
+
+CHOICE |
+
+Data usage and handling (Name)
+
+Why is this user data shared? Select all that apply.
+
+App functionality |
+
+PSL_DATA_USAGE_
+
+RESPONSES:
+
+PSL_NAME:
+
+DATA_USAGE_
+
+SHARING_
+
+PURPOSE |
+
+PSL_ANALYTICS |
+|
+
+MULTIPLE_
+
+CHOICE |
+
+Data usage and handling (Name)
+
+Why is this user data shared? Select all that apply.
+
+Analytics |
+
+PSL_DATA_USAGE_
+
+RESPONSES:
+
+PSL_NAME:
+
+DATA_USAGE_
+
+SHARING_
+
+PURPOSE |
+
+PSL_DEVELOPER_
+
+COMMUNICATIONS |
+|
+
+MULTIPLE_
+
+CHOICE |
+
+Data usage and handling (Name)
+
+Why is this user data shared? Select all that apply.
+
+Developer communications |
+
+PSL_DATA_USAGE_
+
+RESPONSES:
+
+PSL_NAME:
+
+DATA_USAGE_
+
+SHARING_
+
+PURPOSE |
+
+PSL_FRAUD_
+
+PREVENTION_
+
+SECURITY |
+|
+
+MULTIPLE_
+
+CHOICE |
+
+Data usage and handling (Name)
+
+Why is this user data shared? Select all that apply.
+
+Fraud prevention, security, and compliance |
+
+PSL_DATA_USAGE_
+
+RESPONSES:
+
+PSL_NAME:
+
+DATA_USAGE_
+
+SHARING_
+
+PURPOSE |
+
+PSL_
+
+ADVERTISING |
+|
+
+MULTIPLE_
+
+CHOICE |
+
+Data usage and handling (Name)
+
+Why is this user data shared? Select all that apply.
+
+Advertising or marketing |
+
+PSL_DATA_USAGE_
+
+RESPONSES:
+
+PSL_NAME:
+
+DATA_USAGE_
+
+SHARING_
+
+PURPOSE |
+
+PSL_
+
+PERSONALIZATION |
+|
+
+MULTIPLE_
+
+CHOICE |
+
+Data usage and handling (Name)
+
+Why is this user data shared? Select all that apply.
+
+Personalization |
+
+PSL_DATA_USAGE_
+
+RESPONSES:
+
+PSL_NAME:
+
+DATA_USAGE_
+
+SHARING_
+
+PURPOSE |
+
+PSL_ACCOUNT_
+
+MANAGEMENT |
+|
+
+MULTIPLE_
+
+CHOICE |
+
+Data usage and handling (Name)
+
+Why is this user data shared? Select all that apply.
+
+Account management |
+
+Export to a CSV file
+
+- Open Play Console and go to the App content page.
+
+- Under "Data safety," select Start.
+
+- Near the top right of the page, select Export to CSV.
+
+Import from a CSV file
+
+Important: Answers already entered into your form will be overwritten when you import a CSV.
+
+- Open Play Console and go to the App content page.
+
+- Under "Data safety," select Start.
+
+- Near the top right of the page, select Import to CSV.
+
+### After you submit your Data safety form
+
+After you submit, the information you provided will be reviewed by Google as part of the app review process.
+
+Until July 20, 2022, you can temporarily proceed to publish app updates regardless of whether we find issues with the information you've disclosed. If there are no issues, your app will be approved and you won't need to do anything. If there are issues, you will need to revert your Data safety form's status to "Draft" in Play Console to publish your app update. We will also send the developer account owner an email, a notification in Play Console, and show this information on the Policy status (Policy > Policy status) page.
+
+After July 20, 2022, all apps will be required to have completed an accurate Data safety form that discloses their data collection and sharing practices (including apps that do not collect any user data).
+
+### Optional format for SDKs
+
+If you're an SDK provider, you can click on the section below to view an optional format you can use to publish guidance for your users.
+
+Developers will need to disclose their app's data collection, sharing, and security practices as part of Google Play’s new Data safety section. To assist developers in helping build user data and security transparency, the guidance below can be used to publish SDK guidance for developers incorporating your SDK into their apps.
+
+Google Play is publishing this optional structure for SDK developers to use at your convenience, but you may use any format or none based on the needs of your users.
+
+Optional format for SDKs
+
+[SDK Name] |
+
+SDK / SDK feature that may collect or share data |
+
+Data type SDK accesses and collects
+
+Note: Consider providing accurate technical information that will help your customers to determine which of the Play Data safety section definitions of data types applies to the data your SDK collects. In some cases, you may be comfortable using a Data safety section definition (e.g., “approximate location”) because the applicable data type is clear and does not depend on extraneous factors. In other cases, the data type definition may depend on how the given data is used after it is collected, or on the developer’s particular interpretation of Play Data safety section definitions. For example, IP addresses may be used alternatively to infer location, or to extract identifiers, or for a variety of other purposes depending on the nature of the SDK, its implementation by any given app, and other factors.
+
+Note: Developers do not have to declare data access as collection if it occurs solely on the user’s device as long as the data is never transmitted off the user’s device.
+
+|
+
+For each data type listed:
+
+- Describe required (or automatic) data access versus optional access. “Optional” includes the ability for a user to opt into or opt out of data collection.
+
+- Does SDK transmit this data off the device?
+
+- Describe purposes of collection and subsequent sharing and use.
+
+- Note: In many cases, purposes of collection and sharing may depend on the particular use or implementation of your SDK by a given developer. Consider providing any relevant technical information here that will be helpful to your customers as they determine the applicable purposes to be declared in their apps’ Safety section. For example, if your SDK has optional modules, you should provide this information on a per-module basis.
+
+- Does SDK transfer data to other third parties, including other apps on the user’s device? Describe the purposes for this sharing.
+
+Note: Developers do not have to disclose as sharing some transfers of data in their apps’ Data safety section in some circumstances, for example, where data is transferred to a service provider processing data on their behalf, or if data is transferred for specific legal purposes, and in some other cases. See the Play Console Help article for more details. Consider providing any relevant technical information here that will be helpful to your customers as they evaluate whether a sharing exception applies. |
+
+App level notes [complete section for any data collected or shared]
+
+|
+
+- Does your SDK encrypt data in transit?
+
+- Note: If the answer is different for the different sets of data that the SDK collects, consider explaining how encryption in transit is applied to each relevant dataset. In Play’s Data safety section, developers can only declare encryption in transit if it applies to all user data that their app (including all its SDKs and libraries) collects and transmits off the user's device.
+
+- Can the app developer and/or users request to delete user data collected?
+
+|
+
+## Frequently asked questions
+
+Collapse all Expand all
+
+### App submission and review
+
+What if I need additional time to comply with the new requirements?
+
+We opened Play Console in October for Data safety form submissions and will provide a grace period until July 20, 2022, which should be ample lead time. At this point, we have no plans to grant extensions.
+
+Can my app be blocked by Google Play due to the information I submit in my Data safety form?
+
+In short, yes. You should provide accurate information that reflects your app’s data collection and handling practices. You are accountable for the information you provide. Google Play reviews apps across all policy requirements; however we cannot make determinations on behalf of the developers as to how they handle user data. Only you possess all the information required to complete the Data safety form.
+
+If we find that you have misrepresented the data you've provided and are in violation of the policy, we will require you to fix it. Apps that don’t become compliant are subject to policy enforcement, like blocked updates or removal from Google Play.
+
+How long does it take for Data safety updates made through Play Console to show on Google Play?
+
+After you submit a new app or an update to an existing app on your Play Console, it can take some time for your app to be processed for standard publishing on Google Play. Certain apps may be subject to expanded reviews, which may result in review times of up to 7 days or longer in exceptional cases.
+
+What can I do to troubleshoot if I’m not seeing my Data safety section published?
+
+App updates and new submissions must comply with Google Play's Developer Program policiesPolicy. You can go to the Publishing overview page in Play Console to check if your app submission is still pending review.
+
+If your latest update is ready, and you are still not seeing the Data safety section form on Google Play, you can check if managed publishing is turned on in Play Console. If managed publishing is turned on, your release won't be made available until you publish it. You can roll out the release from the Publishing overview page. The approved submission will then be published and available on Google Play shortly afterwards.
+
+If you updated the Data safety section content, but are not seeing the latest on Google Play, try refreshing the app page. Note that, due to device connectivity and varying server load, it may take several days (in some cases up to 7 days) for app updates to reach all devices. We kindly request your patience while Google Play registers and delivers your app update.
+
+I submitted similar information for iOS. How much of that work can I re-use for the Data safety form?
+
+It’s great that you have a good handle on your app’s data practices. The Data safety form asks for additional and different information that you may not have used previously, so we want you to expect that this requires effort for your team. The taxonomy and framework of the Data safety section on Google Play may differ materially from those used in other app stores.
+
+How do you make sure developers share accurate information? We’ve seen that this information is not always accurate in the industry.
+
+Similar to a privacy policy, or app details like screenshots and descriptions, developers are responsible for the information disclosed in their Data safety section. Google Play’s User Data policy requires developers to provide accurate information. If we find that a developer has misrepresented the data they’ve provided and is in violation of the policy, we require the developer to fix it. Apps that don’t become compliant are subject to policy enforcement.
+
+Does Google regulate if the data that I collect is ultimately appropriate?
+
+Google Play users should feel confident that their data is safe. We continuously launch new features and policies to protect user privacy and keep Google Play a trusted place for everyone. Some of Google Play’s new features and policies have enhanced user controls and transparency. Others help ensure that developers only access personal data when it’s needed for the primary use of the app. Existing Google Play Developer Program policies like these contain a number of requirements around data transparency and control. Apps that don’t comply with Google Play Developer Program policies are subject to policy enforcement.
+
+How often do I need to update my Data safety section?
+
+You should update your Data safety section when there are relevant changes to the data practices of the app. Your Data safety form responses must remain accurate and complete at all times.
+
+Can the Data safety section on Google Play impact app downloads?
+
+The Data safety section can help people make the right decision for themselves about which apps to download. It also helps developers build trust and get more engaged users who feel confident that their data will be treated responsibly. Developers have shared that they want clearer ways to communicate with their users about their data practices.
+
+### Completing the Data safety form
+
+What if my app behaves differently in different supported Android versions?
+
+Google Play has one global Data safety form and Data safety section in the Google Play store listing per package name that is agnostic to usage, app version, region, and user age. In other words, if any of the collection, uses, or linkages are present in any version of the app presently distributed on Google Play, anywhere in the world, you must indicate such on the form. Therefore, your Data safety section describes the sum of your app’s data collection and sharing across all its versions currently distributed on Google Play. You can use the “About this app” section to share version-specific information with your users.
+
+How can I show that we may have different practices in different regions? For example, we don’t use certain libraries in Europe, but we may use them in others.
+
+At this time, we reflect the global representation of your data practices per app. Your Data safety section describes the sum of your app’s data collection and sharing across all its versions currently distributed on Google Play. You can use the “About this app” section to share version-specific information with your users. The Data safety section includes a clarification for Google Play users that an app’s data collection and security practices may vary based on a number of factors such as the region.
+
+Are the Data safety sections gated by a consent mechanism for users? Do I need to take any extra steps and create an in-app prominent disclosure?
+
+No, the Data safety section is only presented on your app's store listing on Google Play; there is no new disclosure in the user app install process, and there is no new user consent related to this feature. Developers that collect personal and sensitive user data must implement in-app disclosures and consent where required by the existing Google Play User Data policy.
+
+How should I mark required or optional collection when different versions of my app that show a Data safety section do different things?
+
+Your Data safety section describes the sum of your app’s data collection and sharing across all its versions currently distributed on Google Play. If any version of your app requires the collection of certain data, you must declare its collection as required for the Data safety section. You should not describe collection as optional if it is required for any of your app’s users. You can use the “About this app” section to share version-specific information with your users.
+
+Do I need to declare data if my app includes a permission but does not actually collect or share the data?
+
+You do not need to declare collection or sharing unless data is actually collected and/or shared. Your app must comply with all Google Play Developer Program policies, including our policy for Permissions and APIs that Access Sensitive Information.
+
+If one data type is collected as part of another, should I declare both? For example, if I collected Contacts which includes the user's email, do I declare both the "Contacts" and "Email address" data types?
+
+If you are purposefully collecting a data type during the collection of another data type, you should disclose both. For example, if you collect user photos and use them to determine users’ characteristics (such as ethnicity or race) you should also disclose the collection of ethnicity and race.
+
+Am I required to provide a deletion mechanism? Must it be for any and all user data?
+
+The Data safety section provides a surface for you to share if you provide a mechanism to receive data deletion requests from your users. As part of completing the Data safety form, you are required to indicate if you provide such a mechanism.
+
+Is there a specific type of mechanism that I must provide to indicate my app supports user data deletion requests?
+
+There is no prescribed mechanism, however as best practice the request mechanism should be easily discoverable and accessible by users. Common examples of mechanisms that clearly indicate a path by which users can request data deletion may include but are not limited to: in-app features, contact forms, or a dedicated email alias.
+
+How should I indicate in my Data safety form that I provide a request for deletion mechanism for data that is automatically deleted or anonymized?
+
+You may select the deletion request mechanism badge in Data safety form if you:
+
+- provide users with a mechanism to request data deletion; or
+
+- automatically initiate deletion or anonymization of collected data within 90 days of collection.
+
+You may select the deletion request mechanism badge even if you need to retain certain data for legitimate reasons such as legal compliance or abuse prevention.
+
+What if the deletion mechanism I provide is not available globally to all users ⁠⁠— can I still indicate I provide a deletion request mechanism?
+
+Google Play provides one global Data safety form and Data safety section in the Google Play store listing per package name that should cover data practices based on any usage, app version, region, and user age. In other words, if any of the data practices are present in any version of the app presently distributed on Google Play, anywhere in the world, you must indicate these practices on the form. Therefore, your Data safety section will describe the sum of your app’s data collection and sharing across all its versions currently distributed on Google Play.
+
+What kinds of techniques can be used to make data anonymous?
+
+There are a variety of potential methods to anonymize data such that it cannot be associated with an individual user. You should consult with your privacy and security experts to identify the methods applicable to your use case. As an example, this page discusses some of the data anonymization methods used by Google, such as differential privacy.
+
+How should I treat the collection and use of IP addresses?
+
+As with other data types, you should disclose your collection, use and sharing of IP addresses based on their particular usage and practices. For example, where developers use IP addresses as a means to determine location, then that data type should be declared.
+
+How should I disclose the collection and sharing of other kinds of identifiers?
+
+As with other data types, you should disclose your collection, use and sharing of different kinds of identifiers based on your particular usage and practices. For example, the collection of an account name associated with an identifiable person should be declared as a “Personal identifier,” and the collection of a user’s Android Advertising ID should be declared as “Device or other identifiers.” As another example, an identifier related to a specific in-app event, but that does not reasonably relate to an individual device, browser or app, would not need to be disclosed as “Device or other identifiers.”
+
+As noted above, the collection of data pseudonymously should be disclosed on your survey under the relevant data type. For example, if you collect diagnostic information with a device identifier, you should still disclose the collection of “Diagnostics” in your Data safety form.
+
+What kinds of activities can “service providers” perform?
+
+A service provider may only process user data on your behalf. For example, an analytics provider that processes user data from your app solely on your behalf, or a cloud provider hosting user data from your app for your use, will typically qualify as “service providers.” On the other hand, if an SDK provider is building advertising profiles across multiple customers based on your app data, that would not be considered “service provider” activity for purposes of the Data safety section, and would need to be disclosed as "sharing" in your Data safety form.
+
+My app uses an external payment service to enable financial transactions. Does my app need to disclose financial information like credit card info in its Data safety section?
+
+It depends on the nature of your integration with the payment service. If your app uses a payment service such as PayPal, Google Pay, Google Play's billing system, or similar services to complete payment transactions, you don’t need to declare collection of the data that the payment service collects in connection with its processing of financial transactions, such as a credit card number, if the following conditions are met:
+
+- Your app never accesses this information; and
+
+- The payment service collects this information directly from the user, and collection is governed by that service’s terms.
+
+You should review your integration with the payment service closely to ensure that your app’s Data safety section declares any relevant data collection and sharing that does not meet these conditions. You should also consider whether your app collects other financial information, like purchase history, and whether your app receives any relevant data from the payments service, for example for risk and anti-fraud purposes.
+
+My app enables users to upload their data directly to Google Drive or Dropbox for backup or storage. My app does not access any of this data. Should that still be disclosed as “collection”?
+
+It depends on the particular implementation. If the user chooses to upload their data directly to their own external drive or cloud storage account (such as Google Drive, Dropbox, or similar services) and this upload is governed by the external drive or cloud storage provider's terms of service and privacy policy, and your app never collects or accesses the data in question, then your app does not need to declare the collection of this data.
+
+How should I encrypt data in transit?
+
+You should follow best industry standards to safely encrypt your app’s data in transit. Common encryption protocols include TLS (Transport Layer Security) and HTTPS.
+
+My app lets the user create an account or add information to their account, for example, birthday or gender. How should I declare the data that the user adds to their account?
+
+You should declare the collection of this data for account management, denoting (if applicable) where collection is optional for the user.
+
+In addition, as with any data types collected by your app, you should disclose this data for the purpose(s) for which your app uses it. For example, if your app allows a user to add a birthday to their account and also uses that data to send timely push notifications, your app should also declare this purpose in addition to account management.
+
+Account management can be used to cover general uses of account data that are not specific to the particular app. For example, if you use account information for fraud prevention, advertising, marketing, or developer communications across your services, and this use is not specific to your app, or activities in your app, declaring “account management” as the purpose of collecting this account data will be sufficient to cover those general uses in your Data safety section. However, your app must always declare all purposes for which the app itself uses the data. As a best practice, we recommend disclosing how your app handles user data for account services as part of your account-level documentation and sign-up process.
+
+What are System services?
+
+System services are pre-installed software that support core system functionality. System services can apply for an exemption from completing the Data safety form.
+
+My app’s Data safety section submission was approved but I recently received a notification regarding an update. How do I check the current status of my submission and is that not permanent?
+
+You can check the status of your submission on the App content page in Play Console. If your submission is compliant, you will see a green check mark in the “Data safety” section.
+
+Note: Our policies are enforced through systems and processes that are continuously improved over time. Additionally, changes and updates to our policies can result in apps which were approved earlier to be enforced upon at a later time following initial submission due to non-compliance.
+
+Google Play will notify developers regarding any updates. You can check our User Data policy and this Help Center article to make sure you are aware of the most up to date guidance.
+
+How do I declare collection of data that is used in a transient way to load pages and service other client-side requests in real time before that data is logged on our servers and used for other purposes?
+
+If this use is ephemeral, you do not need to include it in your form response. However, you must declare any use of that user data beyond the ephemeral processing, including any purposes for which you use the user data that you log. Please review the definition of ephemeral processing in the Data collection section above.
+
+What is the difference between the permissions list and the Data safety section of an app?
+
+Google gathers information for the permissions list based on the install-time permissions that an app declares in its manifest.
+
+The Data safety section shares what data the app collects and shares with third parties.
+
+## Change log
+
+You can refer to this section to see a revision history for this article, so you can keep track of changes over time. We'll add dated entries here whenever we make significant changes to this article in the future.
+
+December 5, 2023
+
+In the What developers need to disclose in the Data safety form section, we added a new section (Unified Payments Interface Badge (UPI)).
+
+March 31, 2023
+
+We updated the Which developers need to complete the Data safety form in Play Console? section to provide updated information regarding internal testing and Data safety section requirements. We also removed a passage of text relating to this from the August 24, 2022 change log entry, as that information is no longer applicable and we do not want to confuse developers seeking information about this issue.
+
+We have edited the article throughout to remove references to specific dates; these references were initially included (and periodically updated) before, during, and after the launch of the Data safety section in Play Console to help developers understand what the requirements were at each point in time. As the Data safety section is now live across Google Play, we have removed the original timeline and references to specific dates.
+
+We added additional information to the data type "App interactions" (this now includes "screenshots taken").
+
+August 24, 2022
+
+We updated the Which developers need to complete the Data safety form in Play Console? section to reflect that, effective October 24th, 2022, tracks that are active on internal testing tracks are exempt from inclusion in the data safety section. Apps that are exclusively active on this track do not need to complete the declaration.
+
+July 20, 2022
+
+We updated the Timeline information details in the "Getting your information ready" section to explain that non-compliant new app submissions and app updates will receive warnings that submissions and app updates will be rejected in Play Console if there are unresolved issues with the form. We also updated this section with details of what will happen after this warning period ends on August 22, 2022.
+
+In the What developers need to disclose in the Data safety form section, we made the following changes in the Independent security review (now available to all apps) subsection:
+
+- We changed the title from "Independent security review (beta starting March 2022, with general availability coming soon) " to "Independent security review (now available to all developers)," as this feature is now available to all apps.
+
+- We updated the subsection to include information for developers who are interested in participating in an independent security review.
+
+We made the following changes to the Frequently asked questions section:
+
+- We updated the answer to the question, "Am I required to provide a deletion mechanism? Must it be for any and all user data?"
+
+- Directly below this question, we also added three new questions and answers that provide more detailed information about data deletion mechanisms and the Data safety form.
+
+- We added one new question about the difference between the permissions list and an app's Data safety section. We removed a question about apps that target old versions of Android.
+
+June 28, 2022
+
+In the Overview section, we added a line encouraging developers to check Google Play SDK Index to see if their provider has provided a link to their guidance. You can read the Make informed choices with Google Play SDK Index Help Center article to learn more.
+
+In the Getting your information ready section, we added a recommendation to watch the Google Play PolicyBytes Data safety form walkthrough video, which takes you through all the resources and steps required to complete the Data safety form.
+
+April 26, 2022
+
+In the Overview section, we added a line encouraging certain developers to refer to their SDK providers’ published data safety information for details, like Firebase and AdMob.
+
+We updated the Timeline information details in the "Getting your information ready" section with a reference to the message users would see on Google Play in the July 2022 entry (previously, this read "No data available," which has been updated to "No info available")
+
+In the FAQs section, we made the following changes:
+
+- We added a new question and answer about System services.
+
+- We added a new question and answer about troubleshooting options if you can't see your latest Data safety updates on Google Play.
+
+- We updated existing answers relating to how long it takes for Data safety updates to be shown on Google Play and account management.
+
+April 8, 2022
+
+On April 8, 2022, we corrected the name of the data type "Photos and videos" (this was previously listed as "Photos or videos").
+
+February 24, 2022
+
+On February 24, 2022, we made a number of changes to this article, which are described below.
+
+### Timeline information changes
+
+We updated the Timeline information details in the "Getting your information ready" section as follows:
+
+- Previously, we said that from February 2022, the Data safety section will be available on Google Play to all users. This date has been updated to late April, 2022.
+
+- Previously, we said that from April 2022, new app submissions and app updates will be rejected in Play Console if there are unresolved issues with the form. This date has been updated to July 20, 2022.
+
+- Previously, we said that from April 2022, non-compliant apps may face additional enforcement actions in the future. This date has been updated to after July 20, 2022.
+
+We updated other references to dates in the article to be consistent with the revised dates above.
+
+### Clarifications regarding what developers need to disclose across data types
+
+In the "What developers need to disclose in the Data safety form" section, we made the following changes in the "What developers need to disclose across data types" subsection:
+
+- We added instructions to explain how that developers with apps that are committed to follow the Families Policy can to opt-in to display the Families badge beginning March 1, 2022.
+
+- In Other app and data disclosures, "Deletion mechanism" was renamed "Deletion request mechanism."
+
+- We also updated the Independent security review section with more detailed information about this feature.
+
+### Data types and purposes updates
+
+We made minor naming changes to our data types:
+
+- The "Personal identifiers" data type was renamed "User IDs."
+
+- The "Credit card, debit card, or bank account number" data type was renamed "User payment info."
+
+- The "Credit info" data type was renamed "Credit score."
+
+- We added the example of user salary or debts to the "Other financial info" data type.
+
+- The "Health information" data type was renamed "Health info."
+
+- The "Fitness information" data type was renamed "Fitness info."
+
+- The "SMS or MMS messages" data type was renamed "SMS or MMS."
+
+- The "Page views and taps in app" data type was renamed "App interactions," and its description was updated.
+
+- The descriptions of the "Other user-generated content" and "Other actions" data types were updated.
+
+- The "Other personal info" data type was renamed "Other info."
+
+- The "Device or other identifiers" category was renamed "Device or other IDs."
+
+We made clarifications to our data purposes:
+
+- The “Developer communications” example was updated.
+
+- The "Advertising or marketing" example was updated.
+
+- The "Account management" example was updated.
+
+### Other changes
+
+In the Overview section, we added additional images to show what users will see if your app doesn't share any user data.
+
+We added new FAQs including topics relating to account management, user-initiated actions, use of payments platforms, and encryption.
+
+We updated the definition for ephemeral processing in the Data collection section and added a new FAQ regarding this topic.
+
+December 14, 2021
+
+On December 14, 2021, we updated the data type that was originally named "Sexual orientation and gender identity." This data type is now named "Sexual orientation" and refers to only sexual orientation.
+
+We also updated the "Other personal info" data type to include gender identity as an example of other personal information.
+
+## Other resources
+
+- Learn more about reviewing how your app collects and shares user data on the Android Developers site.
+
+- Learn more about best practices and review the interactive guidance on the Academy for App Success.
+
+## Was this helpful?
+How can we improve it?
+YesNo

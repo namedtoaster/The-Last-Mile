@@ -1,0 +1,53 @@
+Source: https://developer.android.com/develop/ui/views/layout/webapps/trusted-web-activities
+Fetched: 2026-10-12
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+Android Developers
+
+Develop
+
+Core areas
+
+UI
+
+Views
+
+# Overview of Trusted Web Activities
+
+Stay organized with collections
+
+Save and categorize content based on your preferences.
+
+Trusted Web Activity is a new way to open your web-app content such as your Progressive Web App (PWA) from your Android app using a protocol based on Custom Tabs.
+
+Note: Trusted Web Activity is available in Chrome on Android, version 72 and above.
+
+Looking for the code?
+
+- android-browser-helper library on GitHub
+
+- Trusted Web Activity demos
+
+- Bubblewrap, a NodeJs library / CLI to generate and build Trusted Web Activity projects
+
+There are a few things that make Trusted Web Activity different from other ways to open web content from your Android app:
+
+- Content in a Trusted Web activity is trusted -- the app and the site it opens are expected to come from the same developer. (This is verified using Digital Asset Links.)
+
+- The content rendered in a Trusted Web Activity comes from the web: they're rendered by the user's browser, in exactly the same way as a user would see it in their browser except they are run fullscreen. Web content must be accessible and useful in the browser first.
+
+- Browsers are also updated independent of Android and your app. That saves on APK size and ensures you can use a modern web runtime. (Note that since Lollipop, WebView has also been updated independent of Android, but there are a significant number of pre-Lollipop Android users.)
+
+- The host app doesn't have direct access to web content in a Trusted Web Activity or any other kind of web state, like cookies and localStorage. Nevertheless, you can coordinate with the web content by passing data to and from the page in URLs (e.g. through query parameters and intent URIs.)
+
+- Transitions between web and native content are between activities. Each activity (i.e. screen) of your app is either completely provided by the web, or by an Android activity
+
+To make it easier to test, there are currently no qualifications for content opened in the preview of Trusted Web activities. You can expect, however, that Trusted Web activities need to meet the same Add to Home Screen requirements. You can audit your site for these requirements using the Lighthouse "user can be prompted to Add to Home screen" audit.
+
+Today, it is possible for other browsers to implement the same protocol that Trusted Web activities use. While the host app has the final say on what browser gets opened, we recommend the same policy as for Custom Tabs: use the user's default browser, so long as that browser provides the required capabilities.
+
+## Where to go next?
+
+If you are looking for quickly building an Android app that just starts and opens your PWA, checkout out the Quick Start Guide.
+
+If integrating Trusted Web Activity into an existing Android App, the Integration Guide is a good place to get started.

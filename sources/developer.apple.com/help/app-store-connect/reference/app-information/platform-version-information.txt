@@ -1,0 +1,228 @@
+Source: https://developer.apple.com/help/app-store-connect/reference/app-information/platform-version-information
+Fetched: 2026-10-12
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+# Platform version information
+
+## Platform version information
+
+Platform version information refers to the set of properties of an app version specific to each platform the app supports.
+
+View product page marketing guidelines.
+
+Property
+
+|
+
+Description
+
+|
+
+Language
+
+|
+
+The language you choose to localize your metadata. This property is editable depending on the app status.
+
+|
+
+Screenshots
+
+|
+
+Screenshots that show what your app looks like on a device. Learn about the screenshot specifications.
+
+This property is required and can be localized.
+
+|
+
+App Preview
+
+|
+
+An app preview is an optional short video demonstrating your app. You may add up to three app previews for each localization, per device size. Learn about the app preview specifications.
+
+|
+
+Promotional Text
+
+|
+
+Promotional text lets you inform your App Store visitors of any current app features without requiring an updated submission. This text will appear above your description on the App Store for customers with devices running iOS 11 or later. This property can’t be longer than 170 characters.
+
+|
+
+Description
+
+|
+
+A description of the app, detailing the features and functionality. Limited to 4000 characters. The description should be in plain text, with line breaks as needed. HTML format isn't supported.
+
+This appears on your app’s product page, when users install your app, and will be used for web engine search results once you release your app.
+
+This property is required and can be localized.
+
+|
+
+Keywords
+
+|
+
+One or more keywords (each greater than two characters) describing your app. You can provide up to 100 bytes of content. Your app is searchable by app name and company name, so you shouldn't duplicate these values in the keyword list. Names of other apps or companies aren't allowed.
+
+This property is required and can be localized.
+
+|
+
+Support URL
+
+|
+
+The URL of the support website you plan to provide for users, which displays on the App Store for users who have downloaded your app. This URL must lead to actual contact information (legal address, email address, telephone number), as may be required by local law, so that users can reach you regarding app issues, general feedback, and feature enhancement requests. Specify the entire URL, including the protocol (for example, http://support.example.com).
+
+If you need to provide a Software Bill of Materials (SBOM), you can include it on your support site.
+
+This property is required and can be localized.
+
+|
+
+Marketing URL
+
+|
+
+The website where users get more information about the app. Specify the entire URL, including the protocol.
+
+This property can be localized.
+
+|
+
+Version Number
+
+|
+
+The version number that's provided for your app that appears on App Store product pages and is displayed when users install your app.
+
+|
+
+Copyright
+
+|
+
+The name of the person or entity that owns the exclusive rights to the app, preceded by the year the rights were obtained (for example, 2014 Example, Inc.). The copyright symbol is added automatically.
+
+This property is required.
+
+|
+
+Routing App Coverage File
+
+|
+
+A routing app’s geographic coverage file (a file with a .geojson file extension) that specify the geographic regions supported by your app.
+
+The file can have only one MultiPolygon element. MultiPolygon elements consist of at least one Polygon. Polygons contain at least four coordinate points. The start and end coordinate points for a polygon must be the same. For file specifications, read “Specifying the Geographic Coverage File Contents” in Location and Maps Programming Guide.
+
+|
+
+Version Release Settings
+
+|
+
+Determines how the app version will be released. The following settings are allowed:
+
+Manual. When the app status changes to Pending Developer Release after approval and you must manually release the version.
+
+Automatic. The app goes live automatically after it is approved by App Review.
+
+Automatic, no earlier than. If the date hasn't passed when the app is approved, the app status changes to Pending Developer Release, but is automatically released at the date specified.
+
+|
+
+What’s New in this Version
+
+|
+
+A description of the changes in this version of the app, such as new features, UI improvements, or bug fixes. Limited to 4000 characters.
+
+We recommend that you provide detailed information to let users know the specifics of the changes, improvements, or fixes in the version.
+
+This property isn't available for the first version of the app but required for all subsequent versions. This property can be localized.
+
+|
+
+Phased Release for Automatic Updates
+
+|
+
+When you release a version update of your app, you can choose to release your iOS app in stages. If you choose this option, your version update will be released over a 7-day period to a percentage of your users on iOS with automatic updates turned on. Learn how to release a version update in phases.
+
+|
+
+Reset Overview Rating
+
+|
+
+You can reset your app’s overview rating when you release a new version. Learn how to reset overview rating.
+
+|
+
+### App Review information
+
+You must provide the following information to App Review. It isn’t visible to customers and can be edited at any time.
+
+Submissions that include an app version will be reviewed together with the App Review information for that version.
+
+Submissions that don’t include an app version, or those that include items associated with multiple platforms, will be reviewed together with the App Review information for the latest approved version of the platform you specify during the submission process. To edit the App Review information on an approved app version, click Edit in the top right corner of the App Review Information section.
+
+Property
+
+|
+
+Description
+
+|
+
+Required
+
+|
+
+Contact:
+
+Name, email, phone number
+
+|
+
+Information for the contact person in your organization if the App Review team needs additional information.
+
+Enter the phone number in international format, including a plus sign (+) followed by the country code (for example, +852 for Hong Kong) — the field doesn't accept numbers-only entry.
+
+|
+
+|
+
+Notes
+
+|
+
+Additional information about your app that can help during the review process. Include information that may be needed to test your app, such as app-specific settings and test registration or account details. If your app delivers streaming video over the cellular network, enter a test stream URL. The Notes field can contain up to 4000 bytes. You can write notes in any language.
+
+|
+|
+
+Sign-in required:
+
+Username and password
+
+|
+
+Sign-in information for a demo account. If your app uses a single sign-on service, such as Facebook or Twitter, include the demo account login information for it. The demo account is used during the App Review process and must not expire. Details for additional accounts should be included in the Notes field.
+
+|
+
+If your app requires a login to use it.
+
+|
+
+Related
+App information
+Required, localizable, and editable properties

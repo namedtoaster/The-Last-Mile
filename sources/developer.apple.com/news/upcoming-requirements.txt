@@ -1,0 +1,147 @@
+Source: https://developer.apple.com/news/upcoming-requirements/
+Fetched: 2026-10-12
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+## iOS and iPadOS minimum system requirements
+
+Since September 9, 2026
+
+iOS and iPadOS apps uploaded to App Store Connect must target iOS 13 or later.
+Learn about submitting apps
+
+## SDK minimum requirements
+
+Since April 28, 2026
+
+Apps uploaded to App Store Connect must be built with Xcode 26 or later using an SDK for iOS 26, iPadOS 26, tvOS 26, visionOS 26, or watchOS 26.
+Learn about submitting apps
+
+## Age Rating Updates
+
+Since January 31, 2026
+
+Ratings for all apps and games on the App Store have been automatically updated to align with our new age rating system and will be reflected on Apple devices running a minimum of iOS 26, iPadOS 26, macOS Tahoe 26, tvOS 26, visionOS 26, and watchOS 26.
+Provide responses to the updated age rating questions for each of your apps by January 31, 2026, to avoid an interruption when submitting your app updates in App Store Connect. You can view the age rating for each of your apps under the updated system and respond to the new questions in the App Information section of your app in App Store Connect.
+
+- Learn more about age ratings values and definitions
+- Learn how to set your app rating
+
+## APNs Certificate Update
+
+Since February 24, 2025
+
+The Apple Push Notification service (APNs) will be updated with a new server certificate in production on February 24, 2025. Update your application’s Trust Store to include the new server certificate: SHA-2 Root : USERTrust RSA Certification Authority certificate.
+
+## Quarantine attribute in macOS apps uploaded to App Store Connect
+
+Since February 18, 2025
+
+macOS apps distributed on TestFlight and the App Store shouldn’t include the quarantine extended file attribute com.apple.quarantine. Starting February 18, you must remove this attribute from all files within macOS apps in order to upload to App Store Connect.
+
+## DSA trader status required for apps in the EU
+
+Since February 17, 2025
+
+Apps without trader status will be removed from the App Store in the European Union (EU) until trader status is provided and verified in order to comply with the Digital Services Act.
+
+## App Store Receipt Signing Intermediate Certificate
+
+Since January 24, 2025
+
+The SHA-1 intermediate certificate used for signing App Store receipts expires on January 24, 2025. If your app performs on-device receipt validation, make sure it supports the SHA-256 algorithm; alternatively, use the AppTransaction and Transaction APIs to verify App Store transactions.
+
+For more details, view TN3138: Handling App Store receipt signing certificate change.
+
+## APNs Certificate Update
+
+Since January 20, 2025
+
+The Apple Push Notification service (APNs) will be updated with a new server certificate in sandbox on January 20, 2025. Update your application’s Trust Store to include the new server certificate: SHA-2 Root : USERTrust RSA Certification Authority certificate.
+
+## DSA trader status required for app updates in the EU
+
+Since October 16, 2024
+
+Your trader status is required to submit app updates for apps distributed on the App Store in the European Union (EU), in order to comply with the Digital Services Act.
+
+## Transition from XML to the App Store Connect API
+
+Since July 15, 2024
+
+Game Center management will no longer be supported by the XML feed as of July 15, 2024.
+
+Support for in-app purchases, subscriptions, metadata, and app pricing ended on November 9, 2022.
+
+You can manage this content via the App Store Connect REST API, which makes it easy to customize and automate your workflows.
+
+## Approved reasons for APIs
+
+Since May 1, 2024
+
+You’ll need to include approved reasons for the listed APIs used by your app’s code (including from third-party SDKs) to upload a new or updated app to App Store Connect.
+
+## Xcode 15
+
+Since April 29, 2024
+
+Apps uploaded to App Store Connect must be built with Xcode 15 for iOS 17, iPadOS 17, tvOS 17, or watchOS 10 starting April 29, 2024.
+Learn about submitting your apps
+
+## Apple notary service update
+
+Since November 1, 2023
+
+If you notarize Mac software with the Apple notary service using the altool command-line utility or Xcode 13 or earlier, you’ll need to transition to the notarytool command-utility or upgrade to Xcode 14 or later. Starting November 1, 2023, the Apple notary service will no longer accept uploads from altool or Xcode 13 or earlier. Existing notarized software will continue to function properly.
+Learn about notarizing software
+
+## Game Center entitlement and configuration requirement
+
+Since August 16, 2023
+
+New apps and app updates for iOS, iPadOS, or tvOS offering Game Center features need to include the Game Center entitlement in the entitlements plist and have Game Center features configured in App Store Connect before you can submit them to the App Store.
+Learn about configuring Game Center in Xcode
+Learn about configuring Game Center in App Store Connect
+View capability and entitlement updates
+
+## Intermediate certificate update
+
+Since August 16, 2023
+
+Receipts in new apps and app updates submitted to the App Store, as well as all apps in sandbox, will be signed with the SHA‑256 intermediate certificate. If your app verifies App Store transactions using the AppTransaction and Transaction APIs, or the verifyReceipt web service endpoint, no action is required.
+If your app validates App Store receipts on device, make sure your app will support the SHA-256 version of this certificate. New apps and app updates that don’t support the SHA-256 version of this certificate will no longer be accepted by the App Store starting August 16, 2023.
+
+## tvOS 16.1 SDK
+
+Since July 31, 2023
+
+All tvOS apps submitted to the App Store must be built with Xcode 14.1 and tvOS 16.1 SDK or later.
+Learn about submitting apps
+
+## App Store global pricing update in May
+
+Since May 9, 2023
+
+Pricing for existing apps and one-time in-app purchases will be updated with enhanced global prices across App Store storefronts using your current price in the United States as the basis—unless you’ve made relevant updates after March 8, 2023. This update has been deferred to later this year for the App Store in Türkye.
+Learn more
+
+## Xcode 14.1
+
+Since April 25, 2023
+
+iOS and iPadOS apps submitted to the App Store must be built with Xcode 14.1 and the iOS 16.1 SDK or later. And watchOS apps submitted to the App Store must be built with Xcode 14.1 and the watchOS 9.1 SDK or later.
+Learn about submitting apps
+
+## Transition from subscription reports version 1.2 to 1.3
+
+Since March 1, 2023
+
+Subscription reports version 1.2 will no longer be available as of March 1, 2023. If you automatically download subscription reports using the App Store Connect API or Reporter, please update your query parameter to version 1.3 if you haven’t already.
+
+## Transition from XML to App Store Connect API
+
+Since November 9, 2022
+
+The XML feed will no longer support in-app purchases, subscriptions, metadata, or app pricing as of November 9, 2022. You can manage this content via the App Store Connect REST API, which makes it easy to customize and automate your workflows.
+
+The XML feed will continue to support existing Game Center management functionality.
+Learn more about the API

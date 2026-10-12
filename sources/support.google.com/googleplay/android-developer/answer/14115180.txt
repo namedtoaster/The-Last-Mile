@@ -1,0 +1,272 @@
+Source: https://support.google.com/googleplay/android-developer/answer/14115180
+Fetched: 2026-10-12
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+# Understanding Restricted Permissions with minimum scope alternatives
+System pickers and alternatives like Sharesheet are designed to support a privacy-oriented path for developers. Photos, Videos, Contacts, and other personal and sensitive data gated by restricted permissions should be treated with privacy best practices. Your app should only request and carry the sensitive permissions below if minimum scope alternatives are not sufficient to provide core app functionality.
+
+## Contacts Permission
+
+In April 2026, we introduced our new Contact Permissions policy that governs the permissible use of the READ_CONTACTS permission. Apps that target Android 17 or later (API level 37+) may only request the READ_CONTACTS permission if the Android Contact Picker is not sufficient for your app to provide core functionality. We also provided guidance on the use of non-public contact data and reinforced that all Contacts are personal and sensitive data subject to the Google Play User Data policy.
+
+## Timeline
+
+- April 15, 2026: We announced the Contacts Permission policy.
+
+- September 2026: Developers with apps that carry READ_CONTACTS permission are prompted in Play Console to submit a declaration form to qualify for core functionality access or remove permission and utilize Contact Picker for their needs.
+
+- Action item: Consult your teams to understand if your app requires the READ_CONTACTS permission for core functionality purposes and if so, be prepared to explain why the minimum scope picker is not sufficient from a technical standpoint.
+
+- January 27, 2027: Policy compliance is mandatory for all apps that target Android 17 or later (API level 37+). 30-day automatic self extension will be available in Console. After this date, all apps in scope are subject to enforcement if not compliant.
+
+## Declaration Guidance
+
+All apps targeting Android 17 or higher and requesting READ_CONTACTS must complete a declaration in the Play Console to demonstrate access needs and justify why the Contact Picker is insufficient.
+
+The declaration will require you to complete the following questions:
+
+1. Which user-facing features in your app require READ_CONTACTS permission? (If your use case is non-user-facing or not listed below, select 'Other').
+
+Use Case
+
+|
+
+Description
+
+|
+
+Examples (not exhaustive)
+
+|
+
+Contact Management
+
+|
+
+Used for managing all contacts.
+
+|
+
+Showing all contacts, contact editing/organization, managing all contacts' birthdays
+
+|
+
+Dialing or SMS sending
+
+|
+
+Used to show users which contact they are calling or texting.
+
+|
+
+Managing calls, displaying your contact list, and providing the user interface for the in-call screen
+
+|
+
+Call History
+
+|
+
+Used to show users all the calls they have received and which contact they belong to.
+
+|
+
+Showing call history inside a dialer, or a parental control app that shows call history
+
+|
+
+Customer Relationship Management (CRM)
+
+|
+
+Functionalities that support businesses to keep track of business contact needs.
+
+|
+
+Updating contact notes, or other contacts data for all contacts
+
+|
+
+Call Screening
+
+|
+
+Service designed to identify, block or filter incoming calls and SMS.
+
+|
+
+Spam or call blocking that requires knowing all saved contacts
+
+|
+
+Accessibility features
+
+|
+
+Assistive tools that interact with contact lists to facilitate device usage for users with visual, auditory, or motor impairments.
+
+|
+
+"Read aloud" features or "Call a specific contact"
+
+|
+
+Personal Assistants
+
+|
+
+AI-driven agents that require deep access to contacts databases for contextual user commands.
+
+|
+
+"Send an email to" or "Call them at"
+
+|
+
+Friend matching/search
+
+|
+
+Used to facilitate social discovery by notifying the user which of their real-world contacts are already using the platform.
+
+|
+
+Apps with social features, social discovery
+
+|
+
+Backup and Restore/Connect to another device
+
+|
+
+Used for the specific purpose of data preservation and enabling users to recover their contacts.
+
+|
+
+Contact backup/restore, all user data backup/restore
+
+|
+
+Auto-Correct/Auto-Complete
+
+|
+
+Used for auto-correcting contact names or auto-completing names, email addresses or phone numbers.
+
+|
+
+Keyboard autocorrect which needs to know all contact names, auto-completing by merging server side, and device contacts
+
+|
+
+User-initiated device contact selection
+
+|
+
+Explicitly used when a user initiates contacts selection.
+
+|
+
+Referring/inviting a specific user, sharing a file with a specific user, blocking a specific contact on a gaming app
+
+|
+
+Other
+
+|
+
+2. Explain why Contacts Picker is not sufficient and you still need broad access via READ_CONTACTS.
+
+## Frequently asked questions
+
+## What are common use cases where the READ_CONTACTS permission is utilized?
+
+Common use cases for the READ_CONTACTS permission include friend finder/friend matching or lookup features, or apps that require a contact list to function as needed. Some examples of apps or features that typically would need access to contacts include:
+
+- Contact management apps
+
+- Accessibility
+
+- Server side access for friend matching
+
+- Backing up contacts
+
+- Auto complete/keyboards
+
+## What are common use cases where the READ_CONTACTS permission is not permissible
+
+Apps that only request the READ_CONTACTS permission for sharing files, collaborating, inviting/referring someone to join a service, choosing a contact to transact with, typically should not request the permission.
+
+## What if I already have a custom contact picking experience, does that qualify for access to this permission?
+
+This does not qualify as a reason to retain Contacts access.
+
+## Are there any exceptions to this policy?
+
+Private and enterprise device management apps are exempt from this policy requirement.
+
+## Will the READ_CONTACT permission still be available for use?
+
+Yes, however the usage is strictly permitted for those apps that pass the appropriate access review upon submission of declaration in the Play Developer Console, following the effective date.
+
+## How would I integrate the contact picker into my app?
+
+To integrate the Contact Picker, use the Intent.ACTION_PICK_CONTACTS intent. This intent launches the picker and returns the selected contacts to your app. Unlike the legacy ACTION_PICK, the Contact Picker lets you specify multiple data fields your app requires at the same time. For details on how to launch Contact picker for your app, see Android Developer guidance here.
+
+## What versions of Android is the contact picker compatible with?
+
+Android Contact Picker is not backported to previous versions and only exists for Android 17 or later (API level 37+). For apps targeting Android 17 and higher, the system automatically upgrades the existing Intent.ACTION_PICK intent to use the new Contact Picker interface. We recommend developers to use the Intent.ACTION_PICK_CONTACTS intent to benefit from the full capabilities offered by the new Contact Picker (multiple data types selection, work profile, etc.).
+
+## Photo and Video Permissions
+
+In October 2023, we introduced our new Photo and Video Permissions policy that governs the permissible use of the READ_MEDIA_IMAGES and READ_MEDIA_VIDEO permissions. Apps that target Android 13 or later (API level 33+) may only request the READ_MEDIA_IMAGES and READ_MEDIA_VIDEO permissions if system pickers (like the Android Photo Picker), are not sufficient for your app to provide core functionality. All user Photos are personal and sensitive data subject to the Google Play User Data policy.
+
+## Timeline
+
+- May 28, 2025: Full policy compliance is mandatory for all developers, including those who requested an extension. After this date, all apps are subject to removal from Google Play if not compliant.
+
+## Frequently asked questions
+
+## In what cases can the READ_MEDIA_IMAGES and READ_MEDIA_VIDEO permissions be accessed?
+
+Apps whose core functionality revolves around broad access to Photos and Videos may use the permissions above.
+
+## What kinds of apps would need "broad access to photos?"
+
+Apps whose core function includes managing and maintaining all of users' photos/videos (such as "gallery apps") would need broad access on a user's device. Other examples include apps whose core function is not served by the Photo Picker’s features - for example, where the picker is not technically sufficient.
+
+## What if I have a custom photo picking experience, does that qualify for access to these permissions?
+
+Apps that have custom pickers are not automatically qualified to use the permission - they must still submit a declaration in Play Console demonstrating why Android Photo Picker (or other alternatives) is not sufficient.
+
+## Are there any exceptions to this policy?
+
+Private and enterprise device management apps are exempt from this policy requirement.
+
+## Will my app need to remove the READ_MEDIA_IMAGES and READ_MEDIA_VIDEO permissions from my app manifest?
+
+Yes, in order to be compliant with this policy, if your app does not need access to Photos and Videos via a supported core use case, the media access permissions must be removed from the app by the effective policy date.
+
+## Why opt for a "picker" experience?
+
+Broad access to media files on shared storage is a vector for abuse and can harm both users and developers. The picker experience helps developers avoid unnecessarily broad access to sensitive data while giving them the tools to support a wide range of app features. By minimizing data access, the chance of being victims of leaks or targets of exploits is also minimized. It provides a consistent user experience, satisfies user expectations of privacy while using your app, and helps further maintain a safe and trusted experience.
+
+## How easy is it to integrate the photo picker into my app?
+
+Integrating Android photo picker in your app is easy and the tool updates automatically, offering expanded functionality to your app’s users over time without requiring any code changes. To simplify photo picker integration, include version 1.7.0 or higher of the androidx.activity library.
+
+## What versions of Android is the photo picker compatible with?
+
+The photo picker is available on devices that run Android 11 (API level 30) or higher and receive changes to Modular System Components through Google System Updates. Older devices that run Android 4.4 (API level 19) through Android 10 (API level 29) and Android Go devices running Android 11 or 12 that support Google Play services can install a backported version of the photo picker.
+
+## Must I use the Android photo picker or can my app use other picker integrations?
+
+You are not required to use the Android photo picker and can integrate other system pickers per your preference as needed.
+
+## What if a user does not grant my app broad access to media files?
+
+In accordance with the Restricted Permissions policy, you must make a reasonable effort to accommodate users who do not grant broad access to media files on their device. This includes facilitating a more transactional method (for example, via a system picker) where users can still enjoy the feature or functionality of your app. This could also include gracefully facilitating a modified app experience where users can still enjoy the applicable functionality of your app.
+
+## Was this helpful?
+How can we improve it?
+YesNo

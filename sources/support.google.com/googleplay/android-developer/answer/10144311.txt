@@ -1,0 +1,468 @@
+Source: https://support.google.com/googleplay/android-developer/answer/10144311
+Fetched: 2026-10-12
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+# User Data
+
+Help us improve this policy article by taking a 2-minute survey.
+
+Disclaimer: Policy summaries and Key Considerations are overviews only; always refer to the full policy for compliance. The full policy takes precedence in case of conflict.
+
+Policy Summary
+
+Google Play prohibits linking persistent device identifiers (such as IMEI, IMSI, or SIM Serial #) to personal and sensitive user data or resettable device identifiers. Other than for limited exceptions related to enterprise device management and telephony, if your app or any SDK integrated into your app performs such linking then you are in violation of the User Data policy. Please review the full policy to ensure compliance.
+
+Full Policy
+
+You must be transparent in how you handle user data (for example, information collected from or about a user, including device information). That means disclosing the access, collection, use, handling, and sharing of user data from your app, and limiting the use of the data to the policy compliant purposes disclosed. Please be aware that any handling of personal and sensitive user data is also subject to additional requirements in the "Personal and Sensitive User Data" section below. In addition to this and the other Play developer program policies, you must at all times comply with privacy and data protection laws applicable in the jurisdictions in which you offer your products or services. For example, if you offer your services to users in the European Union, note that the French Data Protection Authority (CNIL) adopted guidance on best practices for protection of personal data within the mobile environment that may be helpful for you to refer to.
+
+If you include third party code (for example, an SDK) in your app, you must ensure that the third party code used in your app, and that third party's practices with respect to user data from your app, are compliant with Google Play Developer Program policies, which include use and disclosure requirements. For example, you must ensure that your SDK providers do not sell personal and sensitive user data from your app. This requirement applies regardless of whether user data is transferred after being sent to a server, or by embedding third-party code in your app. These requirements also apply to third-party AI integrations (such as products, services, code) and you remain responsible for ensuring compliance with this policy, including limited use, disclosure and consent.
+
+Key Considerations
+
+Do |
+Don't |
+
+Ensure that your app does not link persistent IDs to resettable device identifiers. |
+Don't link IMEI with a user's location. |
+
+Stop third-party SDKs in your app from linking these types of device identifiers within your app. |
+Don't allow third-party SDKs in your app to associate the Android Advertising ID with a SIM Serial Number. |
+
+Remove third-party SDKs in your app that cannot be modified to comply with this policy. |
+Don't collect persistent device identifiers and combine them with sensitive user data. |
+
+Prominently disclose your uses to users as specified in the User Data policy if your app qualifies for an exception to this requirement (Telephony linked to a SIM identity or enterprise device management apps using device owner mode). |
+|
+
+#### COLLAPSE ALL EXPAND ALL
+
+## Personal and Sensitive User Data
+
+Policy Summary
+
+Google's User Data policy requires you to be transparent about how your app handles personal and sensitive user data. You must disclose what data you collect, how you use it, and who it's shared with. You must provide a valid privacy policy, obtain user consent, and handle data securely. Additionally, you must offer users a way to delete their accounts and associated data. Please review the full policy to ensure compliance.
+
+Full Policy
+
+Personal and sensitive user data includes, but isn't limited to, personally identifiable information, financial and payment information, authentication information, phonebook, contacts, device location, SMS and call-related data, health data, Health Connect data, inventory of other apps on the device, microphone, camera, and other sensitive device or usage data. If your app handles personal and sensitive user data, then you must:
+
+- Limit the access, collection, use and sharing of personal and sensitive user data acquired through the app to app and service functionality and policy-conforming purposes reasonably expected by the user:
+
+- Apps that extend usage of personal and sensitive user data for serving advertising must comply with Google Play’s Ads policy.
+
+- You may also transfer data as necessary to service providers or for legal reasons such as to comply with a valid governmental request, applicable law, or as part of a merger or acquisition with legally adequate notice to users.
+
+- Handle all personal and sensitive user data securely, including transmitting it using modern cryptography (for example, over HTTPS).
+
+- Use a runtime permissions request whenever available, prior to accessing data gated by Android permissions.
+
+- Not sell personal and sensitive user data.
+
+- "Sale" means the exchange or transfer of personal and sensitive user data to a third party for monetary consideration.
+
+- User-initiated transfer of personal and sensitive user data (for example, when the user is using a feature of the app to transfer a file to a third party, or when the user chooses to use a dedicated purpose research study app), is not regarded as sale.
+
+Key Considerations
+
+Do |
+Don't |
+
+Have a valid privacy policy in both the app's store listing and within the app itself. |
+Don't provide misleading or inaccurate information about your data practices. |
+
+Disclose your data collection and sharing practices in the Play Console's Data safety section. |
+Don't collect data that is not critical to your app's core purpose. |
+
+Obtain clear, affirmative user consent before collecting any personal or sensitive data.
+
+|
+Don't sell personal and sensitive user data. |
+
+Protect all user data with appropriate security measures, including modern cryptography for data in transit.
+
+|
+Don't violate child safety policies. If your app is for children, you must comply with the Google Play Families policy, which includes specific rules for handling user data. |
+
+Only collect and use data that is necessary for your app's functionality.
+
+|
+Don't collect data without the user's consent or manipulate them into giving it. |
+
+Allow account deletion. This must be available both in-app and on an external web resource.
+
+|
+Don't neglect account deletion. Provide a clear and easy way for users to delete their accounts and data. Account freezing is not a valid substitute. |
+
+## Prominent Disclosure & Consent Requirement
+
+Policy Summary
+
+Google Play policy mandates stringent requirements for handling sensitive personal or device data, particularly when its collection or use might not be expected by the user (e.g., background data collection). You must provide prominent, accessible, and descriptive in-app disclosure detailing data access, collection, use, and sharing before requesting any permissions or obtaining consent. Following disclosure, you are required to obtain clear user consent through a distinct, affirmative user action, ensuring informed user choice.
+
+Full Policy
+
+In cases where your app's access, collection, use, or sharing of personal and sensitive user data may not be within the reasonable expectation of the user of the product or feature in question (for example, if data collection occurs in the background when the user is not engaging with your app), you must meet the following requirements:
+
+Prominent disclosure: You must provide an in-app disclosure of your data access, collection, use, and sharing. The in-app disclosure:
+
+- Must be within the app itself, not only in the app description or on a website;
+
+- Must be displayed in the normal usage of the app and not require the user to navigate into a menu or settings;
+
+- Must describe the data being accessed or collected;
+
+- Must explain how the data will be used and/or shared;
+
+- Cannot only be placed in a privacy policy or terms of service; and
+
+- Cannot be included with other disclosures unrelated to personal and sensitive user data collection.
+
+Consent and runtime permissions: Requests for in-app user consent and runtime permission requests must be immediately preceded by an in-app disclosure that meets the requirement of this policy. The app's request for consent:
+
+- Must present the consent dialog clearly and unambiguously;
+
+- Must require affirmative user action (for example, tap to accept, tick a check-box);
+
+- Must not interpret navigation away from the disclosure (including tapping away or pressing the back or home button) as consent;
+
+- Must not use auto-dismissing or expiring messages as a means of obtaining user consent; and
+
+- Must be granted by the user before your app can begin to collect or access the personal and sensitive user data.
+
+Apps that rely on other legal bases to process personal and sensitive user data without consent, such as a legitimate interest under the EU GDPR, must comply with all applicable legal requirements and provide appropriate disclosures to the users, including in-app disclosures as required under this policy.
+
+To meet policy requirements, it's recommended that you reference the following example format for Prominent Disclosure when it's required:
+
+- "[This app] collects/transmits/syncs/stores [type of data] to enable ["feature"], [in what scenario]."
+
+- Example: "Fitness Funds collects location data to enable fitness tracking even when the app is closed or not in use and is also used to support advertising."
+
+- Example: "Call buddy collects read and write call log data to enable contact organization even when the app is not in use."
+
+If your app integrates third party code (for example, an SDK) that is designed to collect personal and sensitive user data by default, you must, within 2 weeks of receipt of a request from Google Play (or, if Google Play's request provides for a longer time period, within that time period), provide sufficient evidence demonstrating that your app meets the Prominent Disclosure and Consent requirements of this policy, including with regard to the data access, collection, use, or sharing via the third party code.
+
+Examples of common violations
+
+- An app collects device location but does not have a prominent disclosure explaining which feature uses this data and/or indicates the app's usage in the background.
+
+- An app has a runtime permission requesting access to data before the prominent disclosure which specifies what the data is used for.
+
+- An app that accesses a user's inventory of installed apps and doesn't treat this data as personal or sensitive data subject to the above Privacy Policy, data handling, and Prominent Disclosure and Consent requirements.
+
+- An app that accesses a user's phone or contact book data and doesn't treat this data as personal or sensitive data subject to the above Privacy Policy, data handling, and Prominent Disclosure and Consent requirements.
+
+- An app that records a user's screen and doesn't treat this data as personal or sensitive data subject to this policy.
+
+- An app that collects device location and does not comprehensively disclose its use and obtain consent in accordance with the above requirements.
+
+- An app that uses restricted permissions in the background of the app including for tracking, research, or marketing purposes and does not comprehensively disclose its use and obtain consent in accordance with the above requirements.
+
+- An app with an SDK that collects personal and sensitive user data and doesn't treat this data as subject to this User Data Policy, access, data handling (including disallowed sale), and prominent disclosure and consent requirements.
+
+Refer to this article for more information on the Prominent Disclosure and Consent requirement.
+
+Key Considerations
+
+Do |
+Don't |
+
+Provide prominent, accessible, in-app disclosure of data handling. |
+Don't handle sensitive data beyond user expectation without prior, prominent in-app disclosure. |
+
+Clearly describe all sensitive data access, use, and sharing. |
+Don't attempt to hide data practices or evade disclosure requirements. |
+
+Present disclosure before requesting consent or permissions.
+
+|
+Don't use passive user actions (like backing out) as consent. |
+
+Require a clear, affirmative user action to grant consent.
+
+|
+Don't implement auto-dismissing popups for consent purposes. |
+
+Ensure disclosure highlights relevant permissions.
+
+|
+Don't request permissions before the user has seen disclosure. |
+
+Familiarize yourself with common policy violations related to disclosure/consent.
+
+|
+Don't fail to provide a descriptive and accessible disclosure format. |
+
+## Restrictions for Personal and Sensitive Data Access
+
+Policy Summary
+
+Google Play enforces specific restrictions on apps that handle financial, contact, or persistent identifier data. You must never publicly expose financial or government ID numbers. Unauthorized publishing of private contacts is forbidden. Apps for children must use approved SDKs. Apps that link persistent identifiers to other data must be for specific telephony or enterprise management purposes, with clear user disclosures. Please review the full policy to ensure compliance.
+
+Full Policy
+
+In addition to the requirements above, the table below describes requirements for specific activities.
+
+Activity |
+Requirement |
+
+Your app handles financial or payment information or government identification numbers |
+Your app must never publicly disclose any personal and sensitive user data related to financial or payment activities or any government identification numbers. |
+
+Your app handles non-public phonebook or contact information |
+We don't allow unauthorized publishing or disclosure of people's non-public contacts. |
+
+Your app contains anti-virus or security functionality, such as anti-virus, anti-malware, or security-related features |
+Your app must post a privacy policy that, together with any in-app disclosures, explain what user data your app collects and transmits, how it's used, and the type of parties with whom it's shared. |
+
+Your app targets children |
+Your app must not include an SDK that is not approved for use in child-directed services. See Designing Apps for Children and Families for full policy language and requirements. |
+
+Your app collects or links persistent device identifiers (for example, IMEI, IMSI, SIM Serial #, etc.) |
+
+Persistent device identifiers may not be linked to other personal and sensitive user data or resettable device identifiers except for the purposes of
+
+- Telephony linked to a SIM identity (for example, wifi calling linked to a carrier account), and
+
+- Enterprise device management apps using device owner mode.
+
+These uses must be prominently disclosed to users as specified in the User Data policy.
+
+Please consult this resource for alternative unique identifiers.
+
+Please read the Ads policy for additional guidelines for Android Advertising ID. |
+
+Key Considerations
+
+Do |
+Don't |
+
+Handle contacts securely. |
+Don't publicly disclose any financial information or government ID numbers. |
+
+Ensure any SDKs used in child-directed apps are approved for that purpose. |
+Don't disclose sensitive data publicly. Do not make financial data or government IDs public. |
+
+Disclose data use for security apps. If your app has anti-virus or security features, its privacy policy must clearly explain all data collection and sharing. |
+Don’t publish or share people's non-public contacts without authorization. |
+
+Only link persistent identifiers (like IMEI) to other user data for specific telephony or enterprise management purposes. |
+Don't use unapproved SDKs for children's apps. Do not include unapproved SDKs in apps targeting children. |
+
+Disclose use of identifiers. All permitted uses of persistent identifiers must be prominently disclosed to users. |
+Don't link identifiers unnecessarily. Avoid linking persistent identifiers to other user data unless for the two approved use cases. |
+
+## Data safety section
+
+Policy Summary
+
+Google Play requires full transparency about the user data your app collects and how it's used. You must complete and maintain an accurate Data safety section for each of your apps in the Play Console, detailing data collection, use, and sharing (including by any SDKs in your app). The information in this section must consistently match your app's privacy policy disclosures. This information will show up in your app's Data safety section on Google Play, helping users understand how their data will be handled and make informed choices. Please review the full policy to ensure compliance.
+
+Full Policy
+
+All developers must complete a clear and accurate Data safety section for every app detailing collection, use, and sharing of user data. The developer is responsible for the accuracy of the label and keeping this information up-to-date. Where relevant, the section must be consistent with the disclosures made in the app's privacy policy.
+
+Please refer to this article for additional information on completing the Data safety section.
+
+Key Considerations
+
+Do |
+Don't |
+
+Share your privacy policy in Play Console and within the app itself. |
+Don't attempt to hide data collection or usage from users. |
+
+Provide prominent and accessible in-app data disclosure and obtain user consent via affirmative action when required. Affirmative action means that the user must complete an action in order to indicate that they agree. Update regularly information in your app's Data safety section and your privacy policy as you change how your app handles user data. |
+Don't request device permissions before users have provided their consent. |
+
+Verify data handling procedures of all third parties (SDKs). This is an important opportunity to audit your app, know your code, and what you integrate into it. Many SDKs share their data practices on Play SDK Index.
+
+|
+Don't use auto-dismissing consent popups when affirmative action is required to obtain user consent. |
+
+## Privacy Policy
+
+Policy Summary
+
+To promote user trust and privacy, Google Play requires every app to have a comprehensive privacy policy accessible within the app and linked in the Play Console. This policy must accurately disclose how your app accesses, collects, uses, and shares all types of user and device data. For apps that offer account creation, you are also required to provide users with a clear and accessible method to delete their account. Importantly, you must delete all associated user data upon receiving an account deletion request, rather than merely freezing the account.
+
+Full Policy
+
+All apps must post a privacy policy link in the designated field within Play Console, and a privacy policy link or text within the app itself. The privacy policy must, together with any in-app disclosures, comprehensively disclose how your app accesses, collects, uses, and shares user data, not limited by the data disclosed in the Data safety section. This must include:
+
+- Developer information and a privacy point of contact or a mechanism to submit inquiries.
+
+- Disclosing the types of personal and sensitive user data your app accesses, collects, uses, and shares; and any parties with which any personal or sensitive user data is shared.
+
+- Secure data handling procedures for personal and sensitive user data.
+
+- The developer's data retention and deletion policy.
+
+- Clear labeling as a privacy policy (for example, listed as "privacy policy" in title).
+
+The entity (for example, developer, company) named in the app's Google Play store listing must appear in the privacy policy or the app must be named in the privacy policy. Apps that do not access any personal and sensitive user data must still submit a privacy policy.
+
+Please make sure your privacy policy is available on an active, publicly accessible and non-geofenced URL (no PDFs) and is non-editable.
+
+Key Considerations
+
+Do |
+Don't |
+
+Ensure your comprehensive privacy policy is linked in Play Console. |
+Don't omit any user or device data handling from your privacy policy. |
+
+Make your privacy policy accessible from within the app. |
+Don't fail to include required app/company identification in the privacy policy. |
+
+Accurately disclose all data access, collection, use, and sharing in the policy.
+
+|
+Don't present account freezing as a substitute for deletion. |
+
+Include your app name and company details in the policy.
+
+|
+Don't create any difficulties or hidden steps for users deleting their account. |
+
+Implement a clear, accessible process for user account deletion.
+
+|
+Don't fail to permanently delete all user data upon account deletion. |
+
+Upon account deletion, ensure all associated user data is deleted.
+
+|
+Don't neglect to complete and maintain the Data safety section accurately. |
+
+Ensure your privacy policy is globally accessible.
+
+|
+|
+
+## Account Deletion Requirement
+
+Policy Summary
+
+To comply with Google Play policy and respect user data control, apps that allow account creation must provide a clear option for account deletion. This option must be available both from within your app and externally through a designated web resource. When a user requests account deletion, you are required to delete all associated user data; merely freezing the account is not sufficient. Ensure the deletion process is clear and free of obstacles, and accurately disclose any necessary data retention practices in your privacy policy.
+
+Full Policy
+
+If your app allows users to create an account from within your app, then it must also allow users to request for their account to be deleted. Users must have a readily discoverable option to initiate app account deletion from within your app and outside of your app (for example, by visiting your website). A link to this web resource must be entered in the designated URL form field within Play Console.
+
+When you delete an app account based on a user's request, you must also delete the user data associated with that app account. Temporary account deactivation, disabling, or “freezing” the app account does not qualify as account deletion. If you need to retain certain data for legitimate reasons such as security, fraud prevention, or regulatory compliance, you must clearly inform users about your data retention practices (for example, within your privacy policy).
+
+To learn more about account deletion policy requirements, please review this Help Center article. For additional information on updating your Data safety form, visit this article.
+
+Key Considerations
+
+Do |
+Don't |
+
+Offer a clear account deletion option within your app. |
+Don't fail to provide both an in-app and external deletion method. |
+
+Provide an accessible external web resource for account deletion. |
+Don't create any hidden patterns or undue rigor in the deletion process. |
+
+Ensure the user process for deletion is straightforward and free of obstacles.
+
+|
+Don't use account freezing as a substitute for deletion. |
+
+Upon user request, delete all data associated with their account.
+
+|
+Don't fail to delete all associated user data upon account deletion request. |
+
+Clearly disclose any necessary (e.g. regulatory compliance) data retention in your privacy policy.
+
+|
+Don't provide broken or outdated links to the external deletion resource page. |
+
+Ensure your deletion resources clearly reference your app/service.
+
+|
+Don't omit necessary data retention information from your privacy policy. |
+
+## Usage of App Set ID
+
+Policy Summary
+
+The App Set ID is intended to support essential non-ads use cases such as analytics and fraud prevention. It must not be used for ads personalization and ads measurement or associated with personally-identifiable information or other device identifiers (for example, Android Advertising ID). You must be transparent, so disclose any collection and usage of App Set ID to users in a legally adequate privacy notification. Please review the full policy to ensure compliance.
+
+Full Policy
+
+Android will introduce a new ID to support essential use cases such as analytics and fraud prevention. Terms for the use of this ID are below.
+
+- Usage: App set ID must not be used for ads personalization and ads measurement.
+
+- Association with personally-identifiable information or other identifiers: App set ID may not be connected to any Android identifiers (for example, AAID) or any personal and sensitive data for advertising purposes.
+
+- Transparency and consent: The collection and use of the app set ID and commitment to these terms must be disclosed to users in a legally adequate privacy notification, including your privacy policy. You must obtain users' legally valid consent where required. To learn more about our privacy standards, please review our User Data policy.
+
+Key Considerations
+
+Do |
+Don't |
+
+Use the App Set ID for essential functions such as analytics and fraud prevention. |
+Don't use the App Set ID for personalized ads or ad measurement. |
+
+Disclose the collection and usage of the App Set ID in a legally adequate privacy notification and your privacy policy. |
+Don't link the App Set ID to any Android identifiers or personal and sensitive user data for advertising purposes. |
+
+Obtain legally valid consent from users where required before collecting and using App Set ID. |
+Don't omit from your privacy policy. You must be transparent about the use of the App Set ID. |
+
+## EU-U.S., UK, and Swiss Data Privacy Frameworks
+
+Policy Summary
+
+If your app handles personal data from users in the European Economic Area, UK, or Switzerland, you must comply with their privacy and data protection laws. You must obtain user consent and protect this data from misuse. You also have a duty to monitor your compliance and notify Google immediately if you cannot meet these requirements. Please review the full policy to ensure compliance.
+
+Full Policy
+
+If you access, use, or process personal information made available by Google that directly or indirectly identifies an individual and that originated in the European Economic Area, United Kingdom, or Switzerland ("EU Personal Information"), then you must:
+
+- Comply with all applicable privacy, data security, and data protection laws, directives, regulations, and rules;
+
+- Access, use or process EU Personal Information only for purposes that are consistent with the consent obtained from the individual to whom the EU Personal Information relates;
+
+- Implement appropriate organizational and technical measures to protect EU Personal Information against loss, misuse, and unauthorized or unlawful access, disclosure, alteration and destruction; and
+
+- Provide the same level of protection as is required by the Data Privacy Framework Principles or the applicable transfer mechanism as described in the Google Controller-Controller Data Protection Terms.
+
+You must monitor your compliance with these conditions on a regular basis. If, at any time, you cannot meet these conditions (or if there is a significant risk that you will not be able to meet them), you must immediately notify us by email to data-protection-office@google.com and immediately either stop processing EU Personal Information or take reasonable and appropriate steps to restore an adequate level of protection.
+
+Key Considerations
+
+Do |
+Don't |
+
+Adhere to all applicable privacy, data security, and data protection laws (e.g., GDPR). |
+Don't ignore privacy laws, as failing to comply with applicable laws is a policy violation. |
+
+Only access and use personal data for purposes consistent with user consent. |
+Don't access or process personal data for any purpose that a user has not consented to. |
+
+Implement technical and organizational measures to secure EU Personal Information.
+
+|
+Don't avoid insecurely handling personal data, which could lead to loss or misuse. |
+
+If you are unable to meet these conditions, you must immediately notify Google's data-protection-office@google.com and take corrective action.
+
+|
+Don't fail to notify Google. If you can't comply with these conditions, you must inform Google immediately. |
+
+Regularly monitor compliance, ensuring you consistently meet these conditions, especially following regulatory or legal updates to applicable policies.
+
+|
+Don't sell or transfer user data without meeting all legal and policy requirements. |
+
+Help us improve this policy article by taking a 2-minute survey.
+
+## Was this helpful?
+How can we improve it?
+YesNo

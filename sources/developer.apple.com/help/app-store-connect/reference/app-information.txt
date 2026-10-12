@@ -1,0 +1,219 @@
+Source: https://developer.apple.com/help/app-store-connect/reference/app-information/
+Fetched: 2026-10-12
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+# App information
+
+App information refers to the properties that are shared across the platforms added to an app. Some of these properties are set when you add the app to your account, and later, you can edit app information as needed based on the app's status.
+
+Learn how to make the most of your product page on the App Store.
+
+Property
+
+|
+
+Description
+
+|
+
+Name
+
+|
+
+The localized name of your app as it appears on App Store product pages and when users install your app. The name must be at least two characters and no more than 30 characters. You can edit it until you submit the app to App Review. Later, you can change the name when you create a new version or the status of the app version permits editing this property.
+
+|
+
+Subtitle
+
+|
+
+A summary of your app that appears under your app's name on your App Store product page. This can’t be longer than 30 characters.
+
+|
+
+Privacy Policy URL
+
+|
+
+A URL that links to your company’s privacy policy. Required for iOS and macOS apps. If your app has a tvOS platform, the text of your privacy policy in the Apple TV Privacy Policy field is required.
+
+|
+
+Bundle ID
+
+|
+
+A unique identifier for your app that is used throughout the system. (A build is uniquely identified by the combination of the bundle ID, version number, and build string.) You can’t change this property after you upload a build.
+
+Important: The Bundle ID property must match the bundle ID you set in the Xcode project.
+
+|
+
+SKU
+
+|
+
+A unique ID you give to your app for internal tracking that's not visible to customers. The SKU can contain letters, numbers, hyphens, periods, and underscores but not start with a hyphen, period, or underscore. You can’t change the SKU after you add the app to your account.
+
+|
+
+Apple ID
+
+|
+
+A unique identifier automatically generated for your app when you add the app to your account. You can view this property in the App information section in App Store Connect. This identifier is also used in the URL for the App Store on desktop computers. You can’t edit this property.
+
+|
+
+Content Rights
+
+|
+
+Apps that contain, show, or access third-party content must have all the necessary rights to that content or be otherwise permitted to use it under the laws of each App Store country or region in which they’re available. Learn more about the App Store guidelines.
+
+|
+
+Age Rating
+
+|
+
+The age rating of your app for the purpose of parental controls. Note that the rating is set at the app level in the App information section and is applied across all platforms. Learn more about the age rating values. This property is required.
+
+|
+
+Made for Kids
+
+|
+
+An indication that the app appears in the Kids category on the App Store. This property includes an age range set for the app. Once an app marked as Made for Kids is approved by App Review, this selection cannot be changed and all subsequent updates will need to follow the Kids category guidelines.
+
+|
+
+License Agreement
+
+|
+
+Apple provides a standard EULA (End-User License Agreement) that applies in all regions. You may provide a custom license agreement that supersedes the Apple EULA for one or more regions.
+
+|
+
+Primary Language
+
+|
+
+The default language for the metadata that appears on App Store product pages, and is displayed when users install your app, when you don't provide localized metadata for a given country or region. You can change the primary language at any time.
+
+|
+
+Category (Primary and Secondary)
+
+|
+
+The categories that best describe your app.
+
+For macOS apps, you also set the app category in Xcode. The primary category you set in App Store Connect should match the category you set in Xcode.
+
+For more information, visit Choosing a Category.
+
+|
+
+Subcategory
+
+|
+
+If you select Games or Stickers as the Primary or Secondary Category, you can also select one or two subcategories to help more accurately define your game or stickers app.
+
+|
+
+Availability in the Republic of Korea - Rating Classification Number
+
+|
+
+If your app meets one or more of the following characteristics, a Rating Classification Number from the Game Rating and Administration Committee (GRAC) is required in order to offer it on the App Store in the Republic of Korea.
+
+App has been given the KR-19 regional rating by GRAC.
+
+Apps in the Casino subcategory with age rating 17+
+
+Apps in the Games or Entertainment categories with a Frequent/Intense level of frequency in at least one of the following content descriptions:
+
+Simulated Gambling
+
+Sexual Content or Nudity
+
+Alcohol, Tobacco, or Drug Use or Reference
+
+Realistic Violence
+
+Please note that this field will display if your app is in the Games or Entertainment category with a rating of 17+, but is only required if your app meets the above criteria.
+
+|
+
+Availability in China mainland
+
+|
+
+Chinese law requires additional documentation for some apps to be available on the App Store in China mainland.
+
+China’s Ministry of Industry and Information Technology (MIIT) requires that some apps possess a valid Internet Content Provider (ICP) Filing Number. The ICP number and metadata on the App Information page should match with the information you have filed with MIIT. This match is required for your Simplified Chinese localization; if not configured, then it should match your primary language. Once the provided ICP Filing Number is verified and saved, it will be displayed on your App Store product page.
+
+In addition, games must secure an approval number and apps with books and magazine content must secure an internet publishing permit from China’s National Press and Publication Administration (NPPA). Apps with religious content must secure an Internet Religious Information Permit from China’s National Religious Affairs Administration (NRAA). Apps with news content must obtain an Internet News Information Permit from the Cyberspace Administration of China (CAC). If you offer or plan to offer any of these on the App Store in China mainland, you must provide the required information along with one or more supporting documents.If applicable, provide the required ICP filing information in the designated section under the “App Information” tab. To help verify your approval number, upload your game’s ISBN Issuing Letter or Approval Reply, and a copy of your latest Business License. Additionally, you can include an authorization agreement from the matching operator. To help verify your publishing permit, upload your internet publishing permit or other relevant permit from the NPPA, a publishing permit authorization letter from the authorizing party, a business license, an ICP license, or similar supporting documentation. To help verify your Internet Religious Information Permit, upload your Internet Religious Information Permit, a permit authorization letter from the authorizing party, a business license, an ICP license, or similar supporting documentation. To help verify your Internet News Information Permit, upload your Internet News Information Permit, a permit authorization letter from the authorizing party, a business license, an ICP license, or similar supporting documentation.
+
+Learn more about approval numbers from the NPPA.
+
+Learn more about internet publishing permits.
+
+Learn more about Internet Religious Information Permits.
+
+Learn more about Internet News Information Permits.
+
+Learn more about ICP Filing Number.
+
+|
+
+Availability in Vietnam
+
+|
+
+Vietnamese regulators require games distributed in Vietnam to be licensed to remain available on the App Store in Vietnam.
+
+To learn more about the game license, review the regulations on licensing game publishing in Vietnam.
+
+|
+
+URL for App Store Server Notifications
+
+|
+
+If your app offers In-App Purchases, you can receive server notifications from the App Store about key events by setting up an optional URL that links to your server. Learn how to enable App Store Server Notifications.
+
+|
+
+Digital Services Act (DSA)
+
+|
+
+You’ll be asked to disclose whether or not you’re a trader under the European Union’s Digital Services Act (DSA) in order to distribute apps in the EU. If you’re a trader, the DSA requires that you provide certain identification information, including your address and contact details, to be displayed on your App Store product pages to consumers in the EU. You also have the option to provide a labels and markings URL. Learn more.
+
+|
+
+Regulated Medical Devices
+
+|
+
+Apps that are available in the EU/EEA, UK, or U.S., and have a primary or secondary category of Health & Fitness or Medical, or that have "frequent" Medical or Treatment information listed in the age rating, are required to complete this declaration.
+
+Learn more about regulated medical devices in the EU/EEA.
+
+Learn more about regulated medical devices in the UK.
+
+Learn more about regulated medical devices in the US.
+
+|
+
+Related
+Add a new app
+View and edit app information
+Platform version information
+Required, localizable, and editable properties

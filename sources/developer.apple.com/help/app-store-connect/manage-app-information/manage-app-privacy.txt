@@ -1,0 +1,99 @@
+Source: https://developer.apple.com/help/app-store-connect/manage-app-information/manage-app-privacy
+Fetched: 2026-10-12
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+# Manage app privacy
+
+You’re required to provide a privacy policy URL for your iOS app platform and privacy policy text for your tvOS app platform. Offering a privacy choices URL is optional. Furthermore, if you're distributing your app on the App Store, you're required to explain your data handling practices in App Store Connect. This informs users about the data that may be collected through your app and how it may be used.
+
+Your responses to the app privacy questions are used to help inform customers about your app’s data practices. Based on the information you submit, your App Store product page will be updated to include details about the app's data collection and usage.
+
+Responses are provided at the app level and should accurately represent your app's data practices across all platforms. You should answer in the most comprehensive and inclusive way if your app collects more data on one platform than another. You must include information about your app's privacy practices and those of third-party partners whose code you integrate into your app.
+
+Note: You’re responsible for keeping your responses accurate and up to date. If your practices change, update your responses in App Store Connect.
+
+Learn about privacy and data.
+
+Learn about responding to app privacy questions.
+
+Required role: Account Holder, Admin, or App Manager. View role permissions.
+
+## Answering app privacy questions
+
+In Apps, select the app you want to view.
+
+In the sidebar, click App Privacy.
+
+On the right, click Get Started.
+
+In the dialog that appears, indicate whether you or your third-party partners collect data from your app.
+
+If the answer is no, select "No, we do not collect data from this app" and then click Save. You don’t need to answer any further questions.
+
+If the answer is yes, select "Yes, we collect data from this app" and then click Next.
+
+Select all of the data you or your third-party partners collect from this app and click Save.
+
+If your app is currently available on the App Store, make sure your responses reflect the data collected only from that app version.
+
+In the Data Types section, click each data type and answer the questions that follow. If at any point you want to update your data types, click Edit next to Data Types.
+
+Click Save when finished.
+
+Your responses appear in each data type section. Scroll to the Product Page Preview section to view how this information will appear on the App Store. To view product page details, click See Details.
+
+On the top right of the page, click Publish.
+
+A dialog appears confirming that you agree that your responses are accurate, comply with the App Review Guidelines and applicable law, and that you will promptly update your responses if your data practices change. To agree and continue, click Publish. Your responses will be published on your product page on the App Store. If your product page isn’t live yet, your responses will be published once your product page goes live.
+
+### Adding and removing data types
+
+Updates to data types will be published after you click Publish. If you select new data types, you must complete their setup by responding to the questions in each data type section before publishing.
+
+In Apps, select the app you want to view.
+
+In the sidebar, click App Privacy.
+
+Next to Data Types, click Edit.
+
+Update your selections for all of the data you or your third-party partners collect from this app.
+
+If your app is currently available on the App Store, ensure that your responses reflect the data collected only from that app version.
+
+If you removed an existing data type, click Publish. Your responses to this data type will be removed from your app’s product page.
+
+If you added a new data type, click Continue, then complete the setup for the newly added data type by clicking into it and responding to the questions that follow. Once completing your responses to the questions, click Publish. Your responses to the newly added data type will appear on your app’s product page after publishing.
+
+If you have added a new data type and removed an existing one, click Publish, then click Continue. Your responses to the removed data type will be removed from your app's product page. You need to complete the setup for the newly added data type by clicking into it and responding to the questions that follow. Once you have finished responding to the questions, click Publish. Your responses to the newly added data type will appear on your app's product page after publishing.
+
+### Updating app privacy responses
+
+In Apps, select the app you want to view.
+
+In the sidebar, select App privacy.
+
+To edit existing responses, on the right, click on the data type you'd like to update your responses for.
+
+Update your responses, then click Publish. Your updated responses will be published on your app’s product page after you click Publish.
+
+Below the Product Page Preview section on the App Store Connect, you can preview how this information about your app's data collection and usage will appear. To view the details of the product page preview, click See Details.
+
+### Entering privacy policy information
+
+In App Store Connect, you can enter privacy policy and user privacy choices URLs for your iOS and macOS app platforms, and privacy policy text for your tvOS app platform. A privacy policy URL is required for all apps, while a user privacy choices URL is optional. The URLs for your iOS app and macOS app platform and the text for your tvOS app platform can be updated if your app is in an editable app status. Learn more about required, localizable, and editable properties.
+
+Required role: Account Holder, Admin, App Manager, or Marketing. View role permissions.
+
+In Apps, select the app you want to view.
+
+In the sidebar, select App privacy.
+
+Next to Privacy Policy, click Edit.
+
+Enter the privacy policy URL and optionally, the user privacy choices URL. If your app includes a tvOS platform, enter the text of your privacy policy in the Apple TV Privacy Policy field.
+
+Note: You can localize the privacy policy URLs and text in all of the languages your app is available in.
+
+Click Save.
+
+Any changes to the URLs releases with your next app version.

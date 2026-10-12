@@ -1,0 +1,89 @@
+Source: https://developer.apple.com/app-store/search/
+Fetched: 2026-10-12
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+# App Store search
+
+App Store search helps people around the world discover and download apps, games, and content they’ll love. Understand how people find content, and how you can make the most of search to drive downloads, encourage engagement, and grow your business on the App Store.
+
+## Search overview
+
+The App Store makes it easy for people around the world to find apps, games, and additional content like In‑App Events, promoted Apple In‑App Purchases, developer cards, categories, editorial stories, tips and tricks, and collections.
+
+People can discover apps, games, and other content in several places:
+
+Search tab. By default, the Search tab displays suggested content below the search bar which may include relevant apps, games, and Apple Ads. Top charts and category content also appear to help people explore the App Store.
+
+Search bar and hints. People can use natural, everyday language when performing a search to get even better, more relevant results. Search hints appear once someone inputs text into the search bar and can help inspire people before they search or select a result.
+
+Search results. The search results page displays relevant content based on someone’s inquiry. This includes developer cards, Apple In-App Purchases, In-App Events, and custom product pages, as well as categories, editorial content, and Apple Ads. Your app’s rating and up to three screenshots or app previews may display in search results depending on the platform and image orientation. Search results may also include app tags, which help people understand more about your app or game's essential qualities. These are generated using large language models (LLMs) based on the metadata you’ve provided in App Store Connect.
+
+## Make the most of App Store search
+
+We’re constantly evolving how search works on the App Store to provide the best results. Search results are based on a number of factors, including text relevance (matches for your app’s title, subtitle, keywords, and primary category), as well as user behavior (downloads, ratings and reviews, and more).
+
+### Create a compelling product page
+
+Elements of your App Store product page that appear in search results include your app name, subtitle, screenshots, and more. To encourage people to download your app, be sure your product page embodies your brand and clearly communicates the essence of your app or game, including impactful screenshots, an enticing app icon, and an accurate description.
+
+Assign keywords to your custom product pages. Enable your custom product pages to appear in search results for those selected keywords, rather than your default product page. When assigning keywords, ensure the keywords you select match the intent of your custom product page and that each keyword combination is unique to a single product page.
+
+Get tips on creating your product page
+
+Support a global audience. Consider localizing your product page in the App Store so it supports multiple languages. This allows people in different regions to more easily understand your app or game and may make them more likely to download it.
+
+Learn about localizing your app
+
+### Choose accurate keywords that resonate
+
+Keywords help determine where your app appears in search results, so be thoughtful about your selections to ensure the best discoverability for your app or game. Choose keywords based on words you think people may use to find an app like yours. Be specific when describing your app’s features and functionality to help the search algorithm surface your app in relevant searches.
+
+Keywords are limited to 100 characters total, with terms separated by commas and no spaces. You can use spaces to separate words within keyword phrases. For example: Property,House,Real Estate. Don’t repeat any words any words included in your app name, subtitle, or category. To maximize the number of words that fit in this character limit, avoid:
+
+- Plurals of words you’ve already included, such as “climbs” and “climb,” as these are considered duplicates.
+
+- Generic terms that are too broad for your app or category, such as “app” or “game.”
+
+- Filler words like “the” and “to,” as these don’t add any additional value.
+
+- Special characters, such as (such as # or @), unless they’re part of your brand identity.
+
+Improper use of keywords is a common reason for App Store rejections. Don’t include:
+
+- Unauthorized use of trademarked terms, celebrity names, or other protected words and phrases.
+
+- Terms that are not relevant to the app.
+
+- Competing app names.
+
+- Inappropriate, offensive, or objectionable terms.
+
+In addition, keep in mind that promotional text doesn’t affect your app’s search ranking so it should not be used to display keywords.
+
+Consider the trade-off between ranking well for less common terms versus ranking lower for popular terms. Popular, functional terms, such as “jobs” or “social” and trending or seasonal terms, such as “Christmas” or “summer” may drive a lot of traffic, but are highly competitive – especially if you are a newer or smaller app. Less common terms drive lower traffic, but are less competitive.
+
+### Assign the right categories
+
+Categories on the App Store help people discover new apps and games to serve their needs. The primary category helps people find and understand your app or game when browsing the App Store or filtering search results. Your primary category and optional secondary category are indexed by our search algorithm. For games, you can select the Games category as the primary or secondary category and you can select up to two additional subcategories to better define your game.
+
+Be sure to select the categories that are most relevant for your app or game. Choosing categories that aren’t relevant is grounds for rejection by App Review.
+
+### Foster positive ratings and reviews
+
+Ratings and reviews appear on your product page and in search results, and can influence how your app ranks in App Store search. They can encourage people to engage with your app, so focus on providing a great app experience that motivates people to leave positive reviews. Learn more about ratings, reviews, and responses and how to easily ask people for ratings in your app.
+
+### Publish In‑App Events
+
+In‑App Events appear in search results on the App Store on iOS and iPadOS next to your app or game. People who’ve downloaded your app or game before will see your event card in search results, while people who have never downloaded it will see your screenshots or app previews instead of your event card.
+
+Learn about In‑App Events
+
+### Promote Apple In‑App Purchases
+
+Promoted Apple In‑App Purchases appear in App Store search results and people can tap them to be directed to your product page where they can learn more and initiate an Apple In‑App Purchase.
+
+Learn how to promote Apple In-App Purchases
+
+## Monitor search performance
+
+Review your search performance on an ongoing basis to understand the impact of your metadata. Use App Analytics in App Store Connect to monitor key metrics such as impressions, conversion rate, downloads, and more. You can filter by source type for more detail — for example, filtering conversion rate to understand how many people downloaded your app from App Store search. Keep in mind that your Apple Ads performance shows up here as well.

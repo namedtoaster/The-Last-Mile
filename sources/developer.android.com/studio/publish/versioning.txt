@@ -1,0 +1,322 @@
+Source: https://developer.android.com/studio/publish/versioning
+Fetched: 2026-10-12
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+Android Developers
+
+Develop
+
+Android Studio
+
+IDE guides
+
+# Version your app
+
+Stay organized with collections
+
+Save and categorize content based on your preferences.
+
+Versioning is a critical component of your app upgrade and maintenance
+strategy. Versioning is important because:
+
+- Users need to have specific information about the app version that
+is installed on their devices and the upgrade versions available for
+installation.
+
+- Other apps&mdash;including other apps that you publish as
+a suite&mdash;need to query the system for your app's version to
+determine compatibility and identify dependencies.
+
+- Services where you publish your app(s) may also need to
+query your app for its version so that they can display the version to
+users. A publishing service may also need to check the app version to
+determine compatibility and establish upgrade/downgrade relationships.
+
+The Android system uses your app's version information to protect
+against downgrades. The
+system doesn't use app version information to enforce restrictions on
+upgrades or compatibility of third-party apps. Your app must enforce any
+version restrictions and tell users about them.
+
+The Android system enforces system version compatibility, as expressed
+by the minSdk setting in the build files. This setting
+lets an app specify the minimum system API that it is compatible with.
+For more information about API requirements,
+see Specify API level (SDK version) requirements.
+
+Versioning requirements vary between different projects. However, many developers consider
+Semantic Versioning a good basis for a
+versioning strategy.
+
+## Set app version information
+
+To define the version information for your app, set values for the version
+settings in the Gradle build files:
+
+### Groovy
+
+android {
+namespace 'com.example.testapp'
+compileSdk 33
+
+defaultConfig {
+applicationId "com.example.testapp"
+minSdk 24
+targetSdk 33
+versionCode 1
+versionName "1.0"
+...
+}
+...
+}
+...
+
+### Kotlin
+
+android {
+namespace = "com.example.testapp"
+compileSdk = 33
+
+defaultConfig {
+applicationId = "com.example.testapp"
+minSdk = 24
+targetSdk = 33
+versionCode = 1
+versionName = "1.0"
+...
+}
+...
+}
+...
+
+### Version settings
+
+Define values for both of the version settings available: versionCode and
+versionName.
+
+versionCode
+
+A positive integer used as an internal version number.
+This number helps determine whether one version is more recent
+than another, with higher numbers indicating more recent versions. This is
+not the version number shown to users; that number is set by the
+versionName setting. The Android system uses the
+versionCode value to protect against downgrades by preventing
+users from installing an APK with a lower versionCode than
+the version currently installed on their device.
+
+The value is a positive integer so that other apps can programmatically evaluate
+it&mdash;to check an upgrade or downgrade relationship, for instance. You can
+set the value to any positive integer. However, make sure that
+each successive release of your app uses a greater value.
+
+Note: The greatest value Google Play allows for
+versionCode is 2100000000.
+
+You can't upload an APK to the Play Store with a versionCode you have
+already used for a previous version.
+
+Note: In some situations, you might want to
+upload a version of your app with a lower versionCode than the most
+recent version. For example, if you are publishing multiple APKs, you might have
+pre-set versionCode ranges for specific APKs. For more about
+assigning versionCode values for multiple APKs, see
+Assigning version codes.
+
+Typically, you release the first version of your app with
+versionCode set to 1, then monotonically increase the value
+with each release, regardless of whether the release constitutes a major or
+minor release. This means that the versionCode value doesn't
+necessarily resemble the app release version that
+is visible to the user. Apps and publishing services shouldn't display this version
+value to users.
+
+versionName
+
+A string used as the version number shown to
+users. This setting can be specified as a raw string or as a reference to a
+string resource.
+
+The value is a string so that you can describe the app version as a
+<major>.<minor>.<point> string or as any other type of
+absolute or relative version identifier. The versionName is the only value
+displayed to users.
+
+### Define version values
+
+You can define default values for these settings by including them in the
+defaultConfig {} block, nested inside the android {}
+block of your module's build.gradle or build.gradle.kts file. You can
+then override these default values for different versions of your app by defining separate
+values for individual build types or product flavors. The following file shows the
+versionCode and versionName settings in the
+defaultConfig {} block, as well as the productFlavors {} block.
+
+These values are then merged into your app's manifest file during the build process.
+
+### Groovy
+
+android {
+...
+defaultConfig {
+...
+versionCode 2
+versionName "1.1"
+}
+productFlavors {
+demo {
+...
+versionName "1.1-demo"
+}
+full {
+...
+}
+}
+}
+
+### Kotlin
+
+android {
+...
+defaultConfig {
+...
+versionCode = 2
+versionName = "1.1"
+}
+productFlavors {
+create("demo") {
+...
+versionName = "1.1-demo"
+}
+create("full") {
+...
+}
+}
+}
+
+In the defaultConfig {} block of this example, the
+versionCode value indicates that the current APK contains the
+second release of the app, and the versionName string specifies
+that it will appear to users as version 1.1. This file also defines two product flavors,
+"demo" and "full." Since the "demo" product flavor defines versionName as
+"1.1-demo", the "demo" build uses this versionName instead of the default value.
+The "full" product flavor block doesn't define versionName, so it
+uses the default value of "1.1".
+
+Note: If your app defines the app version directly in the
+<manifest> element, the version values in the Gradle build
+file override the settings in the manifest. Additionally, defining these
+settings in the Gradle build files lets you specify different values for
+different versions of your app. For greater flexibility and to avoid
+potential overwriting when the manifest is merged, remove these
+attributes from the <manifest> element and define your
+version settings in the Gradle build files instead.
+
+The Android framework provides an API to let you query the system
+for version information about your app. To obtain version information,
+use the
+
+PackageManager.getPackageInfo(java.lang.String, int) method.
+
+## Specify API level (SDK version) requirements
+
+If your app requires a specific minimum version of the Android
+platform, you can specify that version requirement as API level settings
+in the app's build.gradle or build.gradle.kts file. During the build
+process, these settings are merged into your app's manifest file. Specifying API level
+requirements ensures that your app can only be installed on devices that are
+running a compatible version of the Android platform.
+
+Note: If you specify API level requirements directly in your
+app's manifest file, the corresponding settings in the build files will
+override the settings in the manifest file. Additionally, defining these
+settings in the Gradle build files lets you specify different values for
+different versions of your app. For greater flexibility and to avoid
+potential overwriting when the manifest is merged, remove these
+attributes from the <uses-sdk> element and define your API
+level settings in the Gradle build files instead.
+
+There are two API level settings available:
+
+- minSdk &mdash; The minimum version
+of the Android platform on which the app will run, specified
+by the platform's API level identifier.
+
+- targetSdk &mdash; The API level, tied to the
+<SDK_INT> constant,
+on which the app is designed to run. In some cases, this allows the
+app to use manifest elements or behaviors defined in the target
+API level, rather than being restricted to using only those defined
+for the minimum API level.
+It is not possible to specify that an app either targets or requires
+a minor SDK version. To call new APIs safely that require a higher major
+or minor SDK version than your minSdkVersion, you can guard
+a code block with a check for a minor or major release using the
+SDK_INT_FULL constant.
+
+if (SDK_INT_FULL >= VERSION_CODES_FULL.[MAJOR or MINOR RELEASE]) {
+// Use APIs introduced in a major or minor SDK version
+}
+
+To specify default API level requirements in a build.gradle or
+build.gradle.kts file, add one or more of the API level settings to the
+defaultConfig{} block, nested inside the android {} block. You can
+also override these default values for different
+versions of your app by adding the settings to build types or product flavors.
+
+The following file specifies default
+minSdk and targetSdk settings in the
+defaultConfig {} block and overrides minSdk
+for one product flavor:
+
+### Groovy
+
+android {
+...
+defaultConfig {
+...
+minSdk 21
+targetSdk 33
+}
+productFlavors {
+main {
+...
+}
+afterNougat {
+...
+minSdk 24
+}
+}
+}
+
+### Kotlin
+
+android {
+...
+defaultConfig {
+...
+minSdk = 21
+targetSdk = 33
+}
+productFlavors {
+create("main") {
+...
+}
+create("afterNougat") {
+...
+minSdk = 24
+}
+}
+}
+
+When preparing to install your app, the system checks the value of
+these settings and compares them to the system version. If the
+minSdk value is greater than the system version, the
+system prevents the installation of the app.
+
+If you don't specify these settings, the system assumes that your app is
+compatible with all platform versions. This is equivalent to setting minSdk to
+1.
+
+For more information, see What is API Level?.
+For Gradle build settings, see Configure build variants.

@@ -1,0 +1,195 @@
+Source: https://support.google.com/googleplay/android-developer/answer/9859152
+Fetched: 2026-10-12
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+# Create and set up your app
+After you've created your Google Play developer account, you can create apps and set them up using Google Play Console.
+
+## Create your app
+
+- Open Play Console.
+
+- Select Home > Create app.
+
+- Select a default language and add the name of your app as you want it to appear on Google Play. You can change this later.
+
+- Specify whether your application is an app or a game. You can change this later.
+
+- Note: If your game is free, it will appear on both Google Play and Google Play Games on PC by default. If your game is paid, you must release it on Google Play Games on PC yourself.
+
+- Specify whether your application is free or paid.
+
+- Add an email address that Google Play users can use to contact you about this application.
+
+- In the "Declarations" section:
+
+- Acknowledge the “Developer Program Policies” and “US export laws” declarations.
+
+- Accept the Play App Signing Terms of Service.
+
+- Select Create app.
+
+## Set up your app
+
+After you create your app, you can start setting it up. Your app’s dashboard will guide you through all the most important steps to get your app available on Google Play.
+
+You’ll start by providing details about your app’s content, and entering information for your Google Play listing. After that, you can move onto app release; this guides you through pre-release management, testing, and promotion to build pre-release excitement and awareness. The final step is launching your app on Google Play, making it available to billions of users.
+
+Developers with personal accounts created after November 13, 2023, must meet specific testing requirements before they can make their app available on Google Play. Read this Help Center article to learn more.
+
+To start setting up your app, select Dashboard on the left menu. For the next steps, go to Set up your app on the app dashboard.
+
+## Manage your app and app bundles
+
+Google Play uses Android App Bundles to generate and deliver APKs that are optimized for each device configuration, providing users with more efficient apps. This means you only need to build, sign, and upload a single app bundle to support optimized APKs for a wide variety of device configurations. Google Play then manages and serves your app's distribution APKs for you.
+
+Package names for app files are unique and permanent, so please name them carefully. Package names can't be deleted or re-used in the future.
+
+Your release can have one of three statuses:
+
+- Draft: APKs that have not been served to users yet
+
+- Active: APKs currently being served to users
+
+- Archived: APKs that were once active but are no longer being served to users
+
+Find your APK files
+
+To see your app bundles and APKs:
+
+- Open Play Console and go to the App bundle explorer page (Test and release> App bundle explorer).
+
+- The App bundle explorer page features a version filter on the top right of the page, which you can use in conjunction with the three tabs (Details, Downloads, and Delivery) to explore different versions and configurations of your app’s APKs on different devices.
+
+- Note: This version filter is the functional equivalent of the “Artifact library” on the old version of Play Console.
+
+To learn more about managing your artifacts, go to Inspect app versions with the app bundle explorer.
+
+Maximum size limit
+
+Apps on Google Play have a size limit, which is based on the maximum compressed size of your APKs at the time of download across all supported devices.
+
+After you upload an app bundle, Play Console uses gzip to estimate what your app’s download size will be. Google Play uses the best possible advanced compression tools meaning a user’s actual download size will often be smaller than the estimate you see in Play Console.
+
+To learn more about Play size limit, read Optimize your app’s size and stay within Google Play app size limits.
+
+Configure Play App Signing
+
+Android requires that all apps be digitally signed with a certificate before they can be installed. For more information, go to the Android Developers site. When you create your first release you can configure Play App Signing to decide whether your app should use a Google-generated app signing key or an app signing key that you choose.
+
+App version requirements for Play Console
+
+Every app bundle and APK has a versionCode in the manifest file that's incremented with each update of your app.
+
+To upload your app to Play Console, the greatest possible value for versionCode is 2100000000. If the versionCode of your app exceeds this value, Play Console will prevent you from submitting a new app bundle.
+
+When selecting the versionCode for your app bundle, keep in mind that you'll need to increase the versionCode for every update and still stay below the maximum.
+
+Note: For more information on versioning your app, go to the Android Developers site. Keep in mind the Android MAXINT differs from Play Console upload requirements.
+
+Meet target API level requirements
+
+When you upload an app bundle, it needs to meet Google Play’s target API level requirements. Here are the levels that apps currently need to target and will need to target in the future.
+
+Refer to Target API level requirements for Google Play apps to understand the target API levels required to provide Android and Google Play users with a safe and secure experience.
+
+## Set up your store listing and settings
+
+Your app's store listing is displayed on Google Play and includes details that help users learn more about your app. Your store listing is shared across tracks, including testing tracks.
+
+Product details
+
+- Open Play Console and go to the Main store listing page.
+
+- Fill in the fields under "App Details."
+
+Field |
+Description |
+Character limit* |
+Notes |
+
+App name |
+Your app's name on Google Play. |
+30 character limit |
+
+You can add one localized name per language.
+
+|
+
+Short description |
+The first text users see when looking at your app's detail page on the Google Play app. |
+80 character limit |
+Users can expand this text to view your app's full description. |
+
+Full description |
+Your app's description on Google Play. |
+4000 character limit |
+|
+
+*Character limits apply to both full-width and half-width characters — the numbers listed above are the maximum limits regardless of what type of characters you are using.
+
+Note: Repetitive or irrelevant use of keywords in the app name, description, or promotional description can create an unpleasant user experience and result in an app being suspended on Google Play. Please refer to full guidelines in the Google Play Developer Program Policies.
+
+Preview assets
+
+Learn more about adding preview assets (including a short description, screenshots, and videos) to showcase your app.
+
+Note: By making your app available on Google Play, you grant Google license to use your app's assets (including your app icon, screenshots, and videos) for promotional purposes You're enabling Google Play to showcase your app in the best possible light. We may use these assets to highlight your app on Google Play, in promotional campaigns, and across other Google services. This helps us reach more users and highlight the unique features of your app. You can find more details about this in the Developer Distribution Agreement (6. Brand Features and Publicity).
+
+Languages and translations
+
+## Add and manage translations
+
+When you upload an app, the default language is English (United States, en-US). You can add translations of your app's information, along with in-language screenshots and other graphic assets. Go to Translate and localize your app to learn how.
+
+## Localized images and videos
+
+To market your app in different languages more effectively, you can add localized graphic assets to your app's Main store listing page.
+
+Users will see the localized graphic assets on Google Play if their language preferences match the languages that you've added.
+
+## Automated translations
+
+If you don't add your own translations, users can view an automated translation of your app's Google Play listing page using Google Translate or the default language for your app.
+
+For automated translations, there will be a note explaining that the translation has been done automatically, along with an option to view the app's default language. Keep in mind that automated translations aren't supported for Armenian, Raeto-romance, Tagalog, and Zulu.
+
+Categorization and tags
+
+You can choose a category and add tags to your apps or game in Play Console. Categories and tags help users to search for and discover the most relevant apps in Google play.
+
+Learn more about choosing and adding a category and tags for your app or game.
+
+Contact details
+
+When you provide an email address, website, or phone number for your app, your contact information is available to users on your app's store listing.
+
+A contact email address is required, but to provide your users with the best support experience, we also highly recommend including a website where users can contact you.
+
+To add your support information:
+
+- Open Play Console and go to the Store settings page (Grow users > Store presence > Store settings)
+
+- Scroll down to "Contact Details."
+
+- Add your support email address (required), a phone number, and a website URL.
+
+Tip: Learn more about providing support for your users.
+
+## Next steps
+
+- Prepare your app for review.
+
+- Discover best practices for creating a compelling store listing.
+
+- Publish your app using standard or managed publishing.
+
+- Optimize your store listing with experiments.
+
+## Related content
+
+Learn more about publishing your app in the Academy for App Success.
+
+## Was this helpful?
+How can we improve it?
+YesNo

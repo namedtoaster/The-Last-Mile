@@ -1,0 +1,491 @@
+Source: https://mobbin.com/mcp
+Fetched: 2026-10-12
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+## The design reference your AI agents are missing.
+
+# Mobbin MCP is a design MCP server that connects your AI agents to 600,000+ real product screens, so what they build starts with what already works.
+
+## The design reference your AI agents are missing.
+
+# Mobbin MCP is a design MCP server that connects your AI agents to 600,000+ real product screens, so what they build starts with what already works.
+
+Connect MCP
+
+See plans
+
+Available on Pro & Team plans
+
+Connect MCP
+
+See plans
+
+Available on Pro & Team plans
+
+Trusted by 2M+ designers. Now available to your AI agents.
+
+Trusted by 2M+ designers. Now available to your AI agents.
+
+## AI agents can write code.
+But they don’t know what works.
+They're guessing… and it shows.
+Mobbin MCP fixes that.
+
+# AI agents can write code. But they don’t know what works. They're guessing… and it shows. Mobbin MCP fixes that.
+
+You
+
+Design a paywall for our Pro plan
+
+Claude
+
+I'll search Mobbin for proven paywall patterns from shipped products.
+
+Used Mobbin MCP integration
+
+Got 43 paywalls. Pulling the strongest for synthesis.
+
+Revolut
+
+Bundled value framing
+
+Third-party perks reframe the price as services received.
+
+Personalization signal
+
+"Best for you" implies algorithmic match, not arbitrary push.
+
+Price in the CTA
+
+Removes the last hesitation at click.
+
+Physical product hero
+
+Tangible anchor for an intangible upgrade.
+
+Implies abundance without overwhelming.
+
+Implies abundance without overwhelming.
+
+Duolingo
+
+Soft rejection
+
+Em-dashes for FREE column, not red X marks.
+
+Subtle column weighting
+
+Tint instead of color flooding for hierarchy.
+
+Objection-killer microcopy
+
+"One-time payment. No auto-renewal." right above CTA.
+
+Gifting frame
+
+Repositions extraction as generosity.
+
+Playful mascot state
+
+No emotional manipulation.
+
+Uber
+
+Personalized savings hero
+
+"Save $19 every month" based on local member data — concrete, not generic.
+
+Risk reversal as a benefit
+
+"$5 credit if arrival estimate is off" reframes guarantees as value.
+
+Cancel anytime as a feature
+
+Promoted in the list, not buried in legal.
+
+Single tier, no decision tax
+
+One plan removes choice paralysis at the upgrade moment.
+
+Icon-led benefits
+
+Visual rhythm makes the list scannable in 3 seconds.
+
+You
+
+Design a paywall for our Pro plan
+
+Claude
+
+I'll search Mobbin for proven paywall patterns from shipped products.
+
+Used Mobbin MCP integration
+
+Got 43 paywalls. Pulling the strongest for synthesis.
+
+Revolut
+
+Bundled value framing
+
+Third-party perks reframe the price as services received.
+
+Personalization signal
+
+"Best for you" implies algorithmic match, not arbitrary push.
+
+Price in the CTA
+
+Removes the last hesitation at click.
+
+Physical product hero
+
+Tangible anchor for an intangible upgrade.
+
+Implies abundance without overwhelming.
+
+Implies abundance without overwhelming.
+
+Duolingo
+
+Soft rejection
+
+Em-dashes for FREE column, not red X marks.
+
+Subtle column weighting
+
+Tint instead of color flooding for hierarchy.
+
+Objection-killer microcopy
+
+"One-time payment. No auto-renewal." right above CTA.
+
+Gifting frame
+
+Repositions extraction as generosity.
+
+Playful mascot state
+
+No emotional manipulation.
+
+Uber
+
+Personalized savings hero
+
+"Save $19 every month" based on local member data — concrete, not generic.
+
+Risk reversal as a benefit
+
+"$5 credit if arrival estimate is off" reframes guarantees as value.
+
+Cancel anytime as a feature
+
+Promoted in the list, not buried in legal.
+
+Single tier, no decision tax
+
+One plan removes choice paralysis at the upgrade moment.
+
+Icon-led benefits
+
+Visual rhythm makes the list scannable in 3 seconds.
+
+You
+
+Design a paywall for our Pro plan
+
+Claude
+
+I'll search Mobbin for proven paywall patterns from shipped products.
+
+Used Mobbin MCP integration
+
+Got 43 paywalls. Pulling the strongest for synthesis.
+
+Revolut
+
+Bundled value framing
+
+Third-party perks reframe the price as services received.
+
+Personalization signal
+
+"Best for you" implies algorithmic match, not arbitrary push.
+
+Price in the CTA
+
+Removes the last hesitation at click.
+
+Physical product hero
+
+Tangible anchor for an intangible upgrade.
+
+Implies abundance without overwhelming.
+
+Implies abundance without overwhelming.
+
+Duolingo
+
+Soft rejection
+
+Em-dashes for FREE column, not red X marks.
+
+Subtle column weighting
+
+Tint instead of color flooding for hierarchy.
+
+Objection-killer microcopy
+
+"One-time payment. No auto-renewal." right above CTA.
+
+Gifting frame
+
+Repositions extraction as generosity.
+
+Playful mascot state
+
+No emotional manipulation.
+
+Uber
+
+Personalized savings hero
+
+"Save $19 every month" based on local member data — concrete, not generic.
+
+Risk reversal as a benefit
+
+"$5 credit if arrival estimate is off" reframes guarantees as value.
+
+Cancel anytime as a feature
+
+Promoted in the list, not buried in legal.
+
+Single tier, no decision tax
+
+One plan removes choice paralysis at the upgrade moment.
+
+Icon-led benefits
+
+Visual rhythm makes the list scannable in 3 seconds.
+
+## 621,500+ shipped screens. Now your AI agents can see them too.
+
+## Finance apps
+
+#### Your agent pulls checkout, pricing, and KYC screens from top fintech apps.
+
+## Health apps
+
+#### Reference how real apps handle permissions, habit loops, and sensitive onboarding.
+
+## E-commerce apps
+
+#### Search real product pages, checkout flows, and cart recovery patterns from top shopping apps.
+
+Your AI agents can search, reference, and reason about all of it, from mobile screen design to web design patterns.
+
+### Finance apps
+
+Your agent pulls checkout, pricing, and KYC screens from top fintech apps.
+
+### Health apps
+
+Reference how real apps handle permissions, habit loops, and sensitive onboarding.
+
+### E-commerce apps
+
+Search real product pages, checkout flows, and cart recovery patterns from top shopping apps.
+
+## Ask anything.
+Get real screens back.
+
+#### Copy a prompt to try it yourself.
+
+Show me the most creative 404 pages with personality that might suit our brand.
+
+Find pull-to-refresh animation examples from social apps.
+
+Pull 30 bottom sheet examples from top iOS apps.
+
+How do I ask for notification permissions without getting denied?
+
+Compare how Airbnb and Booking.com handle checkout flows.
+
+How do I reduce drop-off in our signup flow?
+
+### “Being able to pull Mobbin's patterns, knowledge, and images directly into my brainstorming sessions with Claude is incredible. It's something I've always had to do manually until now.”
+
+### “Being able to pull Mobbin's patterns, knowledge, and images directly into my brainstorming sessions with Claude is incredible. It's something I've always had to do manually until now.”
+
+Kirk McNeill
+
+Kirk McNeill
+
+Founder at UI Collective
+
+Founder at UI Collective
+
+## When to reach for Mobbin MCP
+
+### Building from scratch
+
+Your agent analyzes successful design patterns in top apps and applies them in your AI-generated designs.
+
+Binance
+
+Wise
+
+Qantas Airways
+
+Common KYC patterns extracted
+Progressive disclosure with step indicators: Almost every flow shows progress — Neo Financial (3-dot stepper), DoorDash (1 of 4 bar), N26 (linear progress). Never let users feel lost in regulatory hell.
+
+Pre-flight intro screen before camera: Monzo, Qantas, Monese, Kraken, N26 all set expectations before opening the camera — what you'll do, why, lighting requirements, data handling. Reduces drop-off massively.
+
+Trust signals embedded inline: "Powered by Berbix/Onfido/Mitek" encryption notes, privacy policy links — banking apps especially over-index on this (Monzo's lock icon + "encrypted, stored securely", Qantas' explicit "we won't store your passport image").
+
+Document-type selection first, then scan: Pick passport vs ID vs driver's license, then go to camera. Reduces re-scans.
+
+Camera UI conventions: Dark background, rectangular guide frame with corner brackets, real-time edge detection (BlaBlaCar's green border on success), instructional text below the frame, large capture button, manual entry escape hatch always visible.
+
+You
+come up with a few sample mockups of how i should design a neobank KYC screen with my styleguide
+
+Style guide
+
+Generated designs
+
+Binance
+
+Wise
+
+Qantas Airways
+
+Common KYC patterns extracted
+Progressive disclosure with step indicators: Almost every flow shows progress — Neo Financial (3-dot stepper), DoorDash (1 of 4 bar), N26 (linear progress). Never let users feel lost in regulatory hell.
+
+Pre-flight intro screen before camera: Monzo, Qantas, Monese, Kraken, N26 all set expectations before opening the camera — what you'll do, why, lighting requirements, data handling. Reduces drop-off massively.
+
+Trust signals embedded inline: "Powered by Berbix/Onfido/Mitek" encryption notes, privacy policy links — banking apps especially over-index on this (Monzo's lock icon + "encrypted, stored securely", Qantas' explicit "we won't store your passport image").
+
+Document-type selection first, then scan: Pick passport vs ID vs driver's license, then go to camera. Reduces re-scans.
+
+Camera UI conventions: Dark background, rectangular guide frame with corner brackets, real-time edge detection (BlaBlaCar's green border on success), instructional text below the frame, large capture button, manual entry escape hatch always visible.
+
+You
+come up with a few sample mockups of how i should design a neobank KYC screen with my styleguide
+
+Style guide
+
+Generated designs
+
+come up with a few sample mockups of how i should design a neobank KYC screen
+
+Generated designs
+
+You
+come up with a few sample mockups of how i should design a neobank KYC screen
+
+Generated designs
+
+### Stuck on a micro-decision
+
+Let agents explore best practices from apps that have already figured it out.
+
+A
+
+B
+
+A
+
+B
+
+### UI feels dated
+
+Pull what top apps are doing right now, so you're always building from fresh patterns.
+
+Jul 2025
+
+Latest
+
+Feb 2024
+
+Oct 2022
+
+Sep 2021
+
+Request update
+
+Jul 2025
+
+Latest
+
+Feb 2024
+
+Oct 2022
+
+Sep 2021
+
+Request update
+
+Included in all paid plans
+
+## Set up in under a minute.
+
+#### One-click install for most major tools. No API key needed.
+
+Upgrade to a paid plan
+
+Connect your AI agents directly to Mobbin.
+
+Upgrade
+BETA
+
+MCP has unlimited usage during beta. Limits will apply in future, read more
+
+### Connect tool
+
+Claude Code
+
+Claude
+
+Cursor
+
+Codex
+
+ChatGPT
+
+Manus
+
+Grok
+
+Figma
+
+v0
+
+See all
+
+## Frequently asked questions
+
+### What is a design MCP server?
+
+### Figma MCP vs Mobbin MCP: what is the difference?
+
+### How do I use Mobbin MCP?
+
+### Is Mobbin MCP free?
+
+### Which tools work with Mobbin MCP?
+
+### Is this the same library as the Mobbin website?
+
+### How long does it take to return results?
+
+## Your AI agents are guessing. They don’t have to.
+
+#### Whatever you're building, there's an app on Mobbin that's already solved it. Search thousands of apps, from household names to hidden gems.
+
+Join for free
+See plans
+
+Join for free
+See plans

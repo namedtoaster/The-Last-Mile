@@ -1,0 +1,112 @@
+Source: https://support.google.com/googleplay/android-developer/answer/6112435
+Fetched: 2026-10-12
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+# Get started with Play Console
+This article describes how to create and set up your Play Console developer account, and provides links to other resources that you may find helpful as you get started.
+
+## Register for a Play Console developer account
+
+Follow the steps below to create and set up your Play Console developer account, so you can begin to publish Android apps on Google Play.
+
+Step 1: Sign up for a Play Console developer account
+
+You must be at least 18 years of age to sign up for a Play Console account.
+
+- Using your Google Account, sign up for a Play Console developer account.
+
+- Once you have an account, you can use Play Console to publish and manage your apps.
+
+Step 2: Accept the Developer Distribution Agreement
+
+During the signup process, you'll need to review and accept the Google Play Developer Distribution Agreement.
+
+Step 3: Pay registration fee
+
+There is a US$25 one-time registration fee that you can pay with the following credit or debit cards:
+
+- MasterCard
+
+- Visa
+
+- American Express
+
+- Discover (the U.S. only)
+
+- Visa Electron (Outside of the U.S. only)
+
+Note: Prepaid cards are not accepted. The types of cards accepted may vary by location.
+
+Step 4: Choose a developer account type
+
+Choose which account type you want to create. Google Play offers two developer account types, Personal and Organization, which you can learn more about here.
+
+Note: Developers with personal developer accounts must meet certain app testing requirements before they can distribute their app on Google Play. For more information, go to (Personal accounts only) Step 6: Verify your developer identity information.
+
+Step 5: Verify your developer identity information
+
+As part of our ongoing efforts to keep Google Play a safe and trusted platform, you must complete the verifications described on this page when setting up your Play Console developer account. This helps us to better understand developers and help prevent bad actors from distributing malware. Verification requirements vary based on the account type you selected in Step 4.
+
+You can add more account information after you've created your account.
+
+Note: To process your request for a Play Developer account you may be asked for a valid government ID and a credit card, both under your legal name. If this information is determined to be invalid, your registration fee will not be refunded.
+
+(Personal accounts only) Step 6: Meet testing requirements and device verification requirements
+
+Developers with personal accounts created after November 13, 2023, must meet specific testing requirements before they can make their app available on Google Play. Read this Help Center article to learn more.
+
+Starting in early 2024, developers with new personal accounts will be required to verify that they have access to an Android device using the Play Console mobile app before they can make their app available on Google Play. Read this Help Center article to learn more.
+
+## Develop Android apps
+
+You can learn how to design, develop, and distribute your Android apps on Google through the helpful links below:
+
+- Android Developers
+
+- Google Play Developer Policy Center
+
+- Training for Android Developers
+
+- DevBytes on YouTube
+
+## Popular features
+
+For more information on some of the most popular features, click the links below:
+
+- Create and set up your app
+
+- Set up prices
+
+- Set up an open, closed, or internal test
+
+- View reports, statistics, and reviews
+
+- Learn about Android App Bundles and the app bundle explorer
+
+## What's new
+
+Here are some popular resources with the latest news and tips on developing Android apps and games for Google Play.
+
+- Read the latest news and posts about Android and Google Play on the Android Developers blog.
+
+- Find tips, trends, and industry insights on the Google Play Apps & Games Medium blog.
+
+## Troubleshoot
+
+Need help publishing apps on Google Play? Here are some pages that you can visit for additional support:
+
+- Android Developers forum
+
+- Android Security forum
+
+- Publishing
+
+- Google Payments Merchant Center
+
+- Contact Google Play Developer support
+
+Note: Our support team can help you use Play Console but can't provide technical or development support.
+
+## Was this helpful?
+How can we improve it?
+YesNo

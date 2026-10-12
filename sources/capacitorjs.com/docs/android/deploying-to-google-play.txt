@@ -1,0 +1,33 @@
+Source: https://capacitorjs.com/docs/android/deploying-to-google-play
+Fetched: 2026-10-12
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+## Products
+
+Appflow
+
+Portals
+
+## Open Source
+
+Ionic Framework
+
+Capacitor
+
+Stencil
+
+Community HubForum
+
+Version: v8On this page
+
+Because Capacitor apps are normal native apps at the end of the day, the way they are deployed to the Google Play Store is just like any other native Android app.
+
+To start, consult the official Google documentation on the launch checklist to get your app ready for submission. See here for details on generating splash screens and icons for your app.
+
+For a guide with some Capacitor-specific considerations, see Josh Morony's wonderful guide on the topic.
+
+## Automating Deployments​
+
+For teams that wish to streamline their Google Play Store (and Apple App Store) submissions and even automate them with integration into their CI/CD workflow, Capacitor's parent company, Ionic, offers a powerful Mobile DevOps service called Appflow that offers end-to-end app development and deployment capabilities.
+
+Interested? Check out this brief guide on how it works and how you can use it with Capacitor today, or view the official Appflow Documentation.

@@ -1,0 +1,281 @@
+{
+  "https://capacitorjs.com/docs/android/deploying-to-google-play": {
+    "file": "capacitorjs.com/docs/android/deploying-to-google-play.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://capacitorjs.com/docs/getting-started": {
+    "file": "capacitorjs.com/docs/getting-started.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://capacitorjs.com/docs/ios/deploying-to-app-store": {
+    "file": "capacitorjs.com/docs/ios/deploying-to-app-store.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://developer.android.com/build/building-cmdline": {
+    "file": "developer.android.com/build/building-cmdline.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://developer.android.com/build/configure-app-module": {
+    "file": "developer.android.com/build/configure-app-module.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://developer.android.com/build/manage-manifests": {
+    "file": "developer.android.com/build/manage-manifests.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://developer.android.com/develop/ui/views/layout/webapps/guide-trusted-web-activities-version2": {
+    "file": "developer.android.com/develop/ui/views/layout/webapps/guide-trusted-web-activities-version2.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://developer.android.com/develop/ui/views/layout/webapps/trusted-web-activities": {
+    "file": "developer.android.com/develop/ui/views/layout/webapps/trusted-web-activities.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://developer.android.com/google/play/billing/test": {
+    "file": "developer.android.com/google/play/billing/test.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://developer.android.com/google/play/requirements/target-sdk": {
+    "file": "developer.android.com/google/play/requirements/target-sdk.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://developer.android.com/studio/publish/app-signing": {
+    "file": "developer.android.com/studio/publish/app-signing.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://developer.android.com/studio/publish/versioning": {
+    "file": "developer.android.com/studio/publish/versioning.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://developer.android.com/topic/performance/app-optimization/enable-app-optimization": {
+    "file": "developer.android.com/topic/performance/app-optimization/enable-app-optimization.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://developer.apple.com/app-store/app-privacy-details/": {
+    "file": "developer.apple.com/app-store/app-privacy-details.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://developer.apple.com/app-store/review/guidelines/": {
+    "file": "developer.apple.com/app-store/review/guidelines.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://developer.apple.com/app-store/search/": {
+    "file": "developer.apple.com/app-store/search.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://developer.apple.com/documentation/bundleresources/describing-use-of-required-reason-api": {
+    "file": "developer.apple.com/documentation/bundleresources/describing-use-of-required-reason-api.txt",
+    "error": "2026-10-12: only 0 characters of text, probably not the article"
+  },
+  "https://developer.apple.com/help/app-review/guideline-reference/5-1-1-account-deletion": {
+    "file": "developer.apple.com/help/app-review/guideline-reference/5-1-1-account-deletion.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://developer.apple.com/help/app-store-connect/manage-app-information/manage-app-privacy": {
+    "file": "developer.apple.com/help/app-store-connect/manage-app-information/manage-app-privacy.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://developer.apple.com/help/app-store-connect/manage-builds/upload-builds": {
+    "file": "developer.apple.com/help/app-store-connect/manage-builds/upload-builds.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://developer.apple.com/help/app-store-connect/reference/app-information/": {
+    "file": "developer.apple.com/help/app-store-connect/reference/app-information.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12",
+    "finalUrl": "https://developer.apple.com/help/app-store-connect/reference/app-information/app-information"
+  },
+  "https://developer.apple.com/help/app-store-connect/reference/app-information/platform-version-information": {
+    "file": "developer.apple.com/help/app-store-connect/reference/app-information/platform-version-information.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://developer.apple.com/help/app-store-connect/reference/platform-version-information/": {
+    "file": "developer.apple.com/help/app-store-connect/reference/platform-version-information.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12",
+    "finalUrl": "https://developer.apple.com/help/app-store-connect/reference/app-information/platform-version-information"
+  },
+  "https://developer.apple.com/help/app-store-connect/reference/screenshot-specifications": {
+    "file": "developer.apple.com/help/app-store-connect/reference/screenshot-specifications.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12",
+    "finalUrl": "https://developer.apple.com/help/app-store-connect/reference/app-information/screenshot-specifications"
+  },
+  "https://developer.apple.com/news/upcoming-requirements/": {
+    "file": "developer.apple.com/news/upcoming-requirements.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://developer.apple.com/programs/": {
+    "file": "developer.apple.com/programs.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://docs.expo.dev/build-reference/app-versions/": {
+    "file": "docs.expo.dev/build-reference/app-versions.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://docs.expo.dev/build/setup/": {
+    "file": "docs.expo.dev/build/setup.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://docs.expo.dev/debugging/runtime-issues/": {
+    "file": "docs.expo.dev/debugging/runtime-issues.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://docs.expo.dev/guides/permissions/": {
+    "file": "docs.expo.dev/guides/permissions.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://docs.expo.dev/submit/android/": {
+    "file": "docs.expo.dev/submit/android.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://docs.expo.dev/submit/ios/": {
+    "file": "docs.expo.dev/submit/ios.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://docs.expo.dev/versions/latest/sdk/build-properties/": {
+    "file": "docs.expo.dev/versions/latest/sdk/build-properties.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://docs.expo.dev/workflow/prebuild/": {
+    "file": "docs.expo.dev/workflow/prebuild.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12",
+    "finalUrl": "https://docs.expo.dev/workflow/continuous-native-generation/"
+  },
+  "https://docs.fastlane.tools/actions/deliver/": {
+    "file": "docs.fastlane.tools/actions/deliver.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://docs.fastlane.tools/actions/supply/": {
+    "file": "docs.fastlane.tools/actions/supply.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://docs.flutter.dev/deployment/android": {
+    "file": "docs.flutter.dev/deployment/android.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://docs.flutter.dev/deployment/ios": {
+    "file": "docs.flutter.dev/deployment/ios.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://learn.microsoft.com/dotnet/maui/android/deployment/publish-cli": {
+    "file": "learn.microsoft.com/dotnet/maui/android/deployment/publish-cli.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12",
+    "finalUrl": "https://learn.microsoft.com/en-us/dotnet/maui/android/deployment/publish-cli?view=net-maui-10.0"
+  },
+  "https://learn.microsoft.com/dotnet/maui/ios/deployment/publish-cli": {
+    "file": "learn.microsoft.com/dotnet/maui/ios/deployment/publish-cli.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12",
+    "finalUrl": "https://learn.microsoft.com/en-us/dotnet/maui/ios/deployment/publish-cli?view=net-maui-10.0"
+  },
+  "https://mobbin.com/mcp": {
+    "file": "mobbin.com/mcp.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://mobbin.com/pricing": {
+    "file": "mobbin.com/pricing.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://reactnative.dev/docs/publishing-to-app-store": {
+    "file": "reactnative.dev/docs/publishing-to-app-store.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://reactnative.dev/docs/signed-apk-android": {
+    "file": "reactnative.dev/docs/signed-apk-android.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12"
+  },
+  "https://support.google.com/googleplay/android-developer/answer/10144311": {
+    "file": "support.google.com/googleplay/android-developer/answer/10144311.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12",
+    "finalUrl": "https://support.google.com/googleplay/android-developer/answer/10144311?hl=en"
+  },
+  "https://support.google.com/googleplay/android-developer/answer/10787469": {
+    "file": "support.google.com/googleplay/android-developer/answer/10787469.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12",
+    "finalUrl": "https://support.google.com/googleplay/android-developer/answer/10787469?hl=en"
+  },
+  "https://support.google.com/googleplay/android-developer/answer/13327111": {
+    "file": "support.google.com/googleplay/android-developer/answer/13327111.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12",
+    "finalUrl": "https://support.google.com/googleplay/android-developer/answer/13327111?hl=en"
+  },
+  "https://support.google.com/googleplay/android-developer/answer/13393723": {
+    "file": "support.google.com/googleplay/android-developer/answer/13393723.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12",
+    "finalUrl": "https://support.google.com/googleplay/android-developer/answer/13393723?hl=en"
+  },
+  "https://support.google.com/googleplay/android-developer/answer/14115180": {
+    "file": "support.google.com/googleplay/android-developer/answer/14115180.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12",
+    "finalUrl": "https://support.google.com/googleplay/android-developer/answer/16935362?hl=en&visit_id=639274109317917828-3607750581&rd=1"
+  },
+  "https://support.google.com/googleplay/android-developer/answer/14151465": {
+    "file": "support.google.com/googleplay/android-developer/answer/14151465.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12",
+    "finalUrl": "https://support.google.com/googleplay/android-developer/answer/14151465?hl=en"
+  },
+  "https://support.google.com/googleplay/android-developer/answer/6112435": {
+    "file": "support.google.com/googleplay/android-developer/answer/6112435.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12",
+    "finalUrl": "https://support.google.com/googleplay/android-developer/answer/6112435?hl=en"
+  },
+  "https://support.google.com/googleplay/android-developer/answer/9859152": {
+    "file": "support.google.com/googleplay/android-developer/answer/9859152.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12",
+    "finalUrl": "https://support.google.com/googleplay/android-developer/answer/9859152?hl=en"
+  },
+  "https://support.google.com/googleplay/android-developer/answer/9866151": {
+    "file": "support.google.com/googleplay/android-developer/answer/9866151.txt",
+    "changed": "2026-10-12",
+    "fetched": "2026-10-12",
+    "finalUrl": "https://support.google.com/googleplay/android-developer/answer/9866151?hl=en"
+  }
+}
