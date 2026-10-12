@@ -2,6 +2,10 @@
 
 ## 0.2.0 (unreleased)
 
+- A weekly job saves a text copy of every official page the traps cite into
+  `sources/`, and fact-check reads it when a session's network blocks the page
+  (cloud sessions block Google's help site by default). No settings needed, and a
+  changed copy flags a rule that moved.
 - ship asks about the web pages the stores need (privacy policy, support, account
   deletion) in its first step, since the privacy link is built into the app, and
   says when a custom domain is worth it.
