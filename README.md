@@ -6,15 +6,23 @@
   |_| |_| |_|\___| |_____\__,_|___/\__| |_|  |_|_|_|\___|
 ```
 
-## You built your shitty app. Now ship it.
+## Your app is shitty. Ship it anyway.
 
-AI got you a working app in a weekend. It's probably a little shitty. That's fine,
-everyone's first one is. But an app that never leaves your laptop has exactly zero
-users, and the App Store is where most of these apps go to die: developer accounts,
+You vibe coded a never-before-seen app. So did everyone else. Same idea, same
+gradients, same "AI-powered" in the subtitle.
+
+It's shitty. Period. It is what it is.
+
+But a shitty app in the App Store beats a perfect one on your laptop, because only
+one of them can get a user. And a user can turn into someone who pays you.
+
+So ship it. Except shipping is where vibe coded apps go to die: developer accounts,
 certificates, build numbers, screenshots in five sizes, privacy questionnaires, and
-a reviewer who rejects you for saying "Google Play" on a paywall.
+a reviewer who rejects you for saying "Google Play" on your paywall.
 
-**`/ship` gets it out of your laptop and into the stores.** Any stack. One command.
+**`/ship` gets your shitty app into the App Store and Google Play.** Any stack. One
+command. Getting real users and paying users comes next, and that's where this repo
+is going.
 
 ```
 /plugin marketplace add namedtoaster/the-last-mile
@@ -58,8 +66,7 @@ Apple and Google change them.
 
 ## What it won't do
 
-- **Pretend your app is good.** It gets you through review. Whether anyone wants it is
-  still on you.
+- **Make your app less shitty.** It gets you through review. That's the bar right now.
 - **Click "Submit for review" without asking you.**
 - **Make up store rules.** Every rule it checks has a link to Apple's or Google's own
   page. If it can't check one, it says so.
@@ -71,6 +78,23 @@ drafts a short reply, and resubmits.
 
 Then [tell us what caught you](https://github.com/namedtoaster/the-last-mile/issues/new?template=this-caught-me.md).
 Every rejection someone reports becomes a check for everyone after them.
+
+## Then: users. Then: money.
+
+Being in the store gets you zero users on its own. Nobody searches for your app.
+
+Next up in this repo, from what actually worked (and didn't) for a real app:
+
+| Next skill | What it does |
+| --- | --- |
+| analytics | Tracks the few things that matter: who opened it, who came back, who paid |
+| store-listing | A name, subtitle, keywords and screenshots someone might actually tap |
+| creator-codes | Free premium codes for a creator's audience, with tracking. Cost so far: nothing |
+| ugc-brief | Finding small creators and paying them to make videos. The best move so far |
+| release-notes | Turns your commit log into notes people want to read |
+
+Fair warning: the author has a handful of paying users, not a growth machine. These
+skills will say what worked, what didn't, and how sure anyone is.
 
 ## Other agents
 
