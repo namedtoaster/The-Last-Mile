@@ -13,6 +13,8 @@ the change helped, the same way reference data shows whether a feature got bette
 | `capacitor-web-wrapper` | Capacitor | a website in a wrapper with nothing native, no privacy policy |
 | `native-ios-journal` | Native iOS (SwiftUI) | Google Play named in the iOS strings, Google login with no private option, no account deletion, no privacy manifest, a deployment target below Apple's minimum, buying only after sign in |
 | `native-android-budget` | Native Android (Kotlin) | an old target SDK, a photo permission, code shrinking off, accounts with no deletion, no privacy policy, a TODO string |
+| `react-native-run-club` | React Native | Google Play named in shared text, Facebook login with no private option, no account deletion, photo and video permissions, an old target SDK, code shrinking off |
+| `maui-dose-reminder` | .NET MAUI | Google Play named in shared XAML, a medicine dose with no source, an iOS minimum below Apple's, an old target SDK, a photo permission it never uses, no privacy policy |
 | `expo-plant-log` | Expo | none. A control: anything reported as a blocker here is a false alarm |
 
 Each fixture's answer key is in `answers/`, outside the app, so a run never sees it.
@@ -57,7 +59,7 @@ Runs vary. Before trusting a change, run each fixture more than once.
 
 ## Next
 
-- Fixtures for React Native, .NET MAUI and Kotlin Multiplatform.
+- A Kotlin Multiplatform fixture.
 - A second tier of real open source apps already in the stores, pinned to a commit,
   as a check for false alarms on real code.
 - Scoring the listing and privacy answers, not only the sweep.
