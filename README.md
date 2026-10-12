@@ -8,8 +8,8 @@
 
 ## Build it with AI. Ship it with one command.
 
-**One command takes your app from your laptop to the App Store and Google Play.**
-Any stack.
+**`/ship` takes your app from your laptop to the App Store and Google Play.** Any
+stack.
 
 Building it was the fun part. Then comes the last mile: developer accounts,
 certificates, build numbers, screenshots in five sizes, privacy questionnaires, and
