@@ -1,0 +1,16 @@
+{
+  "stack": "capacitor",
+  "expected": [
+    { "id": "repackaged-website", "file": "capacitor.config.ts", "match": ["4\\.2", "minimum functionality", "repackaged", "web ?view", "wrapper", "website"] },
+    { "id": "privacy-policy", "match": ["privacy policy"] }
+  ],
+  "allowed": [
+    { "id": "server-url", "match": ["server\\.url", "live site", "remote url", "offline"] },
+    { "id": "copycat", "match": ["4\\.3", "spam", "copycat"] },
+    { "id": "icon", "match": ["icon", "splash"] },
+    { "id": "support-url", "match": ["support url"] },
+    { "id": "privacy-labels", "match": ["privacy label", "data safety", "privacy answers"] },
+    { "id": "no-native-project", "match": ["native project", "cap add", "ios folder", "android folder"] },
+    { "id": "xss", "match": ["innerhtml", "xss", "escap"] }
+  ]
+}

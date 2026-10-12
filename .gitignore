@@ -1,0 +1,2 @@
+# Eval transcripts are large; keep the score history only.
+evals/results/*/

@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "Plant Log",
+    "slug": "plant-log",
+    "version": "1.0.0",
+    "ios": { "bundleIdentifier": "com.example.plantlog", "supportsTablet": false },
+    "android": { "package": "com.example.plantlog" },
+    "plugins": ["expo-router", "expo-notifications", "expo-sqlite"]
+  }
+}

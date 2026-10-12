@@ -56,3 +56,7 @@ explain what they do at the top, and expect every line to be read in review.
 
 Pull requests run `node scripts/validate.mjs`, which checks skill frontmatter, trap
 entries and style. Run it locally before opening a pull request.
+
+If you change the ship skill or its references, run the evals before and after
+(`node evals/run.mjs`) and put both scores in the pull request. See
+[evals/README.md](evals/README.md).
