@@ -1,0 +1,51 @@
+# Keeps this project's copy of The Last Mile skills current. Runs every morning,
+# or by hand from the Actions tab (also in the GitHub mobile app). When the source
+# changed, it opens a pull request with the new copies; merge it and every session,
+# phone or desktop, has them.
+#
+# Needs: Settings > Actions > General > "Allow GitHub Actions to create and approve
+# pull requests" turned on.
+
+name: Sync The Last Mile skills
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 9 * * *'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - id: sync
+        run: |
+          node .claude/last-mile/sync.mjs | tee sync-report.txt
+          {
+            echo 'report<<EOF'
+            cat sync-report.txt
+            echo 'EOF'
+          } >> "$GITHUB_OUTPUT"
+          rm sync-report.txt
+      - uses: peter-evans/create-pull-request@v7
+        with:
+          branch: sync/the-last-mile
+          delete-branch: true
+          add-paths: |
+            .claude/skills
+            .claude/last-mile/synced.json
+          commit-message: Sync skills from The Last Mile
+          title: Sync skills from The Last Mile
+          body: |
+            Fresh copies of The Last Mile skills. Edit them in The Last Mile, not here.
+
+            ```
+            ${{ steps.sync.outputs.report }}
+            ```

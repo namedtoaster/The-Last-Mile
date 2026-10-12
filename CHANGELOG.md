@@ -12,6 +12,10 @@
   on Google Play. Expo only traps moved to their own section.
 - New facts: listing limits, screenshot sizes and the current Xcode minimum.
 - README leads with `/ship`.
+- improve-skill: fix a skill that misfired, from inside the project where it
+  happened, as a pull request here. session-end now lists skill problems.
+- sync: a script and a GitHub workflow that copy the skills into a project's
+  `.claude/skills/`, so cloud sessions on the phone and web can use them.
 
 ## 0.1.0 (unreleased)
 

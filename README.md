@@ -103,6 +103,8 @@ Cursor, Codex, Gemini CLI and other agents that read skills:
 npx skills add namedtoaster/the-last-mile
 ```
 
+**Cloud sessions** (Claude Code on the web and the Claude app on your phone) do not load plugins. Copy the skills into your project and keep them in sync instead: see [sync/README.md](sync/README.md).
+
 ## The rest of the kit
 
 `/ship` stands on its own. These are for the days between releases. Most are
@@ -119,6 +121,7 @@ written for any stack; see-it-work is still Expo first.
 | research | Answers a question from official sources and files it where it will be read again |
 | set-goals | Writes the 6 week goal and closes the last cycle in a few lines |
 | port-feature | Brings a feature over from another of your own repos, adapted to this one |
+| improve-skill | Fixes a skill that misfired, from the project where it happened, as a pull request here |
 
 ## Contributing
 

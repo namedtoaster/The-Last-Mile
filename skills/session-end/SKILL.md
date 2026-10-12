@@ -46,6 +46,13 @@ add none. If the user made a decision
 that should not be re-litigated, add it to **Standing decisions** with the date and
 one line of why. Keep entries specific; a vague gotcha helps nobody.
 
+**Skill problems.** If a skill from The Last Mile did the wrong thing this session
+(a step that misled you, a missing step, a wrong default), and the user already
+asked for it to be fixed, run the improve-skill skill now. Otherwise list it in the
+summary under **Skill problems**, one line each: the skill, what it did, what it
+should have done. A project setting that was missing is a rules file fix, not a
+skill problem.
+
 ## 4. Docs
 
 Review each doc listed in the settings [`CURRENT_WORK.md`, `BACKLOG.md`,
@@ -126,4 +133,5 @@ Finish with a short summary, in the voice the rules file asks for:
 - The goal line from step 5.
 - Whether a version bump is due, and which kind (patch for fixes, minor for new
   features), if the app ships to a store.
+- Skill problems from step 3, if any, with the offer to fix them.
 - Anything the user needs to do by hand.
