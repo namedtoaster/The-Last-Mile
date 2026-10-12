@@ -36,7 +36,15 @@ otherwise write "From experience" or "Needs a human".
 
 1. **Open the source page.** Fetch the page itself. A search snippet or summary is
    not enough. If the page will not load (blocked, login wall, timeout), say so for
-   that entry and leave its status as it was.
+   that entry and leave its status as it was. Do not stop there:
+   - Try the same page another way: a different fetch tool, or the page in another
+     language on the same official site.
+   - Search with results limited to the official domain. That is a lead: an entry
+     read only this way is **Not yet checked**, per `CONTRIBUTING.md`.
+   - If the block comes from the session's network rules (a cloud session's proxy
+     refusing the host), name the exact host the user needs to allow, for example
+     `support.google.com`, and where they change it. Collect every blocked host
+     into one line at the end of the report so one settings change fixes them all.
 2. **Find the supporting sentence.** Quote it word for word in your notes. If the
    entry has no source, search the official docs (Apple, Google, Expo, the tool's own
    site) for one. Blogs, forums and other repos are leads, never sources.

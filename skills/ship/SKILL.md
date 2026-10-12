@@ -58,6 +58,15 @@ Work this out from the files before asking anything, then show it in a few lines
    rule for new personal Google accounts are in `references/facts.md`; tell the user
    early, because the Google one can delay an Android launch by weeks.
 
+5. **Web pages:** the stores need public pages before submission: a privacy policy
+   (both stores, and linked inside the app, so its address must be final before the
+   build), a support page (Apple), and an account deletion page (Google, if the app
+   has accounts). A custom domain is not a store requirement. Free hosting such as
+   GitHub Pages works. Recommend a domain anyway when the app will need a contact
+   email on it, invite or share links that open the app (universal links and App
+   Links need a site the developer controls), or a name that should not move later.
+   Ask which the user has; if neither, put the pages on the plan as an early task.
+
 End this step with a short plan: the steps ahead, which ones need the user, and the
 first thing only they can do (often paying for an account), so they can start it now.
 
