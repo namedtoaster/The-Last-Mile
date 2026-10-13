@@ -4,20 +4,21 @@
  * live parts it can (web pages that must load), then writes an HTML page and prints
  * the board in the terminal. No dependencies: Node 18 or later.
  *
- *   node board.mjs [status.json] [--html <file>] [--no-check] [--open]
+ *   node board.mjs [status.json] [--html <file>] [--no-check] [--wait] [--open]
  *
  *   status.json  default store/status.json, relative to where it runs
  *   --html       where the page goes, default next to the status file as status.html
  *   --no-check   skip the live page checks (offline, or in a hurry)
+ *   --wait       for pages blocked here, wait up to two minutes for GitHub's check
  *   --open       open the page in the default browser afterwards
  *
  * The file format is in ../references/board.md. Read only: the status file is never
  * changed; the live results go into the page and the terminal output.
  */
 
-import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync, statSync } from 'node:fs';
 import { dirname, join, resolve, relative } from 'node:path';
-import { spawn } from 'node:child_process';
+import { spawn, execFileSync } from 'node:child_process';
 
 const STATES = {
   done: { label: 'Ready', icon: '✔' },
@@ -52,27 +53,68 @@ try {
 }
 const items = (status.items ?? []).map((item) => ({ ...item, state: STATES[item.state] ? item.state : 'todo' }));
 
-// Live checks: an item with a url is a page the stores need to load.
-async function checkPage(item) {
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 8000);
-  try {
-    const res = await fetch(item.url, { redirect: 'follow', signal: controller.signal, headers: { 'user-agent': 'the-last-mile-board' } });
-    item.checked = new Date().toISOString();
-    if (res.ok) {
-      item.state = 'done';
-      item.detail = `Live (${res.status})`;
-    } else {
-      item.state = 'blocked';
-      item.detail = `Returns ${res.status}`;
-    }
-  } catch {
-    item.detail = `${item.detail ? `${item.detail}. ` : ''}Could not reach it from here`;
-  } finally {
-    clearTimeout(timer);
+// Live checks: an item with a url is a page the stores need to load. Checked from
+// here first. A page this machine cannot reach at all (a cloud session's network
+// rules block most sites) is read from the checks GitHub runs instead: the project's
+// "Last Mile checks" workflow saves them to the last-mile-checks branch.
+function applyResult(item, r, where) {
+  item.checked = r.checked;
+  if (r.ok) {
+    item.state = 'done';
+    item.detail = `Live (${r.status})${where}`;
+  } else {
+    item.state = 'blocked';
+    if (r.status) item.detail = `Returns ${r.status}${where}`;
+    else if (r.error === 'ENOTFOUND') item.detail = `The domain does not resolve${where}`;
+    else item.detail = `Does not load (${r.error ?? 'no answer'})${where}`;
   }
 }
-if (!flag('--no-check')) await Promise.all(items.filter((i) => i.url).map(checkPage));
+
+async function checkHere(item) {
+  try {
+    const res = await fetch(item.url, { redirect: 'follow', signal: AbortSignal.timeout(8000), headers: { 'user-agent': 'the-last-mile-board' } });
+    applyResult(item, { ok: res.ok, status: res.status, checked: new Date().toISOString() }, '');
+    return true;
+  } catch {
+    return false; // blocked here, or really down: GitHub's check tells the two apart
+  }
+}
+
+function checksFromGitHub() {
+  const cwd = dirname(statusPath);
+  try {
+    execFileSync('git', ['fetch', '-q', 'origin', 'last-mile-checks'], { cwd, stdio: 'ignore', timeout: 30000 });
+    return JSON.parse(execFileSync('git', ['show', 'FETCH_HEAD:checks.json'], { cwd, encoding: 'utf8' })).pages ?? {};
+  } catch {
+    return null; // no remote, no branch yet, or no git
+  }
+}
+
+const unreached = [];
+if (!flag('--no-check')) {
+  const pages = items.filter((i) => i.url);
+  const results = await Promise.all(pages.map(checkHere));
+  unreached.push(...pages.filter((_, i) => !results[i]));
+}
+if (unreached.length) {
+  // --wait: the workflow was just started (a push of the status file, or a manual
+  // run), so wait up to two minutes for results newer than the status file.
+  const changed = statSync(statusPath).mtimeMs;
+  const deadline = Date.now() + (flag('--wait') ? 120000 : 0);
+  let pages;
+  for (;;) {
+    pages = checksFromGitHub();
+    const fresh = (u) => pages?.[u] && Date.parse(pages[u].checked) > changed;
+    if (!flag('--wait') || unreached.every((i) => fresh(i.url)) || Date.now() > deadline) break;
+    await new Promise((r) => setTimeout(r, 10000));
+  }
+  for (const item of unreached) {
+    const r = pages?.[item.url];
+    if (r) applyResult(item, r, `, checked by GitHub ${ago(r.checked)}${ago(r.checked) === 'just now' ? '' : ' ago'}`);
+    else if (pages) item.detail = `${item.detail ? `${item.detail}. ` : ''}Blocked here, waiting on GitHub's check`;
+    else item.detail = `${item.detail ? `${item.detail}. ` : ''}Blocked here. The Last Mile checks workflow checks it from GitHub`;
+  }
+}
 
 // How full each row's bar is, from 0 to 1.
 function fraction(item) {

@@ -24,8 +24,29 @@ board, and writes the page. Then:
   Claude app, on a desktop add `--open` to open it in the browser.
 - **Give the board's gist in a line or two,** led by what only the user can do, since
   the terminal output may not show its colors where the user reads it.
-- A row the script could not reach (a blocked network in a cloud session) keeps its
-  state and says so. Do not report a page as live from that.
+- Never report a page as live, or as broken, unless a check said so.
+
+## Pages a session cannot reach
+
+Cloud sessions (the Claude app on a phone, Claude Code on the web) block most of the
+web, so the script cannot check the user's own site from there. GitHub is always
+reachable, so GitHub does the checking: `templates/last-mile-checks.yml` is a
+workflow that checks every `url` in the status file from GitHub's network and saves
+the results to a `last-mile-checks` branch. The script reads that branch with `git
+fetch` whenever it cannot reach a page itself. No settings, no keys, private repos
+work.
+
+- **Install it** when the project is on GitHub and has no
+  `.github/workflows/last-mile-checks.yml`: copy the template there, commit it with
+  the status file, and tell the user in one line what it does.
+- **It runs** whenever `store/status.json` is pushed, every six hours, and from the
+  Actions tab.
+- **For a fresh check** after changing a row or fixing a page: commit and push the
+  status file (or start the workflow with the session's GitHub tools), then run the
+  script with `--wait`. It waits up to two minutes for results newer than the file.
+- A row GitHub has not checked yet says so and keeps its state. If it stays that way,
+  the workflow did not run: check the Actions tab is enabled and the file is on the
+  branch that was pushed.
 
 ## The file
 

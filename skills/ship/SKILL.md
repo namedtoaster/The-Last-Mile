@@ -38,6 +38,8 @@ never seen The Last Mile.
 Keep `store/status.json`, one row per thing between the app and the stores, and show
 it with `scripts/board.mjs`: an animated page that works on a phone, and a board in
 the terminal. `references/board.md` has the format, the rows, and when to show it.
+Pages the session's network blocks are checked from GitHub by a small workflow
+(`templates/last-mile-checks.yml`); install it in GitHub projects, as that file says.
 If the user asks where things stand (or runs `/ship status`), refresh the rows from
 what can be checked now, show the board, and stop there.
 
