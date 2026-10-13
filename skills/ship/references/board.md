@@ -59,6 +59,7 @@ work.
   "items": [
     { "group": "Accounts", "title": "Apple Developer Program", "state": "done", "detail": "Active", "owner": "you" },
     { "group": "Accounts", "title": "Google Play closed test", "state": "active", "progress": { "done": 6, "total": 14, "unit": "days" }, "owner": "you" },
+    { "group": "Web pages", "title": "Domain", "state": "todo", "owner": "you", "detail": "myapp.com looks free", "links": [{ "label": "Register at Porkbun", "url": "https://porkbun.com/checkout/search?q=myapp.com" }] },
     { "group": "Web pages", "title": "Privacy policy", "url": "https://myapp.com/privacy" },
     { "group": "App", "title": "Rejection traps", "state": "done", "detail": "30 checked, 0 found" },
     { "group": "Review", "title": "iOS review", "state": "waiting", "detail": "In Review", "since": "2026-10-13T09:14:00Z" }
@@ -75,7 +76,32 @@ work.
 | `owner` | `you` when only the user can do it (paying, agreements, a console only form). These also show in a callout at the top. |
 | `progress` | `{ "done", "total", "unit" }` when it is countable: days of a closed test, screenshots captured. |
 | `since` | When the current state began (ISO time), shown as "for 2 days". Use for reviews. |
+| `links` | `[{ "label", "url" }]`: where to go to get it done, first one the main button. See below. |
 | `url` | A page that must load. The script checks it each run and sets the state itself: `done` when it loads, `blocked` when it returns an error. |
+
+## Links
+
+Every row that is not done and needs the user gets `links`, so they tap once instead
+of searching. Aim for the exact page: the search with their app's name filled in,
+the console section, the step's how to page. One or two links, the main one first.
+
+Take every URL from this skill's references (`domains.md` for registrars and hosts,
+`stacks.md` for build and upload tools, `facts.md` for store rules) or from the
+current official docs. Never write a URL from memory. Start pages for the common
+rows, checked 2026-10-13:
+
+| Row | Link |
+| --- | --- |
+| Apple Developer Program | https://developer.apple.com/programs/enroll/ |
+| App Store Connect | https://appstoreconnect.apple.com/ |
+| Apple agreements, tax and banking | https://appstoreconnect.apple.com/business |
+| Google Play account, closed test, listing | https://play.google.com/console |
+| Google Play account how to | https://support.google.com/googleplay/android-developer/answer/6112435 |
+| Domain at Porkbun | `https://porkbun.com/checkout/search?q=<name>` (an undocumented search link; if it stops working, use https://porkbun.com) |
+| Registering at Porkbun, how to | https://kb.porkbun.com/article/212-how-to-register-a-domain-at-porkbun |
+
+For a domain, suggest the name from the app's name, and link the user's registrar if
+the settings name one, otherwise the first registrar in `domains.md`.
 
 ## The rows
 

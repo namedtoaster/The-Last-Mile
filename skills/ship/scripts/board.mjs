@@ -116,6 +116,11 @@ if (unreached.length) {
   }
 }
 
+// Shortcuts for a row: where to go to get it done. Only http(s) links are kept.
+function links(item) {
+  return (Array.isArray(item.links) ? item.links : []).filter((l) => l && l.label && /^https?:\/\//.test(l.url ?? ''));
+}
+
 // How full each row's bar is, from 0 to 1.
 function fraction(item) {
   const p = item.progress;
@@ -146,7 +151,7 @@ function detailText(item) {
 }
 
 const ready = items.filter((i) => i.state === 'done').length;
-const resolved = { ...status, items: items.map((i) => ({ ...i, fraction: fraction(i), text: detailText(i) })), ready, total: items.length };
+const resolved = { ...status, items: items.map((i) => ({ ...i, links: links(i), fraction: fraction(i), text: detailText(i) })), ready, total: items.length };
 
 // HTML page
 mkdirSync(dirname(htmlPath), { recursive: true });
@@ -219,6 +224,7 @@ async function printBoard(data) {
       const title = clip(item.title, titleWidth - 1).padEnd(titleWidth);
       const room = width - titleWidth - barWidth - 10;
       lines.push(`  ${icon} ${title}${bar(item.fraction * t, item.state)}  ${clip(item.text || STATES[item.state].label, Math.max(8, room - (you ? 4 : 0)))}${you}`);
+      if (item.state !== 'done') for (const l of links(item)) lines.push(paint.dim(`      ${l.label}: ${l.url}`));
     }
     return lines;
   };
@@ -311,6 +317,16 @@ h1 { margin: 0; font-size: 22px; line-height: 1.2; letter-spacing: -.01em; }
 .meta { grid-column: 2 / 4; display: flex; align-items: center; gap: 12px; min-width: 0; }
 .detail { color: var(--muted); font-size: 13.5px; flex: 1; min-width: 0; overflow-wrap: anywhere; }
 .detail a { color: inherit; }
+.links { grid-column: 2 / 4; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.links a {
+  display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 7px 13px;
+  border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--ink);
+  font-size: 13.5px; font-weight: 600; text-decoration: none;
+}
+.links a:first-child { background: var(--ink); color: var(--card); border-color: var(--ink); }
+.links a::after { content: '\\2197'; font-weight: 400; opacity: .7; }
+.links a:active { transform: scale(.98); }
+.callout a { color: var(--ink); font-weight: 600; }
 .you { font-size: 11px; font-weight: 700; color: var(--active); border: 1px solid currentColor; border-radius: 6px; padding: 0 5px; white-space: nowrap; }
 .bar { grid-column: 2 / 4; height: 6px; border-radius: 99px; background: var(--track); overflow: hidden; margin-top: 4px; }
 .bar i { display: block; height: 100%; width: 0; border-radius: inherit; transition: width 1s cubic-bezier(.2,.8,.2,1); }
@@ -372,7 +388,7 @@ let html = '<header><div class="ring"><svg viewBox="0 0 84 84"><circle class="tr
   + (data.updated ? ' · updated ' + ago(data.updated) + (ago(data.updated) === 'just now' ? '' : ' ago') : '') + '</div></div></header>';
 if (yours.length) {
   html += '<div class="callout"><b>Only you can do ' + (yours.length === 1 ? 'this' : 'these') + '</b><ul>'
-    + yours.map((i) => '<li>' + esc(i.title) + (i.detail ? ': ' + esc(i.detail) : '') + '</li>').join('') + '</ul></div>';
+    + yours.map((i) => '<li>' + (i.links.length ? '<a href="' + esc(i.links[0].url) + '">' + esc(i.title) + '</a>' : esc(i.title)) + (i.detail ? ': ' + esc(i.detail) : '') + '</li>').join('') + '</ul></div>';
 }
 let group = null, n = 0, open = false;
 for (const item of data.items) {
@@ -389,7 +405,9 @@ for (const item of data.items) {
     + '<span class="chip">' + LABEL[item.state] + '</span>'
     + '<div class="meta"><span class="detail">' + detail(item) + '</span>'
     + (item.owner === 'you' && item.state !== 'done' ? '<span class="you">YOU</span>' : '') + '</div>'
-    + '<div class="bar"><i data-w="' + (item.fraction * 100).toFixed(1) + '"></i></div></div>';
+    + '<div class="bar"><i data-w="' + (item.fraction * 100).toFixed(1) + '"></i></div>'
+    + (item.state !== 'done' && item.links.length ? '<div class="links">' + item.links.map((l) => '<a href="' + esc(l.url) + '" target="_blank" rel="noopener">' + esc(l.label) + '</a>').join('') + '</div>' : '')
+    + '</div>';
 }
 if (open) html += '</div>';
 html += '<footer>Made by <a href="https://github.com/namedtoaster/the-last-mile">/ship</a> from The Last Mile</footer>';
