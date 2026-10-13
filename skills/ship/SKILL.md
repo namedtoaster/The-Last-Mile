@@ -51,6 +51,22 @@ a text summary alone:
    rendered in the app), then give its gist in two lines.
 4. Commit and push `store/status.json` the way the project's rules say, and stop.
 
+## The ship journal
+
+Shipping a first app is a story people want to read, and nobody remembers the details
+afterwards. Keep `store/journal.md` (from `templates/journal.md`), starting at the
+first `/ship` run and ending when the app is live on both stores:
+
+- Add an entry whenever the release moves: a blocker found or cleared, a console step
+  done, a build uploaded, a review answered. Say what happened, who did it, roughly how
+  long it took, and what was caught that would otherwise have cost a rejection or a week.
+- Write the user's own words down exactly when they say something worth quoting, with
+  their permission to use them.
+- Ask for screenshots at the moments worth showing (console screens, the first
+  TestFlight install, the approval email) and save them in `store/ship-journal/`.
+- Keep the scoreboard current. Never record keys, passwords, tokens or anything
+  personal, in the text or in a screenshot.
+
 ## Scope and permission
 
 - Check the app's code, config, assets and docs, and the official store pages.
@@ -205,5 +221,7 @@ Follow the upload path for the stack in `references/stacks.md`. Ask before each 
 - Record the release in the settings: version, build number, date, store links.
 - Clear the shipped **Verify on** block from the release checklist, if there is one.
 - Tag the release in git (`v<version>`), if the project tags releases.
+- Add the final entry to `store/journal.md`, then offer to draft a launch post or
+  thread from it: the story in the user's own words, with the screenshots.
 - Tell the user it's live, with the store links. Then one line on what comes next:
   shipping was the last mile, and getting people to use it is the next one.

@@ -2,6 +2,9 @@
 
 ## 0.2.0 (unreleased)
 
+- ship keeps a journal from the first run to live on both stores (`store/journal.md`):
+  what moved, who did it, what was caught, the user's own words and screenshots,
+  ready to become a launch post at the end.
 - A status board for ship: one row for everything between the app and the stores,
   kept in `store/status.json`. `scripts/board.mjs` shows it as an animated page that
   works on a phone and as a board in the terminal, and checks the web pages the
