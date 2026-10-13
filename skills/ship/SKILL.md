@@ -118,6 +118,11 @@ the rules are current, then check each one **against the app, not the docs**:
   keeps these.
 - Walk every trap under **Apple** and **Google Play** that applies, and the section for
   this stack under **Stack specific**.
+- Then walk the full rulebooks in `references/rulebooks.md`, section by section, from
+  their saved copies. The traps are what has caught apps before; the rulebooks are
+  everything else. List every section with "applies" or "does not apply" in one line,
+  and check the ones that apply against the app, including its bundled content and
+  copy, not only its code.
 - Also check what a reviewer sees first: the icon and splash are the app's own, not a
   template's; nothing says "lorem ipsum", "TODO" or "test"; every button on the first
   screens does something.

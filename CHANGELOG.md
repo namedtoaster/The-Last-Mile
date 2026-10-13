@@ -2,6 +2,10 @@
 
 ## 0.2.0 (unreleased)
 
+- ship's rejection sweep now walks the full rulebooks (Apple's App Review
+  Guidelines, Google Play's Developer Program Policy and Health Content policy),
+  section by section from saved copies, and checks bundled content and copy as well
+  as code. The traps stay as the list of what has actually caught apps.
 - ship keeps a journal from the first run to live on both stores (`store/journal.md`):
   what moved, who did it, what was caught, the user's own words and screenshots,
   ready to become a launch post at the end.
