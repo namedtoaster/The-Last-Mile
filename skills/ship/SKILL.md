@@ -14,6 +14,7 @@ Read these in this skill's folder before starting:
 - `references/stacks.md`: where each stack keeps its version, and how it builds and uploads.
 - `references/traps.md`: things that got real apps rejected, with sources.
 - `references/facts.md`: numbers that change (fees, limits, deadlines).
+- `references/board.md`: the status board's file and rows.
 
 ## The one rule
 
@@ -31,6 +32,14 @@ read it and keep shipping answers there. If not, keep them in `SHIPPING.md` at t
 project root, created from `templates/shipping.md`, so the next release starts where
 this one ended. Do not require the setup skill; `/ship` must work on a project that has
 never seen The Last Mile.
+
+## The status board
+
+Keep `store/status.json`, one row per thing between the app and the stores, and show
+it with `scripts/board.mjs`: an animated page that works on a phone, and a board in
+the terminal. `references/board.md` has the format, the rows, and when to show it.
+If the user asks where things stand (or runs `/ship status`), refresh the rows from
+what can be checked now, show the board, and stop there.
 
 ## Scope and permission
 
@@ -70,6 +79,7 @@ Work this out from the files before asking anything, then show it in a few lines
 
 End this step with a short plan: the steps ahead, which ones need the user, and the
 first thing only they can do (often paying for an account), so they can start it now.
+Write the plan's rows into `store/status.json` and show the board.
 
 ## 1. Rejection sweep
 

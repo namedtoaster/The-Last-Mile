@@ -54,6 +54,8 @@ Then, in your app's folder:
    say yes.
 7. **Tells you exactly what only you can do,** like paying for the developer account or
    signing the agreements, then picks up where it left off.
+8. **Shows where you stand.** `/ship status` puts every item on a board, on your
+   phone or your desktop, with what only you can do at the top.
 
 It looks up the current store rules every time instead of trusting its memory, because
 Apple and Google change them.
