@@ -30,6 +30,9 @@ place they are edited.
 5. If your linter lints everything (`eslint .`), ignore `.claude/`. The see-it-work
    templates are TypeScript meant to be copied into your app, not run where they sit.
 
+After that, type `/sync` in any session of the project (the Claude app on your phone
+included) to bring the skills up to date. It syncs, commits and pushes for you.
+
 Do not also install the plugin in that project, or every skill shows up twice.
 
 ## Improving a skill

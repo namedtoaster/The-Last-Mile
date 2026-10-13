@@ -8,6 +8,8 @@
   stores need are live. No dependencies. Run `/ship status` to see where you stand.
   Pages a cloud session cannot reach are checked from GitHub by a small workflow,
   so a blocked network never leaves a row unknown. No settings or keys.
+- New `/sync` skill: updates a project's copy of the skills, commits and pushes,
+  so cloud sessions on the phone never need a command run by hand.
 - New domains reference for ship: when a domain is worth it, the bare domain DNS
   rule, and where to add records and email forwarding at Porkbun, Namecheap,
   Cloudflare, GoDaddy and Squarespace, for Railway, Vercel, Netlify and GitHub Pages.
