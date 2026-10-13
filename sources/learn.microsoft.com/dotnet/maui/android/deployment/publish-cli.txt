@@ -1,5 +1,5 @@
 Source: https://learn.microsoft.com/dotnet/maui/android/deployment/publish-cli
-Fetched: 2026-10-12
+Fetched: 2026-10-13
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 Table of contents
@@ -264,6 +264,26 @@ Alternatively, to use a file located at C:\Users\user1\AndroidSigningPassword.tx
 <AndroidSigningStorePass>file:C:\Users\user1\AndroidSigningPassword.txt</AndroidSigningStorePass>
 </PropertyGroup>
 
+## Control R8 optimization and obfuscation
+
+In .NET 11+, when R8 is enabled with AndroidLinkTool=r8, the
+AndroidR8ObfuscationMode property defaults to private-members. This policy
+enables R8 optimization and allows private and package-private Java members to
+be renamed. Java class names and public and protected member names are
+preserved for Java Native Interface (JNI) interoperability.
+
+Test Java code that uses reflection or looks up private members by name. If
+your app requires the previous R8 policy, set AndroidR8ObfuscationMode to
+disabled:
+
+<PropertyGroup Condition="$(TargetFramework.Contains('-android')) and '$(Configuration)' == 'Release'">
+<AndroidR8ObfuscationMode>disabled</AndroidR8ObfuscationMode>
+</PropertyGroup>
+
+The disabled mode preserves all Java names and uses the previous
+non-optimizing configuration. Both modes still shrink unused Java code. This
+property doesn't enable or disable R8 itself.
+
 ## Distribute the app
 
 The signed APK or AAB file can be distributed with one of the following approaches:
@@ -309,4 +329,4 @@ Suggest a fix?
 ## Additional resources
 
 Last updated on
-2026-09-28
+2026-10-08

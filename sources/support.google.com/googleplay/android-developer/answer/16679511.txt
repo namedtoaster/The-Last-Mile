@@ -1,0 +1,173 @@
+Source: https://support.google.com/googleplay/android-developer/answer/16679511
+Fetched: 2026-10-13
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+# Health Content and Services
+
+Help us improve this policy article by taking a 2-minute survey.
+
+Disclaimer: Policy summaries and Key Considerations are overviews only; always refer to the full policy for compliance. The full policy takes precedence in case of conflict.
+
+We don't allow apps that expose users to harmful health content and services.
+
+If your app contains or promotes health content and services, you must ensure your app is compliant with any applicable laws and regulations.
+
+## Health and Medical Apps
+
+Policy Summary
+
+To protect user safety and safeguard sensitive health data, Google Play prohibits apps from offering misleading or harmful health functionality and requires regulatory proof or a disclaimer for apps offering medical functionality. Health and medical apps must complete the Health apps declaration form in Play Console and post a privacy policy detailing the handling of personal and sensitive data. Please review the full policy and this help center article to ensure compliance.
+
+Full Policy
+
+If your app offers health-related features or information as part of its functionality, or accesses health data to support non-health features, it must comply with the existing Google Play Developer Policies, including Privacy, Deception and Device Abuse, in addition to the below requirements:
+
+- Console Declaration:
+
+- All developers must complete the Health apps declaration form on the App content page (Monitor & Improve >Policy > App content) in Play Console. Learn more about providing information for the Health apps declaration form.
+
+- Privacy Policy and Prominent Disclosure Requirements:
+
+- Your app must post a privacy policy link in the designated field within Play Console, and a privacy policy link or text within the app itself. Please make sure your privacy policy is available on an active, publicly accessible and non-geofenced URL (no PDFs) and is non-editable (as per the Data safety section).
+
+- Your app’s privacy policy must, together with any in-app disclosures, comprehensively disclose the access, collection, use, and sharing of personal or sensitive user data, not limited by the data disclosed in the Data safety section above. For any functionality or data regulated by dangerous or runtime permissions, the app must fulfill all applicable prominent disclosure and consent requirements.
+
+- Permissions that are not required for a health app to perform its core functionality should not be requested and unused permissions must be removed. For the list of permissions that are considered in scope of health related sensitive data, see What permissions are in scope of the health apps policy.
+
+- If your app is not primarily a health app, but has health-related features and accesses health data, it is still in scope of the Health App policy. It should be clear to the user the connection between the app’s core functionality and the collection of health related data (for example, insurance providers, games apps that collect a user’s activity data as a way to advance game play etc.). The app’s privacy policy must reflect this limited use.
+
+- Health and Medical Functionalities:
+
+- We don’t allow apps with health and medical related functionalities that are misleading or potentially harmful.
+
+- Apps that connect to external hardware or devices (e.g., blood glucose monitors) to perform their medical function, must clearly disclose these external hardware requirements in the app description. The app must not imply that it can function independently of the required external hardware.
+
+- Apps that use device sensors (e.g., camera) for health functions must clearly state device compatibility information in the app description. For example, apps with oximetry functionality using only device sensors must properly disclose which device models can support the functionality.
+
+- Apps that are regulated because they are a medical device must be declared as such and information required by this article must be completed. These apps will be identified as a “Medical Device” on Google Play. Apps that are regulated as a medical device must provide proof of approval, clearance or certification by the relevant authority upon request. Other health and medical apps must include a clear disclaimer in their app description indicating that the app is “not a medical device and does not diagnose, treat, cure, or prevent any medical condition.”
+
+- Apps must also remind users to consult a healthcare professional for medical advice, diagnosis, or treatment.
+
+- Additional requirements:
+
+If your health app qualifies for one of the following designations, you must comply with relevant requirements:
+
+- Government-Affiliated health apps: If you have permission from the government or a recognized healthcare organization to develop and distribute an app in affiliation with them, you must submit proof of eligibility via the Advance Notice Form.
+
+- Contact Tracing/Health Status apps: If your app is a contact tracing and/or health status app, please select “Disease Prevention and Public Health” in Play Console, and provide the required information via the advance notice form above.
+
+- Human Subjects Research Apps: Apps conducting health-related human subjects research must follow all rules and regulations; including but not limited to, obtaining informed consent from participants or, in the case of minors, their parent or guardian. Health Research apps should also secure approval from an Institutional Review Board (IRB) and/or equivalent independent ethics committee unless otherwise exempt. Proof of such approval must be provided upon request.
+
+For more information about health and medical apps, see Health app categories and additional information.
+
+Key Considerations
+
+Do |
+Don't |
+
+Complete the required Health apps declaration in Play Console.
+
+|
+
+Don't request health permissions or collect health data that is not essential to your app's core functionality.
+
+|
+
+Provide a clear, publicly-accessible privacy policy link in-app and in store listing.
+
+|
+
+Don't offer medical functionalities that are misleading or potentially harmful.
+
+|
+
+## Health Connect Data
+
+Data accessed through Health Connect Permissions is regarded as personal and sensitive user data subject to the User Data policy, and is subjected to additional requirements.
+
+## Prescription Drugs
+
+We do not allow apps that facilitate the sale or purchase of prescription drugs without a prescription.
+
+## Unapproved Substances
+
+Policy Summary
+
+To protect users, Google Play prohibits apps that promote or sell unapproved substances, including supplements with dangerous ingredients and products with false health claims. Please review the full policy and common violations to ensure compliance.
+
+Full Policy
+
+Google Play doesn't allow apps that promote or sell unapproved substances, irrespective of any claims of legality.
+
+Examples of common violations
+
+All items on this non-exhaustive list of prohibited pharmaceuticals and supplements.
+
+Products that contain ephedra.
+
+Products containing human chorionic gonadotropin (hCG) in relation to weight loss or weight control, or when promoted in conjunction with anabolic steroids.
+
+Herbal and dietary supplements with active pharmaceutical or dangerous ingredients.
+
+False or misleading health claims, including claims implying that a product is as effective as prescription drugs or controlled substances.
+
+Non-government approved products that are marketed in a way that implies that they're safe or effective for use in preventing, curing, or treating a particular disease or ailment.
+
+Products that have been subject to any government or regulatory action or warning.
+
+Products with names that are confusingly similar to an unapproved pharmaceutical or supplement or controlled substance.
+
+For additional information on the unapproved or misleading pharmaceuticals and supplements that we monitor, please visit www.legitscript.com.
+
+Key Considerations
+
+Do |
+Don't |
+
+Consult LegitScript.com for information on prohibited substances.
+
+|
+
+Don't facilitate the sale of unapproved pharmaceuticals or supplements.
+
+|
+
+Remove products that have been subject to regulatory warnings.
+
+|
+
+Don't sell products containing ephedra or hCG for weight loss.
+
+|
+
+Ensure your app does not contain false or misleading health claims.
+
+|
+
+Don't use names that are confusingly similar to controlled substances.
+
+|
+
+## Health Misinformation
+
+We don’t allow apps containing misleading health claims that contradict existing medical consensus, or can cause harm to users.
+
+Examples of common violations
+
+- Misleading claims about vaccines, such as that vaccines can alter one’s DNA.
+
+- Advocacy of harmful, unapproved treatments.
+
+- Advocacy of other harmful health practices, such as conversion therapy.
+
+(1) This app features medical or health-related claims (cures cancer) that are misleading.
+
+## Payments - Clinical Services
+
+Transactions involving regulated clinical services should not use Google Play’s billing system. For more information, see Understanding Google Play’s Payments policy.
+
+Help us improve this policy article by taking a 2-minute survey.
+
+## Was this helpful?
+How can we improve it?
+YesNo
