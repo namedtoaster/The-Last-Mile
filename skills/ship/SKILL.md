@@ -41,8 +41,15 @@ the terminal. Give every row the user must act on a link straight to where it ge
 done. `references/board.md` has the format, the rows, the links, and when to show it.
 Pages the session's network blocks are checked from GitHub by a small workflow
 (`templates/last-mile-checks.yml`); install it in GitHub projects, as that file says.
-If the user asks where things stand (or runs `/ship status`), refresh the rows from
-what can be checked now, show the board, and stop there.
+**`/ship status`, or the user asking where things stand,** always means the board, never
+a text summary alone:
+
+1. Create `store/status.json` if it does not exist (step 0's checks fill it), else
+   refresh its rows from what can be checked now.
+2. Run `scripts/board.mjs` on it.
+3. Hand the user the page as `references/board.md` says (an artifact, or the file
+   rendered in the app), then give its gist in two lines.
+4. Commit and push `store/status.json` the way the project's rules say, and stop.
 
 ## Scope and permission
 

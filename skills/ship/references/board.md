@@ -20,8 +20,16 @@ node <this skill's folder>/scripts/board.mjs store/status.json
 It checks every row that has a `url` (a page the stores need to load), prints the
 board, and writes the page. Then:
 
-- **Show the page.** It is the board meant for people: on the phone it opens in the
-  Claude app, on a desktop add `--open` to open it in the browser.
+- **Hand the user the page itself.** It is the board meant for people, and a text
+  summary is not a substitute. Use the first of these the session has:
+  1. **An artifact tool** (publishes a page to claude.ai): publish
+     `store/status.html`. Save the link in the status file as `"artifact"`, and next
+     time update that same artifact by its link, so the user keeps one link that is
+     always current. Mention the link in the reply.
+  2. **A tool that sends files to the user:** send `store/status.html` so the app
+     renders it.
+  3. **Neither (a desktop terminal):** run with `--open` to open it in the browser,
+     and give the file path.
 - **Give the board's gist in a line or two,** led by what only the user can do, since
   the terminal output may not show its colors where the user reads it.
 - Never report a page as live, or as broken, unless a check said so.
@@ -76,6 +84,7 @@ work.
 | `owner` | `you` when only the user can do it (paying, agreements, a console only form). These also show in a callout at the top. |
 | `progress` | `{ "done", "total", "unit" }` when it is countable: days of a closed test, screenshots captured. |
 | `since` | When the current state began (ISO time), shown as "for 2 days". Use for reviews. |
+| `artifact` | The link of the published board, kept so each update goes to the same page. Top level, not per row. |
 | `links` | `[{ "label", "url" }]`: where to go to get it done, first one the main button. See below. |
 | `url` | A page that must load. The script checks it each run and sets the state itself: `done` when it loads, `blocked` when it returns an error. |
 
