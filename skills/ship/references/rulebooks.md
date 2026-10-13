@@ -16,8 +16,8 @@ its fetched date, and cite the guideline number or policy name for every finding
 
 ## Google Play
 
-- [Developer Program Policy](https://support.google.com/googleplay/android-developer/answer/17190352):
-  the whole policy on one page (the version effective 15 July 2026 when this was
+- [Developer Program Policy](https://support.google.com/googleplay/android-developer/answer/18258653):
+  the whole policy on one page (the version effective 30 September 2026 when this was
   written; Google replaces the page with a new address when the policy changes, so if
   the saved copy is old or missing, find the current one from the Policy Center).
 - [Policy Center](https://play.google/developer-content-policy/): the index of every
