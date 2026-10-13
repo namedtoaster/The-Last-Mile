@@ -1,0 +1,6 @@
+{ "app": "Test", "items": [
+  { "group": "Web pages", "title": "Real site", "url": "https://mymealstream.com/" },
+  { "group": "Web pages", "title": "GitHub page", "url": "https://github.com/namedtoaster/the-last-mile" },
+  { "group": "Web pages", "title": "Missing page", "url": "https://github.com/namedtoaster/no-such-repo-xyz-404" },
+  { "group": "Web pages", "title": "No such domain", "url": "https://no-such-domain-lastmile-xyz123.com/" }
+]}
