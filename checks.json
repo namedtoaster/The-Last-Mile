@@ -1,0 +1,25 @@
+{
+  "pages": {
+    "https://mymealstream.com/": {
+      "ok": true,
+      "status": 200,
+      "checked": "2026-10-13T18:05:07.082Z"
+    },
+    "https://github.com/namedtoaster/the-last-mile": {
+      "ok": true,
+      "status": 200,
+      "checked": "2026-10-13T18:05:07.403Z"
+    },
+    "https://github.com/namedtoaster/no-such-repo-xyz-404": {
+      "ok": false,
+      "status": 404,
+      "checked": "2026-10-13T18:05:07.909Z"
+    },
+    "https://no-such-domain-lastmile-xyz123.com/": {
+      "ok": false,
+      "status": 0,
+      "error": "ENOTFOUND",
+      "checked": "2026-10-13T18:05:08.211Z"
+    }
+  }
+}
