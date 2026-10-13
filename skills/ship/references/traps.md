@@ -192,6 +192,13 @@ Stack specific traps are at the end.
 - **Source:** [Apple: App privacy details](https://developer.apple.com/app-store/app-privacy-details/), [Play Console Help: Data safety section](https://support.google.com/googleplay/android-developer/answer/10787469)
 - **Status:** Checked 2026-10-11 (official pages opened and read).
 
+### Content a model rewrote can lose its safety caveat
+- **What happened:** a baby app bundled 91 real social posts, with titles and tips rewritten by a model. A creator wrote "Side/Stomach (while holding NOT sleeping in crib)" and the app showed "Side/Stomach", which is the unsafe version. No test or review would notice, because the text still reads well.
+- **Rule:** Apple reviews apps that could give inaccurate health information "with greater scrutiny" and says apps "should remind users to check with a doctor". Google Play does not allow apps that expose users to harmful health content, or false or misleading health claims.
+- **How to check:** find every place a model writes or rewrites content the app shows (sample content, imports, summaries). Its prompt must keep safety caveats with the advice they qualify, leave out doses, thresholds, diagnosis and treatment, and send mostly medical posts to "ask your doctor". Then read the bundled content against the original posts, looking for a caveat that went missing. Add a line saying it is not medical advice.
+- **Source:** [App Review Guidelines, 1.4.1](https://developer.apple.com/app-store/review/guidelines/#1.4.1), [Play Console Help: Health Content and Services](https://support.google.com/googleplay/android-developer/answer/16679511)
+- **Status:** Checked 2026-10-13 (saved copies of both official pages read).
+
 ### On Android, store prices only load for a licence tester or a Play install
 - **What happened:** checklist items asked to verify prices on a test phone where they could never load.
 - **Rule:** Google Play billing is blocked for apps not signed and uploaded to Google Play, but licence testers bypass that check, even on sideloaded debug builds, as long as the package name matches the app in Play.
