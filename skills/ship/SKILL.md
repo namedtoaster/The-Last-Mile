@@ -15,6 +15,7 @@ Read these in this skill's folder before starting:
 - `references/traps.md`: things that got real apps rejected, with sources.
 - `references/facts.md`: numbers that change (fees, limits, deadlines).
 - `references/board.md`: the status board's file and rows.
+- `references/payments.md`: store products and RevenueCat, in the order they must be set up.
 
 ## The one rule
 

@@ -2,6 +2,8 @@
 
 ## 0.2.0 (unreleased)
 
+- New payments reference for ship: store products and RevenueCat in the order they
+  must be set up, with RevenueCat's own docs saved weekly by the snapshot job.
 - The ship journal keeps stats: sessions, days, hands on time in consoles and tokens,
   next to the level and platforms chosen. `docs/IDEAS.md` holds the next two ideas:
   a leaderboard that rewards shipping well, and shipping from a phone end to end.
