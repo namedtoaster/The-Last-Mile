@@ -160,10 +160,10 @@ Stack specific traps are at the end.
 
 ### Settle the app's id before the first upload
 - **What happened:** an app renamed after its first development builds still carried the old name in its bundle id and package name, weeks before its first store upload. The rename only cost a rebuild because nothing had been uploaded yet.
-- **Rule:** Google says to never change the application ID once the app is published, because Play treats an upload with a new ID as a completely different app. Apple ties an App Store Connect app record to its bundle ID in the same way.
+- **Rule:** Google says to never change the application ID once the app is published, because Play treats an upload with a new ID as a completely different app. Apple lets an App Store Connect record's bundle ID change only until a build is uploaded, and its SKU never; the name can change until the app is submitted. So an existing record made under an old name can be renamed and repointed, not recreated, if nothing was uploaded to it.
 - **How to check:** before the first upload, confirm the bundle ID and package name use the final name, and the deep link scheme too. Changing them later means a new store listing with no reviews or users. A changed id also installs as a separate app on test phones, with its own local data, so testers start over. Keep local storage keys as they are when renaming; changing them wipes saved data.
-- **Source:** [Android Developers: configure the app module](https://developer.android.com/build/configure-app-module)
-- **Status:** Checked 2026-10-12 (official page opened and read). The Apple side is from experience: Apple's help pages opened on 2026-10-12 do not state it.
+- **Source:** [Android Developers: configure the app module](https://developer.android.com/build/configure-app-module), [App Store Connect Help: App information](https://developer.apple.com/help/app-store-connect/reference/app-information/)
+- **Status:** Checked 2026-10-14 (Android page opened 2026-10-12; Apple page read from the saved copy fetched 2026-10-12).
 
 ### Every upload needs a higher build number
 - **Rule:** Google Play will not accept a version code that has already been used, and Apple uses the build string to identify each build uniquely.
