@@ -14,6 +14,11 @@ release, newest at the bottom. Screenshots go in `ship-journal/` next to this fi
 | Release blockers found | 0 |
 | Release blockers cleared | 0 |
 | Store rejections | 0 |
+| Platforms and level | <both / iOS only / Android only>, <Quick ship / Standard / Full features> |
+| Sessions | 0 |
+| Days since first run | 0 |
+| Hands on time in consoles | <roughly, hours> |
+| Tokens | <total, or "not visible"> |
 
 ## Entries
 
@@ -22,6 +27,7 @@ release, newest at the bottom. Screenshots go in `ship-journal/` next to this fi
 - **What happened:** <the step, in a sentence or two>
 - **Who did it:** <the user, in a console / Claude / both>
 - **Time:** <roughly, wall clock>
+- **Session:** <number>, tokens <count, or "not visible">
 - **What it caught:** <the rejection, wasted week or wrong turn avoided, if any>
 - **In their words:** "<anything the user said worth quoting, word for word>"
 - **Proof:** <screenshot, commit, store page>

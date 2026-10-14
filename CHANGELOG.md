@@ -2,6 +2,9 @@
 
 ## 0.2.0 (unreleased)
 
+- The ship journal keeps stats: sessions, days, hands on time in consoles and tokens,
+  next to the level and platforms chosen. `docs/IDEAS.md` holds the next two ideas:
+  a leaderboard that rewards shipping well, and shipping from a phone end to end.
 - Release levels and platforms: setup asks which stores (both, iOS only, Android
   only) and how much before the first launch (Quick ship, Standard, Full features),
   saves both in Settings, and ship plans only that much (`references/levels.md`).

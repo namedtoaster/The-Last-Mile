@@ -64,7 +64,11 @@ first `/ship` run and ending when the app is live on both stores:
   their permission to use them.
 - Ask for screenshots at the moments worth showing (console screens, the first
   TestFlight install, the approval email) and save them in `store/ship-journal/`.
-- Keep the scoreboard current. Never record keys, passwords, tokens or anything
+- Keep the scoreboard current, including the stats: one more session each time a
+  session moves the release, days since the first run, the user's hands on time in
+  consoles, and tokens when the session can see them (say "not visible" otherwise,
+  never guess). The point of the stats is a better process, so record what it cost
+  next to what shipped, at the level chosen. Never record keys, passwords, tokens or anything
   personal, in the text or in a screenshot.
 
 ## Scope and permission
