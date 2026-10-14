@@ -1,0 +1,177 @@
+Source: https://developer.apple.com/help/app-store-connect/manage-subscriptions/set-up-introductory-offers-for-auto-renewable-subscriptions
+Fetched: 2026-10-14
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+# Set up introductory offers for auto-renewable subscriptions
+
+You can set up introductory offers for your apps on the App Store that contain auto-renewable subscriptions in App Store Connect. An introductory offer is a limited-time discounted price or free trial for the initial period of a subscription.
+
+When you set up an introductory offer, it automatically appears on your app’s product page on the App Store for eligible users. You can also display introductory offers within your app. When displaying offers in your app, use receipt validation to ensure that you’re only showing offers to people who can redeem them. Learn about implementing introductory offers.
+
+There are three types of introductory offers: free trial, pay up front, and pay as you go. You can choose the length of the introductory offer based on the standard subscription duration.
+
+Note: It may take up to 1 hour for changes you make to product metadata to appear in the sandbox environment.
+
+Standard Subscription Duration
+
+|
+
+Pay As You Go
+
+|
+
+Pay Up Front
+
+|
+
+Free Trial
+
+|
+
+1 Week
+
+|
+
+1 to 12 Weeks
+
+|
+
+1, 2, 3, or 6 Months. 1 Year.
+
+|
+
+3 Days. 1 or 2 Weeks. 1, 2, 3, or 6 Months. 1 Year.
+
+|
+
+1 Month
+
+|
+
+1 to 12 Months
+
+|
+
+1, 2, 3, or 6 Months. 1 Year.
+
+|
+
+3 Days. 1 or 2 Weeks. 1, 2, 3, or 6 Months. 1 Year.
+
+|
+
+2 Months
+
+|
+
+2, 4, 6, 8, 10, or 12 Months
+
+|
+
+1, 2, 3, or 6 Months. 1 Year.
+
+|
+
+3 Days. 1 or 2 Weeks. 1, 2, 3, or 6 Months. 1 Year.
+
+|
+
+3 Months
+
+|
+
+3, 6, 9, or 12 Months
+
+|
+
+1, 2, 3, or 6 Months. 1 Year.
+
+|
+
+3 Days. 1 or 2 Weeks. 1, 2, 3, or 6 Months. 1 Year.
+
+|
+
+6 Months
+
+|
+
+6 or 12 Months
+
+|
+
+1, 2, 3, or 6 Months. 1 Year.
+
+|
+
+3 Days. 1 or 2 Weeks. 1, 2, 3, or 6 Months. 1 Year.
+
+|
+
+1 Year
+
+|
+
+1 Year
+
+|
+
+1, 2, 3, or 6 Months. 1 Year.
+
+|
+
+3 Days. 1 or 2 Weeks. 1, 2, 3, or 6 Months. 1 Year.
+
+|
+
+Although you can create an introductory offer for each subscription product in App Store Connect, each person is only eligible to redeem one introductory offer per subscription group.
+
+Learn how to set up introductory offers with the App Store Connect API.
+
+Required role: Account Holder, Admin, App Manager, or Marketing. View role permissions.
+
+## Create an introductory offer
+
+From Apps, select your app.
+
+In the sidebar, click Subscriptions.
+
+Choose the subscription group containing your subscription.
+
+Select a subscription, then go to the Subscription Prices section and click View all Subscription pricing.
+
+Select Set up Introductory Offer.
+
+Select the countries or regions where you want to offer a discounted price, and click Next. You can have one current and one future introductory offer per storefront.
+
+Choose the start and end dates for your introductory offer. If you choose today as the start date, your introductory offer begins immediately. Offers end on the selected end date, with the exact time varying by region.
+
+Click Next. If you create new offers that have overlapping dates, the latest action overwrites existing introductory offers. Learn about available offers and subscriber eligibility using the In-App Purchase API.
+
+Choose Pay as you go, Pay up front, or Free, then choose the appropriate duration, country or region, and price. To search from a larger list of price points, click See Additional Prices.
+
+App Store connect provides comparable prices for all 175 App Store countries and regions, taking into account taxes and foreign exchange rates. If you want to set different prices for specific storefronts, make the changes and click Next.
+
+Make sure the details of your introductory offer are correct and click Confirm. Once you create an introductory offer, you won’t be able to edit it. To change the details of your introductory offer, delete it and create a new one.
+
+### Delete an introductory offer
+
+From Apps, select your app.
+
+In the sidebar, click Subscriptions.
+
+Choose the subscription group containing your subscription.
+
+Click the subscription you want to delete, then go to the Subscription Prices section and click View all Subscription Pricing.
+
+Navigate to the Introductory Offers tab to view, all your offers listed by date and country or region.
+
+Find the introductory offer you wish to delete, and move your pointer over the right side of the price change row until the remove button (—) appears. Click the remove button.
+
+Click Delete in the dialog.
+
+### FAQs
+
+### What is the difference between introductory offer limits and customer eligibility limits?
+
+App Store Connect allows you to set an introductory offer for each subscription product in App Store Connect. You can have multiple offers in each subscription group. New and returning customers are only eligible to use one introductory offer per subscription group. For example, if a customer uses a free trial and then upgrades to a subscription product in the same group that also has a free trial, they aren't eligible for the second offer.

@@ -1,0 +1,1325 @@
+Source: https://www.revenuecat.com/docs/getting-started/displaying-products
+Fetched: 2026-10-14
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+On this page
+AI agents: the complete RevenueCat documentation index is available at llms.txt. A Markdown version of this page is available at this URL.
+If you've configured Offerings in RevenueCat, you can control which products are shown to users without requiring an app update. Building paywalls that are dynamic and can react to different product configurations gives you maximum flexibility to make remote updates.
+
+Before products and offerings can be fetched from RevenueCat, be sure to initialize the Purchases SDK by following our Quickstart guide.
+
+## Fetching Offerings​
+
+Offerings are fetched through the SDK based on their configuration in the RevenueCat dashboard.
+
+The getOfferings method will fetch the Offerings from RevenueCat. These are pre-fetched in most cases on app launch, so the completion block to get offerings won't need to make a network request in most cases.
+
+- Swift
+- Objective-C
+- Kotlin
+- Kotlin MP
+- Java
+- Flutter
+- React Native
+- Cordova
+- Capacitor
+- Unity
+- Web (JS/TS)
+- Vega
+Purchases.shared.getOfferings { (offerings, error) in
+
+if let packages = offerings?.current?.availablePackages {
+
+self.display(packages)
+
+}
+
+}
+
+[[RCPurchases sharedPurchases] getOfferingsWithCompletion:^(RCOfferings *offerings, NSError *error) {
+
+if (offerings.current && offerings.current.availablePackages.count != 0) {
+
+// Display packages for sale
+
+} else if (error) {
+
+// optional error handling
+
+}
+
+}];
+
+Purchases.sharedInstance.getOfferingsWith({ error ->
+
+// An error occurred
+
+}) { offerings ->
+
+offerings.current?.availablePackages?.takeUnless { it.isNullOrEmpty() }?.let {
+
+// Display packages for sale
+
+}
+
+}
+
+Purchases.sharedInstance.getOfferings(
+
+onError = { error ->
+
+// An error occurred
+
+},
+
+onSuccess = { offerings ->
+
+offerings.current?.availablePackages?.takeUnless { it.isEmpty() }?.let {
+
+// Display packages for sale
+
+}
+
+}
+
+)
+
+Purchases.getSharedInstance().getOfferings(new ReceiveOfferingsCallback() {
+
+@Override
+
+public void onReceived(@NonNull Offerings offerings) {
+
+if (offerings.getCurrent() != null) {
+
+List<Package> availablePackages = offerings.getCurrent().getAvailablePackages();
+
+// Display packages for sale
+
+}
+
+}
+
+@Override
+
+public void onError(@NonNull PurchasesError error) {
+
+// An error occurred
+
+}
+
+});
+
+try {
+
+Offerings offerings = await Purchases.getOfferings();
+
+if (offerings.current != null && offerings.current.availablePackages.isNotEmpty) {
+
+// Display packages for sale
+
+}
+
+} on PlatformException catch (e) {
+
+// optional error handling
+
+}
+
+try {
+
+const offerings = await Purchases.getOfferings();
+
+if (offerings.current !== null && offerings.current.availablePackages.length !== 0) {
+
+// Display packages for sale
+
+}
+
+} catch (e) {
+
+}
+
+func displayUpsellScreen() {
+
+Purchases.getOfferings(
+
+offerings => {
+
+if (offerings.current !== null && offerings.current.availablePackages.length !== 0) {
+
+// Display packages for sale
+
+}
+
+},
+
+error => {
+
+}
+
+);
+
+}
+
+const displayUpsellScreen = async () => {
+
+try {
+
+const offerings = await Purchases.getOfferings();
+
+if (offerings.current !== null && offerings.current.availablePackages.length !== 0) {
+
+// Display packages for sale
+
+}
+
+} catch (error) {
+
+// Handle error
+
+}
+
+}
+
+var purchases = GetComponent<Purchases>();
+
+purchases.GetOfferings((offerings, error) =>
+
+{
+
+if (offerings.Current != null && offerings.Current.AvailablePackages.Count != 0){
+
+// Display packages for sale
+
+}
+
+});
+
+try {
+
+const offerings = await Purchases.getSharedInstance().getOfferings();
+
+if (
+
+offerings.current !== null &&
+
+offerings.current.availablePackages.length !== 0
+
+) {
+
+// Display packages for sale
+
+displayPackages(offerings.current.availablePackages);
+
+}
+
+} catch (e) {
+
+// Handle errors
+
+}
+
+try {
+
+const offerings = await Purchases.getSharedInstance().getOfferings();
+
+if (
+
+offerings.current !== null &&
+
+offerings.current.availablePackages.length !== 0
+
+) {
+
+// Display packages for sale
+
+displayPackages(offerings.current.availablePackages);
+
+}
+
+} catch (e) {
+
+// Handle errors
+
+}
+
+⚠️Avoid pre-warming offerings cache in your Android's Application
+Don't call getOfferings in your Android app's Application.onCreate.
+This might trigger additional network requests in some situations (like push notifications) without need, using your customer's data. The offerings cache should be pre-fetched automatically by the SDK.
+
+📘Offerings, products or available packages empty
+If your offerings, products, or available packages are empty, it's due to some configuration issue in App Store Connect or the Play Console.
+You can find more information about troubleshooting this issue in our Troubleshooting Guide.
+
+You must choose one Offering that is the "Default Offering" - which can easily be accessed via the current property of the returned offerings for a given customer.
+
+📘What's the difference between a current Offering and a default Offering?
+The current Offering for a given customer may change based on the experiment they're enrolled in, any targeting rules they match, or the default Offering of your Project. Your Project's default Offering is the Offering that will be served as "current" when no other conditions apply for that customer.
+
+To change the default Offering of your Project, navigate to the Offerings tab for that Project in the RevenueCat dashboard, and find the Offering you'd like to make default. Then, click on the icon in the Actions column of that Offering to reveal the available options, and click Make Default to make the change.
+
+If you'd like to customize the Offering that's served based on an audience, or their location in your app, check out Targeting.
+
+Offerings can be updated at any time, and the changes will go into effect for all users right away.
+
+### Fetching Offerings by Placement​
+
+Alternatively, if your app has multiple paywall locations and you want to control each location uniquely, you can do that with Placements and the getCurrentOffering(forPlacement: "string") method.
+
+- Swift
+- Kotlin
+- Java
+- Flutter
+- React Native
+- Cordova
+- Capacitor
+- Unity
+Purchases.shared.getOfferings { offerings, error in
+
+if let offering = offerings?.currentOffering(forPlacement: "your-placement-identifier") {
+
+// TODO: Show paywall
+
+} else {
+
+// TODO: Do nothing or continue on to next view
+
+}
+
+}
+
+Purchases.sharedInstance.getOfferingsWith({ error ->
+
+// An error occurred
+
+}) { offerings ->
+
+offerings.getCurrentOfferingForPlacement("your-placement-identifier")?.let {
+
+// TODO: Show paywall
+
+} ?: run {
+
+// TODO: Do nothing or continue on to next view
+
+}
+
+}
+
+Purchases.getSharedInstance().getOfferings(new ReceiveOfferingsCallback() {
+
+@Override
+
+public void onReceived(@NonNull Offerings offerings) {
+
+Offering offering = offerings.getCurrentOfferingForPlacement("your-placement-identifier");
+
+if (offering != null) {
+
+// TODO: Show paywall
+
+} else {
+
+// TODO: Do nothing or continue on to next view
+
+}
+
+}
+
+@Override
+
+public void onError(@NonNull PurchasesError error) {
+
+// An error occurred
+
+}
+
+});
+
+Offering offering = await Purchases.getCurrentOfferingForPlacement(placementIdentifier: "your-placement-identifier");
+
+if (offering != null) {
+
+// TODO: Show paywall
+
+} else {
+
+// TODO: Do nothing or continue on to next view
+
+}
+
+const offering = await Purchases.getCurrentOfferingForPlacement(inputValue);
+
+if (offering) {
+
+// TODO: Show paywall
+
+} else {
+
+// TODO: Do nothing or continue on to next view
+
+}
+
+const offering = await Purchases.getCurrentOfferingForPlacement("your-placement-identifier");
+
+if (offering !== null) {
+
+// TODO: Show paywall
+
+} else {
+
+// TODO: Do nothing or continue on to next view
+
+}
+
+const offering = await Purchases.getCurrentOfferingForPlacement({placementIdentifier: "your-placement-identifier"});
+
+if (offering !== null) {
+
+// TODO: Show paywall
+
+} else {
+
+// TODO: Do nothing or continue on to next view
+
+}
+
+var purchases = GetComponent<Purchases>();
+
+purchases.GetCurrentOfferingForPlacement("your-placement-identifier", (offering, error) =>
+
+{
+
+if (offering != null){
+
+// TODO: Show paywall
+
+} else {
+
+// TODO: Do nothing or continue on to next view
+
+}
+
+}
+
+});
+
+To learn more about creating Placements and serving unique Offerings through them, click here.
+
+### Custom Offering identifiers​
+
+It's also possible to access other Offerings besides the Current Offering directly by its identifier.
+
+- Swift
+- Objective-C
+- Kotlin
+- Kotlin MP
+- Java
+- Flutter
+- React Native
+- Cordova
+- Capacitor
+- Unity
+- Web (JS/TS)
+- Vega
+Purchases.shared.getOfferings { (offerings, error) in
+
+if let packages = offerings?.offering(identifier: "experiment_group")?.availablePackages {
+
+self.display(packages)
+
+}
+
+}
+
+[[RCPurchases sharedPurchases] offeringsWithCompletionBlock:^(RCOfferings *offerings, NSError *error) {
+
+NSArray<RCPackage *> *availablePackages = [offerings offeringWithIdentifier:"experiment_group"].availablePackages;
+
+if (availablePackages) {
+
+// Display packages for sale
+
+}
+
+}];
+
+Purchases.sharedInstance.getOfferingsWith({ error ->
+
+// An error occurred
+
+}) { offerings ->
+
+offerings["experiment_group"]?.availablePackages?.takeUnless { it.isNullOrEmpty() }?.let {
+
+// Display packages for sale
+
+}
+
+}
+
+Purchases.sharedInstance.getOfferings(
+
+onError = { error ->
+
+// An error occurred
+
+},
+
+onSuccess = { offerings ->
+
+offerings["experiment_group"]?.availablePackages?.takeUnless { it.isEmpty() }?.let {
+
+// Display packages for sale
+
+}
+
+}
+
+)
+
+Purchases.getSharedInstance().getOfferings(new ReceiveOfferingsCallback() {
+
+@Override
+
+public void onReceived(@NonNull Offerings offerings) {
+
+if (offerings.get("experiment_group") != null) {
+
+List<Package> availablePackages = offerings.get("experiment_group").getAvailablePackages();
+
+// Display packages for sale
+
+}
+
+}
+
+@Override
+
+public void onError(@NonNull PurchasesError error) {
+
+// An error occurred
+
+}
+
+});
+
+try {
+
+Offerings offerings = await Purchases.getOfferings();
+
+if (offerings.getOffering("experiment_group").availablePackages.isNotEmpty) {
+
+// Display packages for sale
+
+}
+
+} on PlatformException catch (e) {
+
+// optional error handling
+
+}
+
+try {
+
+const offerings = await Purchases.getOfferings();
+
+if (offerings.all["experiment_group"].availablePackages.length !== 0) {
+
+// Display packages for sale
+
+}
+
+} catch (e) {
+
+}
+
+Purchases.getOfferings(
+
+offerings => {
+
+if (offerings.all["experiment_group"].availablePackages.length !== 0) {
+
+// Display packages for sale
+
+}
+
+},
+
+error => {
+
+}
+
+);
+
+try {
+
+const offerings = await Purchases.getOfferings();
+
+if (offerings.all["experiment_group"].availablePackages.length !== 0) {
+
+// Display packages for sale
+
+}
+
+} catch (error) {
+
+// Handle error
+
+}
+
+var purchases = GetComponent<Purchases>();
+
+purchases.GetOfferings((offerings, error) =>
+
+{
+
+if (offerings.All.ContainsKey("experiment_group") && offerings.All["experiment_group"].AvailablePackages.Count != 0) {
+
+// Display packages for sale
+
+}
+
+});
+
+try {
+
+const offerings = await Purchases.getSharedInstance().getOfferings();
+
+if (offerings.all["experiment_group"].availablePackages.length !== 0) {
+
+// Display packages for sale
+
+displayPackages(offerings.all["experiment_group"].availablePackages);
+
+}
+
+} catch (e) {
+
+// Handle errors
+
+}
+
+try {
+
+const offerings = await Purchases.getSharedInstance().getOfferings();
+
+if (offerings.all["experiment_group"].availablePackages.length !== 0) {
+
+// Display packages for sale
+
+displayPackages(offerings.all["experiment_group"].availablePackages);
+
+}
+
+} catch (e) {
+
+// Handle errors
+
+}
+
+## Displaying Packages​
+
+Packages help abstract platform-specific products by grouping equivalent products across iOS, Android, and web. A package is made up of three parts: identifier, type, and underlying store product.
+
+Name | Description |
+Identifier | The package identifier (e.g. com.revenuecat.app.monthly) |
+Type | The type of the package:
+- UNKNOWN
+- CUSTOM
+- LIFETIME
+- ANNUAL
+- SIX_MONTH
+- THREE_MONTH
+- TWO_MONTH
+- MONTHLY
+- WEEKLY |
+Product | The underlying product that is mapped to this package which includes details about the price and duration. |
+
+Packages can be access in a few different ways:
+
+- via the .availablePackages property on an Offering.
+
+- via the duration convenience property on an Offering
+
+- via the package identifier directly
+
+- Swift
+- Obj-C
+- Kotlin
+- Flutter
+- React Native
+- Capacitor/Cordova
+- Unity
+- Web (JS/TS)
+- Vega
+let packages = offerings.offering(identifier: "experiment_group")?.availablePackages
+
+// --
+
+let monthlyPackage = offerings.offering(identifier: "experiment_group")?.monthly
+
+// --
+
+let packageById = offerings.offering(identifier: "experiment_group")?.package(identifier: "<package_id>")
+
+[offerings offeringWithIdentifier:"experiment_group"].availablePackages
+
+// --
+
+[offerings offeringWithIdentifier:"experiment_group"].monthly
+
+// --
+
+[[offerings offeringWithIdentifier:"experiment_group"] packageWithIdentifier:@"<package_id>"]
+
+offerings["experiment_group"]?.availablePackages
+
+// --
+
+offerings["experiment_group"]?.monthly
+
+// --
+
+offerings["experiment_group"]?.getPackage("<package_id>")
+
+offerings.getOffering("experiment_group").availablePackages
+
+// --
+
+offerings.getOffering("experiment_group").monthly
+
+// --
+
+offerings.getOffering("experiment_group").getPackage("<package_id>")
+
+offerings.all["experiment_group"].availablePackages
+
+// --
+
+offerings.all["experiment_group"].monthly
+
+// --
+
+offerings.all["experiment_group"].availablePackages.find(package => package === "<package_id>")
+
+offerings.all["experiment_group"].availablePackages
+
+// --
+
+offerings.all("experiment_group").monthly
+
+// --
+
+offerings.all("experiment_group").package("<package_id>")
+
+offerings.All["experiment_group"].AvailablePackages
+
+// --
+
+offerings.All["experiment_group"].Monthly
+
+// --
+
+// Manually filter AvailablePackages by the custom package identifier
+
+const allPackages = offerings.all["experiment_group"].availablePackages;
+
+// --
+
+const monthlyPackage = offerings.all["experiment_group"].monthly;
+
+// --
+
+const customPackage =
+
+offerings.all["experiment_group"].packagesById["<package_id>"];
+
+const allPackages = offerings.all["experiment_group"].availablePackages;
+
+// --
+
+const monthlyPackage = offerings.all["experiment_group"].monthly;
+
+// --
+
+const customPackage =
+
+offerings.all["experiment_group"].packagesById["<package_id>"];
+
+#### Getting the Product from the Package​
+
+Each Package includes an underlying product that includes more information about the price, duration, and other metadata. You can access the product via the storeProduct property (or product property for RevenueCat Billing):
+
+- Swift
+- Objective-C
+- Kotlin
+- Kotlin MP
+- Java
+- Flutter
+- React Native
+- Cordova
+- Capacitor
+- Unity
+- Web (JS/TS)
+- Vega
+Purchases.shared.getOfferings { (offerings, error) in
+
+// Accessing the monthly product
+
+if let product = offerings?.current?.monthly?.storeProduct {
+
+// Display the product information (like price and introductory period)
+
+self.display(product)
+
+}
+
+}
+
+// Accessing the monthly product
+
+[[RCPurchases sharedPurchases] offeringsWithCompletionBlock:^(RCOfferings *offerings, NSError *error) {
+
+if (offerings.current && offerings.current.monthly) {
+
+SKProduct *product = offerings.current.monthly.storeProduct;
+
+// Get the price and introductory period from the StoreProduct
+
+} else if (error) {
+
+// optional error handling
+
+}
+
+}];
+
+// Accessing the monthly product
+
+Purchases.sharedInstance.getOfferingsWith({ error ->
+
+// An error occurred
+
+}) { offerings ->
+
+val product = offerings.current?.monthly?.product?.also {
+
+// Get the price and introductory period from the SkuDetails
+
+}
+
+}
+
+Purchases.sharedInstance.getOfferings(
+
+onError = { error ->
+
+// An error occurred
+
+},
+
+onSuccess = { offerings ->
+
+val product = offerings.current?.monthly?.storeProduct?.also {
+
+// Get the price and introductory period from the StoreProduct
+
+}
+
+}
+
+)
+
+// Accessing the monthly product
+
+Purchases.getSharedInstance().getOfferings(new ReceiveOfferingsCallback() {
+
+@Override
+
+public void onReceived(@NonNull Offerings offerings) {
+
+if (offerings.getCurrent() != null && offerings.getCurrent().getMonthly() != null) {
+
+StoreProduct product = offerings.getCurrent().getMonthly().getProduct();
+
+// Get the price and introductory period from the StoreProduct
+
+}
+
+}
+
+@Override
+
+public void onError(@NonNull PurchasesError error) {
+
+// An error occurred
+
+}
+
+});
+
+// Accessing the monthly product// Displaying the monthly product
+
+try {
+
+Offerings offerings = await Purchases.getOfferings();
+
+if (offerings.current != null && offerings.current.monthly != null) {
+
+StoreProduct product = offerings.current.monthly.storeProduct;
+
+// Get the price and introductory period from the Product
+
+}
+
+} on PlatformException catch (e) {
+
+// optional error handling
+
+}
+
+// Accessing the monthly product// Displaying the monthly product
+
+try {
+
+const offerings = await Purchases.getOfferings();
+
+if (offerings.current && offerings.current.monthly) {
+
+const product = offerings.current.monthly.product;
+
+// Get the price and introductory period from the PurchasesProduct
+
+}
+
+} catch (e) {}
+
+// Accessing the monthly product
+
+func displayUpsellScreen() {
+
+Purchases.getOfferings(
+
+offerings => {
+
+if (offerings.current && offerings.current.monthly) {
+
+const product = offerings.current.monthly;
+
+// Get the price and introductory period from the PurchasesProduct
+
+}
+
+},
+
+error => {
+
+}
+
+);
+
+}
+
+// Accessing the monthly product
+
+const displayUpsellScreen = async () => {
+
+try {
+
+const offerings = await Purchases.getOfferings();
+
+if (offerings.current && offerings.current.monthly) {
+
+const product = offerings.current.monthly;
+
+// Get the price and introductory period from the PurchasesProduct
+
+}
+
+} catch (error) {
+
+// Handle error
+
+}
+
+}
+
+// Accessing the monthly product
+
+var purchases = GetComponent<Purchases>();
+
+purchases.GetOfferings((offerings, error) =>
+
+{
+
+if (offerings.Current != null && offerings.Current.Monthly != null){
+
+var product = offerings.Current.Monthly.Product;
+
+// Get the price and introductory period from the Product
+
+}
+
+});
+
+// Accessing / displaying the monthly product
+
+try {
+
+const offerings = await Purchases.getSharedInstance().getOfferings({
+
+currency: "USD",
+
+});
+
+if (offerings.current && offerings.current.monthly) {
+
+const product = offerings.current.monthly.product;
+
+// Display the price and currency of the Web Billing Product
+
+displayProduct(product);
+
+}
+
+} catch (e) {
+
+// Handle errors
+
+}
+
+// Accessing / displaying the monthly product
+
+try {
+
+const offerings = await Purchases.getSharedInstance().getOfferings();
+
+if (offerings.current && offerings.current.monthly) {
+
+const product = offerings.current.monthly.product;
+
+// Display the price and currency of the Amazon product
+
+displayProduct(product);
+
+}
+
+} catch (e) {
+
+// Handle errors
+
+}
+
+## Choosing which Offering to display​
+
+In practice, you may not want to display the default current Offering to every user and instead have a specific cohort that see a different Offering.
+
+For example, displaying a higher priced Offering to users that came from paid acquisition to help recover ad costs, or a specific Offering designed to show iOS Subscription Offers when a user has cancelled their subscription.
+
+This can be accomplished through Targeting, which supports a handful of predefined dimensions from RevenueCat or any custom attribute you set for your customers. Learn more here.
+
+Or, alternatively, you could write your own logic locally in your app to serve custom Offering identifiers for each cohort you have in mind.
+
+- Swift
+- Objective-C
+- Kotlin
+- Kotlin MP
+- Java
+- Flutter
+- React Native
+- Cordova
+- Capacitor
+- Unity
+Purchases.shared.getOfferings { (offerings, error) in
+
+var packages: [Package]?
+
+if user.isPaidDownload {
+
+packages = offerings?.offering(identifier: "paid_download_offer")?.availablePackages
+
+} else if user.signedUpOver30DaysAgo {
+
+packages = offerings?.offering(identifier: "long_term_offer")?.availablePackages
+
+} else if user.recentlyChurned {
+
+packages = offerings?.offering(identifier: "ios_subscription_offer")?.availablePackages
+
+}
+
+// Present your paywall
+
+self.display(packages)
+
+}
+
+[[RCPurchases sharedPurchases] offeringsWithCompletionBlock:^(RCOfferings *offerings, NSError *error) {
+
+NSArray<RCPackage *> *packages;
+
+if (user.isPaidDownload) {
+
+packages = [offerings offeringWithIdentifier:"paid_download_offer"].availablePackages;
+
+} else if (user.signedUpOver30DaysAgo) {
+
+packages = [offerings offeringWithIdentifier:"long_term_offer"].availablePackages;
+
+} else if (user.recentlyChurned) {
+
+packages = [offerings offeringWithIdentifier:"ios_subscription_offer"].availablePackages;
+
+}
+
+[self presentPaywallWithPackages:packages];
+
+}];
+
+Purchases.sharedInstance.getOfferingsWith({ error ->
+
+// An error occurred
+
+}) { offerings ->
+
+val packages: Package? = when {
+
+user.isPaidDownload -> offerings["paid_download_offer"]?.availablePackages
+
+user.signedUpOver30DaysAgo -> offerings["long_term_offer"]?.availablePackages
+
+user.recentlyChurned -> offerings["ios_subscription_offer"].availablePackages
+
+else -> null
+
+}
+
+presentPaywall(packages)
+
+}
+
+Purchases.sharedInstance.getOfferings(
+
+onError = { error ->
+
+// An error occurred
+
+},
+
+onSuccess = { offerings ->
+
+val packages: List<Package> = when {
+
+user.isPaidDownload -> offerings["paid_download_offer"]?.availablePackages
+
+user.signedUpOver30DaysAgo -> offerings["long_term_offer"]?.availablePackages
+
+user.recentlyChurned -> offerings["ios_subscription_offer"]?.availablePackages
+
+else -> null
+
+}.orEmpty()
+
+presentPaywall(packages)
+
+}
+
+)
+
+Purchases.getSharedInstance().getOfferings(new ReceiveOfferingsCallback() {
+
+@Override
+
+public void onReceived(@NonNull Offerings offerings) {
+
+List<Package> packages = null;
+
+if (user.isPaidDownload) {
+
+if (offerings.get("paid_download_offer") != null) {
+
+packages = offerings.get("paid_download_offer").getAvailablePackages();
+
+}
+
+} else if (user.signedUpOver30DaysAgo) {
+
+if (offerings.get("long_term_offer") != null) {
+
+packages = offerings.get("long_term_offer").getAvailablePackages();
+
+}
+
+}
+
+presentPaywall(packages);
+
+}
+
+@Override
+
+public void onError(@NonNull PurchasesError error) {
+
+// An error occurred
+
+}
+
+});
+
+try {
+
+Offerings offerings = await Purchases.getOfferings();
+
+var packages;
+
+if (user.isPaidDownload) {
+
+packages = offerings?.getOffering("paid_download_offer")?.availablePackages;
+
+} else if (user.signedUpOver30DaysAgo) {
+
+packages = offerings?.getOffering("long_term_offer")?.availablePackages;
+
+} else if (user.recentlyChurned) {
+
+packages = offerings?.getOffering("ios_subscription_offer")?.availablePackages;
+
+}
+
+presentPaywall(packages);
+
+} on PlatformException catch (e) {
+
+// optional error handling
+
+}
+
+try {
+
+const offerings = await Purchases.getOfferings();
+
+let packages;
+
+if (user.isPaidDownload) {
+
+packages = offerings.all["paid_download_offer"].availablePackages;
+
+} else if (user.signedUpOver30DaysAgo) {
+
+packages = offerings.all["long_term_offer"].availablePackages;
+
+} else if (user.recentlyChurned) {
+
+packages = offerings.all["ios_subscription_offer"].availablePackages;
+
+}
+
+presentPaywall(packages);
+
+} catch (e) {
+
+}
+
+Purchases.getOfferings(
+
+offerings => {
+
+let packages;
+
+if (user.isPaidDownload) {
+
+packages = offerings.all["paid_download_offer"].availablePackages;
+
+} else if (user.signedUpOver30DaysAgo) {
+
+packages = offerings.all["long_term_offer"].availablePackages;
+
+} else if (user.recentlyChurned) {
+
+packages = offerings.all["ios_subscription_offer"].availablePackages;
+
+}
+
+presentPaywall(packages);
+
+},
+
+error => {
+
+}
+
+);
+
+Purchases.getOfferings(
+
+offerings => {
+
+let packages;
+
+if (user.isPaidDownload) {
+
+packages = offerings.all["paid_download_offer"].availablePackages;
+
+} else if (user.signedUpOver30DaysAgo) {
+
+packages = offerings.all["long_term_offer"].availablePackages;
+
+} else if (user.recentlyChurned) {
+
+packages = offerings.all["ios_subscription_offer"].availablePackages;
+
+}
+
+presentPaywall(packages);
+
+},
+
+error => {
+
+}
+
+);
+
+var purchases = GetComponent<Purchases>();
+
+purchases.GetOfferings((offerings, error) =>
+
+{
+
+List<Purchases.Package> packages;
+
+if (user.isPaidDownload) {
+
+packages = offerings.All["paid_download_offer"].AvailablePackages;
+
+} else if (user.signedUpOver30DaysAgo) {
+
+packages = offerings.All["long_term_offer"].AvailablePackages;
+
+} else if (user.recentlyChurned) {
+
+packages = offerings.All["ios_subscription_offer"].AvailablePackages;
+
+}
+
+presentPaywall(packages);
+
+});
+
+## Best Practices​
+
+Do | Don't |
+✅ Make paywalls dynamic by minimizing or eliminating any hardcoded strings | ❌ Make static paywalls hardcoded with specific product IDs |
+✅ Use default package types | ❌ Use custom package identifiers in place of a default option |
+✅ Allow for any number of product choices | ❌ Support only a fixed number of products |
+✅ Support for different free trial durations, or no free trial | ❌ Hardcode free trial text |
+
+## Next Steps​
+
+- Now that you've shown the correct products to users, time to make a purchase
+
+- Check out our sample apps for examples of how to display products.
+
+Was this page helpful?YesNo

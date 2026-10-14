@@ -1,0 +1,204 @@
+Source: https://www.revenuecat.com/docs/getting-started/installation/reactnative
+Fetched: 2026-10-14
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+On this page
+AI agents: the complete RevenueCat documentation index is available at llms.txt. A Markdown version of this page is available at this URL.
+This tutorial shows you how to install the RevenueCat SDK in your React Native app. By the end, you'll have the SDK added to your project with npm or yarn, verified with a successful build, and be ready to configure the SDK.
+
+## Prerequisites​
+
+You need the following before you start:
+
+- A RevenueCat account.
+
+- A project in your RevenueCat account.
+
+- A React Native app (version 0.73 or later) open in your editor.
+
+Using Expo? See Using RevenueCat with Expo instead — Expo projects install the same SDK with Expo's own tooling.
+
+## 1. Install the SDK​
+
+The SDK ships as the react-native-purchases package, and React Native links it to the native projects automatically. Install react-native-purchases-ui alongside it for UI components like Paywalls and Customer Center.
+
+- Install both packages:
+
+- npm
+- yarn
+npm install --save react-native-purchases react-native-purchases-ui
+
+yarn add react-native-purchases react-native-purchases-ui
+
+The React Native CLI installs the SDK's iOS native dependencies (CocoaPods) automatically the first time you run the app, so there's nothing else to install.
+
+If you build with Xcode 27, add the post_install hook from CocoaPods builds fail with a deployment target error to your ios/Podfile.
+
+### Other installation methods​
+
+Manual linking (legacy React Native versions)Auto-linking was introduced in React Native 0.60, and the react-native link command was removed from the CLI in 0.69. Only use manual linking on legacy projects that predate auto-linking, with an SDK version that supports your React Native version.
+After installing the react-native-purchases package, link the library to the native projects:
+
+- Shell
+react-native link react-native-purchases
+
+## 2. Import the SDK​
+
+- Import Purchases in any source file that uses the SDK:
+
+- React Native
+import Purchases from 'react-native-purchases';
+
+- Run the app (npx react-native run-ios or npx react-native run-android). If the app builds and launches with the import in place, the SDK is installed correctly.
+
+## Additional iOS setup​
+
+When you're ready to distribute on the App Store, enable the In-App Purchase capability in Xcode — see the iOS install guide. Nothing else is needed to build and test with the Test Store.
+
+## Additional Android setup​
+
+### Set your Activity's launchMode​
+
+New React Native projects set the main Activity's launchMode to singleTask, which can cancel purchases. Depending on your user's payment method, Google Play may ask them to verify the purchase in another app, such as their banking app. This means they have to background your app during the purchase, and backgrounding your app cancels the purchase if launchMode is set to anything other than standard or singleTop.
+
+In android/app/src/main/AndroidManifest.xml, set the launchMode of the Activity that triggers purchases to standard or singleTop:
+
+- AndroidManifest.xml
+<activity
+
+android:name="com.your.Activity"
+
+android:launchMode="standard" /> <!-- or singleTop -->
+
+For details on the options, see Android's launchMode documentation.
+
+R8 build failures with react-native-purchases-uiIf you encounter build failures related to R8 (Android's code shrinker) when using react-native-purchases-ui, you may see errors like:
+Execution failed for task ':app:mergeExtDexDevDebug'.
+
+> Could not resolve all files for configuration ':app:devDebugRuntimeClasspath'.
+
+This issue occurs due to a bug in earlier versions of Android Gradle Plugin (AGP) that affects R8 dependency resolution. To fix this, add the following to your project-level build.gradle file (not app/build.gradle):
+
+- build.gradle (project level)
+buildscript {
+
+repositories {
+
+mavenCentral()
+
+maven {
+
+url = uri("https://storage.googleapis.com/r8-releases/raw")
+
+}
+
+}
+
+dependencies {
+
+classpath("com.android.tools:r8:8.1.44")
+
+}
+
+}
+
+This solution forces the use of a specific R8 version that resolves the dependency conflicts. For more details, see the Google Issue Tracker.
+
+## Other stores​
+
+The steps above cover the App Store and Google Play. Building your React Native Android app for the Amazon Appstore or the Galaxy Store requires additional configuration.
+
+Amazon Appstore
+
+- Configure the SDK with your Amazon Appstore API key and set useAmazon to true:
+
+- React Native
+import Purchases from 'react-native-purchases';
+
+Purchases.configure({
+
+apiKey: <revenuecat_project_amazon_api_key>,
+
+useAmazon: true,
+
+});
+
+- Add Amazon's .pem public key to your project by following Amazon's Appstore SDK configuration guide.
+
+Galaxy StoreGalaxy Store support is available in React Native SDK versions 10.3.0 and above.
+
+- Install the Galaxy Store add-on package in addition to react-native-purchases:
+
+- npm
+- yarn
+npm install --save react-native-purchases-store-galaxy
+
+yarn add react-native-purchases-store-galaxy
+
+- Configure the SDK with your Galaxy Store API key and set store to GALAXY:
+
+- React Native
+import Purchases from 'react-native-purchases';
+
+import { GALAXY_BILLING_MODE } from 'react-native-purchases-store-galaxy';
+
+Purchases.configure({
+
+apiKey: <revenuecat_project_galaxy_api_key>,
+
+store: 'GALAXY',
+
+// Optional. Defaults to PRODUCTION.
+
+galaxyBillingMode: GALAXY_BILLING_MODE.TEST,
+
+});
+
+galaxyBillingMode is optional and defaults to GALAXY_BILLING_MODE.PRODUCTION. Use GALAXY_BILLING_MODE.TEST for test purchases or GALAXY_BILLING_MODE.ALWAYS_FAIL to test failure scenarios. Only use production mode when submitting your app for beta or production distribution.
+Making test purchases: Galaxy Store test purchases require a physical Galaxy device signed in with a Samsung account. The Galaxy Store does not support test purchases in emulators.
+Before testing purchases, make sure you have also set up your Galaxy Store app and created Galaxy Store products.
+
+Vega OSreact-native-purchases doesn't support Vega OS. To sell in-app purchases through the Amazon Appstore in a Vega OS app, install the Vega OS SDK instead.
+
+## React Native Web​
+
+RevenueCat's React Native SDK supports web platforms, so you can manage subscriptions across React Native web, mobile, and desktop apps using the same SDK.
+
+### Web product configuration​
+
+To enable web purchases in your React Native app, configure products using a RevenueCat Billing app:
+
+- Create a RevenueCat Billing app in your RevenueCat project dashboard.
+
+- Configure your products for web purchases.
+
+For detailed instructions, see the RevenueCat Billing overview.
+
+📘RevenueCat Billing vs In-App Purchases
+RevenueCat Billing is RevenueCat's billing engine for web purchases, which uses Stripe as the payment processor. This is separate from iOS/Android in-app purchases but integrates with the same RevenueCat entitlements system, allowing unified subscription management across platforms.
+
+### Current limitations​
+
+When using the React Native SDK on web, keep in mind the following:
+
+- RevenueCat Billing required: Web purchases require RevenueCat Billing setup. Native iOS/Android in-app purchases cannot be processed through the web platform.
+
+- Payment processing: RevenueCat Billing purchases use Stripe as the payment processor.
+
+- Customer Portal: Users can manage their web subscriptions through the RevenueCat-provided customer portal.
+
+- Platform separation: Web products must be configured separately from iOS/Android products in the RevenueCat dashboard, though entitlements can be shared across platforms.
+
+- User identity: For unified cross-platform subscriptions, use the same App User ID across web and mobile platforms.
+
+- Unsupported operations: getProducts, purchaseProduct, and restorePurchases won't work on web environments.
+
+## Next steps​
+
+You've installed the RevenueCat SDK and verified your project builds.
+
+- Configure the SDK with your project's API key — the next step in the Quickstart.
+
+- Testing without an App Store or Google Play setup? Purchases work out of the box with the Test Store.
+
+Was this page helpful?YesNo

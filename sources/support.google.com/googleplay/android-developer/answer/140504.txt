@@ -1,0 +1,492 @@
+Source: https://support.google.com/googleplay/android-developer/answer/140504
+Fetched: 2026-10-14
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+# Create and manage subscriptions
+
+In May 2022, we introduced changes in the way subscription products are defined and managed in Play Console. If you have existing subscriptions and want to know how these changes affect them, see Recent changes to subscriptions in Play Console.
+
+This page explains how to create and manage subscriptions in Play Console. We recommend that you read this article to familiarize yourself with the subscription concepts, objects, and functionality before continuing.
+
+When using Play Console, you need to separately configure and manage subscriptions, base plans, and offers in that order.
+
+## Availability
+
+If you're in a supported location for merchant registration, you can use Google Play's billing system.
+
+If you’re in a supported location and want to start using Google Play's billing system features in your apps, set up a payments profile and review the Google Play billing system API documentation.
+
+## Create and manage subscriptions
+
+Click on a section below to expand or collapse it.
+
+Create a new subscription
+
+Before creating a subscription, make sure to plan your product IDs carefully. Product IDs must be unique for your app, and they can’t be changed or reused after they’ve been created.
+
+- Product IDs must start with a number or lowercase letter, can also contain underscores (_), periods (.), and can have a maximum of 40 characters.
+
+- Note: The product ID android.test is unavailable for use, along with all product IDs that start with android.test.
+
+#### Understand your responsibilities
+
+Before creating a subscription, review our Subscriptions policy. It’s critical that you fully understand this policy and adhere to it. You must be transparent with users about your offer. This includes being explicit about your offer terms, the cost of your subscription, the frequency of your billing cycle, and whether a subscription is required to use the app. Users should not have to perform any additional action to review the information.
+
+In addition, apps with subscription services or content must have a clear UI/UX to ensure that users can easily find and choose a selected option. For example, if you sell subscriptions in your app(s), you must ensure that your app(s) clearly disclose how a user can manage or cancel their subscription. You must also include in your app(s) access to an easy-to-use, online method to cancel the subscription.
+
+To create a subscription:
+
+- Open Play Console and go to the Subscriptions page (Monetize with Play > Products > Subscriptions).
+
+- Click Create subscription.
+
+- Enter your subscription details.
+
+- Product ID: The product ID must start with a number or lowercase letter, can also contain underscores (_), periods (.), and can have up to 40 characters.
+
+- Name: A short name for your subscription of up to 55 characters. Users will see this in emails and the subscription center.
+
+- You, as a developer, must be transparent about any subscription services or content you offer within your app.
+
+- Your subscription name must accurately reflect your offer. For example, don’t name your subscription "Free Trial."
+
+- Click Create.
+
+- Click Edit subscription details to view and edit the "Subscription details" page. You have the option to add more information here.
+
+We strongly recommend taking the time to add thoughtful and descriptive benefits when creating your subscription. This can help to attract users and reduce user churn.
+
+Next to "Benefits," click + Add benefit and enter a description of a feature of your subscription. You can add up to 4 benefits (up to 40 characters each).
+
+- Benefits should highlight the features to give users a better idea of what your subscription offers, like "Full catalog of TV shows and movies."
+
+- Since not all users will be eligible for a promotional price or free trial, the benefit should not mention free trial or price, for example, "Try 7 days free" is not allowed.
+
+- Next to "Description," enter an optional description for your subscription. This is for your own internal use; it is not shown to users on Google Play.
+
+- Next to "Icons", add an optional icon for your subscription. Adding a relevant icon to your subscription will help merchandise your subscription product across the Play Store and other consumer facing surfaces.
+Note: Play’s content policies for subscriptions require (among other things) that product metadata (name, description, icon, etc.) should be accurate, not be misleading, and not inappropriate.
+
+- You may need to provide information about the product that you’re distributing for consumer law or tax purposes. If so, scroll to the "Tax and compliance" section and click Manage settings. Learn more about tax and compliance settings.
+
+- Click Save changes.
+
+For the subscription to be available to Google Play users, you need to create and activate at least one base plan. Note that once you create a base plan, you can no longer delete the subscription. Instead, you need to archive the subscription once you stop selling it.
+
+Edit an existing subscription
+
+- Open Play Console and go to the Subscriptions page (Monetize with Play > Products > Subscriptions).
+
+- Next to the subscription you want to edit, click the right arrow to view the subscription details.
+
+- Click Edit subscription details and make your changes.
+
+- Click Save changes.
+
+## Create and manage base plans
+
+Click on a section below to expand or collapse it.
+
+Create and activate a base plan
+
+Before creating a base plan, make sure to plan your base plan IDs carefully. Base plan IDs must be unique within a subscription for your app, and they can’t be changed or reused after the base plan has been activated.
+
+Base plan IDs must start with a number or lowercase letter. You can use numbers (0-9), lowercase letters (a-z), and hyphens.
+
+To create a base plan:
+
+- Open Play Console and go to the Subscriptions page (Monetize with Play > Products > Subscriptions).
+
+- Next to the subscription you want to create a base plan in, click the right arrow to view the subscription details.
+
+- Click Add base plan.
+
+- Enter a base plan ID. The base plan ID must be unique within a subscription, and it can’t be changed or reused after the base plan has been activated.
+
+- Choose the type:
+
+- Auto-renewing: Automatically renews unless canceled by the user.
+
+- Prepaid: Users will need to make a manual payment to extend their plan.
+
+- Installments (available in select countries/regions): Users pay a fixed monthly amount over a set commitment period to obtain a subscription entitlement for the duration of the commitment period. At this time, this base plan is only available to be offered in the following countries: Brazil, France, Italy, and Spain. Installment plans will automatically renew unless canceled by the user.
+
+- (Auto-renewing base plan only) If you're creating an auto-renewing base plan, define the following:
+
+- Billing period: Select the duration of the subscription entitlement. The available billing periods are:
+
+- Weekly
+
+- Every 4 weeks
+
+- Monthly
+
+- Every 2 months
+
+- Every 3 months
+
+- Every 4 months
+
+- Every 6 months
+
+- Every 8 months
+
+- Yearly
+
+- Grace period: Select the maximum duration users will retain subscription entitlements while a declined renewal payment remains unresolved.
+
+- Account hold: Select the maximum duration before an unresolved renewal payment issue results in subscription expiration. This account hold period begins after any grace period ends. During account hold, users should not have access to subscription entitlements.
+
+By default, all auto-renewing base plans and installment plans have account hold enabled and the lengths are automatically calculated. The calculation will be 60 days minus any grace period duration. You can adjust the account hold length or disable it from the Google Play Console. Specifying a length less than the default value may reduce the number of subscriptions recovered from payment declines.
+
+- Billing plan and offer changes: Choose how to apply any remaining paid days when users change offers.
+
+- Resubscribe: If active, users can repurchase an expired auto-renewing subscription in the Play Store.
+
+- (Prepaid base plan only) If you're creating a prepaid base plan, define the following:
+
+- Duration: Select the duration of the subscription entitlement. The available duration options are:
+
+- 1 day
+
+- 3 days
+
+- 1 week
+
+- 4 weeks
+
+- 1 month
+
+- 2 months
+
+- 3 months
+
+- 4 months
+
+- 6 months
+
+- 8 months
+
+- 1 year
+
+- Allow extension: If active, users can extend the duration of an active prepaid subscription in the Play Store.
+
+- (Installments base plan only) If you're creating an installments base plan, define the following:
+
+- Commitment period: Enter the commitment period in months (must be between 3 and 24).
+
+- Renewal type: Select Auto-renews monthly, or Auto-renews for the same duration.
+
+- Grace period: Select the maximum duration users will retain subscription entitlements while a declined renewal payment remains unresolved.
+
+- Account hold: Select the maximum duration before an unresolved renewal payment issue results in subscription expiration. This account hold period begins after any grace period ends. During account hold, users should not have access to subscription entitlements.
+
+- Billing plan and offer changes: Choose how to apply any remaining paid days when users change plans. If you're doing so for an installments base plan, visit the Android developers site to learn more.
+
+- Resubscribe: If active, users can repurchase an expired auto-renewing subscription in the Play Store.
+
+- (Optional) Add tags to identify the base plan or the offer in the API. Tags can be used to determine which offer to show when the user is eligible for more than one. You can add up to 20 tags.
+
+- At the top right of the "Price and availability" section, click Manage country/region availability. To select the locations your base plan will be available:
+
+- Users can only purchase your subscriptions in the regions where your base plan is available. The user's Google Play country is used to determine which base plans are available to them.
+
+- If you choose to make your subscription base plan available in "New countries/regions," when Google adds support for a new buyer currency in a country where you already distribute your app, we'll automatically make your base plan available too. Learn more about offering apps in multiple currencies.
+
+- If you choose a base plan type that's only available to users in certain countries/regions, such as an installments base plan, then only those countries/regions are selectable.
+
+- After you've made your selections, click Apply.
+
+To set the price of a base plan in multiple countries/regions at once:
+
+- Click Update prices and select the countries/regions you want to set the prices in bulk.
+
+- Click Set price.
+
+- Enter the tax-exclusive price and currency you want to use.
+
+- This price will be converted into the appropriate currency for each country/region, tax will be added for tax-inclusive jurisdictions, and then the price is charmed to comply with local customs.
+
+- Click Update.
+
+- Click Save.
+
+To set the price of a base plan in a single country/region:
+
+- Click on the pencil icon in the "Price" column of the table to enter a price in that location.
+
+- Taxes will be applied automatically after entering a price.
+
+- In regions where Google Play does not support local currency, you can specify the availability of your base plan price in USD or EUR.
+
+- Click Save.
+
+To activate the base plan:
+
+- Click Save.
+
+- Click Activate to make the base plan available to users.
+
+Edit an existing base plan
+
+If you want to change your base plan's prices, read about changing base plan and offer prices first.
+
+To edit a base plan:
+
+- Open Play Console and go to the Subscriptions page (Monetize with Play > Products > Subscriptions).
+
+- Next to the subscription you want to edit, click the right arrow to view the subscription details.
+
+- Under "Base plans and offers," click the right arrow next to the base plan you want to edit.
+
+- When you're finished making changes, click Save changes.
+
+Note: To remove a region from a base plan, you must first remove the region from all of the base plan's offers. When a region is removed, the base plan will no longer be available to users in that region for new purchases. However, existing subscribers to an auto-renewing base plan will continue to auto-renew even when their region is removed from the base plan.
+
+Deactivate or reactivate a base plan
+
+You can deactivate a base plan to prevent new purchases. It does not affect existing subscriptions, and auto-renewals continue until they are cancelled.
+
+If you need to stop billing or issue refunds to existing subscribers of a deactivated plan, review Manage your app's orders and issue refunds to find, cancel, or refund their active orders.
+
+To deactivate a base plan:
+
+- Open Play Console and go to the Subscriptions page (Monetize with Play > Products > Subscriptions).
+
+- Next to the subscription that you want to edit, click the right arrow next to the base plan that you want to deactivate.
+
+- Under ‘Base plans and offers’, click the right arrow to view the base plan details.
+
+- At the top right of the page, click Deactivate.
+
+To reactivate the base plan, and allow new purchases again:
+
+- Open Play Console and go to the Subscriptions page (Monetize with Play > Products > Subscriptions).
+
+- Next to the subscription that you want to edit, click the right arrow to view the subscription details.
+
+- Under 'Base plans and offers', click the right arrow next to the base plan that you want to reactivate.
+
+- At the bottom of the page, click Activate.
+
+## Create and manage offers
+
+Click on a section below to expand or collapse it.
+
+Create and activate an offer
+
+Before creating an offer, make sure to plan your offer IDs carefully. Offer IDs must be unique within a base plan and they can’t be changed or reused after the offer has been activated.
+
+Offer IDs must start with a number or lowercase letter. You can use numbers (0-9),lowercase letters (a-z), and hyphens.
+
+Before you start creating an offer, note the following:
+
+- You must communicate your offer clearly in any in-app promotions or splash screens.
+
+- You must be explicit about your offer terms, offer ends, including how much users will be charged, the frequency of your billing cycle, how they can cancel, and whether a subscription is required to use the app. Users should not have to perform any additional action to review the information.
+
+- Offers are optional; you don't need to create an offer for your base plan to be available.
+
+- You must have a saved base plan (draft or active) to create an offer. An offer is always linked to a single base plan.
+
+- By default, offers are available to the same regions as their associated base plan. Within an offer, you can optionally restrict availability to a subset of base plan regions.
+
+To create an offer:
+
+- Open Play Console and go to the Subscriptions page (Monetize with Play > Products > Subscriptions).
+
+- Next to the subscription you want to edit, click the right arrow to view the subscription details.
+
+- In the "Base plans and offers" section, click Add offer.
+
+- Select the base plan you want to add the offer to from the drop-down list and click Add offer.
+
+- Note that offers can be added to both auto-renewing plans and installment plans.
+
+Enter an offer ID. The offer ID must be unique within a base plan, and it can’t be changed or reused after the offer has been activated.
+
+- Your offer automatically inherits the availability of the base plan it's associated with. To change this, click Manage country/region availability. You can only select regions targeted by your base plan.
+
+- Select the offer's eligibility criteria to determine which customers the offer is available to; New customer acquisition, Upgrade, or Developer determined. Learn more about offer eligibility.
+
+- For a new customer acquisition offer, select one of these options:
+
+- Never had this subscription: This offer will be available to users who never had this subscription.
+
+- Never had any subscription: This offer will be available to users who never had any subscription in your app.
+
+- For an upgrade offer, complete the following fields:
+
+- Current subscription: The offer is only available to users who currently have this subscription.
+
+- Existing billing period: The offer is only available to users who have this billing period. This is useful, for instance, to create an annual upgrade offer for users who currently have any monthly base plan or offer.
+
+- Redemption gap: How many times a user may purchase this offer (once or unlimited)
+
+- For a developer-determined offer, you decide the eligibility logic in your app. Examples include second-chance free trials or win-back offers for lapsed subscribers.
+
+- (Optional) Add tags to identify the base plan or the offer in the API. Tags can be used to determine which offer to show when the user is eligible for more than one. You can add up to 20 tags.
+
+To add phases to an offer:
+
+- Under "Phases," click Add phase to add a free trial and/or introductory pricing phases. An offer must contain at least one pricing phase.
+
+- Select the type of pricing phase:
+
+- Type: Choose the phase type from the following:
+
+- Single payment: Subscribers pay upfront for a specified period
+
+- Recurring payment: Subscribers pay each period for a specified number of periods
+
+- Free trial: Subscribers received a specified number of days, weeks, months, or years at no charge.
+
+- Free trials must be between 3 days and 3 years.
+
+- Duration: For a free trial and single payment types, enter the number of days, weeks, or months.
+
+- Billing periods: If the type is a recurring payment, select the number of billing periods.
+
+- Price overrides: For single or recurring payments, choose the price override type from the following:
+
+- Fixed amount: A set amount, such as $5
+
+- Percentage discount: A percentage discount from the base price, for example, 50%
+
+- Absolute discount: A fixed discount from the base price, for example, $1 off
+
+To set the price or discount in multiple countries/regions at once:
+
+- Click Update all discounts/Update all prices and select the countries/regions you want to set the prices in bulk.
+
+- Click Set price/Set discount.
+
+- Enter the tax-exclusive price and currency you want to use.
+
+- This price will be converted into the appropriate currency for each country/region, and the tax will be added for tax-inclusive jurisdictions, and (for fixed amount offers only) the price is charmed to comply with local customs.
+
+- Click Update.
+
+- Click Apply.
+
+To set the price or discount in a single country/region:
+
+- Click on the pencil icon in the "Price" column of the table to enter a price in that location.
+
+- Taxes are applied automatically after entering a price.
+
+- In regions where Google Play does not support local currency, you can specify the availability of your base plan price in USD or EUR.
+
+- Click Apply.
+
+To activate the offer:
+
+- After you've added your phases, click Save.
+
+- Click Activate to make the offer available to eligible users.
+
+Edit an existing offer
+
+If you want to change your offer's prices, read about changing base plan and offer prices first.
+
+To edit an offer:
+
+- Open Play Console and go to the Subscriptions page (Monetize with Play > Products > Subscriptions).
+
+- Next to the subscription you want to edit, click the right arrow to view the subscription details.
+
+- Under "Base plans and offers," click the right arrow next to the offer you want to edit.
+
+- When you're finished making changes, click Save changes.
+
+- Click Save changes.
+
+Deactivate or reactivate an offer
+
+You can deactivate an offer to prevent new purchases. However, any existing subscribers will continue to benefit from the offer.
+
+To deactivate an offer:
+
+- Open Play Console and go to the Subscriptions page (Monetize with Play > Products > Subscriptions).
+
+- Next to the subscription you want to edit, click the right arrow to view the subscription details.
+
+- Under "Base plans and offers," click the right arrow next to the offer you want to deactivate.
+
+- At the top right of the page, click Deactivate.
+
+To reactivate the offer, and allow new purchases again:
+
+- Open Play Console and go to the Subscriptions page (Monetize with Play > Products > Subscriptions).
+
+- Next to the subscription you want to edit, click the right arrow to view the subscription details.
+
+- Under "Base plans and offers," click the right arrow next to the offer you want to reactivate.
+
+- At the bottom of the page, click Activate.
+
+### Ending legacy price cohorts
+
+For auto-renewing base plans, you can decide to end a legacy price cohort and move those users to the current base plan price. Before doing so, it is important to review and fully understand Changing base plan and offer prices.
+
+End a legacy price cohort
+
+To end a legacy price cohort:
+
+- Open Play Console and go to the Subscriptions page (Monetize with Play > Products > Subscriptions).
+
+- Next to the relevant subscription, click the right arrow to view the subscription details.
+
+- Under "Base plans and offers," click the three dot icon next to the base plan containing the legacy price cohort you wish to end, and select View legacy price points.
+
+- Note: If you don't have the option to select View legacy price points, that means you don't have any legacy price cohorts remaining. Once you start a migration, the associated legacy price cohorts will no longer appear in Play Console (even if that migration is not yet complete).
+
+- Select the starting date of the cohort you want to end.
+
+- Important: Ending a cohort also ends any previous cohorts for the same base plan and countries/regions. Since each cohort may have a different price, it may be a different type of price change (opt-out increase, opt-in increase, or decrease).
+
+- Select the countries/regions where you want to end the cohort.
+
+- Important: If any cohorts with a price increase do not meet the region, frequency, or amount criteria described above, you will see warning icons indicating that the increase will be opt-in. You can see the reasons by hovering over these icons. You can proceed with these opt-in increases, or leave these cohorts at their current price by deselecting the country/region or choosing a different starting date.
+
+- Click Review migration to proceed.
+
+- Review the number of countries/regions and information about price changes. If one or more cohorts are eligible for an opt-out price increase, and you want opt-out increases whenever possible, you must review the requirements and certify they are met by selecting the associated option. Note even if the option for opt-out is selected, cohorts that are ineligible for opt-out increases will automatically receive opt-in increases.
+
+- If these requirements are not met, or you do not want opt-out increases, select Always use opt-in price increases. If you do not want opt-out increases in specific regions, perform a separate migration that contains only those regions.
+
+- Click Start migration.
+
+- Reminder: Once you start a migration, the associated legacy price cohorts will no longer appear in Play Console (even if that migration is not yet complete).
+
+## Enable or disable subscription pause
+
+By enabling pause in your subscription settings, users can pause their subscription instead of canceling.
+
+Pausing a subscription will only take effect once your current billing period has concluded. While the subscription is paused, you will not be able to access it. At the end of the pause, the subscription will automatically resume, and Google will try to process a renewal payment. If this renewal is successful, your subscription will become active again.
+
+Note that pausing or resuming subscriptions that have add-ons is not a supported feature at this time. Learn more about subscription pauses and pause implementation requirements on the Android Developers site.
+
+To enable or disable subscription pause:
+
+- Open Play Console and go to the Monetization setup page (Monetize with Play > Monetization setup).
+
+- In the "Subscription settings" section, choose Create or Disable next to "Pause."
+
+- Click Save Changes.
+
+When pause is enabled, eligible users will see a "Pause" option in the Play subscriptions center.
+
+User pausing or resuming subscriptions with add-ons isn't supported.
+
+## Related content
+
+- Recent changes to subscriptions in Play Console
+
+- Understanding subscriptions
+
+- Review in-app subscription performance
+
+## Was this helpful?
+How can we improve it?
+YesNo

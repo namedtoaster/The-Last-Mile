@@ -1,0 +1,131 @@
+Source: https://www.revenuecat.com/docs/test-and-launch/sandbox
+Fetched: 2026-10-14
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+On this page
+AI agents: the complete RevenueCat documentation index is available at llms.txt. A Markdown version of this page is available at this URL.
+You don't need to make real purchases in order to test your subscriptions. RevenueCat provides two ways to test your implementation without incurring any costs:
+
+- Test Store - RevenueCat's built-in testing environment that works immediately without platform setup
+
+- Platform Sandboxes - Apple, Google, and Amazon's sandbox environments for testing real store integrations
+
+Both approaches let you verify your purchase flow works correctly before going to production.
+
+## Test Store vs Platform Sandboxes​
+
+### Test Store​
+
+Test Store is RevenueCat's built-in testing environment, automatically provisioned with every new project. It's the fastest way to start testing purchases.
+
+Benefits:
+
+- ✅ No platform accounts needed - Test without App Store Connect or Google Play Console access
+
+- ✅ Works immediately - Automatically provisioned with every project
+
+- ✅ Perfect for early development - Rapid iteration without platform delays
+
+- ✅ Works everywhere - Ideal for Expo, web apps, and environments without native store APIs
+
+- ✅ Accurate metadata - Product names, prices, and descriptions are exactly as configured in RevenueCat
+
+Limitations:
+
+- ⚠️ Doesn't test platform-specific features - Won't catch issues with StoreKit behavior, billing grace periods, or platform edge cases
+
+- ⚠️ Requires separate API key - Must switch to platform-specific API key before production (see Launch Checklist)
+
+### Platform Sandboxes (Apple/Google/Amazon)​
+
+Platform sandboxes are testing environments provided by Apple, Google, and Amazon that simulate real store purchases.
+
+Benefits:
+
+- ✅ Tests complete end-to-end integration - Validates your app works with real store APIs
+
+- ✅ Tests platform-specific features - Subscription renewals, grace periods, billing retry, etc.
+
+- ✅ Required before launch - Essential final step before production deployment
+
+Limitations:
+
+- ⚠️ Requires platform accounts - Need App Store Connect or Google Play Console access
+
+- ⚠️ More complex setup - Requires product configuration in platform dashboards
+
+- ⚠️ Metadata inconsistencies - Prices and descriptions may not be accurate (see Sandbox Limitations below)
+
+## Recommended Testing Workflow​
+
+For the best testing experience, follow this workflow:
+
+Start with Test Store (Development)
+
+- Use Test Store during initial development to build and test your purchase flow, paywall display, and entitlement logic
+
+- Iterate quickly without waiting for platform approvals or configuration
+
+Test with Platform Sandboxes (Pre-Launch)
+
+- Before submitting to app review, switch to your platform-specific API key
+
+- Test purchases in Apple Sandbox, Google Play testing, or Amazon sandbox
+
+- Verify the complete end-to-end integration works with real stores
+
+Deploy to Production (Launch)
+
+- Use platform-specific API key (never Test Store API key!)
+
+- Deploy with real store products configured in your offerings
+
+## Testing with RevenueCat Test Store​
+
+Test Store works automatically with the SDK—no additional configuration required beyond using your Test Store API key.
+
+Test purchases behave like real subscriptions: they update CustomerInfo, trigger entitlements, and appear in your RevenueCat dashboard.
+
+Learn more on the RevenueCat Test Store documentation
+
+## Testing with Platform Sandboxes​
+
+RevenueCat automatically detects the environment (production vs. sandbox) in which a purchase occurs, so no additional configuration is required in RevenueCat to test in platform sandboxes.
+
+Before launching to production, test with your platform's sandbox environment:
+
+- Apple App Store Sandbox Testing
+
+- Google Play Store Sandbox Testing
+
+- Amazon Appstore Sandbox Testing
+
+- RevenueCat Billing Sandbox Testing
+
+## Viewing Non-Production Data​
+
+Clicking the Sandbox data toggle above the Overview metrics will change the Overview metrics to report non-production purchases (both Test Store purchases and platform sandbox purchases). To go back to production purchases you will need to toggle this off.
+
+There's no concept of a sandbox or production user in RevenueCat, since the same App User ID can have both production and non-production receipts. Because of this, the Sandbox data toggle does not affect the New Customers or Active Customers cards.
+
+## Platform Sandbox Limitations​
+
+📘These limitations apply to platform sandboxes only
+Test Store does not have these limitations—product metadata (names, prices, descriptions) in Test Store is always accurate as configured in RevenueCat.
+
+In general, platform sandbox environments (Apple, Google, Amazon) behave nearly identical to the production environments. That being said, we recommend to test only the flow of a purchase in platform sandbox mode, and not metadata-related tests on products. This is because:
+
+- Store APIs often do not return accurate prices across regions, including in TestFlight on iOS
+
+- Store APIs often do not return accurate names and descriptions for products
+
+While the production environment is generally more stable than the sandbox environment, we're not able to provide support on why store APIs are not up to date at any given moment. For this reason, we recommend only testing the flow of a purchase in platform sandbox mode instead. For example:
+
+- Initiate a purchase
+
+- Complete a purchase
+
+- Verify content has been unlocked
+
+This will ensure you are properly unlocking content for a purchase, and in production you'll see more accurate metadata.
+Was this page helpful?YesNo
