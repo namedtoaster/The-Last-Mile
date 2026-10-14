@@ -12,7 +12,7 @@ both stores. The order matters, because each step needs the one before it:
 2. **RevenueCat project.** One project per app; never reuse another app's project or
    keys. Add an App Store app (bundle ID plus the In-App Purchase Key, which is account
    wide, so one key serves every app on the account) and a Play Store app (package
-   name plus a Google Cloud service account, which takes up to a day to start working).
+   name plus a Google Cloud service account, which can take up to 36 hours to start working; RevenueCat's page gives a trick that often speeds it up: edit and save any product description in Play Console, then revert it).
 3. **Products, entitlement, offering.** Import the store products, attach them to one
    entitlement whose identifier matches the app's code, and put them in the default
    offering.
@@ -39,5 +39,6 @@ dashboard and docs; pick the closest and move on.
 - [App Store Connect Help: Set up introductory offers](https://developer.apple.com/help/app-store-connect/manage-subscriptions/set-up-introductory-offers-for-auto-renewable-subscriptions)
 - [Play Console Help: Create and manage subscriptions](https://support.google.com/googleplay/android-developer/answer/140504)
 
-**Status:** the order above comes from shipping a real app on 2026-10-14. The links are
-saved weekly by the snapshot job; read the saved copies before relying on a detail.
+**Status:** the order comes from shipping a real app on 2026-10-14. The one key for
+every app and the 36 hour wait were checked 2026-10-14 against saved copies of
+RevenueCat's pages. The links are saved weekly by the snapshot job.
