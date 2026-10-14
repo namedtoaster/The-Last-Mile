@@ -44,6 +44,15 @@ Ask these in order. Skip any the project already answers.
    - Live: "First 100 people using it every week by <date>."
    Then ask for the one number that shows it is working, and 3 to 5 must dos. The set-goals skill's `references/stages.md` has fuller defaults
    for each stage.
+8. **Which stores?** Both, iOS only, or Android only. Default: both. Mention that a
+   new personal Google Play account must run a 14 day closed test first, which is why
+   some people ship iOS first.
+9. **How much before the first launch?** Offer the three levels from the ship skill's
+   `references/levels.md`, one line each: Quick ship (the least the stores accept,
+   free at launch), Standard (the default: crash reporting, a tested release build, a
+   listing written to be found, paid features if any), Full features (analytics,
+   subscriptions with a trial, preview video, localized listings). Skip questions 8
+   and 9 if the app will never go to a store.
 
 ## What to write
 

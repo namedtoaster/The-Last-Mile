@@ -2,6 +2,9 @@
 
 ## 0.2.0 (unreleased)
 
+- Release levels and platforms: setup asks which stores (both, iOS only, Android
+  only) and how much before the first launch (Quick ship, Standard, Full features),
+  saves both in Settings, and ship plans only that much (`references/levels.md`).
 - ship's rejection sweep now walks the full rulebooks (Apple's App Review
   Guidelines, Google Play's Developer Program Policy and Health Content policy),
   section by section from saved copies, and checks bundled content and copy as well

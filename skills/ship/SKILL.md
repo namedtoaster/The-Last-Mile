@@ -85,7 +85,11 @@ Work this out from the files before asking anything, then show it in a few lines
    If it is a web app with no native project, follow that file's web app section
    first: it needs a native wrapper, and Apple rejects wrappers that add nothing over
    the website (see the minimum functionality trap).
-2. **Platforms:** iOS, Android or both. Ask if unclear.
+2. **Platforms and level:** read **Platforms** and **Release level** from the rules
+   file's Settings. If either is missing, ask (one question each) and save the answer:
+   iOS, Android or both; and Quick ship, Standard or Full features.
+   `references/levels.md` says what each level includes. Plan only that much, and
+   leave out the rows for a platform that is not shipping.
 3. **First release or update:** look for an existing bundle ID or package name, a
    previous version tag, or ask.
 4. **Accounts:** for a first release, ask whether the user has an Apple Developer

@@ -15,6 +15,8 @@ Read by the session-end and ship skills.
 | Push to | `<main, or a branch with a pull request>` |
 | Docs to review at session end | `CURRENT_WORK.md`, `GOALS.md`, `BACKLOG.md`, `FEATURES.md`, `docs/ALGORITHMS.md` |
 | Analytics check at session end | `<off>` |
+| Platforms | `<both, iOS only, or Android only>` |
+| Release level | `<Quick ship, Standard or Full features>` |
 | How builds are made | `<not set yet; the ship skill asks the first time>` |
 
 ## How to talk to me
