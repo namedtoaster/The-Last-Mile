@@ -41,7 +41,7 @@ npx skills add namedtoaster/the-last-mile
 ## The basic workflow
 
 1. **Run setup once.** It asks one question at a time: what the app does, who it is for, how you want Claude to talk to you, how you push code, and your first 6 week goal.
-2. **Build.** Describe what the person sees and taps. Use reference-hunt before designing a screen, and see-it-work to see each change working instead of trusting a passing test.
+2. **Build.** Describe what the person sees and taps. Use reference-hunt before designing a screen, feature-demo when you want to see a whole flow before committing to it, and see-it-work to see each change working instead of trusting a passing test.
 3. **End every session with session end.** It runs your checks, records anything surprising as a dated gotcha, updates the docs, checks your goal and commits only what this session touched.
 4. **Ship with ship.** It checks the current store rules before telling you what to do, because they change.
 
@@ -53,6 +53,7 @@ npx skills add namedtoaster/the-last-mile
 | session-end | Fully automatic wrap up: checks, docs, gotchas, goals, commit, push |
 | see-it-work | Shows a change working: tests written first, seeded simulator screenshots, a smoke test of every screen, release build runs |
 | reference-hunt | Finds how real apps solve a screen, from screens someone has actually seen, and saves a reference card |
+| feature-demo | Builds a tap-through demo of a feature in the app's own colours, so you can see it and argue with it before it ships |
 | research | Answers a question from official sources and files it where it will be read again |
 | set-goals | Writes the 6 week goal and closes the last cycle in a few lines |
 | port-feature | Brings a feature over from another of your own repos, adapted to this one |
