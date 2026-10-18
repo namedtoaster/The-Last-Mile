@@ -2,6 +2,13 @@
 
 ## 0.2.0 (unreleased)
 
+- New skill, one-time-surface: for anything meant to appear once and then stop,
+  a coach mark, tooltip, primer or review ask. The three questions that decide
+  whether it works for real people, why a count beats a boolean, the rule that
+  nothing may be decided from a store that has not answered yet (and that a
+  failed read must still answer), and the number to watch after release, which
+  is how many eligible people never saw it.
+
 - New skill, lean-out: find the structural clutter that is making every new
   change land wrong, ranked by what it would have prevented rather than by
   taste. Produces an audit and a list to work through in pieces, says plainly
