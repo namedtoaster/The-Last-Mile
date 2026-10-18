@@ -126,6 +126,8 @@ written for any stack; see-it-work is still Expo first.
 | set-goals | Writes the 6 week goal and closes the last cycle in a few lines |
 | port-feature | Brings a feature over from another of your own repos, adapted to this one |
 | improve-skill | Fixes a skill that misfired, from the project where it happened, as a pull request here |
+| lean-out | Finds the structural clutter that makes every new change land wrong, ranked by what it would have prevented |
+| one-time-surface | Builds or checks a hint, tour or review ask meant to appear once, so it works for real people and not just on your phone |
 | mine-community | Mines a founder community for what is working, filtered for survivorship bias and promo posts |
 | search-pages | Finds the search phrases you can win and builds the pages that get the app found |
 | sync | Brings a project's copy of these skills up to date and pushes it, from your phone or desktop |
