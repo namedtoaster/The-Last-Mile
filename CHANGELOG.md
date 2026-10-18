@@ -2,6 +2,11 @@
 
 ## 0.2.0 (unreleased)
 
+- New skill, lean-out: find the structural clutter that is making every new
+  change land wrong, ranked by what it would have prevented rather than by
+  taste. Produces an audit and a list to work through in pieces, and says
+  plainly when not to run it.
+
 - see-it-work: how to test a state only a real paying or comped customer can
   reach, by granting a throwaway identity the entitlement through the provider's
   own API and revoking it after, plus the rule that an item nobody can perform
