@@ -127,9 +127,19 @@ at all, say so in the summary instead of claiming it passed.
 
 ## 8. Summary
 
-Finish with a short summary, in the voice the rules file asks for:
+Finish with a short summary, in the voice the rules file asks for. Keep any prose
+to a line or two, then end with one table, so the next action is visible at a
+glance. Rows that need the user come first and say so plainly; a question for the
+user is its own row, never buried in a paragraph.
 
-- What was done this session, in a few lines.
+| Item | Category | Next action |
+| --- | --- | --- |
+| Rotate the API key | Needs you | Open the dashboard and create a new key |
+| Profile screen fix | Done | None |
+
+Categories: Needs you, Decision (the user picks), Done, FYI. The rows cover:
+
+- What was done this session.
 - The goal line from step 5.
 - Whether a version bump is due, and which kind (patch for fixes, minor for new
   features), if the app ships to a store.

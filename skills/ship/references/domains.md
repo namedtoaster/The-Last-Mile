@@ -71,3 +71,22 @@ Sources and status:
 - Open every page the stores will link to in a private window before submitting.
 - Test email forwarding from an address other than the one it forwards to, or some
   providers drop it as a loop.
+
+## When the site lives elsewhere
+
+Often the pages are served by a server that belongs to another project (a studio
+site, another app), through a rewrite on the domain's host name. That works for the
+store pages, but record it, and check what it can serve. (Added 2026-10-18.)
+
+- **Write it in the rules file:** which repo and service serve the domain, and that
+  editing the pages means editing that repo. Otherwise a later session searches this
+  repo for hosting that is not there, or edits a draft copy that is not live.
+- **A static only rewrite cannot answer app links.** If every path on the domain
+  becomes a file lookup, no API route, server rendered invite page or generated
+  `/.well-known/apple-app-site-association` can answer there. Before pointing
+  universal links, App Links, invite links or an API at the domain, request
+  `https://example.com/.well-known/apple-app-site-association` and one real invite
+  path. A 404 means the setup cannot serve them yet.
+- **The fix is a choice, not a default:** give the app its own service for the
+  domain (or a subdomain), or add a carve out for those paths in the other server's
+  rewrite. Record that the choice is open until the first such link is needed.
