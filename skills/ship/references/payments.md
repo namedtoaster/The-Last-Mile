@@ -21,6 +21,22 @@ both stores. The order matters, because each step needs the one before it:
 5. **Test in sandbox** from a real build, then once from TestFlight or Play internal
    testing. Purchases do not work in a simulator without a StoreKit configuration file.
 
+## Keys and settings people get stuck on
+
+- **Where the In-App Purchase Key lives:** App Store Connect, Users and Access,
+  Integrations, In-App Purchase. Apple lets you download the .p8 file once. If the
+  account already has a key in RevenueCat (another app), RevenueCat offers "Select
+  existing key": choose it. It does not affect the other app.
+- **App Store Connect API key:** the second key on the same RevenueCat page. It lets
+  RevenueCat import the store products instead of typing their ids. Reuse an existing
+  one the same way.
+- **Apple Small Business Program toggle:** only changes RevenueCat's revenue charts
+  (15% or 30% commission). What Apple pays depends on enrollment, which is per
+  developer account, so every app on an enrolled account gets the lower rate. Check
+  enrollment from Apple's confirmation email, or from proceeds in App Store Connect's
+  Payments and Financial Reports. Not enrolled: apply on the program page; the rate
+  applies from enrollment on, not to past sales.
+
 Setup questions RevenueCat asks (category, platforms, framework) only shape its own
 dashboard and docs; pick the closest and move on.
 
@@ -37,6 +53,7 @@ dashboard and docs; pick the closest and move on.
 - [RevenueCat: Launch checklist](https://www.revenuecat.com/docs/test-and-launch/launch-checklist)
 - [App Store Connect Help: Offer auto-renewable subscriptions](https://developer.apple.com/help/app-store-connect/manage-subscriptions/offer-auto-renewable-subscriptions)
 - [App Store Connect Help: Set up introductory offers](https://developer.apple.com/help/app-store-connect/manage-subscriptions/set-up-introductory-offers-for-auto-renewable-subscriptions)
+- [Apple: App Store Small Business Program](https://developer.apple.com/app-store/small-business-program/)
 - [Play Console Help: Create and manage subscriptions](https://support.google.com/googleplay/android-developer/answer/140504)
 
 **Status:** the order comes from shipping a real app on 2026-10-14. The one key for
