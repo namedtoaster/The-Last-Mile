@@ -14,8 +14,10 @@ both stores. The order matters, because each step needs the one before it:
    wide, so one key serves every app on the account) and a Play Store app (package
    name plus a Google Cloud service account, which can take up to 36 hours to start working; RevenueCat's page gives a trick that often speeds it up: edit and save any product description in Play Console, then revert it).
 3. **Products, entitlement, offering.** Import the store products, attach them to one
-   entitlement whose identifier matches the app's code, and put them in the default
-   offering.
+   entitlement whose identifier matches the app's code, then create an offering (a new
+   project has none: Offerings tab, + New, identifier `default`), add one package per
+   duration, and make it the project's Default Offering. Apps that read the current
+   offering, which is the usual pattern, show an empty paywall without that last step.
 4. **Keys into the app.** The public SDK keys (`appl_...`, `goog_...`) are safe in the
    app's config; secret keys (`sk_...`) never go in the app.
 5. **Test in sandbox** from a real build, then once from TestFlight or Play internal
