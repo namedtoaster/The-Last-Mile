@@ -124,6 +124,7 @@ written for any stack; see-it-work is still Expo first.
 | set-goals | Writes the 6 week goal and closes the last cycle in a few lines |
 | port-feature | Brings a feature over from another of your own repos, adapted to this one |
 | improve-skill | Fixes a skill that misfired, from the project where it happened, as a pull request here |
+| mine-community | Mines a founder community for what is working, filtered for survivorship bias and promo posts |
 | sync | Brings a project's copy of these skills up to date and pushes it, from your phone or desktop |
 
 ## Contributing
