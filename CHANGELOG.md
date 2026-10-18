@@ -9,6 +9,28 @@
   failed read must still answer), and the number to watch after release, which
   is how many eligible people never saw it.
 
+- New skill, lean-out: find the structural clutter that is making every new
+  change land wrong, ranked by what it would have prevented rather than by
+  taste. Produces an audit and a list to work through in pieces, says plainly
+  when not to run it, and carries the loop for doing the work: green before and
+  after is the floor, and every extracted rule needs a test verified red by
+  reverting, because a suite that was green while the bug existed will be green
+  after you refactor it.
+
+- New skill, feature-demo: builds a tap-through demo of a feature in the app's own
+  colours and fonts, so a flow can be seen and argued with before it is finished,
+  with references for the preview harness and the traps that waste the most time.
+
+- New skill, connect-tools: finds the services a project uses, connects their
+  official MCP servers with the right scope, proves each one works, and records
+  them in the rules file. Ships a list of 18 official servers checked on the
+  vendors' own pages on 2026-10-17, and names the two stores that have none.
+
+- Contributing: a policy for outside skills and tools published elsewhere. Point
+  at them rather than copying them in, check the thing exists before
+  recommending it, read what a script will run, test one of its claims against
+  the primary source, and date the recommendation.
+
 - see-it-work: how to test a state only a real paying or comped customer can
   reach, by granting a throwaway identity the entitlement through the provider's
   own API and revoking it after, plus the rule that an item nobody can perform
