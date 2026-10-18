@@ -1,5 +1,5 @@
 Source: https://vercel.com/docs/domains/set-up-custom-domain
-Fetched: 2026-10-12
+Fetched: 2026-10-18
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 ## On this page
@@ -193,7 +193,6 @@ For a subdomain, use its full hostname in both verification commands. Use the re
 - Deploying a project from the CLI
 
 Last updated August 11, 2026
-Related Vercel documentation
 
 Previous
 Troubleshooting Domains

@@ -1,5 +1,5 @@
 Source: https://docs.expo.dev/build/setup/
-Fetched: 2026-10-12
+Fetched: 2026-10-18
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 This documentation is available as Markdown for AI agents and LLMs. See the full Markdown index or append .md to any documentation URL.
@@ -31,13 +31,13 @@ A React Native Android or iOS project
 Don't have a project yet? It's quick and easy to create a "Hello world" app you can use with this guide:
 TerminalnpmyarnpnpmbunCopy
 
-- npx create-expo-app@latest my-app
+- npx create-expo-app@latest my-app --template default@sdk-58
 
-- yarn create expo-app my-app
+- yarn create expo-app my-app --template default@sdk-58
 
-- pnpm create expo-app my-app
+- pnpm create expo-app my-app --template default@sdk-58
 
-- bun create expo my-app
+- bun create expo my-app --template default@sdk-58
 
 EAS Build also works well with projects created by npx create-react-native-app, npx react-native, ignite-cli, and other project bootstrapping tools.
 

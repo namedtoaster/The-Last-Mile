@@ -1,5 +1,5 @@
 Source: https://www.namecheap.com/support/knowledgebase/article.aspx/434/2237/how-do-i-set-up-host-records-for-a-domain/
-Fetched: 2026-10-14
+Fetched: 2026-10-18
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 Subtotal
@@ -115,7 +115,7 @@ What type of DNS records can I manage?
 Updated
 3/31/2026
 Viewed
-305162 times
+305348 times
 
 Need help? We're always here for you.
 

@@ -1,5 +1,5 @@
 Source: https://docs.expo.dev/versions/latest/sdk/build-properties/
-Fetched: 2026-10-12
+Fetched: 2026-10-18
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 This documentation is available as Markdown for AI agents and LLMs. See the full Markdown index or append .md to any documentation URL.
@@ -18,7 +18,7 @@ npm
 
 Changelog
 
-Recommended version:~57.0.22
+Recommended version:~58.0.11
 
 Copy page
 
@@ -26,7 +26,7 @@ expo-build-properties is a config plugin configuring the native build properties
 of your android/gradle.properties and ios/Podfile.properties.json directories during Prebuild.
 
 This config plugin configures how Prebuild command generates the native android and ios directories
-and therefore cannot be used with projects that don't run npx expo prebuild (bare projects).
+and therefore cannot be used with projects that don't run npx expo prebuild (existing React Native projects).
 
 ## Installation
 
@@ -294,6 +294,12 @@ See: Android documentation for more information.
 
 Example
 ["arm64-v8a", "x86_64"]
+
+|
+buildExpoModulesCoreFromSource(optional) | boolean | Compile the expo-modules-core native libraries from source instead of using the precompiled
+libraries shipped with the package. Turning this on will increase the build times.
+Enable it when you modify the C++ sources of expo-modules-core.
+Default:false
 
 |
 buildFromSource(optional) | boolean | Deprecated: Use buildReactNativeFromSource instead.

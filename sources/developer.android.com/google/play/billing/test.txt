@@ -1,5 +1,5 @@
 Source: https://developer.android.com/google/play/billing/test
-Fetched: 2026-10-12
+Fetched: 2026-10-18
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 Reminder: By Aug 31, 2026, all new apps and updates to existing apps must use Billing Library version 8 or later. If you need more time to update your app, you can request an extension until Nov 1, 2026. Learn about Play Billing Library version deprecation.
@@ -127,6 +127,9 @@ state with one click to speed up your testing
 
 - Test with real payment methods to bypass certain purchase flow risk
 signals
+
+- Test out-of-app purchases to make sure that your backend can handle
+them
 
 Figure 2. Play Billing Lab Dashboard.
 
@@ -999,5 +1002,94 @@ an error message in the purchase cart, and the transaction will be blocked.
 
 Note: If your testing requires higher limits, ensure your app is published to a
 closed, open, or production track.
+
+## Test out-of-app purchases
+
+You can use the Play Billing Lab app to test the end-to-end experience for
+entitlements acquired outside of your app. To use
+Play Billing Lab, you must be a license tester for the app you are testing.
+
+Step 1 - Configure test
+
+- Register the app billing user as a license tester.
+
+- Open the Play Store and log into it with the same user.
+
+- Open the Play Billing Lab app and log into it with the same user.
+
+- Select the Out-of-app purchases test card.
+
+- Optional: Select your test country and apply the change in Play Billing Lab.
+
+- If you don't select a country, Play Billing Lab uses the Play Country for
+your licensed test account.
+
+- Enter the app and product (SKU) information that you want to test.
+
+- Select the particular purchase option, base plan, or offer that you want to test.
+
+- Click Start test.
+
+Note: The test remains active for two hours. After this time, you must reconfigure
+the test.
+Step 2 - Acquire the out-of-app product
+
+- Featured products
+
+- Purchase recommendations (after abandoning a purchase)
+
+- Play Games Rewards
+
+Note: This test requires that the user is eligible to purchase the item. For
+non-consumable items, you must not currently own the product. For consumable
+items, you must consume any existing purchases before you test.
+Step 3 - Handle and deliver the entitlement
+
+Your app should detect the out-of-app purchase, and then deliver the item to the
+respective user. For the full process, see processing purchases.
+
+### Featured products
+
+Note: Featured products are supported only for one-time products.
+
+- Open the Play Store and sign in with the same licensed tester account that
+you used to configure the test in Play Billing Lab.
+
+- If the Play Store was previously open, close and restart it.
+
+- Navigate to the app details page for your app.
+
+- The item is shown on this page.
+
+- Select the item and complete the purchase.
+
+Figure 12. Featured product purchase flow.
+
+### Purchase recommendations
+
+Note: Purchase recommendations are supported only for one-time products. The
+purchase recommendations appear in your app in the Play Billing overlay after you
+initiate a purchase.
+After cart is abandoned:
+
+- Restart your app.
+
+- Initiate a purchase flow for a one-time product in your app.
+
+- Dismiss or abandon the purchase cart dialog without completing the transaction.
+
+- Check for the abandoned cart purchase recommendation.
+
+- Accept the recommendation and complete the purchase.
+
+Figure 13. Purchase recommendation (abandoned cart) purchase flow.
+
+### Play Games Rewards
+
+Note: Play Games Rewards are supported only for one-time products.
+Click Grant Reward to simulate Play granting the reward to the user. Existing
+rewards must be processed before additional rewards can be granted.
+
+Figure 14. Play Games Rewards testing flow.
 
 Send feedback
