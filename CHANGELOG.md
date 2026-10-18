@@ -7,6 +7,11 @@
   them in the rules file. Ships a list of 18 official servers checked on the
   vendors' own pages on 2026-10-17, and names the two stores that have none.
 
+- Contributing: a policy for outside skills and tools published elsewhere. Point
+  at them rather than copying them in, check the thing exists before
+  recommending it, read what a script will run, test one of its claims against
+  the primary source, and date the recommendation.
+
 - see-it-work: how to test a state only a real paying or comped customer can
   reach, by granting a throwaway identity the entitlement through the provider's
   own API and revoking it after, plus the rule that an item nobody can perform

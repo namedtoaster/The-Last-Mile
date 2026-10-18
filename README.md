@@ -125,6 +125,7 @@ written for any stack; see-it-work is still Expo first.
 | set-goals | Writes the 6 week goal and closes the last cycle in a few lines |
 | port-feature | Brings a feature over from another of your own repos, adapted to this one |
 | improve-skill | Fixes a skill that misfired, from the project where it happened, as a pull request here |
+| search-pages | Finds the search phrases you can win and builds the pages that get the app found |
 | sync | Brings a project's copy of these skills up to date and pushes it, from your phone or desktop |
 
 ## Contributing
