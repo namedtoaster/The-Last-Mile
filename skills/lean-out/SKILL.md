@@ -77,7 +77,42 @@ removes it, and what would have to stay true afterwards (the test that pins it).
 
 Then stop. The list is the deliverable.
 
-## 5. When the work happens, one item at a time
+## 5. The loop, and why green on its own proves nothing
+
+The obvious method is: run everything, change things, run everything again, and
+call matching results a pass. That is the right floor and it is not the test.
+
+**A suite that was green while the bug existed will be green after you refactor
+the bug.** Every defect worth fixing was, by definition, invisible to the tests
+you already had. So "the same results" tells you the tests ran, not that they
+were watching the thing you touched.
+
+Three holes to expect, whatever the language:
+
+- **Layout is usually invisible to the test runner.** Component tests prove what
+  renders, almost never where. A change that wrecks spacing or pushes a control
+  off screen passes.
+- **Mocks that list their exports go green for the wrong reason.** Add a field
+  to a store and every hand written mock returns undefined for it, quietly.
+- **End to end runs are the noisiest thing you own.** Comparing a flaky red
+  before against a flaky red after is not a comparison.
+
+So add one step, and it is the one that gets skipped under time pressure:
+
+**For every rule you extract, revert it and watch the test go red.** A test that
+passes with and without your change has proven nothing about it. Put the change
+back and move on. It costs a minute and it is the whole difference between a
+suite that is green and a suite that is looking.
+
+The loop that is worth trusting:
+
+| | |
+| --- | --- |
+| Before | Full suite green, and note which tests actually cover what you are about to touch |
+| During | One shape at a time, each with a test verified red by reverting |
+| After | Full suite green, plus a screenshot of any screen whose layout moved |
+
+## 6. When the work happens, one item at a time
 
 - **One shape per change.** Not "tidy the screen".
 - **A test first that fails for the right reason**, exactly as for a bug fix.

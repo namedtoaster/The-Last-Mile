@@ -4,8 +4,11 @@
 
 - New skill, lean-out: find the structural clutter that is making every new
   change land wrong, ranked by what it would have prevented rather than by
-  taste. Produces an audit and a list to work through in pieces, and says
-  plainly when not to run it.
+  taste. Produces an audit and a list to work through in pieces, says plainly
+  when not to run it, and carries the loop for doing the work: green before and
+  after is the floor, and every extracted rule needs a test verified red by
+  reverting, because a suite that was green while the bug existed will be green
+  after you refactor it.
 
 - see-it-work: how to test a state only a real paying or comped customer can
   reach, by granting a throwaway identity the entitlement through the provider's
