@@ -35,8 +35,23 @@ otherwise write "From experience" or "Needs a human".
 ## Check each entry
 
 1. **Open the source page.** Fetch the page itself. A search snippet or summary is
-   not enough. If the page will not load (blocked, login wall, timeout), say so for
-   that entry and leave its status as it was.
+   not enough. If the page will not load (blocked, login wall, timeout), use these
+   in order and say which one you used:
+   - **The Last Mile's saved copy.** A weekly job saves a text copy of every page the
+     ship references cite. Read `sources/index.json` in The Last Mile
+     (`https://raw.githubusercontent.com/namedtoaster/the-last-mile/snapshots/sources/index.json`,
+     on the `snapshots` branch), find the URL, and read `sources/<file>` from the same branch.
+     GitHub is reachable from cloud sessions by default, so this needs no settings.
+     The copy counts as the page opened on its `fetched` date: set **Checked
+     <fetched date> (saved copy of the official page)**. If `fetched` is more than a
+     month old or the entry has an `error`, say so.
+   - Another route to the same page: a different fetch tool, or the page in another
+     language on the same official site.
+   - A search with results limited to the official domain. That is a lead: an entry
+     read only this way is **Not yet checked**, per `CONTRIBUTING.md`.
+   If all of these fail, leave the status as it was. If the block comes from the
+   session's network rules, name the host in one line at the end of the report, as
+   an optional fix; never make the user change settings to get an answer.
 2. **Find the supporting sentence.** Quote it word for word in your notes. If the
    entry has no source, search the official docs (Apple, Google, Expo, the tool's own
    site) for one. Blogs, forums and other repos are leads, never sources.
@@ -85,8 +100,10 @@ many.
   the release (iOS, Android, or both) before preparing the submission.
 - **When a rule seems to have moved:** a rejection names a guideline the traps do not
   match, or the user hears a store rule changed.
-- **On a schedule:** a monthly scheduled run that re-checks everything and opens a
-  pull request with the results is planned for The Last Mile. It does not exist yet.
+- **When a saved copy changes:** the weekly snapshot job
+  (`.github/workflows/snapshot-sources.yml`) commits every page whose text changed.
+  A changed page means the traps citing it need this check. A full scheduled
+  re-check that updates the traps on its own does not exist yet.
 
 ## Done when
 

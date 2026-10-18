@@ -1,6 +1,6 @@
 {
   "name": "the-last-mile",
-  "description": "The Last Mile: skills for shipping and running a real Expo app with Claude Code.",
+  "description": "The Last Mile: get your app out of your laptop and into the App Store and Google Play, on any stack.",
   "owner": {
     "name": "Dave Campbell",
     "url": "https://github.com/namedtoaster"
@@ -9,7 +9,7 @@
     {
       "name": "the-last-mile",
       "source": "./",
-      "description": "Ten skills for taking an Expo app from a working build to the App Store and Google Play: setup, session end, seeing changes work, design references, feature demos, research, goals, porting features, shipping with sourced store traps, and fact checking."
+      "description": "/ship takes any mobile app to the App Store and Google Play: rejection sweep against sourced store traps, release build, store listing, upload and submit. Plus skills for the days between releases: setup, connecting your services through MCP, session end, seeing changes work, design references, feature demos, research, goals, porting features, fact checking, and improving skills from the projects that use them."
     }
   ]
 }

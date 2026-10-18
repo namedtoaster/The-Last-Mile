@@ -1,0 +1,65 @@
+# Checks the pages in store/status.json load, from GitHub's network, and saves the
+# results to the last-mile-checks branch. The ship skill's status board reads them
+# when its own session cannot reach a site (cloud sessions block most of the web).
+#
+# Copy to .github/workflows/last-mile-checks.yml. Runs when store/status.json is
+# pushed, every six hours, and from the Actions tab. From The Last Mile:
+# https://github.com/namedtoaster/the-last-mile
+
+name: Last Mile checks
+
+on:
+  push:
+    paths: ['store/status.json']
+  schedule:
+    - cron: '23 */6 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: last-mile-checks
+  cancel-in-progress: false
+
+jobs:
+  pages:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Earlier results
+        run: git fetch -q --depth=1 origin last-mile-checks && git show FETCH_HEAD:checks.json > "$RUNNER_TEMP/checks.json" || echo '{"pages":{}}' > "$RUNNER_TEMP/checks.json"
+
+      - name: Check the pages
+        run: |
+          node --input-type=module <<'EOF'
+          import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+          const out = `${process.env.RUNNER_TEMP}/checks.json`;
+          const saved = JSON.parse(readFileSync(out, 'utf8'));
+          const status = existsSync('store/status.json') ? JSON.parse(readFileSync('store/status.json', 'utf8')) : { items: [] };
+          const urls = [...new Set((status.items ?? []).map((i) => i.url).filter((u) => /^https?:\/\//.test(u ?? '')))];
+          for (const url of urls) {
+            const checked = new Date().toISOString();
+            try {
+              const res = await fetch(url, { redirect: 'follow', signal: AbortSignal.timeout(15000), headers: { 'user-agent': 'the-last-mile-checks' } });
+              saved.pages[url] = { ok: res.ok, status: res.status, checked };
+            } catch (e) {
+              saved.pages[url] = { ok: false, status: 0, error: String(e.cause?.code ?? e.name ?? 'error'), checked };
+            }
+            console.log(url, saved.pages[url].ok ? 'loads' : 'fails', saved.pages[url].status || saved.pages[url].error);
+          }
+          writeFileSync(out, JSON.stringify(saved, null, 2) + '\n');
+          EOF
+
+      - name: Save to the last-mile-checks branch
+        env:
+          TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          dir="$(mktemp -d)" && cd "$dir"
+          git init -q -b last-mile-checks
+          cp "$RUNNER_TEMP/checks.json" .
+          git add checks.json
+          git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -qm 'Page checks'
+          git push -qf "https://x-access-token:${TOKEN}@github.com/${GITHUB_REPOSITORY}.git" last-mile-checks

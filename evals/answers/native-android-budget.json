@@ -1,0 +1,22 @@
+{
+  "stack": "native-android",
+  "expected": [
+    { "id": "target-sdk", "file": "build.gradle.kts", "match": ["target.?sdk", "api 3[456]", "android 1[56]"] },
+    { "id": "photo-permissions", "file": "AndroidManifest.xml", "match": ["read_media", "photo", "media"] },
+    { "id": "code-shrinking", "file": "build.gradle.kts", "match": ["minif", "shrink", "r8", "optimi"] },
+    { "id": "account-deletion", "match": ["delet"] },
+    { "id": "privacy-policy", "match": ["privacy policy"] },
+    { "id": "placeholder-text", "file": "strings.xml", "match": ["todo", "placeholder"] }
+  ],
+  "allowed": [
+    { "id": "data-safety", "match": ["data safety", "privacy answers"] },
+    { "id": "analytics-consent", "match": ["consent", "analytics"] },
+    { "id": "password-field", "match": ["password"] },
+    { "id": "release-signing", "match": ["sign", "keystore", "upload key"] },
+    { "id": "icon", "match": ["icon"] },
+    { "id": "version-code", "match": ["version.?code", "build number"] },
+    { "id": "closed-testing", "match": ["closed test", "12 testers", "testers"] },
+    { "id": "google-services-json", "match": ["google-services"] },
+    { "id": "receipt-camera", "match": ["receipt", "camera"] }
+  ]
+}

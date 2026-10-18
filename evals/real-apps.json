@@ -1,0 +1,21 @@
+{
+  "_about": "Open source apps already live in the stores, pinned to a commit. They passed review, so a blocker reported on them is most likely a false alarm. Store links were confirmed from each repo's README on 2026-10-12.",
+  "bluesky": {
+    "repo": "bluesky-social/social-app",
+    "commit": "46d98dd457a197cee8502863b420222508f29fa6",
+    "context": "This is an update to an app already live on the App Store and Google Play.",
+    "stores": ["https://apps.apple.com/us/app/bluesky-social/id6444370199", "https://play.google.com/store/apps/details?id=xyz.blueskyweb.app"]
+  },
+  "ice-cubes": {
+    "repo": "Dimillian/IceCubesApp",
+    "commit": "2ad6e689125801abeb7e356360785c08a4864982",
+    "context": "This is an update to an app already live on the App Store. It ships on iOS only.",
+    "stores": ["https://apps.apple.com/us/app/ice-cubes-for-mastodon/id6444915884"]
+  },
+  "tusky": {
+    "repo": "tuskyapp/Tusky",
+    "commit": "43ae0bb4556392393a3d759ce42a93f3a003e83a",
+    "context": "This is an update to an app already live on Google Play. It ships on Android only.",
+    "stores": ["https://play.google.com/store/apps/details?id=com.keylesspalace.tusky"]
+  }
+}
