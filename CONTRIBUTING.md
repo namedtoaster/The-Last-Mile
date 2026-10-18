@@ -14,7 +14,7 @@ should be checkable.
 | A new skill | Start a post in Discussions first. Skills are curated so the set stays coherent |
 | A skill or tool that already exists somewhere else | Pull request that POINTS at it. See Outside skills and tools |
 
-All changes reach `main` through a pull request reviewed by the maintainer.
+All changes reach `main` through a pull request. The maintainer's own pull requests merge by themselves once the checks pass; everyone else's are reviewed by the maintainer.
 
 ## Adding a trap
 
