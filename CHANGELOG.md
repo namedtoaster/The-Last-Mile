@@ -2,6 +2,11 @@
 
 ## 0.2.0 (unreleased)
 
+- ship: record where the store pages are hosted when another project's server
+  serves them, and check a static only host can answer app links before relying
+  on it. session-end: the summary ends with a table of items, with what needs the
+  user first.
+
 - New skill, one-time-surface: for anything meant to appear once and then stop,
   a coach mark, tooltip, primer or review ask. The three questions that decide
   whether it works for real people, why a count beats a boolean, the rule that
