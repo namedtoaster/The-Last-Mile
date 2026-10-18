@@ -2,6 +2,11 @@
 
 ## 0.2.0 (unreleased)
 
+- New skill, connect-tools: finds the services a project uses, connects their
+  official MCP servers with the right scope, proves each one works, and records
+  them in the rules file. Ships a list of 18 official servers checked on the
+  vendors' own pages on 2026-10-17, and names the two stores that have none.
+
 - see-it-work: how to test a state only a real paying or comped customer can
   reach, by granting a throwaway identity the entitlement through the provider's
   own API and revoking it after, plus the rule that an item nobody can perform
