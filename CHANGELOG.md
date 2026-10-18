@@ -2,6 +2,10 @@
 
 ## 0.2.0 (unreleased)
 
+- New skill, feature-demo: builds a tap-through demo of a feature in the app's own
+  colours and fonts, so a flow can be seen and argued with before it is finished,
+  with references for the preview harness and the traps that waste the most time.
+
 - New skill, connect-tools: finds the services a project uses, connects their
   official MCP servers with the right scope, proves each one works, and records
   them in the rules file. Ships a list of 18 official servers checked on the
