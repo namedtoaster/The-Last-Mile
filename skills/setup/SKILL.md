@@ -70,7 +70,8 @@ them empty.
 ## Finish
 
 Show the user a short summary: the four files written, their goal and end date,
-and the skills to use next: session-end every session, see-it-work to see a change
+and the skills to use next: connect-tools now, to connect the services the app
+uses, session-end every session, see-it-work to see a change
 working, reference-hunt before designing a screen, research before a decision,
 set-goals when the cycle ends, ship when getting into the stores, and setup again
 if anything about the answers changes. Then

@@ -2,6 +2,11 @@
 
 ## 0.2.0 (unreleased)
 
+- New skill, connect-tools: finds the services a project uses, connects their
+  official MCP servers with the right scope, proves each one works, and records
+  them in the rules file. Ships a list of 18 official servers checked on the
+  vendors' own pages on 2026-10-17, and names the two stores that have none.
+
 - Contributing: a policy for outside skills and tools published elsewhere. Point
   at them rather than copying them in, check the thing exists before
   recommending it, read what a script will run, test one of its claims against
