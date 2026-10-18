@@ -46,6 +46,8 @@ dashboard and docs; pick the closest and move on.
 - [RevenueCat: React Native installation](https://www.revenuecat.com/docs/getting-started/installation/reactnative)
 - [RevenueCat: Configuring the SDK](https://www.revenuecat.com/docs/getting-started/configuring-sdk)
 - [RevenueCat: Entitlements](https://www.revenuecat.com/docs/getting-started/entitlements)
+- [RevenueCat: Offerings](https://www.revenuecat.com/docs/offerings/overview)
+- [RevenueCat: docs index for AI agents](https://www.revenuecat.com/docs/llms.txt)
 - [RevenueCat: Displaying products](https://www.revenuecat.com/docs/getting-started/displaying-products)
 - [RevenueCat: In-App Purchase Key configuration](https://www.revenuecat.com/docs/service-credentials/itunesconnect-app-specific-shared-secret/in-app-purchase-key-configuration)
 - [RevenueCat: Google Play service credentials](https://www.revenuecat.com/docs/service-credentials/creating-play-service-credentials)
