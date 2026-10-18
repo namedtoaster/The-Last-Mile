@@ -2,6 +2,13 @@
 
 ## 0.2.0 (unreleased)
 
+- New skill, one-time-surface: for anything meant to appear once and then stop,
+  a coach mark, tooltip, primer or review ask. The three questions that decide
+  whether it works for real people, why a count beats a boolean, the rule that
+  nothing may be decided from a store that has not answered yet (and that a
+  failed read must still answer), and the number to watch after release, which
+  is how many eligible people never saw it.
+
 - see-it-work: how to test a state only a real paying or comped customer can
   reach, by granting a throwaway identity the entitlement through the provider's
   own API and revoking it after, plus the rule that an item nobody can perform
