@@ -2,6 +2,11 @@
 
 ## 0.2.0 (unreleased)
 
+- see-it-work: how to test a state only a real paying or comped customer can
+  reach, by granting a throwaway identity the entitlement through the provider's
+  own API and revoking it after, plus the rule that an item nobody can perform
+  does not belong on a release checklist.
+
 - New payments reference for ship: store products and RevenueCat in the order they
   must be set up, with RevenueCat's own docs saved weekly by the snapshot job.
 - The ship journal keeps stats: sessions, days, hands on time in consoles and tokens,
