@@ -95,6 +95,13 @@ function appleDocText(json) {
   out.push(`# ${json.metadata?.title ?? ''}`);
   out.push(inline(json.abstract));
   for (const section of json.primaryContentSections ?? []) walk(section.content);
+  for (const section of json.topicSections ?? []) {
+    out.push(`\n## ${section.title ?? 'Topics'}`);
+    for (const id of section.identifiers ?? []) {
+      const ref = json.references?.[id];
+      if (ref) out.push(`- ${ref.title}${ref.abstract ? `: ${inline(ref.abstract)}` : ''}`);
+    }
+  }
   return out.join('\n').replace(/\n{3,}/g, '\n\n').trim();
 }
 

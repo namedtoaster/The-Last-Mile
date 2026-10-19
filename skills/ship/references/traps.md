@@ -23,16 +23,17 @@ Stack specific traps are at the end.
 
 ### Buying must not require an account
 - **What happened:** rejected in April 2026 because the paywall required signing in before purchase.
-- **Rule:** Apple's guidelines say that if an app doesn't include significant account based features, people should be able to use it without a login. They do not spell out purchases; requiring sign in to buy is the part learned from the rejection.
+- **Rule:** Apple's guidelines say that if an app doesn't include significant account based features, people should be able to use it without a login, and that apps may not require personal information to function unless it is directly relevant to the core functionality. They do not spell out purchases; requiring sign in to buy is the part learned from the rejection. Apple also asks for a restore mechanism for restorable purchases (3.1.1); that restore must work without an account is from experience.
 - **How to check:** start a fresh install, skip sign in, and buy. Restore purchases must also work without an account.
 - **Source:** [App Review Guidelines, 5.1.1(v) Account Sign-In](https://developer.apple.com/app-store/review/guidelines/#5.1.1v)
-- **Status:** From experience.
+- **Status:** Guideline wording checked 2026-10-19 (saved copy fetched 2026-10-18). The purchase part is from experience.
 
 ### Apps that support accounts must offer deletion inside the app
 - **What happened:** a standing requirement; the reviewer checks it.
-- **How to check:** find a delete account option in the app's account settings. Deactivating is not enough.
+- **Rule:** apps that support account creation must let people start deleting the account inside the app, and only deactivating it is not enough. This includes accounts the app creates automatically ("guest" or anonymous accounts). Apps outside highly regulated fields must not send people to a phone call, email or support chat to do it. Apps with Sign in with Apple should revoke the user's tokens through Apple's REST API. If the person has a subscription, tell them billing continues through Apple until they cancel it.
+- **How to check:** find a delete account option in the app (account settings is typical). It deletes the account and its data, works for silent or guest accounts too, needs no email or chat, and warns subscribers that billing continues until they cancel with Apple.
 - **Source:** [App Review Help: 5.1.1(v) Account deletion](https://developer.apple.com/help/app-review/guideline-reference/5-1-1-account-deletion)
-- **Status:** Checked 2026-10-11 (official page opened and read).
+- **Status:** Checked 2026-10-19 (saved copy fetched 2026-10-12).
 
 ### iPhone apps get reviewed on iPad too
 - **What happened:** rejected in April 2026 for a layout that stretched badly on iPad, even though it was an iPhone app.
@@ -43,7 +44,7 @@ Stack specific traps are at the end.
 
 ### Do not mention other platforms in the iOS app
 - **What happened:** rejected in May 2026 because subscription text said "your App Store or Google Play account".
-- **Rule:** Apple's guidelines say not to include names, icons or imagery of other mobile platforms or alternative app marketplaces in the app or its metadata.
+- **Rule:** Apple's guidelines say not to include names, icons or imagery of other mobile platforms or alternative app marketplaces in the app or its metadata, unless there is specific, approved interactive functionality.
 - **How to check:** search the iOS build's strings for "Google Play" and "Android". Choose such text per platform.
 - **Source:** [App Review Guidelines, 2.3.10 Accurate Metadata](https://developer.apple.com/app-store/review/guidelines/#2.3.10)
 - **Status:** Checked 2026-10-11 (official page opened and read).
@@ -51,56 +52,56 @@ Stack specific traps are at the end.
 ### Health and nutrition figures may need their sources shown
 - **What happened:** rejected in May 2026 until a screen citing the sources of calorie and macro calculations was added.
 - **Rule:** Apple requires apps to disclose data and methodology behind accuracy claims about health measurements. Applying that to nutrition figures is how it was enforced on a real app, not wording from Apple.
-- **How to check:** if the app shows health calculations, doses or nutrition figures (including bundled sample content), link a sources screen from where the numbers appear.
+- **How to check:** if the app shows health calculations, doses or nutrition figures (including bundled sample content), link a sources screen from where the numbers appear. The same guideline says apps should remind users to check with a doctor before making medical decisions; add that line where health content appears.
 - **Source:** [App Review Guidelines, 1.4.1 Safety, Physical Harm](https://developer.apple.com/app-store/review/guidelines/#1.4.1)
-- **Status:** From experience.
+- **Status:** Guideline wording checked 2026-10-19 (saved copy fetched 2026-10-18). Applying it to nutrition figures is from experience.
 
 ### Support and privacy policy pages must exist before submitting
 - **What happened:** submission was blocked until the support and privacy pages existed.
-- **Rule:** App Store Connect requires a Support URL, and a Privacy Policy URL for iOS and macOS apps. Apple's guidelines also require the privacy policy link inside the app, in an easily accessible manner, not only in the listing.
+- **Rule:** App Store Connect requires a Support URL, which must lead to real contact information (an email at least; some countries' laws want a legal address and phone number too), and a Privacy Policy URL for iOS and macOS apps. Apple's guidelines also require the privacy policy link inside the app, in an easily accessible manner, not only in the listing, and say what the policy must cover: what data is collected and how it is used, that third parties get equal protection, how long data is kept and how it is deleted, and how to withdraw consent.
 - **How to check:** the listing's support URL and privacy policy URL both load, and the app itself links to the policy (a settings or about screen is enough; a paywall is a good second place). The link is baked into the build, so the page has to exist at its final address before the build is made.
-- **Source:** [App Store Connect Help: platform version information](https://developer.apple.com/help/app-store-connect/reference/app-information/platform-version-information), [App Review Guidelines, 5.1.1 Data Collection and Storage](https://developer.apple.com/app-store/review/guidelines/#5.1.1)
-- **Status:** Checked 2026-10-11 (platform version page opened and read). The in-app link: Checked 2026-10-12 (guidelines page opened and read).
+- **Source:** [App Store Connect Help: platform version information](https://developer.apple.com/help/app-store-connect/reference/app-information/platform-version-information) (Support URL), [App Store Connect Help: app information](https://developer.apple.com/help/app-store-connect/reference/app-information/) (Privacy Policy URL), [App Review Guidelines, 5.1.1 Data Collection and Storage](https://developer.apple.com/app-store/review/guidelines/#5.1.1)
+- **Status:** Checked 2026-10-19 (saved copies fetched 2026-10-12 and 2026-10-18).
 
 ### A website in an app wrapper gets rejected
-- **Rule:** Apple's guidelines say an app should include features, content and UI that elevate it beyond a repackaged website, and that apps shouldn't primarily be web clippings or a collection of links.
+- **Rule:** Apple's guidelines say an app should include features, content and UI that elevate it beyond a repackaged website (4.2), and that apps shouldn't primarily be web clippings, content aggregators or a collection of links (4.2.2).
 - **How to check:** if the app is mostly a web view (Capacitor, a WebView screen, a site built in Lovable, Bolt or v0 and wrapped), list what it does that the website cannot: push notifications, offline use, the camera, widgets, purchases, a native home screen. If the answer is nothing, add at least one before submitting, and say what it is in the review notes.
 - **Source:** [App Review Guidelines, 4.2 Minimum Functionality](https://developer.apple.com/app-store/review/guidelines/#4.2)
-- **Status:** Checked 2026-10-12 (official page opened and read). Apple has no official route for putting a web app in the store without a native wrapper.
+- **Status:** Checked 2026-10-19 (saved copy fetched 2026-10-18). That Apple has no route for a web app without a native wrapper is an inference; no page says it.
 
 ### Template and copycat apps get rejected as spam
-- **Rule:** Apple says not to submit apps that are indistinguishable from what's already widely available, and names crowded categories (dating, flashlight, wallpaper, simple timers and others) that it won't accept without a meaningfully different experience. Submitting the same app under several bundle IDs is also spam.
-- **How to check:** in one sentence, say what this app does that the top results for its category don't. Put that sentence at the start of the description and the review notes.
-- **Source:** [App Review Guidelines, 4.3 Spam](https://developer.apple.com/app-store/review/guidelines/#4.3)
-- **Status:** Checked 2026-10-12 (official page opened and read).
+- **Rule:** apps made from a commercial template or an app generation service are rejected unless the provider of the app's content submits them (4.2.6). Apple also says not to submit apps that are indistinguishable from what's already widely available, and names crowded categories (dating, flashlight, sound effects, wallpaper, simple timers, fortune telling) that it won't accept without a meaningfully different experience (4.3(b)). Submitting the same app under several bundle IDs is spam (4.3(a)).
+- **How to check:** the app is submitted from the account of whoever owns its content, not a template seller's. In one sentence, say what this app does that the top results for its category don't. Put that sentence at the start of the description and the review notes.
+- **Source:** [App Review Guidelines, 4.2.6](https://developer.apple.com/app-store/review/guidelines/#4.2.6), [App Review Guidelines, 4.3 Spam](https://developer.apple.com/app-store/review/guidelines/#4.3)
+- **Status:** Checked 2026-10-19 (saved copy fetched 2026-10-18).
 
 ### Social login needs a private login option next to it
-- **Rule:** an app that uses a third party or social login (Google, Facebook and so on) for the main account must also offer an equivalent login that limits data to name and email, lets people keep their email private, and doesn't collect interactions for advertising without consent. Sign in with Apple meets this. Exceptions include apps that only use the company's own accounts, apps that need an existing school or work account, and clients for a specific service.
+- **Rule:** an app that uses a third party or social login (Google, Facebook and so on) for the main account must also offer an equivalent login that limits data to name and email, lets people keep their email private, and doesn't collect interactions for advertising without consent. Sign in with Apple is the usual way to meet this, though the guideline no longer names it. Exceptions: apps that only use the company's own accounts, education or enterprise apps that need an existing school or work account, apps using a government or industry backed electronic ID, and alternative app marketplaces using their own login.
 - **How to check:** open the sign in screen. If it shows Google or another social login, confirm Sign in with Apple (or an equivalent) is there too.
 - **Source:** [App Review Guidelines, 4.8 Login Services](https://developer.apple.com/app-store/review/guidelines/#4.8)
-- **Status:** Checked 2026-10-12 (official page opened and read).
+- **Status:** Checked 2026-10-19 (saved copy fetched 2026-10-18).
 
 ### Reviewers need a way in
-- **Rule:** if the app has a login, give App Review a demo account (and keep the server running). A built in demo mode instead of an account needs Apple's approval first. The demo account must not expire.
+- **Rule:** if the app has a login, give App Review a demo account (and keep the server running), including the login for any single sign on service the app uses. A built in demo mode instead of an account is allowed only when legal or security reasons prevent a demo account, and with Apple's approval first. The demo account must not expire. In-app purchases must be complete, visible to the reviewer and working; if one can't be found, explain why in the review notes.
 - **How to check:** create a demo account with realistic content, put it in App Review Information, and sign in with it on a fresh install the day you submit.
-- **Source:** [App Review Guidelines, 2.1 App Completeness](https://developer.apple.com/app-store/review/guidelines/#2.1), [App Store Connect Help: platform version information](https://developer.apple.com/help/app-store-connect/reference/platform-version-information/)
-- **Status:** Checked 2026-10-12 (official pages opened and read).
+- **Source:** [App Review Guidelines, 2.1 App Completeness](https://developer.apple.com/app-store/review/guidelines/#2.1), [App Store Connect Help: platform version information](https://developer.apple.com/help/app-store-connect/reference/app-information/platform-version-information)
+- **Status:** Checked 2026-10-19 (saved copies fetched 2026-10-12 and 2026-10-18).
 
 ### Uploads are refused without a privacy manifest for certain APIs
-- **Rule:** since 1 May 2024, App Store Connect does not accept apps that use "required reason" APIs (some file timestamp, disk space, boot time and user defaults calls among them) without declaring the reason in a privacy manifest (`PrivacyInfo.xcprivacy`). Third party SDKs carry their own.
+- **Rule:** since 1 May 2024, App Store Connect does not accept apps that use "required reason" APIs without declaring an approved reason in the privacy manifest (the `NSPrivacyAccessedAPITypes` array in `PrivacyInfo.xcprivacy`). Each third party SDK must declare its own use in its own manifest; it can't rely on the app's. Apple emails a reminder when an upload uses one without a reason. The API categories (file timestamp, system boot time, disk space, active keyboards, user defaults) are listed on the page.
 - **How to check:** look for `PrivacyInfo.xcprivacy` in the iOS project. Keep SDKs current, since older versions may lack their manifest. If an upload is refused, the email names the missing API.
-- **Source:** [Apple: describing use of required reason API](https://developer.apple.com/documentation/bundleresources/describing-use-of-required-reason-api)
-- **Status:** Checked 2026-10-12 (official page opened and read).
+- **Source:** [Apple: describing use of required reason API](https://developer.apple.com/documentation/bundleresources/describing-use-of-required-reason-api), [Apple: upcoming requirements](https://developer.apple.com/news/upcoming-requirements/)
+- **Status:** Checked 2026-10-19 (saved copy fetched 2026-10-19). The category names are not yet in the saved copy; re-check them once the snapshot includes the page's topic list.
 
 ### Builds must use a recent Xcode
 - **Rule:** Apple raises the minimum Xcode and SDK version for uploads each year, and the minimum deployment target too. The current values are in `facts.md`.
-- **How to check:** the Xcode version used for the build, local or in the cloud. Cloud build machines can lag behind the newest Xcode.
+- **How to check:** the Xcode version used for the build, local or in the cloud. Cloud build machines can lag behind the newest Xcode (from experience).
 - **Source:** [Apple: upcoming requirements](https://developer.apple.com/news/upcoming-requirements/)
-- **Status:** Checked 2026-10-12 (official page opened and read).
+- **Status:** Checked 2026-10-19 (saved copy fetched 2026-10-12).
 
 ### Privacy labels are only in App Store Connect's website
 - **Rule:** the App Store Connect API can upload listing text and screenshots, but has no way to set the App Privacy answers. They are filled in on the website by the Account Holder, an Admin or an App Manager.
-- **How to check:** draft the answers from the code, then walk the user through entering them.
+- **How to check:** draft the answers from the code, including data collected by third party SDKs (analytics, crash reporting, purchases), which Apple says the answers must cover. Update them whenever the app's practices change.
 - **Source:** [App Store Connect Help: manage app privacy](https://developer.apple.com/help/app-store-connect/manage-app-information/manage-app-privacy)
 - **Status:** Checked 2026-10-12 (help page opened and read; that no API exists is from the API index listing none).
 
