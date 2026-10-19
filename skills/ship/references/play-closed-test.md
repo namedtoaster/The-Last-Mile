@@ -141,6 +141,18 @@ apply; opting out and back in restarts that tester's count. Not stated by Google
 Console shows the count, whether the developer counts, whether an install is required.
 Keep a sheet of emails and opt-in dates, and recruit 15 to 20 (inference).
 
+**Where the 12 come from, and why the source decides the outcome.** Reciprocal testing
+communities exist for this requirement (r/AndroidClosedTesting is the busiest) and they fill
+the headcount quickly, because the trade is that you opt into someone else's test and they
+opt into yours. A Google Group is what makes that work: it turns recruiting into one link
+anybody can act on, where an email list needs you to collect every address first. Use swaps
+for the floor and not for the whole set. Section 7's application asks whether testers matched
+expected usage, and a swap tester opts in and never opens the app again, so a test made only
+of swaps can hold 12 for the full 14 days and still come back asking for more testing.
+Recruit people who actually want the app alongside them: they are the only ones who produce
+a feedback summary worth writing. Headcount and engagement are two different jobs, and only
+the first one can be traded for. (From experience, 2026.)
+
 ## 7. Apply for production
 
 **Dashboard**, **Apply for production** (Production, Pre-registration and Open testing stay
