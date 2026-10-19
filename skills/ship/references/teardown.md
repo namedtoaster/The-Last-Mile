@@ -11,9 +11,54 @@ the store listing, so the screenshots show the fixed screens.
 
 ## The one rule
 
-Same as the reference-hunt skill: **only compare against a screen someone has actually
-seen** (a Mobbin screen or flow opened this session, a screenshot from the user, a store
-listing image). Never describe another app's behaviour from memory or a blog post.
+Only compare against behaviour someone has actually seen: code read out of the app's own
+package, a screen on a device, a Mobbin screen or flow opened this session, a screenshot
+from the user. Never describe another app's behaviour from memory or a blog post.
+
+## The tools, in order
+
+1. **REA, on Android (primary).** [REA](https://github.com/morluto/rea) is an MCP that
+   pulls an installed app off an Android emulator and decompiles it (JADX for the Java
+   and Kotlin code, plus the manifest, resources and strings). It answers what screens
+   cannot: how the app stores "already seen", what it counts, which rules come from a
+   server config. One teardown per feature gives a specific reference, not a guess.
+2. **The app on the emulator.** Tap through the flow while reading its code. The code
+   proves a mechanism exists; only the screen proves when it fires.
+3. **Mobbin (backup).** For iOS only apps, apps you cannot install, and layout and copy.
+4. **The user's screenshots and store listing images.**
+
+### Setting up REA (once per machine)
+
+- An Android emulator with a **Google Play** system image (the "Google Play" variant in
+  Android Studio's device manager), signed in to a Google account, so apps install from
+  the Play Store as a person would.
+- `npx rea-agents setup`, choose the agent, approve, restart the agent. Check the MCP
+  is listed before relying on it.
+- Android analysis needs a full JDK 17 or newer and the pinned JADX engine JAR. Follow
+  REA's own `docs/android-analysis.md` ("Supply tools"): download it, verify the
+  SHA-256 it gives, and set `REA_JADX_MCP_JAR` to its path. Do not copy the version or
+  hash from here; REA pins them.
+- `adb` from Android platform tools.
+
+### One teardown
+
+1. Install the app from the Play Store on the emulator and use the feature once, so its
+   screens and settings exist.
+2. Pull it: `rea pull-adb-package <serial> <package id> --output-directory <dir>` (the
+   serial is what `adb devices` prints). It pulls the complete split APK set with a
+   digest for each file. Keep raw output in a gitignored `teardown/<app>-<date>/`
+   folder in the project. Never commit another company's code.
+3. Inspect it with REA's Android tools (`inspect_android_package`, then search classes,
+   strings and resources for the feature's words: the button labels, the setting name).
+4. **What the build is made of decides what you get.** Native Kotlin or Java apps
+   decompile to readable logic. For React Native (`libreactnative.so`, `libhermes.so`)
+   and Flutter (`libflutter.so`) apps, REA names the framework but the feature code
+   is compiled into a bundle or native library, so expect strings, resources, config
+   names and preference keys rather than readable logic. Prefer native apps when you
+   need the mechanism.
+5. Write what you found as names and shapes (preference keys, model fields, remote
+   config names), each marked **seen in code** or **inferred**. Never paste their code
+   into this app; learn the mechanism and write your own.
 
 ## 1. List the app's flows
 
@@ -24,16 +69,19 @@ that asks the user to choose something. Those are where most of these bugs live.
 
 ## 2. Pick the apps to compare against
 
-For each flow, pick 3 to 5 shipped apps that do the same job, and at least one from a
-different category (the best pattern is often elsewhere). Save the list in the
-project's research folder as `teardown-apps.md`: flow, apps, why each was picked. The
-next teardown reuses it rather than choosing again.
+Pick about a dozen apps that between them cover every flow, each app covering as many
+as possible, so the user installs a dozen apps rather than fifty. Include at least one
+from a different category (the best pattern is often elsewhere). Check each one's Play
+Store listing loads before listing it, and note what it is built with (native, React
+Native, Flutter), because that decides what REA can read. Save the list in the
+project's research folder as `teardown-apps.md`: app, package id, flows it covers, the
+screen to look at, built with. The next teardown reuses it rather than choosing again.
 
 ## 3. Watch what the reference apps do after each tap
 
-Use Mobbin flows (search the job, not the screen name), then the user's screenshots,
-then store listing images. For each step of each flow, write down what changes on
-screen **after** the action. That "after" is the whole point:
+On the emulator with REA's teardown open beside it (Mobbin when the app cannot be
+installed). For each step of each flow, write down what changes on screen **after**
+the action, and the code or setting behind it. That "after" is the whole point:
 
 - Where the action started: does the card, row or button that opened the sheet go
   away, change state ("Saved", a tick, greyed out) or move?

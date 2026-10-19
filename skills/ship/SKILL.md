@@ -17,7 +17,7 @@ Read these in this skill's folder before starting:
 - `references/board.md`: the status board's file and rows.
 - `references/payments.md`: store products and RevenueCat, in the order they must be set up.
 - `references/play-closed-test.md`: Google Play click by click, from creating the app to a running closed test and the production application. Give the user these steps, never a summary from memory.
-- `references/teardown.md`: compare every flow against shipped apps, tap by tap, and fix what this app gets wrong.
+- `references/teardown.md`: tear down shipped apps with REA on an Android emulator (Mobbin as backup), compare every flow tap by tap, and fix what this app gets wrong.
 - `references/levels.md`: what each release level includes.
 - `references/domains.md`: domains, hosts and email for the store pages.
 - `references/rulebooks.md`: the full Apple and Google rulebooks for the sweep.
