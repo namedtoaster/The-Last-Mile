@@ -3,26 +3,51 @@
 Most indie apps sell subscriptions through RevenueCat, which sits between the app and
 both stores. The order matters, because each step needs the one before it:
 
+0. **Before purchases can work:** agreements signed, tax forms done and banking
+   added in both stores (RevenueCat: required to fetch products). On Apple, an app that
+   has never been released must be released before in-app purchases work in
+   production. If the release has new products, RevenueCat suggests releasing manually
+   and waiting about 24 hours after "Cleared for Sale".
 1. **Store products first.** In App Store Connect: a subscription group, then each
    product (duration, price, introductory offer such as a free trial), then a display
-   name and description for the group and each product, or Apple marks them "Missing
-   Metadata". The review screenshot is the paywall, taken from a real build, so it
-   comes later. Play Console: the same products under Monetize, which needs the app's
-   listing to exist first.
+   name and description for the group and each product. The first auto renewable
+   subscription must be submitted with a new app version: select Add for Review on the
+   subscription's page, then submit it with the build. Metadata changes can take up to
+   1 hour to reach sandbox. From experience (2026-10-14): Apple marks products without
+   the names "Missing Metadata", and the review screenshot is the paywall, taken from a
+   real build, so it comes later. Play Console: Monetize with Play, Products,
+   Subscriptions; create the subscription, then a base plan, then any offer. Selling
+   needs a payments profile. RevenueCat says Google may not recognize the package name
+   until the store listing and the first build upload are done.
 2. **RevenueCat project.** One project per app; never reuse another app's project or
-   keys. Add an App Store app (bundle ID plus the In-App Purchase Key, which is account
-   wide, so one key serves every app on the account) and a Play Store app (package
-   name plus a Google Cloud service account, which can take up to 36 hours to start working; RevenueCat's page gives a trick that often speeds it up: edit and save any product description in Play Console, then revert it).
+   keys. Add an App Store app (bundle ID, the In-App Purchase Key and its Issuer ID;
+   without the key, transactions fail to be recorded; one key serves every app on the same App Store Connect account) and a Play Store app (package
+   name plus a Google Cloud service account). The service account needs the Pub/Sub
+   Editor and Monitoring Viewer roles in Google Cloud, and four Play Console
+   permissions: View app information and download bulk reports, View financial data,
+   orders and cancellation survey responses, Manage orders and subscriptions, and
+   Manage store presence. It can take up to 36 hours to start working; RevenueCat's
+   page gives a trick that is not guaranteed: edit and save any product description in
+   Play Console, then revert it.
 3. **Products, entitlement, offering.** Import the store products, attach them to one
-   entitlement whose identifier matches the app's code, then create an offering (a new
-   project has none: Offerings tab, + New, identifier `default`), add one package per
-   duration, and make it the project's Default Offering. Apps that read the current
-   offering, which is the usual pattern, show an empty paywall without that last step.
-4. **Keys into the app.** The public SDK keys (`appl_...`, `goog_...`) are safe in the
-   app's config; secret keys (`sk_...`) never go in the app.
+   entitlement whose identifier matches the app's code, then create an offering
+   (Offerings tab; the identifier can't be changed later), add one package per
+   duration, and make it the Default Offering (Offerings tab, the offering's Actions
+   icon, Make Default). Apps that read the current offering, the usual pattern, show
+   an empty paywall without that last step. From experience: a new project had no
+   offering, and `default` is the usual identifier.
+4. **Keys into the app.** Keys live under Project Settings, API keys. The public SDK
+   keys are safe in the app's config; secret keys never go in the app (from
+   experience, the prefixes are `appl_`, `goog_` and `sk_`). **You must replace a
+   Test Store API key before release:** release builds crash on purpose when they find
+   one. React Native: enable the In-App Purchase capability in Xcode, and set the
+   purchasing Activity's `launchMode` to `standard` or `singleTop` (React Native's
+   default `singleTask` can cancel purchases).
 5. **Test in sandbox** from a real build, then once from TestFlight or Play internal
-   testing. Purchases do not work in a simulator without a StoreKit configuration file.
-   Apple's steps are below.
+   testing. Apple's steps are below. On Google Play, billing is blocked for apps that
+   aren't signed and uploaded to Play, unless the Google Account is a license tester.
+   Make every tester a license tester: otherwise test track purchases cost real money.
+   From experience: the release on the test track also had to be approved first.
 
 ## Testing an Apple purchase in sandbox
 
@@ -51,18 +76,22 @@ From Apple's own pages (saved copies fetched 2026-10-19):
 ## Keys and settings people get stuck on
 
 - **Where the In-App Purchase Key lives:** App Store Connect, Users and Access,
-  Integrations, In-App Purchase. Apple lets you download the .p8 file once. If the
-  account already has a key in RevenueCat (another app), RevenueCat offers "Select
-  existing key": choose it. It does not affect the other app.
-- **App Store Connect API key:** the second key on the same RevenueCat page. It lets
-  RevenueCat import the store products instead of typing their ids. Reuse an existing
-  one the same way.
-- **Apple Small Business Program toggle:** only changes RevenueCat's revenue charts
-  (15% or 30% commission). What Apple pays depends on enrollment, which is per
-  developer account, so every app on an enrolled account gets the lower rate. Check
-  enrollment from Apple's confirmation email, or from proceeds in App Store Connect's
-  Payments and Financial Reports. Not enrolled: apply on the program page; the rate
-  applies from enrollment on, not to past sales.
+  Integrations, In-App Purchase, where the Issuer ID also shows (if it is missing,
+  create an App Store Connect API key and it appears). Apple lets you download the .p8
+  file once. From experience (2026-10-18): if the account already has a key in
+  RevenueCat (another app), RevenueCat offers "Select existing key", and choosing it
+  did not affect the other app.
+- **App Store Connect API key:** the second key on the same RevenueCat page.
+  Unverified, no saved page says it: it lets RevenueCat import the store products
+  instead of typing their ids.
+- **Apple Small Business Program:** for developers with up to 1 million USD in
+  proceeds across all their apps (and any Associated Developer Accounts) in the prior
+  calendar year, or new to the App Store; commission 15%. To enroll you must be the
+  Account Holder, accept the latest Paid Apps agreement and list any Associated
+  Developer Accounts. Proceeds are adjusted 15 days after the end of the fiscal month
+  in which enrollment is approved, not for past sales. From experience: RevenueCat's
+  toggle only changes its own revenue charts, and Apple's confirmation email is the
+  quickest way to check enrollment.
 
 Setup questions RevenueCat asks (category, platforms, framework) only shape its own
 dashboard and docs; pick the closest and move on.
@@ -90,6 +119,6 @@ dashboard and docs; pick the closest and move on.
 - [Apple: App Store Small Business Program](https://developer.apple.com/app-store/small-business-program/)
 - [Play Console Help: Create and manage subscriptions](https://support.google.com/googleplay/android-developer/answer/140504)
 
-**Status:** the order comes from shipping a real app on 2026-10-14. The one key for
-every app and the 36 hour wait were checked 2026-10-14 against saved copies of
-RevenueCat's pages. The links are saved weekly by the snapshot job.
+**Status:** the order comes from shipping a real app on 2026-10-14. Store and
+RevenueCat facts: Checked 2026-10-19 (saved copies fetched 2026-10-14, Small Business
+Program 2026-10-18). Anything marked "from experience" is not on a saved page.

@@ -16,6 +16,9 @@ Read these in this skill's folder before starting:
 - `references/facts.md`: numbers that change (fees, limits, deadlines).
 - `references/board.md`: the status board's file and rows.
 - `references/payments.md`: store products and RevenueCat, in the order they must be set up.
+- `references/levels.md`: what each release level includes.
+- `references/domains.md`: domains, hosts and email for the store pages.
+- `references/rulebooks.md`: the full Apple and Google rulebooks for the sweep.
 
 ## The one rule
 
@@ -105,7 +108,9 @@ Work this out from the files before asking anything, then show it in a few lines
 5. **Web pages:** the stores need public pages before submission: a privacy policy
    (both stores, and linked inside the app, so its address must be final before the
    build), a support page (Apple), and an account deletion page (Google, if the app
-   has accounts). A custom domain is not a store requirement. Free hosting such as
+   has accounts). Apple also requires that an app with account creation lets people
+   start account deletion inside the app, and Google requires a contact email on the
+   store listing. A custom domain is not a store requirement. Free hosting such as
    GitHub Pages works. Recommend a domain anyway when the app will need a contact
    email on it, invite or share links that open the app (universal links and App
    Links need a site the developer controls), or a name that should not move later.
@@ -152,8 +157,9 @@ time and show each change.
 
 - Bump the user facing version: patch for fixes, minor for new features, 1.0.0 for a
   first release.
-- Bump the build number. Both stores reject a build number they have already seen, so
-  keep one counter shared by iOS and Android and always increase it.
+- Bump the build number. Google rejects any `versionCode` it has already seen; Apple
+  rejects a repeated build number within the same version (from experience). One
+  counter shared by iOS and Android that always goes up satisfies both.
 - `references/stacks.md` lists where each stack keeps both. If a value is set in more
   than one place, confirm they agree after the bump.
 - If the project has `RELEASE_TEST_CHECKLIST.md`, move its **Pending** items into a new
@@ -168,7 +174,8 @@ the stack from `references/stacks.md`, explain it in one line, and record the an
 - iOS needs a Mac with Xcode for a local build. Without one, a cloud build service is
   the way (Expo's EAS Build, Codemagic, Xcode Cloud, GitHub Actions on macOS).
 - Android needs an app bundle (`.aab`), signed with an upload key. If the user has no
-  upload key yet, explain that losing it is serious, then help create and back it up.
+  upload key yet, explain that losing it means asking Google for an upload key reset
+  in Play Console, which takes time, then help create and back it up.
 - Check the build meets the stores' current minimums (Xcode and SDK version for Apple,
   target API level for Google) in `references/facts.md`.
 

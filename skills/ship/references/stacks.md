@@ -10,7 +10,7 @@ sections once they export a native project. Read the engine's own export docs fi
 
 ## Detect the stack
 
-Check in this order; the first match wins.
+These are heuristics from experience, not from any framework's docs. Check in this order; the first match wins, and confirm by opening the project.
 
 | Look for | Stack |
 | --- | --- |
@@ -45,21 +45,23 @@ have already seen.
 | Stack | iOS release | Android release | Upload |
 | --- | --- | --- | --- |
 | Expo | `eas build --platform ios --profile production` (cloud; `--local` builds on your Mac) | `eas build --platform android --profile production` | `eas submit --platform ios` / `android`, or `--auto-submit` on the build. Runs on macOS, Linux and Windows. Android needs a Google service account key and, for the first submission, the app created in Play Console |
-| React Native | Xcode: `Release` scheme, device set to Any iOS Device, Product, Archive | `npx react-native build-android --mode=release`; the bundle is at `android/app/build/outputs/bundle/release/app-release.aab` | Xcode Organizer for iOS; Play Console or fastlane for Android |
+| React Native | Xcode: `Release` scheme, device set to "Any iOS Device (arm64)", Product, Archive | `npx react-native build-android --mode=release`; the bundle is at `android/app/build/outputs/bundle/release/app-release.aab` | Xcode Organizer for iOS; Play Console or fastlane for Android |
 | Flutter | `flutter build ipa`; the `.ipa` lands in `build/ios/ipa` | `flutter build appbundle`; the bundle lands in `build/app/outputs/bundle/release/app.aab` | Apple's Transporter app, or `xcrun altool --upload-app --type ios -f build/ios/ipa/*.ipa --apiKey <key> --apiIssuer <issuer>`; Play Console or fastlane for Android |
 | Capacitor | build the web app, `npx cap sync`, then as native iOS | build the web app, `npx cap sync`, then as native Android | as native iOS and native Android |
 | .NET MAUI | `dotnet publish -f net8.0-ios -c Release -p:ArchiveOnBuild=true -p:RuntimeIdentifier=ios-arm64` with signing properties; needs a Mac, or a paired Mac from Windows | `dotnet publish -f net8.0-android -c Release` with keystore properties; produces AAB and APK, the signed AAB has `-signed` in its name | Transporter or Xcode for iOS; Play Console or fastlane for Android |
 | Kotlin Multiplatform | as native iOS, from the iOS app project | as native Android | as native iOS and native Android |
-| Native iOS | Xcode: Product, Archive, then Distribute App in the Organizer | | Xcode Organizer, Transporter, or fastlane |
-| Native Android | | `./gradlew :app:bundleRelease` once signing is set up in the app module's Gradle file (the module may not be named `app`) | Play Console, fastlane, or the community Gradle Play Publisher plugin |
+| Native iOS | Xcode: Product, Archive, then Distribute App in the Organizer | | Xcode Organizer, Transporter, or fastlane. Apple lists Xcode, Swift Playground, altool and Transporter as upload tools |
+| Native Android | | `./gradlew :app:bundleRelease` once signing is set up in the app module's Gradle file (the module may not be named `app`) | Play Console, fastlane, or the community Gradle Play Publisher plugin (unverified, no saved page) |
 
 Replace `net8.0` with the .NET version the project targets.
+
+Android's largest allowed `versionCode` is 2100000000.
 
 **fastlane** works with every stack once there is a native build. `deliver` (also
 called `upload_to_app_store`) uploads screenshots, previews, metadata and builds to
 App Store Connect and can submit for review. `supply` (also called
 `upload_to_play_store`) uploads metadata, screenshots and app bundles to Google Play,
-picks the track and promotes builds. Neither can fill in Apple's privacy labels.
+picks the track and promotes builds. `supply` needs one build uploaded to Google Play by hand first. `deliver` runs on a Mac. Apple's privacy labels are not set by `deliver`; fastlane's docs point to a separate `upload_app_privacy_details_to_app_store` action.
 
 ## Signing, briefly
 
@@ -92,7 +94,7 @@ The stores take native apps, so a web app needs a native shell first.
 2. **Capacitor needs** a `package.json`, a folder for the built web files (such as
    `dist` or `www`), and an `index.html` with a `<head>` tag in that folder. Then:
    `npm i @capacitor/core`, `npm i -D @capacitor/cli`, `npx cap init`,
-   `npx cap add ios`, `npx cap add android`, and after every web build, `npx cap sync`.
+   `npm i @capacitor/android @capacitor/ios`, `npx cap add android`, `npx cap add ios`, and after every web build, `npx cap sync`.
    Set `webDir` in the Capacitor config to the built web folder.
 3. **Apps that need a server** (Next.js server rendering, API routes) do not run
    inside the shell as they are. Either export a static build and call the existing
@@ -115,4 +117,5 @@ files those sites are built from) or the page itself.
 - .NET MAUI: [publish an iOS app from the command line](https://learn.microsoft.com/dotnet/maui/ios/deployment/publish-cli), [publish an Android app from the command line](https://learn.microsoft.com/dotnet/maui/android/deployment/publish-cli)
 - Android: [build from the command line](https://developer.android.com/build/building-cmdline), [manage manifest files](https://developer.android.com/build/manage-manifests), [Trusted Web Activities](https://developer.android.com/develop/ui/views/layout/webapps/trusted-web-activities)
 - fastlane: [deliver](https://docs.fastlane.tools/actions/deliver/), [supply](https://docs.fastlane.tools/actions/supply/)
-- Not checked against a page: the Kotlin Multiplatform detection hints, the native iOS Xcode steps beyond React Native's description of them, and the MAUI manifest path. Confirm before relying on them.
+- Apple: [upload builds](https://developer.apple.com/help/app-store-connect/manage-builds/upload-builds), [versioning](https://developer.android.com/studio/publish/versioning) for the Android versionCode limit. Checked 2026-10-19 (saved copies fetched 2026-10-12).
+- Not checked against a page: the whole detect-the-stack table, the Kotlin Multiplatform hints, Xcode menu and label names beyond React Native's description of them, the Gradle Play Publisher plugin, and the MAUI manifest path. Confirm before relying on them.

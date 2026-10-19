@@ -2,6 +2,11 @@
 
 ## 0.2.0 (unreleased)
 
+- Every ship reference re-checked claim by claim against the saved official pages
+  (2026-10-19). Fixed wrong or stale rules (template apps, login exceptions, account
+  deletion, screenshot sizes, DNS record rules, RevenueCat launch steps), added missed
+  ones (Google health declaration, contacts permission, Test Store key crash, first
+  subscription ships with an app version), and marked what is only experience.
 - Keeping the facts accurate is now a routine, not a one off. The weekly snapshot job
   opens a "Re-check facts" issue naming which reference files cite a page that
   changed or failed. Fact-check covers every ship reference and console steps, with a

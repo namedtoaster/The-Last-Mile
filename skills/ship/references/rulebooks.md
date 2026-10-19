@@ -17,14 +17,19 @@ its fetched date, and cite the guideline number or policy name for every finding
 ## Google Play
 
 - [Developer Program Policy](https://support.google.com/googleplay/android-developer/answer/18258653):
-  the whole policy on one page (the version effective 30 September 2026 when this was
-  written; Google replaces the page with a new address when the policy changes, so if
-  the saved copy is old or missing, find the current one from the Policy Center).
+  the whole policy on one page, "effective September 30, 2026". Observed 2026-10-19:
+  answer 17190352 and 18258653 both carry that same version (saved copies fetched
+  2026-10-13 and 2026-10-14). If the saved copy is old or missing, find the current
+  page from the Policy Center.
 - [Policy Center](https://play.google/developer-content-policy/): the index of every
   policy topic.
 - [Health Content and Services](https://support.google.com/googleplay/android-developer/answer/16679511):
   medical claims, health apps declaration, disclaimers. Read it for any app that
-  touches pregnancy, babies, fitness, food, sleep or mental health.
+  touches pregnancy, babies, fitness, food, sleep or mental health. Every developer
+  completes the Health apps declaration "on the App content page (Monitor & Improve
+  >Policy > App content)". A health app that is not a regulated medical device must
+  say in its description that it is "not a medical device and does not diagnose,
+  treat, cure, or prevent any medical condition." (Saved copy fetched 2026-10-13.)
 
 ## How to sweep with them
 

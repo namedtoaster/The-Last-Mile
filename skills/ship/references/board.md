@@ -97,7 +97,8 @@ the console section, the step's how to page. One or two links, the main one firs
 Take every URL from this skill's references (`domains.md` for registrars and hosts,
 `stacks.md` for build and upload tools, `facts.md` for store rules) or from the
 current official docs. Never write a URL from memory. Start pages for the common
-rows, checked 2026-10-13:
+rows, listed 2026-10-13. Only the Google Play account how to page has a saved copy
+(checked 2026-10-19, saved copy fetched 2026-10-12); the others are unverified:
 
 | Row | Link |
 | --- | --- |
@@ -118,7 +119,7 @@ Start from what step 0 found, one row per thing the user would ask about. Drop r
 that do not apply (no Android row for an iOS only app). Typical groups:
 
 - **Accounts:** Apple Developer Program, Google Play account, the Google closed test
-  if the account needs one, agreements, tax and banking when the app sells anything.
+  if the account needs one (personal accounts created after 13 Nov 2023), agreements, tax and banking when the app sells anything.
 - **Web pages:** privacy policy, support, account deletion, each with its `url`.
 - **App:** rejection traps (how many checked, how many found), version and build
   number, release build tested.
