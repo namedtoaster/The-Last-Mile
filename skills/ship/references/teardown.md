@@ -9,6 +9,41 @@ unchanged. Users rarely report these. They just leave.
 Run it at the **Standard** level and above, after the release build works and before
 the store listing, so the screenshots show the fixed screens.
 
+**Three layers, in this order, and all three.** A teardown that only does the first one
+leaves an app that looks the same to its founder:
+
+1. **Mechanics:** single taps and state. Does each thing resolve, answer, undo, count
+   right, everywhere it shows. Steps 4 and 5, plus the state matrix below.
+2. **Flows:** the medium layer. The order of screens, what each step asks for, where a
+   flow ends and what it hands off to, compared flow against flow with the reference
+   apps on the emulator.
+3. **Layout and visible UX:** screen against screen. Hierarchy, density, what is on the
+   first screenful, card shapes, how lists group, what empty and end states look like.
+   Capture the reference app's screen and this app's screen side by side, and change
+   the screen, not only its code paths.
+
+**What a code-reading audit misses (from experience, 2026-10-19).** Four agents audited
+every screen by reading its code and fixed about 110 issues, and the founder rebuilt and
+saw little difference. Two reasons: nobody used the app, and each agent checked a screen
+alone, so a card that went stale after acting on the same item on another screen was
+invisible to all of them. The fix is the state matrix, and walking it on a running app.
+
+### The state matrix
+
+Bugs of the kind "I did it over there and it is still here" come from one object being
+shown in several places that each read their own copy of its state. Find them all at once:
+
+1. List the app's objects (an item, a saved post, a plan entry, a reminder).
+2. For each object, list every **surface** that shows it (each card, list, badge and count)
+   and the state each one reads to decide whether to show it and how.
+3. List every **action** on that object anywhere in the app (every button, sheet and
+   swipe, on every screen) and the state each one writes.
+4. Any action whose write is not read by a surface that shows the same object is a bug:
+   that surface goes stale. The cure is that surfaces read the object's own state, not a
+   private list of what was done on that surface.
+5. Then walk the worst rows on the running app: act on the object in one place, go to
+   every other place it shows, and look.
+
 ## The one rule
 
 Only compare against behaviour someone has actually seen: code read out of the app's own
@@ -140,6 +175,9 @@ On a real device or simulator, with realistic data (an empty account, a new acco
 and a heavy account with everything saved). The see-it-work skill can capture each
 step; screen-atlas gives the full map. Record the same "after" for every action.
 Reading the code is not enough: these are state bugs that only show on screen.
+
+Do not report a fix as done from reading code alone. Each fix needs one on-screen proof,
+and every row of the state matrix that crosses screens needs a walk: act here, look there.
 
 ## 5. The granular checks
 
