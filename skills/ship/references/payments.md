@@ -22,6 +22,31 @@ both stores. The order matters, because each step needs the one before it:
    app's config; secret keys (`sk_...`) never go in the app.
 5. **Test in sandbox** from a real build, then once from TestFlight or Play internal
    testing. Purchases do not work in a simulator without a StoreKit configuration file.
+   Apple's steps are below.
+
+## Testing an Apple purchase in sandbox
+
+From Apple's own pages (saved copies fetched 2026-10-19):
+
+1. **Before anything:** the Account Holder has signed the Paid Applications Agreement,
+   and the test phone has **Developer Mode** on.
+2. **Make a tester:** App Store Connect, **Users and Access**, the **Sandbox** tab, then
+   **+** (the first time: **Create Test Accounts**). Not the People tab: **New User**
+   there adds a team member and refuses a `+` in the email. On the Sandbox form a `+`
+   subaddress is allowed if the email provider supports it. The email must never have
+   been an Apple Account. Name, email and password can't be edited afterwards.
+3. **Build from Xcode** onto the phone (a development signed build; no upload needed).
+4. **Buy in the app.** The first purchase attempt asks you to sign in: use the sandbox
+   tester. The purchase sheet then shows **[Environment: Sandbox]**; without it you are
+   in production. After that first attempt, the account shows in **Settings,
+   Developer, Sandbox Apple Account** (iOS 18 and later), with no need to sign out of
+   your own Apple Account.
+5. **Renewals are fast:** by default 1 month renews every 5 minutes, up to 12 times.
+   The rate can be changed per tester. TestFlight is different: since December 2024
+   TestFlight subscriptions renew once every 24 hours whatever their length.
+6. **Prices may look wrong** in sandbox and TestFlight (often USD). RevenueCat says to
+   check the purchase flow works, not the prices.
+
 
 ## Keys and settings people get stuck on
 
