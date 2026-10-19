@@ -57,6 +57,11 @@ dashboard and docs; pick the closest and move on.
 - [RevenueCat: Launch checklist](https://www.revenuecat.com/docs/test-and-launch/launch-checklist)
 - [App Store Connect Help: Offer auto-renewable subscriptions](https://developer.apple.com/help/app-store-connect/manage-subscriptions/offer-auto-renewable-subscriptions)
 - [App Store Connect Help: Set up introductory offers](https://developer.apple.com/help/app-store-connect/manage-subscriptions/set-up-introductory-offers-for-auto-renewable-subscriptions)
+- [App Store Connect Help: Create a Sandbox Apple Account](https://developer.apple.com/help/app-store-connect/test-in-app-purchases/create-a-sandbox-apple-account)
+- [App Store Connect Help: Manage Sandbox Apple Account settings](https://developer.apple.com/help/app-store-connect/test-in-app-purchases/manage-sandbox-apple-account-settings)
+- [App Store Connect Help: Overview of testing in sandbox](https://developer.apple.com/help/app-store-connect/test-in-app-purchases/overview-of-testing-in-sandbox)
+- [Apple Developer: Testing in-app purchases with sandbox](https://developer.apple.com/documentation/storekit/testing-in-app-purchases-with-sandbox)
+- [RevenueCat: Apple App Store sandbox testing](https://www.revenuecat.com/docs/test-and-launch/sandbox/apple-app-store)
 - [Apple: App Store Small Business Program](https://developer.apple.com/app-store/small-business-program/)
 - [Play Console Help: Create and manage subscriptions](https://support.google.com/googleplay/android-developer/answer/140504)
 
