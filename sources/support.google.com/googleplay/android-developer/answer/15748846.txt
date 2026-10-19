@@ -1,0 +1,30 @@
+Source: https://support.google.com/googleplay/android-developer/answer/15748846
+Fetched: 2026-10-19
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+# Requirements for providing sign in details for review
+To ensure your app can be properly reviewed for compliance with Developer Program policies, you must provide the necessary information for our team to log in and access all app functionality, per Play Console Requirements. This may include standard sign-in details for testing purposes, an active demo account details such as a username and password for a pre-configured account, or any other access resources such as QR codes or specific instructions for accessing restricted areas of your app.
+
+You can provide these details in Play Console. Please note the following requirements when providing sign-in details:
+
+- Your sign-in details must be accessible at all times, reusable, and valid regardless of user location.
+
+- Your sign-in details must be maintained at all times without any error. For example, if your app typically requires a 2-Step verification code or One-time password, make sure to provide reusable login credentials that can bypass these requirements. If the provided password expires, we may not be able to review your app and, therefore, the app may be rejected.
+
+- Your sign-in details must be provided in English. If your login credentials are typically in a non-English language, provide an English-language version of all necessary login credentials via Play Console.
+
+- If your sign-in details are not numeric or alphanumeric (for example, a QR code or barcode), generate a static URL and upload it to Play Console.
+
+- If your app requires users to set up their own password (for example, a PIN) to access in-app content, be sure to provide clear instructions.
+
+- If your app requires sign-in details involving other accounts (such as "sign-in with Google, Facebook", or similar), provide all account information with detailed instructions. Clear and simple instructions will help ensure a smooth review process.
+
+- If your app normally uses a location-dependent password (for example, geo-gate), provide sign-in details that are valid regardless of user location (for example, "master" login credentials).
+
+- If your app does not require sign-in details but you have functionalities or content behind a subscription paywall, please provide additional instructions or access details that will allow us to fully and freely access and review the app behind the paywall.
+
+For more information, review our e-learning course on Sign in details before submitting your app.
+
+## Was this helpful?
+How can we improve it?
+YesNo

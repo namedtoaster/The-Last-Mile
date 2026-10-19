@@ -1,0 +1,165 @@
+Source: https://support.google.com/googleplay/android-developer/answer/14738291
+Fetched: 2026-10-19
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+# Provide information for the Health apps declaration form
+
+## Background
+
+In April 2024, we announced an update to our Health Apps policy that applies to a large number of apps on Google Play. As part of this update, we added new requirements to help promote trust in the Google Play ecosystem by keeping Google Play secure for users.
+
+Under these new requirements, developers must complete the Health apps declaration form on the App contentpage (Policy > App content) in Play Console.
+
+### Which developers need to complete the Health apps declaration in Play Console?
+
+All developers that have an app published on Google Play must complete the Health apps declaration, including apps on closed testing, open testing, or production tracks. This also applies to pregranted and preloaded apps that update through Google Play.
+
+Even developers with apps that do not offer any health features must complete this form and certify that no health features are offered through the app.
+
+System services and private apps do not need to complete the Health apps declaration.
+
+### What Health features developers need to declare
+
+If your app provides health features or accesses health data to support non-health features, you must declare one or more of the following features listed in the sections below. Click on a section to expand or collapse it.
+
+Health and fitness
+
+- Activity and Fitness
+
+- Apps that monitor and record physical activities, exercise routines, and workouts. Includes tracking body vitals related to fitness (like heart rate), and measuring body composition and weight.
+
+- Nutrition and Weight Management
+
+- Tools for tracking dietary intake, planning meals, managing diets, and supporting weight loss or weight management goals. Also includes apps focused on specific dietary needs or goals.
+
+- Period Tracking
+
+- Tools that empower users to monitor and manage their menstrual health. These apps provide features such as menstrual cycle tracking, ovulation tracking and prediction, and fertility awareness.
+
+- Sleep Management
+
+- Apps dedicated to improving and tracking sleep patterns and quality. May also include features for relaxation, such as sounds or guided exercises to aid in sleep.
+
+- Stress Management, Relaxation, Mental Acuity
+
+- Apps offering guidance on stress management, mindfulness, meditation, and cognitive health. May include brain training games, relaxation techniques, and wellness coaching programs.
+
+Medical
+
+Note: Please select “Medical Device Apps” if your app is regulated
+
+- Diseases and Conditions Management
+
+- Apps focusing on managing acute or chronic physical health conditions and diseases (like diabetes, asthma) and other health areas like blood and organ donation, oral health, bone health, genetic information, hearing care, skin care, and vision care.
+
+- Clinical Decision Support
+
+- Tools designed to assist healthcare professionals in making informed clinical decisions. These apps leverage data analysis, patient information, clinical knowledge, and algorithm-driven insights. Includes drug dosage calculators, risk assessment tools and personalized healthcare management tools.
+
+- Disease Prevention and Public Health
+
+- Tools for immunization tracking, managing infectious diseases, and public health information. May include apps for contact tracing, epidemic outbreak tracking, vaccination tracking and health status monitoring.
+
+- Emergency and First Aid
+
+- Resources for emergency preparedness, first aid instructions, and disaster response information.
+
+- Healthcare Services and Management
+
+- For scheduling medical appointments, reminders, telehealth services, managing health records, billing, and navigating health insurance, assisting with care of the elderly. Suitable for apps connecting patients with healthcare providers or managing healthcare logistics.
+
+- Mental and Behavioral Health
+
+- Tools for mental health support, counseling services and addiction recovery programs
+
+- Medical Reference and Education
+
+- Educational resources for healthcare professionals and patients, including medical encyclopedias, treatment guidelines and symptom checkers.
+
+- Medication and Treatment Management
+
+- Apps for managing medication schedules, pharmacy services, and ensuring adherence to treatment plans. May include pill identifiers, medication reminders, and prescription management.
+
+- Physical Therapy and Rehabilitation
+
+- Apps supporting physical therapy exercises, rehabilitation programs, and managing musculoskeletal health. Includes tools for those with disabilities to improve accessibility and mobility.
+
+- Reproductive and Sexual Health
+
+- Tools for managing reproductive health issues, fertility treatments or sexual health disease management, and providing resources for sexual health education. May also include apps focused on men’s and women’s specific health needs.
+
+## Medical Device Apps
+
+Apps that are regulated as medical devices. These apps may be subject to additional regulatory scrutiny, such as FDA (or another relevant authority) approval, due to their potential impact on patient care and safety. It includes, but is not limited to, diagnostic tools, treatment recommendation systems, and any software interfacing with medical device hardware.
+
+If you make your app available to users in the EEA and Northern Ireland and your app is regulated by the EU Medical Devices Regulation 2017/745 (MDR) or the EU In Vitro Diagnostic Medical Devices Regulation 2017/746 (IVDR), your app is a medical device that is subject to additional disclosure obligations in order to be allowed on the Play Store. You must provide and make publicly available the following information:
+
+- The device's name or trade name.
+
+- The manufacturer's name, registered trade name or trademark, and registered place of business, along with the Single Registration Number (SRN).
+
+- A clear description of the device and its intended purpose.
+
+- Warnings or precautions for the user, with more detailed information available in instructions for use.
+
+- A link to the electronic Instructions for Use (eIFU).
+
+- The Unique Device Identification number (UDI-DI).
+
+Additional information that you may be required to provide where applicable:
+
+### Legal Compliance Information
+
+- Authorized representative name and address
+
+- Notified body number
+
+- Certificate number
+
+### Operating Requirements
+
+- Any particular operating instructions
+
+- Information on whether a hardware medical device available from the manufacturer is also required for use as part of the device or accessories
+
+- Minimum requirements for hardware, setup and connection and security
+
+You are responsible for ensuring that your medical device app complies with applicable laws and regulations, including the EU MDR/IVDR and Google policies.
+
+Health subjects research
+
+- Research studies, clinical trials, and patient communities
+
+- Apps that provides users with access to medical research studies, clinical trials, and patient communities
+
+Important: If your app doesn’t provide any health features or access health data to support non-health features, you should declare:
+
+- My app doesn’t provide any health features
+
+## Complete and submit the declaration
+
+When you're ready to start, here's how you complete and submit your Health apps declaration in Play Console:
+
+- Open Play Console and go to the App contentpage (Policy > App content).
+
+- Under "Health Apps," click Start.
+
+- Declare all the health features that your app offers to its users. After selecting the relevant choices, click Next.
+
+- If you need to provide additional information, you’ll be asked for this on a second page and must complete each of the questions within the corresponding expandable sections.
+
+- If you're ready to submit your completed declaration, click Save. If you want to go back and change something, you can click Back to amend your answers. If you're not sure about something, you can click Save as draft and return to the form later. If you click Discard changes, you'll need to start the form again.
+
+## After you complete the declaration
+
+After you complete and submit the Health apps declaration, the information that you provided will be reviewed by Google as part of the app review process.
+
+After August 31, 2024, all apps will be required to have completed an accurate Health apps declaration that discloses the health features their app supports (including apps that do not support any health features).
+
+## Health app categories and additional information
+
+Read this Help Center article for more information and guidelines about health apps.
+
+## Was this helpful?
+How can we improve it?
+YesNo

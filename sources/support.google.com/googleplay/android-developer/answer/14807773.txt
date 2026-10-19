@@ -1,0 +1,108 @@
+Source: https://support.google.com/googleplay/android-developer/answer/14807773
+Fetched: 2026-10-19
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+# Detect app issues early with pre-review checks
+As an Android developer, you can use pre-review checks to identify potential problems with planned changes before submitting your app for review. Pre-review checks run automatically in Google Play Console to identify critical issues early, helping you prevent review rejections and maintain app quality. Before reviewing detected issues, ensure that you have prepared your app updates.
+
+## Overview
+
+You can find pre-review checks on the Publishing overview page in the 'Changes not yet sent for review' section. This section appears only when you make changes to your app after its most recent review submission.
+
+Pre-review checks start running automatically whenever you make changes to your app. To view pre-review check statuses, go to the Publishing overview page. Keep the following details in mind:
+
+- Some checks require more time to finish than others, so Play Console provides an estimated completion time.
+
+- You can submit changes at any time without waiting for checks to complete. Play Console finishes running all checks before submitting your changes for review.
+
+Issues appear as soon as checks discover them. To learn about an issue, click View issues.
+
+To learn more about the review process, visit Google Play Academy.
+
+View an example screen capture of pre-review checks
+
+## Manage detected issues
+
+Play Console checks for a variety of potential issues and provides information on each issue, along with links to help you resolve them. You can fix many issues directly in Play Console. Others require technical changes to your app, which may require building and uploading a new app version or making updates on your developer website.
+
+You must fix critical issues before you can proceed with publication. You can defer other issues by clicking Proceed anyway. When you proceed with known issues, Play Console might prompt you to choose one or more reasons—for example, 'I already have plans to resolve this issue' or 'This issue is incorrect'. Play Console logs this information in the Activity log, and Google uses your response to improve check reliability. In other instances, you must confirm that you fixed the issue outside of Play Console before you can proceed.
+
+Your response does not directly affect your app review outcome. However, if an issue causes your app to become non-functional, reviewers might reject the app for failing to comply with Google Play policies on app quality, such as the Minimum Functionality policy. Other unresolved issues present during review can also result in a rejection.
+
+If you click Proceed anyway without fixing detected issues, those issues might reappear in future checks.
+
+View an example screen capture of a detected issue
+
+### Required permissions to proceed with issues
+
+To proceed with known issues, your Play Console account must have at least one of the following permissions:
+
+- Release to production, exclude devices and use Play app signing
+
+- Release apps to testing tracks
+
+- Manage testing tracks and edit tester lists
+
+- Manage store presence
+
+- Admin (all permissions)
+
+These permissions match those required for other features on the Publishing overview page, including managed publishing.
+
+## Frequently asked questions
+
+Why does Play Console run pre-review checks?
+
+Pre-review checks provide early feedback on critical issues with planned app changes to ensure your app functions properly for users. These checks also help you avoid common mistakes that can result in review rejection.
+
+What is the scope of pre-review checks?
+
+Google Play Console runs checks to ensure that apps comply with the Developer Program Policy and perform reliably on user devices. Play Console surfaces these checks upfront alongside quality checks, such as app compatibility checks across different Android versions.
+
+Are pre-review checks the same as the app review process?
+
+No. Pre-review checks run automatically before you submit your app to the formal review process.
+
+What pre-review checks does Play Console run?
+
+Play Console runs checks across multiple areas of your app. For example, checks verify that updates contain all mandatory declarations on your app's App content page (Monitor and improve > Policy and programs > App content) and detect high crash rates on specific devices or Android versions.
+
+How long do pre-review checks take?
+
+All checks finish within 15 minutes, though most complete faster. If checks are still running and have not found issues, you can click Send for review. Play Console finishes the checks and automatically submits your changes for review if no critical issues are found.
+
+How do pre-review checks work over the API?
+
+Most pre-review checks run on the Play Console website, with a subset available through the API. Checks that return results almost immediately run over the API, whereas longer-running checks run only on the website.
+
+Can I click Proceed anyway for all issues?
+
+No. You must resolve mandatory checks before publishing on Google Play. Examples include missing app content declarations and required app details. Because reviewers evaluate many of these issues during formal review, unresolved issues are likely to cause rejection.
+
+How are proceed responses used?
+
+Google uses your responses to evaluate check accuracy and improve system reliability. Your response doesn't directly affect your app review outcome. However, if an issue makes your app non-functional, reviewers might reject the app for non-compliance with app quality policies, such as the Minimum Functionality policy. Unresolved issues present during review can also lead to rejection.
+
+Can an app fail review after passing pre-review checks?
+
+Yes. Passing all pre-review checks does not guarantee passing the formal app review process, which evaluates compliance more comprehensively than automated pre-review checks.
+
+What happens if changes are sent for review while checks run?
+
+Checks continue running in the background. Play Console automatically submits your changes for review once all checks complete, provided no critical issues are detected.
+
+What if a detected issue appears inaccurate?
+
+While Play Console strives for accuracy, complex app configurations can occasionally yield false positives. In these cases, you can click Proceed anyway and select an appropriate reason to provide feedback.
+
+## Related content
+
+- Learn more about launching your app or game on Google Play Academy.
+
+- Control when app changes are published with managed publishing.
+
+- Update or unpublish an app.
+
+## Was this helpful?
+How can we improve it?
+YesNo

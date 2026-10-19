@@ -1,0 +1,252 @@
+Source: https://support.google.com/googleplay/android-developer/answer/9867159
+Fetched: 2026-10-19
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+# Manage target audience and app content settings
+
+#### Free training.
+
+Learn about the process and review the interactive checklist at Academy for App Success.
+
+To better serve users, it's important to provide accurate information about your app. In addition to filling out the content rating questionnaire, you'll also need to provide details about your app's target audience and content. Depending on the target audience selections you make, your app may be subject to additional Google Play policies:
+
+Your app is designed primarily for children under 13. |
+You must comply with Google Play’s Families Policy Requirements, including the requirement to use only Families Self-Certified Ads SDKs to serve ads. |
+
+Your app is designed for everyone, including children. |
+Any apps that have at least one target audience age group that includes children must comply with Google Play’s Families Policy Requirements, including the requirement to use only Families Self-Certified Ads SDKs to serve ads to children and users of unknown age. |
+
+Your app is not designed for children. |
+You must still meet the requirements outlined in Google Play Developer Program policies and Developer Distribution Agreement. |
+
+Learn more about the following sections by selecting these links:
+
+- Fill out the "Target audience and content" section
+
+- About target age groups
+
+- Personal information
+
+- Neutral age screen
+
+- Apps primarily designed for children
+
+## Fill out the "Target audience and content" section
+
+If you create a new app or publish an update to an existing app, you’ll be required to declare your app’s target age group. Any apps that include children in their target audience must comply with Google Play's Families Policy Requirements.
+
+Before filling out the Target audience and content section, you must have declared whether or not your app contains ads, and provided instructions for app access. You must also have added a privacy policy.
+
+- Open Play Console and go to the App content page (Policy > App content).
+
+- Under "Target audience and content," click Start. If you’ve previously filled out the Target audience and content section and want to make changes, click Manage. Fill out each section accordingly:
+
+- Target age: Select the age group(s) that your app targets. You can make multiple selections if appropriate. Selecting certain age groups, such as users only over the age of 18, may allow you to specify additional restrictions to your app availability. For details, see About target age groups.
+
+- App details: You may be asked for additional details about how your app works. It is very important that you provide accurate answers to the questions as they relate to your app. Some of the questions are related to legal requirements. If you are unsure, please consult with your legal counsel.
+
+- Ads: If your app is serving ads to children, you will be asked about Google Play's Families Self-Certified Ads SDK Program or whether your app has a neutral age screen.
+
+- Store presence: Apps that are primarily for children and apps designed for several age groups such as older audiences and children are eligible for consideration in the Teacher Approved program.
+
+- Review a summary of your selections and click Save.​
+
+- Google will review your app to make sure the target audience that you disclose is accurate and your app is compliant with all Google Play Developer policies. Please note that certain developer accounts and/or categories of apps may be subjected to extended reviews, which may result in review times of up to 7 days or longer in exceptional cases. We recommend that you adjust your planning to take this into account.
+
+### About target age groups
+
+You should only select more than one age group for your app’s target audience if you have designed your app for and ensured that your app is appropriate for users within each of the selected age group(s).
+
+For example, an app designed for toddlers should only have the age group "Ages 5 and under" selected.
+
+You should only select age groups that include both adults and children, if you truly have designed your app for all ages, not just because you want your app to be available to users of all ages.
+
+Please note that if your app targets any users who are under the age of 21, you must consider if they would be considered children under their local laws. Apps that target children must comply with Google Play Families Policy requirements.
+
+Here are some tips and additional examples to help you select the most appropriate age group for your app.
+
+## Overall best practices
+
+- Quality: Production quality and functionality make a difference, even to young children. Ensure that your app is usable for the intended age, including navigation, visuals, and text or voice-over.
+
+- Purpose and value: Think carefully about your messaging and how you're engaging children—whether through narrative, characters, leveling and reward systems, or other means.
+
+- Developmental appropriateness: Consider the presence of sensitive or mature content, concepts, or themes, and whether they are appropriate for the intended age. This goes for ads and in-app purchases, too.
+
+## Age 5 and under
+
+Note that this age group is considered to include children in most locales.
+
+Apps may be suitable for this age if they:
+
+- Support non-readers, or early readers, with limited reliance on text
+
+- Have a simple design with large iconography and clear, consistent interactive elements
+
+- Include delightful sensory elements, colors, and sounds for young children
+
+- Center on pretend play, simple problem solving, and/or creative free play
+
+- Include beloved characters and/or story-based themes of belonging and togetherness, family, friendship
+
+- Are positive in tone or silly, and have a happy ending or clear takeaway
+
+- Include mild expressions of affection, like characters hugging or holding hands
+
+- Include a clear role for parents to play, or clear information for parents
+
+Apps may not be suitable for this age if they:
+
+- Depict scary, dark settings or characters in danger (think scary animals, monsters, music, backgrounds)
+
+- Require quick reactions, fine motor skills, typing, or computing
+
+- Require short-term memory tasks or abstract thinking
+
+- Include game penalties or punishments, as many children in this age group are still learning how to regulate their emotions and respond to failure
+
+- Depict violence, fighting, weapons, crude humor or language, name-calling, or even minimally sexual or suggestive themes, including depictions of alcohol
+
+- Have a wide range of distracting features that might inhibit children from playing
+
+## Ages 6-8
+
+Note that this age group is considered to include children in most locales.
+
+Apps may be suitable for this age if they:
+
+- Support early readers or writers, with limited reliance on text
+
+- Contain positive feedback for those more sensitive to failure and eager to improve
+
+- Contain funny and/or popular characters or stories, even slapstick humor and hyperbole
+
+- Contain positive role-modeling
+
+- Utilize badges, collecting characters, unlocking levels, or other age-appropriate incentives
+
+- Relate to early education, like language development, early literacy, and basic math
+
+Apps may not be suitable for this age if they:
+
+- Include themes, colors, characters, or music meant for very young children
+
+- Feature stereotypical or unrealistic messages about bodies, including characters or activities that emphasize appearance (for example, makeover games)
+
+- Include demeaning, objectifying, or sexualized representations of characters or relationships
+
+- Depict realistic aggression, violence, or injury (including current events)
+
+- Include a search feature
+
+## Ages 9-12
+
+Note that this age group is considered to include children in most locales.
+
+Apps may be suitable for this age if they:
+
+- Require logic or spatial problem solving, but not necessarily deductive reasoning and abstract thinking (which may still be too hard)
+
+- Support academic subjects commonly taught at this age
+
+- Include opportunities for creative self-expression and personalization (but with limited, supervised sharing features)
+
+Apps may not be suitable for this age if they:
+
+- Contain less sophisticated humor, themes, characters, or tasks
+
+- Rely on gameplay that's too monotonous or simple
+
+- Include demeaning, objectifying, or sexualized representations of characters or relationships
+
+- Include swearing or profanity
+
+- Feature stereotypical or unrealistic messages about bodies, including characters or activities that emphasize appearance (for example, makeover games)
+
+- Depict inappropriate behavior such as realistic aggression, violence, or injury (including current events)
+
+- Allow opportunity for direct interaction between users
+
+## Ages 13-15
+
+Note that this age group may be considered to include children in some locales.
+
+Apps may be suitable for this age if they:
+
+- Contain more sophisticated storylines, characters, humor, challenges, or game mechanics
+
+- Support academic subjects commonly taught at this age
+
+- Contain age-appropriate social features and plug-ins
+
+- Contain age-appropriate information about identity, self-perception, and adolescence
+
+Apps may not be suitable for this age if they:
+
+- Glamorize violent, stereotypical, demeaning, objectifying, or highly sexualized representations of characters or relationships
+
+- Encourage risky behavior such as challenges that could result in physical injury
+
+## Ages 16-17
+
+Note that this age group may be considered to include children in some locales.
+
+Apps may be suitable for this age if they:
+
+- Support academic subjects commonly taught at this age
+
+- Contain popular characters and subjects for teens
+
+- Include elements of more complex problem-solving
+
+- Contain age-appropriate social features and plug-ins
+
+- Help express emotions in a positive way
+
+Apps may not be suitable for this age if they:
+
+- Depict extreme violence, or sexual or domestic violence
+
+- Have addictive elements
+
+- Have high spend thresholds
+
+Ages 18 and over
+
+Content generally appropriate for adult audiences that are legally and policy compliant.
+
+If your app is only suitable or designed for an adult audience, you can enable the Restrict Minor Access feature to restrict minors from your app. Minors are determined based on the age provided in their Google Account or when our systems indicate that a user may be under 18. When this feature is enabled, users determined to be under 18 will not be able to search for, download or purchase the app. Additionally, users who have already installed the app will continue to be able to use it, but will not be able to renew existing subscriptions or make new purchases. Certain apps are required to enable the Restrict Minor Access feature. Please refer to the Age-Restricted Content and Functionality policy for more details.
+
+To enable the Restrict Minor Access feature, select 18 and over as your app's only target age group. Then on the same screen, verify and check the box to restrict users that Google has determined to be minors from your app.
+
+### Personal information
+
+Any collection of personal and sensitive information from children, such as name or e-mail address, must be disclosed and should be collected with parental consent if required. We advise you to take the time to thoroughly consider, research, and understand how any SDKs or APIs used in your app may collect user data. Reading through any documentation for these SDKs or APIs is a good starting point. Keep in mind that any data exfiltrated from your app is your responsibility. Please also consult Play’s user data policy and applicable legal regulations in your target country for more guidance.
+
+### Neutral age screen
+
+A neutral age screen is a mechanism to verify a user's age in a way that doesn't encourage them to falsify their age and gain access to areas of your app that aren't designed for children, for example, an age gate. An example of this would be a system that asks users to freely enter their month, day, and year of birth. An incorrect setup of a neutral age screen would be presetting the birth date to the required age (for example, 13 years old) or indicating that a certain age is required to access areas of the app. Additional guidance on age screens may be found on the FTC website.
+
+If your app's target age groups include both children and older audiences, any ads that may be shown to children must comply with Google Play's Families Self-Certified Ads SDK Program. A neutral age screen must be implemented so that any ads not suitable for children are only shown to older audiences.
+
+For apps whose target audience is solely children, all ads must come from a self-certified ads SDK.
+
+### Apps primarily designed for children
+
+If your app is not primarily designed for children under 13 but your listing contains marketing elements that suggest otherwise (such as youthful animation or young characters in the graphic assets), Google Play may reject your app. If that happens, you'll have the following options:
+
+- Remove any marketing elements in your store listing that may appeal to children, including those that have been identified by our review team.
+
+- Change the target age group(s) of your app to only include children under 13 (which will require complying with Google Play Families Policy).
+
+#### Related links
+
+- About Google Play Families Policies
+
+- Understanding Google Play's Families policies
+
+- Build Teacher Approved apps for Google Play
+
+## Was this helpful?
+How can we improve it?
+YesNo

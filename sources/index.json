@@ -167,12 +167,6 @@
     "changed": "2026-10-18",
     "fetched": "2026-10-19"
   },
-  "https://docs.expo.dev/workflow/prebuild/": {
-    "file": "docs.expo.dev/workflow/prebuild.txt",
-    "changed": "2026-10-12",
-    "fetched": "2026-10-19",
-    "finalUrl": "https://docs.expo.dev/workflow/continuous-native-generation/"
-  },
   "https://docs.fastlane.tools/actions/deliver/": {
     "file": "docs.fastlane.tools/actions/deliver.txt",
     "changed": "2026-10-12",
@@ -212,7 +206,7 @@
   },
   "https://mobbin.com/pricing": {
     "file": "mobbin.com/pricing.txt",
-    "changed": "2026-10-12",
+    "changed": "2026-10-19",
     "fetched": "2026-10-19"
   },
   "https://reactnative.dev/docs/publishing-to-app-store": {
@@ -248,12 +242,6 @@
     "changed": "2026-10-12",
     "fetched": "2026-10-19",
     "finalUrl": "https://support.google.com/googleplay/android-developer/answer/13393723?hl=en"
-  },
-  "https://support.google.com/googleplay/android-developer/answer/14115180": {
-    "file": "support.google.com/googleplay/android-developer/answer/14115180.txt",
-    "changed": "2026-10-12",
-    "fetched": "2026-10-19",
-    "finalUrl": "https://support.google.com/googleplay/android-developer/answer/16935362?hl=en&visit_id=639279675945155065-734651566&rd=1"
   },
   "https://support.google.com/googleplay/android-developer/answer/14151465": {
     "file": "support.google.com/googleplay/android-developer/answer/14151465.txt",
@@ -461,5 +449,171 @@
     "file": "www.revenuecat.com/docs/test-and-launch/sandbox/apple-app-store.txt",
     "changed": "2026-10-19",
     "fetched": "2026-10-19"
+  },
+  "https://developer.android.com/google/play/billing/getting-ready": {
+    "file": "developer.android.com/google/play/billing/getting-ready.txt",
+    "changed": "2026-10-19",
+    "fetched": "2026-10-19"
+  },
+  "https://developer.apple.com/help/app-store-connect/reference/app-information/app-information": {
+    "file": "developer.apple.com/help/app-store-connect/reference/app-information/app-information.txt",
+    "changed": "2026-10-19",
+    "fetched": "2026-10-19"
+  },
+  "https://developers.google.com/android-publisher/tracks": {
+    "file": "developers.google.com/android-publisher/tracks.txt",
+    "changed": "2026-10-19",
+    "fetched": "2026-10-19"
+  },
+  "https://docs.expo.dev/eas/json/": {
+    "file": "docs.expo.dev/eas/json.txt",
+    "changed": "2026-10-19",
+    "fetched": "2026-10-19"
+  },
+  "https://docs.expo.dev/submit/android-manual/": {
+    "file": "docs.expo.dev/submit/android-manual.txt",
+    "changed": "2026-10-19",
+    "fetched": "2026-10-19"
+  },
+  "https://docs.expo.dev/versions/latest/": {
+    "file": "docs.expo.dev/versions/latest.txt",
+    "changed": "2026-10-19",
+    "fetched": "2026-10-19"
+  },
+  "https://docs.expo.dev/workflow/continuous-native-generation/": {
+    "file": "docs.expo.dev/workflow/continuous-native-generation.txt",
+    "changed": "2026-10-19",
+    "fetched": "2026-10-19"
+  },
+  "https://github.com/expo/fyi/blob/main/creating-google-service-account.md": {
+    "file": "github.com/expo/fyi/blob/main/creating-google-service-account-md.txt",
+    "changed": "2026-10-19",
+    "fetched": "2026-10-19"
+  },
+  "https://support.google.com/googleplay/android-developer/answer/13849271": {
+    "file": "support.google.com/googleplay/android-developer/answer/13849271.txt",
+    "changed": "2026-10-19",
+    "fetched": "2026-10-19",
+    "finalUrl": "https://support.google.com/googleplay/android-developer/answer/13849271?hl=en"
+  },
+  "https://support.google.com/googleplay/android-developer/answer/14316361": {
+    "file": "support.google.com/googleplay/android-developer/answer/14316361.txt",
+    "changed": "2026-10-19",
+    "fetched": "2026-10-19",
+    "finalUrl": "https://support.google.com/googleplay/android-developer/answer/14316361?hl=en"
+  },
+  "https://support.google.com/googleplay/android-developer/answer/14738291": {
+    "file": "support.google.com/googleplay/android-developer/answer/14738291.txt",
+    "changed": "2026-10-19",
+    "fetched": "2026-10-19",
+    "finalUrl": "https://support.google.com/googleplay/android-developer/answer/14738291?hl=en"
+  },
+  "https://support.google.com/googleplay/android-developer/answer/14807773": {
+    "file": "support.google.com/googleplay/android-developer/answer/14807773.txt",
+    "changed": "2026-10-19",
+    "fetched": "2026-10-19",
+    "finalUrl": "https://support.google.com/googleplay/android-developer/answer/14807773?hl=en"
+  },
+  "https://support.google.com/googleplay/android-developer/answer/15748846": {
+    "file": "support.google.com/googleplay/android-developer/answer/15748846.txt",
+    "changed": "2026-10-19",
+    "fetched": "2026-10-19",
+    "finalUrl": "https://support.google.com/googleplay/android-developer/answer/15748846?hl=en"
+  },
+  "https://support.google.com/googleplay/android-developer/answer/16935362": {
+    "file": "support.google.com/googleplay/android-developer/answer/16935362.txt",
+    "changed": "2026-10-19",
+    "fetched": "2026-10-19",
+    "finalUrl": "https://support.google.com/googleplay/android-developer/answer/16935362?hl=en"
+  },
+  "https://support.google.com/googleplay/android-developer/answer/6048248": {
+    "file": "support.google.com/googleplay/android-developer/answer/6048248.txt",
+    "changed": "2026-10-19",
+    "fetched": "2026-10-19",
+    "finalUrl": "https://support.google.com/googleplay/android-developer/answer/6048248?hl=en"
+  },
+  "https://support.google.com/googleplay/android-developer/answer/6062777": {
+    "file": "support.google.com/googleplay/android-developer/answer/6062777.txt",
+    "changed": "2026-10-19",
+    "fetched": "2026-10-19",
+    "finalUrl": "https://support.google.com/googleplay/android-developer/answer/6062777?hl=en"
+  },
+  "https://support.google.com/googleplay/android-developer/answer/9514050": {
+    "file": "support.google.com/googleplay/android-developer/answer/9514050.txt",
+    "changed": "2026-10-19",
+    "fetched": "2026-10-19",
+    "finalUrl": "https://support.google.com/googleplay/android-developer/answer/9514050?hl=en"
+  },
+  "https://support.google.com/googleplay/android-developer/answer/9842756": {
+    "file": "support.google.com/googleplay/android-developer/answer/9842756.txt",
+    "changed": "2026-10-19",
+    "fetched": "2026-10-19",
+    "finalUrl": "https://support.google.com/googleplay/android-developer/answer/9842756?hl=en"
+  },
+  "https://support.google.com/googleplay/android-developer/answer/9845334": {
+    "file": "support.google.com/googleplay/android-developer/answer/9845334.txt",
+    "changed": "2026-10-19",
+    "fetched": "2026-10-19",
+    "finalUrl": "https://support.google.com/googleplay/android-developer/answer/9845334?hl=en"
+  },
+  "https://support.google.com/googleplay/android-developer/answer/9859348": {
+    "file": "support.google.com/googleplay/android-developer/answer/9859348.txt",
+    "changed": "2026-10-19",
+    "fetched": "2026-10-19",
+    "finalUrl": "https://support.google.com/googleplay/android-developer/answer/9859348?hl=en"
+  },
+  "https://support.google.com/googleplay/android-developer/answer/9859454": {
+    "file": "support.google.com/googleplay/android-developer/answer/9859454.txt",
+    "changed": "2026-10-19",
+    "fetched": "2026-10-19",
+    "finalUrl": "https://support.google.com/googleplay/android-developer/answer/9859454?hl=en"
+  },
+  "https://support.google.com/googleplay/android-developer/answer/9859455": {
+    "file": "support.google.com/googleplay/android-developer/answer/9859455.txt",
+    "changed": "2026-10-19",
+    "fetched": "2026-10-19",
+    "finalUrl": "https://support.google.com/googleplay/android-developer/answer/9859455?hl=en"
+  },
+  "https://support.google.com/googleplay/android-developer/answer/9859654": {
+    "file": "support.google.com/googleplay/android-developer/answer/9859654.txt",
+    "changed": "2026-10-19",
+    "fetched": "2026-10-19",
+    "finalUrl": "https://support.google.com/googleplay/android-developer/answer/9859654?hl=en"
+  },
+  "https://support.google.com/googleplay/android-developer/answer/9859655": {
+    "file": "support.google.com/googleplay/android-developer/answer/9859655.txt",
+    "changed": "2026-10-19",
+    "fetched": "2026-10-19",
+    "finalUrl": "https://support.google.com/googleplay/android-developer/answer/9859655?hl=en"
+  },
+  "https://support.google.com/googleplay/android-developer/answer/9859673": {
+    "file": "support.google.com/googleplay/android-developer/answer/9859673.txt",
+    "changed": "2026-10-19",
+    "fetched": "2026-10-19",
+    "finalUrl": "https://support.google.com/googleplay/android-developer/answer/9859673?hl=en"
+  },
+  "https://support.google.com/googleplay/android-developer/answer/9859751": {
+    "file": "support.google.com/googleplay/android-developer/answer/9859751.txt",
+    "changed": "2026-10-19",
+    "fetched": "2026-10-19",
+    "finalUrl": "https://support.google.com/googleplay/android-developer/answer/9859751?hl=en"
+  },
+  "https://support.google.com/googleplay/android-developer/answer/9867159": {
+    "file": "support.google.com/googleplay/android-developer/answer/9867159.txt",
+    "changed": "2026-10-19",
+    "fetched": "2026-10-19",
+    "finalUrl": "https://support.google.com/googleplay/android-developer/answer/9867159?hl=en"
+  },
+  "https://support.google.com/googleplay/android-developer/answer/9874837": {
+    "file": "support.google.com/googleplay/android-developer/answer/9874837.txt",
+    "changed": "2026-10-19",
+    "fetched": "2026-10-19",
+    "finalUrl": "https://support.google.com/googleplay/android-developer/answer/7550024?visit_id=639280123425183657-2614166979&hl=en&rd=1"
+  },
+  "https://support.google.com/googleplay/answer/7003180": {
+    "file": "support.google.com/googleplay/answer/7003180.txt",
+    "changed": "2026-10-19",
+    "fetched": "2026-10-19",
+    "finalUrl": "https://support.google.com/googleplay/answer/7003180?hl=en"
   }
 }

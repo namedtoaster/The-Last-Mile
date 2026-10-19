@@ -1,0 +1,96 @@
+Source: https://support.google.com/googleplay/answer/7003180
+Fetched: 2026-10-19
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+# Try new Android apps before their official release
+To get user feedback, some developers make new apps or features available before their official release. You can try these apps or features when you join early access or beta programs.
+
+## Early access & beta apps
+
+- Early access apps are apps that haven’t been released yet.
+
+- Beta apps are newer and more experimental versions of apps that are already released.
+
+Early access and beta apps may be less stable than most apps. For example, the app might crash or some features might not work properly.
+
+Some apps limit how many users can join early access and beta programs. If it’s full, space may open later if current testers leave or if the developer lets more users join.
+
+### Get early access to unreleased apps
+
+- Open the Play Store .
+
+- Go to the “For you” tab.
+
+- Under “Apps in development,” tap the app you want to try.
+
+- Tap Install.
+
+- Follow the on-screen instructions.
+
+Tip: If you install an unreleased app, you may be automatically enrolled in the beta program when that app launches.
+
+### Get early access to unreleased games
+
+- Open the Play Store .
+
+- Go to the “New” tab.
+
+- Under “Be the first to play,” tap the game you want to try.
+
+- Tap Install.
+
+- Follow the on-screen instructions.
+
+### Get beta versions of apps
+
+Important: To get the beta version of an app, the app must already be installed on your device.
+
+- Open the Play Store .
+
+- At the top right, tap the Profile icon.
+
+- Tap Manage apps & devices Installed.
+
+- Tap an app to open its detail page.
+
+- Under “Join the beta,” tap Join Join.
+
+Tips:
+
+- If you can’t find “Join the beta,” that means the developer doesn’t offer public betas for the app at this time.
+
+- If you don’t want to use the beta version of an app, you can leave the app’s beta program and install the app’s public version. When you leave and uninstall a beta app, you may lose your progress and any customizations you made to the app.
+
+## Provide feedback to the developer
+
+- Open the Play Store .
+
+- At the top right, tap the Profile icon.
+
+- Tap Manage apps & devices Beta.
+
+- Find the app you want to provide feedback for.
+
+- To open the app's detail page, tap the app.
+
+- Under “Private feedback to developer,” tap Write feedback.
+
+- To rate the app, tap the stars.
+
+- To describe your experience to the developer, use the box.
+
+- To submit feedback, it requires you to rate and write feedback.
+
+- Tap Post.
+
+Tip: When you review early access and beta apps, only the developer can view your feedback.
+
+## Data shared with the developer
+
+Certain data on your use of the app (such as device information, app usage information, and user-triggered events) will be collected and shared with the developer to help improve their app.
+
+## Related resources
+
+- Understand app privacy and security practices with Google Play's Data safety section
+
+- Leave an app’s beta program

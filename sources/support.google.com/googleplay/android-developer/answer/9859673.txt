@@ -1,0 +1,174 @@
+Source: https://support.google.com/googleplay/android-developer/answer/9859673
+Fetched: 2026-10-19
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+# Choose a category and tags for your app or game
+You can choose a category and add tags to your app or game in Play Console. Categories and tags help users to search for and discover the most relevant apps in Google Play. Users can view apps by using a browser and the Google Play app.
+
+## Deciding what tags to add
+
+You should choose tags that are most obviously relevant to your app. It should be very clear to a user who is unfamiliar with the app and why the tag is relevant based on the store listing or initial in-app experience.
+
+For example, a multiplayer racing game with vintage cars might have the tags "Racing," and "Car racing," because they reflect what the game involves. This game should not have tags like "Stunt driving" (the fact that you could do stunts does not make it a stunt driving game) or tags for related game genres that might attract similar players (such as, "Motorcycle racing" or "Truck racing").
+
+We recommend that you only change your app’s tags if you make significant changes to the content or functionality of your app. In which case you should re-evaluate your tags to ensure that the five most relevant tags are selected.
+
+You can also use accessibility tags to signal your app’s compatibility with the various assistive technologies users leverage to engage with their Google devices. Some of the accessibility tags you can use include:
+
+- Screen reader-friendly
+
+- Visual assistance
+
+- Hearing assistance
+
+- Learning disability
+
+- Motor assistance
+
+- Accessible communication
+
+## Choose a category and add tags
+
+Your app or game can have a maximum of five tags. If your app has more than five relevant tags, we recommend you choose those that are most strongly associated with your app. Below are steps on how to choose a category and add tags to your app:
+
+- Open Play Console.
+
+- Select an app.
+
+- On the left menu, select Grow users > Store presence > Store settings.
+
+- In the "App category" section, select an application type and category.
+
+- In the same section, select Manage tags to start choosing and applying tags.
+
+- Select tags under "Suggested tags" to add them. If you think other tags will better reflect your app or game, you can use Search tags, the category filter, or scroll through the list under "Other tags" to find and add them.
+
+- Save your changes.
+
+Notes:
+
+- It may take up to 24 hours for changes to reflect on your app's page on Google Play.
+
+- Free-to-install applications categorized as games will appear on both Google Play and Google Play Games on PC by default.
+
+## Example categories
+
+To see a list of categories for apps and games, select an option below.
+
+Apps
+
+Category |
+Examples |
+
+Art and Design |
+Sketchbooks, painter tools, art and design tools, coloring books |
+
+Auto and Vehicles |
+Auto shopping, auto insurance, auto price comparison, road safety, auto reviews and news |
+
+Beauty |
+Makeup tutorials, makeover tools, hair styling, beauty shopping, makeup simulators |
+
+Books and Reference |
+Book readers, reference books, textbooks, dictionaries, thesaurus, wikis |
+
+Business |
+Document editor/reader, package tracking, remote desktop, email management, job search |
+
+Comics |
+Comic players, comic titles |
+
+Communications |
+Messaging, chat/IM, dialers, address books, browsers, call management |
+
+Dating |
+Matchmaking, courtship, relationship building, meeting new people, finding love |
+
+Education |
+Exam preparations, study-aids, vocabulary, educational games, language learning |
+
+Entertainment |
+Streaming video, movies, TV, interactive entertainment |
+
+Events |
+Concert tickets, sporting event tickets, ticket resales, movie tickets |
+
+Finance |
+Banking, payment, ATM finders, financial news, insurance, taxes, portfolio/trading, tip calculators |
+
+Food and Drink |
+Recipes, restaurants, food guides, wine tasting and discovery, beverage recipes |
+
+Health and Fitness |
+Personal fitness, workout tracking, diet and nutritional tips, health and safety |
+
+House and Home |
+House and apartment search, home improvement, interior decoration, mortgages, real estate |
+
+Libraries and Demo |
+Software libraries, technical demos |
+
+Lifestyle |
+Style guides, wedding and party planning, how-to guides |
+
+Maps and Navigation |
+Navigation tools, GPS, mapping, transit tools, public transportation |
+
+Medical |
+Drug and clinical references, calculators, handbooks for healthcare providers, medical journals and news |
+
+Music and Audio |
+Music services, radios, music players |
+
+News and Magazines |
+
+Newspapers, news aggregators, magazines
+
+Important: You must let us know if your app is a News app by declaring the News apps declaration. Learn more about requirements for news and news-related apps.
+
+|
+
+Parenting |
+Pregnancy, infant care and monitoring, childcare |
+
+Personalization |
+Wallpapers, live wallpapers, home screen, lock screen, ringtones |
+
+Photography |
+Cameras, photo editing tools, photo management, and sharing |
+
+Productivity |
+Notepad, to-do list, keyboard, printing, calendar, backup, calculator, conversion |
+
+Shopping |
+Online shopping, auctions, coupons, price comparison, grocery lists, product reviews |
+
+Social |
+Social networking, check-in |
+
+Sports |
+Sports news and commentary, score tracking, fantasy team management, game coverage |
+
+Tools |
+Tools for Android devices |
+
+Travel and Local |
+Trip booking tools, ride-sharing, taxis, city guides, local business information, trip management tools, tour booking |
+
+Video Players and Editors |
+Video players, video editors, media storage |
+
+Weather |
+Weather reports |
+
+Games
+
+Action, adventure, arcade, board, card, casino, casual, educational, music, puzzle, racing, role playing, simulation, sports, strategy, trivia, word.
+
+## Related content
+
+- Learn more about how you can Create a Google Play listing in Play Academy.
+
+## Was this helpful?
+How can we improve it?
+YesNo

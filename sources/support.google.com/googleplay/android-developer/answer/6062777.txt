@@ -1,0 +1,42 @@
+Source: https://support.google.com/googleplay/android-developer/answer/6062777
+Fetched: 2026-10-19
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+# Test in-app billing with application licensing
+With application licensing, you can set up a list of Google accounts (Gmail or Google Groups) to test your in-app billing and subscription integration. Your own publishing account is always considered a licensed tester.
+
+## Set up application licensing
+
+To set up application licensing, start by adding your testers in Play Console.
+
+- Open Play Console.
+
+- Click Settings > License testing.
+
+- Choose your license testers by using either email lists or Google Groups.
+
+- To use email lists: Select Email lists. Choose your license testers from the email lists shown, or click Create list to make a new one. Each email list can contain up to 2,000 email addresses.
+
+- To use Google Groups: Select Google Groups. Enter Google Group email addresses (for example, yourgroup@googlegroups.com). All members of the specified Google Groups will be license testers. Unlike email lists, Google Groups do not have a user limit.
+
+Tip: Email lists and Google Groups for license testing work in a similar way to managing testers for closed tests. For more information, see Set up an open, closed, or internal test.
+
+- Click Save changes.
+
+Once you're ready, make sure that:
+
+- Your app has been published to the open, closed, internal test, or production track. We recommend publishing your app to the internal test track. Make sure that your testers are also eligible to receive your release by following the instructions for managing testers by email address or using Google Groups.
+
+- You've set up a test environment.
+
+## Test in-app billing and subscriptions
+
+You're able to purchase your own app, one-time product, or subscription as a test purchase. Once you've set up application licensing, authorized users can also purchase one-time products and subscriptions without charging their accounts.
+
+Before they can be tested, your one-time products and subscriptions need to be published.
+
+More information about testing your Google Play Billing Library integration can be found on the Android Developers site.
+
+## Was this helpful?
+How can we improve it?
+YesNo

@@ -1,0 +1,394 @@
+Source: https://support.google.com/googleplay/android-developer/answer/9845334
+Fetched: 2026-10-19
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+# Set up an open, closed, or internal test
+Using Play Console, developers can test apps with specific user groups or open tests to Google Play users to fix technical or user experience issues before making an app available on Google Play. See the Play Console testing requirements article to learn more.
+
+## Prerequisites
+
+Before configuring your testing tracks, ensure you understand the following platform requirements:
+
+- Account requirements: Users need a Google Account or a Google Workspace account to join a test.
+
+- Monetization changes: Changes to your app's pricing affect all versions across all tracks.
+
+- Country availability changes: Changes to distributed countries and regions apply across all tracks. For internal test exceptions, see the section on setting up an internal test, later in this article.
+
+- Release requirements: You must test your app before releasing it to production. After publishing an open, closed, or internal test for the first time, the test link can take several hours to become available to testers. Additional changes can also take several hours to become available.
+
+- Organization access: To add testers associated with an organization that uses managed Google Play, go to the Managed Google Play tab on your app's Advanced settings page (Test and release > Advanced settings) in Play Console and select the Turn on checkbox. Enabling this feature makes the app private, which means it is no longer searchable on the public Play Store. If your app is private, you must also add the organization associated with your test to your targeted list.
+
+- Reviews: Feedback from your test users won't affect your app's public rating.
+
+- Paid apps: Testers must purchase paid apps when participating in open or closed tests. For internal tests, testers can install paid apps for free.
+
+## Differences between internal, closed, and open testing
+
+You can create releases across three testing tracks before you release your app to production. Each phase of testing helps you gather feedback to make improvements throughout app development.
+
+### Internal testing
+
+Create an internal testing release to quickly distribute your app to up to 100 testers for initial quality assurance checks. We recommend running an internal test before releasing your app to closed or open tracks. If needed, you can run internal tests concurrently with closed and open tests for different app versions. You can start an internal test before completing app setup.
+
+Tip: You can also use internal testing to test apps that are not fully configured. For more information, see Internal test: Manage up to 100 testers, later in this article.
+
+### Closed testing
+
+Create a closed testing release to test pre-release versions of your app with a wider set of testers to gather targeted feedback. After testing with a smaller group of colleagues or trusted users, you can expand your test to an open release. On your closed testing page, a closed testing track is available as your initial closed test. If needed, you can create and name additional closed tracks. For previously published apps, only users in your test group will receive updates for closed versions.
+
+### Open testing
+
+Create an open testing release to run a test with a large group and make your test version visible on Google Play. Anyone can join an open testing program and submit private feedback. Before choosing this option, ensure your app and store listing are ready for visibility on Google Play.
+
+Collapse All Expand All
+
+## Testing recommendations
+
+How do I start?
+
+We recommend starting with an internal test, then expanding to a small group of closed testers. Developers with personal accounts created after November 13, 2023, must meet specific testing requirements before they can make their app available on Google Play or use pre-registration. To learn more, read this Help Center article on app testing requirements.
+
+Why should I run an internal test?
+
+When you create an internal test, you can immediately release your app to internal testers and receive feedback early in development. An internal test is:
+
+- Fast: You can distribute apps through the internal test track much faster than through open or closed tracks. When you publish a new Android App Bundle to the internal test track, it becomes available to testers within minutes. First-time app uploads are available immediately to internal testers, displaying temporary name and store listing information for up to 48 hours.
+
+- Flexible: You can adjust internal tests to support different testing stages, such as quality assurance checks and post-launch debugging.
+
+- Safe: Test apps on the internal test track are distributed to users securely through the Play Store.
+
+Can I run multiple tests per app at the same time?
+
+- You can run multiple closed tests and one open test at the same time.
+
+- A user who opts into your app's internal test is no longer eligible to receive an open or closed test. To access an open or closed test, the user must first opt out of the internal test and then opt in to the open or closed test.
+
+## Step 1: Set up test details
+
+### Choose a testing method
+
+Internal test: Manage up to 100 testers
+
+You can create a list of internal testers by email address. An internal test can have up to 100 testers per app.
+
+When setting up an internal test, keep the following guidelines in mind:
+
+- Country distribution: You can add users from any location to your internal test. If an internal tester is located in a country where your app's production, open, or closed testing version isn't available, the user still receives access to the internal test.
+
+- Payment: For paid apps, testers can install your internal test version for free. Testers need to pay for in-app purchases unless you add them to a license testers list.
+
+- Device exclusion rules: Device exclusion rules don't apply to internal testers.
+
+- Policy and security reviews: Internal tests might not be subject to standard Play policy or security reviews. Apps that are active on internal testing tracks are exempt from inclusion in Google Play's Data safety section.
+
+#### Create an email list of your testers
+
+If you have already created an email list, skip to the instructions for adding testers.
+
+- Sign in to Play Console, select an app, and go to the Internal testing page (Test and release > Testing > Internal testing).
+
+- Select the Testers tab.
+
+- Under 'Testers', click Create email list.
+
+- Enter a list name. You can use the same list for future tests on any of your apps.
+
+- Add email addresses separated by commas or click Upload CSV file. If you use a .CSV file, put each email address on its own line without any commas. Note the following rules:
+
+- Uploading a CSV file overwrites any email addresses you previously added.
+
+- Play Console does not accept CSV files that are in UTF-8 with BOM format.
+
+- Click Save changes, then click Create.
+
+#### Add testers
+
+To add testers to an internal test, follow these steps:
+
+- Sign in to Play Console, select your app, and go to the Internal testing page (Test and release > Testing > Internal testing).
+
+- Select the Testers tab.
+
+- In the 'Testers' table, select the user lists you want to test your release.
+
+- Provide a feedback URL or email address to collect feedback from testers. Your channel appears on your tester opt-in page.
+
+- Copy the shareable link to share the release with testers.
+
+- Click Save changes.
+
+#### Test apps that are not fully configured
+
+You can create an internal testing release if your app is not fully configured. Once you have a valid app bundle, you can quickly distribute it to a limited number of testers. If you want to test an app that is not fully configured, note the following details:
+
+- Before your app receives its first review, users see a temporary name for the app on Google Play. You can find your app's temporary name in the app summary on your app's Dashboard.
+
+- Once you upload an artifact, the package name for that app is fixed and cannot be changed.
+
+- Purchases made in apps published to the internal test track or in draft stage are subject to spend limits.
+
+Closed test: Manage testers by email address or Google Groups
+
+With a closed test, you can create lists of testers by email address. You can create up to 200 lists, and each list can contain up to 2,000 users. You can create up to 50 lists per track.
+
+#### Create an email list of your testers
+
+If you already created your testers list, skip to the instructions for adding testers.
+
+- Sign in to Play Console, select an app, and go to the Closed testing page (Test and release > Testing > Closed testing).
+
+- Click Manage track.
+
+- Select the Testers tab.
+
+- Under 'Testers', click Create email list.
+
+- Enter a list name. You can use the same list for future tests on any of your apps.
+
+- Add email addresses separated by commas or click Upload CSV file. Note the following rules:
+
+- Uploading a CSV file overwrites any email addresses you previously added.
+
+- Play Console does not accept CSV files that are in UTF-8 with BOM format.
+
+- Click Save changes, then click Create.
+
+#### Add testers
+
+To add testers to a closed test, follow these steps:
+
+- Sign in to Play Console, select an app, and go to the Closed testing page (Test and release > Testing > Closed testing).
+
+- Click Manage track.
+
+- Select the Testers tab.
+
+- In the 'Testers' section, select your preferred tester access method:
+
+- Email: Email is selected automatically. Select the user lists you want to test your release.
+
+- Google Groups: Select Google Groups and enter the Google Group email addresses using the format yourgroupname@googlegroups.com. Only members of the specified Google Groups can join your test. For details on managing Google Groups, refer to the Google Workspace Administrator Help Center.
+
+- Provide a feedback URL or email address to collect feedback from testers. Your feedback channel appears on your tester opt-in page.
+
+- Copy the shareable link to share the release with testers.
+
+- Click Save changes.
+
+Closed test: Manage testers by organization
+
+With a closed test, you can choose which organization can access your track. Admins of these organizations can assign users to test your release.
+
+We recommend adding testers either through Play Console or from the Android app settings page in the Google Admin console. If a user is selected to test from both Play Console and Google Admin console, they receive the highest version code among all available app versions.
+
+To add an organization to a closed test, follow these steps:
+
+- Sign in to Play Console, select your app, and go to the Closed testing page (Test and release > Testing > Closed testing).
+
+- Click Manage track.
+
+- Select the Testers tab.
+
+- In the 'Manage organizations' section, click Add organization.
+
+- Enter the ID and name of the organization that can access your track.
+
+Tip: An organization ID is automatically created when setting up Android management and accessing Managed Google Play. See Access to Managed Google Play for information on setting up Android management with access to Managed Google Play. If your organization already manages Android devices see Distribute private apps for instructions on finding your organization ID.
+
+- Click Add, and then click Save changes.
+
+Open test: Surface your test app on Google Play
+
+If you set up an open test, users can find your test app on Google Play. Ensure your app is ready for public visibility before choosing this option.
+
+- Early access apps (new apps not published to production): Users can find your open test through search on Google Play to install and test your app.
+
+- Apps with an active production version: Users can opt in to your open test directly from your store listing page.
+
+You can also share a URL link on a website or email. Any user with the link can access the open test.
+
+#### Start an open test
+
+To start an open test, follow these steps:
+
+- Sign in to Play Console, select your app, and go to the Open testing page (Test and release > Testing > Open testing).
+
+- Select the Testers tab.
+
+- Expand the 'Manage testers' section. If the 'Manage testers' section is empty, ensure you uploaded an app bundle.
+
+- Choose how many testers can use your app:
+
+- Unlimited: Selected by default.
+
+- Limited number: Specify a limit (must be at least 1,000).
+
+- Provide a feedback URL or email address to collect feedback from testers. Your feedback channel appears to users on your tester opt-in page.
+
+- Copy the shareable link to share the release with testers.
+
+- Click Save changes.
+
+Create additional closed test tracks for your development teams
+
+In some cases, you may need additional closed test tracks. For example, you might have different development teams that need to address bugs across different features. If each team creates their own testing track, teams can work on different features at the same time.
+
+With additional test tracks, you can create a list of testers by email address or manage testers by Google Groups. There are no size limits to these groups.
+
+#### Create an additional test track
+
+- Sign in to Play Console, select your app, and go to the Closed testing page (Test and release > Testing > Closed testing).
+
+- Near the top right of the page, click Create track.
+
+- Enter a track name. The track title identifies the track in Play Console and Google Play Developer API.
+
+- Click Create track.
+
+- Select the Testers tab.
+
+- In the 'Testers' section, select Email or Google Groups and assign your user lists:
+
+- Email: Selected by default. Select the user lists you want to test your release.
+
+- Google Groups: Select Google Groups and enter the Google Group email addresses using the format yourgroupname@googlegroups.com. Only members of the specified Google Groups can join your test. For details on managing Google Groups, refer to the Google Workspace Administrator Help Center.
+
+- Provide a feedback URL or email address to collect feedback from testers. Your feedback channel appears on your tester opt-in page.
+
+- Copy the shareable link to share the release with testers.
+
+- Click Save changes.
+
+#### Additional track constraints
+
+When you create additional closed tracks, the following features are not supported:
+
+- Enterprise targeting used to publish private apps
+
+- Device compatibility for app bundles only published through additional test tracks
+
+- Country targeting
+
+- Track details through the Play Console mobile app (additional tracks display as open testing tracks in the app)
+
+Manage testers for Google Play Games Services
+
+If you use Google Play Games Services, tester groups are automatically shared between your app and Google Play Games Services.
+
+Testers can try out changes you saved to your game projects, such as achievements and leaderboards, before publishing to general users. You can manage testers individually using their email address or reuse track testers.
+
+On your app's Play Games Services testers page (Grow users > Play Games Services > Setup and management > Testers), you can use the testers switch to automatically include any users who opted into testing for your app.
+
+To manually add individual testers for Google Play Games Services, follow these steps:
+
+- Sign in to Play Console, select your app, and go to the Play Games Services testers page (Grow users > Play Games Services > Setup and management > Testers).
+
+- Enter valid Google Account email addresses signed into Google Play Games Services.
+
+- Click Add.
+
+Once users opt in to your test group, they can sign in using Google Play Games Services, earn draft or published achievements, and post to draft or published leaderboards.
+
+## Step 2: Create a release
+
+Once you set up your test details, you can prepare and roll out a release.
+
+For details on managing country availability across your closed and open testing tracks, refer to Distribute app releases to specific countries.
+
+## Step 3: Share your app with testers
+
+If you run an open or closed test, testers can find your test app on Google Play using their device. For closed tests, your app remains available to testers on your list or group.
+
+If you run an internal or closed test prior to open testing or production rollout, testers cannot find your app by searching Google Play. You must share the app's Play Store URL with testers so they can download it.
+
+If testers cannot find your app on Google Play, you can share an opt-in link. Keep the following notes in mind when using an opt-in link:
+
+- The opt-in link displays only when an app status is 'Published'. Apps in 'Draft' or 'Pending publication' status do not display an opt-in link.
+
+- After clicking the opt-in link, testers receive an explanation of tester responsibilities and a link to opt in. Each tester needs to opt in using the link.
+
+- For closed tests using a Google Group, users must join the group before opting into your test.
+
+## Step 4: Collect feedback
+
+Once your testers install your app, their app automatically updates to the test version within a few minutes.
+
+Testers cannot leave public reviews on Google Play for test versions. Include a direct feedback channel (such as email, a website, or a message forum) to collect feedback.
+
+If you run an open or closed test, testers can also provide private feedback through Google Play.
+
+## Step 5: End a test
+
+To remove users from your app's test and end a testing track, follow these steps:
+
+- Sign in to Play Console, select your app, and go to the testing page for the test you want to end:
+
+- Open testing (Test and release > Testing > Open testing)
+
+- Closed testing (Test and release > Testing > Closed testing)
+
+- Internal testing (Test and release > Testing > Internal testing)
+
+- Locate the test you want to end and click Manage track.
+
+Note: Depending on what kind of test you are ending and how many tests you are running, you may not need to perform this step.
+
+- Near the top right of the page, click Pause track.
+
+After ending a test, testers do not receive updates, but the app will remain installed on their device.
+
+## Version codes and testing track statuses
+
+Version code requirements
+
+Devices automatically receive the app version that meets both criteria:
+
+- Contains the highest version code compatible with the device.
+
+- Is published to a track the user is eligible to receive.
+
+All users are eligible to receive the Production track. If an app bundle with a higher version code is published to the Production track than to a test track where a user opted in, the user receives the production release.
+
+To be eligible for a test track, a user must meet both conditions:
+
+- Be included in the managed track configuration.
+
+- Actively opt into the corresponding test program.
+
+Users eligible to receive multiple tracks receive the highest version code published across those tracks. For example, users in open testing are eligible for both the Production and Open testing tracks. Users in closed testing are eligible for both Production and Closed testing tracks. Users in both open testing and closed testing are eligible for Production, Open testing, and Closed testing tracks.
+
+Users who opt into internal testing aren't eligible for open and closed testing, even if included as testers on those tracks. These users receive only the version code published on the Internal testing track.
+
+For technical details, see Version your app.
+
+Testing track statuses
+
+When rolling out a release, Play Console displays validation messages when users on a given track receive app updates from another track—known as the track's fallback status.
+
+#### Fallback terms and statuses
+
+- Shadowed: One app bundle shadows another app bundle when it serves part or all of the same device configuration with a higher version code.
+
+- Promoted: All active app bundles are contained within active app bundles on the fallback track (for example, all active open testing bundles are also active in production).
+
+- Superseded: All active app bundles on a track are completely shadowed by active app bundles with higher version codes on its fallback track. None of the app bundles on the track serve users, as all users receive an app bundle from the fallback track.
+
+- Partially shadowed: At least one active app bundle on a track is shadowed by an app bundle with a higher version code on its fallback track. Some open testing users receive an app bundle from the open testing track, while others receive an app bundle from production. This usually indicates an error in version code assignment.
+
+## Related content
+
+- Release app updates with staged rollouts
+
+- Get the most from testing
+
+- Use pre-launch reports to identify issues
+
+- Android App Bundles overview
+
+- Play Academy: Test your app or game
+
+## Was this helpful?
+How can we improve it?
+YesNo

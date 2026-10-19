@@ -1,0 +1,572 @@
+Source: https://support.google.com/googleplay/android-developer/answer/9859655
+Fetched: 2026-10-19
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+# Content rating requirements for apps, games, and the ads served on both
+You can communicate familiar and locally relevant content ratings to your users and help improve app engagement by targeting the right audience for your content and for the ads that appear in it. To create a good experience for your users, make sure your app’s content ratings are locally relevant and familiar to the target audience.
+
+This article covers several critical aspects of content ratings:
+
+- How apps receive content ratings
+
+- How content ratings are used
+
+- Understanding your target audience selection
+
+- How to manage target audience and app content settings
+
+- How to make sure ads are suitable for your app’s content rating
+
+- How to complete a rating questionnaire
+
+- Understanding your content ratings results
+
+- How to appeal your content rating
+
+- Exploring rating authorities and descriptions
+
+- Additional resources
+
+## How apps receive content ratings
+
+Your app’s content ratings are assigned by separate rating authorities and determined by your questionnaire responses. Because they are independent third parties, each rating authority uses its own methodology to assign ratings. (See Rating authorities and descriptions.)
+
+To receive a rating for each of your apps and games, fill out a rating questionnaire in Google Play Console. Provide accurate, complete information about the nature of your app’s content. Your questionnaire responses determine the ratings assigned to your app. After you submit your information, you’ll receive a content rating from multiple rating authorities no matter where you’re located. Google Play will display that rating on your app.
+
+You need to complete the content rating questionnaire for both your new and existing apps, including:
+
+- New apps submitted to Google Play Console
+
+- Existing apps that are active on Google Play but lack a rating
+
+- All app updates where there has been a change to your content or features that would affect the responses to the questionnaire
+
+To benefit your users, include the assigned rating when advertising your app in each respective region, following these display guidelines.
+
+## How content ratings are used
+
+App ratings are meant to do more than reflect the intended audience. They’re meant to help consumers, especially parents, identify whether the app is appropriate for what the consumers are looking for, along with other purposes, like:
+
+- Blocking or filtering your content in certain territories or to specific users where legally required.
+
+- In the European Economic Area (EEA), Australia, Brazil, Singapore, Switzerland and the United Kingdom only, for users determined to be minors:
+
+- Blocking the acquisition and purchase of mature content (such as 18+ rated apps or games)
+
+- Blocking or filtering mature content from Google Play search and browse pages, except through deep linking
+
+- Evaluating your app’s eligibility for special developer programs
+
+All rating icons are protected trademarks of the respective rating authority, and their misuse may result in legal action. Find specifics about rating icon usage on each rating authority’s website.
+
+## Understanding your target audience selection
+
+To better serve users, it’s important to provide accurate information about your app. In addition to filling out the content rating questionnaire, you’ll also need to provide details about your app’s target audience and content. Depending on the target audience selections you make, your app may be subject to additional Google Play policies. For example:
+
+Your app is designed primarily for children under 13
+
+|
+You must comply with Google Play Families policy requirements, including the requirement to use only Families Self-Certified Ads SDKs to serve ads. |
+
+Your app is designed for everyone, including children |
+Any apps that have at least one target audience age group that includes children must comply with Google Play Families policy requirements, including the requirement to use only Families Self-Certified Ads SDKs to serve ads to children and users of unknown age. |
+
+Your app is not designed for children |
+You must still meet the requirements outlined in Google Play Developer Program policies and Developer Distribution Agreement. |
+
+Note: For more insight on this topic, see Managing target audience and app content settings.
+
+## How to manage target audience and app content settings
+
+If you create a new app or publish an update to an existing app, you’ll be required to declare your app’s target age group. Any apps that include children in their target audience must comply with Google Play's Families policy requirements. Before filling out the "Target audience and content" section, you must have declared whether or not your app contains ads and provided instructions for app access. You must also add a privacy policy.
+
+For detailed instructions on how to declare your app’s target age group, read Manage target audience and app content settings.
+
+## How to make sure ads are suitable for your app’s content rating
+
+Ads and their associated offers (like an ad promoting the download of another app) must be appropriate for your app’s content rating. Even if all of your app-specific content complies with our policies and matches your app’s content rating, you also need to check the ads and offers shown in your app to make sure they’re appropriate for that rating. For examples of ads that don’t match an app’s content rating, review the Inappropriate Ads policy.
+
+Setting your ad filters appropriately helps make sure ad services and ad content are appropriate for your app’s content rating.
+
+- Check with your ad service provider to make sure the advertising campaigns you selected will only show content that matches your app’s content rating.
+
+- If you use AdMob, review the AdMob Help Center article for steps about how to use blocking controls and set the right ad content rating.
+
+## How to complete a rating questionnaire
+
+Make sure to provide accurate responses to the content rating questionnaire. If you have questions about the rating assigned to your app, contact the rating authority directly using the link provided in your certificate email. Misrepresentation of your app’s content may result in its removal or suspension.
+
+Follow these steps to take the rating questionnaire. It’s critical to provide complete and accurate responses to every question.
+
+- Open Google Play Console and go to the App content page (Policy > App content).
+
+- Click Start.
+
+- Review the information about the questionnaire and enter your email address.
+
+- Your email address will be used for correspondence with International Age Rating Coalition (IARC).
+
+- Select a category and click Next.
+
+- Complete the questionnaire.
+
+- To change any of your responses after you’ve completed a section, click Edit.
+
+- If you’ve started taking the questionnaire and want to finish later, click Save draft. Each app can have one draft questionnaire at a time.
+
+- Your responses will generate calculated ratings shown on the Summary page. Review the ratings and click Submit. If you don’t think the ratings accurately reflect your content, you can retake the questionnaire. Click Start new questionnaire on the Content rating page.
+
+After you’ve submitted the calculated ratings, you can review them along with your questionnaires in the "Target audience and content" section of the App content page.
+
+## Understanding your content ratings results
+
+Your app can earn different ratings in different territories because rating standards can have differences by territory, each rating authority uses its own logic when rating apps.
+
+Rating authorities participating in IARC may change your app's rating after a review. If a rating authority overrides your app rating and you want to update your responses, you’ll need to complete the questionnaire again.
+
+Note: The calculated rating shown on the Summary page may not be the rating shown to users on Google Play. App updates and submissions can be rejected for misrepresenting an app's content. Your questionnaire responses may be used to generate ratings for specific territories as required by local law.
+
+## How to appeal your content rating
+
+If you object to the rating assigned to your app by a participating IARC rating authority, you have the right to appeal directly using the link provided in your certificate email. If you have other questions for IARC, not related to appeals, you can contact them on their website.
+
+## Exploring rating authorities and descriptions
+
+Rating authorities in different territories have their own content rating system.
+
+### Rating authorities
+
+ESRB - Americas
+
+Rating |
+Description |
+
+|
+EVERYONE
+Content is generally suitable for all ages. May contain minimal cartoon, fantasy or mild violence and/or infrequent use of mild language.
+
+|
+
+|
+EVERYONE 10+
+Content is generally suitable for ages 10 and up. May contain more cartoon, fantasy or mild violence, mild language and/or minimal suggestive themes.
+
+|
+
+|
+TEEN
+Content is generally suitable for ages 13 and up. May contain violence, suggestive themes, crude humor, minimal blood, simulated gambling and/or infrequent use of strong language.
+
+|
+
+|
+MATURE
+Content is generally suitable for ages 17 and up. May contain intense violence, blood and gore, sexual content and/or strong language.
+
+|
+
+|
+ADULTS ONLY
+Content suitable only for adults ages 18 and up. May include prolonged scenes of intense violence, graphic sexual content and/or gambling with real currency.
+
+|
+
+Learn more on the ESRB website.
+
+## Locations
+
+Antigua and Barbuda, Argentina, Bahamas, Barbados, Belize, Bolivia, Canada, Chile, Colombia, Costa Rica, Cuba, Dominica, Dominican Republic, Ecuador, El Salvador, Greenland, Grenada, Guatemala, Guyana, Haiti, Honduras, Jamaica, Mexico, Nicaragua, Panama, Paraguay, Peru, Saint Kitts and Nevis, Saint Lucia, Saint Vincent and the Grenadines, Suriname, Trinidad and Tobago, United States of America, Uruguay, and Venezuela
+
+PEGI - Europe and the Middle East
+
+Ratings in Europe and the Middle East are maintained by Pan European Game Information (PEGI).
+
+### Countries
+
+Albania, Andorra, Austria, Belgium, Bosnia and Herzegovina, Bulgaria, Croatia, Cyprus, Czech Republic, Denmark, Estonia, Finland, France, Greece, Hungary, Iceland, Ireland, Israel, Italy, Kosovo, Latvia, Liechtenstein, Lithuania, Luxembourg, Macedonia, Malta, Moldova, Monaco, Montenegro, Netherlands, Norway, Poland, Portugal, Romania, San Marino, Serbia, Slovak Republic, Slovenia, Spain, Sweden, Switzerland, Turkey, United Arab Emirates, United Kingdom, and Vatican City.
+
+### Ratings
+
+Rating |
+Description |
+
+|
+PEGI 3
+The content of apps with this rating is considered suitable for all age groups. Some violence in a comical context (typically cartoonlike - Bugs Bunny or Tom & Jerry - forms of violence) is acceptable. A child should not be able to associate the character on the screen with real life characters, they should be distinctly fantasy. The app should not contain any sounds or pictures that are likely to scare young children. No bad language should be heard.
+
+|
+
+|
+PEGI 7
+Any app that would normally be rated at 3 but contains some scenes or sounds that can possibly be frightening for children may be considered suitable in this category. There can only be very mild violence in a PEGI 7 app, like implied violence or non-detailed, non-realistic violence.
+
+|
+
+|
+PEGI 12
+Games or apps that show violence of a slightly more graphic nature towards fantasy characters, or non-graphic violence towards human-looking characters or animals would fall in this age category, as well as nudity of a slightly more graphic nature and simulated gambling. Any bad language in this category must be mild and fall short of sexual expletives.
+
+|
+
+|
+PEGI 16
+Once the depiction of violence or sexual activity reaches a stage that looks the same as would be expected in real life, this rating is applied. Stronger inappropriate language, encouraging the use of tobacco or drugs and depicting criminal activities can be content of apps that are rated 16.
+
+|
+
+|
+PEGI 18
+The adult classification is applied when the level of violence reaches a stage where it becomes a depiction of gross violence and/or includes elements of specific types of violence (motiveless killing, violence towards defenceless characters or sexual violence). It may also include graphic sexual content, discrimination or the glamorisation of illegal drugs use.
+
+|
+
+|
+PARENTAL GUIDANCE RECOMMENDED
+Apps do not always have predefined content that can be classified beforehand. Certain apps function as portals (e.g. to stream content), offering a broad, variable range of content from which consumers can choose. For these apps, we use the parental guidance icon, alerting parents that the app may provide access to content that is not appropriate for their child, although other, age-appropriate content may also be available, depending on the selection of the user.
+
+|
+
+Learn more on the PEGI website
+
+Unterhaltungssoftware Selbstkontrolle (USK) - Germany
+
+Ratings in Germany are maintained by Unterhaltungssoftware Selbstkontrolle (USK).
+
+Rating |
+Description |
+
+|
+All ages
+Apps without age restriction feature contents without youth protection relevance. They can be directly aimed at children and young persons but also at an adult audience. For instance, utility programs, product catalogues or tool apps fall into this category as well as social networks in which all user-generated content is being thoroughly reviewed, filtered or moderated.
+
+|
+
+|
+USK: Ages 6 and above
+Apps in this category can contain elements that may not be appropriate for pre-school children. They may contain occasional scary moments, a low accumulation of mild cursing or subtle erotic innuendo. If violent imageries are present they remain abstract and are not decisive for the overall product. Games in this age category can still be categorized as family-friendly but involve more exciting and competitive aspects.
+
+|
+
+|
+USK: Ages 12 and above
+Apps in this category can have an impairing effect on younger children through the inclusion of scary elements, shock effects, some explicit language, sexual contents or occasional violent imageries. Games in this category can feature much more of a competitive edge and hectic gameplay. Please keep in mind that in social networks or user-generated content might generally contribute to the youth protection relevance.
+
+|
+
+|
+USK: Ages 16 and above
+Some realistically designed displays of violence, an accumulation of shock and horror elements, consistently explicit language or apps with an erotic or sexual focus are summarized in this category. Games frequently feature armed combat, a framework story and military missions. The genres in this categorization also include action adventures, military strategy games and first person shooter.
+
+|
+
+|
+USK: Ages 18 and above
+Among other aspects such as the unquestioned display of drug use for example, realistic and explicit violence is the most common reason for the 18+ classification of these apps. Games in this age category virtually always involve violent game concepts that are prominent in the majority of game objectives.
+
+|
+
+Learn more on the USK website
+
+Australian Classification Board - Australia
+
+Note: Australian Classification Board ratings are only issued for games.
+
+Ratings in Australia are maintained by the Australian Classification Board (ACB).
+
+For Games in the Play Store in Australia, the following ratings will be used. For other apps, we'll assign ratings described in the "Other countries" category.
+
+Rating |
+Description |
+
+|
+General
+The content is very mild in impact.
+
+The G classification is suitable for everyone. G products may contain classifiable elements such as language and themes that are very mild in impact. However, some G-classified computer games may contain content that is not of interest to children.
+
+|
+
+|
+Parental Guidance
+The content is mild in impact.
+
+The impact of PG (Parental Guidance) classified computer games should be no higher than mild, but they may contain content that children find confusing or upsetting and may require the guidance of parents and guardians. They may, for example, contain classifiable elements such as language and themes that are mild in impact. It is not recommended for viewing or playing by persons under 15 without guidance from parents or guardians.
+
+|
+
+|
+Mature
+The content is moderate in impact.
+
+Computer games classified M (Mature) contain content of a moderate impact and are recommended for teenagers aged 15 years and over. Children under 15 may legally access this material because it is an advisory category. However, M classified computer games may include classifiable elements such as violence and nudity of moderate impact that are not recommended for children under 15 years. Parents and guardians may need to find out more about the computer game’s specific content, before deciding whether the material is suitable for their child.
+
+|
+
+|
+Restricted
+The content is strong in impact.
+
+MA 15+ classified material contains strong content and is legally restricted to persons 15 years and over. It may contain classifiable elements such as sex scenes and drug use that are strong in impact.
+
+A person may be asked to show proof of their age before hiring or purchasing an MA 15+ computer game. Children under the age of 15 may not legally watch, buy or hire MA 15+ classified material unless they are in the company of a parent or adult guardian.
+
+The guardian must be an adult exercising parental control over the person under 15 years of age. The guardian needs to be 18 years or older.
+
+|
+
+|
+Restricted
+The content is high in impact.
+
+R 18+ material is legally restricted to adults. Such material may contain classifiable elements such as sex scenes and drug use that are high in impact. Some material classified R18+ may be offensive to sections of the adult community. A person may be asked for proof of their age before purchasing, hiring or viewing R18+ computer games.
+
+|
+
+Learn more on the ACB website
+
+Classificação Indicativa (ClassInd) - Brazil
+
+Ratings in Brazil are maintained by ClassInd.
+
+Rating |
+Description |
+
+|
+All ages
+The content is not harmful to children of any age. It may contain a little very low impact content, such as cartoon violence.
+
+|
+
+|
+Rated 10+
+Some low impact content, especially on younger children. It may contain mildly offensive swearing, weapons, bloodless fights, scary scenes, tobacco/alcohol references, and medicinal use of illegal drugs.
+
+|
+
+|
+Rated 12+
+Low impact content. It may contain swearing, sexual dialogs or references, wounds, bleeding, and tobacco/alcohol consumption.
+
+|
+
+|
+Rated 14+
+Medium impact content. It may contain death, erotic settings, nudity, and inferences of illegal drug consumption.
+
+|
+
+|
+Rated 16+
+Medium impact content. It may contain frequent violence, gore, mutilation, torture, sexual relations, and the consumption of illegal drugs.
+
+|
+
+|
+Rated 18+
+High impact content. It may contain sadism, cruelty, encouragement or glamorization of drugs/violence, and explicit sexual relations.
+
+|
+
+Learn more on the ClassInd website
+
+GRAC - South Korea
+
+Note: GRAC ratings are only issued for games. Apps use a separate content rating system.
+
+Rating |
+Description |
+
+|
+For all
+Titles rated ALL have content that may be suitable for all ages.
+
+|
+
+|
+Rated 12+
+Titles rated 12+ have content that may be suitable for ages 12 and older.
+
+|
+
+|
+Rated 15+
+Titles rated 15+ have content that may be suitable for ages 15 and older.
+
+|
+
+|
+Rated 19+
+Titles rated 19+ have content that may be suitable for ages 19 and older.
+
+|
+
+Learn more on the GRAC website
+
+In countries and territories that aren’t represented by a participating rating authority, a separate rating will suggest the age appropriateness of an app or game.
+
+IARC Generic
+
+Ratings in other areas are maintained by the International Age Rating Coalition (IARC).
+
+Rating |
+Description |
+
+|
+
+Rated for 3+
+
+Suitable for all age groups. Some violence in a comical or fantasy context is acceptable. Bad language is not permitted.
+
+|
+
+|
+
+Rated for 7+
+
+May contain some scenes or sounds that are frightening for children. Mild violence (implied or non-realistic) is permitted.
+
+|
+
+|
+
+Rated for 12+
+
+Violence involving fantasy characters and/or non-graphic violence involving human-looking characters or animals is permitted. Non-graphic nudity, mild language and simulated gambling are also permitted, but sexual expletives are not.
+
+|
+
+|
+
+Rated for 16+
+
+Realistic violence, sexual activity, strong language, use of tobacco and drugs, and the depiction of criminal activities are permitted.
+
+|
+
+|
+
+Rated for 18+
+
+Graphic violence, including depictions lacking motive and/or directed towards defenseless characters, and sexual violence are permitted. May also include graphic sexual content, discriminatory acts and/or the glamorization of illegal drug use.
+
+|
+
+Learn more on the IARC site.
+
+Google Play Rating - Applies in South Korea (for apps only)
+
+The content rating system for apps (not including games) in South Korea is based on Google Play Rating system.
+
+Rating |
+Description |
+
+|
+
+Rated 3+
+
+Generally suitable for all audiences. Note that apps with this rating may not be specifically designed for children.
+
+|
+
+|
+
+Rated 7+
+
+May not be suitable for children under age 7. Note that apps with this rating may not be specifically designed for children.
+
+|
+
+|
+
+Rated 12+
+
+May not be suitable for children under age 12.
+
+|
+
+|
+
+Rated 16+
+
+May not be suitable for children under age 16.
+
+|
+
+|
+
+Rated 19+
+
+Recommended for mature audiences only.
+
+|
+
+Google Play Rating - Applies in Russia
+
+Rating |
+Description |
+
+|
+
+Rated 3+
+
+Generally suitable for all audiences. Note that apps with this rating may not be specifically designed for children.
+
+|
+
+|
+
+Rated 7+
+
+May not be suitable for children under age 7. Note that apps with this rating may not be specifically designed for children.
+
+|
+
+|
+
+Rated 12+
+
+May not be suitable for children under age 12.
+
+|
+
+|
+
+Rated 16+
+
+May not be suitable for children under age 16.
+
+|
+
+|
+
+Rated 18+
+
+Recommended for mature audiences only.
+
+|
+
+### Other
+
+Refused classification
+
+On a limited basis, rating authorities can refuse classification for an app distributed in their territory. This means that the distribution of the app or game is not allowed in the rating authority's territory.
+
+If an app or game is refused classification in a territory:
+
+- IARC will notify the app's developer of the decision by email.
+
+- In place of a rating from a rating authority, Refused classification will be displayed in Play Console instead.
+
+- Google Play will remove apps and games with the "Refused classification" designation in the applicable territory only.
+
+If one of your apps or games receives this designation and you want to file an appeal, you can appeal using the URL provided in your email notification from IARC.
+
+## Additional resources
+
+### Related content
+
+- Learn more about Google Play Policies in Play Academy.
+
+## Was this helpful?
+How can we improve it?
+YesNo

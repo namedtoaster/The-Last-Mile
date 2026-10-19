@@ -1,0 +1,213 @@
+Source: https://support.google.com/googleplay/android-developer/answer/9842756
+Fetched: 2026-10-19
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+# Use Play App Signing
+With Play App Signing, Google manages and protects your app's signing key on the same secure infrastructure that Google uses to store its own keys. These keys are protected by Google’s Key Management Service (KMS). If you want to learn more about this industry-leading infrastructure, read the Google Cloud Security Whitepaper.
+
+Why use Play App Signing? Beyond safeguarding your keys against permanent loss or compromise, enrolling in Play App Signing unlocks enhancements for your Android App Bundles (.aab). By letting Google sign the optimized distribution APKs generated from your app bundles, you gain access to valuable services like automatic protection and automatic strings translation using Gemini models. Games gain access to additional automatic services like Play Games Sidekick, Play-as-you-download, and free trials for paid titles.
+
+To configure Play App Signing, you must have admin permission.
+
+## Core concepts
+
+When you use Play App Signing, you deal with two distinct keys. Understanding the difference—and their technical formats—is critical to avoiding authentication issues with third-party APIs.
+
+Key type |
+Who holds it? |
+Technical details & purpose |
+
+Upload key
+
+|
+
+You (Keep this secure!)
+
+|
+
+- Format: Stored in a Java keystore (.jks or .keystore).
+
+- Requirement: Must be an RSA key of 2048 bits or more.
+
+- Purpose: You use this key to sign your app bundle before uploading it to the Play Console. Google uses it to verify your identity. If compromised or lost, Google can reset this key for you.
+
+|
+
+App signing key |
+
+Google Play
+
+|
+
+- Format: Associated with a public certificate (.der or .pem).
+
+- Requirement: Google-generated keys are RSA 4096-bit. Custom keys must be RSA 2048-bit or higher.
+
+- Purpose: Google uses this key to sign the final APKs delivered to users' devices. You can have Google generate this, or you can provide your own. This key cannot be reset if you manage it yourself (without Play App Signing) and lose it.
+
+|
+
+Quantum-ready |
+Google Play |
+
+- Format: Two keys associated with public certificates (.der or .pem).
+
+- Requirement: Quantum-ready hybrid signing combines a classical RSA 4096-bit key and a post-quantum ML-DSA-65 key. Google generates a new classical key for the hybrid signature that is different to the classical key it uses for pre-Android 17 devices, resulting in your app using three distinct keys.
+
+- Purpose: Android 17+ devices verify the app using the APK signature scheme v3.2 to protect it against future quantum computing attacks. Devices running older Android versions continue verifying the app with the classical signature blocks.
+
+|
+
+Note: For maximum security, your upload key and app signing key should be different.
+
+How Google signs your app: When Google generates and signs your APKs with the app signing key, it uses apksigner to add two stamps to your app’s manifest (com.android.stamp.source and com.android.stamp.type). These stamps ensure your APKs are securely traceable to the original signer.
+
+## Set up Play App Signing
+
+The setup process depends on whether you are publishing a new app or migrating an existing one.
+
+For new apps
+
+- Create a new app: Your app will be automatically enrolled in quantum-ready, hybrid signing with Google-generated keys. We also generate a separate classical key to be used in signature blocks that are recognized on devices Android 16-.
+
+- Create an upload key: Generate a keystore to sign your release app bundle. You can generate it in Android Studio or use the Java keytool utility from the command line.
+
+- Upload your app bundle: Go to your Play Console and prepare a new release. By default, when you upload your app bundle, your app is automatically enrolled in quantum-ready, hybrid signing with Google-generated keys.
+
+- Change your app signing key (optional): Advanced developers who want to manage their own key can change this default before there is a release rolled out in open testing track or production track. You can do this by navigating to Protected with Play > Play Store distribution > Go to Play app signing and clicking Change the app signing key. You can then choose to:
+
+- Use the same key as another app in this developer account
+
+- Provide a copy of your app signing key (following the instructions)
+
+For existing apps
+
+If you currently manage your own keys and upload APKs, you can upgrade to Play App Signing to take advantage of app bundles and Play enhancements.
+
+- Go to Protected with Play > Play Store distribution > Go to Play app signing in the Play Console.
+
+- Accept the terms of service, if you haven't already.
+
+- Transfer a copy of your original key: Download the PEPK tool and follow the unified step-by-step instructions to encrypt and upload your existing app signing key from any repository.
+
+Create a new upload key (recommended): Generate a new key in Android Studio to use as your upload key going forward, and register its certificate in the Play Console.
+
+## Register with API providers
+
+If your app uses APIs (like Google Maps, OAuth, or Facebook Login), those services authenticate your app using your app signing key's fingerprint.
+
+Because Google signs the final APK, you must register the Google-held app signing key fingerprint with your API providers, not just your local upload key.
+
+- Go to Protected with Play > Play Store distribution > Go to Play app signing.
+
+- Scroll to the App signing key section.
+
+- Copy the required fingerprints (SHA-1 or SHA-256). If your app uses quantum-ready hybrid signing, you must copy the fingerprints for three keys and register each of them with your API providers: your new classical and PQC keys used on newer devices and your classical key used on older devices.
+
+- Paste these fingerprints into your API provider's console (for example, Google Cloud Console).
+
+Tip: Update your assetlinks.json file with these fingerprints if you use Android App Links.
+
+## Manage your keys
+
+## Upgrade your app signing key
+
+If your app signing key is compromised, or you need a cryptographically stronger key, you can request an annual key upgrade for all installs on Android 17 (API level 37) and above.
+
+How enforcement works across Android versions:
+
+- Android 17 (API level 37) and above: The Android platform strictly enforces the usage of your upgraded Quantum-ready hybrid key. See APK signature scheme v3.2.
+
+- Android 13 (API level 33) to Android 16 (API level 36): The Android platform strictly enforces the usage of your latest classical key. See APK signature scheme v3.1
+
+- Android 7 (API level 24) to Android 12 (API level 32): The Android platform itself does not enforce the upgraded key and still recognizes the latest classical key. However, Google Play Protect provides additional validation by checking that app updates are signed with your latest classical key (unless turned off by the user).
+
+Important consideration:
+
+- Shared data: Because the platform does not enforce the upgraded key on Android S (API level 32) and below, if you use the same key across multiple apps to share data, those older Android versions will only recognize the legacy key for features like custom permission sharing.
+
+How to upgrade:
+
+- Go to Protected with Play > Play Store distribution > Go to Play app signing.
+
+- Under the App signing key section, click Upgrade key.
+
+- Choose your upgrade path:
+
+- Let Google Play generate a new app signing key (recommended)
+
+- Use the same app signing key as another app in this developer account
+
+- Provide a copy of your app signing key (following the instructions)
+
+- Click Save.
+
+- Register your new key fingerprints with your API providers. If your app uses quantum-ready hybrid signing, you must register the fingerprints for two new keys, your new classical key and your new PQC key.
+
+## Request an upload key reset
+
+If you lose your upload key or suspect that it was compromised, you are not locked out of your app.
+
+- Create a new upload key in Android Studio.
+
+- Export the certificate to PEM format:
+
+keytool -export -rfc -keystore upload-keystore.jks -alias upload -file upload_certificate.pem
+
+(For more help with keytool and keystore paths, refer to the Android Studio app signing guide).
+
+- Once your PEM file is generated, submit the reset request in the Play Console.
+
+- Navigate to Protected with Play > Play Store protection > Manage Play app signing.
+
+- In the Upload key certificate section, click Request upload key reset.
+
+- Enter the reason for the reset.
+
+- Upload your upload_certificate.pem file and click Request.
+
+## Best practices & alternative distribution
+
+- Security: Protect your Play Console access by enforcing 2-Step Verification for all users.
+
+- App bundle enhancements: Enrolling in Play App Signing unlocks access to enhancements for your app bundles. To apply enhancements, first make any necessary configuration changes when creating a new release, and then upload a new app bundle.
+
+- Distributing outside Google Play: If you distribute via other app stores and want to use the same signing key everywhere, you have two options. [1] You can either let Google generate your app signing key and download a signed, universal APK from the Play Console or the Play Developer API to distribute elsewhere (in the Play Console go to Test & release > Latest releases and bundles, select your app bundle, and click on the Downloads tab), or [2] you can generate the app signing key you want to use for all app stores and transfer a copy of it to Google when you configure Play App Signing. Learn more about how app updates work and your options for enabling or disabling cross-store updates.
+
+- Testing: Use Internal App Sharing to test exactly what Google Play will deliver to users, or download device-specific APKs from the app bundle explorer and install them locally using adb install-multiple *.apk.
+
+- APK Signature Scheme v4: Play App Signing automatically uses v4 signing for eligible apps to support optimized distribution on Android 11+ devices. No action is required on your part. This excludes all apps using quantum-ready hybrid signing, which is not yet compatible with v4 signing. You can read more about the technical benefits in the APK Signature Scheme v4 documentation.
+
+## Self-hosted Google Cloud projects
+
+If you have highly specific security requirements (for example, using OEM keys), you can use the Play Developer API to enrol in Play App Signing using a self-hosted Google Cloud project.
+
+This is a non-standard setup that is not encouraged. Using a self-hosted project means you assume full responsibility for app signing operations.
+
+- It prevents Google Play from performing essential features like disaster recovery.
+
+- Google cannot regenerate or fix an existing release. To fix any release-related errors, you must upload a new release.
+
+- Advanced optimizations, certain Play enhancements, and security features like Quantum-ready hybrid signing may not be available in this configuration.
+
+- Generate or import your signing keys into Cloud KMS, ensuring the location is configured as multi-region US, and follow the KMS key import documentation.
+
+- To change your signing key, use the enrollApp method. Signing keys can only be changed before the app is released to Open testing or Production tracks.
+
+- To upgrade your signing key after publishing, use the rotateAppSigningKey method.
+
+- Grant the following IAM roles to the client or service account authenticating with the Google Play Developer API:
+
+- role/cloudkms.signer
+
+- roles/cloudkms.viewer
+
+- roles/cloudkms.publicKeyViewer
+
+- Ensure you have sufficient quota to perform cryptographic operations. In particular, we recommend increasing the quota for asymmetric_requests to at least 350 QPS.
+
+- To see how signing keys are used, enable audit log in your Cloud KMS project.
+
+## Was this helpful?
+How can we improve it?
+YesNo

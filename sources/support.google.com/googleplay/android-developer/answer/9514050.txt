@@ -1,0 +1,58 @@
+Source: https://support.google.com/googleplay/android-developer/answer/9514050
+Fetched: 2026-10-19
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+# Requirements for apps that communicate government information
+If your app communicates government information, Google Play wants to make sure that it’s easy for users to see and understand. The goal is an app that empowers users with reliable and clearly sourced government information, relayed transparently.
+
+To help achieve this, we clarified our Misleading Claims policy on communicating government information and described the changes in our November 2019 PolicyBytes update. Watch the video from the 1:00 to 2:26 minute mark.
+
+## Overview of our Misleading Claims policy
+
+This article isn’t a substitute for the Misleading Claims policy. Read the whole policy to make sure that you understand and comply with its contents.
+
+Google doesn't allow apps that contain false or misleading information or claims, including in the app description, title, icon, or screenshots. These include apps that falsely claim affiliation with a government entity or offer, or facilitate government services without proper authorization.
+
+This article provides an overview of steps you can take to comply with our policy and what you need to do to submit your app.
+
+## Steps to resolve common issues
+
+Here, you’ll find guidance on how to address the most common issues that developers face. Follow these tips and make sure your app is in compliance with the Misleading Claims policy.
+
+### How to address requirements for government-affiliated apps
+
+Governments are encouraged to use official government email addresses to create developer accounts and to give authorized developers documentation that confirms their ability to create apps for the government. We work with government agencies to verify the legitimacy of these affiliated apps.
+
+If your app has been authorized to facilitate a government process (such as voting or ID validation), Google may ask you to provide proof of that permission before approving your app. This documentation must be submitted by the relevant government or government entity.
+
+- Government entities can provide proof of permission by submitting written documentation that includes the relevant government contact information for validation. Learn about providing advance notice to Google Play App Review team.
+
+### How to address requirements for unaffiliated apps that communicate government information
+
+If your app isn’t affiliated with a government entity but communicates government information, it must be transparent about the sources of this information. Follow both of these steps:
+
+- Include easy-to-see information sources in your app’s description and store listing page.
+
+- Make it clear that the app doesn’t represent a government or political entity.
+
+Sources that you provide should let users easily verify the information found in your app. Here are two examples that show how to treat this information:
+
+- If your app communicates information relating to US-based government organizations, look for a URL or other contact information registered to a .gov domain (posted by the United States government), and include it in your source information to help users easily verify the accuracy of the information.
+
+- Similarly, if an app communicates information relating to the Japanese government or a Japanese government agency, you might include a URL registered to a .go.jp domain.
+
+### How to address privacy policy requirements and how your app manages user data
+
+To ensure a safe and trusted environment for users, your privacy policy must disclose how your app handles user data and how it limits the use of that data to the purposes disclosed. For more details, read our Privacy Policy requirements. Make sure your privacy policy is easy to find — both in your app and on the store listing page.
+
+## Government app declaration requirements
+
+In 2023, we added new requirements to help promote trust in the Google Play ecosystem by keeping Google Play secure for users and safeguard legitimate businesses. Under these requirements, as of January 31, 2023, developers must complete the Government apps declaration on the App content page (Policy and programs > App content) in Play Console. Completing the government declaration requirements also allows your app to become eligible for official endorsement signified by a clear visual treatment on the Play store, provided further eligibility criteria is also verified.
+
+## Related content
+
+- For contextual learning on Google Play policy, visit Google Play Academy. ​​​
+
+## Was this helpful?
+How can we improve it?
+YesNo

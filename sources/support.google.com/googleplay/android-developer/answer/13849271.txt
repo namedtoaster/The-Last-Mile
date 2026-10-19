@@ -1,0 +1,118 @@
+Source: https://support.google.com/googleplay/android-developer/answer/13849271
+Fetched: 2026-10-19
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+# Provide information for the Financial features declaration
+Developers are required to complete the Financial features declaration on the App content page (Policy and programs > App content) in Play Console by August 31, 2023. This article provides an overview of the Financial features declaration requirements and guidance for completing the form.
+
+## Overview
+
+In July, we announced an update to our Financial Services policy that applies to a large number of apps on Google Play. As part of this update, we added new requirements to help promote trust in the Google Play ecosystem by keeping Google Play secure for users and safeguard legitimate businesses.
+
+Under these new requirements, developers must complete the Financial features declaration on the App content page (Policy and programs > App content) in Play Console before this date. Personal loan apps must also provide a copy of any licenses or documentation required to operate in specific countries/regions, as outlined in the Financial Services policy.
+
+Going forward, we’re collecting these documents in Play Console to provide a more seamless experience for developers, ensuring developers learn about these requirements before releasing an app on Google Play, and to enable us to run these documents through a new, streamlined security process.
+
+### Which developers need to complete the Financial features declaration in Play Console?
+
+All developers that have an app published on Google Play must complete the Financial features declaration, including apps on closed testing, open testing, or production tracks. This also applies to pregranted and preloaded apps that update through Google Play.
+
+Even developers with apps that do not offer any financial features must complete this form and certify that no financial features are offered through the app.
+
+System services and private apps do not need to complete the Financial features declaration.
+
+### What financial features developers need to declare
+
+If their app(s) provide financial features, developers must declare one or more of the following features:
+
+Banking and loans
+
+- Personal loan direct lender
+
+- Loan facilitator
+
+- Payday loans
+
+- Banking
+
+- Line of credit
+
+- Earned wage advances
+
+- Microfinance banking
+
+Payments and transfers
+
+- Mobile payments and digital wallets
+
+- Money transfer and wire services
+
+Purchase agreements
+
+- Rewards, points, frequent flier miles, and other incentives
+
+- Buy now, pay later
+
+Trading and funds
+
+- Cryptocurrency wallet
+
+- Cryptocurrency exchange
+
+- Tokenized digital asset (NFT) sales, trading, and awards
+
+- Stock trading and portfolio management
+
+- Crowdfunding and chit funds
+
+Support services
+
+- Credit monitoring and reporting
+
+- Financial advice
+
+- Insurance
+
+- Other
+
+If their app(s) don’t provide any financial features, developers must declare:
+
+- My app doesn’t provide any financial features
+
+### Which developers must provide additional documentation in Play Console?
+
+If your app includes personal loan-related features (for example, your app’s declared features include Personal loan direct lender or Loan facilitator), you’re required to upload further documentation. For all countries/regions, you must specify information about the lenders you are engaged with and how they relate to your business.
+
+If your app targets any of the countries/regions where Google Play’s Financial Services policy requires further documentation, you must upload proof of a valid license issued by the relevant authority in each country/region. To see the list of countries/regions where you are required to provide Google Play with these licenses, view the Personal loans section of our Financial Services policy.
+
+## Complete and submit the declaration
+
+In July, we announced an update to our Financial Services policy that applies to a large number of apps on Google Play. As part of this update, we added new requirements to help promote trust in the Google Play ecosystem by keeping Google Play secure for users and safeguard legitimate businesses.
+
+Under these new requirements, from August 31, 2023, developers must complete the Financial features declaration on the App content page (Policy and programs > App content) in Play Console before this date. Personal loan apps must also provide a copy of any licenses or documentation required to operate in specific countries/regions, as outlined in the Financial Services policy.
+
+Going forward, we’re collecting these documents in Play Console to provide a more seamless experience for developers, ensuring developers learn about these requirements before releasing an app on Google Play, and to enable us to run these documents through a new, streamlined security process.
+
+When you're ready to start, here's how you complete and submit your Financial features declaration in Play Console:
+
+- Open Play Console and go to the App content page (Policy and programs > App content).
+
+- Under "Financial features," select Start.
+
+- First you need to declare all the financial features that your app offers to its users. After selecting the relevant choices, click Next.
+
+- If you need to provide additional documentation, you’ll be asked for this and will need to complete each row in the presented table. Click the arrow on the right of each row to provide further details for that country/region. If we don't need you to provide additional documentation, you don't need to do anything on this page
+
+- If you're ready to submit your completed declaration, select Save. If you want to go back and change something, you can select Back to amend your answers. If you're not sure about something, you can select Save as draft and return to the form later. If you select Discard changes, you'll need to start the form again.
+
+### After you complete the declaration
+
+After you complete and submit the Financial features declaration, the information that you provided will be reviewed by Google as part of the app review process.
+
+Until August 31, 2023, you can temporarily proceed to publish app updates regardless of whether we find issues with the information that you've disclosed. If there are no issues, your app will be approved and you won't need to do anything. If there are issues, you will need to resolve these before August 31, 2023.We will also send the developer account owner an email, a notification in Play Console, and show this information on the Policy status (Policy and programs > Policy status) page.
+
+After August 31, 2023, all apps will be required to have completed an accurate Financial features declaration that discloses the financial features their app uses (including apps that do not offer any financial features to their users).
+
+## Was this helpful?
+How can we improve it?
+YesNo

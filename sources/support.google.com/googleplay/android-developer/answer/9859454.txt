@@ -1,0 +1,78 @@
+Source: https://support.google.com/googleplay/android-developer/answer/9859454
+Fetched: 2026-10-19
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+# Set up your app on the app dashboard
+After you’ve created your app, you can start setting it up. Your app’s dashboard will guide you through all the most important steps to get your app available on Google Play.
+
+## Using your dashboard
+
+To start setting up your app, select Dashboard on the left menu. Under your app’s details at the top of the page, you’ll find different categories and tasks relating to app setup and release. You must complete the mandatory tasks before you can launch your app on Google Play.
+
+When you complete a task, you’ll see a green tick mark and strikethrough text. The progress bar at the top of the section will also be updated. As you complete more tasks, your dashboard will populate with performance data and key insights by set time periods.
+
+After launching your app, you can visit your dashboard to get an overview of key metrics, trends, and insights for your app. If you want to learn more about these metrics, go to View app statistics.
+
+## Initial setup
+
+App content
+
+Start by providing some information about your app and setting up your Google Play store listing. Providing this information helps us to ensure that your app is safe for its intended users, is compliant with Google Play policies, and satisfies legal requirements.
+
+To learn more on what information you need to provide to prepare your app, see Prepare your app for review.
+
+App categorization and store listing details
+
+Select an app category, provide contact details, and set up your store listing.
+
+- Help users discover your app or game by choosing a category and applying tags to your app or game.
+
+- Support your app’s users by providing contact information.
+
+- Create a compelling store listing by adding screenshots and a video that showcase your app.
+
+## Release your app
+
+Test your app
+
+Test your app with specific groups of testers initially, before opening your testing up to a bigger set of Google Play users. Users can provide constructive feedback that helps you make improvements to your app without it affecting your public rating.
+
+Important: Developers with personal accounts created after November 13, 2023, must meet specific testing requirements before they can access production to release their app on Google Play, or use other features such as pre-registration or open testing. Read this Help Center article to learn more.
+
+Testing tasks include:
+
+- Setting up an internal or closed test.
+
+- Preparing and rolling out a release to the test track.
+
+- Inviting testers via email or Google Groups, and gathering private feedback.
+
+- Setting up an open testing track, and moving on to open testing so that anyone can join your tests on Google Play, and provide feedback without affecting your Google Play rating.
+
+Pre-registration
+
+With pre-registration, you can publish your store listing before you launch so that users can register their interest. When you launch, any users who have pre-registered will receive a notification to download your app or the app will be auto-installed.
+
+To learn more on how to make your app or game available, see Build awareness for your apps with pre-registration.
+
+Release your app (to production)
+
+To launch your app on Google Play, you need to roll out a release to its production track.
+
+## Post-launch
+
+After launching your app, you can visit your dashboard to get an overview of key metrics, trends, and insights for your app. The metrics displayed here may change over time as more usage data is available. You can customize your dashboard to display the data that’s most important to you.
+
+## Related content
+
+- Create and set up your app
+
+- Update or unpublish your app
+
+- Publish your app
+
+- Control when app changes are published with managed publishing
+
+## Was this helpful?
+How can we improve it?
+YesNo

@@ -1,0 +1,412 @@
+Source: https://developers.google.com/android-publisher/tracks
+Fetched: 2026-10-19
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+Home
+
+Products
+
+Google Play Developer API
+
+# APKs and Tracks
+
+Stay organized with collections
+
+Save and categorize content based on your preferences.
+
+## Page Summary
+
+outlined_flag
+
+The Google Play Developer API enables uploading new APKs and releasing them to different tracks like alpha, beta, or production.
+
+You can use a staged rollout on the production track to gradually release an update to a subset of users before a full release.
+
+The process involves uploading APKs, updating tracks to specify releases, and committing changes for them to go live.
+
+Form factor tracks use prefixes like "automotive" or "wear" along with the default track name to define the track name.
+
+Draft releases can be created via the API for later deployment through the Google Play Console.
+
+The Google Play Developer API allows you to upload new APKs for your apps
+and release them to different release tracks. This allows you to
+deploy alpha and beta versions of your app, which are made available
+to approved users. This also allows you to deploy a staged rollout
+version, which is automatically made available to a small number of
+the app's users. Once you have released the staged rollout version,
+you can gradually increase the number of users who get that version of
+the app, until you finally deploy that version as the "production"
+version.
+
+## Adding and Modifying APKs
+
+- Upload one or more APKs by calling the
+Edits.apks: upload method.
+
+This method uploads the APK into a storage "bucket", where it can
+be assigned to a "track" to deploy it to users. (If the edit is
+deleted or discarded, any APKs uploaded to that edit are also
+lost.)
+
+- Release APKs on "tracks" by calling
+Edits.tracks: update. You can release
+APKs on the following tracks:
+
+- Testing tracks such as "alpha" and "beta"
+
+Alpha and beta versions of the app are deployed to the users
+you assign to the alpha and beta test groups. You assign
+users to these groups using the Google Play Console.
+
+- The internal testing track: "qa"
+
+Internal versions of your app are deployed to your internal test
+track as configured in the Google Play Console.
+
+- The production track: "production"
+
+Releases on the "production" track are deployed to all users. You
+can make use of staged releases on "production" track to safely
+deploy your release first to a small percentage of production users
+and then gradually increase this percentage as your confidence in
+the release grows.
+
+Simple-mode users should not put more than one APK to any
+track. Advanced-mode users using the multiple APK
+support
+can upload zero, one, or more APKs to each track.
+
+### Track name for form factor tracks
+
+The track name for a form factor track is prefixed with a specific
+identifier.
+
+Form Factor |
+Prefix |
+
+Android Automotive OS |
+automotive |
+
+Wear OS |
+wear |
+
+Android TV |
+tv |
+
+Android XR |
+android_xr |
+
+Google Play Games On PC |
+google_play_games_pc |
+
+#### How to compute track name for a given form factor track?
+
+Common track types like production, open testing and internal
+testing track have a well known track name.
+
+Track Type |
+Default Track Name |
+
+Production |
+production |
+
+Open Testing |
+beta |
+
+Internal Testing |
+qa |
+
+The track name for a given form factor track can be computed as:
+"[prefix]:defaultTrackName".
+For example Wear OS form factor will have tracks with name:
+"wear:production", "wear:beta" and "wear:qa".
+
+Closed testing tracks are created manually and they have custom
+names. So a closed testing track for a form factor with name $name
+will have track name of "[prefix]:$name".
+
+## APK Workflow Example
+
+This section describes a typical way the Tracks API would be used. In this case,
+we assume you want to upload new versions of the APK for each track, and assign
+a number of users to receive a staged rollout version. (In practice, a developer
+would be unlikely to take all of these actions in the same operation; instead,
+you might update the beta version one day, create a staged release on
+"production" another day, and so on.)
+
+- Open a new edit, as described in
+Edits Workflow
+
+- Call the Edits.apks: upload method for
+each APK you want to upload. Pass the APK in the method's request
+body. (This places the APK in a storage area, but does not release
+it on a track or deploy it.) The method returns a version code for
+each APK you upload; you will use this version code to refer
+to the APK when you release it on a track.
+
+- Call the Edits.tracks: update method
+for each track that you want to release APKs on. In the request body,
+pass a Edits.tracks resource
+containing the release you wish to rollout. For example, to release an
+APK with version code 88:
+
+{
+"releases": [{
+"versionCodes": ["88"],
+"status": "completed"
+}]
+}
+
+At this point, the APKs are still not available to users. As with
+other edits, the changes do not go live until you commit them.
+
+- Call the Edits: commit method to
+commit the changes. After you do this, users on each track will be
+given the updated version of the APK. (As with all edits, it can
+take several hours for the changes to take effect.)
+
+## Staged Rollouts
+
+When you have a new version of your APK that you want to gradually deploy, you may
+choose to release it as a "staged rollout" version. If you do this,
+Google Play automatically deploys it to the desired fraction of the app's
+users which you specify. If the "rollout" APK doesn't have any issues (such as
+crashes, etc.), you might increase the fraction of users who receive that
+version; when you are ready, you can deploy that APK as the new production
+version.
+
+This section describes the steps you would go through to perform a
+staged rollout of an APK, then promote it to production:
+
+- Create an edit, as described in Edits Workflow.
+
+- Upload a new APK to the edit, using the
+Edits.apks: upload method.
+
+- Start a "inProgress" staged release on the production track using the
+Edits.tracks: update method. Choose the
+fraction of users who should receive the new APK. At this point, the APK is
+still not available to any end users.
+
+{
+"releases": [{
+"versionCodes": ["99"],
+"userFraction": 0.05,
+"status": "inProgress"
+}]
+}
+
+- Commit the changes in the active edit by calling
+Edits: commit. Over the next few
+hours, the new APK will be rolled out to users. The fraction
+of users you select will receive the new APK.
+
+Depending on the success of the staged rollout you may then wish to increase
+the percentage of users eligible for that release or halt the release.
+
+### Increasing the user fraction for a staged rollout
+
+Assuming you have an ongoing staged rollout at 5%, as described in the previous
+section, this section describes how to increase the percentage in the case
+where the release is going well:
+
+- Create an edit, as described in Edits Workflow.
+
+- Change the "inProgress" staged release on the production track using the
+Edits.tracks: update method. Increase
+fraction of users who should receive the new APK:
+
+{
+"releases": [{
+"versionCodes": ["99"],
+"userFraction": 0.1,
+"status": "inProgress"
+}]
+}
+
+- Commit the changes in the active edit by calling
+Edits: commit. Over the next few
+hours, the new APK will be rolled out to users. The fraction
+of users you select will receive the new APK.
+
+### Halting a staged rollout
+
+Assuming you have an ongoing staged rollout at 5%, as described in the previous
+section, this section describes how to halt the staged rollout in the case where
+you discover a problem:
+
+- Create an edit, as described in Edits Workflow.
+
+- Change the "inProgress" staged release on the production track using the
+Edits.tracks: update method. Set the
+status to "halted".
+
+{
+"releases": [{
+"versionCodes": ["99"],
+"status": "halted"
+}]
+}
+
+- Commit the changes in the active edit by calling
+Edits: commit. Your release will no longer
+be available to new users.
+
+If you later decide to resume a halted release you can do so by setting
+its status back to "inProgress".
+
+### Completing a staged rollout
+
+Once you are happy with your staged rollout and wish to rollout the release to
+100% of users you can set the release status to "completed":
+
+- Create an edit, as described in Edits Workflow.
+
+- Change the "inProgress" staged release on the production track using the
+Edits.tracks: update method. Set the
+status to "completed".
+
+{
+"releases": [{
+"versionCodes": ["99"],
+"status": "completed"
+}]
+}
+
+- Commit the changes in the active edit by calling
+Edits: commit. Over the next few
+hours, the new APK will be rolled out to users. The fraction
+of users you select will receive the new APK.
+
+### Halt a completed rollout
+
+Assuming you have a completed rollout on a track, as described in the previous
+section, this section describes how to halt the completed rollout in the case
+where you discover a problem:
+
+- Create an edit, as described in
+Edits Workflow.
+
+- Change the "completed" release on the production track using the
+Edits.tracks: update method. Set
+the status to "halted".
+
+{
+"releases": [{
+"versionCodes": ["99"],
+"status": "halted"
+}]
+}
+
+- Commit the changes in the active edit by calling
+Edits: commit. Your release will no
+longer be available to new users or to existing users to upgrade to.
+
+The release that will begin serving in place of the "completed" release will
+be the previous "completed" release on the track that has been published and
+is not halted. Note that this means that you can only halt a "completed"
+release on a track if there has already been one or more "completed" releases
+published on the track.
+
+If you call GetTrack or ListTracks while a "completed" release is halted,
+the "serving fallback release" will show up as the completed release on the
+track where the previously "completed" release was halted.
+
+For example, if you initially had an alpha track that looked like this:
+
+{
+"track": "alpha",
+"releases": [
+{
+"name": "2 (2.0)",
+"versionCodes": [
+"2"
+],
+"status": "completed"
+}
+]
+}
+
+and you halted the "completed" release following the steps in this section,
+calling GetTrack for the alpha track would return something like this:
+
+{
+"track": "alpha",
+"releases": [
+{
+"name": "2 (2.0)",
+"versionCodes": [
+"2"
+],
+"status": "halted"
+},
+{
+"name": "1 (1.0)",
+"versionCodes": [
+"1"
+],
+"status": "completed"
+}
+]
+}
+
+If you later decide to resume "completed" release you can do so by setting its
+status back to "inProgress" or "completed". Note that you can create a new
+"inProgress" status release on top of the "completed" release but you will
+then only be able to resume the "completed" release back to 100% (i.e. to a
+status of "completed").
+
+Note: You cannot halt a "serving fallback release". You cannot halt a
+fully rolled out release if the release that would become the serving fallback
+release has blocking policy issues.
+
+## Draft releases
+
+Draft releases allow you to automatically upload APKs and create a release via
+the API which can later be deployed via the Google Play Console. To
+create a draft release on a track:
+
+- Open a new edit, as described in
+Edits Workflow
+
+- Call the Edits.apks: upload method for
+each APK you want to upload. Pass the APK in the method's request body. The
+method returns a version code for each APK you upload; you will use this
+version code to refer to the APK when you assign it to a release.
+
+- Call the Edits.tracks: update method
+for each track that you want to release on. In the request body,
+pass a Edits.tracks resource
+containing the draft release you wish to create. For example:
+
+{
+"releases": [{
+"name": "My draft release",
+"versionCodes": ["88"],
+"status": "draft"
+}]
+}
+
+- Call the Edits: commit method to
+commit the changes. Your draft release can now be inspected and rolled out
+via the Google Play Console or the API.
+
+## Specifying release notes
+
+When releasing a new version of your application you can highlight what's
+new to users by specifying release notes on your release.
+
+To do this use the "releaseNotes" field when supplying a
+Edits.tracks resource to the
+Edits.tracks: update method.
+
+{
+"releases": [{
+"name": "Release with notes",
+"versionCodes": ["88"],
+"status": "completed",
+"releaseNotes": [
+{"language": "en-US", "text": "Describe what's new in this release."}
+]
+}]
+}

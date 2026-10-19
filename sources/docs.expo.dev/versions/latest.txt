@@ -1,0 +1,120 @@
+Source: https://docs.expo.dev/versions/latest/
+Fetched: 2026-10-19
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+This documentation is available as Markdown for AI agents and LLMs. See the full Markdown index or append .md to any documentation URL.
+
+# Expo SDK reference
+Edit page
+
+Copy page
+
+Access device and system functionality in your Expo and React Native apps using Expo SDK packages.
+Edit page
+
+Copy page
+
+The Expo SDK is a collection of packages that provide access to device and system functionality such as camera, contacts, location, sensors, haptics, and more. Each package targets a specific feature and can be used independently. All packages work in any React Native app with the expo package installed.
+
+You can install any Expo SDK package using the npx expo install command. For example, three different packages are installed using the following command:
+
+TerminalnpmyarnpnpmbunCopy
+
+- npx expo install expo-camera expo-contacts expo-sensors
+
+- yarn expo install expo-camera expo-contacts expo-sensors
+
+- pnpm expo install expo-camera expo-contacts expo-sensors
+
+- bun expo install expo-camera expo-contacts expo-sensors
+
+After installing one or more packages, you can import them into your JavaScript code:
+
+import { CameraView } from 'expo-camera';
+import { Contact } from 'expo-contacts';
+import { Gyroscope } from 'expo-sensors';
+
+This allows you to write Contact.getAll() and read the contacts from the device, read the gyroscope sensor to detect device movement, or start the phone's camera and take photos.
+
+## All Expo SDK packages work in any React Native app
+
+Expo apps are React Native apps, so all Expo SDK packages work in any React Native app with the expo package installed and configured. The easiest way to create a React Native app with support for Expo SDK packages is to use create-expo-app. However, you can also add Expo SDK support to an existing React Native app with the npx install-expo-modules command.
+
+TerminalnpmyarnpnpmbunCopy
+
+# Create a project named my-app- npx create-expo-app my-app --template bare-minimum
+
+# Create a project named my-app- yarn create expo-app my-app --template bare-minimum
+
+# Create a project named my-app- pnpm create expo-app my-app --template bare-minimum
+
+# Create a project named my-app- bun create expo my-app --template bare-minimum
+
+Install Expo SDK packages in existing React Native appsLearn more about configuring projects created with npx @react-native-community/cli@latest init to Expo SDK packages.
+
+Use librariesLearn how to install Expo SDK packages in your project.
+
+## Using pre-release versions
+
+New Expo SDK versions are released three times each year. Between these releases, we publish pre-release versions of the expo package and all of the Expo SDK packages. Pre-releases are not considered stable and should only be used if you are comfortable with the risk of encountering bugs or other issues.
+
+### Canary releases
+
+Canary releases represent a snapshot of the state of the main branch at the time they are published. Canary package versions include -canary in the name, along with the date and commit hash, such as 58.0.0-canary-20260909-ea7a89a. To install the latest canary release:
+
+TerminalnpmyarnpnpmbunCopy
+
+# Install the alpha version of expo and its related packages- npm install expo@canary && npx expo install --fix
+
+# Install the alpha version of expo and its related packages- yarn add expo@canary && yarn expo install --fix
+
+# Install the alpha version of expo and its related packages- pnpm add expo@canary && pnpm expo install --fix
+
+# Install the alpha version of expo and its related packages- bun add expo@canary && bun expo install --fix
+
+You can often use pre-release versions of individual packages with stable releases of the Expo SDK. There may occasionally be incompatibilities or other issues that arise in canary-quality releases. You may want to silence dependency validation warnings if you opt in to the canary package and once you have verified that it works well for your use cases.
+
+### Beta releases
+
+Before each Expo SDK release, we publish beta versions of the expo package and all of the Expo SDK packages. Beta releases are considered much more stable than canary releases, and we encourage developers to try them out on their apps and share their feedback. Beta releases use the beta tag on npm and follow the instructions in the related changelog post.
+
+## Each Expo SDK version depends on a React Native version
+
+Expo SDK version | React Native version | React version | React Native Web version | React Native TV version | Minimum Node.js version
+|
+58.0.0 | 0.88 | 19.3.0 | 0.21.0 | 0.87-stable | 22.13.x |
+57.0.0 | 0.86 | 19.2.3 | 0.21.0 | 0.86-stable | 22.13.x |
+56.0.0 | 0.85 | 19.2.3 | 0.21.0 | 0.85-stable | 20.19.x |
+
+### Additional information
+
+Expo SDK policy for tracking React Native releases
+
+- Each Expo SDK release targets a single React Native version. This is typically the latest stable version at the time of the release.
+
+- React Native currently has six releases per year and aims for every release to include no breaking changes.
+
+- Expo SDK releases aim to follow this cadence.
+
+- Pre-release versions of the upcoming Expo SDK will include support for the latest version of React Native quickly, usually the same day it is released. A member of the Expo SDK team works on the React Native releases team for each release, and is responsible for continuously updating the React Native version in the Expo repository, verifying compatibility, and reporting regressions back to the React Native team.
+
+What if I need a change from the latest React Native version and it's not yet in an Expo SDK release?
+Expo engineers on the React Native releases team ensure that any urgent fixes are included in the React Native version used by the latest Expo SDK. If your specific fix won't be cherrypicked into an existing release, perhaps because it is not considered critical or because it involves a breaking change, then you have two options:
+
+- Use patch-package to pull in the fix.
+
+- Use a pre-release version of the Expo SDK.
+
+Can I use an older version of React Native with the latest Expo SDK?
+Packages in the Expo SDK are intended to support the target React Native version for that SDK. Typically, they will not support older versions of React Native, but they may. When a new version of React Native is released, the latest versions of the Expo SDK packages are typically updated to support it. However, this may take weeks or more, depending on the extent of the changes in the release.
+
+## Support for Android and iOS versions
+
+Each version of Expo SDK supports a minimum OS version of Android and iOS. For Android, the compileSdkVersion is defined which tells the Gradle which Android SDK version to use to compile the app. This also means that you can use the Android API features included in that SDK version and from the previous versions. For iOS, the Xcode tells the minimum Xcode SDK version to use to compile the app.
+
+Expo SDK version | Android version | compileSdkVersion | targetSdkVersion | iOS version | Xcode version |
+58.0.0 | 7+ | 37 | 36 | 16.4+ | 26.4+ |
+57.0.0 | 7+ | 36 | 36 | 16.4+ | 26.4+ |
+56.0.0 | 7+ | 36 | 36 | 16.4+ | 26.4+ |
+
+When deciding whether to upgrade your Expo SDK version, consider both Expo's SDK version and app store submission requirements, as described in the above table. Google Play Store and Apple App Store periodically increase their minimum required OS versions and API levels, which are required for new app submissions. Expo has no control over the app store requirements, and you should check Google and Apple for the current store submission requirements.

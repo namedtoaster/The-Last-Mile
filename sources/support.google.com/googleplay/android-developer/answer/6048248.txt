@@ -1,0 +1,90 @@
+Source: https://support.google.com/googleplay/android-developer/answer/6048248
+Fetched: 2026-10-19
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+# Advertising ID
+The advertising ID is a unique, user-resettable, and user-deletable ID for advertising, provided by Google Play services. It gives users better controls and provides developers with a simple, standard system to continue to monetize their apps. It enables users to reset or delete their identifier.
+
+## Google Play services update in 2021
+
+As part of Google Play services update in late 2021, the advertising ID will be removed when a user deletes their advertising ID in Android Settings. Any attempts to access the identifier will receive a string of zeros instead of the identifier.
+
+This Google Play services phased rollout will affect apps running on Android 12 starting late 2021 and will expand to affect apps running on all devices that support Google Play starting April 1, 2022. For essential non ads use-cases such as analytics and fraud prevention, use App Set ID.
+
+Additionally, when apps update their target to Android 13 or above will need to declare a Google Play services normal permission in the manifest file as follows:
+
+<uses-permission android:name="com.google.android.gms.permission.AD_ID"/>
+
+Some SDKs, such as the Google Mobile Ads SDK (play-services-ads) may already declare this permission in the SDK’s library manifest. If your app uses these SDKs as dependencies, the AD_ID permission from the SDK’s library manifest will be merged with your app’s main manifest by default, even if you don’t explicitly declare the permission in your app’s main manifest. Learn more about merging manifest files on the Android Developers site.
+
+This permission will be enforced starting from April 1, 2022 for all devices. See API documentation for more details.
+
+Learn more about best practices for unique identifiers.
+
+## Get the advertising ID
+
+To get the advertising ID in your apps, you can use the Advertising ID API.
+
+## Policy requirements
+
+The Google Play Developer Program Policy requires that all updates and new apps uploaded to Google Play use the advertising ID (when available on a device) in place of any other device identifiers for any advertising purposes. You're responsible for ensuring that your apps are in compliance with policies regarding its usage, as well as all Play policies.
+
+Apps using a persistent ID other than the advertising ID may receive a policy violation warning via the publisher site or the email address used to register the account. If you receive a warning, you should ensure that any published APKs comply with the advertising ID related guidance in the Developer Program Policy. If you are using a third-party ad SDK, please contact the SDK maker to obtain a new version that complies with this new policy.
+
+## Additional details
+
+Collapse All Expand All
+
+Persistent identifiers
+
+### Availability
+
+Persistent identifiers are still available because there are various supported use cases which aren’t related to advertising. Longer term, we’ll evaluate additional opportunities to provide users with even more informed control over what persistent identifiers are provided to third parties. We’ll communicate this prominently and in advance when we have details.
+
+### Use for non-advertising purposes
+
+You can use persistent identifiers as long as you have a privacy policy and handle the data in accordance with the Developer Distribution Agreement and all applicable privacy laws in the areas where you make your app available.
+
+Targeting devices without an advertising ID
+
+When an advertising ID isn’t present, your app may fall back to using a persistent or proprietary identifier, as long as you:
+
+- Present the user with a privacy policy.
+
+- Handle the data in accordance with the Developer Distribution Agreement, including all applicable privacy laws in the areas where you make your app available.
+
+Advertising ID violations
+
+Please verify if the apps in your catalog comply with the advertising ID policy guidance. You will be notified of potential non-compliance via an alert notification in Play Console or email warnings sent to the email address that registered the developer account.
+
+If you have additional questions, you can learn more about advertising ID policy violations.
+
+Reset your device's advertising ID
+
+- On your Android device, go to Settings.
+
+- Tap Privacy > Ads.
+
+- Tap Reset Advertising ID and confirm your changes.
+
+Delete your device's advertising ID
+
+- On your Android device, go to Settings.
+
+- Tap Privacy > Ads.
+
+- Tap Delete Advertising ID and confirm your changes.
+
+Tip: Your advertising ID will be deleted, but apps may have their own settings, which can also affect the types of ads you see.
+
+On some older versions of Android
+
+- Open Settings.
+
+- Tap Privacy > Advanced > Ads.
+
+- Turn on Opt out of Ads Personalization and confirm your changes.
+
+## Was this helpful?
+How can we improve it?
+YesNo

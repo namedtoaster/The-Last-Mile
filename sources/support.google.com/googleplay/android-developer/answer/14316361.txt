@@ -1,0 +1,64 @@
+Source: https://support.google.com/googleplay/android-developer/answer/14316361
+Fetched: 2026-10-19
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+# Device verification requirements for new developer accounts
+Starting in early 2024, developers with new personal accounts will be required to verify that they have access to a real Android mobile device using the Play Console mobile app before they can make their app available on Google Play.
+
+This is an important step in our ongoing efforts to improve user trust and safety for the billions of people that use Google Play. By requiring developers to verify that they have access to an Android device, we can help ensure that they are able to properly test their apps before making them available to users. This will help to improve the quality of apps on Google Play, and to keep users safe.
+
+## Complete device verifications
+
+- Log into your Play Console account (web version) as the account owner (that is, using the Google account that was used to create the developer account).
+
+- Go to the Home page.
+
+- Find the "Verify that you have access to an Android mobile device" task and click View details.
+
+- Scan the QR code to launch or install the Play Console mobile app on the device that you wish to use to complete verifications.
+
+- Open the Play Console mobile app and log in as the account owner.
+
+- Select your developer account.
+
+- Tap Verify and follow the instructions on screen.
+
+- After completing device verification, the mobile device verification task will no longer be shown on the Home page in Play Console.
+
+## Frequently asked questions
+
+## Why can't I see my developer account in the Play Console mobile app?
+
+This may be because you didn't sign in using the correct account. Make sure to sign in using the same Google Account that you used to create your Google Play developer account.
+
+## What sort of device can I use to complete device verifications?
+
+You can use any non-rooted physical Android mobile device that runs at least the Android 10 operating system.
+
+## I have multiple devices. Does it matter which one I use for verification?
+
+You can use any non-rooted physical Android mobile device that runs at least the Android 10 operating system.
+
+## What is my device information used for?
+
+We want to ensure that people who develop apps for Google Play users have the basic tools they need to succeed. We may also use some of the information to help with our abuse prevention efforts.
+
+## Can I use a device that I have used to verify a different developer account?
+
+Yes, you can use the same device to verify multiple accounts.
+
+## How long does verification take?
+
+Device verifications using the Play Console mobile app should take less than a minute.
+
+## Does it have to be the device with the same mobile number I provided earlier in the sign-up process?
+
+No, the phone number of the device used to verify is not used or collected as part of device verifications.
+
+## Will I be required to keep this device so it can be verified again in the future?
+
+No. We may ask you to verify in the future, but you will not have to use same device.
+
+## Was this helpful?
+How can we improve it?
+YesNo

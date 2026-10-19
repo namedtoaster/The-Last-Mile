@@ -1,0 +1,193 @@
+Source: https://support.google.com/googleplay/android-developer/answer/9859654
+Fetched: 2026-10-19
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+# Control when app changes are reviewed and published
+
+In February 2023, we made changes to your publishing workflow to make it easier to understand which changes you're sending for review. You can also better control when you send certain changes for review. Visit the Android Developers Blog to learn more.
+
+You can use the Publishing overview page to control when certain changes to your app are sent for review and published.
+
+You can see the changes that have been made to your app, and send certain changes to Google for review when you're ready. You can also turn managed publishing on and off. When managed publishing is turned on, you can see what changes you submit are in review and what changes are ready for publishing on the Publishing overview page.
+
+## See an overview of your changes
+
+The Publishing overview page provides an overview of the changes made to your app, and helps you control when certain changes are sent for review or published.
+
+The changes listed may include:
+
+- Country targeting changes that affect your production and testing tracks.
+
+- Changes to App content that help us review your app, such as the content rating questionnaire, or changes to your app’s target audience.
+
+- Any time you sync/unsync one of your track’s country targeting with production.
+
+- Synced tracks that are affected by changes to your production track’s country targeting.
+
+- Updates to your store listings
+
+- Changes to your store settings
+
+Each change is listed in a table, with a high-level change description and a link to the change itself.
+
+## Send changes for review
+
+The "Changes not yet sent for review" section provides flexibility on exactly when you send changes for review. Every time you make a change to your app that needs to be reviewed, the change is added to this section. Each change is listed in a table, with a high-level change description and a link to the change itself. Items are not sent for review until you click Send for review.
+
+If you’re ready to send some changes for review but not others, you can save changes for later. In the "Changes not yet sent for review" section, click Save for later on the changes you don’t want to review yet. You can view the changes that you have saved for later, and undo to return changes to Publishing overview. Once you’ve sent other changes for review, saved changes automatically return to Publishing overview.
+
+The changes will be published automatically as soon as they're reviewed and approved by Google unless managed publishing is turned on. The existing "Changes in review" section will continue showing your changes that are in the review process. If your app changes have not yet been published, or are listed in the "Ready to publish" section, you also have the option of moving them back into the "Changes not yet sent for review" section. This allows you to revert any unwanted changes that are in review or approved and ready to publish, ensuring that they are not published before you want them to be.
+
+Note: In some cases, if you remove app changes from Changes in review or Changes ready to publish, they may still be subject to review which could affect your publishing plans.
+
+## Use managed publishing
+
+Managed publishing is useful for anyone who wants to easily track app changes and their review statuses, or push an app update live at a specific time. This can be helpful when coordinating an ad campaign, launch event, or a new app version release with changes to your app’s Store listing or distribution.
+
+Managed publishing can also be useful for apps that are subject to extended review times, such as apps submitted by new developer accounts.
+
+### Before you start: Important notes about managed publishing
+
+#### Prerequisites
+
+- You need one of the following permissions to turn managed publishing on or off:
+
+- Release to production, exclude devices, and use Play App Signing
+
+- Release apps to testing tracks
+
+- Manage testing tracks and edit tester lists
+
+- Manage store presence
+
+- Admin (all permissions)
+
+- Important: This permission gives a user Admin access. With this permission, an admin also gets all other permissions. To learn more, go to Add developer account users and manage permissions.
+
+- Your app must already be available to use Managed publishing. You can’t use it when publishing an app for the first time.
+
+#### Testing
+
+- If you want to use managed publishing for your product launch, we strongly recommend publishing your app to a closed testing track first. To learn more about testing, see Set up an open, closed, or internal test.
+
+#### Planning for reviews and submitting updates
+
+- All app changes need to be processed before they can be published. Processing can take a few hours or up to seven days (or longer in exceptional cases), as it depends on the review time that your app is subject to.
+
+- Tip: We recommend that you adjust your planning to include a buffer period of at least a week between submitting your app and going live.
+
+Depending on your app's update status, it may not be sent for review automatically. For example, if your app update was rejected and you've subsequently made changes in an attempt to resolve the issue, your changes aren't sent for review automatically. You must go to the Publishing overview page and click Send for review to submit your changes. To learn more, see App update statuses.
+
+#### Turning managed publishing on/off
+
+- Managed publishing can be turned on or off at any time, including while your change is being reviewed and processed.
+
+#### Changes that are not held back by managed publishing
+
+- Managed publishing holds back the vast majority of changes until you actively decide to publish them. Examples are as follows:
+
+- Full and staged roll-outs of your releases (with exceptions listed below)
+
+- Launching and updating pre-registration
+
+- Store listing changes, including changes made to custom store listings and live store listing experiments
+
+- App content changes
+
+- Changes to your app category
+
+- Managed Play settings
+
+- Changes to how testers are configured for a track (for example, setting a new email list or Google group as the list of testers)
+
+- However, there are some exceptions, which include but are not limited to the following:
+
+- Increasing an existing staged roll-out to 100%
+
+- Updating your app’s "Release notes" section
+
+- Changes to device exclusion rules
+
+- Changes to the membership of an email list or Google group used by a testing track
+
+- Unpublishing your app
+
+- Changes to your app’s In-app products page
+
+- Price changes
+
+- Stopping store listing experiments
+
+### Publish an app update with managed publishing
+
+#### Step 1: Turn on managed publishing
+
+- Open Play Console and go to the Publishing overview page.
+
+- In the "Managed publishing status" section, go to Turn on managed publishing.
+
+- Click Save.
+
+After you’ve turned on managed publishing, you’ll see a green check mark and the message "Managed publishing is turned on" in the "Managed publishing status" section until you turn it off.
+
+After managed publishing is turned on, make and submit changes to your app as normal. To learn more, see Prepare and roll out a release. The changes won’t be published until they’ve been reviewed and approved and published from the Managed publishing page.
+
+#### Step 2: Track and review your changes
+
+- After you’ve made changes to your app, select Publishing overview on the left menu.
+
+- In the "Changes in review" section, review the table based on the following:
+
+- The Item changed" column shows the item name and the relevant Play Console area (such as "Main store listing" or "App content").
+
+- The "Description" column provides a short description of the change.
+
+- At the right side of the table, you can select the right arrow icon to go to the relevant section in Play Console.
+
+As your changes are reviewed and approved, they’ll begin to populate the "Changes ready to publish" section of the page.
+
+#### Step 3: Publish your app update
+
+When the "Changes in review" section is empty and all your changes are listed under Changes ready to publish, you can publish your update on Google Play. If you still have changes in the "Changes in review" section, you’ll need to wait until they’ve been approved.
+
+- On the left menu, select Publishing overview.
+
+- Check if all your changes have been approved and are listed under Changes ready to publish.
+
+- Select Publish changes. After you confirm that you want to publish, your update will be published on Google Play within a few minutes.
+
+Important: When you select Review and publish and confirm that you want to publish, your changes will be available and visible to Google Play users.
+
+## Frequently asked questions
+
+Will submitting additional changes to my app lead to longer review times?
+
+The SLA (service level agreement) or turnaround time for review time is counted from the last submitted change to an app. This means that if you submit a change while there are changes in review, your app may be pushed to the back of the app review queue. If this happens, Review and publish will be disabled until the app review is complete.
+
+How does managed publishing work with internal testing? Will the update be covered by managed publishing?
+
+Internal test tracks are not covered by Managed publishing. In most cases, if you upload an app bundle to an Internal test track, changes will be immediately available. App updates on internal test tracks are not subject to reviews but may be subject to retroactive reviews after going live on the Play store.
+
+There are two caveats to note regarding reviews and internal test tracks, which are as follows:
+
+- If your app's first release roll-out is on an Internal test track, the submission must be reviewed before it can be published. Reviews can take a few hours or up to seven days (or longer in exceptional cases), as it depends on the review time that your app is subject to.
+
+- Note: This does not apply to internal test apps that are not fully configured.
+
+- If your previous submission has been rejected, the next submission must be reviewed before it can be published. In this case, if you upload an app bundle to an Internal test track, changes will not become available until the review is complete and approved.
+
+What's the difference between using the Changes not yet sent for review feature and managed publishing? Will managed publishing still work as intended?
+
+The Changes not yet sent for review enables you to decide when to send changes that need to be approved for review. Managed publishing enables you to decide when to publish approved changes. And yes, Managed publishing will still work as intended.
+
+Can we have a comprehensive list of what changes are and are not included in the Changes not yet sent for review feature?
+
+The changes that are included in Changes not yet sent for review are the same as those included in managed publishing. Learn more about what changes are and are not held back.
+
+## Related content
+
+Learn more about choosing when your app updates are published with Managed publishing on Play Academy.
+
+## Was this helpful?
+How can we improve it?
+YesNo
