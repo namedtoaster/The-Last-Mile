@@ -42,6 +42,13 @@ from the user. Never describe another app's behaviour from memory or a blog post
 
 ### One teardown
 
+**Mind the machine's memory.** The emulator is already heavy, and each decompile can take
+most of the RAM (jadx defaults to 70% of it). Decompile one app at a time, never in
+parallel, with the heap capped and at low priority (for the jadx CLI:
+`JAVA_OPTS="-Xmx2g" nice -n 19 jadx -j 2 ...`), and check free memory before each. Do not
+decompile React Native (Hermes) or Flutter apps with jadx: their feature code is not in
+the Java layer, so it costs memory and yields nothing.
+
 1. Install the app from the Play Store on the emulator and use the feature once, so its
    screens and settings exist.
 2. Pull it: `rea pull-adb-package <serial> <package id> --output-directory <dir>` (the
