@@ -1,5 +1,5 @@
 Source: https://www.namecheap.com/support/knowledgebase/article.aspx/10128/2237/how-to-create-an-alias-record/
-Fetched: 2026-10-18
+Fetched: 2026-10-19
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 Subtotal
@@ -39,7 +39,7 @@ Once all settings are made, wait for 30 minutes for the host records to be accep
 Updated
 4/9/2025
 Viewed
-52841 times
+52864 times
 
 Need help? We're always here for you.
 
