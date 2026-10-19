@@ -40,32 +40,70 @@ from the user. Never describe another app's behaviour from memory or a blog post
   hash from here; REA pins them.
 - `adb` from Android platform tools.
 
-### One teardown
+### The standard layout
 
-**Mind the machine's memory.** The emulator is already heavy, and each decompile can take
-most of the RAM (jadx defaults to 70% of it). Decompile one app at a time, never in
-parallel, with the heap capped and at low priority (for the jadx CLI:
-`JAVA_OPTS="-Xmx2g" nice -n 19 jadx -j 2 ...`), and check free memory before each. Do not
-decompile React Native (Hermes) or Flutter apps with jadx: their feature code is not in
-the Java layer, so it costs memory and yields nothing.
+Every teardown in every project uses the same layout, so the next session can pick it up
+without asking.
+
+**Raw material** (gitignored: add `teardown/` to `.gitignore` before the first pull, with
+a comment that it is research only and never redistributed). Outside `/tmp`, so it
+survives a reboot:
+
+```
+teardown/
+  <app>-<YYYY-MM-DD>/        short lowercase app name, the pull date
+    base.apk                 and every split_config.*.apk, flat, as pulled
+    dex/                     classes*.dex unzipped from base.apk
+    index.android.bundle     React Native apps only, from assets/
+    all-strings.txt          every string in the code (strings -n 4 over dex/ and the bundle)
+    identifiers.txt          the snake_case names in all-strings.txt, sorted and unique:
+                             preference keys, remote config names, resource names
+    strings.xml              decoded string resources (apktool, via REA)
+    AndroidManifest.xml      decoded manifest (apktool, via REA)
+    jadx/                    optional: a full decompile, only when a finding needs logic
+```
+
+**Findings** (committed): one file per app and topic in the research folder,
+`RESEARCH_<APP>_TEARDOWN_<TOPIC>.md`, for example `RESEARCH_PINTEREST_TEARDOWN_DISCOVER.md`.
+In this order:
+
+1. A title that states the finding, then the source line: app name, version and
+   version code, the pull date, and the raw folder path.
+2. **What this evidence can and cannot say.** An identifier proves a mechanism exists
+   and names its state; it does not prove when it fires or what a user sees.
+3. **Finding 1, 2, ...**, each with the identifiers or code it rests on, marked
+   **seen in code** or **inferred**, and what it means for this app.
+4. **What to do, ranked**: small, medium, large.
+5. **Already recorded elsewhere, do not duplicate**: links to the project's other docs.
+
+The flow list and the app list stay in `teardown-apps.md` beside them.
+
+### One teardown, cheapest step first
+
+**Mind the machine's memory.** The emulator is already heavy, and a full decompile can
+take most of the RAM (jadx defaults to 70% of it). Run Java tools (apktool, jadx) one at
+a time, never in parallel, never while the emulator is running if memory is tight, with
+the heap capped and at low priority (`JAVA_OPTS="-Xmx2g" nice -n 19`), and check free
+memory first. Most questions are answered before any Java runs.
 
 1. Install the app from the Play Store on the emulator and use the feature once, so its
    screens and settings exist.
 2. Pull it: `rea pull-adb-package <serial> <package id> --output-directory <dir>` (the
-   serial is what `adb devices` prints). It pulls the complete split APK set with a
-   digest for each file. Keep raw output in a gitignored `teardown/<app>-<date>/`
-   folder in the project. Never commit another company's code.
-3. Inspect it with REA's Android tools (`inspect_android_package`, then search classes,
-   strings and resources for the feature's words: the button labels, the setting name).
-4. **What the build is made of decides what you get.** Native Kotlin or Java apps
-   decompile to readable logic. For React Native (`libreactnative.so`, `libhermes.so`)
-   and Flutter (`libflutter.so`) apps, REA names the framework but the feature code
-   is compiled into a bundle or native library, so expect strings, resources, config
-   names and preference keys rather than readable logic. Prefer native apps when you
-   need the mechanism.
-5. Write what you found as names and shapes (preference keys, model fields, remote
-   config names), each marked **seen in code** or **inferred**. Never paste their code
-   into this app; learn the mechanism and write your own.
+   serial is what `adb devices` prints), then move the APKs flat into
+   `teardown/<app>-<date>/`. Once pulled, the app can be uninstalled to free space.
+3. **Cheap, no Java:** unzip `dex/`, build `all-strings.txt` and `identifiers.txt`, and
+   check what the app is built with: `libreactnative.so` or `libhermes.so` in a split
+   means React Native, `libflutter.so` means Flutter, otherwise native.
+4. Search `identifiers.txt` and `all-strings.txt` for the feature's words: button labels,
+   setting names, "seen", "dismiss", "count", "primer". This alone answered both of the
+   first two teardowns this method came from.
+5. **One Java step at a time:** `rea decode-android-resources` for `strings.xml` and the
+   manifest; then, only for the classes a finding points at, `rea search-android-classes`
+   and `rea inspect-android-method` (one method, not the whole app). A full jadx decompile
+   into `jadx/` is the last resort, never for React Native or Flutter apps, whose feature
+   code is not in the Java layer.
+6. Write it up in the findings file above. Never paste their code into this app; learn
+   the mechanism and write your own.
 
 ## 1. List the app's flows
 
