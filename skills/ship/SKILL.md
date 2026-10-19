@@ -16,6 +16,7 @@ Read these in this skill's folder before starting:
 - `references/facts.md`: numbers that change (fees, limits, deadlines).
 - `references/board.md`: the status board's file and rows.
 - `references/payments.md`: store products and RevenueCat, in the order they must be set up.
+- `references/play-closed-test.md`: Google Play click by click, from creating the app to a running closed test and the production application. Give the user these steps, never a summary from memory.
 - `references/levels.md`: what each release level includes.
 - `references/domains.md`: domains, hosts and email for the store pages.
 - `references/rulebooks.md`: the full Apple and Google rulebooks for the sweep.
@@ -103,7 +104,8 @@ Work this out from the files before asking anything, then show it in a few lines
 4. **Accounts:** for a first release, ask whether the user has an Apple Developer
    Program membership and a Google Play developer account. Fees and the closed testing
    rule for new personal Google accounts are in `references/facts.md`; tell the user
-   early, because the Google one can delay an Android launch by weeks.
+   early, because the Google one can delay an Android launch by weeks. When they reach
+   it, walk them through `references/play-closed-test.md` step by step.
 
 5. **Web pages:** the stores need public pages before submission: a privacy policy
    (both stores, and linked inside the app, so its address must be final before the
