@@ -36,6 +36,15 @@ Tick any item verified this session, by the user or by you, with the evidence
 written into the item. Never clear the file wholesale. Never add an item that no
 available device can satisfy. Skip this step if nothing user facing changed.
 
+**Keep it short enough that a busy person will actually do it.** The list is for a
+human with a phone, not a log of every change. Prefer an automated test for anything
+that can be tested without a device. Add a hand check only for what only a person can
+judge on screen, and one item per area of change, not one per fix. Keep a **Must
+check** group at the top of Pending of at most 10 items, the riskiest first, about 10
+minutes in all; anything else goes under "Everything else", marked as optional. From
+experience: one session added 62 items and the founder said "honestly this release
+checklist is too much. i ain't got time for this".
+
 ## 3. Gotchas and decisions
 
 If something this session cost real time (it took more than one attempt to

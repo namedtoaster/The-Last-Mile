@@ -205,6 +205,7 @@ reference app does (with its link), and effort (small, medium, large). Blockers 
 then the rest ranked by how many users hit them.
 
 Fix the small ones now, one at a time, and prove each on screen with see-it-work.
-Medium and large go to the backlog with the reference link. Add a checklist item for
-each fix to `RELEASE_TEST_CHECKLIST.md` so the next release build is checked by hand.
+Medium and large go to the backlog with the reference link. Prove fixes with automated
+tests where possible; add hand checks to `RELEASE_TEST_CHECKLIST.md` only for the
+riskiest few (see session-end: at most 10 must-checks), never one per fix.
 Save the findings next to `teardown-apps.md` with the date.

@@ -60,6 +60,8 @@ Edit `skills/<skill>/SKILL.md`, or the reference file the step points to.
 2. Commit only the files you changed, push the branch and open a pull request
    that follows `.github/pull_request_template.md`. Say what went wrong in general
    terms and what the change does.
+3. If `source` is the user's own fork, the pull request goes to the fork. Then ask
+   whether to open the same change against `namedtoaster/the-last-mile` too.
 
 ## 5. Finish
 
