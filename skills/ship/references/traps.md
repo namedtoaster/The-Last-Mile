@@ -145,9 +145,11 @@ Stack specific traps are at the end.
 - **Status:** Checked 2026-10-12 (official page opened and read).
 
 ### Play Console screens move often
-- **What happened:** navigation paths given from memory were wrong, repeatedly.
-- **Rule for agents:** fetch current Google documentation before giving any Play Console path.
-- **Status:** Needs a human.
+- **What happened:** navigation paths given from memory were wrong, repeatedly. In October 2026 the Create app form asked for the **package name**, which Google's own help page (saved the day before) did not mention; that page still listed a contact email field the form no longer had.
+- **Rule for agents:** read the saved copy of Google's page before giving any Play Console steps, and say which parts come from it. When the user's screen disagrees with the page, the screen wins: ask them to paste or screenshot it, then update this file.
+- **Package name at Create app:** enter the app's final package name (the same as the build's `applicationId`). Google says package names are permanent and can never be deleted or reused, so it must match the rename decided before the first upload.
+- **Source:** [Play Console Help: Create and set up your app](https://support.google.com/googleplay/android-developer/answer/9859152)
+- **Status:** Seen on the live form 2026-10-19; the permanence rule checked against the saved copy fetched 2026-10-18.
 
 ### Code shrinking may never have been turned on
 - **What happened:** Play Console flagged low app optimization in September 2026. Code shrinking (R8) had never been turned on.

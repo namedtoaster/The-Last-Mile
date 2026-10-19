@@ -2,6 +2,8 @@
 
 ## 0.2.0 (unreleased)
 
+- Play Console's Create app form now asks for the package name, which Google's help
+  page does not show yet. The trap says so, and that the user's screen beats the page.
 - ship: record where the store pages are hosted when another project's server
   serves them, and check a static only host can answer app links before relying
   on it. session-end: the summary ends with a table of items, with what needs the
