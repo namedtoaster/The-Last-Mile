@@ -120,6 +120,7 @@ written for any stack; see-it-work is still Expo first.
 | session-end | Wraps up a session: checks, docs, gotchas, goals, commit only what this session touched, push |
 | see-it-work | Shows a change working with seeded simulator screenshots and release build smoke runs (Expo) |
 | reference-hunt | Finds how real apps solve a screen and saves a reference card |
+| screen-atlas | Captures every screen in your app and lays them out as the flows people walk, so you can see the whole thing at once |
 | feature-demo | Builds a tap-through demo of a feature in the app's own colours, so you can see it and argue with it before it ships |
 | connect-tools | Connects Claude to the services your app uses (RevenueCat, PostHog, Sentry, Expo and more) through their official MCP servers, from a checked list |
 | research | Answers a question from official sources and files it where it will be read again |
