@@ -6,6 +6,30 @@ click path, from Google's and Expo's own pages. Founders get lost here because G
 pages give the same menu several names, so name the screen and the button, never a guess.
 Where a page is silent, say "Not stated by Google".
 
+## Does this apply to this app? Check before recruiting anyone
+
+Do not assume it does. Whether it applies depends on the account (type, creation date,
+and possibly an app that already passed on it), and Google's page does not say how a
+second app on an account that already passed is treated. Check the app itself:
+
+1. **Look (30 seconds, after Create app):** Google says "Certain features in Play
+   Console, such as Production and Pre-registration, remain disabled until developers
+   meet these testing requirements", and that you apply by opening the **Dashboard** and
+   clicking **Apply for production**. So open **Test and release > Production**. If
+   **Create new release** opens a "Create production release" page and the Dashboard
+   shows no **Apply for production** task, the requirement is not blocking this app.
+   If Production is disabled or the Dashboard asks you to apply, it applies.
+2. **Prove (when the first build exists):** upload the bundle to that production
+   release, save, open **Publishing overview**. **Send for review** being available
+   with no production access message is the proof. Sending it is optional.
+3. **Record the result** in the project's rules file as a fact with the date, so nobody
+   recruits testers for a rule that was never in force, or skips one that is.
+
+From experience (2026-10-19, one account, not yet proven by a submission): a personal
+account whose first app had already run a closed test could open "Create production
+release" for a second app the day it was created. Until step 2 confirms an account,
+call the requirement unproven and do everything else, rather than waiting on testers.
+
 **Calendar.** Closed test release review: no time stated; new accounts can see reviews of
 "up to seven days or longer". Opt-in link: "several hours" after the first publish. Then
 14 consecutive days per tester. Production access review: "usually takes seven days or
