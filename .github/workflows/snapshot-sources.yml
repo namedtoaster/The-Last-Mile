@@ -3,7 +3,8 @@ name: Snapshot official sources
 # Saves a text copy of every official page the ship references cite into sources/
 # on the snapshots branch (main only takes pull requests),
 # so sessions whose network blocks a store's help site can still read the rule.
-# A changed file in the commit means the page changed: re-check that trap.
+# A changed or failed page opens an issue naming the reference files that cite it,
+# so the claims built on it get re-checked (the fact-check skill).
 
 on:
   schedule:
@@ -12,6 +13,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 concurrency:
   group: snapshot-sources
@@ -46,3 +48,15 @@ jobs:
           { echo "Snapshot official sources $(date -u +%F)"; echo; grep -E '^(NEW|CHANGED|FAILED)' ../snapshot-report.txt || true; } > ../msg.txt
           git commit -q -F ../msg.txt
           git push origin snapshots
+      - name: Open an issue to re-check what changed
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          grep -E '^(CHANGED|FAILED)' snapshot-report.txt > changed.txt || exit 0
+          {
+            echo "The weekly snapshot found official pages that changed or could not be saved."
+            echo "Run the fact-check skill on the reference files named below, against the saved copies on the snapshots branch."
+            echo
+            sed 's/^/- /' changed.txt
+          } > body.md
+          gh issue create --title "Re-check facts: official pages changed $(date -u +%F)" --body-file body.md

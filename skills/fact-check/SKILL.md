@@ -14,9 +14,11 @@ behind each fact and records what it found, so every status means what it says.
   stores and their tools (fees, tester counts, target API levels, review guidelines,
   console steps). Ask which files if it is not obvious. Only check statements that
   claim an outside rule or number; skip the project's own decisions.
-- **In The Last Mile repo or a fork:** `skills/ship/references/traps.md` and
-  `skills/ship/references/facts.md`. The user may name one topic ("Google Play
-  testing", "account deletion") or ask for everything.
+- **In The Last Mile repo or a fork:** every file in `skills/ship/references/`
+  (traps, facts, stacks, domains, payments, levels, rulebooks) and the factual
+  claims in `skills/ship/SKILL.md`, including console steps. The user may name one
+  topic ("Google Play testing", "account deletion") or ask for everything. An open
+  "Re-check facts" issue names the files whose sources changed; start there.
 
 List the entries you will check and how many there are before starting.
 
@@ -28,6 +30,10 @@ Use the same three statuses as the traps reference:
   and a sentence on it supports the entry.
 - **From experience:** it happened to a real app, but no official page states it.
 - **Needs a human:** the answer sits behind a console login no automation can read.
+- **Seen on screen YYYY-MM-DD:** the user's own console screen showed it (a
+  screenshot or pasted text). The live screen beats a saved page: when they
+  disagree, record what the screen showed, note that the official page lags, and
+  keep the page as the source for anything it still states correctly.
 
 In `facts.md` the status lives in the **Last checked** column: a date means Checked,
 otherwise write "From experience" or "Needs a human".
@@ -66,6 +72,19 @@ otherwise write "From experience" or "Needs a human".
    (for example `#5.1.1v`) or the specific help article, not a home page. Open the
    new link to confirm it lands on the rule.
 
+## Console steps
+
+Steps through a console (App Store Connect, Play Console, RevenueCat, a registrar)
+are facts too, and the most likely to drift. Before giving or writing any:
+
+- Read the saved copy of the vendor's page for that screen, and give the steps in
+  its words. Say which steps come from the page and which from memory.
+- Name the fields the user will see in order, so a missing or extra field shows up
+  at once. When the user reports a different screen, ask for the exact text or a
+  screenshot, correct the reference the same day, and mark it **Seen on screen**.
+- One wrong step usually means the page is old: re-check the other steps from the
+  same page before carrying on.
+
 ## Hard rules
 
 - Never upgrade a status from memory. Checked needs a page opened today.
@@ -102,8 +121,8 @@ many.
   match, or the user hears a store rule changed.
 - **When a saved copy changes:** the weekly snapshot job
   (`.github/workflows/snapshot-sources.yml`) commits every page whose text changed.
-  A changed page means the traps citing it need this check. A full scheduled
-  re-check that updates the traps on its own does not exist yet.
+  A changed or failed page opens a "Re-check facts" issue naming the reference files
+  that cite it; run this skill on those files and close the issue with the result.
 
 ## Done when
 
