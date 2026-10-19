@@ -25,6 +25,8 @@ A launch a stranger could find and keep using. The default.
 
 - Everything in Quick ship.
 - Crash reporting, proved working from a release build.
+- A teardown of every flow against shipped apps, tap by tap (`teardown.md`), with the
+  small findings fixed.
 - The release build tested on a real device against the release checklist.
 - A listing written to be found: keywords researched, the first three screenshots
   carry captions that say what the app does.

@@ -17,6 +17,7 @@ Read these in this skill's folder before starting:
 - `references/board.md`: the status board's file and rows.
 - `references/payments.md`: store products and RevenueCat, in the order they must be set up.
 - `references/play-closed-test.md`: Google Play click by click, from creating the app to a running closed test and the production application. Give the user these steps, never a summary from memory.
+- `references/teardown.md`: compare every flow against shipped apps, tap by tap, and fix what this app gets wrong.
 - `references/levels.md`: what each release level includes.
 - `references/domains.md`: domains, hosts and email for the store pages.
 - `references/rulebooks.md`: the full Apple and Google rulebooks for the sweep.
@@ -193,6 +194,13 @@ A release build is not the development build. Some code only fails here.
   and tick items with evidence. The see-it-work skill can smoke test every screen.
 - If crash reporting is installed, confirm a deliberate test error from this build
   arrives.
+
+**Teardown (Standard and above).** Before the listing, run `references/teardown.md`:
+list the app's flows, pick shipped apps that do the same jobs, watch what changes on
+their screens after each tap, walk the same flows here with an empty, a new and a
+heavy account, and fix every place this app falls short. It catches what no rule
+does: a card still there after its sheet closed, a feed that goes blank, a double
+save. Fix the small findings now and prove each on screen; the rest go to the backlog.
 
 ## 5. Store listing
 

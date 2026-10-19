@@ -27,7 +27,9 @@ second app on an account that already passed is treated. Check the app itself:
 
 From experience (2026-10-19, one account, not yet proven by a submission): a personal
 account whose first app had already run a closed test could open "Create production
-release" for a second app the day it was created. Until step 2 confirms an account,
+release" for a second app the day it was created, and that app's Dashboard listed
+"Create and publish a release" to the production track with no **Apply for production**
+task. Until step 2 confirms an account,
 call the requirement unproven and do everything else, rather than waiting on testers.
 
 **Calendar.** Closed test release review: no time stated; new accounts can see reviews of
