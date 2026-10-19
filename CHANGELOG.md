@@ -14,6 +14,11 @@
   documentation pages are now saved through Apple's JSON.
 - Play Console's Create app form now asks for the package name, which Google's help
   page does not show yet. The trap says so, and that the user's screen beats the page.
+- ship: where the 12 closed test testers actually come from. Reciprocal testing
+  communities fill the headcount quickly and cannot answer the engagement question the
+  production application asks, so a test made only of swaps can hold 12 for the full 14
+  days and still be sent back for more testing. The trap now names that as the cause of
+  the April 2026 refusal.
 - ship: record where the store pages are hosted when another project's server
   serves them, and check a static only host can answer app links before relying
   on it. session-end: the summary ends with a table of items, with what needs the
