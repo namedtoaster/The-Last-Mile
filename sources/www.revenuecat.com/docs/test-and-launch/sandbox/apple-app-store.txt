@@ -1,0 +1,235 @@
+Source: https://www.revenuecat.com/docs/test-and-launch/sandbox/apple-app-store
+Fetched: 2026-10-19
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+On this page
+AI agents: the complete RevenueCat documentation index is available at llms.txt. A Markdown version of this page is available at this URL.
+This section assumes you've followed our Quickstart section of our Getting Started guide to install and configure our SDK.
+
+## Sandbox Considerations​
+
+### Products, prices, and metadata​
+
+In sandbox, StoreKit Test, and TestFlight environments, prices often won't reflect the actual prices set in App Store Connect. These environments are relatively unstable, so that doesn't necessarily indicate an issue with your implementation, and it isn't commonly seen in production.
+
+In these testing environments, you should ensure the purchase flow works as expected, rather than the prices and metadata being accurate. Unfortunately Apple's API can sometimes just be inaccurate, especially with different regions set for devices/accounts.
+
+### Currency​
+
+Paywalls or getOfferings() may return prices in USD when testing through TestFlight, even if the tester's storefront is set to another country. Apple's purchase sheet may still show the correct local currency, and purchases can complete successfully.
+
+This is a known quirk of Apple's TestFlight and sandbox environments. StoreKit product metadata can return prices in USD even when the purchase itself uses the correct local storefront.
+
+RevenueCat passes through the product metadata provided by StoreKit as-is. If StoreKit returns a price in USD when testing through TestFlight, that is the price you'll see in Offerings.
+
+When testing, confirm that:
+
+- The purchase sheet shows the expected local currency
+
+- Purchases complete successfully and the expected entitlements unlock
+
+- Your Apple ID Media & Purchases country matches the storefront you're testing
+
+- Your paywall isn't hardcoding a specific currency
+
+## Create a Sandbox Test Account​
+
+In order to test your purchases, you'll need a sandbox test account. You can create test accounts from your App Store Connect dashboard > Users and Access > Sandbox Testers.
+
+If you need help, you can refer to Apple's guide on creating sandbox testers here.
+
+📘Valid email required for sandbox accounts
+Keep in mind you'll need to create sandbox accounts with valid emails that you can verify you own.
+
+### Localization​
+
+To test purchases in different regions, you should set your sandbox user's App Store Country or Region property to the territory you'd like to test.
+
+## Testing on Device​
+
+This section is for testing on a physical device. If you want to test on the simulator, skip to the next section for instructions on how to get started with StoreKit testing.
+
+### Add the Sandbox Test Account to Your Device​
+
+On iOS 13 and earlier, even for sandbox purchases, you'll need to test on a real device. Starting from iOS 12, you're able to add a sandbox account to your device without having to sign out of your Apple Developer account.
+
+On iOS 12 or greater, navigate to Settings > [Your Account] > App Store > Sandbox Account.
+
+On iOS 13 or greater, navigate to Settings > App Store > Sandbox Account.
+
+On iOS 18 or greater, navigate to Settings > Developer > Sandbox Apple Account.
+
+On macOS 11.5.2 or greater, navigate to App Store > Preferences > Sandbox Account.
+
+Add the sandbox account credentials that you previously created. (The sandbox account credentials won't appear until you've made a purchase using a sandbox account in a development build.)
+
+If you don't see the option to add a sandbox account under iOS settings, make a sandbox purchase in your app. Apple will show a popup to enter login details, then you will see your account in iOS settings.
+
+## StoreKit 1: Testing on the Simulator​
+
+Starting from iOS 14, you can test sandbox purchases in the simulator. If you're using a physical device or have installed an SDK version containing StoreKit 2, you can skip this section.
+
+Testing on the simulator requires one of these SDK versions:
+
+SDK | Version |
+iOS | 3.9.0+ |
+Flutter | 2.0.0+ |
+React Native | 4.0.0+ |
+Cordova | 2.0.0+ |
+Unity | 3.0.0+ |
+
+📘StoreKit testing works on iOS 14 and later
+Make sure to test on a real device if testing on iOS 13 or earlier.
+
+📘StoreKit testing requires running app from Xcode
+StoreKit testing only works if you are running your app directly through Xcode. Any command line tools that use the xcodebuild command to start running an app (like flutter run or Flutter's VSCode plugin) won't use the StoreKit Configuration File specified in your scheme. This is a known issue and we have filed a feedback to Apple.
+
+⚠️StoreKit testing is currently incompatible with macOS
+While you can upload a StoreKit configuration file with a macOS app, this setup is currently incompatible with the SDK. When making test purchases on the simulator, the transactions will appear to go through but you'll receive an error from our backend. It's recommended to test without configuration files until this is addressed.
+
+❗️StoreKit testing won't show cancellation or refund events
+While you can cancel and refund subscriptions through Xcode's Manage Transactions... window, these types of events aren't stored in the receipt and won't appear on the RevenueCat dashboard.
+However, the RevenueCat SDK is still able to detect there are no active subscriptions and the appropriate entitlements will be removed when the app is restarted again.
+
+### Step 1: Add a StoreKit Configuration File​
+
+Go to File > New > File... in the menu bar and select StoreKit Configuration File.
+
+You can enable the "Sync this file with an app in App Store Connect" checkbox to have the file automatically configured with the in-app purchases or subscriptions already set up in App Store Connect.
+
+Save the file in the top-level folder of your project and add it to your targets.
+
+### Step 2: Create a New Scheme for StoreKit Testing​
+
+Click the scheme in the scheme menu and click Manage Schemes...
+
+Select your current scheme and click Duplicate.
+
+In the scheme editor, add the StoreKit Configuration file you created in Step 1 and click Close.
+
+### Step 3: Setting up the StoreKit Configuration File​
+
+In the editor, click the "+" button at the bottom and create a new product. In this tutorial, an auto-renewable subscription will be created.
+
+Enter a name for a new subscription group and click Done. The subscription group name should match one that is set up for your app in App Store Connect, but it's not a requirement. That means you can test your subscription groups and products in the simulator and then create the products in App Store Connect later.
+
+📘Products in the configuration file must be set up in RevenueCat
+Even though products don't have to be set up in App Store Connect, they have to be set up in RevenueCat so that RevenueCat can validate the sandbox receipt. Refer to the Configuring Products guide for more information.
+
+Configure the subscription as needed by filling in the Reference Name, Product ID, Price, Subscription Duration, and optionally an Introductory Offer. Again, this product doesn't have to exist in App Store Connect for you to test purchasing in the simulator. Here is a sample configuration:
+
+Repeat this for as many products as you want.
+
+### Step 4: Uploading the Public Certificate to RevenueCat​
+
+Go to Editor > Save Public Certificate and save the public certificate to your project.
+
+Go to your app's configuration page in your RevenueCat project settings (Project Settings > Apps > [Your App]). Expand the dropdown StoreKit testing framework and upload the certificate to your app. If successful, you should see Certificate added.
+
+👍You did it!
+You're ready to make purchases locally in the simulator!
+
+## Testing Subscription Offers on the Simulator​
+
+For sandbox and production subscription offers, they are signed using the In-App Key. However, when using a StoreKit Configuration file, the key used to sign offers must be exported from Xcode directly.
+
+### Step 1: Finding your Subscription Offers Key​
+
+Open the .storekit file where the subscriptions offers are configured, and go to Editor → Subscription Offers Key.
+
+After selecting 'Subscription Offers Key', you will see your key ID and private key.
+
+Note that the private key stored in the “.storekit” file is unique per file and Xcode allows you to re-generate the key for a given file. If you re-generate your key, be sure to follow these steps again to upload your new key to RevenueCat.
+
+### Step 2: Save your private key as a .p8 file​
+
+Manually save the text of the private key in a file called SubscriptionKey_XXXXXX.p8 where XXXXXX is the key ID. Following this example, the file would be named SubscriptionKey_BD3A7A04.p8.
+
+We only accept files smaller than 512B. We recommend utilizing an editor such as Visual Studio Code when creating your .p8 file.
+
+### Step 3: Upload your file to RevenueCat​
+
+This file can now be uploaded to the RevenueCat dashboard under your iOS app settings page → Storekit Subscription Offer Key. Be sure to copy and paste over your key ID from Xcode to the Key ID box.
+
+Don't forget to click 'Save Changes' in the upper right.
+
+👍You did it!
+You're ready to make Subscription Offer purchases locally in the simulator!
+
+## Make a Purchase​
+
+Build and run your app on your device. When you attempt to make a purchase, you may be still be prompted to sign in with the sandbox account you just created.
+
+Apple may prompt you to sign in with an Apple Account whenever you make or restore a purchase. When using the SDK, this could only happen when you call .purchase(package:) or .restorePurchases. Developers don't have control over the type of prompt that is shown (Face ID, Touch ID, password, etc.)
+
+❗️Sandbox may be slow
+Apple's App Store Sandbox is notoriously unperformant. A sandbox purchase experience may take upwards of 15s to fully complete. This is normal. In production, total purchase times are usually in the low seconds.
+
+## Verify the Transaction Appears in the Dashboard​
+
+After a purchase is successful, you should be able to view the transaction immediately in the RevenueCat dashboard. If the purchase doesn't appear in the dashboard, it's not being tracked by RevenueCat.
+
+📘Make sure Sandbox Data is enabled
+Make sure the the View Sandbox Data toggle is enabled in the navigation bar.
+
+## Working with Subscriptions​
+
+### Sandbox​
+
+In the the sandbox environment, subscription renewals happen at an accelerated rate, and auto-renewable subscriptions renew a maximum of 12 times per day. This enables you to test how your app handles a subscription renewal, a subscription lapse, and a subscription history that includes gaps.
+
+Because of the accelerated expiration and renewal rates, sometimes not all renewals are reflected in the RevenueCat customer dashboard.
+
+### TestFlight​
+
+As of December 2024, Apple changed TestFlight subscription renewals to occur once every 24 hours, regardless of the subscription duration. Previously, TestFlight subscriptions renewed every few minutes, allowing for rapid testing of multiple billing cycles within a single day.
+
+This change wasn't formally announced by Apple but can be found in their documentation.
+
+Production subscription period | Sandbox subscription renewal | TestFlight subscription renewal |
+3 days | 2 minutes | 1 day |
+1 week | 3 minutes | 1 day |
+1 month | 5 minutes | 1 day |
+2 months | 10 minutes | 1 day |
+3 months | 15 minutes | 1 day |
+6 months | 30 minutes | 1 day |
+1 year | 1 hour | 1 day |
+
+## Deleting Test Users​
+
+When testing, it may be helpful to delete a customer and all their receipts from RevenueCat to simulate a new installation. You can delete a specific user from the customer dashboard in RevenueCat. See our docs on deleting users for more information.
+
+❗️Maximum number of App Store subscription receipts
+For performance reasons, RevenueCat limits the number of App Store subscription receipts per customer to 100. Having more than 100 subscription receipts on a single customer isn't going to happen in production, but can easily happen during sandbox testing. Simply deleting the customer will solve this problem.
+
+## Deleting local data​
+
+To clean up locally cached data, you can uninstall the app and reinstall.
+On macOS, you need to manually delete data in UserDefaults, which can be done by going into ~/Library/Group\ Containers/, finding the app, and deleting the data.
+
+## TestFlight​
+
+TestFlight is a hybrid environment that uses production Apple Accounts but purchases occur in sandbox, which can cause unexpected issues that are very likely undocumented by Apple.
+
+RevenueCat also treats the TestFlight install itself as sandbox. Paywall views uploaded from that install, including views before any purchase, are excluded from experiment results the same way sandbox purchases are. See Sandbox and TestFlight.
+
+### Common Errors​
+
+If you're getting the error "Account Not In This Store" when attempting to make a purchase on macOS, try to:
+
+- Switch your region to the recommended region
+
+- Sign out of the App Store
+
+- Relaunch the TestFlight app
+
+- Attempt to make the purchase again, and sign in when prompted
+
+📘Make sure to log out of the sandbox user on your testing device
+Deleting the user from RevenueCat doesn't delete the user's purchase history with Apple. It only deletes the user's receipt and metadata from our servers. That means making or restoring purchases will restore those purchases with RevenueCat. To simulate purchasing as a completely new user, make sure to log out of the sandbox account on your device and create a new one.
+
+## Next Steps​
+
+For more information, take a look at the official Apple documentation:
+Apple App Store: Testing in-app purchases
+Was this page helpful?YesNo

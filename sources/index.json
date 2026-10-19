@@ -253,7 +253,7 @@
     "file": "support.google.com/googleplay/android-developer/answer/14115180.txt",
     "changed": "2026-10-12",
     "fetched": "2026-10-19",
-    "finalUrl": "https://support.google.com/googleplay/android-developer/answer/16935362?hl=en&visit_id=639279675522118043-1422082064&rd=1"
+    "finalUrl": "https://support.google.com/googleplay/android-developer/answer/16935362?hl=en&visit_id=639279675945155065-734651566&rd=1"
   },
   "https://support.google.com/googleplay/android-developer/answer/14151465": {
     "file": "support.google.com/googleplay/android-developer/answer/14151465.txt",
@@ -435,6 +435,31 @@
   "https://www.revenuecat.com/docs/offerings/overview": {
     "file": "www.revenuecat.com/docs/offerings/overview.txt",
     "changed": "2026-10-18",
+    "fetched": "2026-10-19"
+  },
+  "https://developer.apple.com/documentation/storekit/testing-in-app-purchases-with-sandbox": {
+    "file": "developer.apple.com/documentation/storekit/testing-in-app-purchases-with-sandbox.txt",
+    "changed": "2026-10-19",
+    "fetched": "2026-10-19"
+  },
+  "https://developer.apple.com/help/app-store-connect/test-in-app-purchases/create-a-sandbox-apple-account": {
+    "file": "developer.apple.com/help/app-store-connect/test-in-app-purchases/create-a-sandbox-apple-account.txt",
+    "changed": "2026-10-19",
+    "fetched": "2026-10-19"
+  },
+  "https://developer.apple.com/help/app-store-connect/test-in-app-purchases/manage-sandbox-apple-account-settings": {
+    "file": "developer.apple.com/help/app-store-connect/test-in-app-purchases/manage-sandbox-apple-account-settings.txt",
+    "changed": "2026-10-19",
+    "fetched": "2026-10-19"
+  },
+  "https://developer.apple.com/help/app-store-connect/test-in-app-purchases/overview-of-testing-in-sandbox": {
+    "file": "developer.apple.com/help/app-store-connect/test-in-app-purchases/overview-of-testing-in-sandbox.txt",
+    "changed": "2026-10-19",
+    "fetched": "2026-10-19"
+  },
+  "https://www.revenuecat.com/docs/test-and-launch/sandbox/apple-app-store": {
+    "file": "www.revenuecat.com/docs/test-and-launch/sandbox/apple-app-store.txt",
+    "changed": "2026-10-19",
     "fetched": "2026-10-19"
   }
 }

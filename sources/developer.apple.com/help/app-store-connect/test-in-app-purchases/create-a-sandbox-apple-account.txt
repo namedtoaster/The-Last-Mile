@@ -1,0 +1,61 @@
+Source: https://developer.apple.com/help/app-store-connect/test-in-app-purchases/create-a-sandbox-apple-account
+Fetched: 2026-10-19
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+# Create a Sandbox Apple Account
+
+If your app offers In-App Purchases or Apple Pay, you can test this functionality by creating Sandbox accounts in App Store Connect and using them to sign in to devices that are running a development-signed version of your app. You’ll need to enable Developer Mode on each device so you can use it to test your app.
+
+Testing In-App Purchases and testing Apple Pay require signing into a Sandbox account in different ways:
+
+In-App Purchases: Sign in with a Sandbox account in the App Store on your test device. You don't need to sign out of your personal Apple Account at the device level.
+
+Apple Pay: Sign out of your personal Apple Account on the test device, then sign in with your Sandbox account as the device's Apple ID. For more information, visit Apple Pay Sandbox Testing.
+
+With a Sandbox account, you can test different payment scenarios (such as successful subscription renewals, payment failures, and refunds), as well as Family Sharing functionality. This is important for ensuring that In-App Purchases work as expected and that there are no issues with the payment process.
+
+You can create up to 10,000 Sandbox accounts in App Store Connect. These accounts are only valid for testing purposes and can’t be used to sign in to or make purchases on the App Store.
+
+Note: The email address you use for a Sandbox account must not already be registered as an Apple Account. Using an existing Apple Account will cause errors during testing — use an email address that isn't associated with any Apple Account. When signing in on a test device, use the Sandbox sign-in option in Settings, not your main Apple Account settings.
+
+Required role: Account Holder, Admin, App Manager, or Developer. View role permissions.
+
+## Create a Sandbox account
+
+Select Users and Access at the top of the page.
+
+In the top navigation, click Sandbox, then click the add button (+). If it’s your first time adding sandbox testers, click Create Test Accounts.
+
+Enter a first and last name for your tester.
+
+Note: Once you create a tester, you can’t edit the name, email, or password.
+
+Enter an email address. Use an email address that hasn’t been used as Apple Account or to purchase iTunes or App Store content. Consider creating a dedicated email address for each sandbox tester.
+
+If your email service provider supports email subaddressing with a plus sign (+), you can use subaddresses of a sandbox-specific address for a sandbox tester. For example, if your base sandbox email is billjames2@icloud.com, you can use billjames2+UK@icloud.com, billjames2+US@icloud.com, and billjames2+JP@icloud.com as email addresses for additional testers. All communications sent to the subaddresses are also sent to the base address.
+
+Enter a password. Like standard accounts, Sandbox accounts require strong passwords. When you enter a password, recommendations display if your password doesn't meet the requirements.
+
+Choose an App Store country or region. Each test account is associated with one of the 175 App Store storefronts. You can edit a tester’s App Store country or region after the account is created to test on different storefronts using the same Sandbox account, without having to create new testers.
+
+Click Create.
+
+### Delete a Sandbox account
+
+You can delete a tester by clicking their Sandbox account in the list of test accounts, then clicking Delete Account. Alternatively, you can take the following steps to delete multiple testers at once.
+
+Note: Testers that are part of a Sandbox Test Family must be removed from the family before they can be deleted.
+
+Select Users and Access at the top of the page.
+
+In the top navigation, click Sandbox.
+
+Select the checkbox for each tester you want to delete, then click Delete Account.
+
+In the dialog that appears, click Delete Account.
+
+If you delete a sandbox tester, the associated Sandbox account and email can no longer be used as an App Store Connect user, to test in the sandbox environment, or to make purchases on the iTunes Store or App Store.
+
+Related
+Testing at all Stages of Development with Xcode and Sandbox
+Testing In-App Purchases with Sandbox

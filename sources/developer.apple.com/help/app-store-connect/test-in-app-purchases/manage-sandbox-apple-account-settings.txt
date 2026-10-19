@@ -1,0 +1,645 @@
+Source: https://developer.apple.com/help/app-store-connect/test-in-app-purchases/manage-sandbox-apple-account-settings
+Fetched: 2026-10-19
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+# Manage Sandbox Apple Account settings
+
+When managing Sandbox accounts, you can choose from different In-App Purchase scenarios to ensure they work as expected.
+
+App Store Connect displays the last purchase date for active testers, or Sandbox accounts that have completed a purchase within the last 180 days. You can use filters to identify inactive testers and testers associated with a particular country or region.
+
+Required role: Account Holder, Admin, App Manager, or Developer. View role permissions.
+
+## Edit country or region on the App Store
+
+Each test account is associated with one of the 175 App Store storefronts. You can edit a tester's App Store country or region at any time in App Store Connect to test on different App Store storefronts using the same Sandbox account, without having to create new testers.
+
+Note: All members of a Sandbox Test Family must be associated with the same App Store country or region as the family organizer. If the tester is a member of a Sandbox Test Family and you want to change their country or region, you’ll need to first remove the account from the Sandbox Test Family.
+
+Select Users and Access at the top of the page.
+
+Click Sandbox to view Sandbox accounts.
+
+Click the Sandbox account you want to modify.
+
+Under Country or Region, make your desired change.
+
+Click Save. Once you change the country or region, the tester will need to sign in again with their Sandbox account on their iOS device to complete this change.
+
+### Edit subscription renewal rate
+
+The subscription renewal rate is the speed at which subscriptions renew for each tester in sandbox. The subscription renewal rate also determines the length of Billing Retry and Billing Grace Period for those testers.
+
+You can change a tester’s subscription renewal rate at any time in their iOS Sandbox Account Settings or by following these steps in App Store Connect:
+
+Select Users and Access at the top of the page.
+
+Click Sandbox to view Sandbox accounts.
+
+Click the Sandbox account you want to modify.
+
+In the dialog that appears under Subscription Renewal Rate, select a renewal speed and click Save.
+
+By default, accounts are set to a speed equalization of 1 month = 5 minutes. You can slow down or speed up the renewal period using the options below. Subscriptions automatically renew up to 12 times before auto-renewal turns off on the thirteenth renewal attempt. Note that the speed of renewal in sandbox depends on the length of the subscription.
+
+### Renewal every 3 minutes
+
+|
+
+Subscription duration
+
+|
+
+|
+
+|
+
+|
+
+|
+
+|
+
+|
+
+1 week
+
+|
+
+1 month
+
+|
+
+2 months
+
+|
+
+3 months
+
+|
+
+6 months
+
+|
+
+1 year
+
+|
+
+Subscription renewal speed
+
+|
+
+3 minutes
+
+|
+
+3 minutes
+
+|
+
+6 minutes
+
+|
+
+9 minutes
+
+|
+
+18 minutes
+
+|
+
+36 minutes
+
+|
+
+Length of Billing Retry
+
+|
+
+6 minutes
+
+|
+
+6 minutes
+
+|
+
+6 minutes
+
+|
+
+6 minutes
+
+|
+
+6 minutes
+
+|
+
+6 minutes
+
+|
+
+Length of Biling Grace Period
+
+|
+
+3 minutes
+
+|
+
+3 minutes
+
+|
+
+3 minutes
+
+|
+
+3 minutes
+
+|
+
+3 minutes
+
+|
+
+3 minutes
+
+|
+
+### Renewal every 5 minutes (default)
+
+|
+
+Subscription duration
+
+|
+
+|
+
+|
+
+|
+
+|
+
+|
+
+|
+
+1 week
+
+|
+
+1 month
+
+|
+
+2 months
+
+|
+
+3 months
+
+|
+
+6 months
+
+|
+
+1 year
+
+|
+
+Subscription renewal speed
+
+|
+
+3 minutes
+
+|
+
+5 minutes
+
+|
+
+10 minutes
+
+|
+
+15 minutes
+
+|
+
+30 minutes
+
+|
+
+1 hour
+
+|
+
+Length of Billing Retry
+
+|
+
+10 minutes
+
+|
+
+10 minutes
+
+|
+
+10 minutes
+
+|
+
+10 minutes
+
+|
+
+10 minutes
+
+|
+
+10 minutes
+
+|
+
+Length of Biling Grace Period
+
+|
+
+3 minutes
+
+|
+
+5 minutes
+
+|
+
+5 minutes
+
+|
+
+5 minutes
+
+|
+
+5 minutes
+
+|
+
+5 minutes
+
+|
+
+### Renewal every 30 minutes
+
+|
+
+Subscription duration
+
+|
+
+|
+
+|
+
+|
+
+|
+
+|
+
+|
+
+1 week
+
+|
+
+1 month
+
+|
+
+2 months
+
+|
+
+3 months
+
+|
+
+6 months
+
+|
+
+1 year
+
+|
+
+Subscription renewal speed
+
+|
+
+10 minutes
+
+|
+
+30 minutes
+
+|
+
+1 hour
+
+|
+
+1 hour 30 minutes
+
+|
+
+3 hours
+
+|
+
+6 hours
+
+|
+
+Length of Billing Retry
+
+|
+
+1 hour
+
+|
+
+1 hour
+
+|
+
+1 hour
+
+|
+
+1 hour
+
+|
+
+1 hour
+
+|
+
+1 hour
+
+|
+
+Length of Biling Grace Period
+
+|
+
+10 minutes
+
+|
+
+30 minutes
+
+|
+
+30 minutes
+
+|
+
+30 minutes
+
+|
+
+30 minutes
+
+|
+
+30 minutes
+
+|
+
+### Renewal every hour
+
+|
+
+Subscription duration
+
+|
+
+|
+
+|
+
+|
+
+|
+
+|
+
+|
+
+1 week
+
+|
+
+1 month
+
+|
+
+2 months
+
+|
+
+3 months
+
+|
+
+6 months
+
+|
+
+1 year
+
+|
+
+Subscription renewal speed
+
+|
+
+15 minutes
+
+|
+
+1 hour
+
+|
+
+2 hours
+
+|
+
+3 hours
+
+|
+
+6 hours
+
+|
+
+12 hours
+
+|
+
+Length of Billing Retry
+
+|
+
+15 minutes
+
+|
+
+1 hour
+
+|
+
+1 hour
+
+|
+
+1 hour
+
+|
+
+1 hour
+
+|
+
+1 hour
+
+|
+
+Length of Biling Grace Period
+
+|
+
+1 hour
+
+|
+
+2 hours
+
+|
+
+2 hours
+
+|
+
+2 hours
+
+|
+
+2 hours
+
+|
+
+2 hours
+
+|
+
+### Enable interrupted purchases for a Sandbox account
+
+You can test interrupted purchase scenarios on a device running iOS 14 or later by enabling interrupted purchases for a specific Sandbox account. An interrupted purchase is experienced anytime a customer tries to complete an App Store transaction but needs to perform an action outside of your app first. For example, they may need to agree to updated terms and conditions or update an expired payment method.
+
+You can enable or disable interrupted purchases for a tester at any time in their iOS Sandbox Account Settings or by following these steps in App Store Connect:
+
+Select Users and Access at the top of the page.
+
+Click Sandbox to view Sandbox accounts.
+
+Click the Sandbox account you want to modify.
+
+In the dialog that appears, select the checkbox next to “Interrupt Purchases for This Tester” to enable interrupted purchases. Deselect the checkbox to disable interrupted purchases.
+
+Click Save.
+
+Once interrupted purchases are enabled, on-device purchase attempts by that Sandbox account will be interrupted in the sandbox environment and continue to be interrupted until the option is deselected or the tester agrees to terms and conditions on their iOS device.
+
+### Clear Sandbox account purchase history
+
+You can clear the purchase history for a tester to continue testing with the same Sandbox account. Clearing purchase history deletes all past purchases made by the selected testers in the sandbox environment. This action can’t be reversed. Customer accounts aren’t affected.
+
+You can clear a tester’s purchase history at any time in their iOS Sandbox Account Settings or by following these steps in App Store Connect:
+
+Select Users and Access at the top of the page.
+
+Click Sandbox to view Sandbox accounts.
+
+Select the testers you want to modify and click Clear Purchase History.
+
+Click Clear Purchase History in the dialog that appears.
+
+Sandbox accounts with a high number of purchases may take longer to clear.
+
+### Create a Sandbox Test Family
+
+Family Sharing lets people share and access auto-renewable subscriptions or non-consumables that have Family Sharing enabled with with up to five family members. You can use Sandbox Test Families to make sure Family Sharing works in your app as expected.
+
+After you’ve created at least two Sandbox accounts, you can create a Sandbox Test Family in App Store Connect.
+
+Select Users and Access at the top of the page.
+
+In the top navigation, click Sandbox, then click Family Sharing.
+
+Click the add button (+) or, if it’s your first time creating a test family, click Create Test Family.
+
+Select a test account to serve as the family organizer, then click Next.
+
+Choose up to five test accounts to serve as family members. All members must be from the same country or region as the family organizer, and members can only belong to one Sandbox Test Family.
+
+Select whether each member in the family is allowed to share and receive purchases with each other in the Share Purchases menu, then click Create.
+
+### Manage a Sandbox Test Family
+
+You can manage a Sandbox Test Family at any time in App Store Connect. Use the following steps to add or remove test accounts serving as family members and modify whether they can share purchases.
+
+Note: Testers can also modify whether each family member shares purchases with other members of the Sandbox Test Family in their iOS Sandbox Account Settings. Learn more.
+
+Select Users and Access at the top of the page.
+
+In the top navigation, click Sandbox, then click Family Sharing.
+
+Click Manage next to the Sandbox Test Family the tester is a member of.
+
+Make your changes, then click Save.
+
+Note: Changes to purchase sharing may take time to appear in the sandbox environment.
+
+If a family member is removed from a Sandbox Test Family, they can no longer share their purchases or access purchases made by members of that family.
+
+### Delete a Sandbox Test Family
+
+You can delete a Sandbox Test Family at any time in App Store Connect.
+
+Note: Members of a deleted test family will no longer be able to share their purchases or access purchases made by members of that family. Members will retain access to purchases made from their own account.
+
+Select Users and Access at the top of the page.
+
+In the top navigation, click Sandbox, then click Family Sharing.
+
+Click Manage next to the Sandbox Test Family you want to delete.
+
+Click Delete Test Family.
+
+Click Delete in the dialog that appears.
+
+Related
+Testing In-App Purchases with sandbox
+In-App Purchase

@@ -1,0 +1,66 @@
+Source: https://developer.apple.com/help/app-store-connect/test-in-app-purchases/overview-of-testing-in-sandbox
+Fetched: 2026-10-19
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+# Overview of testing in sandbox
+
+Apple provides a sandbox environment that lets you test In-App Purchases and Apple Pay transactions using test accounts without incurring charges. This environment uses the infrastructure of the App Store and returns transactions as if payments were successfully processed instead of processing actual payments.
+
+You can test the following scenarios:
+
+Scenario
+
+|
+
+Description
+
+|
+
+Testing App Store country or region
+
+|
+
+Test on different storefronts using the same Sandbox account, without having to create new testers. Associate your sandbox testers with any of the 175 App Store storefronts.
+
+|
+
+Testing auto-renewable subscription events
+
+|
+
+Test auto-renewable subscription events, such as renewals, state changes, interrupted purchases, winback offers, and contingent pricing without having to wait the length of the subscription duration.
+
+|
+
+Testing App Store Server Notifications
+
+|
+
+Test that your server receives App Store Server Notifications and notifications for the sandbox environment.
+
+|
+
+Testing Family Sharing
+
+|
+
+Create Sandbox Test Families to test Family Sharing in your app and share access to auto-renewable subscriptions and non-consumables with up to five test family members.
+
+|
+
+Testing Apple Pay transactions
+
+|
+
+Test your app's implementation of Apple Pay with test credit and debit cards. Learn more.
+
+|
+
+To get started, Create Sandbox Apple Accounts in App Store Connect and use them to sign in to devices that are running a development-signed version of your app. You’ll need to enable Developer Mode on each device so you can use it to test your app.
+
+Alternatively, you can test In-App Purchases with StoreKit Testing in Xcode, a local test environment that doesn’t require a connection to App Store servers to test In-App Purchases. Use StoreKit Testing in Xcode to test In-App Purchases before you configure them in App Store Connect or to test your code when a network connection isn’t available. Learn how to test In-App Purchases with Xcode and sandbox.
+
+Related
+Testing at all stages of development with Xcode and sandbox
+Testing In-App Purchases with sandbox
+Watch “Explore testing In-App Purchases”
