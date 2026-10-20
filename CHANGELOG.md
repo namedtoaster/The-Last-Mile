@@ -17,6 +17,9 @@
   now hands off to it.
 - ship: TestFlight is an option, not a step. A release build installed straight from
   Xcode is enough to test on iOS, and many people submit straight to review.
+- The sync guide now covers the whole loop for anyone's repos: plugin or project copy,
+  a one prompt setup, updating the plugin, and using your own fork as the source so
+  your skill fixes reach your projects before (or without) a pull request here.
 - Every ship reference re-checked claim by claim against the saved official pages
   (2026-10-19). Fixed wrong or stale rules (template apps, login exceptions, account
   deletion, screenshot sizes, DNS record rules, RevenueCat launch steps), added missed

@@ -1,14 +1,47 @@
-# Using the skills in cloud sessions
+# Using The Last Mile in your repos
 
-Cloud sessions (Claude Code on the web, and the Claude app on your phone) do not
-load plugins, as of October 2026. They do read skills committed to the project in
-`.claude/skills/`. These files keep a copy of The Last Mile skills there, so the
-same skills work on your phone and your desktop, while this repo stays the only
-place they are edited.
+There are two ways to get the skills into a project. Pick one per project, never
+both, or every skill shows up twice.
 
-## Set it up in a project
+| | Plugin | Project copy (sync) |
+| --- | --- | --- |
+| Works in | Claude Code on your computer | Everywhere: computer, Claude Code on the web, the Claude app on your phone |
+| Lives in | Your Claude Code install | The project's `.claude/skills/`, committed |
+| Stays current by | `claude plugin update the-last-mile@the-last-mile` | `/sync`, or a daily pull request |
+| Best for | Trying it out, desktop only work | Anyone who works from a phone or the web |
 
-1. Copy `sync.mjs` to `.claude/last-mile/sync.mjs` in your project.
+Cloud sessions do not load plugins (as of October 2026). They do read skills
+committed to the project. That is why the project copy exists.
+
+## Plugin
+
+```
+/plugin marketplace add namedtoaster/the-last-mile
+/plugin install the-last-mile@the-last-mile
+```
+
+To update later: `claude plugin marketplace update the-last-mile`, then
+`claude plugin update the-last-mile@the-last-mile`, then restart Claude Code.
+
+## Project copy
+
+### The easy way
+
+Open a Claude Code session in your project (phone, web or desktop) and paste:
+
+> Set up The Last Mile sync in this repo, following
+> https://github.com/namedtoaster/the-last-mile/blob/main/sync/README.md.
+> Do the "By hand" steps yourself, then commit and push.
+
+### By hand
+
+1. Fetch the sync script into your project:
+
+   ```
+   mkdir -p .claude/last-mile
+   curl -fsSL https://raw.githubusercontent.com/namedtoaster/the-last-mile/main/sync/sync.mjs -o .claude/last-mile/sync.mjs
+   ```
+
 2. Create `.claude/last-mile/config.json`:
 
    ```json
@@ -19,24 +52,56 @@ place they are edited.
    }
    ```
 
-   `source` can be your fork. List in `keepLocal` any skill your project keeps its
-   own version of (for example a `session-end` with steps only your app needs). The
-   sync never touches those.
+   - `source`: the repo to copy from. Use your fork if you have one (see below).
+   - `ref`: the branch or tag to copy from. `main` gets every change as it lands.
+   - `keepLocal`: skills your project keeps its own version of (for example a
+     `session-end` with steps only your app needs). The sync never touches them.
+
 3. Run `node .claude/last-mile/sync.mjs` and commit `.claude/`.
-4. Optional, to stay current without asking: copy `sync-last-mile.yml` to
-   `.github/workflows/`, and turn on Settings > Actions > General > "Allow GitHub
-   Actions to create and approve pull requests". It opens a pull request each
-   morning the skills changed, and you can run it from the Actions tab.
+4. Optional, to stay current without asking: copy
+   [`sync-last-mile.yml`](sync-last-mile.yml) to `.github/workflows/`, and turn on
+   Settings > Actions > General > "Allow GitHub Actions to create and approve pull
+   requests". It opens a pull request each morning the skills changed. You can also
+   run it from the Actions tab, including in the GitHub mobile app.
 5. If your linter lints everything (`eslint .`), ignore `.claude/`. The see-it-work
    templates are TypeScript meant to be copied into your app, not run where they sit.
 
-After that, type `/sync` in any session of the project (the Claude app on your phone
-included) to bring the skills up to date. It syncs, commits and pushes for you.
+The script only writes inside `.claude/`. It never commits or pushes. It will not
+overwrite a skill it did not put there; it warns instead.
 
-Do not also install the plugin in that project, or every skill shows up twice.
+### Staying current
+
+Type `/sync` in any session of the project. It runs the script, commits only the
+skill files and pushes. New or changed skills load in the next session.
 
 ## Improving a skill
 
-Edit it here, never in the copy. From inside the project where it went wrong, the
-improve-skill skill does this: it writes up what happened, changes the skill in this
-repo and opens a pull request. Once it is merged, sync.
+When a skill gets something wrong, say so in that session and use
+`/improve-skill`. It decides whether the lesson belongs in your project's rules file
+(most do) or in the skill itself, and for a skill fix it edits the source repo, never
+the copy in your project. The next sync would overwrite an edit to the copy.
+
+What happens next depends on whether you can push to the source.
+
+### Contributing back (no fork)
+
+You cannot push to `namedtoaster/the-last-mile`, so improve-skill opens a pull
+request from a fork of it, or suggests an issue instead. The fix
+reaches your project once the pull request is merged and you sync. Until then,
+follow the fixed step by hand.
+
+### Your own fork as the source
+
+If you want your fixes now, not after review:
+
+1. Fork the repo on GitHub.
+2. Set `"source"` in `.claude/last-mile/config.json` to `<you>/the-last-mile`.
+3. improve-skill now pushes fixes to your fork, and `/sync` picks them up straight
+   away. Open a pull request to `namedtoaster/the-last-mile` too if the fix would
+   help others.
+4. To get upstream changes, press "Sync fork" on your fork's GitHub page, then
+   `/sync` in your project. If you changed a skill that upstream also changed,
+   GitHub asks you to resolve the conflict first.
+
+One fork can be the source for all your projects. Project specific changes still
+belong in each project's rules file or a `keepLocal` skill, not in the fork.
