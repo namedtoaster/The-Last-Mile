@@ -3,7 +3,7 @@ name: Snapshot official sources
 # Saves a text copy of every official page the ship references cite into sources/
 # on the snapshots branch (main only takes pull requests),
 # so sessions whose network blocks a store's help site can still read the rule.
-# A changed or failed page opens an issue naming the reference files that cite it,
+# A changed or failed page opens an issue (or comments on the open one) naming the reference files that cite it,
 # so the claims built on it get re-checked (the fact-check skill).
 
 on:
@@ -59,4 +59,10 @@ jobs:
             echo
             sed 's/^/- /' changed.txt
           } > body.md
-          gh issue create --title "Re-check facts: official pages changed $(date -u +%F)" --body-file body.md
+          # One open issue at a time: a later run adds a comment instead of a duplicate.
+          open=$(gh issue list --state open --search 'in:title "Re-check facts"' --json number -q '.[0].number')
+          if [ -n "$open" ]; then
+            gh issue comment "$open" --body-file body.md
+          else
+            gh issue create --title "Re-check facts: official pages changed $(date -u +%F)" --body-file body.md
+          fi

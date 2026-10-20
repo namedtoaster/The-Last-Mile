@@ -71,6 +71,8 @@ function toText(html) {
     .split('\n')
     .map((l) => l.replace(/[ \t ]+/g, ' ').trim())
     .filter((l) => !/^-+$/.test(l))
+    // view counters ("Viewed" then "305415 times") change on every fetch
+    .filter((l) => !/^\d[\d,]* times$/.test(l))
     .join('\n')
     .replace(/^(#+)\n+/gm, '$1 ')
     .replace(/\n{3,}/g, '\n\n')
