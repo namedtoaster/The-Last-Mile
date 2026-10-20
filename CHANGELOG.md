@@ -2,6 +2,14 @@
 
 ## 0.2.0 (unreleased)
 
+- New skill: store-listing. Picks keywords by checking who already owns each phrase
+  (a small script asks Apple's public search API for the top apps and their rating
+  counts), spends the name and subtitle on one lane, writes both stores' copy and the
+  first three screenshot captions, finds a screenshot look from the live listings,
+  and keeps a dated keyword file with a baseline and change log. Ship's listing step
+  now hands off to it.
+- ship: TestFlight is an option, not a step. A release build installed straight from
+  Xcode is enough to test on iOS, and many people submit straight to review.
 - Every ship reference re-checked claim by claim against the saved official pages
   (2026-10-19). Fixed wrong or stale rules (template apps, login exceptions, account
   deletion, screenshot sizes, DNS record rules, RevenueCat launch steps), added missed
