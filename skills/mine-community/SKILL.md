@@ -64,27 +64,50 @@ and do not reopen it.
 
 Prefer whatever the user can give you with least effort. In order:
 
-1. **The user saves the page.** For Reddit, a signed in browser is served JSON
-   directly, while scripts and datacenter addresses are refused. Give them the
-   URL, ask them to open it in their browser and save the file:
+1. **The public feed, which costs the user nothing.** A forum that refuses its
+   JSON API to scripts often still publishes a feed that answers them fine, so
+   try the feed before asking a person to do anything. For Reddit, `/.json`
+   answers a script 403 whatever user agent it sends, while the Atom feed answers
+   200 and carries the full post body:
+
+   ```
+   https://www.reddit.com/r/<subreddit>/top/.rss?t=year
+   ```
+
+   Parse each `<entry>` for `title`, `content` (the body, as HTML), `author`,
+   `published` and the entry link. Checked 2026-10-19.
+
+   Two limits decide what you may conclude from it. A feed returns **at most 25
+   entries**, so breadth comes from running several windows (`t=week`, `month`,
+   `year`, `all`) and merging them, not from asking for a bigger page. And it
+   carries **no score and no comment count**, so ranking is position within its
+   window, and nothing you write can be weighted by votes. Say so in the output.
+
+   It is rate limited hard enough that a handful of requests in a minute earns a
+   429, so pace a few seconds between windows and back off when refused.
+
+2. **The user saves the page**, when there is no feed, or when you need the
+   scores. A signed in browser is served the JSON a script is refused, so give
+   them the URL and ask them to save the file:
 
    ```
    https://www.reddit.com/r/<subreddit>/top/.json?t=year&limit=100
    ```
 
    Then parse `data.children[].data` for `title`, `selftext`, `score`,
-   `num_comments` and `created_utc`. Checked 2026-10-18.
+   `num_comments` and `created_utc`.
 
-2. **A web search**, when the community is indexed and you only want a sample.
+3. **A web search**, when the community is indexed and you only want a sample.
    Weaker, since you get what is quoted elsewhere rather than what the community
    upvoted.
 
-3. **The user pastes posts.** Fine, and often better, since they filter the
+4. **The user pastes posts.** Fine, and often better, since they filter the
    obvious junk first.
 
-Do not build or install a scraper for a one time harvest, and do not send the
-user through an API approval queue to read a forum. If the easy routes fail, say
-so and ask for pastes.
+Do not install a scraper, and do not send the user through an API approval queue
+to read a forum. Reading a public feed is not that, and a few lines that fetch
+one are worth leaving behind when the user wants the harvest to repeat. If the
+easy routes fail, say so and ask for pastes.
 
 Respect each community's terms. Read what is public, do not republish it
 wholesale, and quote only what you cite.

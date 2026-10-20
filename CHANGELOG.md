@@ -2,6 +2,13 @@
 
 ## 0.2.0 (unreleased)
 
+- mine-community now reads a community's public feed first, instead of asking the
+  user to open a URL in a signed in browser and save the file. Reddit refuses its
+  JSON endpoint to scripts but answers the Atom feed with the full post body, so
+  the manual step was unnecessary. The saved page stays as the fallback for when
+  there is no feed or the scores are needed, and the skill now says what a feed
+  cannot tell you: at most 25 entries, and no score or comment count.
+
 - New skill: store-listing. Picks keywords by checking who already owns each phrase
   (a small script asks Apple's public search API for the top apps and their rating
   counts), spends the name and subtitle on one lane, writes both stores' copy and the
