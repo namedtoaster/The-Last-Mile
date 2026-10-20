@@ -71,6 +71,9 @@ Apple and Google change them.
 - **Click "Submit for review" without asking you.**
 - **Make up store rules.** Every rule it checks has a link to Apple's or Google's own
   page. If it can't check one, it says so.
+- **Guarantee approval.** Every rule it checks is one someone read and dated against
+  Apple's or Google's own page. A reviewer is still a person, and one can say no for a
+  reason nobody has written down. That's what the next section is for.
 
 ## Got rejected anyway?
 
