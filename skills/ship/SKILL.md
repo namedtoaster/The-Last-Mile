@@ -68,7 +68,7 @@ first `/ship` run and ending when the app is live on both stores:
 - Write the user's own words down exactly when they say something worth quoting, with
   their permission to use them.
 - Ask for screenshots at the moments worth showing (console screens, the first
-  TestFlight install, the approval email) and save them in `store/ship-journal/`.
+  release build on a phone, the approval email) and save them in `store/ship-journal/`.
 - Keep the scoreboard current, including the stats: one more session each time a
   session moves the release, days since the first run, the user's hands on time in
   consoles, and tokens when the session can see them (say "not visible" otherwise,
@@ -185,8 +185,11 @@ the stack from `references/stacks.md`, explain it in one line, and record the an
 
 A release build is not the development build. Some code only fails here.
 
-- Install it on a real device: TestFlight for iOS, an internal testing track for
-  Android.
+- Install it on a real device. On iOS a release build installed straight from Xcode
+  (or the stack's release run command) is enough. TestFlight is an option, mostly for
+  getting builds to other people, never a required step: many people submit straight
+  to review. On Android a release build on a device works too; Play Billing purchases
+  need a build uploaded to a Play testing track (see `references/payments.md`).
 - Open the app cold, go through the main thing it does start to finish, sign in, reach
   any paywall, and buy in the sandbox if it sells anything.
 - If the project has `RELEASE_TEST_CHECKLIST.md`, work through **Verify on <version>**
@@ -199,12 +202,13 @@ A release build is not the development build. Some code only fails here.
 Draft everything in `templates/store-listing.md`, saved as `store/listing.md` in the
 project (or wherever the project keeps it), and show the user before uploading.
 
-- **Copy:** name, subtitle, keywords, descriptions and release notes, within the
-  limits in `references/facts.md`. Write for the person who would use the app, from
-  what the code actually does. Nothing it cannot do yet.
-- **Screenshots:** the sizes each store requires today (check `references/facts.md`,
-  then the official page). Capture them from a simulator or emulator with realistic
-  content, not an empty state. The see-it-work skill can seed data and capture them.
+- **Copy and screenshots:** run the store-listing skill. It picks keywords by who
+  owns each phrase, writes the name, subtitle, keyword field, descriptions, release
+  notes and the first three screenshot captions within the limits in
+  `references/facts.md`, and keeps the evidence in `store/keywords.md`. If it is not
+  installed: write for the person who would use the app, from what the code actually
+  does, nothing it cannot do yet, and capture screenshots at the sizes in
+  `references/facts.md` with realistic content, not an empty state.
 - **Privacy answers:** list every SDK and every network call that sends data
   (analytics, crash reporting, ads, sign in, payments, the app's own server). Map each
   to the data types Apple's privacy labels and Play's Data safety form ask about, and

@@ -43,8 +43,9 @@ both stores. The order matters, because each step needs the one before it:
    one. React Native: enable the In-App Purchase capability in Xcode, and set the
    purchasing Activity's `launchMode` to `standard` or `singleTop` (React Native's
    default `singleTask` can cancel purchases).
-5. **Test in sandbox** from a real build, then once from TestFlight or Play internal
-   testing. Apple's steps are below. On Google Play, billing is blocked for apps that
+5. **Test in sandbox** from a release build on a real device (on iOS, straight from
+   Xcode is fine; TestFlight is optional), and on Android once from a Play testing
+   track. Apple's steps are below. On Google Play, billing is blocked for apps that
    aren't signed and uploaded to Play, unless the Google Account is a license tester.
    Make every tester a license tester: otherwise test track purchases cost real money.
    From experience: the release on the test track also had to be approved first.
