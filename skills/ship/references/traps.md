@@ -206,6 +206,14 @@ is in the one that caused 415,532.
 - **Source:** [Expo: runtime issues](https://docs.expo.dev/debugging/runtime-issues/)
 - **Status:** Checked 2026-10-19 (saved copy fetched 2026-10-12). The two specific causes are from experience.
 
+### Test the build a new user gets, not the one on your machine
+
+- **What happened:** reported by a reader after the skill was posted: development mode hides failures that only exist in a release build, so the build that gets submitted is often the first one nobody has run.
+- **Rule:** the causes are ordinary and invisible in development. Values from the environment are baked in when the bundle is built, not read when the app runs, so a variable that is set in your shell and missing from the build environment is simply absent from the app. Expo's docs put it plainly: Expo CLI "replaces all references in your code to `process.env.EXPO_PUBLIC_[VARNAME]` with the corresponding value set in the .env files", which happens at build time. Permission strings live in the native config rather than in JavaScript, so a permission the code requests can be missing from the built app. And anything that quietly relied on the development server being up has nothing to fall back on once it is not.
+- **How to check:** install the exact build you are about to submit, on a real device, as a **clean install** rather than over the existing one, with the development server stopped. An upgrade keeps the previous install's data and granted permissions, so the path a new user takes is the one that stays untested. Then cold start it once with **airplane mode on**, which catches first launch network assumptions: a splash screen waiting on a request that never returns, a remote config with no default, a sign in check that blocks the first screen.
+- **Source:** [Expo: environment variables](https://docs.expo.dev/guides/environment-variables/)
+- **Status:** From experience, reported by a reader. The environment variable behaviour was checked 2026-10-20.
+
 ## Things that fail silently
 
 ### Crash reporting can be installed and still report nothing
