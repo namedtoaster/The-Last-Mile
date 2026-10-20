@@ -21,6 +21,30 @@ Stack specific traps are at the end.
 
 ## Apple
 
+**What Apple actually rejects.** Apple publishes the counts, so the order below is not a
+guess. In the 2025 reporting year it reviewed **9,100,620** submissions and rejected
+**2,093,244** of them, nearly one in four.
+
+| Guideline section | Rejections |
+| --- | --- |
+| 2. Performance | 1,354,418 |
+| 5. Legal | 495,673 |
+| 4. Design | 415,532 |
+| 3. Business | 283,820 |
+| 1. Safety | 151,159 |
+| Other | 4,145 |
+
+A submission can be rejected under more than one section, so those add up to more than
+the total. Read them as which sections bite, not as a partition.
+
+The guideline number on each trap below tells you which section it sits under, because
+Apple numbers them 1. Safety, 2. Performance, 3. Business, 4. Design, 5. Legal. So a trap
+citing 2.3.10 is in the section that caused 1.35 million rejections, and one citing 4.3
+is in the one that caused 415,532.
+
+- **Source:** [2025 App Store Transparency Report](https://www.apple.com/legal/app-store/transparency/2025/) and the [App Review Guidelines](https://developer.apple.com/app-store/review/guidelines/)
+- **Status:** Both checked 2026-10-20.
+
 ### Buying must not require an account
 - **What happened:** rejected in April 2026 because the paywall required signing in before purchase.
 - **Rule:** Apple's guidelines say that if an app doesn't include significant account based features, people should be able to use it without a login, and that apps may not require personal information to function unless it is directly relevant to the core functionality. They do not spell out purchases; requiring sign in to buy is the part learned from the rejection. Apple also asks for a restore mechanism for restorable purchases (3.1.1); that restore must work without an account is from experience.
