@@ -128,6 +128,13 @@ what it does and what to rename.
 5. **Journeys:** start from `templates/journey.yaml` for the two or three paths
    that matter most (onboarding, the core action, the paywall).
 
+Steps 4 and 5 use Maestro because that is what these templates were proven with.
+Expo has its own route for the same layer: e2e by TesterArmy, run locally and then
+on every pull request with EAS Workflows and Expo's hosted simulators
+(https://docs.expo.dev/guides/using-e2e/, read 2026-10-20). If the project already
+uses EAS Workflows, offer it as the option. The Last Mile has not run it on a real
+app yet, so say that.
+
 Content capture for marketing video is a separate, experimental recipe:
 `references/content-capture.md`. Skip it unless the user asks.
 
