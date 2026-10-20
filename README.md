@@ -57,6 +57,10 @@ Then, in your app's folder:
 8. **Shows where you stand.** `/ship status` puts every item on a board, on your
    phone or your desktop, with what only you can do at the top.
 
+To see what it finds without starting a release, run `/ship sweep`. It checks the app,
+fixes what you agree to, and stops before the version bump. Nothing is built,
+uploaded or submitted.
+
 It looks up the current store rules every time instead of trusting its memory, because
 Apple and Google change them.
 

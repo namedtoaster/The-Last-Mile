@@ -56,6 +56,15 @@ a text summary alone:
    rendered in the app), then give its gist in two lines.
 4. Commit and push `store/status.json` the way the project's rules say, and stop.
 
+**`/ship sweep`, or the user asking to check the app without releasing it,** means
+step 0's stack, platforms and first release questions, then step 1 in full, then stop:
+
+1. Run the rejection sweep and report it as step 1 says.
+2. Fix the blockers that are code, one at a time, with the user's yes for each.
+3. List what is left: blockers that need the user, and questions nobody could answer.
+4. Stop. No version bump, no release build, no store listing, nothing uploaded. Say
+   that a clean sweep is not an approval, and that `/ship` picks up from here.
+
 ## The ship journal
 
 Shipping a first app is a story people want to read, and nobody remembers the details
