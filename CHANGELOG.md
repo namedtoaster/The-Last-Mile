@@ -2,6 +2,12 @@
 
 ## 0.2.0 (unreleased)
 
+- Contributing a trap is easier: "This caught me" is now a form whose fields match a
+  trap entry, and a `trap` label exists for it. ship drafts the report itself after a
+  rejection, with the project's details stripped. improve-skill can add a trap and
+  works through a fork for anyone without push access. CONTRIBUTING promises a reply
+  within 48 hours.
+
 - Websites: setup asks whether the project is web only and sets a website goal;
   session-end words checklist items for the live site after a deploy; see-it-work
   has a website section (Playwright screenshots at phone and desktop widths, real

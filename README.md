@@ -84,7 +84,7 @@ Apple and Google change them.
 Run `/ship` with the rejection message. It fixes only what the reviewer asked for,
 drafts a short reply, and resubmits.
 
-Then [tell us what caught you](https://github.com/namedtoaster/the-last-mile/issues/new?template=this-caught-me.md).
+Then [tell us what caught you](https://github.com/namedtoaster/the-last-mile/issues/new?template=this-caught-me.yml).
 Every rejection someone reports becomes a check for everyone after them.
 
 ## Then: users. Then: money.

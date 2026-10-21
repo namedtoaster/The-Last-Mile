@@ -1,0 +1,65 @@
+name: This caught me
+description: A store rejection, release surprise or setup trap that others should know about
+title: "Trap: "
+labels: [trap]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks. Each field matches a line of a trap in `skills/ship/references/traps.md`,
+        so this can become an entry with little rewriting. Leave out your app's name,
+        screens, users and keys. Rough answers are fine.
+  - type: dropdown
+    id: store
+    attributes:
+      label: Which store or step
+      options:
+        - App Store
+        - Google Play
+        - Both
+        - Building or uploading
+        - After release
+    validations:
+      required: true
+  - type: dropdown
+    id: stack
+    attributes:
+      label: Your stack
+      options:
+        - Expo
+        - React Native
+        - Flutter
+        - Native iOS
+        - Native Android
+        - Capacitor
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What it did to your app, and roughly the month and year. Paste the reviewer's wording if you have it.
+    validations:
+      required: true
+  - type: input
+    id: guideline
+    attributes:
+      label: Guideline or policy named
+      description: For a rejection, the number or name the store gave, for example 2.3.10 or Photo and Video Permissions.
+  - type: textarea
+    id: fix
+    attributes:
+      label: What fixed it
+    validations:
+      required: true
+  - type: textarea
+    id: how-to-check
+    attributes:
+      label: How someone could check for it today
+      description: Optional. A file to look at, a setting, a search.
+  - type: input
+    id: source
+    attributes:
+      label: Official source, if you have one
+      description: A page from Apple, Google or the framework. A blog post is fine as a lead.

@@ -253,9 +253,20 @@ Follow the upload path for the stack in `references/stacks.md`. Ask before each 
    misunderstood, explain with a screenshot.
 4. Bump the build number, rebuild, upload and resubmit, asking before each upload.
 5. Record the rejection with its date and guideline in the project's gotchas or
-   `SHIPPING.md`. If it would catch other apps, offer to open a "This caught me" issue
-   on The Last Mile (`namedtoaster/the-last-mile`), with the guideline and no private
-   details.
+   `SHIPPING.md`.
+6. If it would catch other apps and is not already in `references/traps.md`, offer to
+   report it to The Last Mile. Fill in the report yourself from what just happened, so
+   the user only has to say yes:
+   - **Fields:** store, stack, what happened (month and year, the reviewer's wording),
+     the guideline, what fixed it, how to check for it, and an official source if one
+     was read during the fix.
+   - **Strip the project out:** no app name, screen names, copy, user data, keys,
+     URLs or account ids. Word it for any app.
+   - Show the draft. On a yes, open it with
+     `gh issue create --repo namedtoaster/the-last-mile --title "Trap: <plain words>" --body <the fields as headed sections>`.
+     Without `gh`, give the user the form link
+     `https://github.com/namedtoaster/the-last-mile/issues/new?template=this-caught-me.yml`
+     with the draft to paste.
 
 ## 8. After it ships
 
