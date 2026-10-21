@@ -164,9 +164,9 @@ rejections from both stores along the way. The traps are the ones that cost real
 
 I'm putting together a course on how I actually did this: idea to an app in the App
 Store with paying users, built with Claude Code. I don't have a lot of users or a lot
-of money, but I got there. If you'd be interested, give
-[this discussion](https://github.com/namedtoaster/the-last-mile/discussions/1) a thumbs
-up. No email, no sign up.
+of money, but I got there. If you'd be interested, leave a comment on
+[this discussion](https://github.com/namedtoaster/the-last-mile/discussions/1). That's
+how I'll tell you when it's out. No email, no sign up.
 
 ## License
 
