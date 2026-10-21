@@ -10,7 +10,50 @@
         "media library",
         "photo"
       ],
-      "note": "Disputed (2026-10-12). True that expo-media-library adds the permissions and none are blocked, but a social app can keep them with an approved Play Console declaration, so not a clear blocker."
+      "note": "Disputed (2026-10-12). True that expo-media-library adds the permissions and none are blocked, but a social app can keep them with an approved Play Console declaration, so not a clear blocker. Confirmed in the merged release manifest 2026-10-21."
+    },
+    {
+      "id": "location-purpose-string",
+      "match": [
+        "purpose string",
+        "usage description",
+        "nslocation",
+        "product_name",
+        "location prompt",
+        "motion"
+      ],
+      "note": "2026-10-21 sweep: expo-location writes its default prompt texts (location, always location, motion). True, but shipped since September 2025, so a risk, not a blocker."
+    },
+    {
+      "id": "fine-location",
+      "match": [
+        "access_fine_location",
+        "fine location",
+        "precise location",
+        "coarse"
+      ],
+      "note": "2026-10-21 sweep: only the country and region are used, Play's Location Permissions policy asks for the minimum scope."
+    },
+    {
+      "id": "privacy-labels",
+      "match": [
+        "privacy label",
+        "app privacy",
+        "data safety",
+        "contacts",
+        "nsprivacycollecteddatatypes"
+      ],
+      "note": "2026-10-21 sweep: neither store's answers list Contacts or Location, Apple's lists no usage data or device ID, while the code and Bluesky's own privacy policy describe them."
+    },
+    {
+      "id": "unused-permissions",
+      "match": [
+        "read_phone_state",
+        "read_media_audio",
+        "write_contacts",
+        "system_alert_window"
+      ],
+      "note": "2026-10-21 sweep: declared in the merged manifest, never requested by the app's code."
     }
   ]
 }

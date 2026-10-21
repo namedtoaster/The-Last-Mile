@@ -162,6 +162,12 @@ the store consoles (for example, Google's declarations for photo and video
 permissions). Before calling one of those a blocker, ask whether the app already has
 the exception; if nobody can say, report it as a question, not a blocker.
 
+For a live app, also find when each finding shipped (`git log -S "<the string>"` on the
+file that adds it). Something that has passed review in many releases is a risk the
+reviewers have not enforced yet, not a certain rejection: say so, with the date, and
+still fix it, because enforcement changes without notice. Something added since the
+last approved release is the likeliest blocker.
+
 Report blockers first, each with the file and line, the rule and its source, then the
 passes in one line each. Offer to fix the blockers that are code. Fix them one at a
 time and show each change.

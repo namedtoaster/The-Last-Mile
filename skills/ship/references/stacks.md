@@ -80,8 +80,33 @@ picks the track and promotes builds. `supply` needs one build uploaded to Google
 | Android permissions | Android Studio's **Merged Manifest** tab, or the report at `<module>/build/outputs/logs/manifest-merger-<variant>-report.txt` after a release build. Expo and React Native: the `android/app` module. Flutter: `android/app`. MAUI: `Platforms/Android/AndroidManifest.xml` plus what packages add |
 | iOS permission texts | `Info.plist` (Expo: `ios.infoPlist` in app config; MAUI: `Platforms/iOS/Info.plist`) |
 | Text shipped to iOS | search the source, translation files and bundled content for other store names. For Flutter also `lib/` and `l10n/`; for web based stacks the built web folder |
-| Privacy manifest | `PrivacyInfo.xcprivacy` in the iOS project |
-| SDKs that send data | `package.json`, `pubspec.yaml`, `Podfile`, Gradle dependencies, `.csproj` package references |
+| Privacy manifest | `PrivacyInfo.xcprivacy` in the iOS project (Expo: `ios.privacyManifests` in app config) |
+| SDKs that send data | `package.json`, `pubspec.yaml`, `Podfile`, Gradle dependencies, `.csproj` package references. Also read the fields attached to every analytics event, not only the SDK list |
+
+### Expo without committed `ios/` and `android/` folders
+
+The real `Info.plist` and manifest only exist after prebuild, and config plugins add
+permissions and prompt texts that appear nowhere in the app config. These steps come
+from a sweep of a large Expo app (October 2026), not from one documentation page; the
+Gradle task name in step 4 worked with Android Gradle Plugin 9 and is not checked
+against a page:
+
+1. Use the Node version the project pins (`engines` or `devEngines` in `package.json`,
+   or `.nvmrc`). Newer npm refuses to run under the wrong one.
+2. Install with the project's package manager, then run its `postinstall` script if
+   you installed with scripts off. Generated code (API clients, compiled translations)
+   often comes from it, and the release bundle fails without it.
+3. Set the environment variables the app config reads for a store build (look for
+   `process.env` in `app.config.*` and the `env` of the production profile in
+   `eas.json`), then `npx expo prebuild --no-install`. A config that reads files the
+   repo keeps secret (`google-services.json`, keys) needs a placeholder; repos often
+   commit an `.example` copy.
+4. Read `ios/<App>/Info.plist`, then on Android run
+   `./gradlew :app:processReleaseMainManifest` and read
+   `android/app/build/outputs/logs/manifest-merger-release-report.txt`, which names
+   the library behind every permission. Expect it to take several minutes the first time.
+5. Do this in a copy or a throwaway branch, and delete the generated folders after if
+   the project keeps them out of git.
 
 ## A web app (Lovable, Bolt, v0, Next.js and others)
 
