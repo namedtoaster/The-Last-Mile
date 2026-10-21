@@ -2,6 +2,11 @@
 
 ## 0.2.0 (unreleased)
 
+- sync: a way to set up the project copy when the agent refuses to run a script it
+  just downloaded (use a local clone of the source), and a check for the plugin
+  being enabled as well, which loads every skill twice, with the command that turns
+  it off for one project.
+
 - mine-community now reads a community's public feed first, instead of asking the
   user to open a URL in a signed in browser and save the file. Reddit refuses its
   JSON endpoint to scripts but answers the Atom feed with the full post body, so

@@ -13,6 +13,11 @@ yourself; the user is often on a phone and runs nothing by hand.
    `sync/README.md` in The Last Mile (`namedtoaster/the-last-mile`) says: fetch
    `sync/sync.mjs` from it and write the config with `"source":
    "namedtoaster/the-last-mile"`, `"ref": "main"`, `"keepLocal": []`.
+   If the session will not run a script it just downloaded, use a local clone of
+   the source, the way the README's "By hand" step 3 says.
+   If `claude plugin list` shows The Last Mile plugin enabled too, every skill
+   loads twice. Say so and offer to turn it off for this project:
+   `claude plugin disable the-last-mile@the-last-mile -s local`.
 2. **Sync.** Run `node .claude/last-mile/sync.mjs`. It clones the source from
    GitHub, which cloud sessions can always reach.
 3. **Commit only what the sync changed:** `.claude/skills` and
