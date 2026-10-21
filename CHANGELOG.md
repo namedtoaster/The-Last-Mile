@@ -2,6 +2,10 @@
 
 ## 0.2.0 (unreleased)
 
+- setup: looks at the user's other projects for a rules file that already says how
+  they like to be talked to, and offers to carry that and any "every repo"
+  decisions over, instead of asking again.
+
 - connect-tools: after connecting a server, checks this app's project is in the
   account it reached, since people often have two accounts with a vendor.
 
