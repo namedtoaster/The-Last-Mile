@@ -2,6 +2,9 @@
 
 ## 0.2.0 (unreleased)
 
+- connect-tools: after connecting a server, checks this app's project is in the
+  account it reached, since people often have two accounts with a vendor.
+
 - sync: a way to set up the project copy when the agent refuses to run a script it
   just downloaded (use a local clone of the source), and a check for the plugin
   being enabled as well, which loads every skill twice, with the command that turns
