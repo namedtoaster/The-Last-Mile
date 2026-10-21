@@ -69,7 +69,11 @@ alternative: it adds the vendor's skills too. Never both. Then, for each one the
    chat. Prefer a read only key whenever the vendor offers one.
 4. **Prove it works.** Call one harmless read tool (list projects, list apps, the
    current user) and show the result in one line. A server that is listed but
-   fails here is not connected; say so.
+   fails here is not connected; say so. Then check this app's own project is in
+   what came back. A server signs in to one account, and people often have two
+   (a second login, another organization). If the app's project is missing, it is
+   connected to the wrong account: say so, and ask which account to sign in with
+   before using it for this app.
 
 New servers load at the start of a session. If the tools do not appear, the user
 restarts Claude Code (or runs `/mcp` to reconnect) and you check again.
