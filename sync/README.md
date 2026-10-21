@@ -1,7 +1,9 @@
 # Using The Last Mile in your repos
 
 There are two ways to get the skills into a project. Pick one per project, never
-both, or every skill shows up twice.
+both, or every skill shows up twice. If the plugin is installed for your user and
+a project has the copy, turn the plugin off for that project only:
+`claude plugin disable the-last-mile@the-last-mile -s local`.
 
 | | Plugin | Project copy (sync) |
 | --- | --- | --- |
@@ -58,6 +60,12 @@ Open a Claude Code session in your project (phone, web or desktop) and paste:
      `session-end` with steps only your app needs). The sync never touches them.
 
 3. Run `node .claude/last-mile/sync.mjs` and commit `.claude/`.
+
+   If your agent refuses to run a script it just downloaded (Claude Code's auto
+   mode did, as of October 2026), use a local clone of the source instead: check
+   it is on `main` and level with GitHub (`git fetch`, then `git status` says
+   "up to date with origin/main"), copy `sync/sync.mjs` from it, and run
+   `node .claude/last-mile/sync.mjs <path to the clone>`. The result is the same.
 4. Optional, to stay current without asking: copy
    [`sync-last-mile.yml`](sync-last-mile.yml) to `.github/workflows/`, and turn on
    Settings > Actions > General > "Allow GitHub Actions to create and approve pull
