@@ -15,6 +15,11 @@ Run a short interview, then write four files from the templates in this skill's
 - **Read before asking.** If the project already has a CLAUDE.md, AGENTS.md, README
   or app.json, read them first and only ask what they do not already answer.
   Confirm what you inferred in one line instead of asking it again.
+- **Look at the user's other projects too.** Sibling folders (the project's parent,
+  and wherever their other repos live) may hold a rules file that already has a
+  **How to talk to me** section or standing decisions marked as applying to every
+  repo. Offer to carry those over in one line instead of asking question 4 and the
+  push question again. Copy only the personal parts, never another app's settings.
 - **Never overwrite** an existing file without showing the user what would change
   and getting a yes. Prefer merging new sections into an existing rules file.
 - A screenshot is a perfectly good answer. If the user sends one, use it.
