@@ -2,6 +2,10 @@
 
 ## 0.2.0 (unreleased)
 
+- Other agents: the README says plainly that only Claude Code is tested, a "Doesn't
+  work in my agent" form and label take reports, and CONTRIBUTING asks whoever adds
+  support for an agent to keep it working.
+
 - Contributing a trap is easier: "This caught me" is now a form whose fields match a
   trap entry, and a `trap` label exists for it. ship drafts the report itself after a
   rejection, with the project's details stripped. improve-skill can add a trap and

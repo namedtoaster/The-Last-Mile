@@ -112,6 +112,10 @@ Cursor, Codex, Gemini CLI and other agents that read skills:
 npx skills add namedtoaster/the-last-mile
 ```
 
+I only use Claude Code, so these are untested anywhere else. If something breaks in
+your agent, [tell me](https://github.com/namedtoaster/the-last-mile/issues/new?template=other-agent.yml)
+or send the fix.
+
 **Cloud sessions** (Claude Code on the web and the Claude app on your phone) do not
 load plugins. Keep a synced copy of the skills in your project instead, which works
 on every device. [sync/README.md](sync/README.md) covers setting it up (one prompt),

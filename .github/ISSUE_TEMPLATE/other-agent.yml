@@ -1,0 +1,49 @@
+name: Doesn't work in my agent
+description: Installing or running the skills failed in Cursor, Codex, Gemini CLI or another agent
+title: "Agent: "
+labels: [other-agent]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The maintainer only uses Claude Code, so anything outside it is untested and you
+        may be the first to try it. A pull request with the fix is even better.
+  - type: dropdown
+    id: agent
+    attributes:
+      label: Agent
+      options:
+        - Cursor
+        - Codex
+        - Gemini CLI
+        - GitHub Copilot
+        - Windsurf
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Agent version
+  - type: input
+    id: install
+    attributes:
+      label: How you installed it
+      description: For example `npx skills add namedtoaster/the-last-mile`
+    validations:
+      required: true
+  - type: textarea
+    id: what-broke
+    attributes:
+      label: What broke
+      description: The error, or what the skill did that it should not have. Paste output if you have it.
+    validations:
+      required: true
+  - type: dropdown
+    id: pr
+    attributes:
+      label: Would you send the fix?
+      options:
+        - Yes, I'll open a pull request
+        - Maybe, with some pointers
+        - No, just reporting

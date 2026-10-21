@@ -12,6 +12,7 @@ should be checkable.
 | A new trap: something that caught your app in review or a release | Pull request, or the [This caught me](https://github.com/namedtoaster/the-last-mile/issues/new?template=this-caught-me.yml) form |
 | Updating a fact or a trap whose rule changed | Pull request, with the new source |
 | A new skill | Start a post in Discussions first. Skills are curated so the set stays coherent |
+| Making the skills work in another agent (Cursor, Codex, Gemini CLI and others) | Pull request. The maintainer only uses Claude Code and cannot test these, so whoever adds support for an agent is asked to keep it working. The [Doesn't work in my agent](https://github.com/namedtoaster/the-last-mile/issues/new?template=other-agent.yml) form is for reports |
 | A skill or tool that already exists somewhere else | Pull request that POINTS at it. See Outside skills and tools |
 
 All changes reach `main` through a pull request. The maintainer's own pull requests merge by themselves once the checks pass; everyone else's are reviewed by the maintainer.
