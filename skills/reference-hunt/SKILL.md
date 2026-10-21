@@ -15,7 +15,8 @@ The output is a few concrete patterns from real screens, and one recommendation.
 
 - a Mobbin screen or flow opened in this session,
 - a screenshot the user sent,
-- an App Store or Google Play listing screenshot opened in this session.
+- an App Store or Google Play listing screenshot opened in this session,
+- for a website, a live public page opened in a browser in this session.
 
 Never describe another app's UI from a blog post, a review, a help page, a teardown
 article or memory. Those are often years old, and a user can lose hours hunting
@@ -45,9 +46,16 @@ A pattern only helps if you know what it is replacing.
 
 ## 2. Pick the source
 
-Use the first one that is available. Tell the user in one line which you used.
+First pick the platform. Read the Platforms setting in the rules file. A web only
+project is searched as **web**; a mobile app as **ios** (Mobbin's iOS library is
+the larger one, and most Android screens follow the same patterns). If the rules
+file does not say, look at the code: a web framework with no app build is web.
+Searching the wrong platform returns real screens that do not fit the layout.
 
-1. **Mobbin**, if its tools are connected. Check the rules file first: if it says
+Then use the first source that is available. Tell the user in one line which
+source and platform you used.
+
+1. **Mobbin**, if its tools are connected. Pass the platform from above. Check the rules file first: if it says
    Mobbin is connected, use it. Otherwise look for Mobbin search tools in the tools
    you have (they search screens, flows, and sections of screens). Use them
    automatically; do not ask first. If the user wants to connect it, point them to
@@ -57,10 +65,13 @@ Use the first one that is available. Tell the user in one line which you used.
    which plans include the agent connection are in the ship skill's
    `references/facts.md`; point the user there rather than quoting prices.
 2. **The user's own screenshots.** Ask for screenshots of the screen in two or three
-   apps they like. A phone screenshot is a normal, complete input.
-3. **Store listing screenshots.** Open the App Store (or Google Play) listing of
+   apps or sites they like. A phone or browser screenshot is a normal, complete input.
+3. **Store listing screenshots** (mobile). Open the App Store (or Google Play) listing of
    apps known for this screen and use their screenshots. These are marketing images,
    so they show the best screens, not every screen. Say that when you rely on them.
+   **Live pages** (web). There are no store listings, so open the public pages of
+   sites known for this screen in a browser instead. Screens behind a sign in cannot
+   be reached this way; ask the user for screenshots of those.
 
 If none of these is possible, say so plainly and stop. Do not fill the gap from memory.
 

@@ -2,6 +2,10 @@
 
 ## 0.2.0 (unreleased)
 
+- reference-hunt: picks the platform from the rules file before searching, so a
+  web only project gets web screens from Mobbin instead of iOS ones, and uses live
+  public pages in place of store listings when the project is a website.
+
 - setup: looks at the user's other projects for a rules file that already says how
   they like to be talked to, and offers to carry that and any "every repo"
   decisions over, instead of asking again.
