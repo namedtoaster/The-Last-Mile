@@ -22,9 +22,9 @@ batched into the release checklist in step 2.
 
 ## 2. Release checklist
 
-If this session changed anything a person has to see on a device (a screen,
-layout, animation, navigation path, purchase, notification, deep link, or anything
-that behaves differently in a release build), add an item to **Pending** in
+If this session changed anything a person has to see on a device or in a browser
+(a screen, layout, animation, navigation path, purchase, notification, deep link,
+or anything that behaves differently in a release build), add an item to **Pending** in
 `RELEASE_TEST_CHECKLIST.md`:
 
 - **Surface:** where it is.
@@ -34,7 +34,9 @@ that behaves differently in a release build), add an item to **Pending** in
 
 Tick any item verified this session, by the user or by you, with the evidence
 written into the item. Never clear the file wholesale. Never add an item that no
-available device can satisfy. Skip this step if nothing user facing changed.
+available device can satisfy. For a web only project, the release is the deploy:
+word each item so it is checked on the live site once the change is deployed.
+Skip this step if nothing user facing changed.
 
 ## 3. Gotchas and decisions
 

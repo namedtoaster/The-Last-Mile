@@ -1,6 +1,6 @@
 ---
 name: see-it-work
-description: Prove a change to an Expo app works by seeing it, not by trusting a passing test. Picks which layer proves this change (component test, seeded simulator screenshot, smoke case, release build smoke run, browser preview, end to end journey), runs it, and shows the evidence. Use after any UI, navigation, layout, purchase or deep link change, before saying something is fixed or done, and when setting up testing in a new app.
+description: Prove a change to an Expo app or a website works by seeing it, not by trusting a passing test. Picks which layer proves this change (component test, seeded simulator screenshot, smoke case, release build smoke run, browser preview, end to end journey), runs it, and shows the evidence. Use after any UI, navigation, layout, purchase or deep link change, before saying something is fixed or done, and when setting up testing in a new app.
 ---
 
 # See it work
@@ -24,6 +24,9 @@ Check this first. It decides which layers are open to you.
 | A Mac with Xcode and a simulator (or an Android emulator) | All of them |
 | Linux or Windows with an Android emulator | Component tests, Android screenshots, Android smoke and journeys |
 | A cloud session (no simulator, no emulator) | Component tests and the browser preview only |
+
+For a website (Platforms says web only), skip the simulator layers and use the
+web section near the end of this file instead.
 
 Simulators need a Mac. A cloud session cannot see a phone screen at all. If the
 change needs a layer you do not have, do what you can, then say plainly which
@@ -134,6 +137,27 @@ on every pull request with EAS Workflows and Expo's hosted simulators
 (https://docs.expo.dev/guides/using-e2e/, read 2026-10-20). If the project already
 uses EAS Workflows, offer it as the option. The Last Mile has not run it on a real
 app yet, so say that.
+
+## A website instead of an app
+
+The rule is the same; the tools are simpler, because the real screen is a browser
+and every environment, cloud sessions included, can run one.
+
+- **Behaviour:** component tests with the project's runner (Vitest or Jest with
+  Testing Library), written first and watched failing, exactly as in step 2.
+- **Look:** run the site (the dev server, or the branch's preview deploy if the
+  host makes one), open the page with Playwright and screenshot it at 390 by 844
+  and at 1280 by 800. Read both images. Most layout bugs on a website only show at
+  one of the two widths.
+- **Signed in pages:** sign in through the real form in the script, with a test
+  account, never by pasting a session cookie into the code. Stub nothing you can
+  run for real.
+- **Journeys:** a Playwright test that starts at the URL a person actually arrives
+  on (the home page, a shared link, a search result) and asserts the page it lands
+  on and the words that matter there.
+- **Before calling it shipped:** look at the live site once the deploy finishes.
+  A preview that works can still break in production on environment values, caching
+  or a different database.
 
 Content capture for marketing video is a separate, experimental recipe:
 `references/content-capture.md`. Skip it unless the user asks.

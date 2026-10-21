@@ -45,19 +45,22 @@ Ask these in order. Skip any the project already answers.
    user should know whether the checks start clean.
 7. **What is your first 6 week goal?** Offer the default for their stage:
    - Idea only: "A working version of the loop on my own phone by <date>."
-   - Working build: "Live in the App Store (and Google Play) by <date>."
+   - Working build: "Live in the App Store (and Google Play) by <date>." For a
+     website: "Live at its own domain, with real people signed up, by <date>."
    - Live: "First 100 people using it every week by <date>."
    Then ask for the one number that shows it is working, and 3 to 5 must dos. The set-goals skill's `references/stages.md` has fuller defaults
    for each stage.
-8. **Which stores?** Both, iOS only, or Android only. Default: both. Mention that a
-   new personal Google Play account must run a 14 day closed test first, which is why
-   some people ship iOS first.
+8. **Where does it run?** Both stores, iOS only, Android only, or web only (a
+   website that never goes to a store). Default: both stores, unless the code is a
+   web framework with no app build, then web only. Mention that a new personal
+   Google Play account must run a 14 day closed test first, which is why some
+   people ship iOS first.
 9. **How much before the first launch?** Offer the three levels from the ship skill's
    `references/levels.md`, one line each: Quick ship (the least the stores accept,
    free at launch), Standard (the default: crash reporting, a tested release build, a
    listing written to be found, paid features if any), Full features (analytics,
-   subscriptions with a trial, preview video, localized listings). Skip questions 8
-   and 9 if the app will never go to a store.
+   subscriptions with a trial, preview video, localized listings). Skip this
+   question for a web only project and write `not applicable (web)`.
 
 ## What to write
 
@@ -66,7 +69,7 @@ Ask these in order. Skip any the project already answers.
 | `CLAUDE.md` | `templates/rules-file.md` | If the user's agent reads `AGENTS.md` instead, write that and make `CLAUDE.md` point to it |
 | `GOALS.md` | `templates/goals.md` | End date is 6 weeks from today |
 | `CURRENT_WORK.md` | `templates/current-work.md` | The handoff file session end keeps current |
-| `RELEASE_TEST_CHECKLIST.md` | `templates/release-checklist.md` | Only if the app ships to a store |
+| `RELEASE_TEST_CHECKLIST.md` | `templates/release-checklist.md` | For a web only project, items are checked on the live site after each deploy |
 
 Fill every placeholder in angle brackets. Date every entry you write, in
 `YYYY-MM-DD` form. Remove template sections that do not apply rather than leaving

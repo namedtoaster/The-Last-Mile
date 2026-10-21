@@ -2,6 +2,12 @@
 
 ## 0.2.0 (unreleased)
 
+- Websites: setup asks whether the project is web only and sets a website goal;
+  session-end words checklist items for the live site after a deploy; see-it-work
+  has a website section (Playwright screenshots at phone and desktop widths, real
+  sign in, journeys from the real arrival URL); ship stops early for a web only
+  project instead of walking store steps.
+
 - reference-hunt: picks the platform from the rules file before searching, so a
   web only project gets web screens from Mobbin instead of iOS ones, and uses live
   public pages in place of store listings when the project is a website.

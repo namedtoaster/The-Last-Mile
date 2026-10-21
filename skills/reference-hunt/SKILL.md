@@ -55,10 +55,10 @@ Searching the wrong platform returns real screens that do not fit the layout.
 Then use the first source that is available. Tell the user in one line which
 source and platform you used.
 
-1. **Mobbin**, if its tools are connected. Pass the platform from above. Check the rules file first: if it says
-   Mobbin is connected, use it. Otherwise look for Mobbin search tools in the tools
-   you have (they search screens, flows, and sections of screens). Use them
-   automatically; do not ask first. If the user wants to connect it, point them to
+1. **Mobbin**, if its tools are connected. Pass the platform from above. Check the
+   rules file first: if it says Mobbin is connected, use it. Otherwise look for
+   Mobbin search tools in the tools you have (they search screens, flows, and
+   sections of screens). Use them automatically; do not ask first. If the user wants to connect it, point them to
    Mobbin's own setup guide for their tool
    (https://docs.mobbin.com/mcp/clients/overview); it is a one time sign in with
    their own account. Mobbin is recommended, not required. Plans and

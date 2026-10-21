@@ -105,7 +105,9 @@ Work this out from the files before asking anything, then show it in a few lines
    the website (see the minimum functionality trap).
 2. **Platforms and level:** read **Platforms** and **Release level** from the rules
    file's Settings. If either is missing, ask (one question each) and save the answer:
-   iOS, Android or both; and Quick ship, Standard or Full features.
+   iOS, Android or both; and Quick ship, Standard or Full features. If Platforms
+   is web only, stop and say so: there is no store release, and a deploy is the
+   release. Offer the search-pages skill if the site needs to be found.
    `references/levels.md` says what each level includes. Plan only that much, and
    leave out the rows for a platform that is not shipping.
 3. **First release or update:** look for an existing bundle ID or package name, a
