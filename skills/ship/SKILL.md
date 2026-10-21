@@ -195,6 +195,9 @@ the stack from `references/stacks.md`, explain it in one line, and record the an
 - Android needs an app bundle (`.aab`), signed with an upload key. If the user has no
   upload key yet, explain that losing it means asking Google for an upload key reset
   in Play Console, which takes time, then help create and back it up.
+- Before a cloud build, run the stack's free local checks first (for Expo: Expo
+  Doctor, `eas config`, a local prebuild; see the trap "Run the free checks before
+  spending a cloud build"). A failed cloud build costs quota.
 - Check the build meets the stores' current minimums (Xcode and SDK version for Apple,
   target API level for Google) in `references/facts.md`.
 
