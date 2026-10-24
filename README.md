@@ -129,6 +129,7 @@ written for any stack; see-it-work is still Expo first.
 | Skill | What it does |
 | --- | --- |
 | ship | Rejection sweep, version bump, release build, store listing, upload and submit |
+| extract-lessons | Harvests a finished session for anything general enough to help beyond one project, and usually finds nothing |
 | fact-check | Re-checks the store rules against the official pages and updates their dates |
 | setup | Interview that writes your rules file, first goal, handoff file and release checklist |
 | session-end | Wraps up a session: checks, docs, gotchas, goals, commit only what this session touched, push |
