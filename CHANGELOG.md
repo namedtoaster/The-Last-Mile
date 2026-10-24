@@ -2,6 +2,12 @@
 
 ## 0.2.0 (unreleased)
 
+- New skill `extract-lessons`: harvests a finished session for anything general enough
+  to help beyond one project, routes it to the right skill, spots when a cluster of
+  homeless lessons means the toolkit has a gap, and recognises when a body of knowledge
+  is its own domain and wants a separate repo rather than bloating this one. Its stated
+  default outcome is to find nothing.
+
 - Other agents: the README says plainly that only Claude Code is tested, a "Doesn't
   work in my agent" form and label take reports, and CONTRIBUTING asks whoever adds
   support for an agent to keep it working.
