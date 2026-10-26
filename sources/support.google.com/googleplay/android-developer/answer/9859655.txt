@@ -1,5 +1,5 @@
 Source: https://support.google.com/googleplay/android-developer/answer/9859655
-Fetched: 2026-10-19
+Fetched: 2026-10-26
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 # Content rating requirements for apps, games, and the ads served on both
@@ -49,7 +49,7 @@ App ratings are meant to do more than reflect the intended audience. They’re m
 
 - Blocking or filtering your content in certain territories or to specific users where legally required.
 
-- In the European Economic Area (EEA), Australia, Brazil, Singapore, Switzerland and the United Kingdom only, for users determined to be minors:
+- In the European Economic Area (EEA), Australia, Brazil, Indonesia, Singapore, Switzerland and the United Kingdom only, for users determined to be minors:
 
 - Blocking the acquisition and purchase of mature content (such as 18+ rated apps or games)
 
@@ -78,7 +78,7 @@ Note: For more insight on this topic, see Managing target audience and app conte
 
 ## How to manage target audience and app content settings
 
-If you create a new app or publish an update to an existing app, you’ll be required to declare your app’s target age group. Any apps that include children in their target audience must comply with Google Play's Families policy requirements. Before filling out the "Target audience and content" section, you must have declared whether or not your app contains ads and provided instructions for app access. You must also add a privacy policy.
+If you create a new app or publish an update to an existing app, you’ll be required to declare your app’s target age group. Any apps that include children in their target audience must comply with Google Play'sFamilies policy requirements. Before filling out the "Target audience and content" section, you must have declared whether or not your app contains ads and provided instructions for app access. You must also add a privacy policy.
 
 For detailed instructions on how to declare your app’s target age group, read Manage target audience and app content settings.
 
@@ -368,6 +368,8 @@ High impact content. It may contain sadism, cruelty, encouragement or glamorizat
 |
 
 Learn more on the ClassInd website
+
+___codemirror_selection_bookmark___
 
 GRAC - South Korea
 

@@ -1,5 +1,5 @@
 Source: https://www.revenuecat.com/docs/llms.txt
-Fetched: 2026-10-18
+Fetched: 2026-10-26
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 # RevenueCat Documentation
@@ -17,7 +17,7 @@ For the complete documentation as a single Markdown file, see [llms-full.txt](ht
 - [Getting Started](https://www.revenuecat.com/docs/getting-started/llms.txt): SDK installation and configuration, products, entitlements, and making purchases. (33 pages)
 - [SDK Guides](https://www.revenuecat.com/docs/sdk-guides/llms.txt): Major-version migration guides for the iOS and Android native SDKs. (7 pages)
 - [Products & Offerings](https://www.revenuecat.com/docs/offerings/llms.txt): Offerings, product configuration, and virtual currency. (14 pages)
-- [Customer Management](https://www.revenuecat.com/docs/customers/llms.txt): Customer identity and user IDs, customer attributes, customer info, and refund control. (9 pages)
+- [Customer Management](https://www.revenuecat.com/docs/customers/llms.txt): Customer identity and user IDs, customer attributes, customer info, and refund control. (14 pages)
 - [Projects & Security](https://www.revenuecat.com/docs/projects/llms.txt): Project settings, store connections, authentication, OAuth, SSO, and collaborators. (10 pages)
 - [Core Tools](https://www.revenuecat.com/docs/tools/llms.txt): Paywalls, Customer Center, Targeting, Experiments, the MCP server, and Rico. (67 pages)
 - [Ad Monetization](https://www.revenuecat.com/docs/ad-monetization/llms.txt): Ad monetization with AdMob, including granting ad rewards. (4 pages)

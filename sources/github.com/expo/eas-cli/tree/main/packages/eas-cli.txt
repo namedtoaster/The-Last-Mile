@@ -1,0 +1,4625 @@
+Source: https://github.com/expo/eas-cli/tree/main/packages/eas-cli
+Fetched: 2026-10-26
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+# EAS CLI
+
+Ship Expo and React Native apps from your terminal: build, submit, update, deploy, and automate with EAS.
+
+📚 Documentation
+•
+📖 CLI Reference
+•
+🚀 EAS
+•
+📝 Blog
+•
+📰 Changelog
+•
+👏 Contribute
+
+EAS CLI is the command-line interface for Expo Application Services (EAS): deeply integrated cloud services for Expo and React Native apps, from the team behind Expo.
+
+It gives you a terminal-native path from source code to production: compile signed Android and iOS binaries in the cloud, submit them to the app stores, push over-the-air updates, deploy web apps and API routes, and automate the entire release process, from your machine or from CI.
+
+## Quick start
+
+Install the CLI, log in to your Expo account, and link your project:
+
+npm install --global eas-cli
+eas login
+eas init
+
+Then ship:
+
+# Compile installable Android and iOS binaries in the cloud
+eas build --platform all
+
+# Submit the latest builds to Google Play and the App Store
+eas submit --platform all
+
+# Push an over-the-air update to your users
+eas update --branch production --message "Fix checkout crash"
+
+Prefer not to install globally? Every command also works with npx eas-cli@latest:
+
+npx eas-cli@latest build --platform ios
+
+New to EAS? Follow Create your first build for a complete walkthrough.
+
+## What you can do
+
+- EAS Build (eas build): compile and sign Android and iOS apps with custom native code in the cloud, manage app credentials, and share internal distribution builds.
+
+- EAS Submit (eas submit): upload your app to Google Play and App Store Connect with one command.
+
+- EAS Update (eas update): push JavaScript and asset fixes directly to users, with branches, channels, runtime versions, rollouts, and rollbacks.
+
+- EAS Workflows (eas workflow): automate development and release with CI/CD jobs that build, test, submit, update, and deploy your app from .eas/workflows.
+
+- EAS Hosting (eas deploy): deploy Expo Router and React Native web apps and API routes.
+
+- EAS Metadata (eas metadata:push): maintain your app store presence from the command line (in preview).
+
+- Project operations (eas env, eas credentials, eas device, eas channel, …): manage environment variables, signing credentials, Apple devices, update channels, webhooks, and project settings.
+
+## Version policy
+
+EAS CLI is designed to be installed globally or run with npx. Installing eas-cli into project dependencies is strongly discouraged because it can cause dependency conflicts that are difficult to debug.
+
+If you want to enforce the eas-cli version for your project, use the "cli.version" field in eas.json:
+
+{
+"cli": {
+"version": ">=21.0.0"
+},
+"build": {
+// build profiles
+},
+"submit": {
+// submit profiles
+}
+}
+
+## Learn more
+
+- EAS documentation for the full service overview.
+
+- EAS CLI reference for command usage, flags, and arguments.
+
+- Expo dashboard to view projects, builds, submissions, updates, and workflows.
+
+- Expo changelog and blog for product updates.
+
+- Discord for community support.
+
+# Commands
+
+- eas account:audit [ACCOUNT_NAME]
+
+- eas account:login
+
+- eas account:logout
+
+- eas account:usage [ACCOUNT_NAME]
+
+- eas account:view
+
+- eas analytics [STATUS]
+
+- eas autocomplete [SHELL]
+
+- eas billing:manage
+
+- eas billing:subscribe [PLAN]
+
+- eas branch:create [NAME]
+
+- eas branch:delete [NAME]
+
+- eas branch:list
+
+- eas branch:rename
+
+- eas branch:view [NAME]
+
+- eas browse [PAGE]
+
+- eas build
+
+- eas build:cancel [BUILD_ID]
+
+- eas build:configure
+
+- eas build:delete [BUILD_ID]
+
+- eas build:dev
+
+- eas build:download
+
+- eas build:inspect
+
+- eas build:list
+
+- eas build:resign
+
+- eas build:run
+
+- eas build:submit
+
+- eas build:version:get
+
+- eas build:version:set
+
+- eas build:version:sync
+
+- eas build:view [BUILD_ID]
+
+- eas channel:create [NAME]
+
+- eas channel:delete [NAME]
+
+- eas channel:edit [NAME]
+
+- eas channel:insights
+
+- eas channel:list
+
+- eas channel:pause [NAME]
+
+- eas channel:protect [NAME]
+
+- eas channel:resume [NAME]
+
+- eas channel:rollout [CHANNEL]
+
+- eas channel:unprotect [NAME]
+
+- eas channel:view [NAME]
+
+- eas config
+
+- eas credentials
+
+- eas credentials:configure-build
+
+- eas deploy [options]
+
+- eas deploy:alias
+
+- eas deploy:alias:delete [ALIAS_NAME]
+
+- eas deploy:delete [DEPLOYMENT_ID]
+
+- eas deploy:promote
+
+- eas device:create
+
+- eas device:delete
+
+- eas device:list
+
+- eas device:rename
+
+- eas device:view [UDID]
+
+- eas diagnostics
+
+- eas env:delete [ENVIRONMENT]
+
+- eas env:exec ENVIRONMENT BASH_COMMAND
+
+- eas env:get [ENVIRONMENT]
+
+- eas env:list [ENVIRONMENT]
+
+- eas env:pull [ENVIRONMENT]
+
+- eas env:push [ENVIRONMENT]
+
+- eas env:set [ENVIRONMENT]
+
+- eas fingerprint:compare [HASH1] [HASH2]
+
+- eas fingerprint:generate
+
+- eas help [COMMAND]
+
+- eas init
+
+- eas integrations:asc:connect
+
+- eas integrations:asc:disconnect
+
+- eas integrations:asc:status
+
+- eas integrations:convex:connect
+
+- eas integrations:convex:dashboard
+
+- eas integrations:convex:project
+
+- eas integrations:convex:project:delete
+
+- eas integrations:convex:team
+
+- eas integrations:convex:team:delete [CONVEX_TEAM]
+
+- eas integrations:convex:team:invite [CONVEX_TEAM]
+
+- eas integrations:posthog:connect
+
+- eas integrations:posthog:dashboard
+
+- eas integrations:posthog:disconnect
+
+- eas integrations:supabase:advisors
+
+- eas integrations:supabase:connect
+
+- eas integrations:supabase:dashboard
+
+- eas integrations:supabase:disconnect
+
+- eas login
+
+- eas logout
+
+- eas metadata:lint
+
+- eas metadata:pull
+
+- eas metadata:push
+
+- eas new [PATH]
+
+- eas observe:errors
+
+- eas observe:event ID
+
+- eas observe:events [EVENTNAME]
+
+- eas observe:metrics [METRIC]
+
+- eas observe:metrics-summary
+
+- eas observe:routes
+
+- eas observe:session [SESSIONID]
+
+- eas observe:versions
+
+- eas project:delete [NAME]
+
+- eas project:icon:set PATH
+
+- eas project:info
+
+- eas project:init
+
+- eas project:new [PATH]
+
+- eas project:status
+
+- eas sim:availability
+
+- eas sim:control [ACTION]
+
+- eas sim:egress
+
+- eas sim:events
+
+- eas sim:exec
+
+- eas sim:get
+
+- eas sim:list
+
+- eas sim:start
+
+- eas sim:stop
+
+- eas simulator
+
+- eas simulator:availability
+
+- eas simulator:control [ACTION]
+
+- eas simulator:egress
+
+- eas simulator:events
+
+- eas simulator:exec
+
+- eas simulator:get
+
+- eas simulator:list
+
+- eas simulator:start
+
+- eas simulator:stop
+
+- eas status
+
+- eas submit
+
+- eas submit:cancel [SUBMISSION_ID]
+
+- eas submit:list
+
+- eas submit:retry [SUBMISSION_ID]
+
+- eas submit:status
+
+- eas submit:view [SUBMISSION_ID]
+
+- eas testflight:crashes [ID]
+
+- eas testflight:feedback [ID]
+
+- eas update
+
+- eas update:configure
+
+- eas update:delete GROUPID
+
+- eas update:edit [GROUPID]
+
+- eas update:embedded:delete ID
+
+- eas update:embedded:list
+
+- eas update:embedded:upload
+
+- eas update:embedded:view ID
+
+- eas update:insights GROUPID
+
+- eas update:list
+
+- eas update:republish
+
+- eas update:revert-update-rollout
+
+- eas update:roll-back-to-embedded
+
+- eas update:rollback [GROUPID]
+
+- eas update:view GROUPID
+
+- eas upload
+
+- eas webhook:create
+
+- eas webhook:delete [ID]
+
+- eas webhook:list
+
+- eas webhook:update
+
+- eas webhook:view ID
+
+- eas whoami
+
+- eas worker:alias
+
+- eas worker:alias:delete [ALIAS_NAME]
+
+- eas worker:delete [DEPLOYMENT_ID]
+
+- eas deploy [options]
+
+- eas workflow:cancel
+
+- eas workflow:create [NAME]
+
+- eas workflow:insights
+
+- eas workflow:insights:maestro
+
+- eas workflow:logs [ID]
+
+- eas workflow:run FILE
+
+- eas workflow:runs
+
+- eas workflow:status [WORKFLOW_RUN_ID]
+
+- eas workflow:validate PATH
+
+- eas workflow:view [ID]
+
+## eas account:audit [ACCOUNT_NAME]
+
+view the audit logs for an account
+
+USAGE
+$ eas account:audit [ACCOUNT_NAME] [--limit <value>] [--after <value>] [--json] [--non-interactive]
+
+ARGUMENTS
+[ACCOUNT_NAME] Account name to view audit logs for. If not provided, the account will be selected interactively (or
+defaults to the only account if there is just one)
+
+FLAGS
+--after=<value> Cursor for pagination. Use the endCursor from a previous query to fetch the next page.
+--json Enable JSON output, non-JSON messages will be printed to stderr.
+--limit=<value> The number of items to fetch each query. Defaults to 50 and is capped at 100.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+view the audit logs for an account
+
+See code: packages/eas-cli/src/commands/account/audit.ts
+
+## eas account:login
+
+log in with your Expo account
+
+USAGE
+$ eas account:login [--non-interactive] [--match <value> [--resume <value> [--device | -s]]] [-b]
+
+FLAGS
+-b, --[no-]browser Log in with your browser (default; use --no-browser for CLI-based login)
+-s, --sso Log in with SSO
+--device Log in using a code in a browser on any device
+--match=<value> Submit the number the user sees in their browser
+--non-interactive Run the command in non-interactive mode.
+--resume=<value> Resume a saved device login using its request ID (one command at a time)
+
+DESCRIPTION
+log in with your Expo account
+
+ALIASES
+$ eas login
+
+EXAMPLES
+$ eas login --device
+
+$ eas login --device --non-interactive
+
+$ eas login --device --non-interactive --resume REQUEST_ID --match NUMBER_FROM_USER
+
+See code: packages/eas-cli/src/commands/account/login.ts
+
+## eas account:logout
+
+log out
+
+USAGE
+$ eas account:logout
+
+DESCRIPTION
+log out
+
+ALIASES
+$ eas logout
+
+See code: packages/eas-cli/src/commands/account/logout.ts
+
+## eas account:usage [ACCOUNT_NAME]
+
+view account usage and billing for the current cycle
+
+USAGE
+$ eas account:usage [ACCOUNT_NAME] [--json] [--non-interactive]
+
+ARGUMENTS
+[ACCOUNT_NAME] Account name to view usage for. If not provided, the account will be selected interactively (or
+defaults to the only account if there is just one)
+
+FLAGS
+--json Enable JSON output, non-JSON messages will be printed to stderr.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+view account usage and billing for the current cycle
+
+See code: packages/eas-cli/src/commands/account/usage.ts
+
+## eas account:view
+
+show the username you are logged in as
+
+USAGE
+$ eas account:view
+
+DESCRIPTION
+show the username you are logged in as
+
+ALIASES
+$ eas whoami
+
+See code: packages/eas-cli/src/commands/account/view.ts
+
+## eas analytics [STATUS]
+
+display or change analytics settings (disabling analytics also disables experiments)
+
+USAGE
+$ eas analytics [STATUS]
+
+DESCRIPTION
+display or change analytics settings (disabling analytics also disables experiments)
+
+See code: packages/eas-cli/src/commands/analytics.ts
+
+## eas autocomplete [SHELL]
+
+Display autocomplete installation instructions.
+
+USAGE
+$ eas autocomplete [SHELL] [-r]
+
+ARGUMENTS
+[SHELL] (zsh|bash|powershell) Shell type
+
+FLAGS
+-r, --refresh-cache Refresh cache (ignores displaying instructions)
+
+DESCRIPTION
+Display autocomplete installation instructions.
+
+EXAMPLES
+$ eas autocomplete
+
+$ eas autocomplete bash
+
+$ eas autocomplete zsh
+
+$ eas autocomplete powershell
+
+$ eas autocomplete --refresh-cache
+
+See code: @oclif/plugin-autocomplete
+
+## eas billing:manage
+
+manage billing for an account with an active paid EAS plan
+
+USAGE
+$ eas billing:manage [-a <value>] [--no-open] [--json] [--non-interactive]
+
+FLAGS
+-a, --account=<value> Account with an active paid plan to manage. Defaults to your account when only one is eligible.
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--no-open Only print the customer portal URL instead of opening it in a browser
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+manage billing for an account with an active paid EAS plan
+
+See code: packages/eas-cli/src/commands/billing/manage.ts
+
+## eas billing:subscribe [PLAN]
+
+subscribe a Free account to an EAS plan
+
+USAGE
+$ eas billing:subscribe [PLAN] [-a <value>] [--no-open] [--json] [--non-interactive]
+
+ARGUMENTS
+[PLAN] (starter|production) plan to subscribe to. Required in non-interactive mode.
+
+FLAGS
+-a, --account=<value> Account to subscribe. Defaults to your account when you only have one.
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--no-open Only print the checkout page URL instead of opening it in a browser
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+subscribe a Free account to an EAS plan
+
+See code: packages/eas-cli/src/commands/billing/subscribe.ts
+
+## eas branch:create [NAME]
+
+create a branch
+
+USAGE
+$ eas branch:create [NAME] [--json] [--non-interactive]
+
+ARGUMENTS
+[NAME] Name of the branch to create
+
+FLAGS
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+create a branch
+
+See code: packages/eas-cli/src/commands/branch/create.ts
+
+## eas branch:delete [NAME]
+
+delete a branch
+
+USAGE
+$ eas branch:delete [NAME] [--json] [--non-interactive]
+
+ARGUMENTS
+[NAME] Name of the branch to delete
+
+FLAGS
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+delete a branch
+
+See code: packages/eas-cli/src/commands/branch/delete.ts
+
+## eas branch:list
+
+list all branches
+
+USAGE
+$ eas branch:list [--offset <value>] [--limit <value>] [--json] [--non-interactive]
+
+FLAGS
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--limit=<value> The number of items to fetch each query. Defaults to 50 and is capped at 100.
+--non-interactive Run the command in non-interactive mode.
+--offset=<value> Start queries from specified index. Use for paginating results. Defaults to 0.
+
+DESCRIPTION
+list all branches
+
+See code: packages/eas-cli/src/commands/branch/list.ts
+
+## eas branch:rename
+
+rename a branch
+
+USAGE
+$ eas branch:rename [--from <value>] [--to <value>] [--json] [--non-interactive]
+
+FLAGS
+--from=<value> current name of the branch.
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+--to=<value> new name of the branch.
+
+DESCRIPTION
+rename a branch
+
+See code: packages/eas-cli/src/commands/branch/rename.ts
+
+## eas branch:view [NAME]
+
+view a branch
+
+USAGE
+$ eas branch:view [NAME] [--offset <value>] [--limit <value>] [--json] [--non-interactive]
+
+ARGUMENTS
+[NAME] Name of the branch to view
+
+FLAGS
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--limit=<value> The number of items to fetch each query. Defaults to 25 and is capped at 50.
+--non-interactive Run the command in non-interactive mode.
+--offset=<value> Start queries from specified index. Use for paginating results. Defaults to 0.
+
+DESCRIPTION
+view a branch
+
+See code: packages/eas-cli/src/commands/branch/view.ts
+
+## eas browse [PAGE]
+
+Transition from the terminal to the web browser to view and interact with your project on https://expo.dev
+
+USAGE
+$ eas browse [PAGE] [-n] [--json] [--non-interactive]
+
+ARGUMENTS
+[PAGE] (build|builds|submit|submissions|update|updates|workflow|workflows|cicd|hosting|deployments|credentials|env|in
+sights|observe|settings) Project subpage to open. Defaults to the project dashboard.
+
+FLAGS
+-n, --no-browser Print the URL instead of opening it in a web browser
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+Transition from the terminal to the web browser to view and interact with your project on https://expo.dev
+
+See code: packages/eas-cli/src/commands/browse.ts
+
+## eas build
+
+start a build
+
+USAGE
+$ eas build [-p android|ios|all] [-e PROFILE_NAME] [--local] [--output <value>] [--wait] [--clear-cache]
+[-s | --auto-submit-with-profile PROFILE_NAME] [--what-to-test <value>] [-m <value>] [--build-logger-level
+trace|debug|info|warn|error|fatal] [--freeze-credentials] [--refresh-ad-hoc-provisioning-profile] [--verbose-logs]
+[--json] [--non-interactive]
+
+FLAGS
+-e, --profile=PROFILE_NAME Name of the build profile from eas.json. Defaults to "production" if
+defined in eas.json.
+-m, --message=<value> A short message describing the build
+-p, --platform=<option> <options: android|ios|all>
+-s, --auto-submit Submit on build complete using the submit profile with the same name as
+the build profile
+--auto-submit-with-profile=PROFILE_NAME Submit on build complete using the submit profile with provided name
+--build-logger-level=<option> The level of logs to output during the build process. Defaults to "info".
+<options: trace|debug|info|warn|error|fatal>
+--clear-cache Clear cache before the build
+--freeze-credentials Prevent the build from updating credentials in non-interactive mode
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies
+--non-interactive.
+--local Run build locally [experimental]
+--non-interactive Run the command in non-interactive mode.
+--output=<value> Output path for local build
+--refresh-ad-hoc-provisioning-profile Refresh managed ad-hoc provisioning profiles from App Store Connect
+before gathering build credentials
+--verbose-logs Use verbose logs for the build process
+--[no-]wait Wait for build(s) to complete
+--what-to-test=<value> Specify the "What to Test" information for the build in TestFlight
+(iOS-only). To be used with the `auto-submit` flag
+
+DESCRIPTION
+start a build
+
+See code: packages/eas-cli/src/commands/build/index.ts
+
+## eas build:cancel [BUILD_ID]
+
+cancel a build
+
+USAGE
+$ eas build:cancel [BUILD_ID] [--non-interactive] [-p android|ios|all] [-e PROFILE_NAME]
+
+FLAGS
+-e, --profile=PROFILE_NAME Filter builds by build profile if build ID is not provided
+-p, --platform=<option> Filter builds by the platform if build ID is not provided
+<options: android|ios|all>
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+cancel a build
+
+See code: packages/eas-cli/src/commands/build/cancel.ts
+
+## eas build:configure
+
+configure the project to support EAS Build
+
+USAGE
+$ eas build:configure [-p android|ios|all]
+
+FLAGS
+-p, --platform=<option> Platform to configure
+<options: android|ios|all>
+
+DESCRIPTION
+configure the project to support EAS Build
+
+See code: packages/eas-cli/src/commands/build/configure.ts
+
+## eas build:delete [BUILD_ID]
+
+delete a build
+
+USAGE
+$ eas build:delete [BUILD_ID] [--non-interactive] [-p android|ios|all] [-e PROFILE_NAME]
+
+FLAGS
+-e, --profile=PROFILE_NAME Filter builds by build profile if build ID is not provided
+-p, --platform=<option> Filter builds by the platform if build ID is not provided
+<options: android|ios|all>
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+delete a build
+
+See code: packages/eas-cli/src/commands/build/delete.ts
+
+## eas build:dev
+
+run dev client simulator/emulator build with matching fingerprint or create a new one
+
+USAGE
+$ eas build:dev [-p ios|android] [-e PROFILE_NAME] [--skip-build-if-not-found] [--skip-bundler] [--simulator
+<value>]
+
+FLAGS
+-e, --profile=PROFILE_NAME Name of the build profile from eas.json. It must be a profile allowing to create
+emulator/simulator internal distribution dev client builds. The "development-simulator"
+build profile will be selected by default.
+-p, --platform=<option> <options: ios|android>
+--simulator=<value> iOS simulator name or UDID to install and run the development build on. If no value is
+provided, you will be prompted to select a simulator.
+--skip-build-if-not-found Skip build if no successful build with matching fingerprint is found.
+--skip-bundler Install and run the development build without starting the bundler server.
+
+DESCRIPTION
+run dev client simulator/emulator build with matching fingerprint or create a new one
+
+See code: packages/eas-cli/src/commands/build/dev.ts
+
+## eas build:download
+
+download a simulator/emulator build by build ID or fingerprint hash
+
+USAGE
+$ eas build:download [--build-id <value> | --fingerprint <value> | -p ios|android | --dev-client]
+[--all-artifacts] [--json] [--non-interactive]
+
+FLAGS
+-p, --platform=<option> <options: ios|android>
+--all-artifacts Download all available build artifacts (build artifacts archive, Xcode logs, etc.) in
+addition to the application archive. Without this flag, only the application archive is
+downloaded and the command errors if it is missing.
+--build-id=<value> ID of the build to download. Mutually exclusive with --fingerprint, --platform, and
+--dev-client; the platform is derived from the build itself.
+--[no-]dev-client Filter only dev-client builds.
+--fingerprint=<value> Fingerprint hash of the build to download
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+download a simulator/emulator build by build ID or fingerprint hash
+
+See code: packages/eas-cli/src/commands/build/download.ts
+
+## eas build:inspect
+
+inspect the state of the project at specific build stages, useful for troubleshooting
+
+USAGE
+$ eas build:inspect -p android|ios -s archive|pre-build|post-build -o OUTPUT_DIRECTORY [-e PROFILE_NAME]
+[--force] [-v]
+
+FLAGS
+-e, --profile=PROFILE_NAME
+Name of the build profile from eas.json. Defaults to "production" if defined in eas.json.
+
+-o, --output=OUTPUT_DIRECTORY
+(required) Output directory.
+
+-p, --platform=<option>
+(required)
+<options: android|ios>
+
+-s, --stage=<option>
+(required) Stage of the build you want to inspect.
+archive - builds the project archive that would be uploaded to EAS when building
+pre-build - prepares the project to be built with Gradle/Xcode. Does not run the native build.
+post-build - builds the native project and leaves the output directory for inspection
+<options: archive|pre-build|post-build>
+
+-v, --verbose
+
+--force
+Delete OUTPUT_DIRECTORY if it already exists.
+
+DESCRIPTION
+inspect the state of the project at specific build stages, useful for troubleshooting
+
+See code: packages/eas-cli/src/commands/build/inspect.ts
+
+## eas build:list
+
+list all builds for your project
+
+USAGE
+$ eas build:list [-p android|ios|all] [--status
+new|in-queue|in-progress|pending-cancel|errored|finished|canceled] [--distribution store|internal|simulator]
+[--channel <value>] [--app-version <value>] [--app-build-version <value>] [--sdk-version <value>] [--runtime-version
+<value>] [--app-identifier <value>] [-e <value>] [--git-commit-hash <value>] [--fingerprint-hash <value>] [--offset
+<value>] [--limit <value>] [--json] [--non-interactive] [--simulator]
+
+FLAGS
+-e, --build-profile=<value> Filter only builds created with the specified build profile
+-p, --platform=<option> <options: android|ios|all>
+--app-build-version=<value> Filter only builds created with the specified app build version
+--app-identifier=<value> Filter only builds created with the specified app identifier
+--app-version=<value> Filter only builds created with the specified main app version
+--channel=<value>
+--distribution=<option> Filter only builds with the specified distribution type
+<options: store|internal|simulator>
+--fingerprint-hash=<value> Filter only builds with the specified fingerprint hash
+--git-commit-hash=<value> Filter only builds created with the specified git commit hash
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies
+--non-interactive.
+--limit=<value> The number of items to fetch each query. Defaults to 10 and is capped at 50.
+--non-interactive Run the command in non-interactive mode.
+--offset=<value> Start queries from specified index. Use for paginating results. Defaults to 0.
+--runtime-version=<value> Filter only builds created with the specified runtime version
+--sdk-version=<value> Filter only builds created with the specified Expo SDK version
+--simulator Filter only iOS simulator builds. Can only be used with --platform flag set to "ios"
+--status=<option> Filter only builds with the specified status
+<options: new|in-queue|in-progress|pending-cancel|errored|finished|canceled>
+
+DESCRIPTION
+list all builds for your project
+
+See code: packages/eas-cli/src/commands/build/list.ts
+
+## eas build:resign
+
+re-sign a build archive
+
+USAGE
+$ eas build:resign [-p android|ios] [-e PROFILE_NAME] [--source-profile PROFILE_NAME] [--wait] [--id <value>]
+[--offset <value>] [--limit <value>] [--json] [--non-interactive]
+
+FLAGS
+-e, --target-profile=PROFILE_NAME Name of the target build profile from eas.json. Credentials and environment
+variables from this profile will be used when re-signing. Defaults to "production"
+if defined in eas.json.
+-p, --platform=<option> <options: android|ios>
+--id=<value> ID of the build to re-sign.
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies
+--non-interactive.
+--limit=<value> The number of items to fetch each query. Defaults to 50 and is capped at 100.
+--non-interactive Run the command in non-interactive mode.
+--offset=<value> Start queries from specified index. Use for paginating results. Defaults to 0.
+--source-profile=PROFILE_NAME Name of the source build profile from eas.json. Used to filter builds eligible for
+re-signing.
+--[no-]wait Wait for build(s) to complete.
+
+DESCRIPTION
+re-sign a build archive
+
+See code: packages/eas-cli/src/commands/build/resign.ts
+
+## eas build:run
+
+run simulator/emulator builds from eas-cli
+
+USAGE
+$ eas build:run [--latest | --id <value> | --path <value> | --url <value>] [-p android|ios] [-e PROFILE_NAME]
+[--simulator <value>] [--offset <value>] [--limit <value>]
+
+FLAGS
+-e, --profile=PROFILE_NAME Name of the build profile used to create the build to run. When specified, only builds
+created with the specified build profile will be queried.
+-p, --platform=<option> <options: android|ios>
+--id=<value> ID of the simulator/emulator build to run
+--latest Run the latest simulator/emulator build for specified platform
+--limit=<value> The number of items to fetch each query. Defaults to 50 and is capped at 100.
+--offset=<value> Start queries from specified index. Use for paginating results. Defaults to 0.
+--path=<value> Path to the simulator/emulator build archive or app
+--simulator=<value> iOS simulator name or UDID to install and run the build on. If no value is provided, you
+will be prompted to select a simulator.
+--url=<value> Simulator/Emulator build archive url
+
+DESCRIPTION
+run simulator/emulator builds from eas-cli
+
+See code: packages/eas-cli/src/commands/build/run.ts
+
+## eas build:submit
+
+submit app binary to App Store and/or Play Store
+
+USAGE
+$ eas build:submit [-p android|ios|all] [-e <value>] [--latest | --id <value> | --path <value> | --url <value>]
+[--what-to-test <value>] [--verbose] [--wait] [--verbose-fastlane] [-g <value>...] [--non-interactive]
+[--auto-testflight-setup]
+
+FLAGS
+-e, --profile=<value> Name of the submit profile from eas.json. Defaults to "production" if defined in
+eas.json.
+-g, --groups=<value>... Internal TestFlight testing groups to add the build to (iOS only). Learn more:
+https://developer.apple.com/help/app-store-connect/test-a-beta-version/add-internal-
+testers
+-p, --platform=<option> <options: android|ios|all>
+--[no-]auto-testflight-setup Set up an internal TestFlight group for the app (iOS only)
+--id=<value> ID of the build to submit
+--latest Submit the latest build for specified platform
+--non-interactive Run command in non-interactive mode
+--path=<value> Path to the .apk/.aab/.ipa file
+--url=<value> App archive url
+--verbose Always print logs from EAS Submit
+--verbose-fastlane Enable verbose logging for the submission process
+--[no-]wait Wait for submission to complete
+--what-to-test=<value> Sets the "What to test" information in TestFlight (iOS only).
+
+DESCRIPTION
+submit app binary to App Store and/or Play Store
+
+ALIASES
+$ eas build:submit
+
+## eas build:version:get
+
+get the latest version from EAS servers
+
+USAGE
+$ eas build:version:get [-p android|ios|all] [-e PROFILE_NAME] [--json] [--non-interactive]
+
+FLAGS
+-e, --profile=PROFILE_NAME Name of the build profile from eas.json. Defaults to "production" if defined in eas.json.
+-p, --platform=<option> <options: android|ios|all>
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies
+--non-interactive.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+get the latest version from EAS servers
+
+See code: packages/eas-cli/src/commands/build/version/get.ts
+
+## eas build:version:set
+
+update version of an app
+
+USAGE
+$ eas build:version:set [-p android|ios] [-e PROFILE_NAME]
+
+FLAGS
+-e, --profile=PROFILE_NAME Name of the build profile from eas.json. Defaults to "production" if defined in eas.json.
+-p, --platform=<option> <options: android|ios>
+
+DESCRIPTION
+update version of an app
+
+See code: packages/eas-cli/src/commands/build/version/set.ts
+
+## eas build:version:sync
+
+update a version in native code with a value stored on EAS servers
+
+USAGE
+$ eas build:version:sync [-p android|ios|all] [-e PROFILE_NAME]
+
+FLAGS
+-e, --profile=PROFILE_NAME Name of the build profile from eas.json. Defaults to "production" if defined in eas.json.
+-p, --platform=<option> <options: android|ios|all>
+
+DESCRIPTION
+update a version in native code with a value stored on EAS servers
+
+See code: packages/eas-cli/src/commands/build/version/sync.ts
+
+## eas build:view [BUILD_ID]
+
+view a build for your project
+
+USAGE
+$ eas build:view [BUILD_ID] [--json]
+
+FLAGS
+--json Enable JSON output, non-JSON messages will be printed to stderr.
+
+DESCRIPTION
+view a build for your project
+
+See code: packages/eas-cli/src/commands/build/view.ts
+
+## eas channel:create [NAME]
+
+create a channel
+
+USAGE
+$ eas channel:create [NAME] [--json] [--non-interactive]
+
+ARGUMENTS
+[NAME] Name of the channel to create
+
+FLAGS
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+create a channel
+
+See code: packages/eas-cli/src/commands/channel/create.ts
+
+## eas channel:delete [NAME]
+
+Delete a channel
+
+USAGE
+$ eas channel:delete [NAME] [--json] [--non-interactive]
+
+ARGUMENTS
+[NAME] Name of the channel to delete
+
+FLAGS
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+Delete a channel
+
+See code: packages/eas-cli/src/commands/channel/delete.ts
+
+## eas channel:edit [NAME]
+
+point a channel at a new branch
+
+USAGE
+$ eas channel:edit [NAME] [--branch <value>] [--json] [--non-interactive]
+
+ARGUMENTS
+[NAME] Name of the channel to edit
+
+FLAGS
+--branch=<value> Name of the branch to point to
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+point a channel at a new branch
+
+See code: packages/eas-cli/src/commands/channel/edit.ts
+
+## eas channel:insights
+
+display adoption, crash, and unique-user insights for a channel + runtime version
+
+USAGE
+$ eas channel:insights --channel <value> --runtime-version <value> [--days <value> | --start <value> | --end
+<value>] [--json] [--non-interactive]
+
+FLAGS
+--channel=<value> (required) Name of the channel.
+--days=<value> Show insights from the last N days (default 7, mutually exclusive with --start/--end).
+--end=<value> End of insights time range (ISO date).
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+--runtime-version=<value> (required) Runtime version to query insights for.
+--start=<value> Start of insights time range (ISO date).
+
+DESCRIPTION
+display adoption, crash, and unique-user insights for a channel + runtime version
+
+See code: packages/eas-cli/src/commands/channel/insights.ts
+
+## eas channel:list
+
+list all channels
+
+USAGE
+$ eas channel:list [--offset <value>] [--limit <value>] [--json] [--non-interactive]
+
+FLAGS
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--limit=<value> The number of items to fetch each query. Defaults to 10 and is capped at 25.
+--non-interactive Run the command in non-interactive mode.
+--offset=<value> Start queries from specified index. Use for paginating results. Defaults to 0.
+
+DESCRIPTION
+list all channels
+
+See code: packages/eas-cli/src/commands/channel/list.ts
+
+## eas channel:pause [NAME]
+
+pause a channel to stop it from sending updates
+
+USAGE
+$ eas channel:pause [NAME] [--branch <value>] [--json] [--non-interactive]
+
+ARGUMENTS
+[NAME] Name of the channel to edit
+
+FLAGS
+--branch=<value> Name of the branch to point to
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+pause a channel to stop it from sending updates
+
+See code: packages/eas-cli/src/commands/channel/pause.ts
+
+## eas channel:protect [NAME]
+
+protect a channel so only Release Managers, Admins, and Owners can publish to it
+
+USAGE
+$ eas channel:protect [NAME] [--json] [--non-interactive]
+
+ARGUMENTS
+[NAME] Name of the channel to protect
+
+FLAGS
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+protect a channel so only Release Managers, Admins, and Owners can publish to it
+
+See code: packages/eas-cli/src/commands/channel/protect.ts
+
+## eas channel:resume [NAME]
+
+resume a channel to start sending updates
+
+USAGE
+$ eas channel:resume [NAME] [--branch <value>] [--json] [--non-interactive]
+
+ARGUMENTS
+[NAME] Name of the channel to edit
+
+FLAGS
+--branch=<value> Name of the branch to point to
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+resume a channel to start sending updates
+
+See code: packages/eas-cli/src/commands/channel/resume.ts
+
+## eas channel:rollout [CHANNEL]
+
+Roll a new branch out on a channel incrementally.
+
+USAGE
+$ eas channel:rollout [CHANNEL] [--action create|edit|end|view] [--percent <value>] [--outcome
+republish-and-revert|revert] [--branch <value>] [--runtime-version <value>] [--private-key-path <value>] [--json]
+[--non-interactive]
+
+ARGUMENTS
+[CHANNEL] channel on which the rollout should be done
+
+FLAGS
+--action=<option> Rollout action to perform
+<options: create|edit|end|view>
+--branch=<value> Branch to roll out. Use with --action=create
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies
+--non-interactive.
+--non-interactive Run the command in non-interactive mode.
+--outcome=<option> End outcome of rollout. Use with --action=end
+<options: republish-and-revert|revert>
+--percent=<value> Percent of users to send to the new branch. Use with --action=edit or --action=create
+--private-key-path=<value> File containing the PEM-encoded private key corresponding to the certificate in
+expo-updates' configuration. Defaults to a file named "private-key.pem" in the
+certificate's directory. Only relevant if you are using code signing:
+https://docs.expo.dev/eas-update/code-signing/
+--runtime-version=<value> Runtime version to target. Use with --action=create
+
+DESCRIPTION
+Roll a new branch out on a channel incrementally.
+
+See code: packages/eas-cli/src/commands/channel/rollout.ts
+
+## eas channel:unprotect [NAME]
+
+remove a channel's protected publishing restriction
+
+USAGE
+$ eas channel:unprotect [NAME] [--json] [--non-interactive]
+
+ARGUMENTS
+[NAME] Name of the channel to unprotect
+
+FLAGS
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+remove a channel's protected publishing restriction
+
+See code: packages/eas-cli/src/commands/channel/unprotect.ts
+
+## eas channel:view [NAME]
+
+view a channel
+
+USAGE
+$ eas channel:view [NAME] [--json] [--non-interactive] [--offset <value>] [--limit <value>]
+
+ARGUMENTS
+[NAME] Name of the channel to view
+
+FLAGS
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--limit=<value> The number of items to fetch each query. Defaults to 50 and is capped at 100.
+--non-interactive Run the command in non-interactive mode.
+--offset=<value> Start queries from specified index. Use for paginating results. Defaults to 0.
+
+DESCRIPTION
+view a channel
+
+See code: packages/eas-cli/src/commands/channel/view.ts
+
+## eas config
+
+display project configuration (app.json + eas.json)
+
+USAGE
+$ eas config [-p android|ios] [-e PROFILE_NAME] [--json] [--non-interactive]
+
+FLAGS
+-e, --profile=PROFILE_NAME Name of the build profile from eas.json. Defaults to "production" if defined in eas.json.
+-p, --platform=<option> <options: android|ios>
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies
+--non-interactive.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+display project configuration (app.json + eas.json)
+
+See code: packages/eas-cli/src/commands/config.ts
+
+## eas credentials
+
+manage credentials
+
+USAGE
+$ eas credentials [-p android|ios]
+
+FLAGS
+-p, --platform=<option> <options: android|ios>
+
+DESCRIPTION
+manage credentials
+
+See code: packages/eas-cli/src/commands/credentials/index.ts
+
+## eas credentials:configure-build
+
+Set up credentials for building your project.
+
+USAGE
+$ eas credentials:configure-build [-p android|ios] [-e PROFILE_NAME]
+
+FLAGS
+-e, --profile=PROFILE_NAME The name of the build profile in eas.json.
+-p, --platform=<option> <options: android|ios>
+
+DESCRIPTION
+Set up credentials for building your project.
+
+See code: packages/eas-cli/src/commands/credentials/configure-build.ts
+
+## eas deploy [options]
+
+deploy your Expo Router web build and API Routes
+
+USAGE
+$ eas deploy [options]
+$ eas deploy --prod
+$ eas deploy --non-interactive --dev-domain my-app
+
+FLAGS
+--alias=name Custom alias to assign to the new deployment.
+--dev-domain=name Custom preview URL subdomain to assign to the project on its first deployment, e.g. "my-app"
+for my-app.expo.app. Required with --non-interactive if you want to customize the preview URL.
+--dry-run Outputs a tarball of the new deployment instead of uploading it.
+--environment=<value> Environment variable's environment, e.g. 'production', 'preview', 'development'
+--export-dir=dir [default: dist] Directory where the Expo project was exported.
+--id=xyz123 Custom unique identifier for the new deployment.
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+--prod Create a new production deployment.
+--[no-]source-maps Include source maps in the deployment.
+
+DESCRIPTION
+deploy your Expo Router web build and API Routes
+
+ALIASES
+$ eas worker:deploy
+
+See code: packages/eas-cli/src/commands/deploy/index.ts
+
+## eas deploy:alias
+
+Assign deployment aliases.
+
+USAGE
+$ eas deploy:alias [--prod] [--alias name] [--id xyz123] [--json] [--non-interactive]
+
+FLAGS
+--alias=name Custom alias to assign to the existing deployment.
+--id=xyz123 Unique identifier of an existing deployment.
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+--prod Promote an existing deployment to production.
+
+DESCRIPTION
+Assign deployment aliases.
+
+ALIASES
+$ eas worker:alias
+$ eas deploy:promote
+
+See code: packages/eas-cli/src/commands/deploy/alias/index.ts
+
+## eas deploy:alias:delete [ALIAS_NAME]
+
+Delete deployment aliases.
+
+USAGE
+$ eas deploy:alias:delete [ALIAS_NAME] [--json] [--non-interactive]
+
+FLAGS
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+Delete deployment aliases.
+
+ALIASES
+$ eas worker:alias:delete
+
+See code: packages/eas-cli/src/commands/deploy/alias/delete.ts
+
+## eas deploy:delete [DEPLOYMENT_ID]
+
+Delete a deployment.
+
+USAGE
+$ eas deploy:delete [DEPLOYMENT_ID] [--json] [--non-interactive]
+
+FLAGS
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+Delete a deployment.
+
+ALIASES
+$ eas worker:delete
+
+See code: packages/eas-cli/src/commands/deploy/delete.ts
+
+## eas deploy:promote
+
+Assign deployment aliases.
+
+USAGE
+$ eas deploy:promote [--prod] [--alias name] [--id xyz123] [--json] [--non-interactive]
+
+FLAGS
+--alias=name Custom alias to assign to the existing deployment.
+--id=xyz123 Unique identifier of an existing deployment.
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+--prod Promote an existing deployment to production.
+
+DESCRIPTION
+Assign deployment aliases.
+
+ALIASES
+$ eas worker:alias
+$ eas deploy:promote
+
+## eas device:create
+
+register new Apple Devices to use for internal distribution
+
+USAGE
+$ eas device:create
+
+DESCRIPTION
+register new Apple Devices to use for internal distribution
+
+See code: packages/eas-cli/src/commands/device/create.ts
+
+## eas device:delete
+
+remove a registered device from your account
+
+USAGE
+$ eas device:delete [--apple-team-id <value>] [--udid <value>] [--json] [--non-interactive]
+
+FLAGS
+--apple-team-id=<value> The Apple team ID on which to find the device
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+--udid=<value> The Apple device ID to disable
+
+DESCRIPTION
+remove a registered device from your account
+
+See code: packages/eas-cli/src/commands/device/delete.ts
+
+## eas device:list
+
+list all registered devices for your account
+
+USAGE
+$ eas device:list [--apple-team-id <value>] [--offset <value>] [--limit <value>] [--json] [--non-interactive]
+
+FLAGS
+--apple-team-id=<value>
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--limit=<value> The number of items to fetch each query. Defaults to 50 and is capped at 100.
+--non-interactive Run the command in non-interactive mode.
+--offset=<value> Start queries from specified index. Use for paginating results. Defaults to 0.
+
+DESCRIPTION
+list all registered devices for your account
+
+See code: packages/eas-cli/src/commands/device/list.ts
+
+## eas device:rename
+
+rename a registered device
+
+USAGE
+$ eas device:rename [--apple-team-id <value>] [--udid <value>] [--name <value>] [--json] [--non-interactive]
+
+FLAGS
+--apple-team-id=<value> The Apple team ID on which to find the device
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--name=<value> The new name for the device
+--non-interactive Run the command in non-interactive mode.
+--udid=<value> The Apple device ID to rename
+
+DESCRIPTION
+rename a registered device
+
+See code: packages/eas-cli/src/commands/device/rename.ts
+
+## eas device:view [UDID]
+
+view a device for your project
+
+USAGE
+$ eas device:view [UDID]
+
+DESCRIPTION
+view a device for your project
+
+See code: packages/eas-cli/src/commands/device/view.ts
+
+## eas diagnostics
+
+display environment info
+
+USAGE
+$ eas diagnostics
+
+DESCRIPTION
+display environment info
+
+See code: packages/eas-cli/src/commands/diagnostics.ts
+
+## eas env:delete [ENVIRONMENT]
+
+delete an environment variable for the current project or account
+
+USAGE
+$ eas env:delete [ENVIRONMENT] [--variable-name <value>] [--variable-environment <value>] [--scope
+project|account] [--non-interactive]
+
+ARGUMENTS
+[ENVIRONMENT] Current environment of the variable to delete. Default environments are 'production', 'preview', and
+'development'.
+
+FLAGS
+--non-interactive Run the command in non-interactive mode.
+--scope=<option> [default: project] Scope for the variable
+<options: project|account>
+--variable-environment=<value> Current environment of the variable to delete
+--variable-name=<value> Name of the variable to delete
+
+DESCRIPTION
+delete an environment variable for the current project or account
+
+See code: packages/eas-cli/src/commands/env/delete.ts
+
+## eas env:exec ENVIRONMENT BASH_COMMAND
+
+execute a command with environment variables from the selected environment
+
+USAGE
+$ eas env:exec ENVIRONMENT BASH_COMMAND [--non-interactive]
+
+ARGUMENTS
+ENVIRONMENT Environment to execute the command in. Default environments are 'production', 'preview', and
+'development'.
+BASH_COMMAND bash command to execute with the environment variables from the environment
+
+FLAGS
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+execute a command with environment variables from the selected environment
+
+See code: packages/eas-cli/src/commands/env/exec.ts
+
+## eas env:get [ENVIRONMENT]
+
+view an environment variable for the current project or account
+
+USAGE
+$ eas env:get [ENVIRONMENT] [--variable-name <value>] [--variable-environment <value>] [--format
+long|short] [--scope project|account] [--non-interactive]
+
+ARGUMENTS
+[ENVIRONMENT] Current environment of the variable. Default environments are 'production', 'preview', and
+'development'.
+
+FLAGS
+--format=<option> [default: short] Output format
+<options: long|short>
+--non-interactive Run the command in non-interactive mode.
+--scope=<option> [default: project] Scope for the variable
+<options: project|account>
+--variable-environment=<value> Current environment of the variable
+--variable-name=<value> Name of the variable
+
+DESCRIPTION
+view an environment variable for the current project or account
+
+See code: packages/eas-cli/src/commands/env/get.ts
+
+## eas env:list [ENVIRONMENT]
+
+list environment variables for the current project or account
+
+USAGE
+$ eas env:list [ENVIRONMENT] [--include-sensitive] [--include-file-content] [--environment <value>...]
+[--format long|short] [--scope project|account]
+
+ARGUMENTS
+[ENVIRONMENT] Environment to list the variables from. Default environments are 'production', 'preview', and
+'development'.
+
+FLAGS
+--environment=<value>... Environment variable's environment, e.g. 'production', 'preview', 'development'
+--format=<option> [default: short] Output format
+<options: long|short>
+--include-file-content Display files content in the output
+--include-sensitive Display sensitive values in the output
+--scope=<option> [default: project] Scope for the variable
+<options: project|account>
+
+DESCRIPTION
+list environment variables for the current project or account
+
+See code: packages/eas-cli/src/commands/env/list.ts
+
+## eas env:pull [ENVIRONMENT]
+
+pull environment variables for the selected environment to .env file
+
+USAGE
+$ eas env:pull [ENVIRONMENT] [--non-interactive] [--environment <value>] [--path <value>]
+
+ARGUMENTS
+[ENVIRONMENT] Environment to pull variables from. Default environments are 'production', 'preview', and
+'development'.
+
+FLAGS
+--environment=<value> Environment variable's environment, e.g. 'production', 'preview', 'development'
+--non-interactive Run the command in non-interactive mode.
+--path=<value> [default: .env.local] Path to the result `.env` file
+
+DESCRIPTION
+pull environment variables for the selected environment to .env file
+
+See code: packages/eas-cli/src/commands/env/pull.ts
+
+## eas env:push [ENVIRONMENT]
+
+push environment variables from .env file to the selected environment
+
+USAGE
+$ eas env:push [ENVIRONMENT] [--environment <value>...] [--path <value>] [--force]
+
+ARGUMENTS
+[ENVIRONMENT] Environment to push variables to. Default environments are 'production', 'preview', and 'development'.
+
+FLAGS
+--environment=<value>... Environment variable's environment, e.g. 'production', 'preview', 'development'
+--force Skip confirmation and automatically override existing variables
+--path=<value> [default: .env.local] Path to the input `.env` file
+
+DESCRIPTION
+push environment variables from .env file to the selected environment
+
+See code: packages/eas-cli/src/commands/env/push.ts
+
+## eas env:set [ENVIRONMENT]
+
+set (create or update) an environment variable on the current project or account
+
+USAGE
+$ eas env:set [ENVIRONMENT] [--name <value>] [--value <value>] [--type string|file] [--visibility
+plaintext|sensitive|secret] [--scope project|account] [--environment <value>...] [--json] [--non-interactive]
+
+ARGUMENTS
+[ENVIRONMENT] Environment to set the variable in. Default environments are 'production', 'preview', and
+'development'.
+
+FLAGS
+--environment=<value>... Environment variable's environment, e.g. 'production', 'preview', 'development'
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--name=<value> Name of the variable
+--non-interactive Run the command in non-interactive mode.
+--scope=<option> [default: project] Scope for the variable
+<options: project|account>
+--type=<option> The type of variable
+<options: string|file>
+--value=<value> Text value of the variable
+--visibility=<option> Visibility of the variable
+<options: plaintext|sensitive|secret>
+
+DESCRIPTION
+set (create or update) an environment variable on the current project or account
+
+See code: packages/eas-cli/src/commands/env/set.ts
+
+## eas fingerprint:compare [HASH1] [HASH2]
+
+compare fingerprints of the current project, builds, and updates
+
+USAGE
+$ eas fingerprint:compare [HASH1...] [HASH2...] [--build-id <value>...] [--update-id <value>...] [--open]
+[--environment <value>] [--json] [--non-interactive]
+
+ARGUMENTS
+[HASH1...] If provided alone, HASH1 is compared against the current project's fingerprint.
+[HASH2...] If two hashes are provided, HASH1 is compared against HASH2.
+
+FLAGS
+--build-id=<value>... Compare the fingerprint with the build with the specified ID
+--environment=<value> If generating a fingerprint from the local directory, use the specified environment.
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+--open Open the fingerprint comparison in the browser
+--update-id=<value>... Compare the fingerprint with the update with the specified ID
+
+DESCRIPTION
+compare fingerprints of the current project, builds, and updates
+
+EXAMPLES
+$ eas fingerprint:compare # Compare fingerprints in interactive mode
+
+$ eas fingerprint:compare <FINGERPRINT-HASH> # Compare fingerprint against local directory
+
+$ eas fingerprint:compare <FINGERPRINT-HASH-1> <FINGERPRINT-HASH-2> # Compare provided fingerprints
+
+$ eas fingerprint:compare --build-id <BUILD-ID> # Compare fingerprint from build against local directory
+
+$ eas fingerprint:compare --build-id <BUILD-ID> --environment production # Compare fingerprint from build against local directory with the "production" environment
+
+$ eas fingerprint:compare --build-id <BUILD-ID-1> --build-id <BUILD-ID-2> # Compare fingerprint from a build against another build
+
+$ eas fingerprint:compare --build-id <BUILD-ID> --update-id <UPDATE-ID> # Compare fingerprint from build against fingerprint from update
+
+$ eas fingerprint:compare <FINGERPRINT-HASH> --update-id <UPDATE-ID> # Compare fingerprint from update against provided fingerprint
+
+See code: packages/eas-cli/src/commands/fingerprint/compare.ts
+
+## eas fingerprint:generate
+
+generate fingerprints from the current project
+
+USAGE
+$ eas fingerprint:generate [-p android|ios] [--environment <value> | -e <value>] [--json] [--non-interactive]
+
+FLAGS
+-e, --build-profile=<value> Name of the build profile from eas.json.
+-p, --platform=<option> <options: android|ios>
+--environment=<value> Environment variable's environment, e.g. 'production', 'preview', 'development'
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies
+--non-interactive.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+generate fingerprints from the current project
+
+EXAMPLES
+$ eas fingerprint:generate # Generate fingerprint in interactive mode
+
+$ eas fingerprint:generate --build-profile preview # Generate a fingerprint using the "preview" build profile
+
+$ eas fingerprint:generate --environment preview # Generate a fingerprint using the "preview" environment
+
+$ eas fingerprint:generate --json --non-interactive --platform android # Output fingerprint json to stdout
+
+See code: packages/eas-cli/src/commands/fingerprint/generate.ts
+
+## eas help [COMMAND]
+
+Display help for eas.
+
+USAGE
+$ eas help [COMMAND...] [-n]
+
+ARGUMENTS
+[COMMAND...] Command to show help for.
+
+FLAGS
+-n, --nested-commands Include all nested commands in the output.
+
+DESCRIPTION
+Display help for eas.
+
+See code: @expo/plugin-help
+
+## eas init
+
+create or link an EAS project
+
+USAGE
+$ eas init [--account <value> | --id <value>] [--force] [--icon] [--json] [--non-interactive]
+
+FLAGS
+--account=<value> Name of the account that will own the project
+--force Whether to create a new project/link an existing project without additional prompts or overwrite
+any existing project ID when running with --id flag
+--[no-]icon Set the icon shown on the EAS dashboard from the app config, when the project does not have one yet
+--id=<value> ID of the EAS project to link
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+create or link an EAS project
+
+ALIASES
+$ eas init
+
+EXAMPLES
+$ eas init # Create or link a project interactively
+
+$ eas init --id <project-id> # Link to the project with the given ID
+
+$ eas init --account my-account --non-interactive # Create or link @my-account/<slug> without prompts
+
+$ eas init --account my-account --json --non-interactive # Same, and print the result as JSON to stdout
+
+## eas integrations:asc:connect
+
+connect a project to an App Store Connect app
+
+USAGE
+$ eas integrations:asc:connect [--api-key-id <value>] [--asc-app-id <value>] [--bundle-id <value>] [--json]
+[--non-interactive]
+
+FLAGS
+--api-key-id=<value> Apple App Store Connect API Key ID
+--asc-app-id=<value> App Store Connect app identifier
+--bundle-id=<value> Filter discovered apps by bundle identifier
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+connect a project to an App Store Connect app
+
+See code: packages/eas-cli/src/commands/integrations/asc/connect.ts
+
+## eas integrations:asc:disconnect
+
+disconnect the current project from its App Store Connect app
+
+USAGE
+$ eas integrations:asc:disconnect [--yes] [--json] [--non-interactive]
+
+FLAGS
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+--yes Skip confirmation prompt
+
+DESCRIPTION
+disconnect the current project from its App Store Connect app
+
+See code: packages/eas-cli/src/commands/integrations/asc/disconnect.ts
+
+## eas integrations:asc:status
+
+show the App Store Connect app link status for the current project
+
+USAGE
+$ eas integrations:asc:status [--json] [--non-interactive]
+
+FLAGS
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+show the App Store Connect app link status for the current project
+
+See code: packages/eas-cli/src/commands/integrations/asc/status.ts
+
+## eas integrations:convex:connect
+
+connect Convex to your Expo project
+
+USAGE
+$ eas integrations:convex:connect [--non-interactive] [--region aws-us-east-1|aws-eu-west-1] [--team-name <value>]
+[--project-name <value>]
+
+FLAGS
+--non-interactive Run the command in non-interactive mode.
+--project-name=<value> Name for the Convex project (defaults to app slug)
+--region=<option> Convex deployment region (e.g. aws-us-east-1, aws-eu-west-1)
+<options: aws-us-east-1|aws-eu-west-1>
+--team-name=<value> Name for the new Convex team (defaults to EAS account name)
+
+DESCRIPTION
+connect Convex to your Expo project
+
+See code: packages/eas-cli/src/commands/integrations/convex/connect.ts
+
+## eas integrations:convex:dashboard
+
+open the Convex dashboard for the linked Convex project
+
+USAGE
+$ eas integrations:convex:dashboard
+
+DESCRIPTION
+open the Convex dashboard for the linked Convex project
+
+See code: packages/eas-cli/src/commands/integrations/convex/dashboard.ts
+
+## eas integrations:convex:project
+
+display the Convex project linked to the current Expo app
+
+USAGE
+$ eas integrations:convex:project
+
+DESCRIPTION
+display the Convex project linked to the current Expo app
+
+See code: packages/eas-cli/src/commands/integrations/convex/project.ts
+
+## eas integrations:convex:project:delete
+
+remove the Convex project link for the current Expo app from EAS servers
+
+USAGE
+$ eas integrations:convex:project:delete [--non-interactive] [-y]
+
+FLAGS
+-y, --yes Skip confirmation prompt
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+remove the Convex project link for the current Expo app from EAS servers
+
+See code: packages/eas-cli/src/commands/integrations/convex/project/delete.ts
+
+## eas integrations:convex:team
+
+display Convex teams linked to the current Expo app's owner account
+
+USAGE
+$ eas integrations:convex:team
+
+DESCRIPTION
+display Convex teams linked to the current Expo app's owner account
+
+See code: packages/eas-cli/src/commands/integrations/convex/team.ts
+
+## eas integrations:convex:team:delete [CONVEX_TEAM]
+
+remove a Convex team link from the current Expo app owner account's EAS servers
+
+USAGE
+$ eas integrations:convex:team:delete [CONVEX_TEAM] [--non-interactive] [-y]
+
+ARGUMENTS
+[CONVEX_TEAM] Slug of the Convex team to remove
+
+FLAGS
+-y, --yes Skip confirmation prompt
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+remove a Convex team link from the current Expo app owner account's EAS servers
+
+See code: packages/eas-cli/src/commands/integrations/convex/team/delete.ts
+
+## eas integrations:convex:team:invite [CONVEX_TEAM]
+
+send a Convex team invitation to your verified email address
+
+USAGE
+$ eas integrations:convex:team:invite [CONVEX_TEAM] [--non-interactive]
+
+ARGUMENTS
+[CONVEX_TEAM] Slug of the Convex team to invite yourself to
+
+FLAGS
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+send a Convex team invitation to your verified email address
+
+See code: packages/eas-cli/src/commands/integrations/convex/team/invite.ts
+
+## eas integrations:posthog:connect
+
+connect PostHog to your Expo project
+
+USAGE
+$ eas integrations:posthog:connect [--json] [--non-interactive] [--region US|EU] [--session-replay] [--error-tracking]
+[--posthog-cli-api-key <value>] [--overwrite]
+
+FLAGS
+--[no-]error-tracking Set up PostHog error tracking / source maps (requires a personal API key)
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies
+--non-interactive.
+--non-interactive Run the command in non-interactive mode.
+--overwrite Overwrite existing PostHog environment variables without prompting
+--posthog-cli-api-key=<value> PostHog personal API key for error-tracking source-map uploads (enables error tracking
+non-interactively)
+--region=<option> PostHog region
+<options: US|EU>
+--[no-]session-replay Set up PostHog session replay (default: yes)
+
+DESCRIPTION
+connect PostHog to your Expo project
+
+See code: packages/eas-cli/src/commands/integrations/posthog/connect.ts
+
+## eas integrations:posthog:dashboard
+
+open the PostHog dashboard for the linked PostHog project
+
+USAGE
+$ eas integrations:posthog:dashboard [--show-link] [--json] [--non-interactive]
+
+FLAGS
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+--show-link Print the signed-in dashboard URL in addition to opening it. The URL contains a single-use login
+token.
+
+DESCRIPTION
+open the PostHog dashboard for the linked PostHog project
+
+See code: packages/eas-cli/src/commands/integrations/posthog/dashboard.ts
+
+## eas integrations:posthog:disconnect
+
+remove the PostHog project link for the current Expo app from EAS servers
+
+USAGE
+$ eas integrations:posthog:disconnect [--json] [--non-interactive] [-y]
+
+FLAGS
+-y, --yes Skip confirmation prompt
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+remove the PostHog project link for the current Expo app from EAS servers
+
+See code: packages/eas-cli/src/commands/integrations/posthog/disconnect.ts
+
+## eas integrations:supabase:advisors
+
+list unresolved findings from the Supabase Security and Performance Advisors for this app's primary Supabase project
+
+USAGE
+$ eas integrations:supabase:advisors [--type security|performance] [--json] [--non-interactive]
+
+FLAGS
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+--type=<option> Only show one advisor
+<options: security|performance>
+
+DESCRIPTION
+list unresolved findings from the Supabase Security and Performance Advisors for this app's primary Supabase project
+
+EXAMPLES
+$ eas integrations:supabase:advisors
+
+$ eas integrations:supabase:advisors --type security
+
+$ eas integrations:supabase:advisors --json --non-interactive
+
+See code: packages/eas-cli/src/commands/integrations/supabase/advisors.ts
+
+## eas integrations:supabase:connect
+
+authorize Supabase, link or provision a project, install the SDK, and write EXPO_PUBLIC_SUPABASE_URL / EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY
+
+USAGE
+$ eas integrations:supabase:connect [--json] [--non-interactive] [--region <value>] [--organization <value>] [--link <value>]
+[--reauth] [--overwrite] [--environment <value>]
+
+FLAGS
+--environment=<value> EAS environments for a separate hosted project (e.g. preview). Requires prior primary connect;
+writes URL/key only there. Incompatible with --link and --reauth
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--link=<value> Existing project URL or Reference ID (Project Settings → General). Sets the app primary
+instead of provisioning. Incompatible with --environment
+--non-interactive Run the command in non-interactive mode.
+--organization=<value> Supabase org slug for a new primary project. Ignored with --link; incompatible with
+--environment
+--overwrite Replace existing EXPO_PUBLIC_SUPABASE_* in .env.local and EAS without prompting
+--reauth Disconnect the existing Supabase OAuth connection, then re-authorize in the browser. Removes
+the EAS connection and primary project link (Supabase projects are kept). Then prompts to link
+an existing project (default) or provision a new one; pass --link to skip the prompt.
+Interactive only; incompatible with --environment
+--region=<value> Region when provisioning (americas | emea | apac, or e.g. us-east-1). Required with
+--non-interactive if provisioning. Ignored with --link or if already linked
+
+DESCRIPTION
+authorize Supabase, link or provision a project, install the SDK, and write EXPO_PUBLIC_SUPABASE_URL /
+EXPO_PUBLIC_SUPABASE_PUBLISHABLE_KEY
+
+EXAMPLES
+$ eas integrations:supabase:connect
+
+$ eas integrations:supabase:connect --link <project-url>
+
+$ eas integrations:supabase:connect --environment preview
+
+$ eas integrations:supabase:connect --environment preview --region americas --non-interactive --overwrite
+
+$ eas integrations:supabase:connect --reauth
+
+See code: packages/eas-cli/src/commands/integrations/supabase/connect.ts
+
+## eas integrations:supabase:dashboard
+
+open this app's primary Supabase project in the dashboard (or print the URL with --non-interactive)
+
+USAGE
+$ eas integrations:supabase:dashboard [--json] [--non-interactive]
+
+FLAGS
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+open this app's primary Supabase project in the dashboard (or print the URL with --non-interactive)
+
+EXAMPLES
+$ eas integrations:supabase:dashboard
+
+$ eas integrations:supabase:dashboard --non-interactive
+
+See code: packages/eas-cli/src/commands/integrations/supabase/dashboard.ts
+
+## eas integrations:supabase:disconnect
+
+remove this app's Supabase project link from EAS (keeps the Supabase project; does not delete EXPO_PUBLIC_SUPABASE_* env vars)
+
+USAGE
+$ eas integrations:supabase:disconnect [--json] [--non-interactive] [-y]
+
+FLAGS
+-y, --yes Skip confirmation prompt
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+remove this app's Supabase project link from EAS (keeps the Supabase project; does not delete EXPO_PUBLIC_SUPABASE_*
+env vars)
+
+EXAMPLES
+$ eas integrations:supabase:disconnect
+
+$ eas integrations:supabase:disconnect --yes
+
+See code: packages/eas-cli/src/commands/integrations/supabase/disconnect.ts
+
+## eas login
+
+log in with your Expo account
+
+USAGE
+$ eas login [--non-interactive] [--match <value> [--resume <value> [--device | -s]]] [-b]
+
+FLAGS
+-b, --[no-]browser Log in with your browser (default; use --no-browser for CLI-based login)
+-s, --sso Log in with SSO
+--device Log in using a code in a browser on any device
+--match=<value> Submit the number the user sees in their browser
+--non-interactive Run the command in non-interactive mode.
+--resume=<value> Resume a saved device login using its request ID (one command at a time)
+
+DESCRIPTION
+log in with your Expo account
+
+ALIASES
+$ eas login
+
+EXAMPLES
+$ eas login --device
+
+$ eas login --device --non-interactive
+
+$ eas login --device --non-interactive --resume REQUEST_ID --match NUMBER_FROM_USER
+
+## eas logout
+
+log out
+
+USAGE
+$ eas logout
+
+DESCRIPTION
+log out
+
+ALIASES
+$ eas logout
+
+## eas metadata:lint
+
+validate the local store configuration
+
+USAGE
+$ eas metadata:lint [--json] [--profile <value>]
+
+FLAGS
+--json Enable JSON output, non-JSON messages will be printed to stderr
+--profile=<value> Name of the submit profile from eas.json. Defaults to "production" if defined in eas.json.
+
+DESCRIPTION
+validate the local store configuration
+
+See code: packages/eas-cli/src/commands/metadata/lint.ts
+
+## eas metadata:pull
+
+generate the local store configuration from the app stores
+
+USAGE
+$ eas metadata:pull [-e <value>] [--non-interactive]
+
+FLAGS
+-e, --profile=<value> Name of the submit profile from eas.json. Defaults to "production" if defined in eas.json.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+generate the local store configuration from the app stores
+
+See code: packages/eas-cli/src/commands/metadata/pull.ts
+
+## eas metadata:push
+
+sync the local store configuration to the app stores
+
+USAGE
+$ eas metadata:push [-e <value>] [--non-interactive]
+
+FLAGS
+-e, --profile=<value> Name of the submit profile from eas.json. Defaults to "production" if defined in eas.json.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+sync the local store configuration to the app stores
+
+See code: packages/eas-cli/src/commands/metadata/push.ts
+
+## eas new [PATH]
+
+Create a new project configured with Expo Application Services (EAS)
+
+USAGE
+$ eas new [PATH] [-p bun|npm|pnpm|yarn] [--sdk-version <value>]
+
+ARGUMENTS
+[PATH] Path to create the project (defaults to current directory)
+
+FLAGS
+-p, --package-manager=<option> [default: npm] Package manager to use for installing dependencies
+<options: bun|npm|pnpm|yarn>
+--sdk-version=<value> Expo SDK version to use for the new project (e.g. 57, or "latest")
+
+DESCRIPTION
+Create a new project configured with Expo Application Services (EAS)
+
+ALIASES
+$ eas new
+
+## eas observe:errors
+
+display error and exception issue groups (grouped by fingerprint) for the app
+
+USAGE
+$ eas observe:errors [--platform android|ios|ipados|macos|tvos|apple] [--fingerprint <value>] [--severity
+fatal|error] [--after <value>] [--limit <value>] [--start <value> | --days <value>] [--end <value> | ]
+[--app-version <value>] [--build-number <value>] [--update-id <value>] [--environment <value>] [--project-id
+<value>] [--json] [--non-interactive]
+
+FLAGS
+--after=<value> Cursor for pagination. Use the endCursor from a previous query to fetch the next page.
+--app-version=<value> Filter by app version
+--build-number=<value> Filter by app build number
+--days=<value> Show results from the last N days (mutually exclusive with --start/--end)
+--end=<value> End of time range (ISO date)
+--environment=<value> Filter by environment (e.g. production, development)
+--fingerprint=<value> Show individual occurrences (with stack traces) for this error group fingerprint instead of
+the grouped summary
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--limit=<value> The number of items to fetch each query. Defaults to 10 and is capped at 100.
+--non-interactive Run the command in non-interactive mode.
+--platform=<option> Filter by platform ("apple" covers iOS, iPadOS, tvOS, and macOS)
+<options: android|ios|ipados|macos|tvos|apple>
+--project-id=<value> EAS project ID (defaults to the project ID of the current directory)
+--severity=<option> Filter by severity (ignored when --fingerprint is set)
+<options: fatal|error>
+--start=<value> Start of time range (ISO date)
+--update-id=<value> Filter by EAS update ID
+
+DESCRIPTION
+display error and exception issue groups (grouped by fingerprint) for the app
+
+See code: packages/eas-cli/src/commands/observe/errors.ts
+
+## eas observe:event ID
+
+display a single Observe event (metric, log, or error) by its ID. IDs are included in event data when the --json flag is passed to eas observe:session, eas observe:metrics, or eas observe:events.
+
+USAGE
+$ eas observe:event ID [--project-id <value>] [--json] [--non-interactive]
+
+ARGUMENTS
+ID ID of the event to display
+
+FLAGS
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+--project-id=<value> EAS project ID (defaults to the project ID of the current directory)
+
+DESCRIPTION
+display a single Observe event (metric, log, or error) by its ID. IDs are included in event data when the `--json`
+flag is passed to `eas observe:session`, `eas observe:metrics`, or `eas observe:events`.
+
+See code: packages/eas-cli/src/commands/observe/event.ts
+
+## eas observe:events [EVENTNAME]
+
+display individual events emitted by the app via logEvent, filtered by the event name in the argument. With no arguments, a list of the available event names and associated event counts is returned.
+
+USAGE
+$ eas observe:events [EVENTNAME] [--platform android|ios|ipados|macos|tvos|apple] [--after <value>] [--limit
+<value>] [--start <value> | --days <value>] [--end <value> | ] [--app-version <value>] [--build-number <value>]
+[--update-id <value>] [--environment <value>] [--session-id <value>] [--all-events] [--project-id <value>] [--json]
+[--non-interactive]
+
+ARGUMENTS
+[EVENTNAME] Event name to filter by
+
+FLAGS
+--after=<value> Cursor for pagination. Use the endCursor from a previous query to fetch the next page.
+--all-events When no event name argument is provided, list all events across all event names instead of a
+summary of event names + counts.
+--app-version=<value> Filter by app version
+--build-number=<value> Filter by app build number
+--days=<value> Show results from the last N days (mutually exclusive with --start/--end)
+--end=<value> End of time range (ISO date)
+--environment=<value> Filter by environment (e.g. production, development)
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--limit=<value> The number of items to fetch each query. Defaults to 10 and is capped at 100.
+--non-interactive Run the command in non-interactive mode.
+--platform=<option> Filter by platform ("apple" covers iOS, iPadOS, tvOS, and macOS)
+<options: android|ios|ipados|macos|tvos|apple>
+--project-id=<value> EAS project ID (defaults to the project ID of the current directory)
+--session-id=<value> Filter by session ID. When no event name is given, lists the events in the session instead of
+the event-name summary.
+--start=<value> Start of time range (ISO date)
+--update-id=<value> Filter by EAS update ID
+
+DESCRIPTION
+display individual events emitted by the app via `logEvent`, filtered by the event name in the argument. With no
+arguments, a list of the available event names and associated event counts is returned.
+
+See code: packages/eas-cli/src/commands/observe/events.ts
+
+## eas observe:metrics [METRIC]
+
+display individual performance metric samples ordered by value
+
+USAGE
+$ eas observe:metrics [METRIC] [--sort slowest|fastest|newest|oldest] [--platform
+android|ios|ipados|macos|tvos|apple] [--after <value>] [--limit <value>] [--start <value> | --days <value>] [--end
+<value> | ] [--app-version <value>] [--build-number <value>] [--update-id <value>] [--environment <value>]
+[--project-id <value>] [--json] [--non-interactive]
+
+ARGUMENTS
+[METRIC] (nav_cold_ttr|nav_warm_ttr|nav_tti|tti|ttr|cold_launch|warm_launch|bundle_load|update_download) Metric to
+query (e.g. tti, cold_launch, nav_tti)
+
+FLAGS
+--after=<value> Cursor for pagination. Use the endCursor from a previous query to fetch the next page.
+--app-version=<value> Filter by app version
+--build-number=<value> Filter by app build number
+--days=<value> Show results from the last N days (mutually exclusive with --start/--end)
+--end=<value> End of time range (ISO date)
+--environment=<value> Filter by environment (e.g. production, development)
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--limit=<value> The number of items to fetch each query. Defaults to 10 and is capped at 100.
+--non-interactive Run the command in non-interactive mode.
+--platform=<option> Filter by platform ("apple" covers iOS, iPadOS, tvOS, and macOS)
+<options: android|ios|ipados|macos|tvos|apple>
+--project-id=<value> EAS project ID (defaults to the project ID of the current directory)
+--sort=<option> [default: oldest] Sort order for events
+<options: slowest|fastest|newest|oldest>
+--start=<value> Start of time range (ISO date)
+--update-id=<value> Filter by EAS update ID
+
+DESCRIPTION
+display individual performance metric samples ordered by value
+
+See code: packages/eas-cli/src/commands/observe/metrics.ts
+
+## eas observe:metrics-summary
+
+display aggregated performance metric statistics grouped by app version
+
+USAGE
+$ eas observe:metrics-summary [--platform android|ios|ipados|macos|tvos|apple] [--metric
+nav_cold_ttr|nav_warm_ttr|nav_tti|tti|ttr|cold_launch|warm_launch|bundle_load|update_download...] [--stat
+min|median|max|average|p80|p90|p99|eventCount...] [--start <value> | --days <value>] [--end <value> | ]
+[--environment <value>] [--project-id <value>] [--json] [--non-interactive]
+
+FLAGS
+--days=<value> Show results from the last N days (mutually exclusive with --start/--end)
+--end=<value> End of time range (ISO date)
+--environment=<value> Filter by environment (e.g. production, development)
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--metric=<option>... Metric name to display (can be specified multiple times).
+<options:
+nav_cold_ttr|nav_warm_ttr|nav_tti|tti|ttr|cold_launch|warm_launch|bundle_load|update_download>
+--non-interactive Run the command in non-interactive mode.
+--platform=<option> Filter by platform ("apple" covers iOS, iPadOS, tvOS, and macOS)
+<options: android|ios|ipados|macos|tvos|apple>
+--project-id=<value> EAS project ID (defaults to the project ID of the current directory)
+--start=<value> Start of time range (ISO date)
+--stat=<option>... Statistic to display per metric (can be specified multiple times)
+<options: min|median|max|average|p80|p90|p99|eventCount>
+
+DESCRIPTION
+display aggregated performance metric statistics grouped by app version
+
+See code: packages/eas-cli/src/commands/observe/metrics-summary.ts
+
+## eas observe:routes
+
+display app navigation route metrics (Cold TTR, Warm TTR, TTI) grouped by route name
+
+USAGE
+$ eas observe:routes [--platform android|ios|ipados|macos|tvos|apple] [--metric
+nav_cold_ttr|nav_warm_ttr|nav_tti...] [--stat median|med|p90|count|event_count|eventCount...] [--after <value>]
+[--limit <value>] [--start <value> | --days <value>] [--end <value> | ] [--app-version <value>] [--build-number
+<value>] [--update-id <value>] [--route-name <value>...] [--environment <value>] [--project-id <value>] [--json]
+[--non-interactive]
+
+FLAGS
+--after=<value> Cursor for pagination. Use the endCursor from a previous query to fetch the next page.
+--app-version=<value> Filter by app version
+--build-number=<value> Filter by app build number
+--days=<value> Show results from the last N days (mutually exclusive with --start/--end)
+--end=<value> End of time range (ISO date)
+--environment=<value> Filter by environment (e.g. production, development)
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--limit=<value> The number of items to fetch each query. Defaults to 50 and is capped at 200.
+--metric=<option>... Navigation metric to display (can be specified multiple times). Defaults to all three.
+<options: nav_cold_ttr|nav_warm_ttr|nav_tti>
+--non-interactive Run the command in non-interactive mode.
+--platform=<option> Filter by platform ("apple" covers iOS, iPadOS, tvOS, and macOS)
+<options: android|ios|ipados|macos|tvos|apple>
+--project-id=<value> EAS project ID (defaults to the project ID of the current directory)
+--route-name=<value>... Filter by route name (can be specified multiple times to include several routes)
+--start=<value> Start of time range (ISO date)
+--stat=<option>... Statistic to display per metric (can be specified multiple times)
+<options: median|med|p90|count|event_count|eventCount>
+--update-id=<value> Filter by EAS update ID
+
+DESCRIPTION
+display app navigation route metrics (Cold TTR, Warm TTR, TTI) grouped by route name
+
+See code: packages/eas-cli/src/commands/observe/routes.ts
+
+## eas observe:session [SESSIONID]
+
+display the timeline of metric and log events for a specific session
+
+USAGE
+$ eas observe:session [SESSIONID] [--sort slowest|fastest|newest|oldest] [--event-name <value>] [--start <value> |
+--days <value>] [--end <value> | ] [--environment <value>] [--project-id <value>] [--json] [--non-interactive]
+
+ARGUMENTS
+[SESSIONID] Session ID to inspect (omit in interactive mode to pick one from a list)
+
+FLAGS
+--days=<value> Show results from the last N days (mutually exclusive with --start/--end)
+--end=<value> End of time range (ISO date)
+--environment=<value> Filter by environment (e.g. production, development)
+--event-name=<value> Metric or log event name to pick candidate sessions by (e.g. tti, cold_launch, login_pressed).
+If omitted in interactive mode, you will be prompted.
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+--project-id=<value> EAS project ID (defaults to the project ID of the current directory)
+--sort=<option> Sort order for candidate events when picking a session (if omitted in interactive mode, you
+will be prompted)
+<options: slowest|fastest|newest|oldest>
+--start=<value> Start of time range (ISO date)
+
+DESCRIPTION
+display the timeline of metric and log events for a specific session
+
+See code: packages/eas-cli/src/commands/observe/session.ts
+
+## eas observe:versions
+
+display app versions with build and update details
+
+USAGE
+$ eas observe:versions [--platform android|ios|ipados|macos|tvos|apple] [--start <value> | --days <value>] [--end
+<value> | ] [--environment <value>] [--project-id <value>] [--json] [--non-interactive]
+
+FLAGS
+--days=<value> Show results from the last N days (mutually exclusive with --start/--end)
+--end=<value> End of time range (ISO date)
+--environment=<value> Filter by environment (e.g. production, development)
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+--platform=<option> Filter by platform ("apple" covers iOS, iPadOS, tvOS, and macOS)
+<options: android|ios|ipados|macos|tvos|apple>
+--project-id=<value> EAS project ID (defaults to the project ID of the current directory)
+--start=<value> Start of time range (ISO date)
+
+DESCRIPTION
+display app versions with build and update details
+
+See code: packages/eas-cli/src/commands/observe/versions.ts
+
+## eas project:delete [NAME]
+
+delete a project
+
+USAGE
+$ eas project:delete [NAME] [--dangerously-confirm-deletion <value>] [--json] [--non-interactive]
+
+ARGUMENTS
+[NAME] Full name (@account/slug) or ID of the project to delete. Defaults to the project in the current directory.
+
+FLAGS
+--dangerously-confirm-deletion=<value> The project's full name (@account/slug), to confirm deletion. Required in
+non-interactive mode.
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies
+--non-interactive.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+delete a project
+
+See code: packages/eas-cli/src/commands/project/delete.ts
+
+## eas project:icon:set PATH
+
+set the project icon displayed on the EAS dashboard
+
+USAGE
+$ eas project:icon:set PATH [--non-interactive]
+
+ARGUMENTS
+PATH Path to the icon image (PNG or JPEG, at most 10 MB). Non-square images are center-cropped to a square.
+
+FLAGS
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+set the project icon displayed on the EAS dashboard
+
+See code: packages/eas-cli/src/commands/project/icon/set.ts
+
+## eas project:info
+
+information about the current project
+
+USAGE
+$ eas project:info
+
+DESCRIPTION
+information about the current project
+
+See code: packages/eas-cli/src/commands/project/info.ts
+
+## eas project:init
+
+create or link an EAS project
+
+USAGE
+$ eas project:init [--account <value> | --id <value>] [--force] [--icon] [--json] [--non-interactive]
+
+FLAGS
+--account=<value> Name of the account that will own the project
+--force Whether to create a new project/link an existing project without additional prompts or overwrite
+any existing project ID when running with --id flag
+--[no-]icon Set the icon shown on the EAS dashboard from the app config, when the project does not have one yet
+--id=<value> ID of the EAS project to link
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+create or link an EAS project
+
+ALIASES
+$ eas init
+
+EXAMPLES
+$ eas init # Create or link a project interactively
+
+$ eas init --id <project-id> # Link to the project with the given ID
+
+$ eas init --account my-account --non-interactive # Create or link @my-account/<slug> without prompts
+
+$ eas init --account my-account --json --non-interactive # Same, and print the result as JSON to stdout
+
+See code: packages/eas-cli/src/commands/project/init.ts
+
+## eas project:new [PATH]
+
+Create a new project configured with Expo Application Services (EAS)
+
+USAGE
+$ eas project:new [PATH] [-p bun|npm|pnpm|yarn] [--sdk-version <value>]
+
+ARGUMENTS
+[PATH] Path to create the project (defaults to current directory)
+
+FLAGS
+-p, --package-manager=<option> [default: npm] Package manager to use for installing dependencies
+<options: bun|npm|pnpm|yarn>
+--sdk-version=<value> Expo SDK version to use for the new project (e.g. 57, or "latest")
+
+DESCRIPTION
+Create a new project configured with Expo Application Services (EAS)
+
+ALIASES
+$ eas new
+
+See code: packages/eas-cli/src/commands/project/new.ts
+
+## eas project:status
+
+show a snapshot of the project: recent builds, dev builds, workflow runs, submissions, and updates
+
+USAGE
+$ eas project:status [--limit <value>] [--json] [--non-interactive]
+
+FLAGS
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--limit=<value> The number of items to show in each section. Defaults to 3 and is capped at 25.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+show a snapshot of the project: recent builds, dev builds, workflow runs, submissions, and updates
+
+ALIASES
+$ eas status
+
+EXAMPLES
+$ eas status # Show a concise project snapshot
+
+$ eas status --json # Output a machine-readable snapshot for agents and automation
+
+$ eas status --json --limit 10 # Include more activity from each section
+
+See code: packages/eas-cli/src/commands/project/status.ts
+
+## eas sim:availability
+
+[EXPERIMENTAL] check whether EAS Simulator is enabled for the current project account
+
+USAGE
+$ eas sim:availability [--json] [--non-interactive]
+
+FLAGS
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+[EXPERIMENTAL] check whether EAS Simulator is enabled for the current project account
+
+ALIASES
+$ eas sim:availability
+
+## eas sim:control [ACTION]
+
+[EXPERIMENTAL] run a serve-sim action on a remote iOS simulator session on EAS. Run without an action to list the actions the session supports. To save a screenshot locally, run eas simulator:control screenshot.capture --output ./screenshot.png.
+
+USAGE
+$ eas sim:control [ACTION...] [-h] [--id <value>] [--list] [--output <value>] [--json] [--non-interactive]
+
+ARGUMENTS
+[ACTION...] Action to run, followed by its values in order or as name=value. Omit to list the actions. Put -- before
+values that start with --.
+
+FLAGS
+-h, --help Show command help, or usage for the selected action from the session.
+--id=<value> Simulator session ID. Defaults to .env.eas-simulator.
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--list List the actions the session supports.
+--non-interactive Run the command in non-interactive mode.
+--output=<value> Local path to save a returned file. For screenshots, --output ./screenshot.png sets the local
+filename; omit it to save with a generated filename in the current directory.
+
+DESCRIPTION
+[EXPERIMENTAL] run a serve-sim action on a remote iOS simulator session on EAS. Run without an action to list the
+actions the session supports. To save a screenshot locally, run `eas simulator:control screenshot.capture --output
+./screenshot.png`.
+
+ALIASES
+$ eas sim:control
+
+EXAMPLES
+$ eas simulator:control
+
+$ eas simulator:control --id <session-id>
+
+$ eas simulator:control screenshot.capture --help
+
+$ eas simulator:control clipboard.write -- --some-text
+
+$ eas simulator:control hardwareKeyboard.set off
+
+$ eas simulator:control permissions.set grant camera com.example.app
+
+$ eas simulator:control app.install ./MyApp.ipa
+
+$ eas simulator:control screenshot.capture --output ./screenshot.png
+
+$ eas simulator:control screenshot.capture --output ./screenshot.png --id <session-id>
+
+## eas sim:egress
+
+[EXPERIMENTAL] run the local egress client for a simulator session to route proxied HTTP(S) requests through this machine
+
+USAGE
+$ eas sim:egress [--config-type dotenv|env]
+
+FLAGS
+--config-type=<option> [default: dotenv] Read session credentials from .env.eas-simulator (dotenv) or the current
+shell environment (env).
+<options: dotenv|env>
+
+DESCRIPTION
+[EXPERIMENTAL] run the local egress client for a simulator session to route proxied HTTP(S) requests through this
+machine
+
+ALIASES
+$ eas sim:egress
+
+## eas sim:events
+
+[EXPERIMENTAL] show activity events from a remote simulator session
+
+USAGE
+$ eas sim:events [--id <value>] [-f] [--json] [--non-interactive]
+
+FLAGS
+-f, --follow Keep watching for new events until the session ends.
+--id=<value> Simulator session ID. Defaults to .env.eas-simulator.
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+[EXPERIMENTAL] show activity events from a remote simulator session
+
+ALIASES
+$ eas sim:events
+
+## eas sim:exec
+
+[EXPERIMENTAL] execute a simulator command with .env.eas-simulator environment loaded
+
+USAGE
+$ eas sim:exec
+
+DESCRIPTION
+[EXPERIMENTAL] execute a simulator command with .env.eas-simulator environment loaded
+
+ALIASES
+$ eas sim:exec
+
+## eas sim:get
+
+[EXPERIMENTAL] get info about a remote simulator session on EAS by its simulator session ID. Preview links follow the session's saved sharing preference.
+
+USAGE
+$ eas sim:get [--id <value>] [--json] [--non-interactive]
+
+FLAGS
+--id=<value> Simulator session ID. Defaults to .env.eas-simulator.
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+[EXPERIMENTAL] get info about a remote simulator session on EAS by its simulator session ID. Preview links follow the
+session's saved sharing preference.
+
+ALIASES
+$ eas sim:get
+
+## eas sim:list
+
+[EXPERIMENTAL] list remote simulator sessions for the current project
+
+USAGE
+$ eas sim:list [--status new|queued|starting|in-progress|stopped|errored...] [--type
+agent-device|appium|argent|web-preview-only...] [--platform android|ios...] [--name <value>] [--tag <value>...]
+[--limit <value>] [--after <value>] [--json] [--non-interactive]
+
+FLAGS
+--after=<value> Cursor for pagination. Use the endCursor from a previous query to fetch the next page.
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--limit=<value> The number of items to fetch each query. Defaults to 10 and is capped at 100.
+--name=<value> Filter by session name (case-insensitive prefix match)
+--non-interactive Run the command in non-interactive mode.
+--platform=<option>... Filter by device platform (repeatable)
+<options: android|ios>
+--status=<option>... Filter by session status (repeatable)
+<options: new|queued|starting|in-progress|stopped|errored>
+--tag=<value>... Filter by tag (repeatable). A session must carry every tag listed.
+--type=<option>... Filter by session type (repeatable). All session types include a web preview. agent-device,
+appium, and argent also include an automation interface; web-preview-only includes no
+automation interface.
+<options: agent-device|appium|argent|web-preview-only>
+
+DESCRIPTION
+[EXPERIMENTAL] list remote simulator sessions for the current project
+
+ALIASES
+$ eas sim:list
+
+## eas sim:start
+
+[EXPERIMENTAL] start a remote simulator session on EAS and get instructions to connect to it. The default browser preview link requires sign-in.
+
+USAGE
+$ eas sim:start [-p android|ios] [--name <value>] [--tag <value>...] [--device <value>] [--system-image
+<value>] [--build-id <value> | --build-fingerprint <value> | --application-archive-url <value> | --expo-go]
+[--sdk-version <value>] [--launch-arg <value>...] [--open-url <value>] [--type
+agent-device|appium|argent|web-preview-only] [--package-version <value>] [--network-capture-field <value>...
+--network-capture] [--max-duration-minutes <value>] [--max-idle-time-minutes <value>] [--egress-allow <value>...
+--egress local] [--cors-origin <value>...] [--frame-ancestor <value>...] [--force] [--out-config-type env|dotenv]
+[--public-link] [--json] [--non-interactive]
+
+FLAGS
+-p, --platform=<option>
+Device platform
+<options: android|ios>
+
+--application-archive-url=<value>
+Application archive URL to download, install, and launch before the simulator session is ready.
+
+--build-fingerprint=<value>
+Fingerprint hash of an EAS Build to install and launch before the simulator session is ready. Uses the most recent
+finished build with this fingerprint that can be installed on the simulator.
+
+--build-id=<value>
+EAS Build to install and launch before the simulator session is ready.
+
+--cors-origin=<value>...
+Origin of a page that may call the simulator preview API cross-origin, for example to render the device with
+@expo/hub-client, such as https://app.example.com or https://*.example.com. Repeat for multiple origins. Embedding
+the preview in a frame does not need this; use --frame-ancestor for that. The page still needs the printed preview
+URL and its token.
+
+--device=<value>
+Virtual device to start for the session. On iOS, a Simulator device name or UDID (e.g. "iPhone 16 Pro"). On Android,
+an AVD hardware profile id (e.g. "pixel_7"). Defaults to a device chosen by the runner.
+
+--egress=<option>
+With "local", the simulator's network traffic exits from this machine and fails while the egress client is
+disconnected. On iOS, the simulator system proxy points at this machine: HTTP(S) and WebSocket requests that honor
+it (WebKit, URLSession) and clients that read proxy environment variables (gRPC, libcurl) use it, and connections
+that ignore both are refused inside the simulator and listed, with the library that tried, in the Logs section of
+the session page on expo.dev. On Android, all TCP traffic from the emulator goes through its proxy to this machine;
+traffic that cannot (UDP, such as QUIC) is refused and listed in the same Logs section, and DNS for apps that ignore
+the system proxy resolves on the device host. The egress client must keep running for the life of the session.
+<options: local>
+
+--egress-allow=<value>...
+Destination on this machine or its network that the simulator may reach through local egress, as an exact host:port
+(for example localhost:3000). Repeat for multiple destinations. A localhost or 127.0.0.1 entry also forwards that
+port from the simulator host to this machine (like adb reverse), so dev server URLs that use 127.0.0.1 work. On
+Android, such an entry also covers 10.0.2.2 on the same port. Requires --egress local.
+
+--expo-go
+Install and launch Expo Go matching the current project's Expo SDK before the simulator session is ready.
+
+--[no-]force
+[default: true] Create a new simulator session even when an existing simulator session is present in the
+environment.
+
+--frame-ancestor=<value>...
+Origin of a page that may embed the simulator preview in a frame, such as https://app.example.com or
+https://*.example.com. Repeat for multiple origins. The embedding page loads the printed preview URL, which carries
+the session token, so anyone who can read that page can also control the simulator.
+
+--json
+Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+
+--launch-arg=<value>...
+Argument passed to the installed application when it launches. Repeat for multiple arguments.
+
+--max-duration-minutes=<value>
+Maximum duration of the simulator session in minutes before it is automatically stopped. Defaults to, and cannot
+exceed, the maximum session duration of the account's plan.
+
+--max-idle-time-minutes=<value>
+Stop the simulator session automatically after this many minutes without session activity. When omitted, the session
+has no idle timeout and runs until its maximum duration.
+
+--name=<value>
+Human-readable name for the simulator session, shown in eas simulator:list and on expo.dev. Defaults to unnamed.
+
+--network-capture
+Record HTTP(S) traffic from apps on the device (iOS only). HTTPS is decrypted, so recordings contain credentials in
+cleartext and certificate-pinned apps fail to connect.
+
+--network-capture-field=<value>...
+What a recording may keep beyond method, URL, status, timing and size: header, query, request-body, response-body.
+Repeatable or comma-separated. Defaults to none of them, because each can carry credentials.
+
+--non-interactive
+Run the command in non-interactive mode.
+
+--open-url=<value>
+Expo or development-client URL to open in the installed application after it launches.
+
+--out-config-type=<option>
+[default: dotenv] How to output simulator connection configuration. Use "env" to print shell exports, or "dotenv" to
+write .env.eas-simulator.
+<options: env|dotenv>
+
+--package-version=<value>
+Version of the package backing the simulator session (e.g. "0.1.3-alpha.3"). Defaults to "latest" when omitted.
+
+--public-link
+Enable the simulator preview Share button and print a shareable link containing an access token. Anyone with the
+link can control the simulator. With --json, include previewApiUrl and its token for API clients when available.
+
+--sdk-version=<value>
+Expo SDK version used to select Expo Go when --expo-go is passed. Defaults to the current project SDK.
+
+--system-image=<value>
+Android SDK system image package to use for the emulator (e.g.
+"system-images;android-35-ext15;google_apis_playstore;x86_64"). Defaults to a system image chosen by the runner.
+Only supported with --platform android.
+
+--tag=<value>...
+Label used to group simulator sessions, for example one per app variant. Repeat for multiple tags. Stored
+lowercased.
+
+--type=<option>
+[default: agent-device] Type of simulator session to create. All session types include a web preview. agent-device,
+appium, and argent also include an automation interface; web-preview-only includes no automation interface.
+<options: agent-device|appium|argent|web-preview-only>
+
+DESCRIPTION
+[EXPERIMENTAL] start a remote simulator session on EAS and get instructions to connect to it. The default browser
+preview link requires sign-in.
+
+ALIASES
+$ eas simulator:start
+$ eas sim:start
+
+## eas sim:stop
+
+[EXPERIMENTAL] stop a remote simulator session on EAS by its simulator session ID
+
+USAGE
+$ eas sim:stop [--id <value>] [--json] [--non-interactive]
+
+FLAGS
+--id=<value> Simulator session ID. Defaults to .env.eas-simulator.
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+[EXPERIMENTAL] stop a remote simulator session on EAS by its simulator session ID
+
+ALIASES
+$ eas sim:stop
+
+## eas simulator
+
+[EXPERIMENTAL] start a remote simulator session on EAS and get instructions to connect to it. The default browser preview link requires sign-in.
+
+USAGE
+$ eas simulator [-p android|ios] [--name <value>] [--tag <value>...] [--device <value>] [--system-image
+<value>] [--build-id <value> | --build-fingerprint <value> | --application-archive-url <value> | --expo-go]
+[--sdk-version <value>] [--launch-arg <value>...] [--open-url <value>] [--type
+agent-device|appium|argent|web-preview-only] [--package-version <value>] [--network-capture-field <value>...
+--network-capture] [--max-duration-minutes <value>] [--max-idle-time-minutes <value>] [--egress-allow <value>...
+--egress local] [--cors-origin <value>...] [--frame-ancestor <value>...] [--force] [--out-config-type env|dotenv]
+[--public-link] [--json] [--non-interactive]
+
+FLAGS
+-p, --platform=<option>
+Device platform
+<options: android|ios>
+
+--application-archive-url=<value>
+Application archive URL to download, install, and launch before the simulator session is ready.
+
+--build-fingerprint=<value>
+Fingerprint hash of an EAS Build to install and launch before the simulator session is ready. Uses the most recent
+finished build with this fingerprint that can be installed on the simulator.
+
+--build-id=<value>
+EAS Build to install and launch before the simulator session is ready.
+
+--cors-origin=<value>...
+Origin of a page that may call the simulator preview API cross-origin, for example to render the device with
+@expo/hub-client, such as https://app.example.com or https://*.example.com. Repeat for multiple origins. Embedding
+the preview in a frame does not need this; use --frame-ancestor for that. The page still needs the printed preview
+URL and its token.
+
+--device=<value>
+Virtual device to start for the session. On iOS, a Simulator device name or UDID (e.g. "iPhone 16 Pro"). On Android,
+an AVD hardware profile id (e.g. "pixel_7"). Defaults to a device chosen by the runner.
+
+--egress=<option>
+With "local", the simulator's network traffic exits from this machine and fails while the egress client is
+disconnected. On iOS, the simulator system proxy points at this machine: HTTP(S) and WebSocket requests that honor
+it (WebKit, URLSession) and clients that read proxy environment variables (gRPC, libcurl) use it, and connections
+that ignore both are refused inside the simulator and listed, with the library that tried, in the Logs section of
+the session page on expo.dev. On Android, all TCP traffic from the emulator goes through its proxy to this machine;
+traffic that cannot (UDP, such as QUIC) is refused and listed in the same Logs section, and DNS for apps that ignore
+the system proxy resolves on the device host. The egress client must keep running for the life of the session.
+<options: local>
+
+--egress-allow=<value>...
+Destination on this machine or its network that the simulator may reach through local egress, as an exact host:port
+(for example localhost:3000). Repeat for multiple destinations. A localhost or 127.0.0.1 entry also forwards that
+port from the simulator host to this machine (like adb reverse), so dev server URLs that use 127.0.0.1 work. On
+Android, such an entry also covers 10.0.2.2 on the same port. Requires --egress local.
+
+--expo-go
+Install and launch Expo Go matching the current project's Expo SDK before the simulator session is ready.
+
+--[no-]force
+[default: true] Create a new simulator session even when an existing simulator session is present in the
+environment.
+
+--frame-ancestor=<value>...
+Origin of a page that may embed the simulator preview in a frame, such as https://app.example.com or
+https://*.example.com. Repeat for multiple origins. The embedding page loads the printed preview URL, which carries
+the session token, so anyone who can read that page can also control the simulator.
+
+--json
+Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+
+--launch-arg=<value>...
+Argument passed to the installed application when it launches. Repeat for multiple arguments.
+
+--max-duration-minutes=<value>
+Maximum duration of the simulator session in minutes before it is automatically stopped. Defaults to, and cannot
+exceed, the maximum session duration of the account's plan.
+
+--max-idle-time-minutes=<value>
+Stop the simulator session automatically after this many minutes without session activity. When omitted, the session
+has no idle timeout and runs until its maximum duration.
+
+--name=<value>
+Human-readable name for the simulator session, shown in eas simulator:list and on expo.dev. Defaults to unnamed.
+
+--network-capture
+Record HTTP(S) traffic from apps on the device (iOS only). HTTPS is decrypted, so recordings contain credentials in
+cleartext and certificate-pinned apps fail to connect.
+
+--network-capture-field=<value>...
+What a recording may keep beyond method, URL, status, timing and size: header, query, request-body, response-body.
+Repeatable or comma-separated. Defaults to none of them, because each can carry credentials.
+
+--non-interactive
+Run the command in non-interactive mode.
+
+--open-url=<value>
+Expo or development-client URL to open in the installed application after it launches.
+
+--out-config-type=<option>
+[default: dotenv] How to output simulator connection configuration. Use "env" to print shell exports, or "dotenv" to
+write .env.eas-simulator.
+<options: env|dotenv>
+
+--package-version=<value>
+Version of the package backing the simulator session (e.g. "0.1.3-alpha.3"). Defaults to "latest" when omitted.
+
+--public-link
+Enable the simulator preview Share button and print a shareable link containing an access token. Anyone with the
+link can control the simulator. With --json, include previewApiUrl and its token for API clients when available.
+
+--sdk-version=<value>
+Expo SDK version used to select Expo Go when --expo-go is passed. Defaults to the current project SDK.
+
+--system-image=<value>
+Android SDK system image package to use for the emulator (e.g.
+"system-images;android-35-ext15;google_apis_playstore;x86_64"). Defaults to a system image chosen by the runner.
+Only supported with --platform android.
+
+--tag=<value>...
+Label used to group simulator sessions, for example one per app variant. Repeat for multiple tags. Stored
+lowercased.
+
+--type=<option>
+[default: agent-device] Type of simulator session to create. All session types include a web preview. agent-device,
+appium, and argent also include an automation interface; web-preview-only includes no automation interface.
+<options: agent-device|appium|argent|web-preview-only>
+
+DESCRIPTION
+[EXPERIMENTAL] start a remote simulator session on EAS and get instructions to connect to it. The default browser
+preview link requires sign-in.
+
+ALIASES
+$ eas simulator:start
+$ eas sim:start
+
+See code: packages/eas-cli/src/commands/simulator/index.ts
+
+## eas simulator:availability
+
+[EXPERIMENTAL] check whether EAS Simulator is enabled for the current project account
+
+USAGE
+$ eas simulator:availability [--json] [--non-interactive]
+
+FLAGS
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+[EXPERIMENTAL] check whether EAS Simulator is enabled for the current project account
+
+ALIASES
+$ eas sim:availability
+
+See code: packages/eas-cli/src/commands/simulator/availability.ts
+
+## eas simulator:control [ACTION]
+
+[EXPERIMENTAL] run a serve-sim action on a remote iOS simulator session on EAS. Run without an action to list the actions the session supports. To save a screenshot locally, run eas simulator:control screenshot.capture --output ./screenshot.png.
+
+USAGE
+$ eas simulator:control [ACTION...] [-h] [--id <value>] [--list] [--output <value>] [--json] [--non-interactive]
+
+ARGUMENTS
+[ACTION...] Action to run, followed by its values in order or as name=value. Omit to list the actions. Put -- before
+values that start with --.
+
+FLAGS
+-h, --help Show command help, or usage for the selected action from the session.
+--id=<value> Simulator session ID. Defaults to .env.eas-simulator.
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--list List the actions the session supports.
+--non-interactive Run the command in non-interactive mode.
+--output=<value> Local path to save a returned file. For screenshots, --output ./screenshot.png sets the local
+filename; omit it to save with a generated filename in the current directory.
+
+DESCRIPTION
+[EXPERIMENTAL] run a serve-sim action on a remote iOS simulator session on EAS. Run without an action to list the
+actions the session supports. To save a screenshot locally, run `eas simulator:control screenshot.capture --output
+./screenshot.png`.
+
+ALIASES
+$ eas sim:control
+
+EXAMPLES
+$ eas simulator:control
+
+$ eas simulator:control --id <session-id>
+
+$ eas simulator:control screenshot.capture --help
+
+$ eas simulator:control clipboard.write -- --some-text
+
+$ eas simulator:control hardwareKeyboard.set off
+
+$ eas simulator:control permissions.set grant camera com.example.app
+
+$ eas simulator:control app.install ./MyApp.ipa
+
+$ eas simulator:control screenshot.capture --output ./screenshot.png
+
+$ eas simulator:control screenshot.capture --output ./screenshot.png --id <session-id>
+
+See code: packages/eas-cli/src/commands/simulator/control.ts
+
+## eas simulator:egress
+
+[EXPERIMENTAL] run the local egress client for a simulator session to route proxied HTTP(S) requests through this machine
+
+USAGE
+$ eas simulator:egress [--config-type dotenv|env]
+
+FLAGS
+--config-type=<option> [default: dotenv] Read session credentials from .env.eas-simulator (dotenv) or the current
+shell environment (env).
+<options: dotenv|env>
+
+DESCRIPTION
+[EXPERIMENTAL] run the local egress client for a simulator session to route proxied HTTP(S) requests through this
+machine
+
+ALIASES
+$ eas sim:egress
+
+See code: packages/eas-cli/src/commands/simulator/egress.ts
+
+## eas simulator:events
+
+[EXPERIMENTAL] show activity events from a remote simulator session
+
+USAGE
+$ eas simulator:events [--id <value>] [-f] [--json] [--non-interactive]
+
+FLAGS
+-f, --follow Keep watching for new events until the session ends.
+--id=<value> Simulator session ID. Defaults to .env.eas-simulator.
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+[EXPERIMENTAL] show activity events from a remote simulator session
+
+ALIASES
+$ eas sim:events
+
+See code: packages/eas-cli/src/commands/simulator/events.ts
+
+## eas simulator:exec
+
+[EXPERIMENTAL] execute a simulator command with .env.eas-simulator environment loaded
+
+USAGE
+$ eas simulator:exec
+
+DESCRIPTION
+[EXPERIMENTAL] execute a simulator command with .env.eas-simulator environment loaded
+
+ALIASES
+$ eas sim:exec
+
+See code: packages/eas-cli/src/commands/simulator/exec.ts
+
+## eas simulator:get
+
+[EXPERIMENTAL] get info about a remote simulator session on EAS by its simulator session ID. Preview links follow the session's saved sharing preference.
+
+USAGE
+$ eas simulator:get [--id <value>] [--json] [--non-interactive]
+
+FLAGS
+--id=<value> Simulator session ID. Defaults to .env.eas-simulator.
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+[EXPERIMENTAL] get info about a remote simulator session on EAS by its simulator session ID. Preview links follow the
+session's saved sharing preference.
+
+ALIASES
+$ eas sim:get
+
+See code: packages/eas-cli/src/commands/simulator/get.ts
+
+## eas simulator:list
+
+[EXPERIMENTAL] list remote simulator sessions for the current project
+
+USAGE
+$ eas simulator:list [--status new|queued|starting|in-progress|stopped|errored...] [--type
+agent-device|appium|argent|web-preview-only...] [--platform android|ios...] [--name <value>] [--tag <value>...]
+[--limit <value>] [--after <value>] [--json] [--non-interactive]
+
+FLAGS
+--after=<value> Cursor for pagination. Use the endCursor from a previous query to fetch the next page.
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--limit=<value> The number of items to fetch each query. Defaults to 10 and is capped at 100.
+--name=<value> Filter by session name (case-insensitive prefix match)
+--non-interactive Run the command in non-interactive mode.
+--platform=<option>... Filter by device platform (repeatable)
+<options: android|ios>
+--status=<option>... Filter by session status (repeatable)
+<options: new|queued|starting|in-progress|stopped|errored>
+--tag=<value>... Filter by tag (repeatable). A session must carry every tag listed.
+--type=<option>... Filter by session type (repeatable). All session types include a web preview. agent-device,
+appium, and argent also include an automation interface; web-preview-only includes no
+automation interface.
+<options: agent-device|appium|argent|web-preview-only>
+
+DESCRIPTION
+[EXPERIMENTAL] list remote simulator sessions for the current project
+
+ALIASES
+$ eas sim:list
+
+See code: packages/eas-cli/src/commands/simulator/list.ts
+
+## eas simulator:start
+
+[EXPERIMENTAL] start a remote simulator session on EAS and get instructions to connect to it. The default browser preview link requires sign-in.
+
+USAGE
+$ eas simulator:start [-p android|ios] [--name <value>] [--tag <value>...] [--device <value>] [--system-image
+<value>] [--build-id <value> | --build-fingerprint <value> | --application-archive-url <value> | --expo-go]
+[--sdk-version <value>] [--launch-arg <value>...] [--open-url <value>] [--type
+agent-device|appium|argent|web-preview-only] [--package-version <value>] [--network-capture-field <value>...
+--network-capture] [--max-duration-minutes <value>] [--max-idle-time-minutes <value>] [--egress-allow <value>...
+--egress local] [--cors-origin <value>...] [--frame-ancestor <value>...] [--force] [--out-config-type env|dotenv]
+[--public-link] [--json] [--non-interactive]
+
+FLAGS
+-p, --platform=<option>
+Device platform
+<options: android|ios>
+
+--application-archive-url=<value>
+Application archive URL to download, install, and launch before the simulator session is ready.
+
+--build-fingerprint=<value>
+Fingerprint hash of an EAS Build to install and launch before the simulator session is ready. Uses the most recent
+finished build with this fingerprint that can be installed on the simulator.
+
+--build-id=<value>
+EAS Build to install and launch before the simulator session is ready.
+
+--cors-origin=<value>...
+Origin of a page that may call the simulator preview API cross-origin, for example to render the device with
+@expo/hub-client, such as https://app.example.com or https://*.example.com. Repeat for multiple origins. Embedding
+the preview in a frame does not need this; use --frame-ancestor for that. The page still needs the printed preview
+URL and its token.
+
+--device=<value>
+Virtual device to start for the session. On iOS, a Simulator device name or UDID (e.g. "iPhone 16 Pro"). On Android,
+an AVD hardware profile id (e.g. "pixel_7"). Defaults to a device chosen by the runner.
+
+--egress=<option>
+With "local", the simulator's network traffic exits from this machine and fails while the egress client is
+disconnected. On iOS, the simulator system proxy points at this machine: HTTP(S) and WebSocket requests that honor
+it (WebKit, URLSession) and clients that read proxy environment variables (gRPC, libcurl) use it, and connections
+that ignore both are refused inside the simulator and listed, with the library that tried, in the Logs section of
+the session page on expo.dev. On Android, all TCP traffic from the emulator goes through its proxy to this machine;
+traffic that cannot (UDP, such as QUIC) is refused and listed in the same Logs section, and DNS for apps that ignore
+the system proxy resolves on the device host. The egress client must keep running for the life of the session.
+<options: local>
+
+--egress-allow=<value>...
+Destination on this machine or its network that the simulator may reach through local egress, as an exact host:port
+(for example localhost:3000). Repeat for multiple destinations. A localhost or 127.0.0.1 entry also forwards that
+port from the simulator host to this machine (like adb reverse), so dev server URLs that use 127.0.0.1 work. On
+Android, such an entry also covers 10.0.2.2 on the same port. Requires --egress local.
+
+--expo-go
+Install and launch Expo Go matching the current project's Expo SDK before the simulator session is ready.
+
+--[no-]force
+[default: true] Create a new simulator session even when an existing simulator session is present in the
+environment.
+
+--frame-ancestor=<value>...
+Origin of a page that may embed the simulator preview in a frame, such as https://app.example.com or
+https://*.example.com. Repeat for multiple origins. The embedding page loads the printed preview URL, which carries
+the session token, so anyone who can read that page can also control the simulator.
+
+--json
+Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+
+--launch-arg=<value>...
+Argument passed to the installed application when it launches. Repeat for multiple arguments.
+
+--max-duration-minutes=<value>
+Maximum duration of the simulator session in minutes before it is automatically stopped. Defaults to, and cannot
+exceed, the maximum session duration of the account's plan.
+
+--max-idle-time-minutes=<value>
+Stop the simulator session automatically after this many minutes without session activity. When omitted, the session
+has no idle timeout and runs until its maximum duration.
+
+--name=<value>
+Human-readable name for the simulator session, shown in eas simulator:list and on expo.dev. Defaults to unnamed.
+
+--network-capture
+Record HTTP(S) traffic from apps on the device (iOS only). HTTPS is decrypted, so recordings contain credentials in
+cleartext and certificate-pinned apps fail to connect.
+
+--network-capture-field=<value>...
+What a recording may keep beyond method, URL, status, timing and size: header, query, request-body, response-body.
+Repeatable or comma-separated. Defaults to none of them, because each can carry credentials.
+
+--non-interactive
+Run the command in non-interactive mode.
+
+--open-url=<value>
+Expo or development-client URL to open in the installed application after it launches.
+
+--out-config-type=<option>
+[default: dotenv] How to output simulator connection configuration. Use "env" to print shell exports, or "dotenv" to
+write .env.eas-simulator.
+<options: env|dotenv>
+
+--package-version=<value>
+Version of the package backing the simulator session (e.g. "0.1.3-alpha.3"). Defaults to "latest" when omitted.
+
+--public-link
+Enable the simulator preview Share button and print a shareable link containing an access token. Anyone with the
+link can control the simulator. With --json, include previewApiUrl and its token for API clients when available.
+
+--sdk-version=<value>
+Expo SDK version used to select Expo Go when --expo-go is passed. Defaults to the current project SDK.
+
+--system-image=<value>
+Android SDK system image package to use for the emulator (e.g.
+"system-images;android-35-ext15;google_apis_playstore;x86_64"). Defaults to a system image chosen by the runner.
+Only supported with --platform android.
+
+--tag=<value>...
+Label used to group simulator sessions, for example one per app variant. Repeat for multiple tags. Stored
+lowercased.
+
+--type=<option>
+[default: agent-device] Type of simulator session to create. All session types include a web preview. agent-device,
+appium, and argent also include an automation interface; web-preview-only includes no automation interface.
+<options: agent-device|appium|argent|web-preview-only>
+
+DESCRIPTION
+[EXPERIMENTAL] start a remote simulator session on EAS and get instructions to connect to it. The default browser
+preview link requires sign-in.
+
+ALIASES
+$ eas simulator:start
+$ eas sim:start
+
+## eas simulator:stop
+
+[EXPERIMENTAL] stop a remote simulator session on EAS by its simulator session ID
+
+USAGE
+$ eas simulator:stop [--id <value>] [--json] [--non-interactive]
+
+FLAGS
+--id=<value> Simulator session ID. Defaults to .env.eas-simulator.
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+[EXPERIMENTAL] stop a remote simulator session on EAS by its simulator session ID
+
+ALIASES
+$ eas sim:stop
+
+See code: packages/eas-cli/src/commands/simulator/stop.ts
+
+## eas status
+
+show a snapshot of the project: recent builds, dev builds, workflow runs, submissions, and updates
+
+USAGE
+$ eas status [--limit <value>] [--json] [--non-interactive]
+
+FLAGS
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--limit=<value> The number of items to show in each section. Defaults to 3 and is capped at 25.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+show a snapshot of the project: recent builds, dev builds, workflow runs, submissions, and updates
+
+ALIASES
+$ eas status
+
+EXAMPLES
+$ eas status # Show a concise project snapshot
+
+$ eas status --json # Output a machine-readable snapshot for agents and automation
+
+$ eas status --json --limit 10 # Include more activity from each section
+
+## eas submit
+
+submit app binary to App Store and/or Play Store
+
+USAGE
+$ eas submit [-p android|ios|all] [-e <value>] [--latest | --id <value> | --path <value> | --url <value>]
+[--what-to-test <value>] [--verbose] [--wait] [--verbose-fastlane] [-g <value>...] [--non-interactive]
+[--auto-testflight-setup]
+
+FLAGS
+-e, --profile=<value> Name of the submit profile from eas.json. Defaults to "production" if defined in
+eas.json.
+-g, --groups=<value>... Internal TestFlight testing groups to add the build to (iOS only). Learn more:
+https://developer.apple.com/help/app-store-connect/test-a-beta-version/add-internal-
+testers
+-p, --platform=<option> <options: android|ios|all>
+--[no-]auto-testflight-setup Set up an internal TestFlight group for the app (iOS only)
+--id=<value> ID of the build to submit
+--latest Submit the latest build for specified platform
+--non-interactive Run command in non-interactive mode
+--path=<value> Path to the .apk/.aab/.ipa file
+--url=<value> App archive url
+--verbose Always print logs from EAS Submit
+--verbose-fastlane Enable verbose logging for the submission process
+--[no-]wait Wait for submission to complete
+--what-to-test=<value> Sets the "What to test" information in TestFlight (iOS only).
+
+DESCRIPTION
+submit app binary to App Store and/or Play Store
+
+ALIASES
+$ eas build:submit
+
+See code: packages/eas-cli/src/commands/submit.ts
+
+## eas submit:cancel [SUBMISSION_ID]
+
+cancel a submission
+
+USAGE
+$ eas submit:cancel [SUBMISSION_ID] [--non-interactive] [-p android|ios|all]
+
+FLAGS
+-p, --platform=<option> Filter submissions by the platform if submission ID is not provided
+<options: android|ios|all>
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+cancel a submission
+
+See code: packages/eas-cli/src/commands/submit/cancel.ts
+
+## eas submit:list
+
+list submissions for your project
+
+USAGE
+$ eas submit:list [-p android|ios|all] [--status awaiting-build|in-queue|in-progress|finished|errored|canceled]
+[--offset <value>] [--limit <value>] [--json] [--non-interactive]
+
+FLAGS
+-p, --platform=<option> <options: android|ios|all>
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--limit=<value> The number of items to fetch each query. Defaults to 10 and is capped at 50.
+--non-interactive Run the command in non-interactive mode.
+--offset=<value> Start queries from specified index. Use for paginating results. Defaults to 0.
+--status=<option> Filter only submissions with the specified status
+<options: awaiting-build|in-queue|in-progress|finished|errored|canceled>
+
+DESCRIPTION
+list submissions for your project
+
+See code: packages/eas-cli/src/commands/submit/list.ts
+
+## eas submit:retry [SUBMISSION_ID]
+
+retry a failed submission
+
+USAGE
+$ eas submit:retry [SUBMISSION_ID] [-p android|ios|all] [--json] [--non-interactive]
+
+FLAGS
+-p, --platform=<option> Filter submissions by the platform if submission ID is not provided
+<options: android|ios|all>
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+retry a failed submission
+
+See code: packages/eas-cli/src/commands/submit/retry.ts
+
+## eas submit:status
+
+show the status of your app on the App Store: the live version and TestFlight builds
+
+USAGE
+$ eas submit:status [-p android|ios|all] [-e <value>] [--json] [--non-interactive]
+
+FLAGS
+-e, --profile=<value> Name of the submit profile from eas.json used to resolve the App Store Connect API key.
+Defaults to "production".
+-p, --platform=<option> <options: android|ios|all>
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+show the status of your app on the App Store: the live version and TestFlight builds
+
+This command reads from App Store Connect and requires an ASC API key. Provide one via:
+- Environment variables: EXPO_ASC_API_KEY_PATH, EXPO_ASC_KEY_ID, EXPO_ASC_ISSUER_ID
+- eas.json submit profile: ascApiKeyPath, ascApiKeyId, ascApiKeyIssuerId
+- EAS credentials service: run `eas credentials` to set up an API key
+Without a key, the command offers an interactive Apple login; in non-interactive mode it fails.
+
+Google Play app status is not available through EAS yet. Run `eas submit:list -p android` to see recent Android
+submissions.
+
+EXAMPLES
+$ eas submit:status # live App Store version and TestFlight builds
+
+$ eas submit:status --json --non-interactive # machine-readable output
+
+See code: packages/eas-cli/src/commands/submit/status.ts
+
+## eas submit:view [SUBMISSION_ID]
+
+view a submission for your project
+
+USAGE
+$ eas submit:view [SUBMISSION_ID] [-p android|ios|all] [--json]
+
+FLAGS
+-p, --platform=<option> Show the most recent submission for the platform when submission ID is not provided
+<options: android|ios|all>
+--json Enable JSON output, non-JSON messages will be printed to stderr.
+
+DESCRIPTION
+view a submission for your project
+
+See code: packages/eas-cli/src/commands/submit/view.ts
+
+## eas testflight:crashes [ID]
+
+display crashes reported by TestFlight testers, or the full crash log of a single crash
+
+USAGE
+$ eas testflight:crashes [ID] [--type crash|screenshot] [-e <value>] [--offset <value>] [--limit <value>] [--json]
+[--non-interactive]
+
+ARGUMENTS
+[ID] ID or App Store Connect API URL of a single submission to show. Accepts ${{ app_store_connect.beta_feedback.id
+}} or ${{ app_store_connect.beta_feedback.url }} from an EAS workflow trigger.
+
+FLAGS
+-e, --profile=<value> Name of the submit profile from eas.json used to resolve the bundle identifier and App Store
+Connect API key. Defaults to "production".
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--limit=<value> The number of items to fetch each query. Defaults to 20 and is capped at 200.
+--non-interactive Run the command in non-interactive mode.
+--offset=<value> Start queries from specified index. Use for paginating results. Defaults to 0.
+--type=<option> Kind of feedback the ID refers to. Only needed when passing a bare ID for screenshot feedback;
+a URL already encodes it.
+<options: crash|screenshot>
+
+DESCRIPTION
+display crashes reported by TestFlight testers, or the full crash log of a single crash
+
+EXAMPLES
+$ eas testflight:crashes # Show the most recent crashes
+
+$ eas testflight:crashes --limit 50 --offset 20 # Page through crashes
+
+$ eas testflight:crashes AAo2eIIfGzcb1BzuUv3xrh4 # Show the full crash log for one crash
+
+$ eas testflight:crashes --json # Print a page of crashes, with paging metadata, as JSON
+
+$ eas testflight:crashes ${{ app_store_connect.beta_feedback.url }} --json # Look up whatever an EAS workflow trigger reported
+
+See code: packages/eas-cli/src/commands/testflight/crashes.ts
+
+## eas testflight:feedback [ID]
+
+display screenshot feedback submitted by TestFlight testers, including their comments, device information, and screenshot URLs
+
+USAGE
+$ eas testflight:feedback [ID] [--type crash|screenshot] [-e <value>] [--offset <value>] [--limit <value>] [--json]
+[--non-interactive]
+
+ARGUMENTS
+[ID] ID or App Store Connect API URL of a single submission to show. Accepts ${{ app_store_connect.beta_feedback.id
+}} or ${{ app_store_connect.beta_feedback.url }} from an EAS workflow trigger.
+
+FLAGS
+-e, --profile=<value> Name of the submit profile from eas.json used to resolve the bundle identifier and App Store
+Connect API key. Defaults to "production".
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--limit=<value> The number of items to fetch each query. Defaults to 20 and is capped at 200.
+--non-interactive Run the command in non-interactive mode.
+--offset=<value> Start queries from specified index. Use for paginating results. Defaults to 0.
+--type=<option> Kind of feedback the ID refers to. Only needed when passing a bare ID for a crash; a URL
+already encodes it.
+<options: crash|screenshot>
+
+DESCRIPTION
+display screenshot feedback submitted by TestFlight testers, including their comments, device information, and
+screenshot URLs
+
+EXAMPLES
+$ eas testflight:feedback # Show the most recent feedback submissions
+
+$ eas testflight:feedback --limit 50 --offset 20 # Page through submissions
+
+$ eas testflight:feedback --json # Print a page of feedback, with paging metadata, as JSON
+
+$ eas testflight:feedback AD8JvKbr0BK0Cj9OnM6WO6I # Show a single submission by ID
+
+$ eas testflight:feedback ${{ app_store_connect.beta_feedback.url }} --json # Look up whatever an EAS workflow trigger reported
+
+See code: packages/eas-cli/src/commands/testflight/feedback.ts
+
+## eas update
+
+publish an update group
+
+USAGE
+$ eas update [--branch <value>] [--channel <value>] [-m <value>] [--input-dir <value>] [--skip-bundler]
+[--clear-cache] [--upload-source-maps] [--emit-metadata] [--rollout-percentage <value>] [--force-end-active-rollout]
+[-p android|ios|all] [--auto] [--private-key-path <value>] [--environment <value>] [--json] [--non-interactive]
+
+FLAGS
+-m, --message=<value> A short message describing the update
+-p, --platform=<option> [default: all]
+<options: android|ios|all>
+--auto Use the current git branch and commit message for the EAS branch and update message
+--branch=<value> Branch to publish the update group on
+--channel=<value> Channel that the published update should affect
+--clear-cache Clear the bundler cache before publishing
+--emit-metadata Emit "eas-update-metadata.json" in the bundle folder with detailed information about
+the generated updates
+--environment=<value> Environment to use for the server-side defined EAS environment variables during
+command execution, e.g. "production", "preview", "development". Required for
+projects using Expo SDK 55 or greater.
+--force-end-active-rollout End an in-progress rollout on the runtime version being published, so this update
+supersedes it.
+--input-dir=<value> [default: dist] Location of the bundle
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies
+--non-interactive.
+--non-interactive Run the command in non-interactive mode.
+--private-key-path=<value> File containing the PEM-encoded private key corresponding to the certificate in
+expo-updates' configuration. Defaults to a file named "private-key.pem" in the
+certificate's directory. Only relevant if you are using code signing:
+https://docs.expo.dev/eas-update/code-signing/
+--rollout-percentage=<value> Percentage of users this update should be immediately available to. Users not in the
+rollout will be served the previous latest update on the branch, even if that update
+is itself being rolled out. The specified number must be an integer between 1 and
+100. When not specified, this defaults to 100.
+--skip-bundler Skip running Expo CLI to bundle the app before publishing
+--upload-source-maps Upload the generated source maps to EAS so that stack traces from this update can be
+symbolicated
+
+DESCRIPTION
+publish an update group
+
+See code: packages/eas-cli/src/commands/update/index.ts
+
+## eas update:configure
+
+configure the project to support EAS Update
+
+USAGE
+$ eas update:configure [-p android|ios|all] [--environment <value>] [--non-interactive]
+
+FLAGS
+-p, --platform=<option> [default: all] Platform to configure
+<options: android|ios|all>
+--environment=<value> Environment to use for the server-side defined EAS environment variables during command
+execution, e.g. "production", "preview", "development".
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+configure the project to support EAS Update
+
+See code: packages/eas-cli/src/commands/update/configure.ts
+
+## eas update:delete GROUPID
+
+delete all the updates in an update group
+
+USAGE
+$ eas update:delete GROUPID [--json] [--non-interactive]
+
+ARGUMENTS
+GROUPID The ID of an update group to delete.
+
+FLAGS
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+delete all the updates in an update group
+
+See code: packages/eas-cli/src/commands/update/delete.ts
+
+## eas update:edit [GROUPID]
+
+edit all the updates in an update group
+
+USAGE
+$ eas update:edit [GROUPID] [--rollout-percentage <value>] [--branch <value>] [--json] [--non-interactive]
+
+ARGUMENTS
+[GROUPID] The ID of an update group to edit.
+
+FLAGS
+--branch=<value> Branch for which to list updates to select from
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies
+--non-interactive.
+--non-interactive Run the command in non-interactive mode.
+--rollout-percentage=<value> Rollout percentage to set for a rollout update. The specified number must be an integer
+between 1 and 100.
+
+DESCRIPTION
+edit all the updates in an update group
+
+See code: packages/eas-cli/src/commands/update/edit.ts
+
+## eas update:embedded:delete ID
+
+delete an embedded update registered with EAS Update
+
+USAGE
+$ eas update:embedded:delete ID [--json] [--non-interactive]
+
+ARGUMENTS
+ID The ID of the embedded update (manifest UUID from app.manifest).
+
+FLAGS
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+delete an embedded update registered with EAS Update
+
+See code: packages/eas-cli/src/commands/update/embedded/delete.ts
+
+## eas update:embedded:list
+
+list embedded updates registered with EAS Update for this project
+
+USAGE
+$ eas update:embedded:list [-p ios|android] [--runtime-version <value>] [--channel <value>] [--limit <value>]
+[--after-cursor <value>] [--json] [--non-interactive]
+
+FLAGS
+-p, --platform=<option> Filter by platform
+<options: ios|android>
+--after-cursor=<value> Return items after this cursor (for pagination)
+--channel=<value> Filter by channel name (pass "all" to skip the channel prompt)
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies
+--non-interactive.
+--limit=<value> The number of items to fetch each query. Defaults to 25 and is capped at 50.
+--non-interactive Run the command in non-interactive mode.
+--runtime-version=<value> Filter by runtime version
+
+DESCRIPTION
+list embedded updates registered with EAS Update for this project
+
+See code: packages/eas-cli/src/commands/update/embedded/list.ts
+
+## eas update:embedded:upload
+
+upload the JS bundle embedded in a native build so EAS Update can generate bsdiff patches against it
+
+USAGE
+$ eas update:embedded:upload -p ios|android --bundle <value> --manifest <value> --channel <value> [--build-id <value>]
+[--json] [--non-interactive]
+
+FLAGS
+-p, --platform=<option> (required) Platform of the embedded bundle
+<options: ios|android>
+--build-id=<value> EAS Build ID that produced this binary (required when invoked from EAS Build)
+--bundle=<value> (required) Path to the embedded JS bundle file
+--channel=<value> (required) Channel name the embedded update should be associated with
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--manifest=<value> (required) Path to the app.manifest file embedded in the build
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+upload the JS bundle embedded in a native build so EAS Update can generate bsdiff patches against it
+
+EXAMPLES
+$ eas update:embedded:upload --platform ios --bundle ios/build/App.app/main.jsbundle --manifest ios/build/App.app/app.manifest --channel production
+
+$ eas update:embedded:upload --platform android --bundle android/app/src/main/assets/index.android.bundle --manifest android/app/src/main/assets/app.manifest --channel production --build-id <BUILD-ID>
+
+See code: packages/eas-cli/src/commands/update/embedded/upload.ts
+
+## eas update:embedded:view ID
+
+view details of an embedded update registered with EAS Update
+
+USAGE
+$ eas update:embedded:view ID [--json]
+
+ARGUMENTS
+ID The ID of the embedded update (manifest UUID from app.manifest).
+
+FLAGS
+--json Enable JSON output, non-JSON messages will be printed to stderr.
+
+DESCRIPTION
+view details of an embedded update registered with EAS Update
+
+See code: packages/eas-cli/src/commands/update/embedded/view.ts
+
+## eas update:insights GROUPID
+
+display launch, crash, unique-user, and size insights for an update group
+
+USAGE
+$ eas update:insights GROUPID [--platform ios|android] [--days <value> | --start <value> | --end <value>] [--json]
+[--non-interactive]
+
+ARGUMENTS
+GROUPID The ID of an update group.
+
+FLAGS
+--days=<value> Show insights from the last N days (default 7, mutually exclusive with --start/--end).
+--end=<value> End of insights time range (ISO date).
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+--platform=<option> Filter to a single platform.
+<options: ios|android>
+--start=<value> Start of insights time range (ISO date).
+
+DESCRIPTION
+display launch, crash, unique-user, and size insights for an update group
+
+See code: packages/eas-cli/src/commands/update/insights.ts
+
+## eas update:list
+
+view the recent updates
+
+USAGE
+$ eas update:list [--branch <value> | --all] [-p android|ios|all] [--runtime-version <value>] [--offset
+<value>] [--limit <value>] [--json] [--non-interactive]
+
+FLAGS
+-p, --platform=<option> Filter updates by platform
+<options: android|ios|all>
+--all List updates on all branches
+--branch=<value> List updates only on this branch
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies
+--non-interactive.
+--limit=<value> The number of items to fetch each query. Defaults to 25 and is capped at 50.
+--non-interactive Run the command in non-interactive mode.
+--offset=<value> Start queries from specified index. Use for paginating results. Defaults to 0.
+--runtime-version=<value> Filter updates by runtime version
+
+DESCRIPTION
+view the recent updates
+
+See code: packages/eas-cli/src/commands/update/list.ts
+
+## eas update:republish
+
+roll back to an existing update
+
+USAGE
+$ eas update:republish [--channel <value> | --branch <value> | --group <value>] [--destination-channel <value> |
+--destination-branch <value>] [-m <value>] [-p android|ios|all] [--private-key-path <value>] [--rollout-percentage
+<value>] [--force-end-active-rollout] [--json] [--non-interactive]
+
+FLAGS
+-m, --message=<value> Short message describing the republished update group
+-p, --platform=<option> [default: all]
+<options: android|ios|all>
+--branch=<value> Branch name to select an update group to republish from
+--channel=<value> Channel name to select an update group to republish from
+--destination-branch=<value> Branch name to republish to if republishing to a different branch
+--destination-channel=<value> Channel name to select a branch to republish to if republishing to a different
+branch
+--force-end-active-rollout End an in-progress rollout on the runtime version being republished to, so this
+update supersedes it.
+--group=<value> Update group ID to republish
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies
+--non-interactive.
+--non-interactive Run the command in non-interactive mode.
+--private-key-path=<value> File containing the PEM-encoded private key corresponding to the certificate in
+expo-updates' configuration. Defaults to a file named "private-key.pem" in the
+certificate's directory. Only relevant if you are using code signing:
+https://docs.expo.dev/eas-update/code-signing/
+--rollout-percentage=<value> Percentage of users this update should be immediately available to. Users not in
+the rollout will be served the previous latest update on the branch, even if that
+update is itself being rolled out. The specified number must be an integer between
+1 and 100. When not specified, this defaults to 100.
+
+DESCRIPTION
+roll back to an existing update
+
+See code: packages/eas-cli/src/commands/update/republish.ts
+
+## eas update:revert-update-rollout
+
+revert a rollout update for a project
+
+USAGE
+$ eas update:revert-update-rollout [--channel <value> | --branch <value> | --group <value>] [-m <value>] [--private-key-path
+<value>] [--json] [--non-interactive]
+
+FLAGS
+-m, --message=<value> Short message describing the revert
+--branch=<value> Branch name to select an update group to revert the rollout update from
+--channel=<value> Channel name to select an update group to revert the rollout update from
+--group=<value> Rollout update group ID to revert
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies
+--non-interactive.
+--non-interactive Run the command in non-interactive mode.
+--private-key-path=<value> File containing the PEM-encoded private key corresponding to the certificate in
+expo-updates' configuration. Defaults to a file named "private-key.pem" in the
+certificate's directory. Only relevant if you are using code signing:
+https://docs.expo.dev/eas-update/code-signing/
+
+DESCRIPTION
+revert a rollout update for a project
+
+See code: packages/eas-cli/src/commands/update/revert-update-rollout.ts
+
+## eas update:roll-back-to-embedded
+
+roll back to the embedded update
+
+USAGE
+$ eas update:roll-back-to-embedded [--branch <value>] [--channel <value>] [--runtime-version <value>] [--message <value>] [-p
+android|ios|all] [--private-key-path <value>] [--force-end-active-rollout] [--json] [--non-interactive]
+
+FLAGS
+-p, --platform=<option> [default: all]
+<options: android|ios|all>
+--branch=<value> Branch to publish the rollback to embedded update group on
+--channel=<value> Channel that the published rollback to embedded update should affect
+--force-end-active-rollout End an in-progress rollout on the runtime version being rolled back, so this roll back
+supersedes it.
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies
+--non-interactive.
+--message=<value> A short message describing the rollback to embedded update
+--non-interactive Run the command in non-interactive mode.
+--private-key-path=<value> File containing the PEM-encoded private key corresponding to the certificate in
+expo-updates' configuration. Defaults to a file named "private-key.pem" in the
+certificate's directory. Only relevant if you are using code signing:
+https://docs.expo.dev/eas-update/code-signing/
+--runtime-version=<value> Runtime version that the rollback to embedded update should target
+
+DESCRIPTION
+roll back to the embedded update
+
+See code: packages/eas-cli/src/commands/update/roll-back-to-embedded.ts
+
+## eas update:rollback [GROUPID]
+
+roll back to an embedded update or an existing update
+
+USAGE
+$ eas update:rollback [GROUPID] [-m <value>] [-p android|ios|all] [--private-key-path <value>]
+[--force-end-active-rollout] [--json] [--non-interactive]
+
+ARGUMENTS
+[GROUPID] The ID of the update group to roll back. Must be the latest update for its branch and runtime version. The
+update group published before it is republished; if there is none, a roll back to the embedded update is
+published. Required in non-interactive mode.
+
+FLAGS
+-m, --message=<value> Short message describing the rollback update
+-p, --platform=<option> [default: all]
+<options: android|ios|all>
+--force-end-active-rollout End an in-progress rollout on the runtime version being rolled back, so this roll back
+supersedes it.
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies
+--non-interactive.
+--non-interactive Run the command in non-interactive mode.
+--private-key-path=<value> File containing the PEM-encoded private key corresponding to the certificate in
+expo-updates' configuration. Defaults to a file named "private-key.pem" in the
+certificate's directory. Only relevant if you are using code signing:
+https://docs.expo.dev/eas-update/code-signing/
+
+DESCRIPTION
+roll back to an embedded update or an existing update
+
+See code: packages/eas-cli/src/commands/update/rollback.ts
+
+## eas update:view GROUPID
+
+update group details
+
+USAGE
+$ eas update:view GROUPID [--insights] [--days <value> | --start <value> | --end <value>] [--json]
+
+ARGUMENTS
+GROUPID The ID of an update group, or the ID of a platform-specific update.
+
+FLAGS
+--days=<value> Show insights from the last N days (default 7). Only used with --insights.
+--end=<value> End of insights time range (ISO date). Only used with --insights.
+--insights Also show insights (launches, crash rate, unique users, payload size) for the update group.
+--json Enable JSON output, non-JSON messages will be printed to stderr.
+--start=<value> Start of insights time range (ISO date). Only used with --insights.
+
+DESCRIPTION
+update group details
+
+See code: packages/eas-cli/src/commands/update/view.ts
+
+## eas upload
+
+upload a local build and generate a sharable link
+
+USAGE
+$ eas upload [-p ios|android] [--build-path <value>] [--fingerprint <value>] [--json] [--non-interactive]
+
+FLAGS
+-p, --platform=<option> <options: ios|android>
+--build-path=<value> Path for the local build
+--fingerprint=<value> Fingerprint hash of the local build
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+upload a local build and generate a sharable link
+
+See code: packages/eas-cli/src/commands/upload.ts
+
+## eas webhook:create
+
+create a webhook
+
+USAGE
+$ eas webhook:create [--event BUILD|SUBMIT] [--url <value>] [--secret <value>] [--non-interactive]
+
+FLAGS
+--event=<option> Event type that triggers the webhook
+<options: BUILD|SUBMIT>
+--non-interactive Run the command in non-interactive mode.
+--secret=<value> Secret used to create a hash signature of the request payload, provided in the 'Expo-Signature'
+header.
+--url=<value> Webhook URL
+
+DESCRIPTION
+create a webhook
+
+See code: packages/eas-cli/src/commands/webhook/create.ts
+
+## eas webhook:delete [ID]
+
+delete a webhook
+
+USAGE
+$ eas webhook:delete [ID] [--non-interactive]
+
+ARGUMENTS
+[ID] ID of the webhook to delete
+
+FLAGS
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+delete a webhook
+
+See code: packages/eas-cli/src/commands/webhook/delete.ts
+
+## eas webhook:list
+
+list webhooks
+
+USAGE
+$ eas webhook:list [--event BUILD|SUBMIT] [--json]
+
+FLAGS
+--event=<option> Event type that triggers the webhook
+<options: BUILD|SUBMIT>
+--json Enable JSON output, non-JSON messages will be printed to stderr.
+
+DESCRIPTION
+list webhooks
+
+See code: packages/eas-cli/src/commands/webhook/list.ts
+
+## eas webhook:update
+
+update a webhook
+
+USAGE
+$ eas webhook:update --id <value> [--event BUILD|SUBMIT] [--url <value>] [--secret <value>] [--non-interactive]
+
+FLAGS
+--event=<option> Event type that triggers the webhook
+<options: BUILD|SUBMIT>
+--id=<value> (required) Webhook ID
+--non-interactive Run the command in non-interactive mode.
+--secret=<value> Secret used to create a hash signature of the request payload, provided in the 'Expo-Signature'
+header.
+--url=<value> Webhook URL
+
+DESCRIPTION
+update a webhook
+
+See code: packages/eas-cli/src/commands/webhook/update.ts
+
+## eas webhook:view ID
+
+view a webhook
+
+USAGE
+$ eas webhook:view ID
+
+ARGUMENTS
+ID ID of the webhook to view
+
+DESCRIPTION
+view a webhook
+
+See code: packages/eas-cli/src/commands/webhook/view.ts
+
+## eas whoami
+
+show the username you are logged in as
+
+USAGE
+$ eas whoami
+
+DESCRIPTION
+show the username you are logged in as
+
+ALIASES
+$ eas whoami
+
+## eas worker:alias
+
+Assign deployment aliases.
+
+USAGE
+$ eas worker:alias [--prod] [--alias name] [--id xyz123] [--json] [--non-interactive]
+
+FLAGS
+--alias=name Custom alias to assign to the existing deployment.
+--id=xyz123 Unique identifier of an existing deployment.
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+--prod Promote an existing deployment to production.
+
+DESCRIPTION
+Assign deployment aliases.
+
+ALIASES
+$ eas worker:alias
+$ eas deploy:promote
+
+## eas worker:alias:delete [ALIAS_NAME]
+
+Delete deployment aliases.
+
+USAGE
+$ eas worker:alias:delete [ALIAS_NAME] [--json] [--non-interactive]
+
+FLAGS
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+Delete deployment aliases.
+
+ALIASES
+$ eas worker:alias:delete
+
+## eas worker:delete [DEPLOYMENT_ID]
+
+Delete a deployment.
+
+USAGE
+$ eas worker:delete [DEPLOYMENT_ID] [--json] [--non-interactive]
+
+FLAGS
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+Delete a deployment.
+
+ALIASES
+$ eas worker:delete
+
+## eas deploy [options]
+
+deploy your Expo Router web build and API Routes
+
+USAGE
+$ eas worker:deploy deploy [options]
+$ eas worker:deploy deploy --prod
+$ eas worker:deploy deploy --non-interactive --dev-domain my-app
+
+FLAGS
+--alias=name Custom alias to assign to the new deployment.
+--dev-domain=name Custom preview URL subdomain to assign to the project on its first deployment, e.g. "my-app"
+for my-app.expo.app. Required with --non-interactive if you want to customize the preview URL.
+--dry-run Outputs a tarball of the new deployment instead of uploading it.
+--environment=<value> Environment variable's environment, e.g. 'production', 'preview', 'development'
+--export-dir=dir [default: dist] Directory where the Expo project was exported.
+--id=xyz123 Custom unique identifier for the new deployment.
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+--prod Create a new production deployment.
+--[no-]source-maps Include source maps in the deployment.
+
+DESCRIPTION
+deploy your Expo Router web build and API Routes
+
+ALIASES
+$ eas worker:deploy
+
+## eas workflow:cancel
+
+Cancel one or more workflow runs. If no workflow run IDs are provided, you will be prompted to select IN_PROGRESS runs to cancel.
+
+USAGE
+$ eas workflow:cancel [--non-interactive]
+
+FLAGS
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+Cancel one or more workflow runs. If no workflow run IDs are provided, you will be prompted to select IN_PROGRESS runs
+to cancel.
+
+See code: packages/eas-cli/src/commands/workflow/cancel.ts
+
+## eas workflow:create [NAME]
+
+create a new workflow configuration YAML file
+
+USAGE
+$ eas workflow:create [NAME] [--template build|update|deploy|custom] [--skip-validation]
+
+ARGUMENTS
+[NAME] Name of the workflow file. When provided without --template, a placeholder workflow is created.
+
+FLAGS
+--skip-validation If set, the workflow file will not be validated before being created
+--template=<option> Template to use for the workflow file
+<options: build|update|deploy|custom>
+
+DESCRIPTION
+create a new workflow configuration YAML file
+
+See code: packages/eas-cli/src/commands/workflow/create.ts
+
+## eas workflow:insights
+
+display run counts, success rate, run durations, and per-workflow trends for a time range
+
+USAGE
+$ eas workflow:insights [--workflow <value>...] [--git-ref <value>] [--status SUCCESS|FAILURE|CANCELED...] [--trigger
+APP_STORE_CONNECT_APP_VERSION_STATE_CHANGED|APP_STORE_CONNECT_BETA_FEEDBACK_SUBMITTED|APP_STORE_CONNECT_BUILD_UPLOAD
+_STATE_CHANGED|APP_STORE_CONNECT_EXTERNAL_BETA_STATE_CHANGED|EAS_SUBMIT|EXPO_LAUNCH|GITHUB_PULL_REQUEST_BASE_REF_CHA
+NGED|GITHUB_PULL_REQUEST_COMMENT_CREATED|GITHUB_PULL_REQUEST_COMMENT_DELETED|GITHUB_PULL_REQUEST_COMMENT_EDITED|GITH
+UB_PULL_REQUEST_EDITED|GITHUB_PULL_REQUEST_LABELED|GITHUB_PULL_REQUEST_OPENED|GITHUB_PULL_REQUEST_READY_FOR_REVIEW|G
+ITHUB_PULL_REQUEST_REOPENED|GITHUB_PULL_REQUEST_SYNCHRONIZE|GITHUB_PUSH|GITHUB_REF_DELETE|MANUAL|REPACK_EXPO_GO|SCHE
+DULE|SENTRY_ISSUE_ARCHIVED|SENTRY_ISSUE_ASSIGNED|SENTRY_ISSUE_CREATED|SENTRY_ISSUE_RESOLVED|SENTRY_ISSUE_UNRESOLVED.
+..] [--days <value> | --start <value> | --end <value>] [--limit <value>] [--project-id <value>] [--json]
+[--non-interactive]
+
+FLAGS
+--days=<value>
+Show insights from the last N days (default 7, mutually exclusive with --start/--end).
+
+--end=<value>
+End of insights time range (ISO date).
+
+--git-ref=<value>
+Only include runs requested for this git ref, for example main or refs/heads/main, or for the full 40-character
+commit SHA that eas workflow:run recorded.
+
+--json
+Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+
+--limit=<value>
+The number of workflows to list. Defaults to 50 and is capped at 100.
+
+--non-interactive
+Run the command in non-interactive mode.
+
+--project-id=<value>
+EAS project ID (defaults to the project ID of the current directory)
+
+--start=<value>
+Start of insights time range (ISO date).
+
+--status=<option>...
+Only include runs with this status (can be specified multiple times).
+<options: SUCCESS|FAILURE|CANCELED>
+
+--trigger=<option>...
+Only include runs started by this trigger (can be specified multiple times).
+<options:
+APP_STORE_CONNECT_APP_VERSION_STATE_CHANGED|APP_STORE_CONNECT_BETA_FEEDBACK_SUBMITTED|APP_STORE_CONNECT_BUILD_UPLOAD
+_STATE_CHANGED|APP_STORE_CONNECT_EXTERNAL_BETA_STATE_CHANGED|EAS_SUBMIT|EXPO_LAUNCH|GITHUB_PULL_REQUEST_BASE_REF_CHA
+NGED|GITHUB_PULL_REQUEST_COMMENT_CREATED|GITHUB_PULL_REQUEST_COMMENT_DELETED|GITHUB_PULL_REQUEST_COMMENT_EDITED|GITH
+UB_PULL_REQUEST_EDITED|GITHUB_PULL_REQUEST_LABELED|GITHUB_PULL_REQUEST_OPENED|GITHUB_PULL_REQUEST_READY_FOR_REVIEW|G
+ITHUB_PULL_REQUEST_REOPENED|GITHUB_PULL_REQUEST_SYNCHRONIZE|GITHUB_PUSH|GITHUB_REF_DELETE|MANUAL|REPACK_EXPO_GO|SCHE
+DULE|SENTRY_ISSUE_ARCHIVED|SENTRY_ISSUE_ASSIGNED|SENTRY_ISSUE_CREATED|SENTRY_ISSUE_RESOLVED|SENTRY_ISSUE_UNRESOLVED>
+
+--workflow=<value>...
+Only include runs of this workflow file name (can be specified multiple times).
+
+DESCRIPTION
+display run counts, success rate, run durations, and per-workflow trends for a time range
+
+See code: packages/eas-cli/src/commands/workflow/insights/index.ts
+
+## eas workflow:insights:maestro
+
+display Maestro test insights for a time range: pass and flake rates, per-flow stats, and a single flow's history
+
+USAGE
+$ eas workflow:insights:maestro [--workflow <value>...] [--git-ref <value>] [--platform ios|android...] [--status
+PASSED|FLAKY|FAILED... | --flow <value>] [--tag <value>... | ] [--search <value> | ] [--sort
+fails|runs|flakes|pass-rate|flake-rate|p90|last-run | ] [--sort-direction asc|desc | ] [--days <value> | --start
+<value> | --end <value>] [--limit <value>] [--project-id <value>] [--json] [--non-interactive]
+
+FLAGS
+--days=<value> Show insights from the last N days (default 7, mutually exclusive with --start/--end).
+--end=<value> End of insights time range (ISO date).
+--flow=<value> Show one flow's history instead of the overview, by flow path. Cannot be combined with
+--status, --tag, --search, --sort, --sort-direction.
+--git-ref=<value> Only include runs requested for this git ref, for example main or refs/heads/main, or for
+the full 40-character commit SHA that eas workflow:run recorded.
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--limit=<value> The number of flows to list, or of recent runs with --flow. Defaults to 50 and is capped at
+100.
+--non-interactive Run the command in non-interactive mode.
+--platform=<option>... Only include flow runs on this platform (can be specified multiple times).
+<options: ios|android>
+--project-id=<value> EAS project ID (defaults to the project ID of the current directory)
+--search=<value> Only list flows whose path contains this text.
+--sort=<option> [default: fails] Sort the flows table by this column.
+<options: fails|runs|flakes|pass-rate|flake-rate|p90|last-run>
+--sort-direction=<option> [default: desc] Sort direction for the flows table.
+<options: asc|desc>
+--start=<value> Start of insights time range (ISO date).
+--status=<option>... Only include flow runs with this status (can be specified multiple times). PASSED means
+passed on the first attempt.
+<options: PASSED|FLAKY|FAILED>
+--tag=<value>... Only include flow runs with this tag (can be specified multiple times).
+--workflow=<value>... Only include runs of this workflow file name (can be specified multiple times).
+
+DESCRIPTION
+display Maestro test insights for a time range: pass and flake rates, per-flow stats, and a single flow's history
+
+See code: packages/eas-cli/src/commands/workflow/insights/maestro.ts
+
+## eas workflow:logs [ID]
+
+view logs for a workflow run, selecting a job and step to view. You can pass in either a workflow run ID or a job ID. If no ID is passed in, you will be prompted to select from recent workflow runs for the current project.
+
+USAGE
+$ eas workflow:logs [ID] [--json] [--non-interactive] [--all-steps]
+
+ARGUMENTS
+[ID] ID of the workflow run or workflow job to view logs for
+
+FLAGS
+--all-steps Print all logs, rather than prompting for a specific step. This will be automatically set when in
+non-interactive mode.
+--json Enable JSON output, non-JSON messages will be printed to stderr.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+view logs for a workflow run, selecting a job and step to view. You can pass in either a workflow run ID or a job ID.
+If no ID is passed in, you will be prompted to select from recent workflow runs for the current project.
+
+See code: packages/eas-cli/src/commands/workflow/logs.ts
+
+## eas workflow:run FILE
+
+run an EAS workflow. The entire local project directory will be packaged and uploaded to EAS servers for the workflow run, unless the --ref flag is used.
+
+USAGE
+$ eas workflow:run FILE [--non-interactive] [--wait] [-F <value>...] [--ref <value>] [--ssh] [--ssh-idle-timeout
+<value>] [--json]
+
+ARGUMENTS
+FILE Path to the workflow file to run
+
+FLAGS
+-F, --input=<value>... Set workflow inputs
+--json Enable JSON output, non-JSON messages will be printed to stderr.
+--non-interactive Run the command in non-interactive mode.
+--ref=<value> Git reference to run the workflow on
+--ssh [EXPERIMENTAL] Enable SSH on the run
+--ssh-idle-timeout=<value> [EXPERIMENTAL] SSH idle timeout in seconds
+--[no-]wait Wait for workflow run to complete. Defaults to false.
+
+DESCRIPTION
+run an EAS workflow. The entire local project directory will be packaged and uploaded to EAS servers for the workflow
+run, unless the --ref flag is used.
+
+FLAG DESCRIPTIONS
+-F, --input=<value>... Set workflow inputs
+
+Add a parameter in key=value format. Use multiple instances of this flag to set multiple inputs.
+
+--ref=<value> Git reference to run the workflow on
+
+The git reference must exist in the project's git repository, and the workflow file must exist at that reference.
+When this flag is used, the local project is not uploaded; instead, the workflow is run from the exact state of the
+project at the chosen reference.
+
+--ssh [EXPERIMENTAL] Enable SSH on the run
+
+Open an SSH session on each VM job for live debugging with `eas workflow:ssh`.
+
+--ssh-idle-timeout=<value> [EXPERIMENTAL] SSH idle timeout in seconds
+
+Seconds to keep an SSH session open after its job finishes, while no client is connected. The session is always
+available for the whole job. Requires --ssh. Must be between 0 and 3600; defaults to 0 (close as soon as the job
+finishes and nobody is connected).
+
+--[no-]wait Wait for workflow run to complete. Defaults to false.
+
+Exit codes: 0 = success, 11 = failure, 12 = canceled, 13 = wait aborted.
+
+See code: packages/eas-cli/src/commands/workflow/run.ts
+
+## eas workflow:runs
+
+list recent workflow runs for this project, with their IDs, statuses, and timestamps
+
+USAGE
+$ eas workflow:runs [--workflow <value>] [--status
+ACTION_REQUIRED|CANCELED|FAILURE|IN_PROGRESS|NEW|SUCCESS|WAITING] [--json] [--limit <value>]
+
+FLAGS
+--json Enable JSON output, non-JSON messages will be printed to stderr.
+--limit=<value> The number of items to fetch each query. Defaults to 10 and is capped at 100.
+--status=<option> If present, filter the returned runs to select those with the specified status
+<options: ACTION_REQUIRED|CANCELED|FAILURE|IN_PROGRESS|NEW|SUCCESS|WAITING>
+--workflow=<value> If present, the query will only return runs for the specified workflow file name
+
+DESCRIPTION
+list recent workflow runs for this project, with their IDs, statuses, and timestamps
+
+See code: packages/eas-cli/src/commands/workflow/runs.ts
+
+## eas workflow:status [WORKFLOW_RUN_ID]
+
+show the status of an existing workflow run. If no run ID is provided, you will be prompted to select from recent workflow runs for the current project.
+
+USAGE
+$ eas workflow:status [WORKFLOW_RUN_ID] [--non-interactive] [--wait] [--json]
+
+ARGUMENTS
+[WORKFLOW_RUN_ID] A workflow run ID.
+
+FLAGS
+--json Enable JSON output, non-JSON messages will be printed to stderr.
+--non-interactive Run the command in non-interactive mode.
+--[no-]wait Wait for workflow run to complete. Defaults to false.
+
+DESCRIPTION
+show the status of an existing workflow run. If no run ID is provided, you will be prompted to select from recent
+workflow runs for the current project.
+
+FLAG DESCRIPTIONS
+--[no-]wait Wait for workflow run to complete. Defaults to false.
+
+Exit codes: 0 = success, 11 = failure, 12 = canceled, 13 = wait aborted.
+
+See code: packages/eas-cli/src/commands/workflow/status.ts
+
+## eas workflow:validate PATH
+
+validate a workflow configuration yaml file
+
+USAGE
+$ eas workflow:validate PATH [--non-interactive]
+
+ARGUMENTS
+PATH Path to the workflow configuration YAML file (must end with .yml or .yaml)
+
+FLAGS
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+validate a workflow configuration yaml file
+
+See code: packages/eas-cli/src/commands/workflow/validate.ts
+
+## eas workflow:view [ID]
+
+view details for a workflow run, including jobs. If no run ID is provided, you will be prompted to select from recent workflow runs for the current project.
+
+USAGE
+$ eas workflow:view [ID] [--json] [--non-interactive]
+
+ARGUMENTS
+[ID] ID of the workflow run to view
+
+FLAGS
+--json Enable JSON output, non-JSON messages will be printed to stderr.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+view details for a workflow run, including jobs. If no run ID is provided, you will be prompted to select from recent
+workflow runs for the current project.
+
+See code: packages/eas-cli/src/commands/workflow/view.ts

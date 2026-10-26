@@ -1,0 +1,444 @@
+Source: https://developer.apple.com/app-store/subscriptions/
+Fetched: 2026-10-26
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+Win-back offers are now available
+
+Offer codes now available for macOS
+
+## What’s New
+
+Offer subscribers more affordable options with a new payment option: monthly subscriptions with a 12-month commitment.
+
+## Overview
+
+Auto-renewable subscriptions provide access to content, services, or premium features in your app on an ongoing basis. They automatically renew at the end of their duration until the user chooses to cancel. Subscriptions are available on iOS, iPadOS, macOS, tvOS, visionOS, and watchOS.
+
+Great subscription apps justify the recurring payment by providing ongoing value and continually innovating the app experience. If you’re considering implementing the subscription model, plan to regularly update your app with feature enhancements or expanded content.
+
+Many types of apps can take advantage of subscriptions, including apps that offer new game levels, episodic content, software as a service, or cloud support. Other appropriate subscriptions include apps that offer consistent, substantive updates, or access to libraries or collections of content. You can offer subscriptions (a type of in-app purchase) alongside other in-app purchase types.
+
+### Getting ready
+
+To offer subscriptions, youʼll need to configure them in App Store Connect and use StoreKit APIs in your app. You’ll also need to assign each subscription to a subscription group (a group of subscriptions with different access levels, prices, and durations that people can choose from), then add details such as a name, price, and description. This information displays in the Apple In-App Purchases section of your app’s product page on the App Store. Ensure that the subscriptions are available across all device types that your app supports. Consider allowing a way for subscribers to see the status of their subscription within your app, along with upgrade, crossgrade, and downgrade options, as well as a way to easily manage or turn off their auto-renewable subscription. Make sure to follow our design and review guidelines.
+
+To get ready:
+
+- Watch the Apple In-App Purchase and Subscriptions videos.
+
+- Refer to the Apple In-App Purchase StoreKit API documentation.
+
+- Learn how to configure your subscriptions in App Store Connect Help.
+
+- Use the App Store Server API and enable App Store Server Notifications to get real-time changes to the status of your subscriptions.
+
+### Understanding subscription guidelines
+
+Before creating your subscriptions, make sure you understand the requirements and best practices that will help you deliver a great experience. The guidelines below provide details on what your subscriptions need to include and how they should be presented in your app, as well as information on making changes to existing subscriptions, offering free trials, and more.
+
+Resources:
+
+- App Review Guidelines
+
+- Human Interface Guidelines
+
+### 85% net revenue after one year
+
+The net revenue structure for auto-renewable subscriptions differs from other business models on the App Store. During a subscriber’s first year of service, you receive 70% of the subscription price at each billing cycle, minus applicable taxes. After a subscriber accumulates one year of paid service, your net revenue increases to 85% of the subscription price, minus applicable taxes.
+
+Here’s how it works:
+
+- Auto-renewable subscriptions on all Apple platforms are eligible.
+
+- Days of paid service include all subscription offer types (introductory, promotional, and offer codes) with paid pricing options (pay as you go, pay up front).
+
+- Free trials and renewal extensions are excluded from days of paid service.
+
+- Days of paid service are specific to each subscription group.
+
+- Upgrades, downgrades, or crossgrades between subscriptions in the same subscription group don’t affect the one year of paid service.
+
+- If you’re currently enrolled in the App Store Small Business Program, you receive 85% of the subscription price at each billing cycle (minus applicable taxes), regardless of whether or not the subscription has accumulated one year of paid service.
+
+If a subscription expires due to a cancellation or billing issue, the days of paid service stop accumulating. If the subscription is renewed within 60 days, the days of paid service resume from the recovery date.
+
+## Creating subscriptions
+
+You’ll configure your auto-renewable subscriptions in App Store Connect. Create each subscription product as part of a subscription group and assign it a level. How you set up your subscription group or groups will determine your proceeds rate, as well as how people can subscribe to your content or services, how they move between subscriptions, and when they are billed. Before creating subscriptions, identify the right subscription setup for your business model.
+
+### Creating a subscription group
+
+Each subscription you offer must be assigned to a subscription group. A subscription group is made up of subscriptions with different access levels, prices, and durations so people can select the option that best fits their needs. Since people can only buy one subscription within a group at a time, creating a single group is the best practice for most apps as it prevents people from accidentally purchasing multiple subscriptions.
+
+If your app needs to offer the ability to buy multiple subscriptions — for example, to subscribe to more than one channel in a streaming app — you can add these subscriptions to different groups. People who buy subscriptions in multiple groups are billed separately for each subscription. Keep in mind that if someone cancels a subscription in one group and then purchases a new subscription in a different group, the renewal date will change and the days of paid service will reset.
+
+Multiple subscription groups aren’t recommended for apps in which people would expect to have a single active subscription. Keep your offerings simple and easy to understand. For each subscription, create a user-friendly, self-explanatory name that differentiates it from others in the group. Use distinct names for the app, the subscription group, and each subscription to avoid confusion.
+
+App Name or Custom App Name
+
+Subscription Display Name
+
+Price/Duration
+
+App Name or Custom App Name
+
+Subscription Display Name
+
+Price/Duration
+
+### Ranking subscriptions within the group
+
+If you offer multiple subscriptions with different prices tiers, you can assign each to a level in App Store Connect. Ranking your subscriptions determines the upgrade, downgrade, and crossgrade paths available. Arrange your subscriptions in order from the one that offers the most (level 1) to the one that offers the least. For subscriptions with lower service or content offerings, you might assign level 2 or 3, depending on your intended subscription experience. You can add more than one subscription to each level if the offerings are equal. For details, see Overview of an Auto-renewable Subscription Group Setup.
+
+People can manage their subscriptions in their account settings on the App Store, where they see all renewal options and subscription groups, and can choose to upgrade, crossgrade, or downgrade between subscriptions as often as they like. You can also use the showManageSubscriptions(in:) method to allow them to do this within your app. When someone makes a change in their subscription level, the timing of the change varies depending on what has happened:
+
+Upgrade. Someone purchases a subscription that offers a higher level of service than their current subscription. They’re immediately upgraded and receive a refund of the prorated amount of their original subscription. If you’d like people to immediately access more content or features, rank the subscription higher to make it an upgrade.
+
+Downgrade. Someone selects a subscription that offers a lower level of service than their current subscription. The subscription continues until the next renewal date, then is renewed at the lower level and price.
+
+Crossgrade. Someone switches to a new subscription of the equivalent level. If both subscriptions are pay-up-front subscriptions and the same duration, the new subscription begins immediately. If the durations are different, the new subscription goes into effect at the next renewal date. When at least one subscription is a monthly subscription with a 12-month commitment, the commitment durations and billing plan types of the subscriptions are also considered. Learn more
+
+### Pricing subscriptions for each territory
+
+Apps with auto-renewable subscriptions can choose from 800 price points across all available currencies and price tiers, with an additional 100 higher price points available upon request. You can set the prices you think are appropriate for subscribers in different locations, and you have the flexibility to price your subscriptions at parity across storefronts.
+
+Pricing tool. The App Store Connect pricing tool can help you manage pricing based on current exchange rates. If there’s a tax change or currency adjustment in a particular region, the price of subscriptions won’t generally be affected unless you decide to pass the change on to your users. If you want to change the price of a subscription in a specific market, it’s important to understand which markets are tax inclusive before you take action. For example, if you decide to lower the subscription price for users in Germany, the revenue you’ll receive will be the purchase price minus the European Union’s value added tax (VAT) and minus Apple’s commission. The default pricing in the App Store Connect pricing tool is inclusive of applicable taxes that Apple collects and remits. For more information, review Schedule 2 of the Apple Developer Program License Agreement, which describes territories that have different tax treatments.
+
+App Store Connect also lets you assign tax categories to your apps and Apple In-App Purchases. These categories are based on your app’s content (for example, videos, books, or news publications) and determine which tax regulations apply in each territory, allowing Apple to administer tax for you at specific rates.
+
+### Family Sharing
+
+Family Sharing allows a subscriber to share access to an auto-renewable subscription with up to five family members across their Apple devices. With a streamlined, convenient user experience, Family Sharing can help you attract subscribers, encourage paid subscriptions, increase engagement, and improve retention. You can enable Family Sharing for your subscription in App Store Connect. Please note that this can’t be undone.
+
+Verify subscription access using purchase validation, then provide the proper access to subscribers and their family members. Whether a subscription is shared with a subscriber’s family by default depends on their subscription sharing settings and if the purchase was made before or after you enabled Family Sharing in App Store Connect. Subscribers whose settings don’t share the subscription by default are informed by Apple via push notification that the subscription can be shared with their family.
+
+You can highlight Family Sharing in several ways:
+
+Highlight Family Sharing to potential subscribers. Include Family Sharing in your subscription’s display name so it’s easy to spot when reviewing subscription options. If you offer a Family Sharing-enabled subscription alongside subscriptions that don’t include Family Sharing, you can note the price difference for the Family Sharing option on the sign up screen.
+
+Remind subscribers to enable Family Sharing. Mention Family Sharing within your app — for example, as part of onboarding for new subscribers or via in-app messaging for existing subscribers. Consider explaining how to confirm they’ve turned on Family Sharing for the subscription. If you offer a Family Sharing-enabled subscription they’re not currently subscribed to, you might provide a way for them to upgrade without leaving your app. Make sure you’ve ranked your subscriptions within the same subscription level in App Store Connect to provide a seamless upgrade experience.
+
+Help subscribers share subscriptions. You can use in-app messaging to ask subscribers to confirm their Family Sharing settings, or implement share extensions so they can easily share your app. Within the transaction information, you can look at ownershipType to see if someone is the subscriber or a family member, so you can make sure to display your message to the person who completed the purchase.
+
+Resources:
+
+- Turn on Family Sharing for in-app purchases
+
+- Support Family Sharing in your app
+
+- Family Sharing for in-app purchases
+
+### Offering subscriptions to multiple apps
+
+You can offer auto-renewable subscriptions to access multiple apps. Each app must be approved to use auto-renewable Apple In-App Purchases and published under the same developer account.
+
+Use App Store Connect to set up separate and equivalent auto-renewable subscriptions for each app included in the multiapp subscription so that people can subscribe from any app. To help people avoid paying multiple times for the same offering, make sure to verify that they’re active subscribers before showing any subscription options. View details on determining if a subscription is active.
+
+You can also create an app bundle to group multiple subscription apps into a single download at a reduced price. App bundles can include up to 10 of your iOS apps or up to 10 of your macOS apps.
+
+Resources:
+
+- App bundle essentials
+
+- Offer subscriptions across apps
+
+## Attracting subscribers
+
+By allowing people to try your subscription at the moment they’re most interested in its value, you increase the likelihood that they’ll subscribe. There are several ways you can provide a preview of the subscription experience.
+
+Present subscription benefits during onboarding. By highlighting the value of your subscription when people first launch your app, you can educate them on how the app works and help them understand what they’ll gain from subscribing. Keep onboarding brief, engaging, and focused on the features your audience cares about, such as the ability to access the subscription across multiple device types. Provide a succinct call to action and clear subscription terms.
+
+Find out what you’ll need to include
+
+Offer a freemium app experience. A freemium app allows customers to use the app at no cost, with the option to subscribe if they want to enhance their experience or engage more deeply. A free experience lowers the barrier to try an app, and people may be more inclined to invest in paid features after having had time to enjoy the app.
+
+Offer a metered paywall. A metered paywall allows access to a finite amount of content for a specified duration before needing to make a purchase — for example, viewing 10 full articles per month for free in a news app. This gives people the opportunity to immediately start sampling your subscription experience, while encouraging them to subscribe.
+
+For freemium and paywall experiences, include contextually relevant prompts to encourage people to subscribe — for example, when they near their monthly limit of free articles or videos. Additionally, consider making it easy to subscribe at any time by including a prompt throughout the app interface. Test and measure the impact of these prompts, and consider trying different versions of your call-to-action messaging to understand what resonates most with your audience.
+
+Optimize subscriptions for success: acquisition
+
+### Clearly describing subscriptions
+
+An effective subscription purchase flow makes it simple for people to get the product or service they’re interested in. Use consistent messaging and include clear terms so people can easily recognize the value of the offer. A lengthy sign-up process will lower your subscription conversion rate, so keep the purchase flow simple and only ask for necessary information. In addition, the following details must be included in your subscription’s sign-up screen:
+
+- Subscription name and duration, and the content or services provided during the subscription period
+
+- Full renewal price, shown clearly and prominently, and localized in available currencies
+
+- A way for current subscribers to sign in or restore purchases
+
+Please note that your app and App Store metadata must include links to your Terms of Use and Privacy Policy.
+
+Billing amount
+In the purchase flow, the amount that will be billed must be the most prominent pricing element in the layout. For example, an annual subscription should clearly display the total amount that will be billed upon purchase. While you may also present a breakdown price that the annual amount is equivalent to or a savings when compared to weekly or monthly subscriptions, these additional elements should be displayed in a subordinate position and size to the annual price. This ensures that people are not misled.
+
+Free trials
+In the purchase flow for a free trial, clearly indicate how long the free trial lasts and the price billed once the free trial is over.
+
+### Promoting subscriptions on the App Store
+
+You can promote Apple In-App Purchases directly on the App Store, so people can find your subscription or introductory offer and initiate a purchase even before downloading your app. Promoted Apple In-App Purchases appear on your product page, can display in search results, and may be featured on the Today, Games, or Apps tabs. Choose to promote up to 20 Apple In-App Purchases at a time to help you effectively increase discoverability for content within your app. This can be particularly effective for letting new customers know about introductory offers.
+
+Learn about promoting your in-app purchases
+
+Promoted Apple In-App Purchases have unique metadata to communicate their value.
+
+## Providing subscription offers
+
+Grow, retain, and re-acquire customers by giving them a free or discounted price for a specific duration for an auto-renewable subscription. At the end of the offer period, the subscription auto-renews at the standard price unless a subscriber cancels it.
+
+You can create introductory offers, offer codes, promotional offers, and win-back offers. You can provide some or all of these at once, depending on your business goals. To determine which might be best for a particular use case, consider each offer’s intended use, customer eligibility, redemption limits, and other criteria.
+
+|
+Acquire |
+Retain |
+Re-acquire |
+
+Introductory offers |
+|
+|
+|
+
+Promotional offers |
+|
+|
+|
+
+Win-back offers |
+|
+|
+|
+
+Offer codes |
+|
+|
+|
+
+#### Optimize subscriptions for success: acquisition
+
+#### Improve your subscriber retention with App Store features
+
+### Configuring subscription offers
+
+When setting up offers in App Store Connect, you’ll choose the offer type, eligibility, duration, pricing, and more. To support offers within your app, you’ll use StoreKit APIs. For each offer you create, you’ll choose one of the following offer discount types:
+
+Free trial. A subscriber can access your subscription for free for a specific duration — for example, a one-month free offer for a subscription with a standard renewal price of $4.99 per month. Their subscription begins immediately, but they won’t be billed until the offer duration ends. This discount type may be useful if you want to let people experience your subscription at no immediate cost to them.
+
+Pay as you go. A subscriber pays a discounted price each billing period for a specific duration — for example, $1.99 per month for three months for a subscription with a standard renewal price of $9.99 per month. Once the duration is over, they’re billed at the standard renewal price. This option may be useful if you want to attract price-sensitive people with a recurring discount without having to offer that discount for the lifetime of the subscription.
+
+Pay up front. A subscriber pays a one-time price for a specific duration — for example, $9.99 up front for the first six months of a subscription with a standard renewal price of $39.99 per year. Once the duration is over, they’ll be billed at the standard renewal price. This may be useful if you want to offer an extended experience that gives people time to enjoy the subscription before the next renewal.
+
+### Introductory offers
+
+Introductory offers allow new subscribers to experience your subscription before paying full price. Display offers within your app using StoreKit, and promote the offer’s Apple In-App Purchase to display it on the App Store. When promoted, your offer appears on your product page and may display in search results as well as on the Today, Games, and Apps tabs — helping to further discovery of your offer. You can create an introductory offer for each subscription per territory. Customers can redeem one introductory offer per subscription group.
+
+### Offer codesNow available on macOS
+
+Use offer codes to acquire, retain, and re-acquire subscribers by providing a subscription at a discount or for free for a limited time. You can create two types of offer codes: one-time-use codes (18-digit unique codes), or custom codes (such as SPRINGPROMO). Learn how to create offer codes and how to support offer codes using StoreKit. To get notified of redemptions, ensure you've set up App Store Server Notifications.
+
+#### Distribution
+
+When distributing offer codes, you can use your online and offline marketing channels, such as in-app merchandising, email, or print campaigns. Consider which channels might be most effective at reaching your intended customers.
+
+Offer codes can be used in a variety of ways — for example, you can:
+
+- Send an email sharing the latest features and recently added content with an offer code to current or previous subscribers, so they can experience your service for a limited time.
+
+- Distribute flyers that include custom codes to promote your service to event attendees.
+
+- Partner with another company on a marketing initiative or campaign to help promote your app to new subscribers.
+
+- Create a peer-to-peer member referral program that enables current subscribers to share an offer code and receive a benefit for promoting your app. You are responsible for distributing any benefits or rewards to subscribers.
+
+- Provide a code to a subscriber with a customer service issue to compensate for the issue and encourage retention.
+
+- Distribute one-time-use codes within an app that you’re sunsetting as a way to transition current subscribers to your new app and promote your service.
+
+- Display a save offer in your app to a subscriber who has turned off auto-renew but their subscription hasn’t expired yet.
+
+#### Redemption
+
+Customers can redeem offer codes using a redemption URL or on the App Store (in iOS 14.2, iPadOS 14.2, and macOS 15 or later). They can also redeem offer codes within your app if your app supports the offerCodeRedemption method. For a smooth customer experience, be sure to mention any eligibility or availability limits in your communications.
+
+Apple handles the redemption experience, which includes an offer details screen that includes your app icon, subscription display name, duration, and pricing. If you’ve previously added a promotional image for the subscription, this is shown instead of your app icon. To help people make an informed decision, make sure that these details clearly describe the subscription experience. In order for offer codes to be redeemed, your app must be available on the App Store. If someone doesn’t have your app, they’ll be able to download it during the redemption experience.
+
+Depending on your subscription setup, existing subscribers may be able to redeem more than one offer if the offers are in different subscription groups. If you intend for someone to subscribe to only one subscription group at a time, make sure the offer is within their current subscription group. Existing subscribers can only redeem codes that are an upgrade from or at the same level as their current subscription.
+
+Be sure to provide a relevant experience based on someone’s subscription status. For example, you might provide onboarding that highlights the benefits of your subscription for new subscribers. If your app includes account creation or requires agreement to additional terms, make this process as smooth as possible for customers who redeemed a code and are new to your app.
+
+#### Subscription offer codes essentials
+
+#### Get started with custom offer codes
+
+### Promotional offers
+
+Grow and retain your customer base by giving existing or former subscribers a free or discounted subscription for a specific duration. You decide the business logic for promotional offers, giving you the flexibility to create unique promotions within your app, such as:
+
+- An upgraded subscription at a special price for people who have canceled their subscription
+
+- A free month of service for a tenured subscriber who has renewed multiple times
+
+- A discounted price on a month of service for a subscriber who may not be consistently engaging with your app or game
+
+Use StoreKit or App Store Server APIs to identify the auto-renewal statuses of your subscribers and understand which offers might be most effective. To easily determine eligibility, enable App Store Server Notifications for your app. This allows you to receive notifications when a subscriber's status changes, helping you understand when to display an offer to someone. You can have up to 10 offers for each subscription — be sure to consider the implications of having multiple offers in effect. Learn about configuring promotional offers in App Store Connect.
+
+### Win-back offers
+
+Reach previous subscribers and encourage them to resubscribe with win-back offers. Based on your configuration, Apple displays these offers to eligible customers in various places, such as on the App Store or in your app or game. For example, you can create a pay up front offer for a reduced subscription price of $9.99 for six months, with a standard renewal price of $39.99 per year.
+
+#### Discovery and redemption
+
+Eligible customers can discover and redeem win-back offers in several places, including:
+
+On the App Store: On your product page and in editorial selections and personalized recommendations on the Today, Games, and Apps tabs if you’ve been featured. People can tap your offer to learn more details about your offer and open or redownload your app or game to seamlessly redeem your offer.
+
+In-app: A win-back offer sheet automatically appears to eligible customers within your app or game, with no additional work required. For additional control and display customization, you can use StoreKit views or StoreKit 2 APIs to merchandise win-back offers in your app.
+
+In their Apple account under their Subscription settings. People can tap your app or game to view and redeem any available offers. This appears automatically with no additional work required.
+
+Using a direct link. Similar to offer codes, you can use the URL provided in App Store Connect and share it with people through your own channels, such as email.
+
+For more information on these placement types, see set up win-back offers.
+
+#### Configuration and merchandising
+
+When configuring win-back offers in App Store Connect, you provide offer details and select the offer priority. Your priority selection affects how your offer is ranked within your app, in someone’s Subscription settings, and on the App Store (if you’ve chosen to promote it). Apple uses your subscription display name and description when displaying your win-back offer, so be sure this information is accurate.
+
+If you’d like to display your offer on the App Store, you’ll need an approved subscription image. Aim for a simple graphic that’s different than your app icon or screenshots that conveys the essence of the Apple In-App Purchase included as part of the offer.
+
+By default, streamlined purchasing is turned on for your app or game, which lets people complete a purchase from outside your app. You can turn this off in App Store Connect if you wish.
+
+#### Implement App Store Offers
+
+## Keeping subscribers
+
+For people to stay subscribed to your app, they need to continue getting value out of the subscription. Update your app regularly with new content and feature enhancements to help encourage subscribers to maintain their subscriptions.
+
+### Sending notifications
+
+When written thoughtfully, notifications can help people stay engaged with your service and keep their subscriptions active. To ensure a positive experience, make sure your notifications are timely, serve a clear purpose, and deliver meaningful information. You can also use push notifications to market your content — for example, promoting a subscription offer to people who haven’t yet subscribed. However, people must first explicitly opt in to receiving marketing push notifications via a method within your app that includes consent language and a clear way of opting out. Carefully consider the frequency, timing, and content of your notifications to ensure they always provide value to subscribers. Push notifications must not include sensitive personal or confidential information.
+
+- View design guidance
+
+- Get details on implementing notifications
+
+### Providing support
+
+Thoughtful customer support helps you manage relationships with your subscribers and can lead to improved engagement, higher retention, and better ratings and reviews. Use StoreKit and App Store server APIs to provide more seamless subscriber support, and to resolve issues in a more timely and efficient manner.
+
+#### Letting people manage their subscriptions
+
+A subscriber’s preferences may change during a subscription period. You can use the showManageSubscriptions(in:) method to let them manage their subscription within your app. By providing a dedicated place in your app to manage subscriptions, you can also display other options to complement the system-provided management UI. For example, you might show a promotional offer that provides a higher service level for a discounted price. If they cancel, you might provide an offer to help win them back and encourage them to resubscribe. Or you might present a survey where they can share feedback about their subscription experience and reasons for cancelling, which can inform your marketing strategy. To ensure a positive experience, always make it easy for people to access the system-provided management UI where they can cancel if they wish.
+
+#### Extending a subscription’s renewal date
+
+In cases of service or content delivery issues — such as a server outage or technical glitch — you can extend the renewal date of a subscription using the Renewal Date Extension endpoint. For example, if a sports match is canceled or there’s an interruption to a livestreamed event, you might extend free service for a specified time in order to make up for the issue. You can move the renewal date for a customer’s subscription twice per calendar year, each up to 90 days in the future. Any days included in an extension won’t count toward the one year of paid service needed to receive an 85% proceeds rate.
+
+Alternatively, you can use offer codes to compensate dissatisfied subscribers with a free or discounted subscription for a specific period of time. These codes can be redeemed on the App Store or within your app.
+
+#### Determining subscriber status
+
+The Get All Subscription Statuses endpoint lets you determine in one simple check whether a subscription is active, expired, in billing retry, or in grace period. Use this information to inform your retention strategy and provide subscribers with relevant information within your app, such as their upcoming renewal date. You can also use this endpoint alongside the OfferID and OfferType transaction properties in StoreKit to identify offer redemptions.
+
+- Learn to support customers with StoreKit 2 and the App Store Server API
+
+- Learn to support customers and manage refunds
+
+- Learn to help people manage their subscriptions
+
+### Retaining subscribers
+
+Use the Get All Subscription Statuses endpoint and Get Transaction History endpoint to determine the status of your users’ subscriptions and view transaction history, so you can identify and act on:
+
+Voluntary churn. Determine if a subscriber has turned off auto-renew for a particular subscription using the Get All Subscription Statuses endpoint. You can also use App Store Server Notifications to get real-time updates about changes in a user’s status and key events related to their Apple In-App Purchases, such as a change in renewal status. Use this information to take action in response. For example, you might present a promotional offer or suggest an alternate tier that better fits their needs. When a subscription expires, you can lock access to the subscription’s content or service. Be sure to inform the user of any changes and let them know if there’s anything they need to do in response and how to resubscribe if needed.
+
+Involuntary churn. Sometimes a subscriber might experience a billing issue, such as an expired credit card, that causes their subscription to expire. Starting in iOS 16.4 and iPadOS 16.4, if a subscription doesn’t successfully renew, a system-provided sheet appears in your app upon launch with a prompt that lets customers update the payment method for their Apple Account. If you’d like, you can choose to delay or suppress this sheet in StoreKit using messages and display.
+
+You can learn when a subscription fails to renew using:
+
+- App Store server notifications, which sends a DID_FAIL_TO_RENEW notification type.
+
+- StoreKit renewal state to get information about the renewal state.
+
+- The App Store Server API to get all subscription statuses.
+
+When a subscription renewal fails, Apple attempts to recover it for 60 days. If you’ve chosen to pause access to your service or content during this time, you’ll need to reinstate access once the issue is resolved. If the subscription renews within 60 days, the days of paid service resume from the renewal date.
+
+To prevent service interruptions due to billing issues, enable Billing Grace Period in App Store Connect. Apple attempts to address the billing issue and recover the subscription while the subscriber retains subscription access. You can choose to apply Billing Grace Period to all renewals (existing paid renewals and free offers transitioning to paid renewals) or only to existing paid renewals. You can also set a duration of 3, 16, or 28 days. Be sure to consider what Billing Grace Period configuration best aligns with your business. If the subscription is recovered within the Billing Grace Period, there won’t be any interruption to the days of paid service or to your revenue. If someone resubscribes after 60 days, the days of paid service reset and you’ll receive the standard one-year subscription rate until the next year of paid service passes.
+
+Price increase consent. When you increase the price of a subscription and Apple asks affected subscribers to agree to the new price, you can keep track of their consent status before the change takes effect. Before displaying the price increase sheet to affected users, you might show an in-app message that explains the benefits of the subscription and how the price increase improves the service. If someone doesn’t respond to the increase, their subscription expires at the end of their current billing cycle.
+
+Resources:
+
+- App Store Server API
+
+- App Store Server Notifications
+
+- Reduce involuntary subscriber churn
+
+- Enable Billing Grace Period
+
+### Managing prices
+
+You can price your auto-renewable subscriptions by storefront and choose from 800 price points across all available currencies and price tiers, with an additional 100 higher price points available upon request. After you set a starting price for your auto-renewable subscription, you can schedule one future price change at a time, per territory in App Store Connect.
+
+Price decreases. If you decrease the price of your auto-renewable subscription, existing subscriptions will automatically renew at the lower price. You don’t have the option to preserve the higher price for existing subscribers. Existing subscribers don’t receive any communications and don’t need to take any action.
+
+Price increases. When you increase the price of an auto-renewable subscription, Apple automatically provides push notifications, email, and in-app messaging to let subscribers know about the upcoming change and how to manage their subscription. Some price increases require subscribers to opt in, while smaller, infrequent price increases can result in notifications without the need to opt in.
+
+If needed, you can temporarily delay the in-app price consent sheet to avoid interrupting someone during a critical moment.
+
+You can keep an unlimited number of active subscribers at their existing price while increasing the price for new subscribers. If you don’t preserve the price for existing subscribers, and they need to consent, they must agree to the new price. If they don’t agree, their subscription expires at the end of their current billing cycle.
+
+If you have several cohorts of subscribers at different prices and want to move all subscribers to the current price, increase the price for those paying closest to the current price first (for example, $2.99 to $3.99), then the next closest, and so on. This ensures that people don’t experience multiple price increases. Before you make any pricing decisions, research your target market’s pricing expectations and weigh the potential impact of raising the price against retaining subscribers.
+
+$3.99
+
+$2.99
+
+$1.99
+
+2022
+
+2023
+
+2024
+
+- New subscribers in 2024 will pay $3.99.
+
+- Subscribers since 2023 continue to pay $2.99.
+
+- Subscribers since 2022 continue to pay $1.99.
+
+Resources:
+
+- Manage pricing for auto-renewable subscriptions
+
+- Manage auto-renewable subscription pricing in App Store Connect
+
+- Delay the price consent sheet
+
+### Measuring performance
+
+View and analyze subscription data to better understand how your subscriptions are performing. Filter data by Plan, Duration, Territory, and more in Analytics in App Store Connect.
+
+Subscriptions dashboard. Get an overview of your subscriptions — including data on active plans, monthly recurring revenue, retention and conversion rates, cancellation reasons, and more. You can use the data on this page to help inform your subscription strategy.
+
+Offers dashboard. Analyze how your subscription offers perform, including introductory offers, promotional offers, and win-back offers, as well as offer codes. For example, if you revise your in-app messaging or change the duration of an offer, you can monitor how these changes impact your performance across the customer lifecycle.
+
+Metrics page. View all of your subscription data in one place, including your total active subscriptions based on their current state: standard price, introductory offers, promotional offers, and billing retry. Use this data to measure your subscriptions’ growth over time. For example, you can group data by Proceeds Rate to understand how many subscriptions earned a higher proceeds rate after one year. Filter or group data by different dimensions, such as Territory, Promotional Offer, Subscription, and more for additional insight.
+
+You can also analyze specific subscription events, including subscription activations, conversions to standard price, reactivations, renewals, and more. Filter data for additional insights. For example, filtering by a specific promotional offer will show you how many times it’s reactivated your lapsed subscriptions. You can use this information to update your promotional offer strategy. View definitions of each subscription event.
+
+Cohorts page. View data related to your subscription retention, as well as data on conversion rates for your introductory and promotional offers. The Subscription Retention view shows the percentage of subscriptions that were renewed for consecutive periods. You can filter this information by a specific subscription, territory, source type, and more to understand which start months have the highest retention and investigate contributing factors to retention — for example, launching new content in a particular month or a seasonal marketing campaign. This can help inform your engagement and retention efforts.
+
+Subscription reports. You can download daily reports containing all of this information plus additional details, such as anonymized start date and days before cancelling.
+
+Resources:
+
+- Sales and Trends essentials
+
+- View subscriptions data
+
+- Download and view reports

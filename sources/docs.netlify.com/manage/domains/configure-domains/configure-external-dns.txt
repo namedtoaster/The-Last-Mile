@@ -1,8 +1,6 @@
 Source: https://docs.netlify.com/manage/domains/configure-domains/configure-external-dns/
-Fetched: 2026-10-12
+Fetched: 2026-10-26
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
-
-More flexibility and credits now available for Pro plans 🎉
 
 # Configure external DNS for a custom domain
 

@@ -1,5 +1,5 @@
 Source: https://www.revenuecat.com/docs/getting-started/displaying-products
-Fetched: 2026-10-14
+Fetched: 2026-10-26
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 On this page
@@ -1018,7 +1018,7 @@ In practice, you may not want to display the default current Offering to every u
 
 For example, displaying a higher priced Offering to users that came from paid acquisition to help recover ad costs, or a specific Offering designed to show iOS Subscription Offers when a user has cancelled their subscription.
 
-This can be accomplished through Targeting, which supports a handful of predefined dimensions from RevenueCat or any custom attribute you set for your customers. Learn more here.
+This can be accomplished through Targeting, which supports the same filters as Audiences, including subscription status, purchase history, attribution data, and any custom attribute you set for your customers. Learn more here.
 
 Or, alternatively, you could write your own logic locally in your app to serve custom Offering identifiers for each cohort you have in mind.
 

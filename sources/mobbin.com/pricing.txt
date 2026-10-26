@@ -1,8 +1,8 @@
 Source: https://mobbin.com/pricing
-Fetched: 2026-10-19
+Fetched: 2026-10-26
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
-C$14
+$10
 per monthbilled yearly
 
 Get Pro
@@ -17,7 +17,7 @@ For 1 member only
 - MCPMCP
 - Hide screen footers
 
-C$20
+$16
 per member/monthbilled yearly
 
 Create team

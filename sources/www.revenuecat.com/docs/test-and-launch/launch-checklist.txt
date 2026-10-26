@@ -1,5 +1,5 @@
 Source: https://www.revenuecat.com/docs/test-and-launch/launch-checklist
-Fetched: 2026-10-14
+Fetched: 2026-10-26
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 On this page
@@ -100,8 +100,6 @@ RevenueCat detects when you launch based on the purchases we receive, so there's
 
 - Profit! However, if your app gets rejected, don't panic - check out our post on getting through App Store review →
 
-- Subscribe to Changelog to stay up to date with new SDK releases
-
-- Subscribe to RevenueCat Announcements to stay up to date with the latest announcements from the RevenueCat team
+- Follow the changelog to stay up to date with new features, improvements, and fixes
 
 Was this page helpful?YesNo

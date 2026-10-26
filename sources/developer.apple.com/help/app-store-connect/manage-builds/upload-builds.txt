@@ -1,5 +1,5 @@
 Source: https://developer.apple.com/help/app-store-connect/manage-builds/upload-builds
-Fetched: 2026-10-12
+Fetched: 2026-10-26
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 # Upload builds
@@ -30,8 +30,6 @@ Download Xcode on the Mac App Store.
 
 App Store Connect supports the following versions of Xcode to upload your app for customer distribution or to testers using TestFlight. You can view delivery progress, including warnings, errors, and delivery logs, as well as a history of past deliveries.
 
-Note: Starting in 2026, you'll be required to use Xcode 14 or later to upload your app to App Store Connect.
-
 Target type
 
 |
@@ -56,7 +54,7 @@ Xcode 26 or later
 
 |
 
-Xcode 6 or later
+Xcode 14 or later
 
 |
 
@@ -68,7 +66,7 @@ Xcode 6 or later
 
 |
 
-Xcode 6 or later
+Xcode 14 or later
 
 |
 
@@ -80,7 +78,7 @@ Xcode 26 or later
 
 |
 
-Xcode 7.1 or later
+Xcode 14 or later
 
 |
 

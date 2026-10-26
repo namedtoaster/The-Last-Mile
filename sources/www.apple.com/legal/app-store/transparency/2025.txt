@@ -1,0 +1,461 @@
+Source: https://www.apple.com/legal/app-store/transparency/2025/
+Fetched: 2026-10-26
+This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+## 2025 App Store Transparency Report
+
+Since it launched in 2008, the App Store has proven to be a safe and trusted place to discover and download apps. At Apple, we’re committed to creating a great experience for customers and developers — and we review every app for compliance with our App Review Guidelines to uphold high privacy, security, and content standards.
+
+Our App Store Transparency Report provides data about how we operate the App Store in all 175 countries and regions where it’s available. Below you’ll find information about our efforts to help keep the App Store a safe and trusted place for users to find apps they love.
+
+## Apps
+
+### Total number of apps on the App Store
+
+2,172,472
+
+### App submissions reviewed 1
+
+9,100,620
+
+### App submissions rejected
+
+2,093,244
+
+## App submission rejections by App Review Guidelines section 2
+
+Safety
+| 151,159
+|
+Performance
+| 1,354,418
+|
+Business
+| 283,820
+|
+Design3
+| 415,532
+|
+Legal
+| 495,673
+|
+Other
+| 4145
+|
+
+### App submissions approved after rejection
+
+387,087
+
+### Apps removed from the App Store4
+
+166,899
+
+## Apps removed from the App Store by app category
+
+Top 10 app categories5
+
+1
+
+|
+Utilities
+
+|
+31,594
+
+|
+
+2
+
+|
+Games
+
+|
+30,429
+
+|
+
+3
+
+|
+Lifestyle
+
+|
+13,166
+
+|
+
+4
+
+|
+Productivity
+
+|
+13,116
+
+|
+
+5
+
+|
+Entertainment
+
+|
+11,415
+
+|
+
+6
+
+|
+Business
+
+|
+10,984
+
+|
+
+7
+
+|
+Finance
+
+|
+8488
+
+|
+
+8
+
+|
+Education
+
+|
+8440
+
+|
+
+9
+
+|
+Food & Drink
+
+|
+7334
+
+|
+
+10
+
+|
+Shopping
+
+|
+5760
+
+|
+
+## Apps removed from the App Store due to guideline or Developer Program License Agreement (DPLA) violation
+
+Top 10 guidelines or DPLA provisions cited for removal6
+
+1 |
+DPLA 3.2(f) - Fraud |
+90,608 |
+
+2 |
+Guideline 4.0 - Design |
+72,2717 |
+
+3 |
+DPLA 6.3 - Intellectual Property Infringement |
+1177 |
+
+4 |
+Guideline 4.3.0 - Spam |
+418 |
+
+5 |
+DPLA 4.8 - Export Control |
+377 |
+
+6 |
+Guideline 1.1.4 - Sexual and pornographic content |
+360 |
+
+7 |
+Guideline 4.1.0 - Copycats |
+279 |
+
+8 |
+Guideline 1.2.0 - User-generated content |
+241 |
+
+9 |
+Guideline 5.0.0 - Legal |
+169 |
+
+10 |
+Guideline 5.0.0 - General |
+158 |
+
+## Apps removed from the App Store subject to government takedown demands8
+
+20459
+
+By country or region
+
+Russia |
+1213 |
+
+Vietnam |
+335 |
+
+China mainland |
+196 |
+
+South Korea |
+108 |
+
+India |
+54 |
+
+USA |
+3910 |
+
+Japan |
+25 |
+
+Türkiye |
+14 |
+
+Egypt |
+13 |
+
+Indonesia |
+11 |
+
+Jordan |
+7 |
+
+Malaysia |
+7 |
+
+Cyprus |
+4 |
+
+Qatar |
+4 |
+
+Switzerland |
+4 |
+
+Thailand |
+4 |
+
+Macao |
+2 |
+
+Pakistan |
+2 |
+
+Hong Kong |
+1 |
+
+Mongolia |
+1 |
+
+Philippines |
+1 |
+
+## Appeals of App Removals
+
+26,305
+
+Top 10 countries or regions11
+
+1 |
+China mainland |
+5431 |
+
+2 |
+United States |
+3929 |
+
+3 |
+India |
+1864 |
+
+4 |
+Türkiye |
+1571 |
+
+5 |
+Pakistan |
+1182 |
+
+6 |
+United Kingdom |
+1113 |
+
+7 |
+Vietnam |
+989 |
+
+8 |
+Hong Kong |
+857 |
+
+9 |
+Singapore |
+431 |
+
+10 |
+Canada |
+430 |
+
+## Restorations after appeals of app removals
+
+42312
+
+Top 10 countries or regions13
+
+1 |
+United States |
+88 |
+
+2 |
+China mainland |
+71 |
+
+3 |
+India |
+22 |
+
+4 |
+United Kingdom |
+21 |
+
+5 |
+Canada |
+14 |
+
+6 |
+Pakistan |
+12 |
+
+7 |
+Saudi Arabia |
+12 |
+
+8 |
+Türkiye |
+11 |
+
+9 |
+Germany |
+10 |
+
+10 |
+Japan |
+10 |
+
+## Developers
+
+### Total number of registered Apple developers
+
+60,597,750
+
+### Terminated developer accounts
+
+193,035
+
+### Terminated developer accounts by DPLA provision violated
+
+- DPLA 3.2(f) — Fraud: 192,702
+
+- DPLA 4.8 — Export Control: 333
+
+### Terminated developer account appeals
+
+10,127
+
+### Terminated developer account restorations14
+
+499
+
+## Customers
+
+### Terminated customer accounts
+
+40,440,557
+
+### Value of fraudulent transactions prevented
+
+$2,232,110,720
+
+### Average weekly visitors to the App Store
+
+892,670,823
+
+### Average weekly app downloads
+
+929,754,061
+
+### Average weekly app redownloads
+
+2,053,461,208
+
+### Average weekly automatic app updates15
+
+46,630,867,840
+
+### Average weekly manual app updates
+
+701,572,983
+
+## Search
+
+### Average weekly number of customer accounts searching the App Store
+
+463,575,966
+
+### Average weekly number of apps appearing in the top 10 results of at least 1000 searches
+
+164,436
+
+### Total number of apps appearing in the top 10 results of at least 1000 searches
+
+1,365,649
+
+- Apps may be submitted to App Review multiple times before they are approved for release on the App Store. ↩
+
+- App submissions may be rejected for noncompliance with one or more guidelines. ↩
+
+- The Design category includes guidelines that prohibit copycat apps, apps with minimum functionality, and spam. ↩
+
+- Apps may be removed from the App Store for a number of reasons, including violations of local law, repeated violations of App Store policy, fraud, and demands by regulators. ↩
+
+- Complete data showing apps removed from the App Store by all app categories and by country or region is included in the supplemental CSV file, available at https://www.apple.com/legal/app-store/transparency/. ↩
+
+- Complete data showing apps removed from the App Store by guideline or DPLA provision violated and by country or region is included in the supplemental CSV file, available at https://www.apple.com/legal/app-store/transparency/. ↩
+
+- This removal is the result of ongoing cleanup for outdated apps. ↩
+
+- Complete data showing takedown demands by government entity and law cited is included in the supplemental CSV file, available at https://www.apple.com/legal/app-store/transparency/. ↩
+
+- Apps are required to follow the law in each country or region in which they operate. When subject to a government takedown demand, they are removed only from the country or region in which the entity demanding removal has jurisdiction, and they remain available everywhere else. ↩
+
+- This number represents the 39 ByteDance apps that Apple was prevented from distributing in the United States storefront of the App Store in order to comply with the Protecting Americans From Foreign Adversary Controlled Applications Act, 15 U.S.C. § 9901. These apps were restored to the United States storefront on February 13, 2025 pursuant to Executive Order No. 14166 ↩
+
+- Complete data showing appeals of app removals by country or region is included in the supplemental CSV file, available at https://www. apple.com/legal/app-store/transparency/. ↩
+
+- Most app removals that are appealed are removed from the App Store due to illegality or fraud. Consequently, most appeals from developers of such apps are rejected. ↩
+
+- Complete data showing restorations after appeals of app removals by country or region is included in the supplemental CSV file, available at https://www.apple.com/legal/app-store/transparency/. ↩
+
+- Most developer account terminations that are appealed are removed from the App Store due to fraud. Consequently, most appeals from such terminations are rejected. ↩
+
+- On iPhone and iPad, apps that customers download from the App Store are automatically updated by default. ↩
+
+© 2026 Apple Inc. All rights reserved. Apple, the Apple logo, iPad, and iPhone are trademarks of Apple Inc., registered in the U.S. and other countries and regions. App Store is a service mark of Apple Inc., registered in the U.S. and other countries and regions. Other product and company names mentioned herein may be trademarks of their respective companies.

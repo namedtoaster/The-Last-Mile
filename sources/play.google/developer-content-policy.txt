@@ -1,5 +1,5 @@
 Source: https://play.google/developer-content-policy/
-Fetched: 2026-10-13
+Fetched: 2026-10-26
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 # Providing a safe and trusted experience for everyone
@@ -141,6 +141,8 @@ Android Emoji Policy
 Android Instant Apps
 
 Android TV
+
+Android XR
 
 Wear OS
 
