@@ -25,6 +25,7 @@ const STATES = {
   active: { label: 'In progress', icon: '◐' },
   waiting: { label: 'Waiting', icon: '◷' },
   blocked: { label: 'Needs a fix', icon: '✘' },
+  risk: { label: 'Known risk', icon: '▲' },
   todo: { label: 'To do', icon: '○' },
 };
 
@@ -127,6 +128,7 @@ function fraction(item) {
   if (item.state === 'done') return 1;
   if (p && p.total > 0) return Math.max(0, Math.min(1, p.done / p.total));
   if (item.state === 'blocked') return 1;
+  if (item.state === 'risk') return 1;
   if (item.state === 'active') return 0.35;
   if (item.state === 'waiting') return 1;
   return 0;
@@ -183,6 +185,7 @@ async function printBoard(data) {
     active: rgb(227, 179, 65, 33),
     waiting: rgb(88, 166, 255, 34),
     blocked: rgb(248, 81, 73, 31),
+    risk: rgb(219, 123, 42, 33),
     todo: rgb(139, 148, 158, 90),
     bold: (s) => (color ? `\x1b[1m${s}\x1b[0m` : s),
     dim: (s) => (color ? `\x1b[2m${s}\x1b[0m` : s),
@@ -259,13 +262,13 @@ function page(data) {
 <style>
 :root {
   --bg: #f6f7f9; --card: #ffffff; --ink: #14171c; --muted: #66707c; --line: #e3e6ea; --track: #eceff2;
-  --done: #1f9d55; --active: #c98a00; --waiting: #2f7de1; --blocked: #d93a3a; --todo: #9aa3ad;
+  --done: #1f9d55; --active: #c98a00; --waiting: #2f7de1; --blocked: #d93a3a; --risk: #c2660f; --todo: #9aa3ad;
   --glow: rgba(47, 125, 225, .18);
 }
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #0b0d11; --card: #14181e; --ink: #e8ebef; --muted: #8b95a1; --line: #222831; --track: #1e242c;
-    --done: #3fb950; --active: #e3b341; --waiting: #58a6ff; --blocked: #f85149; --todo: #5c6670;
+    --done: #3fb950; --active: #e3b341; --waiting: #58a6ff; --blocked: #f85149; --risk: #db7b2a; --todo: #5c6670;
     --glow: rgba(88, 166, 255, .22);
   }
 }
@@ -306,6 +309,7 @@ h1 { margin: 0; font-size: 22px; line-height: 1.2; letter-spacing: -.01em; }
 .active .dot { background: var(--active); }
 .waiting .dot { background: var(--waiting); box-shadow: 0 0 0 0 var(--glow); animation: pulse 1.8s ease-out infinite; }
 .blocked .dot { background: var(--blocked); }
+.risk .dot { background: var(--risk); }
 .todo .dot { background: transparent; border: 2px solid var(--todo); }
 .title { font-weight: 600; min-width: 0; overflow-wrap: anywhere; }
 .chip { font-size: 12px; font-weight: 600; padding: 3px 9px; border-radius: 999px; white-space: nowrap; justify-self: end; }
@@ -313,6 +317,7 @@ h1 { margin: 0; font-size: 22px; line-height: 1.2; letter-spacing: -.01em; }
 .active .chip { color: var(--active); background: color-mix(in srgb, var(--active) 16%, transparent); }
 .waiting .chip { color: var(--waiting); background: color-mix(in srgb, var(--waiting) 14%, transparent); }
 .blocked .chip { color: var(--blocked); background: color-mix(in srgb, var(--blocked) 14%, transparent); }
+.risk .chip { color: var(--risk); background: color-mix(in srgb, var(--risk) 14%, transparent); }
 .todo .chip { color: var(--muted); background: var(--track); }
 .meta { grid-column: 2 / 4; display: flex; align-items: center; gap: 12px; min-width: 0; }
 .detail { color: var(--muted); font-size: 13.5px; flex: 1; min-width: 0; overflow-wrap: anywhere; }
@@ -332,6 +337,7 @@ h1 { margin: 0; font-size: 22px; line-height: 1.2; letter-spacing: -.01em; }
 .bar i { display: block; height: 100%; width: 0; border-radius: inherit; transition: width 1s cubic-bezier(.2,.8,.2,1); }
 .done .bar i { background: var(--done); }
 .blocked .bar i { background: var(--blocked); }
+.risk .bar i { background: var(--risk); }
 .active .bar i {
   background: repeating-linear-gradient(-45deg, var(--active) 0 8px, color-mix(in srgb, var(--active) 70%, #fff) 8px 16px);
   background-size: 22.6px 100%; animation: stripes .8s linear infinite;
@@ -357,8 +363,8 @@ footer a { color: inherit; }
 <script id="data" type="application/json">${json}</script>
 <script>
 const data = JSON.parse(document.getElementById('data').textContent);
-const LABEL = { done: 'Ready', active: 'In progress', waiting: 'Waiting', blocked: 'Needs a fix', todo: 'To do' };
-const ICON = { done: '✓', active: '', waiting: '', blocked: '!', todo: '' };
+const LABEL = { done: 'Ready', active: 'In progress', waiting: 'Waiting', blocked: 'Needs a fix', risk: 'Known risk', todo: 'To do' };
+const ICON = { done: '✓', active: '', waiting: '', blocked: '!', risk: '▲', todo: '' };
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 function ago(iso) {
   const t = Date.parse(iso); if (Number.isNaN(t)) return '';

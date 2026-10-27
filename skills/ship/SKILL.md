@@ -156,6 +156,11 @@ the rules are current, then check each one **against the app, not the docs**:
 - Also check what a reviewer sees first: the icon and splash are the app's own, not a
   template's; nothing says "lorem ipsum", "TODO" or "test"; every button on the first
   screens does something.
+- A rule about the store listing is checked against the **live listing**, not the
+  project's draft of it. A repo's copy of its own description can be a draft, a
+  fragment, or last year's. Read what the stores are serving today, and say which
+  store the rule belongs to: a Google policy about the description says nothing
+  about the Apple one, and reporting it against both is noise.
 
 For an update to an app that is already live, some rules allow exceptions granted in
 the store consoles (for example, Google's declarations for photo and video
@@ -167,6 +172,14 @@ file that adds it). Something that has passed review in many releases is a risk 
 reviewers have not enforced yet, not a certain rejection: say so, with the date, and
 still fix it, because enforcement changes without notice. Something added since the
 last approved release is the likeliest blocker.
+
+**That judgement is what picks the row's state on the board,** so the difference
+survives into what the user looks at instead of dying in the report. A finding that
+has already shipped through approved releases is `risk`. `blocked` is for something
+that stops the upload, or that has never been through review, which on a live app
+usually means something added since the last approved build. Most of a live app's
+findings are risks, so a sweep that paints them all as blockers buries the one row
+that is actually stopping the release.
 
 Report blockers first, each with the file and line, the rule and its source, then the
 passes in one line each. Offer to fix the blockers that are code. Fix them one at a
