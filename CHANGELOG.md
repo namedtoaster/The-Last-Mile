@@ -2,6 +2,13 @@
 
 ## 0.2.0 (unreleased)
 
+- `ship`: the status board gains a `risk` state, for a rule the app may be breaking
+  that has already shipped through approved releases. The board had only `blocked`,
+  so on an app already in the stores every long standing finding painted red next to
+  the one that was actually stopping the release. The sweep now also checks a listing
+  rule against the live listing rather than the project's draft copy, and names which
+  store the rule belongs to.
+
 - New skill `extract-lessons`: harvests a finished session for anything general enough
   to help beyond one project, routes it to the right skill, spots when a cluster of
   homeless lessons means the toolkit has a gap, and recognises when a body of knowledge

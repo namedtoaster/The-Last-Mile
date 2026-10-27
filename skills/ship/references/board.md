@@ -79,7 +79,7 @@ work.
 | --- | --- |
 | `group` | Heading the row sits under. Rows of a group stay together, in order. |
 | `title` | What it is, in the user's words. |
-| `state` | `done`, `active` (being worked on), `waiting` (on a store or someone else), `blocked` (something must be fixed), `todo`. |
+| `state` | `done`, `active` (being worked on), `waiting` (on a store or someone else), `blocked` (stops the release until it is fixed), `risk` (a rule the app may be breaking that has already shipped through approved releases: real and worth fixing, not a certain rejection), `todo`. |
 | `detail` | One short line: what was found, or what happens next. |
 | `owner` | `you` when only the user can do it (paying, agreements, a console only form). These also show in a callout at the top. |
 | `progress` | `{ "done", "total", "unit" }` when it is countable: days of a closed test, screenshots captured. |
@@ -125,6 +125,20 @@ that do not apply (no Android row for an iOS only app). Typical groups:
   number, release build tested.
 - **Listing:** copy, screenshots, privacy answers, review notes and demo account.
 - **Review:** one row per store, from upload to live.
+
+### An app that is already live
+
+A first release has few rows that are true yet, so most of them are `todo`. An app
+already in the stores is the opposite: nearly everything is `done`, and the sweep's
+findings are mostly rules the app has been breaking for months without a reviewer
+stopping it. Those are `risk`, not `blocked`, and the board says so: a risk is amber
+and reads as a known risk, a blocker is red and reads as needing a fix.
+
+Keep `blocked` for a row that stops this release: a store page that does not load, a
+rule the app started breaking since its last approved build, an upload the stores
+will refuse. If every finding is red, the one that actually stops the release is
+hidden among the ones that have shipped fifty times. Give each risk row the date it
+first shipped, so the reader can see it is long standing rather than new.
 
 Every state comes from something checked this session or recorded in `SHIPPING.md`,
 never assumed. Review status comes from the user, or from the store tools the project
