@@ -46,8 +46,12 @@ the terminal. Give every row the user must act on a link straight to where it ge
 done. `references/board.md` has the format, the rows, the links, and when to show it.
 Pages the session's network blocks are checked from GitHub by a small workflow
 (`templates/last-mile-checks.yml`); install it in GitHub projects, as that file says.
-**`/ship status`, or the user asking where things stand,** always means the board, never
-a text summary alone:
+**On an update the board is off by default,** and short when it is asked for. See
+"First release and update are two different jobs" in step 0, and the update rows in
+`references/board.md`.
+
+**`/ship status`, or the user asking where things stand,** means the board, never a
+text summary alone:
 
 1. Create `store/status.json` if it does not exist (step 0's checks fill it), else
    refresh its rows from what can be checked now.
@@ -111,14 +115,17 @@ Work this out from the files before asking anything, then show it in a few lines
    `references/levels.md` says what each level includes. Plan only that much, and
    leave out the rows for a platform that is not shipping.
 3. **First release or update:** look for an existing bundle ID or package name, a
-   previous version tag, or ask.
+   previous version tag, a shipped build, or ask. **This is the question that decides
+   the shape of everything below, so settle it before you plan anything.** See "two
+   different jobs" at the end of this step.
 4. **Accounts:** for a first release, ask whether the user has an Apple Developer
    Program membership and a Google Play developer account. Fees and the closed testing
    rule for new personal Google accounts are in `references/facts.md`; tell the user
    early, because the Google one can delay an Android launch by weeks. When they reach
    it, walk them through `references/play-closed-test.md` step by step.
 
-5. **Web pages:** the stores need public pages before submission: a privacy policy
+5. **Web pages (a first release, or an update that moved one):** the stores need
+   public pages before submission: a privacy policy
    (both stores, and linked inside the app, so its address must be final before the
    build), a support page (Apple), and an account deletion page (Google, if the app
    has accounts). Apple also requires that an app with account creation lets people
@@ -133,9 +140,42 @@ Work this out from the files before asking anything, then show it in a few lines
    before relying on it (`references/domains.md`, "When the site lives elsewhere").
    `references/domains.md` covers registrars, hosts and email forwarding.
 
-End this step with a short plan: the steps ahead, which ones need the user, and the
-first thing only they can do (often paying for an account), so they can start it now.
-Write the plan's rows into `store/status.json` and show the board.
+### First release and update are two different jobs
+
+Settle question 3 before you plan anything, and **say which one this is in the first
+line of your reply.** It changes the shape of everything below.
+
+**A first release is a project.** Two developer accounts to open and pay for, web
+pages that must exist at their final addresses before the build is made, a listing
+written from nothing, and a review that has never seen the app. Twenty odd things
+across two consoles, most of them not done. Work every step below in full, and keep
+the status board, because nobody can hold that in their head.
+
+**An update is a small, repeatable job: what changed, does any of it break a rule,
+test it, ship it.** Everything the first release set up is still true. The accounts
+exist, the pages are up, the listing is written, the app has passed review before.
+None of that is worth putting in front of anyone. So on an update:
+
+- **Skip 4 and 5 above.** Raise an account or a page only when something about it has
+  actually broken.
+- **Scope the sweep to what changed** (step 1).
+- **Default to no board.** Give the user the release's test checklist and whatever
+  blocks the upload, and nothing else. Make a board only if they ask where things
+  stand, and then only the update rows in `references/board.md`.
+- **The plan is three lines:** what is in this release, what blocks it, what to test.
+
+The failure this exists to prevent happened in a real session. The first release
+shape was run on an app that had been live for months. It produced twenty settled
+rows, a progress ring reading 55 percent of work finished in May, generic console
+links, and a set of long standing findings presented as though they had just been
+discovered. The user said they had never seen any of it before, that it read as a
+pile of new problems, and that they only wanted to go through the release checklist.
+They were right, and the sweep's one real finding was lost in the noise.
+
+End this step with a plan sized to the job: for a first release, the steps ahead,
+which need the user, and the first thing only they can do (often paying for an
+account) so they can start it now, written into `store/status.json` and shown as the
+board. For an update, the three lines above, and no board unless asked.
 
 ## 1. Rejection sweep
 
@@ -162,6 +202,20 @@ the rules are current, then check each one **against the app, not the docs**:
   store the rule belongs to: a Google policy about the description says nothing
   about the Apple one, and reporting it against both is noise.
 
+**On an update the sweep has two halves, and only one of them is this release's
+business.**
+
+- **What changed since the last approved build** is checked in full, and anything
+  wrong there blocks: no reviewer has ever seen it. Find that boundary from the build
+  that actually shipped, not from the version bump, which happens when a build is cut
+  and not when it goes out.
+- **Everything else** has already passed review, sometimes many times. Check it, then
+  report the whole half as **one line at the end** and offer to write it to the
+  project's backlog. No row, no colour, no progress bar, and no decision asked of
+  someone who is trying to ship. "Three long standing things I would fix eventually,
+  want them written down?" is the entire report. Dropping a months old finding on a
+  user mid release reads as a new emergency, and buries the one thing that is real.
+
 For an update to an app that is already live, some rules allow exceptions granted in
 the store consoles (for example, Google's declarations for photo and video
 permissions). Before calling one of those a blocker, ask whether the app already has
@@ -173,7 +227,7 @@ reviewers have not enforced yet, not a certain rejection: say so, with the date,
 still fix it, because enforcement changes without notice. Something added since the
 last approved release is the likeliest blocker.
 
-**That judgement is what picks the row's state on the board,** so the difference
+**When there is a board, that judgement picks the row's state,** so the difference
 survives into what the user looks at instead of dying in the report. A finding that
 has already shipped through approved releases is `risk`. `blocked` is for something
 that stops the upload, or that has never been through review, which on a live app
@@ -184,6 +238,10 @@ that is actually stopping the release.
 Report blockers first, each with the file and line, the rule and its source, then the
 passes in one line each. Offer to fix the blockers that are code. Fix them one at a
 time and show each change.
+
+Lead with the answer to the question the user actually has, which on an update is
+"can I ship this". Say how many things block it, in a sentence, before anything else.
+If the answer is none, say that first and plainly.
 
 ## 2. Version bump
 

@@ -2,6 +2,16 @@
 
 ## 0.2.0 (unreleased)
 
+- `ship`: a first release and an update are now treated as two different jobs, said
+  out loud in the first line of the reply. An update skips the accounts and web pages
+  steps, scopes the sweep to what changed since the last approved build, reports every
+  long standing finding as one line and an offer rather than as rows, and has no
+  status board unless the user asks for one. When they do ask, the update board is
+  about four rows and the progress ring measures the release's test checklist instead
+  of work finished months ago. Board rows also get rules: the user's words, no
+  questions as rows, and an exact link or no link, because a link to a console's front
+  door is not help.
+
 - `ship`: the status board gains a `risk` state, for a rule the app may be breaking
   that has already shipped through approved releases. The board had only `blocked`,
   so on an app already in the stores every long standing finding painted red next to

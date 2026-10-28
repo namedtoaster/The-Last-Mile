@@ -91,8 +91,25 @@ work.
 ## Links
 
 Every row that is not done and needs the user gets `links`, so they tap once instead
-of searching. Aim for the exact page: the search with their app's name filled in,
-the console section, the step's how to page. One or two links, the main one first.
+of searching. **The exact page, or no link at all.** A link to a console's front door
+is not help: the user can already find their own console, and handing them one says
+you did not know where the thing lives. When the references and the current docs give
+no exact URL, leave `links` out and put the path to click in the `detail` instead,
+said as a path ("Play Console, then Policy, then App content"), so it is honest about
+being a direction rather than a destination. One or two links, the main one first.
+
+### Writing a row
+
+A row is read by someone deciding what to do next, so:
+
+- **Say what it is in their words,** not the rule's. "The paywall shows the wrong
+  price as the big number" beats the guideline number.
+- **Never put a question on the board.** A row whose detail asks the user something
+  looks like work that is underway and is not. If the session could not find the
+  answer, ask it in the reply, as a question, and leave the board out of it.
+- **One row per thing they would ask about.** If they would not ask, it is not a row.
+- **A row the user has never thought about needs its first line to say why it is
+  there,** or it reads as a problem that appeared out of nowhere.
 
 Take every URL from this skill's references (`domains.md` for registrars and hosts,
 `stacks.md` for build and upload tools, `facts.md` for store rules) or from the
@@ -116,7 +133,13 @@ the settings name one, otherwise the first registrar in `domains.md`.
 ## The rows
 
 Start from what step 0 found, one row per thing the user would ask about. Drop rows
-that do not apply (no Android row for an iOS only app). Typical groups:
+that do not apply (no Android row for an iOS only app). **Which rows exist depends on
+whether this is a first release or an update**, and the two lists are not alike.
+
+### A first release
+
+Nearly nothing is true yet, so the board is the plan and the progress ring means
+something real. Typical groups:
 
 - **Accounts:** Apple Developer Program, Google Play account, the Google closed test
   if the account needs one (personal accounts created after 13 Nov 2023), agreements, tax and banking when the app sells anything.
@@ -125,6 +148,27 @@ that do not apply (no Android row for an iOS only app). Typical groups:
   number, release build tested.
 - **Listing:** copy, screenshots, privacy answers, review notes and demo account.
 - **Review:** one row per store, from upload to live.
+
+### An update
+
+There is no board unless the user asks for one. When they do, it has about four rows,
+all of them about **this release and nothing else**:
+
+- **This release:** what is in it, in the user's words. One row, `done`.
+- **Blocks the upload:** one row each, only for something the stores will refuse or a
+  rule the app started breaking since its last approved build. Usually there are
+  none, and then there is no row and the board says so by not having one.
+- **Testing:** the release's test checklist, with
+  `progress: { done, total, unit: "checks" }`. On an update this is the number the
+  user actually wants, so it is the one the ring should be measuring.
+- **Each store:** one row per store, moving `todo` to `waiting` to `done` as it is
+  uploaded, reviewed and goes live.
+
+Everything the first release settled stays off. The accounts, the web pages, the
+listing, the traps that have passed review for months: none of it is this release's
+business, and a settled row with a full green bar is not reassurance, it is a thing
+the reader has to scroll past to find the two rows that matter. A long standing
+finding is a line in the reply and an offer to write it to the backlog, never a row.
 
 ### An app that is already live
 
