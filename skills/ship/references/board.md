@@ -14,22 +14,25 @@ release's state, and the next session starts from it. The page the script writes
 ## Showing it
 
 ```
-node <this skill's folder>/scripts/board.mjs store/status.json
+node <this skill's folder>/scripts/board.mjs store/status.json --serve
 ```
 
 It checks every row that has a `url` (a page the stores need to load), prints the
-board, and writes the page. Then:
+board in the terminal, writes `store/status.html`, and with `--serve` keeps running
+on `http://localhost:4100` (`--port` to change it) so the page is **live**: its test
+checklist has real checkboxes, ticking one writes straight back to `store/status.json`,
+and the page polls so a change made to the file shows up in the browser within a few
+seconds. The session reads the ticks back out of the status file.
 
-- **Hand the user the page itself.** It is the board meant for people, and a text
-  summary is not a substitute. Use the first of these the session has:
-  1. **An artifact tool** (publishes a page to claude.ai): publish
-     `store/status.html`. Save the link in the status file as `"artifact"`, and next
-     time update that same artifact by its link, so the user keeps one link that is
-     always current. Mention the link in the reply.
-  2. **A tool that sends files to the user:** send `store/status.html` so the app
-     renders it.
-  3. **Neither (a desktop terminal):** run with `--open` to open it in the browser,
-     and give the file path.
+- **Serve it when the user has a browser on the same machine** and give them the
+  address. Run it in the background so the session keeps working while it is up, and
+  say that stopping the session stops the page.
+- **Without a browser there** (a cloud session, or the user is on their phone), the
+  written `store/status.html` is still a complete page: open it with `--open`, or hand
+  over the file. Its checkboxes render but cannot be ticked, and the page says so.
+- **It is an ordinary local page, not a published artifact.** Nothing leaves the
+  machine, so a private release's state stays private, and the file sits in the repo
+  where the next session finds it.
 - **Give the board's gist in a line or two,** led by what only the user can do, since
   the terminal output may not show its colors where the user reads it.
 - Never report a page as live, or as broken, unless a check said so.
@@ -84,7 +87,7 @@ work.
 | `owner` | `you` when only the user can do it (paying, agreements, a console only form). These also show in a callout at the top. |
 | `progress` | `{ "done", "total", "unit" }` when it is countable: days of a closed test, screenshots captured. |
 | `since` | When the current state began (ISO time), shown as "for 2 days". Use for reviews. |
-| `artifact` | The link of the published board, kept so each update goes to the same page. Top level, not per row. |
+| `checks` | Top level, not per row: the release's test checklist, `[{ "id", "text", "note", "done" }]`. Rendered as checkboxes, and when the board is served, ticking one writes `done` back to this file. `id` is yours to pick and must not change once the user has started ticking. |
 | `links` | `[{ "label", "url" }]`: where to go to get it done, first one the main button. See below. |
 | `url` | A page that must load. The script checks it each run and sets the state itself: `done` when it loads, `blocked` when it returns an error. |
 
@@ -158,17 +161,36 @@ all of them about **this release and nothing else**:
 - **Blocks the upload:** one row each, only for something the stores will refuse or a
   rule the app started breaking since its last approved build. Usually there are
   none, and then there is no row and the board says so by not having one.
-- **Testing:** the release's test checklist, with
-  `progress: { done, total, unit: "checks" }`. On an update this is the number the
-  user actually wants, so it is the one the ring should be measuring.
-- **Each store:** one row per store, moving `todo` to `waiting` to `done` as it is
-  uploaded, reviewed and goes live.
+- **Testing:** put the release's test checklist in the top level `checks` array
+  rather than in a row. The page renders it as real checkboxes, and the ring measures
+  it automatically whenever it is there, because on an update that is the number the
+  user actually came for.
+- **Each store, once there is something to say.** A row reading "nothing uploaded
+  yet" states the obvious to someone who is trying to upload. Add the row when the
+  build goes up, and then it earns its place: `waiting` with `since` set turns into
+  "App Store review, for 2 days", which is the thing nobody can find out by looking
+  at their own repo.
+- **Carried, not part of this release:** its own group, at the bottom, under a
+  heading that says so. One row per thing the sweep found that predates the last
+  approved build, as `risk` or as `todo` with `owner: "you"`.
 
-Everything the first release settled stays off. The accounts, the web pages, the
-listing, the traps that have passed review for months: none of it is this release's
-business, and a settled row with a full green bar is not reassurance, it is a thing
-the reader has to scroll past to find the two rows that matter. A long standing
-finding is a line in the reply and an offer to write it to the backlog, never a row.
+### The carried group
+
+Everything the first release settled stays off: the accounts, the web pages, the
+listing copy. Those are finished, and a settled row with a full green bar is not
+reassurance, it is a thing to scroll past.
+
+A long standing **finding** is different, and it does belong on the board, in its own
+group at the bottom, named so that nobody can mistake it for a gate. Those rules are
+real, the user usually has never heard of them, and dropping them only in a reply
+means they are gone the moment the conversation scrolls. On the board they are a
+standing list the user can work through whenever they choose, including before this
+release if they want to.
+
+What makes that safe rather than alarming is where it sits and what it says: below
+the release, under a heading that names it as not part of the release, with each row
+carrying the date it first shipped. The ring never counts it, because the ring is
+about getting this build out.
 
 ### An app that is already live
 

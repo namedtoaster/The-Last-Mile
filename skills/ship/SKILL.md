@@ -46,8 +46,10 @@ the terminal. Give every row the user must act on a link straight to where it ge
 done. `references/board.md` has the format, the rows, the links, and when to show it.
 Pages the session's network blocks are checked from GitHub by a small workflow
 (`templates/last-mile-checks.yml`); install it in GitHub projects, as that file says.
-**On an update the board is off by default,** and short when it is asked for. See
-"First release and update are two different jobs" in step 0, and the update rows in
+**An update gets a much shorter board, in its own shape:** what is in the release,
+what blocks it, the test checklist as real checkboxes, and a clearly separate group
+of findings carried from before that are not part of this release. See "First release
+and update are two different jobs" in step 0, and the update rows in
 `references/board.md`.
 
 **`/ship status`, or the user asking where things stand,** means the board, never a
@@ -56,8 +58,9 @@ text summary alone:
 1. Create `store/status.json` if it does not exist (step 0's checks fill it), else
    refresh its rows from what can be checked now.
 2. Run `scripts/board.mjs` on it.
-3. Hand the user the page as `references/board.md` says (an artifact, or the file
-   rendered in the app), then give its gist in two lines.
+3. Hand the user the page as `references/board.md` says: serve it on localhost when
+   they have a browser there, so its checkboxes work, otherwise give them the file.
+   Then give its gist in two lines.
 4. Commit and push `store/status.json` the way the project's rules say, and stop.
 
 **`/ship sweep`, or the user asking to check the app without releasing it,** means
@@ -159,9 +162,10 @@ None of that is worth putting in front of anyone. So on an update:
 - **Skip 4 and 5 above.** Raise an account or a page only when something about it has
   actually broken.
 - **Scope the sweep to what changed** (step 1).
-- **Default to no board.** Give the user the release's test checklist and whatever
-  blocks the upload, and nothing else. Make a board only if they ask where things
-  stand, and then only the update rows in `references/board.md`.
+- **Use the update board, not the first release one.** About four rows, plus the
+  release's test checklist as real checkboxes and a separate group for findings
+  carried from before. Serve it so the user can tick things off as they test, and
+  read their ticks back out of the status file.
 - **The plan is three lines:** what is in this release, what blocks it, what to test.
 
 The failure this exists to prevent happened in a real session. The first release
@@ -172,10 +176,10 @@ discovered. The user said they had never seen any of it before, that it read as 
 pile of new problems, and that they only wanted to go through the release checklist.
 They were right, and the sweep's one real finding was lost in the noise.
 
-End this step with a plan sized to the job: for a first release, the steps ahead,
-which need the user, and the first thing only they can do (often paying for an
-account) so they can start it now, written into `store/status.json` and shown as the
-board. For an update, the three lines above, and no board unless asked.
+End this step with a plan sized to the job, written into `store/status.json` and
+shown as the board: for a first release, the steps ahead, which need the user, and
+the first thing only they can do (often paying for an account) so they can start it
+now. For an update, the three lines above.
 
 ## 1. Rejection sweep
 
@@ -209,12 +213,14 @@ business.**
   wrong there blocks: no reviewer has ever seen it. Find that boundary from the build
   that actually shipped, not from the version bump, which happens when a build is cut
   and not when it goes out.
-- **Everything else** has already passed review, sometimes many times. Check it, then
-  report the whole half as **one line at the end** and offer to write it to the
-  project's backlog. No row, no colour, no progress bar, and no decision asked of
-  someone who is trying to ship. "Three long standing things I would fix eventually,
-  want them written down?" is the entire report. Dropping a months old finding on a
-  user mid release reads as a new emergency, and buries the one thing that is real.
+- **Everything else** has already passed review, sometimes many times. Check it, say
+  so in **one line at the end**, and put it in the board's "carried, not part of this
+  release" group with the date it first shipped. Not in the blockers, not counted by
+  the ring, not a decision asked of someone who is trying to ship. The user has
+  usually never heard of these rules, so they do want them written down somewhere
+  they can come back to; what they do not want is to meet them as an emergency in the
+  middle of a release. "Three long standing things, parked at the bottom of the
+  board" is the whole report.
 
 For an update to an app that is already live, some rules allow exceptions granted in
 the store consoles (for example, Google's declarations for photo and video

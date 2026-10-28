@@ -2,6 +2,14 @@
 
 ## 0.2.0 (unreleased)
 
+- `ship`: the board can be served. `board.mjs --serve` runs it on localhost, where
+  the release's test checklist is real checkboxes: ticking one writes straight back
+  to `store/status.json`, which is where the session reads it, and the page polls so
+  an edit made to the file shows up in the browser. It stays an ordinary local page,
+  never a published artifact, so a private release's state does not leave the
+  machine. Findings carried from earlier releases now sit in their own group at the
+  bottom of the board, named as not part of this release, instead of being mentioned
+  once in a reply and lost.
 - `ship`: a first release and an update are now treated as two different jobs, said
   out loud in the first line of the reply. An update skips the accounts and web pages
   steps, scopes the sweep to what changed since the last approved build, reports every

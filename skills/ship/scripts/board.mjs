@@ -5,15 +5,21 @@
  * the board in the terminal. No dependencies: Node 18 or later.
  *
  *   node board.mjs [status.json] [--html <file>] [--no-check] [--wait] [--open]
+ *                  [--serve] [--port <n>]
  *
  *   status.json  default store/status.json, relative to where it runs
  *   --html       where the page goes, default next to the status file as status.html
  *   --no-check   skip the live page checks (offline, or in a hurry)
  *   --wait       for pages blocked here, wait up to two minutes for GitHub's check
  *   --open       open the page in the default browser afterwards
+ *   --serve      serve the page on localhost and keep running, so its checkboxes
+ *                work: ticking one writes straight back to the status file
+ *   --port       port for --serve, default 4100
  *
- * The file format is in ../references/board.md. Read only: the status file is never
- * changed; the live results go into the page and the terminal output.
+ * Without --serve this only reads: it writes the page and the terminal board and
+ * never touches the status file. With --serve it writes the status file too, but
+ * only ever the `done` flag of a check the person ticked in their browser. The file
+ * format is in ../references/board.md.
  */
 
 import { readFileSync, writeFileSync, mkdirSync, existsSync, statSync } from 'node:fs';
@@ -36,7 +42,7 @@ const option = (name) => {
   const i = args.indexOf(name);
   return i >= 0 ? args[i + 1] : undefined;
 };
-const positional = args.filter((a, i) => !a.startsWith('--') && args[i - 1] !== '--html');
+const positional = args.filter((a, i) => !a.startsWith('--') && args[i - 1] !== '--html' && args[i - 1] !== '--port');
 const statusPath = resolve(positional[0] ?? 'store/status.json');
 const htmlPath = resolve(option('--html') ?? join(dirname(statusPath), 'status.html'));
 
@@ -117,6 +123,11 @@ if (unreached.length) {
   }
 }
 
+// What the live checks found, kept by url. Re-applied when the server re-reads the
+// status file, so a page is not re-fetched on every browser poll.
+const liveByUrl = new Map();
+for (const item of items) if (item.url) liveByUrl.set(item.url, { state: item.state, detail: item.detail, checked: item.checked });
+
 // Shortcuts for a row: where to go to get it done. Only http(s) links are kept.
 function links(item) {
   return (Array.isArray(item.links) ? item.links : []).filter((l) => l && l.label && /^https?:\/\//.test(l.url ?? ''));
@@ -152,16 +163,103 @@ function detailText(item) {
   return parts.join(' · ');
 }
 
-const ready = items.filter((i) => i.state === 'done').length;
-const resolved = { ...status, items: items.map((i) => ({ ...i, links: links(i), fraction: fraction(i), text: detailText(i) })), ready, total: items.length };
+// Everything the page and the terminal need, from a status object. Called again on
+// every browser poll, so it must stay cheap: no network, no git.
+function build(raw) {
+  const rows = (raw.items ?? []).map((item) => {
+    const base = { ...item, state: STATES[item.state] ? item.state : 'todo' };
+    const live = base.url && liveByUrl.get(base.url);
+    return live ? { ...base, ...live } : base;
+  });
+  const checks = (raw.checks ?? []).map((c, i) => ({ ...c, id: c.id ?? `check-${i}` }));
+  const checksDone = checks.filter((c) => c.done).length;
+  return {
+    ...raw,
+    items: rows.map((i) => ({ ...i, links: links(i), fraction: fraction(i), text: detailText(i) })),
+    checks,
+    checksDone,
+    ready: rows.filter((i) => i.state === 'done').length,
+    total: rows.length,
+  };
+}
+
+const resolved = build({ ...status, items });
 
 // HTML page
 mkdirSync(dirname(htmlPath), { recursive: true });
-writeFileSync(htmlPath, page(resolved));
+writeFileSync(htmlPath, page(resolved, false));
 
 // Terminal board
 await printBoard(resolved);
 console.log(`\n  Page: ${relative(process.cwd(), htmlPath) || htmlPath}`);
+
+// Serve mode: the page on localhost, with working checkboxes. The browser polls, so
+// a tick made in the page and an edit made to the file by hand each show up in the
+// other within a couple of seconds. Bound to the loopback address only.
+if (flag('--serve')) {
+  const { createServer } = await import('node:http');
+  const port = Number(option('--port')) || 4100;
+  let live = { ...status, items };
+  let seen = statSync(statusPath).mtimeMs;
+
+  const reread = () => {
+    let m;
+    try { m = statSync(statusPath).mtimeMs; } catch { return; }
+    if (m === seen) return;
+    seen = m;
+    try { live = JSON.parse(readFileSync(statusPath, 'utf8')); } catch { /* caught mid write, keep what we have */ }
+  };
+  const save = () => {
+    writeFileSync(statusPath, `${JSON.stringify(live, null, 2)}\n`);
+    seen = statSync(statusPath).mtimeMs;
+  };
+
+  const server = createServer((req, res) => {
+    const send = (code, type, body) => {
+      res.writeHead(code, { 'content-type': type, 'cache-control': 'no-store' });
+      res.end(body);
+    };
+    const url = req.url ?? '/';
+    if (req.method === 'GET' && (url === '/' || url.startsWith('/?'))) {
+      reread();
+      return send(200, 'text/html; charset=utf-8', page(build(live), true));
+    }
+    if (req.method === 'GET' && url.startsWith('/status.json')) {
+      reread();
+      return send(200, 'application/json', JSON.stringify(build(live)));
+    }
+    if (req.method === 'POST' && url === '/check') {
+      let body = '';
+      req.on('data', (c) => { body += c; if (body.length > 10000) req.destroy(); });
+      req.on('end', () => {
+        try {
+          const { id, done } = JSON.parse(body);
+          reread();
+          const list = live.checks ?? [];
+          const check = list.find((c, i) => (c.id ?? `check-${i}`) === id);
+          if (!check) return send(404, 'application/json', '{"error":"no such check"}');
+          check.done = !!done;
+          live.updated = new Date().toISOString();
+          save();
+          send(200, 'application/json', JSON.stringify(build(live)));
+        } catch (e) {
+          send(400, 'application/json', JSON.stringify({ error: e.message }));
+        }
+      });
+      return;
+    }
+    send(404, 'text/plain', 'Not found');
+  });
+
+  server.on('error', (e) => {
+    console.error(e.code === 'EADDRINUSE' ? `  Port ${port} is already in use. Try --port ${port + 1}.` : `  ${e.message}`);
+    process.exit(1);
+  });
+  server.listen(port, '127.0.0.1', () => {
+    console.log(`\n  Live at http://localhost:${port}`);
+    console.log(`  Ticking a box writes to ${relative(process.cwd(), statusPath) || statusPath}. Ctrl+C to stop.`);
+  });
+}
 
 if (flag('--open')) {
   const cmd = process.platform === 'darwin' ? 'open' : process.platform === 'win32' ? 'cmd' : 'xdg-open';
@@ -250,7 +348,7 @@ async function printBoard(data) {
 
 // HTML rendering
 
-function page(data) {
+function page(data, serve) {
   const json = JSON.stringify(data).replace(/</g, '\\u003c');
   const title = `${data.app ?? 'Your app'} release`.replace(/[<&>"]/g, '');
   return `<!doctype html>
@@ -332,6 +430,17 @@ h1 { margin: 0; font-size: 22px; line-height: 1.2; letter-spacing: -.01em; }
 .links a::after { content: '\\2197'; font-weight: 400; opacity: .7; }
 .links a:active { transform: scale(.98); }
 .callout a { color: var(--ink); font-weight: 600; }
+.check { display: grid; grid-template-columns: 24px 1fr; gap: 12px; align-items: start; padding: 13px 16px; border-top: 1px solid var(--line); cursor: default; }
+.card .check:first-child { border-top: 0; }
+.check input { appearance: none; width: 22px; height: 22px; margin: 0; border: 2px solid var(--todo); border-radius: 7px; background: transparent; display: grid; place-items: center; }
+.check input::after { content: '\\2713'; color: #fff; font-size: 13px; font-weight: 700; opacity: 0; }
+.check input:checked { background: var(--done); border-color: var(--done); }
+.check input:checked::after { opacity: 1; }
+.check input:not(:disabled) { cursor: pointer; }
+.check input:disabled { opacity: .55; }
+.check span { overflow-wrap: anywhere; }
+.check input:checked + span { color: var(--muted); text-decoration: line-through; text-decoration-color: var(--line); }
+.readonly { color: var(--muted); font-size: 12.5px; padding: 11px 16px; border-top: 1px solid var(--line); }
 .you { font-size: 11px; font-weight: 700; color: var(--active); border: 1px solid currentColor; border-radius: 6px; padding: 0 5px; white-space: nowrap; }
 .bar { grid-column: 2 / 4; height: 6px; border-radius: 99px; background: var(--track); overflow: hidden; margin-top: 4px; }
 .bar i { display: block; height: 100%; width: 0; border-radius: inherit; transition: width 1s cubic-bezier(.2,.8,.2,1); }
@@ -362,7 +471,8 @@ footer a { color: inherit; }
 <main id="app"></main>
 <script id="data" type="application/json">${json}</script>
 <script>
-const data = JSON.parse(document.getElementById('data').textContent);
+const SERVE = ${serve ? 'true' : 'false'};
+let state = JSON.parse(document.getElementById('data').textContent);
 const LABEL = { done: 'Ready', active: 'In progress', waiting: 'Waiting', blocked: 'Needs a fix', risk: 'Known risk', todo: 'To do' };
 const ICON = { done: '✓', active: '', waiting: '', blocked: '!', risk: '▲', todo: '' };
 const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -383,14 +493,22 @@ function detail(item) {
   if (item.url && /^https?:/.test(item.url)) text += (text ? ' · ' : '') + '<a href="' + esc(item.url) + '">open</a>';
   return text;
 }
+const C = 2 * Math.PI * 36;
+function draw(data, animate) {
 const name = [data.app || 'Your app', data.version, data.build ? '(' + data.build + ')' : ''].filter(Boolean).join(' ');
 const yours = data.items.filter((i) => i.owner === 'you' && i.state !== 'done');
-const pct = data.total ? Math.round((data.ready / data.total) * 100) : 0;
-const C = 2 * Math.PI * 36;
+const checks = data.checks || [];
+// On a release with a test checklist, that is the number moving, so the ring
+// measures it. Rows only when there is no checklist.
+const pct = checks.length
+  ? Math.round((data.checksDone / checks.length) * 100)
+  : (data.total ? Math.round((data.ready / data.total) * 100) : 0);
 let html = '<header><div class="ring"><svg viewBox="0 0 84 84"><circle class="track" cx="42" cy="42" r="36"/>'
   + '<circle class="fill" cx="42" cy="42" r="36" stroke-dasharray="' + C + '" stroke-dashoffset="' + C + '"/></svg>'
   + '<div class="pct"><span><span id="pct">0</span>%</span></div></div>'
-  + '<div><h1>' + esc(name) + '</h1><div class="sub">' + data.ready + ' of ' + data.total + ' ready'
+  + '<div><h1>' + esc(name) + '</h1><div class="sub">'
+  + (checks.length ? data.checksDone + ' of ' + checks.length + ' checks done · ' : '')
+  + data.ready + ' of ' + data.total + ' ready'
   + (data.updated ? ' · updated ' + ago(data.updated) + (ago(data.updated) === 'just now' ? '' : ' ago') : '') + '</div></div></header>';
 if (yours.length) {
   html += '<div class="callout"><b>Only you can do ' + (yours.length === 1 ? 'this' : 'these') + '</b><ul>'
@@ -416,14 +534,23 @@ for (const item of data.items) {
     + '</div>';
 }
 if (open) html += '</div>';
+if (checks.length) {
+  html += '<div class="group">Test before you ship</div><div class="card">'
+    + checks.map((c) => '<label class="check"><input type="checkbox" data-check="' + esc(c.id) + '"'
+      + (c.done ? ' checked' : '') + (SERVE ? '' : ' disabled') + '><span>' + esc(c.text)
+      + (c.note ? '<br><span class="detail">' + esc(c.note) + '</span>' : '') + '</span></label>').join('')
+    + (SERVE ? '' : '<div class="readonly">Saved as a file, so these cannot be ticked. Run the board with --serve to tick them.</div>')
+    + '</div>';
+}
 html += '<footer>Made by <a href="https://github.com/namedtoaster/the-last-mile">/ship</a> from The Last Mile</footer>';
 document.getElementById('app').innerHTML = html;
+if (!animate) document.querySelectorAll('.row').forEach((el) => { el.style.animation = 'none'; el.style.opacity = 1; el.style.transform = 'none'; });
 requestAnimationFrame(() => requestAnimationFrame(() => {
   document.querySelectorAll('.bar i').forEach((el) => { el.style.width = el.dataset.w + '%'; });
   document.querySelector('.ring .fill').style.strokeDashoffset = C * (1 - pct / 100);
   const target = document.getElementById('pct');
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduce) { target.textContent = pct; return; }
+  if (reduce || !animate) { target.textContent = pct; return; }
   const start = performance.now();
   const tick = (now) => {
     const t = Math.min(1, (now - start) / 1100);
@@ -432,6 +559,43 @@ requestAnimationFrame(() => requestAnimationFrame(() => {
   };
   requestAnimationFrame(tick);
 }));
+}
+
+draw(state, true);
+
+if (SERVE) {
+  // Ticking writes straight to the status file, so the session reading that file
+  // sees it. Polling keeps the page honest the other way: an edit made to the file
+  // outside the browser shows up here within a couple of seconds.
+  document.getElementById('app').addEventListener('change', async (e) => {
+    const box = e.target.closest('input[data-check]');
+    if (!box) return;
+    box.disabled = true;
+    try {
+      const res = await fetch('/check', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ id: box.dataset.check, done: box.checked }),
+      });
+      if (!res.ok) throw new Error(await res.text());
+      state = await res.json();
+      draw(state, false);
+    } catch {
+      box.checked = !box.checked;
+      box.disabled = false;
+    }
+  });
+  let last = JSON.stringify(state);
+  setInterval(async () => {
+    if (document.activeElement && document.activeElement.matches('input[data-check]')) return;
+    try {
+      const fresh = await (await fetch('/status.json')).json();
+      const now = JSON.stringify(fresh);
+      if (now === last) return;
+      last = now; state = fresh; draw(state, false);
+    } catch { /* server stopped: keep showing the last good board */ }
+  }, 2500);
+}
 </script>
 </body>
 </html>
