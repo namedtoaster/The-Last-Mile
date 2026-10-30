@@ -3,7 +3,8 @@
 # when its own session cannot reach a site (cloud sessions block most of the web).
 #
 # Copy to .github/workflows/last-mile-checks.yml. Runs when store/status.json is
-# pushed, every six hours, and from the Actions tab. From The Last Mile:
+# pushed, and from the Actions tab. No schedule: a six hourly run used up a free
+# account's Actions minutes (2026-10-30). From The Last Mile:
 # https://github.com/namedtoaster/the-last-mile
 
 name: Last Mile checks
@@ -11,8 +12,6 @@ name: Last Mile checks
 on:
   push:
     paths: ['store/status.json']
-  schedule:
-    - cron: '23 */6 * * *'
   workflow_dispatch:
 
 permissions:
