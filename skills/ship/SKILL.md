@@ -20,6 +20,7 @@ Read these in this skill's folder before starting:
 - `references/levels.md`: what each release level includes.
 - `references/domains.md`: domains, hosts and email for the store pages.
 - `references/rulebooks.md`: the full Apple and Google rulebooks for the sweep.
+- `references/rejection-log.md`: the app's own log of rejections and what fixed them.
 
 ## The one rule
 
@@ -188,6 +189,9 @@ the rules are current, then check each one **against the app, not the docs**:
   keeps these.
 - Walk every trap under **Apple** and **Google Play** that applies, and the section for
   this stack under **Stack specific**.
+- Read every entry in `store/rejections/` (`references/rejection-log.md`) and check
+  that none of their causes has come back. A repeat of the app's own rejection is the
+  most avoidable one there is.
 - Then walk the full rulebooks in `references/rulebooks.md`, section by section, from
   their saved copies. The traps are what has caught apps before; the rulebooks are
   everything else. List every section with "applies" or "does not apply" in one line,
@@ -332,8 +336,10 @@ Follow the upload path for the stack in `references/stacks.md`. Ask before each 
 3. Draft a reply in two or three polite sentences saying what changed. If the reviewer
    misunderstood, explain with a screenshot.
 4. Bump the build number, rebuild, upload and resubmit, asking before each upload.
-5. Record the rejection with its date and guideline in the project's gotchas or
-   `SHIPPING.md`.
+5. Draft an entry for `store/rejections/` from the reviewer's message and the fix, as
+   `references/rejection-log.md` describes: the reviewer's words with the app's details
+   redacted, what triggered it, the fix, and the general rule. Show it and write it on
+   the user's yes. When the fixed build is approved, complete the entry without asking.
 6. If it would catch other apps and is not already in `references/traps.md`, offer to
    report it to The Last Mile. Fill in the report yourself from what just happened, so
    the user only has to say yes:

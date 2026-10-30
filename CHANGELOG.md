@@ -2,6 +2,11 @@
 
 ## 0.2.0 (unreleased)
 
+- ship: keeps a rejection log in `store/rejections/`, one small file per rejection with
+  the reviewer's words redacted, the fix and the general rule. Drafted by the agent and
+  written on one yes, completed when the fixed build is approved, and checked on every
+  later sweep so the same rejection never costs the app twice.
+
 - `ship`: a first release and an update are now treated as two different jobs, said
   out loud in the first line of the reply. An update skips the accounts and web pages
   steps, scopes the sweep to what changed since the last approved build, reports every
