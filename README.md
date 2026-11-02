@@ -146,6 +146,7 @@ written for any stack; see-it-work is still Expo first.
 | lean-out | Finds the structural clutter that makes every new change land wrong, ranked by what it would have prevented |
 | one-time-surface | Builds or checks a hint, tour or review ask meant to appear once, so it works for real people and not just on your phone |
 | mine-community | Mines a founder community for what is working, filtered for survivorship bias and promo posts |
+| build-a-baseline | Stops conclusions drifting between sessions by turning a judgement call into a fixed scoring rule over measured data, with validated inputs |
 | search-pages | Finds the search phrases you can win and builds the pages that get the app found |
 | sync | Brings a project's copy of these skills up to date and pushes it, from your phone or desktop |
 

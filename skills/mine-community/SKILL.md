@@ -46,6 +46,33 @@ Everything else is interesting reading and does not go in the output.
 conversion at 50,000 followers says nothing about a conversion rate at 15 daily
 users. Report the mechanism, not the multiplier.
 
+**Two posts by the same author are one source.** Check the author handle and the
+product name on every finding before you use the word convergence. A founder
+promoting one product will post variations of the same story across several
+communities, and a harvest that merges windows and subreddits will show you both
+copies without telling you they are related. Agreement between two posts by the
+same person is not corroboration, and presenting it as such is the single easiest
+way to launder one opinion into a conclusion.
+
+**Check a claim against the user's own tools and data BEFORE you recommend it,
+not after.** This is an ordering rule and it is the most expensive one to get
+wrong. A community post saying "this $10 tool changed everything" becomes a
+recommendation to buy something the project already owns; a post saying "spend
+$100 to unlock the data" becomes a recommendation to spend money the vendor's own
+documentation says is unnecessary. Both happen, and the user then watches you
+withdraw advice you gave an hour earlier, which costs more trust than the finding
+was ever worth. So for every finding that would cost the user money, time, or a
+change to a live product: open the relevant tool, read the relevant number, read
+the vendor's own page, and only then write the recommendation. If you cannot
+check it, label it unchecked rather than recommending it.
+
+**Say which findings are measurements and which are claims, in the output.** A
+founder cannot calibrate trust across a mixed list. When a session contains both
+numbers read from the user's own account and claims read from strangers' posts,
+separate them explicitly and say that the first kind has been stable and the
+second kind has not. That sentence is what lets someone act on the reliable half
+without having to re-verify everything you said.
+
 ## 1. Know the user's stage before reading anything
 
 Findings are only rankable against a real situation. Read the project's rules
