@@ -2,6 +2,17 @@
 
 ## 0.2.0 (unreleased)
 
+- `search-pages`: carries the verified negatives for the AI search surface, so nobody
+  spends a session on a ritual. An `llms.txt` file does nothing (97% of them get zero bot
+  requests across 137,210 domains, and Google says Search ignores it), Google's own
+  position is that generative AI optimization is still SEO so there is no second
+  discipline to buy, and the published mentions-beat-backlinks correlations are stated
+  with the caveat that they show which brands get named rather than what makes an engine
+  name them. Also: how to read Search Console from the command line and its three auth
+  traps, the two silent failure modes of the autocomplete endpoint (an empty list where
+  an error belongs, and a throttled run that reads as a niche with no demand), and the
+  reason a negative assertion on a rendered page fails in both directions at once.
+
 - ship: keeps a rejection log in `store/rejections/`, one small file per rejection with
   the reviewer's words redacted, the fix and the general rule. Drafted by the agent and
   written on one yes, completed when the fixed build is approved, and checked on every

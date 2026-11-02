@@ -46,6 +46,23 @@ expand each one with every letter a to z plus " for", " vs", " with". Collect an
 dedupe. A few hundred seeds yields one to two thousand real phrases in a few
 minutes.
 
+Two things about that endpoint, because it fails quietly rather than loudly:
+
+- **Send a browser User-Agent.** Without one it sometimes answers an empty list
+  instead of an error, and an empty list is indistinguishable from a seed nobody
+  searches.
+- **Make the script refuse to write the file when too many calls failed.** It is
+  undocumented and unmetered, so hammering it gets your IP answering empty lists.
+  A throttled run therefore produces a short list that reads exactly like a niche
+  with no demand, which is the worst possible failure: it looks like an answer.
+  Count the failures, and stop above a threshold rather than writing a file that
+  will be trusted. Go serially with a small pause.
+
+Write this as a script in the repo rather than doing it by hand, and have it
+record the date. The phrase list is the input to every later decision, and a
+number nobody can regenerate is a number that gets quoted from memory once it is
+stale.
+
 Then filter hard:
 
 - **Keep** anything naming what the product actually does.
@@ -125,6 +142,13 @@ cannot see inside. Two rules:
   elements it should contain. A builder can emit something that compiles, type
   checks, and renders blank.
 
+This bites hardest on a NEGATIVE assertion, where it fails in both directions at
+once. "The page must not contain X", asserted against the rendered body, will
+fail on a source comment that merely mentions X, and will PASS on a page whose
+markup broke so badly it contains nothing at all. Both outcomes are wrong and the
+second one is silent. Parse the blocks, then assert the field is absent from the
+parsed object.
+
 A markdown subset you write yourself (headings, paragraphs, lists, links, quotes,
 tables, code) is usually less work than a markdown library plus a sanitiser
 configured correctly.
@@ -142,6 +166,26 @@ traffic dropped:
 In Search Console, **sort by clicks, not impressions.** A page can collect
 thousands of impressions at position 37 and send nobody, which looks like
 progress and is not. A page at position 15 to 30 needs rewriting, not a sibling.
+
+Read it from the command line rather than the console, for the same reason the
+phrase list is a script: a figure you have to click through to and screenshot is
+a figure that gets quoted from memory. The Search Analytics API is
+`POST https://www.googleapis.com/webmasters/v3/sites/{siteUrl}/searchAnalytics/query`,
+grouped by any of `query`, `page`, `country`, `device` or `date`. Three traps:
+
+- **A service account is the auth that suits a script**, and the grant does not
+  happen in Google Cloud. Enable the API there, then paste the service account's
+  `client_email` into the property's own Settings, Users and permissions. Skipping
+  that second half gives a 403 that reads as a broken key.
+- **The property string must match how the domain was verified.** A domain
+  verified by DNS is `sc-domain:example.com`, and passing `https://example.com/`
+  for it 403s identically to having no permission at all.
+- **Google service account keys are RSA and sign as plain RS256.** If you have
+  already written a tool against App Store Connect, do not carry its EC signing
+  workaround over; it will produce a signature Google rejects.
+
+Data lags about two days, so a range ending yesterday has an empty tail that
+drags the reported average position down for no reason.
 
 ## 8. Tell the user what to expect
 
@@ -162,6 +206,29 @@ The same founder measured it sending more visitors than his social channel over
 real claim, an honest comparison table. The one trap he flagged is that analytics
 tools undercount it badly, so check raw referrers rather than a prebuilt channel
 bucket.
+
+**There is no second discipline to buy here**, and this is worth saying because
+an industry has grown up selling one. Google's own published position is that
+optimizing for generative AI search is optimizing for the search experience, and
+thus still SEO. The pages above are the AI-search work.
+
+**Do not add an `llms.txt` file.** It is the most recommended tactic in this area
+and it does nothing. Ahrefs looked at 137,210 domains in May 2026 and found 97%
+of `llms.txt` files received zero requests from any bot; Google has said Search
+ignores the file; no major crawler has committed to consuming it. Google's same
+guidance separately rejects content chunking, AI-rephrasing and mention farming.
+Check the current state before acting on this either way, but do not add the file
+on the strength of a blog post recommending it.
+
+**Do not go buying backlinks for AI visibility either.** The published
+correlations put branded mentions across the open web well ahead of backlinks for
+whether an engine names you, with video platform mentions ahead of both, and
+backlink metrics close to the bottom. Read that carefully, because it is
+correlational and comes from vendors who sell link tools: it says which brands
+get named, not what makes an engine name them, and large brands accumulate both.
+The safe conclusion is narrow and still useful, which is that link building is
+the worst-evidenced thing to spend a solo founder's money on here, and being
+genuinely talked about is the better-correlated signal.
 
 ## Other languages are mostly empty
 
