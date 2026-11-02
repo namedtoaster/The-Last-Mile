@@ -12,6 +12,10 @@
   traps, the two silent failure modes of the autocomplete endpoint (an empty list where
   an error belongs, and a throttled run that reads as a niche with no demand), and the
   reason a negative assertion on a rendered page fails in both directions at once.
+  Also: re-read the source for every specific fact on the day you publish, because the
+  facts you are most confident about are the ones taken from your own notes rather than
+  looked up, and a comparison page that is wrong about a number has spent its
+  credibility on its own thesis.
 
 - ship: keeps a rejection log in `store/rejections/`, one small file per rejection with
   the reviewer's words redacted, the fix and the general rule. Drafted by the agent and
