@@ -43,7 +43,7 @@
         "contacts",
         "nsprivacycollecteddatatypes"
       ],
-      "note": "2026-10-21 sweep: neither store's answers list Contacts or Location, Apple's lists no usage data or device ID, while the code and Bluesky's own privacy policy describe them."
+      "note": "2026-10-21 sweep: comparing the store privacy answers with the code is a fair check to report on this app."
     },
     {
       "id": "unused-permissions",
