@@ -111,6 +111,18 @@ Naming a competitor's genuine advantage costs you nothing and is the difference
 between a page that ranks and a page that reads like marketing. It also forces
 you to actually use their product, which is worth the afternoon on its own.
 
+**Re-read the source for every specific fact, on the day you publish.** A
+comparison page lives on specifics: a price, a free tier, a number you recorded
+when you found it. All of those are facts about the day you wrote them down, and
+a competitor's pricing page is the one thing on the internet guaranteed to change
+without telling you. The dangerous ones are the facts you are most confident
+about, because those are the ones taken from your own notes rather than looked
+up. A page arguing that readers should check numbers, which is then wrong about a
+number, has spent its credibility on its own thesis.
+
+Then say on the page which day you checked, and invite corrections. That is both
+honest and the cheapest recency signal a page can carry.
+
 **Write from something only you know.** The pages that beat an established site
 do it on substance, not word count. If the project has measured something, fixed
 something, or found that the common advice is wrong, that is the post. Check the
