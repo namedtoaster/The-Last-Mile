@@ -1,8 +1,19 @@
 Source: https://support.google.com/googleplay/android-developer/answer/9900533
-Fetched: 2026-10-26
+Fetched: 2026-11-02
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 # Subscriptions
+
+Changes are coming to this article
+
+This article will be updated with recently announced changes.
+
+Subscriptions with ongoing eligibility-based discounts: Subscriptions with ongoing eligibility-based discounts, such as student plans, must clearly disclose eligibility criteria, the verification process, and post-eligibility pricing and benefit changes.
+
+(effective January 27, 2027)
+
+To preview the updated "Subscriptions" article, visit this page.
+
 You, as a developer, must not mislead users about any subscription services or content you offer within your app. It is critical to communicate clearly in any in-app promotions, splash screens, and subscription plan selection screens. We do not allow apps that subject users to deceptive or manipulative purchase experiences (including in-app purchases or subscriptions). If you provide any subscription benefits, they must be truthful and accurate and must not misrepresent any aspect of the relevant subscription.
 
 You must be transparent about your offer. This includes clearly and explicitly disclosing your offer terms, the cost of your subscription, the frequency of your billing cycle, the automatic renewal terms, whether a subscription is required to use the app, and any other material information about the subscription. Users should not have to perform any additional action to review the information.
@@ -85,7 +96,7 @@ If a user cancels a subscription purchased through Google Play's billing system,
 
 You (as the content or access provider) may implement a more flexible refund policy with your users directly. It is your responsibility to notify your users of any changes to your subscription, cancellation and refund policies and ensure that the policies comply with applicable law.
 
-Example of violations
+Examples of violations
 
 The app is missing a link to manage and cancel subscriptions in the account setting or equivalent page.
 

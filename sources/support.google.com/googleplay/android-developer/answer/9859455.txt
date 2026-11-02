@@ -1,35 +1,35 @@
 Source: https://support.google.com/googleplay/android-developer/answer/9859455
-Fetched: 2026-10-19
+Fetched: 2026-11-02
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 # Prepare your app for review
-The App content page is where you provide and manage the information we need to ensure that your app is safe for its intended users, is compliant with Google Play Developer Program Policies, and satisfies legal requirements.
+This article helps Google Play developers navigate the App content page (Monitor and improve > Policy and programs > App content) to submit mandatory safety, policy, and legal declarations before publishing. Before you begin, make sure you complete all prerequisite tasks, including setting up your Play Console account and creating an app bundle. On the App content page, you provide and manage the information we need to ensure that your app is safe for its intended users, complies with Google Play Developer Program Policies, and satisfies legal requirements.
 
 ## Overview
 
-The App content page lets us know about the content of your app. You can complete policy declarations and provide other information, such as special access instructions for reviewers, on this page. Here are some other examples of things you can do on the App content page to make sure your app complies with Google Play policies
+The App content page lets us know about the content of your app. You can complete policy declarations and provide other information, such as special access instructions for reviewers, on this page.
+
+To make sure your app complies with Google Play policies, actions you can perform on the App content page include:
 
 - Add your privacy policy to share how you treat sensitive user and device data.
 
-- Declare whether or not your app contains ads.
+- Declare whether your app contains ads.
 
 - Provide and manage instructions on how to access restricted parts of your app.
 
-- Provide details about your app's target audience and content.
+- Provide details about the target audience and content of your app.
 
-- Describe how you intend to use any high-risk or sensitive permissions such as SMS/Call Log permissions.
+- Describe how you intend to use any high-risk or sensitive permissions—for example, SMS or Call Log permissions.
 
 - Receive content ratings from official rating authorities.
 
-- Tell us about your app's privacy and security practices.
-
-- Declare that your app is a News app.
+- Tell us about the privacy and security practices of your app.
 
 The App content page has two tabs:
 
-- Needs attention: Policy declarations that require your attention are shown here. You must complete the declarations before the relevant deadlines to comply with Google Play policies.
+- Needs attention: This tab displays policy declarations that require your attention. You must complete the declarations before the relevant deadlines to comply with Google Play policies.
 
-- Actioned: Policy declarations that you've actioned are shown here. We'll let you know if we find any issues. To comply with Google Play policies, you should review the information you've provided regularly, and make sure that it's kept up to date.
+- Actioned: This tab displays policy declarations that you already actioned. We let you know if we find any issues. To comply with Google Play policies, review the information you provided regularly and ensure that it remains up to date.
 
 ## Provide app information
 
@@ -37,19 +37,25 @@ The App content page has two tabs:
 
 Adding a privacy policy to your app's store listing helps provide transparency about how you treat sensitive user and device data.
 
-The privacy policy must, together with any in-app disclosures, comprehensively disclose how your app collects, uses, and shares user data. This includes the types of parties with whom it’s shared. You should consult your legal representative to advise you of what is required.
+You must link to a privacy policy on your store listing and within your app, even if your app doesn't access personal or sensitive user data or target children. Check the User data policy to avoid common violations, and consult your legal representative to advise you on what is required.
 
-- For apps that request access to sensitive permissions or data (as defined in the User data policy): You must link to a privacy policy on your app's store listing page and within your app. Make sure your privacy policy is available on an active URL, applies to your app, and specifically covers user privacy.
+To prevent review delays, make sure your privacy policy meets the following requirements:
 
-- For apps that target children: You must link to a privacy policy on your app's store listing page and within your app, regardless of your app's access to sensitive permissions or data. Make sure your privacy policy is available on an active URL, applies to your app, and specifically covers user privacy. Note that even apps that do not access any personal or sensitive user data must still submit a privacy policy.
+- It is hosted on an active, publicly accessible URL (starting with http:// or https://) with a valid SSL certificate.
+
+- It is accessible worldwide without geographical restrictions, geofencing, or login requirements.
+
+- It is displayed on a standard, non-editable webpage (not a PDF or downloadable file).
+
+- It applies specifically to your app, covers user privacy, and comprehensively discloses how your app collects, uses, and shares user data, including the types of parties with whom it is shared.
 
 #### Add a privacy policy
 
-- Open Play Console and go to the App content page (Policy and programs > App content).
+- Sign in to Play Console, select your app, and go to the App content page (Monitor and improve > Policy and programs > App content).
 
-- Under "Privacy Policy,"select Start.
+- Under 'Privacy Policy', click Start declaration.
 
-- Note: If you’ve previously added a privacy policy and want to make changes, you’ll see and select Manage instead of Start.
+Note: If you previously added a privacy policy and want to make changes, click Manage instead of Start declaration.
 
 - Enter the URL hosting the privacy policy online.
 
@@ -57,17 +63,17 @@ The privacy policy must, together with any in-app disclosures, comprehensively d
 
 ### Ads
 
-You must declare whether or not your app contains ads. This includes ads delivered through third-party ad SDKs (Software Development Kit), display ads, native ads, and/or banner ads). Apps that contain ads will have a "Contains ads" label shown on their store listing. This label will be visible to all Play Store users.
+You must declare whether your app contains ads. This includes ads delivered through third-party ad software development kits (SDKs), display ads, native ads, or banner ads). Apps that contain ads show a "Contains ads" label on their store listing. This label will be visible to all Play Store users.
 
-Note: The "Contains ads" label isn't meant to cover whether an app contains other kinds of commercial content, like paid product placement or offers to make in-app purchases or upgrades. If your app includes paid product placements, make sure they comply with local laws.
+Note: The "Contains ads" label isn't meant to cover whether an app contains other kinds of commercial content, like paid product placement or offers to make in-app purchases or upgrades. If your app includes paid product placements, ensure they comply with local laws.
 
-#### Declare whether or not your app contains ads
+#### Declare whether your app contains ads
 
-- Open Play Console and go to the App content page (Policy and programs > App content).
+- Sign in to Play Console, select your app, and go to the App content page (Monitor and improve > Policy and programs > App content).
 
-- Under "Ads," select Start.
+- Under 'Ads', click Start declaration.
 
-- Note: If you’ve previously declared whether or not your app contains ads and you want to make changes, you'll see and select Manage instead of Start.
+Note: If you previously declared whether your app contains ads and you want to make changes, click Manage instead of Start declaration.
 
 - Review the Ads policy to make sure your app is compliant, and select Yes or No.
 
@@ -75,33 +81,33 @@ Note: The "Contains ads" label isn't meant to cover whether an app contains othe
 
 #### Examples
 
-Here are a few examples of when you should answer "yes" to having ads for purposes of the "Contains ads" label. This isn't a comprehensive list but just a few examples based on the most common types of ads.
+The following list provides examples of when you should answer Yes to having ads for the "Contains ads" label. This isn't a comprehensive list, but it highlights common types of ads.
 
-- Banner and interstitials: My app integrates with an Ad SDK to show banners and/or interstitials. I use the ad formats to monetize and/or promote my own products or apps.
+- Banner and interstitials: Your app integrates with an Ad SDK to show banners or interstitials. You use the ad formats to monetize or promote your own products or apps.
 
-- Native ads: My app includes ads natively indistinguishable from other content (for example, sponsored articles, ads within a feed, etc).
+- Native ads: Your app includes ads that are natively indistinguishable from other content—for example, sponsored articles or ads within a feed.
 
-- House ads: My app renders a small ad banner, interstitial ad, ad wall, and/or widget to promote my other apps.
+- House ads: Your app renders a small ad banner, interstitial ad, ad wall, or widget to promote your other apps.
 
-You should answer "no" to having ads for purposes of the "Contains ads" label if you only cross-promote your other apps in the following ways:
+Select No to having ads for purposes of the "Contains ads" label if you only cross-promote your other apps in the following ways:
 
-- The app displays a More Apps* section in the main menu leading a user to your other apps
+- The app displays a 'More Apps' section in the main menu leading a user to your other apps.
 
-- The More Apps* option does not interfere with gameplay
+- The 'More Apps' option does not interfere with gameplay.
 
-- The More Apps* option does not confuse the user by embedding itself within the gameplay
+- The 'More Apps' option does not confuse users by embedding itself within the gameplay.
 
-*Other acceptable substitutions for More Apps include More Games, More to Explore, Full Version, More, About Us, or your Developer Icon.
+Other acceptable substitutions for 'More Apps' include 'More Games', 'More to Explore', 'Full Version', 'More', 'About Us', or your developer Icon.
 
 #### Additional monitoring
 
 While you're responsible for accurately declaring ad presence in your apps, Google may verify this at any time and display the "Contains ads" label if appropriate.
 
-If you think your app has been incorrectly labeled by our system, contact our support team for help.
+If you believe our system incorrectly labeled your app, contact our support team for help.
 
 #### Enforcement
 
-If you misrepresent the presence of ads in your app(s), it's considered a violation of the Google Play policies and may result in your app(s) being suspended.
+Misrepresenting the presence of ads in your app is considered a violation of the Google Play policies and can result in the suspension of your app.
 
 ### Sign-in details
 
@@ -135,75 +141,31 @@ Note: You can add up to five sets of instructions.
 
 ### Target audience and content
 
-You must declare your app’s target age group. Any apps that include children in their target audience must comply with Google Play's Families policy requirements.
+You must declare your app's target age group. Any apps that include children in their target audience must comply with Google Play's Families policy requirements.
 
-It’s important to provide accurate information about your app. Depending on the target audience selections that you make, your app may be subject to additional Google Play policies. You can familiarize yourself with those policies and learn how to fill out the “Target audience and content” section of the App content page.
+It's important to provide accurate information about your app. Depending on the target audience selections, your app may be subject to additional Google Play policies. You can familiarize yourself with those policies and learn how to fill out the 'Target audience and content' section of the App content page.
 
-You can also learn about the process and review the interactive checklist at Academy for App Success.
+You can also learn about the process and review the interactive checklist in the Understanding Google Play's Families policies topic on the Academy for App Success.
 
 ### Permissions declaration form
 
-Permission requests are evaluated during the release process after adding your Android App Bundle. If your app requests the use of high-risk or sensitive permissions (for example, SMS or Call Log), you may be required to complete the Permissions Declaration Form and receive approval from Google Play.
+Permission requests are evaluated during the release process after you add your Android App Bundle. If your app requests the use of high-risk or sensitive permissions—for example, SMS or Call Log permissions—you may be required to complete the Permissions Declaration Form and receive approval from Google Play.
 
-Here’s where you can learn about the process and how to complete the Permissions Declaration Form on the App content page.
+Learn about the process and see how to complete the Permissions Declaration Form on the App content page.
 
 ### Content ratings
 
 You can communicate familiar and locally relevant content ratings to your users and help improve app engagement by targeting the right audience for your content.
 
-To prevent your apps from being listed as “Unrated,” sign in to Play Console and fill out the questionnaire for each of your apps as soon as possible. “Unrated” apps may be removed from Google Play.
+To prevent your apps from being listed as "Unrated," sign in to Play Console and fill out the questionnaire for each of your apps as soon as possible. Unrated apps may be removed from Google Play.
 
-Go to Content ratings for apps and games to learn more about specific ratings authorities and descriptions, and for instructions on how to complete this section of the App content page.
+See Content rating requirements for apps, games, and the ads served on both to learn more about specific ratings authorities and descriptions, and for instructions on how to complete this section of the App content page.
 
-### COVID-19 contact tracing and status apps
+## Related content
 
-You must let us know whether your app contains COVID-19 contact tracing and/or COVID-19 status functionality.
+- Google Play Families Policies
 
-Read Requirements for coronavirus disease 2019 (COVID-19) apps before completing this section.
-
-To complete the COVID-19 contact tracing and status apps declaration:
-
-- Open Play Console and go to the App content page (Policy and programs > App content).
-
-- Under "COVID-19 contact tracing and status apps," select Start.
-
-- Note: If you’ve previously completed the declaration and you want to make changes, you’ll see and select Manage instead of Start.
-
-- Select all the statements that apply to your app.
-
-- Note: If your app contains COVID-19 contact tracing or status functionality, then you must also confirm that your app complies with the Requirements for coronavirus disease 2019 (COVID-19) apps.
-
-- Save your changes
-
-If your app includes COVID-19 contact tracing or status functionality, you must provide advance notice to the Google Play App Review team.
-
-#### News and Magazine apps
-
-You must let us know if your app is a News or Magazine app. A News or Magazine app is an app that:
-
-- Declares itself as a "News" or "Magazine" app in the Google Play Console, or
-
-- Lists itself within the “News and Magazine” category on the Google Play store and describes itself as “news” or "magazine" in its app title, icon, developer name, or description.
-
-Read Requirements for news and magazine apps before completing this section.
-
-To complete the News and Magazine apps declaration:
-
-- Open Play Console and go to the App content page (Monitor and improve > Policy and programs > App content).
-
-- Under "News and Magazine apps," select Start
-
-Note: If you’ve previously completed the declaration and you want to make changes, you’ll see and select Edit instead of Start.
-
-- Complete the News and magazines declaration.
-
-- Click Save.
-
-#### Related content
-
-- About the Families program
-
-- Google Play's Families policies Academy for App Success
+- Understanding Google Play's Families policies on the Academy for App Success
 
 ## Was this helpful?
 How can we improve it?

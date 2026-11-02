@@ -1,91 +1,85 @@
 Source: https://support.google.com/googleplay/android-developer/answer/9874837
-Fetched: 2026-10-19
+Fetched: 2026-11-02
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
-# Distribute app releases to specific countries
-When you roll out your app release to production, open testing, or a closed testing track, you can target your release in each track to users in specific countries.
+# Distribute app releases to specific countries and regions
+Targeting app releases to specific countries and regions lets you control user access across production, open testing, and closed testing tracks. By customizing your country and region targeting, you can test features and manage launches in specific regional markets before you prepare and roll out a release or set up open, closed, or internal tests.
 
-## Ways to use country targeting
+## How to use country and region targeting
 
-Here are some situations where you might find country targeting helpful:
+You can use country and region targeting in several release scenarios:
 
-- If your app has an existing production release, you can launch an open testing release in a new country without expanding your production release to the new country.
+- If your app has a production release, you can launch an open testing or closed testing release in a new country or region without expanding your production release to that country.
 
-- If your app has an existing open testing release, you can launch a production release in a subset of countries while continuing to run an open test in other countries.
+- If your app has an open testing release, you can launch a production release in a subset of countries or regions while continuing to run an open test in other countries or regions.
 
-- If you want to run a global open test while your app is available in some countries in production.
+- You can run a global open test while your app is available in specific countries or regions in production.
 
-- If your app is available in production and open testing in several countries, but you want your internal or quality assurance teams globally to access your app in closed testing.
+Country and region targeting does not apply to the internal testing track. You can add users from any location to an internal test. If an internal tester is located in a country or region where your production, open test, or closed test version is unavailable, the user will still receive the internal test app.
 
-Country targeting won't apply to apps on the Internal testing track. You can add users from any location to an internal test. If an internal tester is located in a country where your app's production, open test, or closed test version isn't available, the user will still receive the internal test app.
+## Manage country and region targeting across tracks
 
-## Reach the right users
+Important: Country and region targeting is based on where the user's Google Play account is registered, not their physical location. When configuring country and region targeting, consider whether your app could be relevant to users registered in other countries or regions. For example, travel apps need to be available to users from a wide variety of countries and regions.
 
-To manage country availability across all tracks, you'll need to know the difference between app availability and country targeting.
+### Set country and region targeting for production
 
-### App availability
+When you target a country or region in production, all current and future production releases will include the selected country or region.
 
-App availability refers to your app's availability in the production track. When you select a country as available, any current and future production releases include that country.
+To manage your app's production availability:
 
-To manage your app's availability, do the following:
+- Sign in to Play Console and select the app that you want to manage availability for.
 
-- Open Play Console and select the app that you want to manage availability for.
+- Go to the Production page (Test and release > Production).
 
-- Go to the Production page.
+- Select the Countries / regions tab.
 
-- Select the Countries/regions tab.
+- Click Add countries / regions or Edit countries / regions to choose the countries or regions that you want to target:
 
-- Click Add countries/regions or Remove countries/regions and select the countries/regions you want to add or remove. Note the following for paid apps and subscriptions:
+- If you add a country or region for a paid app, Google Play automatically adds new prices. You can edit local prices on the App pricing page in Play Console.
 
-- If you add a country for a paid app, new prices are automatically added. If needed, you can then edit local prices.
+- If you sell subscriptions, make sure that you set prices for the countries or regions you add. To learn more, see Create and manage subscriptions.
 
-- If you sell subscriptions, make sure you set prices for the countries/regions you want to add. Learn more about subscriptions.
+- Save your changes.
 
-- Confirm your selection(s).
+Note: To learn how to target a staged rollout to specific countries or regions, see Release app updates with staged rollouts.
 
-Important: Country targeting is based on the user's Play country (that is, where their account is registered), not their current location. When configuring country availability, consider whether your app is relevant to users residing in a particular country, even if they are currently travelling elsewhere. For example, a city-specific transport app should have global availability if it wants foreign tourists visiting that city to be able to download it.
+### Customize country and region targeting for testing tracks
 
-Note: For details on how to target a staged rollout to specific countries, go to Release app updates with staged rollouts.
+In addition to production availability, you can customize country and region targeting for open and closed testing releases. These options may be unavailable if your user account does not have permission to manage releases.
 
-### Country targeting
+Prerequisites: You can customize country targeting for testing tracks under either of the following conditions:
 
-In addition to the availability configured for production, you can customize country targeting for testing releases. By default, your testing releases match the country availability that you've set up for production.
+- Your app does not have an app bundle uploaded to production.
 
-Prerequisite: You can customize country availability for your app's testing tracks in either of the following cases:
+- Your app has an app bundle uploaded to production and at least one country or region is available in the production track.
 
-- Your app doesn't have an app bundle uploaded to production.
+To manage testing track availability:
 
-- Your app has an app bundle uploaded to production and at least one country is available in the production track.
+- Sign in to Play Console, and select the app that you want to manage testing availability for.
 
-To change your app's testing release availability, do the following:
+- Go to the testing track you want to update:
 
-It can be disabled if the user does not have permissions to change.
+- For open testing, go to Open testing (Test and release > Testing > Open testing) and select the Countries / regions tab.
 
-- Open Play Console and select the app that you want to manage testing availability for.
+- For closed testing, go to Closed testing (Testing > Closed testing), click Manage track next to the target track, and select the Countries / regions tab.
 
-- Go to the testing track that you want to update and consider the following:
+- Testing track availability syncs with production by default. Any changes made to country or region targeting in production or pre-registration automatically apply to your testing releases. To manage testing availability independently, click Unsync. You can sync country and region targeting again under any of the following conditions:
 
-- If you want to update an app in open testing, click Open testing (Testing > Open testing) and select the Countries/regions tab.
+- Your track has no active releases.
 
-- If you want to update an app in closed testing, click Closed testing (Testing > Closed testing), click Manage track next to the track you want to update, and select the Countries/regions tab.
+- Your production track targets at least one country or region.
 
-- Country availability is synced with production by default. This means that any changes made to availability in production or pre-registration will also be made to your testing track release. To change this, click Unsync countries/regions. Sync will only be enabled under one of the following conditions:
+- Pre-registration has started and targets at least one country or region, excluding 'Rest of World'.
 
-- Your track has no release rolled out.
+- If your track is no longer synced with production, click Edit countries / regions and select the countries or regions you want to add or remove.
 
-- Your production track targets at least one country/region.
-
-- Pre-registration has started and pre-registration targets at least one non "Rest of World" country.
-
-- If your track is no longer synced with production, you can click Edit countries and select the countries/regions you want to add or remove.
-
-- Confirm your selection(s).
+- Confirm your selection.
 
 ## Related content
 
-- For help getting started with releases, learn how to prepare and roll out a release.
+- For help getting started with releases, see Prepare and roll out a release.
 
-- For details on the different types of tests, go to set up open, closed, or internal tests.
+- To learn about different test types, see Set up an open, closed, or internal test.
 
 ## Was this helpful?
 How can we improve it?

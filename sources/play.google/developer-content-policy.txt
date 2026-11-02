@@ -1,5 +1,5 @@
 Source: https://play.google/developer-content-policy/
-Fetched: 2026-10-26
+Fetched: 2026-11-02
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 # Providing a safe and trusted experience for everyone
@@ -172,9 +172,9 @@ Availability of Features and Services
 
 ### Latest Information
 
-### Google Play PolicyBytes - July 2026 Update
+### Google Play PolicyBytes - October 2026 Update
 
-Learn more about the policy updates and key reminders we announced in July.
+Learn more about the policy updates and key reminders we announced in October.
 
 Watch video
 

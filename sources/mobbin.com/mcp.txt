@@ -1,9 +1,10 @@
 Source: https://mobbin.com/mcp
-Fetched: 2026-10-26
+Fetched: 2026-11-02
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
-# The design reference your AI agents are missing.
-Mobbin MCP is a design MCP server that connects your AI agents to 600,000+ real product screens, so what they build starts with what already works.
+## The design reference your AI agents are missing.
+
+# Mobbin MCP is a design MCP server that connects your AI agents to 600,000+ real product screens, so what they build starts with what already works.
 
 Connect MCPSee plans
 Available on Pro & Team plans
@@ -66,7 +67,7 @@ Got 43 paywalls. Pulling the strongest for synthesis.
 - Single tier, no decision taxOne plan removes choice paralysis at the upgrade moment.
 - Icon-led benefitsVisual rhythm makes the list scannable in 3 seconds.
 
-## 621,500+ shipped screens. Now your AI agents can see them too.
+## 600,000+ shipped screens. Now your AI agents can see them too.
 Your AI agents can search, reference, and reason about all of it, from mobile screen design to web design patterns.
 
 - Finance appsYour agent pulls checkout, pricing, and KYC screens from top fintech apps.

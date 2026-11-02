@@ -1,9 +1,9 @@
 Source: https://support.google.com/googleplay/android-developer/answer/18258653
-Fetched: 2026-10-14
+Fetched: 2026-11-02
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 # Developer Program Policy
-(effective September 30, 2026, unless otherwise stated)
+(effective October 29, 2026, unless otherwise stated)
 
 ### Let's build the world's most trusted source for apps and games
 
@@ -1220,6 +1220,12 @@ All user Photos are personal and sensitive data subject to the User Data policy.
 
 Apps that target Android 13 or higher (API level 33+) may only request the READ_MEDIA_IMAGES and READ_MEDIA_VIDEO permissions if system pickers (like the Android Photo Picker) are not sufficient for your app to provide core functionality. Apps that still request the READ_MEDIA_IMAGES and READ_MEDIA_VIDEO permissions must submit a Play Console declaration to demonstrate access needs for Photos and why Android Photo Picker (or alternatives) would not suffice.
 
+## All Files Access Permission
+
+All user Files and directory attributes are personal and sensitive data subject to the User Data policy. Apps may not request access to device storage on behalf of any third-party for any purpose unrelated to core functionality.
+
+Apps that target Android 11 or higher (API level 30+) may only request the MANAGE_EXTERNAL_STORAGE permission if platform intents (like Storage Access Framework), are not sufficient for your app to provide core functionality. Apps that still request the MANAGE_EXTERNAL_STORAGE permission must submit a Play Console declaration to demonstrate access needs for device storage and why alternatives would not suffice. Those granted permission must clearly prompt users to enable "All files access" for their app under "Special app access" settings. Read the Help Article.
+
 ## SMS and Call Log Permissions
 
 SMS and Call Log Permissions are regarded as personal and sensitive user data subject to the Personal and Sensitive Information policy, and the following restrictions:
@@ -1258,14 +1264,6 @@ Apps are allowed to access location using foreground service (when the app only 
 Apps designed specifically for children must comply with the Designed for Familiespolicy.
 
 For more information on the policy requirements, please see this help article.
-
-## All Files Access Permission
-
-Files and directory attributes on a user’s device are regarded as personal and sensitive user data subject to the Personal and Sensitive Information policy and the following requirements:
-
-- Apps should only request access to device storage which is critical for the app to function, and may not request access to device storage on behalf of any third-party for any purpose that is unrelated to critical user-facing app functionality.
-
-- Android devices running R or later, will require the MANAGE_EXTERNAL_STORAGE permission in order to manage access in shared storage. All apps that target R and request broad access to shared storage (“All files access”) must successfully pass an appropriate access review prior to publishing. Apps allowed to use this permission must clearly prompt users to enable “All files access” for their app under “Special app access” settings. For more information on the R requirements, please see this help article.
 
 ## Package (App) Visibility Permission
 
@@ -1619,7 +1617,9 @@ Learn more about this policy in our Help Center.
 
 ### Deceptive Behavior
 
-We don't allow apps that attempt to deceive users or enable dishonest behavior including but not limited to apps which are determined to be functionally impossible. Apps must provide an accurate disclosure, description and images/video of their functionality in all parts of the metadata. Apps must not attempt to mimic functionality or warnings from the operating system or other apps. Any changes to device settings must be made with the user's knowledge and consent and be reversible by the user.
+Developers must not attempt to deceive users or enable dishonest behavior including but not limited to publishing apps which are determined to be functionally impossible. Apps must provide an accurate disclosure, description and images/video of their functionality in all parts of the metadata. Apps must not attempt to mimic functionality or warnings from the operating system or other apps. Any changes to device settings must be made with the user's knowledge and consent and be reversible by the user.
+
+Attempts to manipulate Play review processes, including misleading reviewers as to the purpose and functionality of your apps, are strictly prohibited.
 
 ## 1. Misleading Claims
 
@@ -2606,13 +2606,13 @@ The app is missing a link to manage and cancel subscriptions in the account sett
 
 ### Families Self-Certified Ads SDK Program
 
-If you serve ads in your app, and the target audience for your app only includes children as described in the Families Policy, then you must only use ads SDK versions that have self-certified compliance with Google Play policies, including the Families Self-Certified Ads SDK requirements below.
+If you serve ads in your app, and the target audience for your app only includes children as described in the Families policy, then you must only use ads SDK versions that have self-certified compliance with Google Play policies, including the Families Self-Certified Ads SDK requirements below.
 
 If the target audience for your app includes both children and older users, you must make sure that ads shown to children come exclusively from one of these self-certified ads SDK versions (for example, through use of neutral age screening measures).
 
 Note that it is your responsibility to ensure that all SDK versions you implement in your app, including Self-Certified Ads SDK versions, are compliant with all applicable policies, local laws, and regulations. Google does not provide any representations or guarantees as to the accuracy of the information the ads SDKs provide during the self-certification process.
 
-The use of Families self-certified ads SDKs is only required if you are using ads SDKs to serve ads to children. The following are permitted without an ads SDK's self-certification with Google Play, however, you are still responsible for ensuring your ad content and data collection practices are compliant with Google Play's User Data Policy and Families Policy:
+The use of Families self-certified ads SDKs is only required if you are using ads SDKs to serve ads to children. The following are permitted without an ads SDK's self-certification with Google Play, however, you are still responsible for ensuring your ad content and data collection practices are compliant with Google Play's User Data policy and Families policy:
 
 - In-House Advertising whereby you use SDKs to manage cross promotion of your apps or other owned media and merchandising.
 
@@ -2620,19 +2620,23 @@ The use of Families self-certified ads SDKs is only required if you are using ad
 
 Families Self-Certified Ads SDK Requirements
 
+- The SDK must be registered on Play SDK Console, which includes a commitment that the SDK will not cause apps to violate Play Developer Policies.
+
 - Define what are objectionable ad content and behaviors and prohibit them in the ads SDK's terms or policies. The definitions should comply with Google Play Developer Program Policies.
 
-- Create a method to rate your ad creatives according to age appropriate groups. Age appropriate groups must at least include groups for Everyone and Mature. The rating methodology must align with the methodology that Google supplies to SDKs once they have filled out the interest form below.
+- Create a method to rate your ad creatives according to age appropriate groups. Age appropriate groups must at least include groups for Everyone and Mature. The rating methodology must align with the methodology that Google supplies to SDKs once they have filled out the interest form in Play SDK Console.
 
 - Allow publishers, on a per-request or per-app basis, to request child-directed treatment for ad serving. Such treatment must be in compliance with applicable laws and regulations, such as the US Children's Online Privacy and Protection Act (COPPA) and the EU General Data Protection Regulation (GDPR). Google Play requires ads SDKs to disable personalized ads, interest based advertising, and remarketing as part of the child-directed treatment.
 
-- Allow publishers to select ad formats that are compliant with Google Play's Families Ads and Monetization policy, and meet the requirement of the Teacher Approved program.
+- Allow publishers to select ad formats that are compliant with Google Play's Families Ads and Monetization policy.
 
 - Ensure that when real-time bidding is used to serve ads to children, the creatives have been reviewed and privacy indicators are propagated to the bidders.
 
-- Provide Google with sufficient information, such as submitting a test app and the information indicated in the interest form below, to verify the ads SDK's policy compliance with all self-certification requirements, respond in a timely manner to any subsequent requests for information, such as submitting new version releases to verify the ads SDK version’s compliance with all self-certification requirements.
+- Provide Google with sufficient information, such as submitting a test app and the information indicated in the interest form in Play SDK Console, to verify the ads SDK's policy compliance with all self-certification requirements, respond in a timely manner to any subsequent requests for information, such as submitting new version releases to verify the ads SDK version's compliance with all self-certification requirements.
 
 - Self-certify that all new version releases are compliant with the latest Google Play Developer Program Policies, including Families Policy Requirements.
+
+- Publish specific technical documentation for apps to correctly implement the ads SDK to comply with all program requirements.
 
 Note: Families Self-Certified Ads SDKs must support ad serving that complies with all relevant statutes and regulations concerning children that may apply to their publishers.
 
@@ -2645,8 +2649,6 @@ Here are mediation requirements for serving platforms when serving ads to childr
 - Pass information necessary to mediation platforms to indicate the ad content rating and any applicable child-directed treatment.
 
 Developers can find a list of Families Self-Certified Ads SDKs and can check which specific versions of those ads SDKs are self-certified for use in Families apps here.
-
-Also, developers can share this interest form with ads SDKs who wish to self-certify.
 
 ## Store Listing and Promotion
 

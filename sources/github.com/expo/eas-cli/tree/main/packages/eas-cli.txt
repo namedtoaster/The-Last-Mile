@@ -1,5 +1,5 @@
 Source: https://github.com/expo/eas-cli/tree/main/packages/eas-cli
-Fetched: 2026-10-26
+Fetched: 2026-11-02
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 # EAS CLI
@@ -287,6 +287,10 @@ If you want to enforce the eas-cli version for your project, use the "cli.versio
 
 - eas observe:session [SESSIONID]
 
+- eas observe:trace TRACEID
+
+- eas observe:traces
+
 - eas observe:versions
 
 - eas project:delete [NAME]
@@ -315,6 +319,8 @@ If you want to enforce the eas-cli version for your project, use the "cli.versio
 
 - eas sim:list
 
+- eas sim:logs
+
 - eas sim:start
 
 - eas sim:stop
@@ -334,6 +340,8 @@ If you want to enforce the eas-cli version for your project, use the "cli.versio
 - eas simulator:get
 
 - eas simulator:list
+
+- eas simulator:logs
 
 - eas simulator:start
 
@@ -708,7 +716,7 @@ See code: packages/eas-cli/src/commands/branch/view.ts
 
 ## eas browse [PAGE]
 
-Transition from the terminal to the web browser to view and interact with your project on https://expo.dev
+transition from the terminal to the web browser to view and interact with your project on https://expo.dev
 
 USAGE
 $ eas browse [PAGE] [-n] [--json] [--non-interactive]
@@ -723,7 +731,7 @@ FLAGS
 --non-interactive Run the command in non-interactive mode.
 
 DESCRIPTION
-Transition from the terminal to the web browser to view and interact with your project on https://expo.dev
+transition from the terminal to the web browser to view and interact with your project on https://expo.dev
 
 See code: packages/eas-cli/src/commands/browse.ts
 
@@ -1114,7 +1122,7 @@ See code: packages/eas-cli/src/commands/channel/create.ts
 
 ## eas channel:delete [NAME]
 
-Delete a channel
+delete a channel
 
 USAGE
 $ eas channel:delete [NAME] [--json] [--non-interactive]
@@ -1127,7 +1135,7 @@ FLAGS
 --non-interactive Run the command in non-interactive mode.
 
 DESCRIPTION
-Delete a channel
+delete a channel
 
 See code: packages/eas-cli/src/commands/channel/delete.ts
 
@@ -1252,7 +1260,7 @@ See code: packages/eas-cli/src/commands/channel/resume.ts
 
 ## eas channel:rollout [CHANNEL]
 
-Roll a new branch out on a channel incrementally.
+roll a new branch out on a channel incrementally
 
 USAGE
 $ eas channel:rollout [CHANNEL] [--action create|edit|end|view] [--percent <value>] [--outcome
@@ -1279,7 +1287,7 @@ https://docs.expo.dev/eas-update/code-signing/
 --runtime-version=<value> Runtime version to target. Use with --action=create
 
 DESCRIPTION
-Roll a new branch out on a channel incrementally.
+roll a new branch out on a channel incrementally
 
 See code: packages/eas-cli/src/commands/channel/rollout.ts
 
@@ -1359,7 +1367,7 @@ See code: packages/eas-cli/src/commands/credentials/index.ts
 
 ## eas credentials:configure-build
 
-Set up credentials for building your project.
+set up credentials for building your project
 
 USAGE
 $ eas credentials:configure-build [-p android|ios] [-e PROFILE_NAME]
@@ -1369,7 +1377,7 @@ FLAGS
 -p, --platform=<option> <options: android|ios>
 
 DESCRIPTION
-Set up credentials for building your project.
+set up credentials for building your project
 
 See code: packages/eas-cli/src/commands/credentials/configure-build.ts
 
@@ -1405,7 +1413,7 @@ See code: packages/eas-cli/src/commands/deploy/index.ts
 
 ## eas deploy:alias
 
-Assign deployment aliases.
+assign deployment aliases
 
 USAGE
 $ eas deploy:alias [--prod] [--alias name] [--id xyz123] [--json] [--non-interactive]
@@ -1418,7 +1426,7 @@ FLAGS
 --prod Promote an existing deployment to production.
 
 DESCRIPTION
-Assign deployment aliases.
+assign deployment aliases
 
 ALIASES
 $ eas worker:alias
@@ -1428,7 +1436,7 @@ See code: packages/eas-cli/src/commands/deploy/alias/index.ts
 
 ## eas deploy:alias:delete [ALIAS_NAME]
 
-Delete deployment aliases.
+delete deployment aliases
 
 USAGE
 $ eas deploy:alias:delete [ALIAS_NAME] [--json] [--non-interactive]
@@ -1438,7 +1446,7 @@ FLAGS
 --non-interactive Run the command in non-interactive mode.
 
 DESCRIPTION
-Delete deployment aliases.
+delete deployment aliases
 
 ALIASES
 $ eas worker:alias:delete
@@ -1447,7 +1455,7 @@ See code: packages/eas-cli/src/commands/deploy/alias/delete.ts
 
 ## eas deploy:delete [DEPLOYMENT_ID]
 
-Delete a deployment.
+delete a deployment
 
 USAGE
 $ eas deploy:delete [DEPLOYMENT_ID] [--json] [--non-interactive]
@@ -1457,7 +1465,7 @@ FLAGS
 --non-interactive Run the command in non-interactive mode.
 
 DESCRIPTION
-Delete a deployment.
+delete a deployment
 
 ALIASES
 $ eas worker:delete
@@ -1466,7 +1474,7 @@ See code: packages/eas-cli/src/commands/deploy/delete.ts
 
 ## eas deploy:promote
 
-Assign deployment aliases.
+assign deployment aliases
 
 USAGE
 $ eas deploy:promote [--prod] [--alias name] [--id xyz123] [--json] [--non-interactive]
@@ -1479,7 +1487,7 @@ FLAGS
 --prod Promote an existing deployment to production.
 
 DESCRIPTION
-Assign deployment aliases.
+assign deployment aliases
 
 ALIASES
 $ eas worker:alias
@@ -2288,7 +2296,7 @@ See code: packages/eas-cli/src/commands/metadata/push.ts
 
 ## eas new [PATH]
 
-Create a new project configured with Expo Application Services (EAS)
+create a new project configured with Expo Application Services (EAS)
 
 USAGE
 $ eas new [PATH] [-p bun|npm|pnpm|yarn] [--sdk-version <value>]
@@ -2302,7 +2310,7 @@ FLAGS
 --sdk-version=<value> Expo SDK version to use for the new project (e.g. 57, or "latest")
 
 DESCRIPTION
-Create a new project configured with Expo Application Services (EAS)
+create a new project configured with Expo Application Services (EAS)
 
 ALIASES
 $ eas new
@@ -2344,7 +2352,7 @@ See code: packages/eas-cli/src/commands/observe/errors.ts
 
 ## eas observe:event ID
 
-display a single Observe event (metric, log, or error) by its ID. IDs are included in event data when the --json flag is passed to eas observe:session, eas observe:metrics, or eas observe:events.
+display a single Observe event (metric, log, or error) by its ID. IDs are included in event data when the --json flag is passed to eas observe:session, eas observe:metrics, or eas observe:events
 
 USAGE
 $ eas observe:event ID [--project-id <value>] [--json] [--non-interactive]
@@ -2359,13 +2367,13 @@ FLAGS
 
 DESCRIPTION
 display a single Observe event (metric, log, or error) by its ID. IDs are included in event data when the `--json`
-flag is passed to `eas observe:session`, `eas observe:metrics`, or `eas observe:events`.
+flag is passed to `eas observe:session`, `eas observe:metrics`, or `eas observe:events`
 
 See code: packages/eas-cli/src/commands/observe/event.ts
 
 ## eas observe:events [EVENTNAME]
 
-display individual events emitted by the app via logEvent, filtered by the event name in the argument. With no arguments, a list of the available event names and associated event counts is returned.
+display individual events emitted by the app via logEvent, filtered by the event name in the argument. With no arguments, a list of the available event names and associated event counts is returned
 
 USAGE
 $ eas observe:events [EVENTNAME] [--platform android|ios|ipados|macos|tvos|apple] [--after <value>] [--limit
@@ -2398,7 +2406,7 @@ the event-name summary.
 
 DESCRIPTION
 display individual events emitted by the app via `logEvent`, filtered by the event name in the argument. With no
-arguments, a list of the available event names and associated event counts is returned.
+arguments, a list of the available event names and associated event counts is returned
 
 See code: packages/eas-cli/src/commands/observe/events.ts
 
@@ -2509,7 +2517,7 @@ See code: packages/eas-cli/src/commands/observe/routes.ts
 
 ## eas observe:session [SESSIONID]
 
-display the timeline of metric and log events for a specific session
+display the timeline of metric, log, and request trace span events for a specific session
 
 USAGE
 $ eas observe:session [SESSIONID] [--sort slowest|fastest|newest|oldest] [--event-name <value>] [--start <value> |
@@ -2533,9 +2541,78 @@ will be prompted)
 --start=<value> Start of time range (ISO date)
 
 DESCRIPTION
-display the timeline of metric and log events for a specific session
+display the timeline of metric, log, and request trace span events for a specific session
 
 See code: packages/eas-cli/src/commands/observe/session.ts
+
+## eas observe:trace TRACEID
+
+display every span of a single request trace by its trace ID, oldest first, with child spans indented under their parent. Trace IDs are shown by eas observe:traces. In --json output a span with no parentSpanId is a root span, and a span with no http object is not an HTTP request
+
+USAGE
+$ eas observe:trace TRACEID [--project-id <value>] [--json] [--non-interactive]
+
+ARGUMENTS
+TRACEID ID of the trace to display
+
+FLAGS
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+--project-id=<value> EAS project ID (defaults to the project ID of the current directory)
+
+DESCRIPTION
+display every span of a single request trace by its trace ID, oldest first, with child spans indented under their
+parent. Trace IDs are shown by `eas observe:traces`. In `--json` output a span with no `parentSpanId` is a root span,
+and a span with no `http` object is not an HTTP request
+
+See code: packages/eas-cli/src/commands/observe/trace.ts
+
+## eas observe:traces
+
+display request trace spans recorded by the app, newest first. With no span filters, a summary of span names and kinds with counts is returned. Pass --all-spans or a span filter (--name, --kind, --status, --host, --http-status, --min-duration, --root-only, --session-id) to list individual spans
+
+USAGE
+$ eas observe:traces [--platform android|ios|ipados|macos|tvos|apple] [--after <value>] [--limit <value>] [--start
+<value> | --days <value>] [--end <value> | ] [--app-version <value>] [--build-number <value>] [--update-id <value>]
+[--environment <value>] [--session-id <value>] [--name <value>...] [--kind
+client|consumer|internal|producer|server|unspecified...] [--status error|ok|unset...] [--host <value>...]
+[--http-status <value>...] [--min-duration <value>] [--root-only] [--all-spans] [--project-id <value>] [--json]
+[--non-interactive]
+
+FLAGS
+--after=<value> Cursor for pagination. Use the endCursor from a previous query to fetch the next page.
+--all-spans List individual spans instead of the summary of span names + counts, even with no span
+filter
+--app-version=<value> Filter by app version
+--build-number=<value> Filter by app build number
+--days=<value> Show results from the last N days (mutually exclusive with --start/--end)
+--end=<value> End of time range (ISO date)
+--environment=<value> Filter by environment (e.g. production, development)
+--host=<value>... Filter by request host (can be specified multiple times)
+--http-status=<value>... Filter by HTTP response status code (can be specified multiple times)
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--kind=<option>... Filter by span kind (can be specified multiple times)
+<options: client|consumer|internal|producer|server|unspecified>
+--limit=<value> The number of items to fetch each query. Defaults to 20 and is capped at 100.
+--min-duration=<value> Only spans that took at least this many milliseconds
+--name=<value>... Filter by span name, such as GET or POST (can be specified multiple times)
+--non-interactive Run the command in non-interactive mode.
+--platform=<option> Filter by platform ("apple" covers iOS, iPadOS, tvOS, and macOS)
+<options: android|ios|ipados|macos|tvos|apple>
+--project-id=<value> EAS project ID (defaults to the project ID of the current directory)
+--root-only Only root spans (spans with no parent)
+--session-id=<value> Filter by session ID
+--start=<value> Start of time range (ISO date)
+--status=<option>... Filter by span status (can be specified multiple times)
+<options: error|ok|unset>
+--update-id=<value> Filter by EAS update ID
+
+DESCRIPTION
+display request trace spans recorded by the app, newest first. With no span filters, a summary of span names and kinds
+with counts is returned. Pass --all-spans or a span filter (--name, --kind, --status, --host, --http-status,
+--min-duration, --root-only, --session-id) to list individual spans
+
+See code: packages/eas-cli/src/commands/observe/traces.ts
 
 ## eas observe:versions
 
@@ -2648,7 +2725,7 @@ See code: packages/eas-cli/src/commands/project/init.ts
 
 ## eas project:new [PATH]
 
-Create a new project configured with Expo Application Services (EAS)
+create a new project configured with Expo Application Services (EAS)
 
 USAGE
 $ eas project:new [PATH] [-p bun|npm|pnpm|yarn] [--sdk-version <value>]
@@ -2662,7 +2739,7 @@ FLAGS
 --sdk-version=<value> Expo SDK version to use for the new project (e.g. 57, or "latest")
 
 DESCRIPTION
-Create a new project configured with Expo Application Services (EAS)
+create a new project configured with Expo Application Services (EAS)
 
 ALIASES
 $ eas new
@@ -2715,7 +2792,7 @@ $ eas sim:availability
 
 ## eas sim:control [ACTION]
 
-[EXPERIMENTAL] run a serve-sim action on a remote iOS simulator session on EAS. Run without an action to list the actions the session supports. To save a screenshot locally, run eas simulator:control screenshot.capture --output ./screenshot.png.
+[EXPERIMENTAL] run a serve-sim action on a remote iOS simulator session on EAS. Run without an action to list the actions the session supports. To save a screenshot locally, run eas simulator:control screenshot.capture --output ./screenshot.png
 
 USAGE
 $ eas sim:control [ACTION...] [-h] [--id <value>] [--list] [--output <value>] [--json] [--non-interactive]
@@ -2736,7 +2813,7 @@ filename; omit it to save with a generated filename in the current directory.
 DESCRIPTION
 [EXPERIMENTAL] run a serve-sim action on a remote iOS simulator session on EAS. Run without an action to list the
 actions the session supports. To save a screenshot locally, run `eas simulator:control screenshot.capture --output
-./screenshot.png`.
+./screenshot.png`
 
 ALIASES
 $ eas sim:control
@@ -2813,7 +2890,7 @@ $ eas sim:exec
 
 ## eas sim:get
 
-[EXPERIMENTAL] get info about a remote simulator session on EAS by its simulator session ID. Preview links follow the session's saved sharing preference.
+[EXPERIMENTAL] get info about a remote simulator session on EAS by its simulator session ID. Preview links follow the session's saved sharing preference
 
 USAGE
 $ eas sim:get [--id <value>] [--json] [--non-interactive]
@@ -2825,7 +2902,7 @@ FLAGS
 
 DESCRIPTION
 [EXPERIMENTAL] get info about a remote simulator session on EAS by its simulator session ID. Preview links follow the
-session's saved sharing preference.
+session's saved sharing preference
 
 ALIASES
 $ eas sim:get
@@ -2861,9 +2938,40 @@ DESCRIPTION
 ALIASES
 $ eas sim:list
 
+## eas sim:logs
+
+[EXPERIMENTAL] show buffered logs from a remote iOS simulator session
+
+USAGE
+$ eas sim:logs [--id <value>] [--artifact <value>] [-o <value>] [-f | --json] [--scope user-apps|all]
+[--limit <value>] [--timestamp] [--non-interactive]
+
+FLAGS
+-f, --follow Stream new logs. Start following before performing actions to collect them.
+-o, --output=<value> Save a stopped session artifact to this path.
+--artifact=<value> Artifact index to download from a stopped session (1-based).
+--id=<value> Simulator session ID. Defaults to .env.eas-simulator.
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--limit=<value> [default: 100] Maximum number of buffered log lines to show while the session runs.
+--non-interactive Run the command in non-interactive mode.
+--scope=<option> [default: user-apps] Show user app logs or all device logs while the session runs.
+<options: user-apps|all>
+--timestamp Show timestamps in live human-readable log output.
+
+DESCRIPTION
+[EXPERIMENTAL] show buffered logs from a remote iOS simulator session
+
+ALIASES
+$ eas sim:logs
+
+EXAMPLES
+$ eas simulator:logs --follow
+
+$ eas simulator:logs --json
+
 ## eas sim:start
 
-[EXPERIMENTAL] start a remote simulator session on EAS and get instructions to connect to it. The default browser preview link requires sign-in.
+[EXPERIMENTAL] start a remote simulator session on EAS and get instructions to connect to it. The default browser preview link requires sign-in
 
 USAGE
 $ eas sim:start [-p android|ios] [--name <value>] [--tag <value>...] [--device <value>] [--system-image
@@ -2989,7 +3097,7 @@ appium, and argent also include an automation interface; web-preview-only includ
 
 DESCRIPTION
 [EXPERIMENTAL] start a remote simulator session on EAS and get instructions to connect to it. The default browser
-preview link requires sign-in.
+preview link requires sign-in
 
 ALIASES
 $ eas simulator:start
@@ -3015,7 +3123,7 @@ $ eas sim:stop
 
 ## eas simulator
 
-[EXPERIMENTAL] start a remote simulator session on EAS and get instructions to connect to it. The default browser preview link requires sign-in.
+[EXPERIMENTAL] start a remote simulator session on EAS and get instructions to connect to it. The default browser preview link requires sign-in
 
 USAGE
 $ eas simulator [-p android|ios] [--name <value>] [--tag <value>...] [--device <value>] [--system-image
@@ -3141,7 +3249,7 @@ appium, and argent also include an automation interface; web-preview-only includ
 
 DESCRIPTION
 [EXPERIMENTAL] start a remote simulator session on EAS and get instructions to connect to it. The default browser
-preview link requires sign-in.
+preview link requires sign-in
 
 ALIASES
 $ eas simulator:start
@@ -3170,7 +3278,7 @@ See code: packages/eas-cli/src/commands/simulator/availability.ts
 
 ## eas simulator:control [ACTION]
 
-[EXPERIMENTAL] run a serve-sim action on a remote iOS simulator session on EAS. Run without an action to list the actions the session supports. To save a screenshot locally, run eas simulator:control screenshot.capture --output ./screenshot.png.
+[EXPERIMENTAL] run a serve-sim action on a remote iOS simulator session on EAS. Run without an action to list the actions the session supports. To save a screenshot locally, run eas simulator:control screenshot.capture --output ./screenshot.png
 
 USAGE
 $ eas simulator:control [ACTION...] [-h] [--id <value>] [--list] [--output <value>] [--json] [--non-interactive]
@@ -3191,7 +3299,7 @@ filename; omit it to save with a generated filename in the current directory.
 DESCRIPTION
 [EXPERIMENTAL] run a serve-sim action on a remote iOS simulator session on EAS. Run without an action to list the
 actions the session supports. To save a screenshot locally, run `eas simulator:control screenshot.capture --output
-./screenshot.png`.
+./screenshot.png`
 
 ALIASES
 $ eas sim:control
@@ -3276,7 +3384,7 @@ See code: packages/eas-cli/src/commands/simulator/exec.ts
 
 ## eas simulator:get
 
-[EXPERIMENTAL] get info about a remote simulator session on EAS by its simulator session ID. Preview links follow the session's saved sharing preference.
+[EXPERIMENTAL] get info about a remote simulator session on EAS by its simulator session ID. Preview links follow the session's saved sharing preference
 
 USAGE
 $ eas simulator:get [--id <value>] [--json] [--non-interactive]
@@ -3288,7 +3396,7 @@ FLAGS
 
 DESCRIPTION
 [EXPERIMENTAL] get info about a remote simulator session on EAS by its simulator session ID. Preview links follow the
-session's saved sharing preference.
+session's saved sharing preference
 
 ALIASES
 $ eas sim:get
@@ -3328,9 +3436,42 @@ $ eas sim:list
 
 See code: packages/eas-cli/src/commands/simulator/list.ts
 
+## eas simulator:logs
+
+[EXPERIMENTAL] show buffered logs from a remote iOS simulator session
+
+USAGE
+$ eas simulator:logs [--id <value>] [--artifact <value>] [-o <value>] [-f | --json] [--scope user-apps|all]
+[--limit <value>] [--timestamp] [--non-interactive]
+
+FLAGS
+-f, --follow Stream new logs. Start following before performing actions to collect them.
+-o, --output=<value> Save a stopped session artifact to this path.
+--artifact=<value> Artifact index to download from a stopped session (1-based).
+--id=<value> Simulator session ID. Defaults to .env.eas-simulator.
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--limit=<value> [default: 100] Maximum number of buffered log lines to show while the session runs.
+--non-interactive Run the command in non-interactive mode.
+--scope=<option> [default: user-apps] Show user app logs or all device logs while the session runs.
+<options: user-apps|all>
+--timestamp Show timestamps in live human-readable log output.
+
+DESCRIPTION
+[EXPERIMENTAL] show buffered logs from a remote iOS simulator session
+
+ALIASES
+$ eas sim:logs
+
+EXAMPLES
+$ eas simulator:logs --follow
+
+$ eas simulator:logs --json
+
+See code: packages/eas-cli/src/commands/simulator/logs.ts
+
 ## eas simulator:start
 
-[EXPERIMENTAL] start a remote simulator session on EAS and get instructions to connect to it. The default browser preview link requires sign-in.
+[EXPERIMENTAL] start a remote simulator session on EAS and get instructions to connect to it. The default browser preview link requires sign-in
 
 USAGE
 $ eas simulator:start [-p android|ios] [--name <value>] [--tag <value>...] [--device <value>] [--system-image
@@ -3456,7 +3597,7 @@ appium, and argent also include an automation interface; web-preview-only includ
 
 DESCRIPTION
 [EXPERIMENTAL] start a remote simulator session on EAS and get instructions to connect to it. The default browser
-preview link requires sign-in.
+preview link requires sign-in
 
 ALIASES
 $ eas simulator:start
@@ -4246,7 +4387,7 @@ $ eas whoami
 
 ## eas worker:alias
 
-Assign deployment aliases.
+assign deployment aliases
 
 USAGE
 $ eas worker:alias [--prod] [--alias name] [--id xyz123] [--json] [--non-interactive]
@@ -4259,7 +4400,7 @@ FLAGS
 --prod Promote an existing deployment to production.
 
 DESCRIPTION
-Assign deployment aliases.
+assign deployment aliases
 
 ALIASES
 $ eas worker:alias
@@ -4267,7 +4408,7 @@ $ eas deploy:promote
 
 ## eas worker:alias:delete [ALIAS_NAME]
 
-Delete deployment aliases.
+delete deployment aliases
 
 USAGE
 $ eas worker:alias:delete [ALIAS_NAME] [--json] [--non-interactive]
@@ -4277,14 +4418,14 @@ FLAGS
 --non-interactive Run the command in non-interactive mode.
 
 DESCRIPTION
-Delete deployment aliases.
+delete deployment aliases
 
 ALIASES
 $ eas worker:alias:delete
 
 ## eas worker:delete [DEPLOYMENT_ID]
 
-Delete a deployment.
+delete a deployment
 
 USAGE
 $ eas worker:delete [DEPLOYMENT_ID] [--json] [--non-interactive]
@@ -4294,7 +4435,7 @@ FLAGS
 --non-interactive Run the command in non-interactive mode.
 
 DESCRIPTION
-Delete a deployment.
+delete a deployment
 
 ALIASES
 $ eas worker:delete
@@ -4329,7 +4470,7 @@ $ eas worker:deploy
 
 ## eas workflow:cancel
 
-Cancel one or more workflow runs. If no workflow run IDs are provided, you will be prompted to select IN_PROGRESS runs to cancel.
+cancel one or more workflow runs. If no workflow run IDs are provided, you will be prompted to select in-progress or queued runs to cancel
 
 USAGE
 $ eas workflow:cancel [--non-interactive]
@@ -4338,8 +4479,8 @@ FLAGS
 --non-interactive Run the command in non-interactive mode.
 
 DESCRIPTION
-Cancel one or more workflow runs. If no workflow run IDs are provided, you will be prompted to select IN_PROGRESS runs
-to cancel.
+cancel one or more workflow runs. If no workflow run IDs are provided, you will be prompted to select in-progress or
+queued runs to cancel
 
 See code: packages/eas-cli/src/commands/workflow/cancel.ts
 
@@ -4469,7 +4610,7 @@ See code: packages/eas-cli/src/commands/workflow/insights/maestro.ts
 
 ## eas workflow:logs [ID]
 
-view logs for a workflow run, selecting a job and step to view. You can pass in either a workflow run ID or a job ID. If no ID is passed in, you will be prompted to select from recent workflow runs for the current project.
+view logs for a workflow run, selecting a job and step to view. You can pass in either a workflow run ID or a job ID. If no ID is passed in, you will be prompted to select from recent workflow runs for the current project
 
 USAGE
 $ eas workflow:logs [ID] [--json] [--non-interactive] [--all-steps]
@@ -4485,13 +4626,13 @@ non-interactive mode.
 
 DESCRIPTION
 view logs for a workflow run, selecting a job and step to view. You can pass in either a workflow run ID or a job ID.
-If no ID is passed in, you will be prompted to select from recent workflow runs for the current project.
+If no ID is passed in, you will be prompted to select from recent workflow runs for the current project
 
 See code: packages/eas-cli/src/commands/workflow/logs.ts
 
 ## eas workflow:run FILE
 
-run an EAS workflow. The entire local project directory will be packaged and uploaded to EAS servers for the workflow run, unless the --ref flag is used.
+run an EAS workflow. The entire local project directory will be packaged and uploaded to EAS servers for the workflow run, unless the --ref flag is used
 
 USAGE
 $ eas workflow:run FILE [--non-interactive] [--wait] [-F <value>...] [--ref <value>] [--ssh] [--ssh-idle-timeout
@@ -4511,7 +4652,7 @@ FLAGS
 
 DESCRIPTION
 run an EAS workflow. The entire local project directory will be packaged and uploaded to EAS servers for the workflow
-run, unless the --ref flag is used.
+run, unless the --ref flag is used
 
 FLAG DESCRIPTIONS
 -F, --input=<value>... Set workflow inputs
@@ -4562,7 +4703,7 @@ See code: packages/eas-cli/src/commands/workflow/runs.ts
 
 ## eas workflow:status [WORKFLOW_RUN_ID]
 
-show the status of an existing workflow run. If no run ID is provided, you will be prompted to select from recent workflow runs for the current project.
+show the status of an existing workflow run. If no run ID is provided, you will be prompted to select from recent workflow runs for the current project
 
 USAGE
 $ eas workflow:status [WORKFLOW_RUN_ID] [--non-interactive] [--wait] [--json]
@@ -4577,7 +4718,7 @@ FLAGS
 
 DESCRIPTION
 show the status of an existing workflow run. If no run ID is provided, you will be prompted to select from recent
-workflow runs for the current project.
+workflow runs for the current project
 
 FLAG DESCRIPTIONS
 --[no-]wait Wait for workflow run to complete. Defaults to false.
@@ -4606,7 +4747,7 @@ See code: packages/eas-cli/src/commands/workflow/validate.ts
 
 ## eas workflow:view [ID]
 
-view details for a workflow run, including jobs. If no run ID is provided, you will be prompted to select from recent workflow runs for the current project.
+view details for a workflow run, including jobs. If no run ID is provided, you will be prompted to select from recent workflow runs for the current project
 
 USAGE
 $ eas workflow:view [ID] [--json] [--non-interactive]
@@ -4620,6 +4761,6 @@ FLAGS
 
 DESCRIPTION
 view details for a workflow run, including jobs. If no run ID is provided, you will be prompted to select from recent
-workflow runs for the current project.
+workflow runs for the current project
 
 See code: packages/eas-cli/src/commands/workflow/view.ts

@@ -1,5 +1,5 @@
 Source: https://www.revenuecat.com/docs/getting-started/installation/reactnative
-Fetched: 2026-10-14
+Fetched: 2026-11-02
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 On this page
@@ -14,7 +14,7 @@ You need the following before you start:
 
 - A project in your RevenueCat account.
 
-- A React Native app (version 0.73 or later) open in your editor.
+- A React Native app (version 0.80 or later) open in your editor.
 
 Using Expo? See Using RevenueCat with Expo instead — Expo projects install the same SDK with Expo's own tooling.
 

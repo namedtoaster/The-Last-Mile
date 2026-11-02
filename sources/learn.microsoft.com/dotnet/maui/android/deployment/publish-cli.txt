@@ -1,5 +1,5 @@
 Source: https://learn.microsoft.com/dotnet/maui/android/deployment/publish-cli
-Fetched: 2026-10-13
+Fetched: 2026-11-02
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 Table of contents
@@ -285,6 +285,8 @@ non-optimizing configuration. Both modes still shrink unused Java code. This
 property doesn't enable or disable R8 itself.
 
 ## Distribute the app
+
+Before you publish to Google Play, review the Google Play code optimization requirements, including the required .NET for Android version and R8 settings for Release builds.
 
 The signed APK or AAB file can be distributed with one of the following approaches:
 

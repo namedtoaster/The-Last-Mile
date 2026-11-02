@@ -1,5 +1,5 @@
 Source: https://docs.expo.dev/versions/latest/sdk/location/
-Fetched: 2026-10-26
+Fetched: 2026-11-02
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 This documentation is available as Markdown for AI agents and LLMs. See the full Markdown index or append .md to any documentation URL.
@@ -19,7 +19,7 @@ npm
 
 Changelog
 
-Recommended version:~58.0.19
+Recommended version:~58.0.20
 
 Copy page
 
