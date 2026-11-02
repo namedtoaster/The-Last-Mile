@@ -2,6 +2,40 @@
 
 ## 0.2.0 (unreleased)
 
+- **`build-a-baseline`: new skill.** For the failure where the same question gets a
+  different confident answer every session, and the user eventually says they cannot
+  trust anything you tell them. The fix is to move the answer out of judgement and into
+  a fixed scoring rule over measured data: an outside formula rather than one you
+  invented (because a formula you invented is one you can quietly adjust, and the user
+  cannot tell refining from rationalising), the subjective inputs frozen in a dated file
+  with "never change a number to make a favoured option win" written at the top, the
+  cheap measuring instrument validated against the trusted one on a single case with its
+  limits recorded in the script, and falsification thresholds written down BEFORE the
+  test runs so a result cannot be reinterpreted into a pass. Two findings from the
+  session it came out of, both of which could have gone the other way: a vendor's
+  difficulty score tested against an independently measured quantity came back at
+  Spearman 0.788 and monotonic across every band, so it was real; and the assumption
+  that a multiplicative formula would beat an additive one was tested and lost, 0.552
+  against 0.665. Carries the rule that attractiveness and feasibility are two scores and
+  never one, since even the better formula separated achievable from impossible options
+  at only 0.665 where 0.5 is a coin flip, which is the argument for making feasibility a
+  hard gate rather than another term in the sum. The finished baseline document must
+  carry its own superseded-decisions list so withdrawn advice cannot be resurrected.
+
+- `mine-community`: three rules added, each from a real failure in one session.
+  **Two posts by the same author are one source**, so check the handle and the product
+  name before using the word convergence, because a founder promoting one product posts
+  variations across several communities and a merged harvest shows you both copies
+  without saying they are related. **Check a claim against the user's own tools and data
+  BEFORE recommending it**, which is an ordering rule: a post praising a $10 tool became
+  a recommendation to buy something the project already owned, and a post about paying
+  for data access became a recommendation to spend money the vendor's own documentation
+  says is unnecessary, and withdrawing advice an hour after giving it costs more trust
+  than the finding was worth. **Say which findings are measurements and which are
+  claims**, explicitly and in the output, because a founder cannot calibrate trust across
+  a mixed list and needs to know that the numbers from their own account have been
+  stable while the strangers' posts have not.
+
 - `search-pages`: carries the verified negatives for the AI search surface, so nobody
   spends a session on a ritual. An `llms.txt` file does nothing (97% of them get zero bot
   requests across 137,210 domains, and Google says Search ignores it), Google's own
