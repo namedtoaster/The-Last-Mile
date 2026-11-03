@@ -176,6 +176,11 @@ of money, but I got there. If you'd be interested, leave a comment on
 [this discussion](https://github.com/namedtoaster/the-last-mile/discussions/1). That's
 how I'll tell you when it's out. No email, no sign up.
 
+## Privacy
+
+The Last Mile collects nothing. Which skills reach the internet, and where, is in
+[PRIVACY.md](PRIVACY.md).
+
 ## License
 
 MIT. See [LICENSE](LICENSE).

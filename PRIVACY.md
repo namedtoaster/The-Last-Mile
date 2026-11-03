@@ -12,6 +12,8 @@ Some skills reach the internet when you use them:
 - **connect-tools** helps you add official MCP servers from vendors you already use
   (RevenueCat, Sentry, Expo and others). You sign in to each one yourself, and that
   vendor's own privacy policy applies to it.
+- **ship** uploads your build, store listing and privacy answers to App Store Connect
+  and Google Play Console, using your own accounts, and only after you say yes.
 - **sync** copies the latest skills from this GitHub repo into your project.
 
 If you report a rejection through a GitHub issue, what you write there is public on
