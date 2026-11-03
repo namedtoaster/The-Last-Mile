@@ -56,9 +56,9 @@ way to launder one opinion into a conclusion.
 
 **Check a claim against the user's own tools and data BEFORE you recommend it,
 not after.** This is an ordering rule and it is the most expensive one to get
-wrong. A community post saying "this $10 tool changed everything" becomes a
-recommendation to buy something the project already owns; a post saying "spend
-$100 to unlock the data" becomes a recommendation to spend money the vendor's own
+wrong. A community post saying "this ten dollar tool changed everything" becomes a
+recommendation to buy something the project already owns; a post saying "spend a
+hundred dollars to unlock the data" becomes a recommendation to spend money the vendor's own
 documentation says is unnecessary. Both happen, and the user then watches you
 withdraw advice you gave an hour earlier, which costs more trust than the finding
 was ever worth. So for every finding that would cost the user money, time, or a
