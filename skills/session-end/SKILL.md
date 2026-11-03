@@ -103,7 +103,7 @@ tree. A broad commit would sweep another session's changes into yours.
 4. Run `git diff --cached --name-only` and confirm it lists exactly your files.
    Unstage anything else with `git restore --staged -- <file>`. Then commit what
    is staged: `git commit -m "<plain sentence describing the change>"`. Do not
-   pass paths to `git commit`: with paths, git commits the whole working copy of
+   name files after `git commit`: with file names, git commits the whole working copy of
    those files and sweeps in the edits you just left out.
 5. Run `git show HEAD` and confirm it holds only your changes, and `git diff`
    to confirm the edits you left out are still there. If something else got in,
