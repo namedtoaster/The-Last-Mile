@@ -87,6 +87,12 @@ drafts a short reply, and resubmits.
 Then [tell us what caught you](https://github.com/namedtoaster/the-last-mile/issues/new?template=this-caught-me.yml).
 Every rejection someone reports becomes a check for everyone after them.
 
+## Want a second look before you submit?
+
+I'll run the checks on your app myself and send you what I find, each with the file
+and line. Free for now. [Ask here](https://github.com/namedtoaster/the-last-mile/discussions/33)
+with your stack and when you plan to submit.
+
 ## Then: users. Then: money.
 
 Being in the store gets you zero users on its own. Nobody searches for your app.
