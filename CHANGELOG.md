@@ -2,6 +2,12 @@
 
 ## 0.2.0 (unreleased)
 
+- **`session-end`: a gotcha has to say what was measured, and label a guess.** An
+  entry written while a fix was still unverified was read by the next session as the
+  settled cause, which sent it to defend the wrong fix instead of re-reading the
+  symptom. The gotcha step now asks for the evidence, and for an untested fix to say
+  so.
+
 - **`build-a-baseline`: new skill.** For the failure where the same question gets a
   different confident answer every session, and the user eventually says they cannot
   trust anything you tell them. The fix is to move the answer out of judgement and into

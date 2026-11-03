@@ -48,6 +48,17 @@ add none. If the user made a decision
 that should not be re-litigated, add it to **Standing decisions** with the date and
 one line of why. Keep entries specific; a vague gotcha helps nobody.
 
+**Write what was observed, and mark a guess as a guess.** A gotcha is read later as
+settled fact, and so is the handoff file, so both have to separate the two. If the
+cause was measured, say what was measured. If the fix has not been seen to work,
+because the checks were not re-run or the build that would prove it has not
+finished, say that in the entry and name the evidence that would settle it. **Never
+write a theory as the cause before anything has confirmed it.** The next person
+reasons from your entry instead of from the symptom, so a confident wrong entry
+costs more time than no entry at all, and it can send a later session to defend the
+wrong fix. A plausible mechanism, a precise sounding number nobody measured, and an
+untested fix are the three that read as fact and are not.
+
 **Skill problems.** If a skill from The Last Mile did the wrong thing this session
 (a step that misled you, a missing step, a wrong default), and the user already
 asked for it to be fixed, run the improve-skill skill now. Otherwise list it in the
