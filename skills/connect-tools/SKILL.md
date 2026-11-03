@@ -57,8 +57,8 @@ alternative: it adds the vendor's skills too. Never both. Then, for each one the
    - **project** (`-s project`): writes `.mcp.json` in the repo so everyone who
      clones it gets the server. Only for servers that sign in through the browser,
      because `.mcp.json` is committed. Never put a key in it; if a server needs a
-     key, reference an environment variable (`${REVENUECAT_API_KEY}`) and tell the
-     user where to set it.
+     key, reference an environment variable with the `${NAME}` form `.mcp.json`
+     supports, and tell the user where to set it.
    - **local** (the default when no scope is given): this project, this machine,
      not committed. Use for servers that need a pasted key and are only for this app.
 3. **Add it** with the command in `servers.md`. Sign in servers: run the command,
