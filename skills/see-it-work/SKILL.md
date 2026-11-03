@@ -102,7 +102,7 @@ describe a screen you have not seen.
 
 Finish with what was proved and how, in a few lines:
 
-- Which layer, which command, and the result (pass counts, or the screenshot
+- Which layer, which command, and the result (how many tests passed, or the screenshot
   itself shown to the user).
 - That the test failed with the fix undone, for a bug fix.
 - What is still unproved and why (no simulator, no real device, camera, purchase

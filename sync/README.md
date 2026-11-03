@@ -37,12 +37,8 @@ Open a Claude Code session in your project (phone, web or desktop) and paste:
 
 ### By hand
 
-1. Fetch the sync script into your project:
-
-   ```
-   mkdir -p .claude/last-mile
-   curl -fsSL https://raw.githubusercontent.com/namedtoaster/the-last-mile/main/sync/sync.mjs -o .claude/last-mile/sync.mjs
-   ```
+1. Copy [sync/sync.mjs](sync.mjs) from this repo into your project at
+   `.claude/last-mile/sync.mjs`. Read it first; it is short.
 
 2. Create `.claude/last-mile/config.json`:
 
