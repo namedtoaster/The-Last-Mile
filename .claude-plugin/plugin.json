@@ -22,5 +22,8 @@
     "capacitor",
     "ios",
     "android"
-  ]
+  ],
+  "supportUrl": "https://github.com/namedtoaster/the-last-mile/issues",
+  "documentationUrl": "https://github.com/namedtoaster/the-last-mile#readme",
+  "privacyPolicyUrl": "https://github.com/namedtoaster/the-last-mile/blob/main/PRIVACY.md"
 }
