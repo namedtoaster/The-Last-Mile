@@ -1,5 +1,5 @@
 Source: https://docs.expo.dev/submit/android-manual/
-Fetched: 2026-10-19
+Fetched: 2026-11-09
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 This documentation is available as Markdown for AI agents and LLMs. See the full Markdown index or append .md to any documentation URL.
@@ -72,4 +72,4 @@ Go back to the Dashboard and complete the remaining tasks for your app: privacy 
 
 - Creating a Google Service Account key: required to use eas submit --platform android
 
-- Submit to the Google Play Store with EAS Submit
+- Submit to the Google Play Store with Expo Submit

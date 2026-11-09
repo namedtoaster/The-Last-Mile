@@ -1,5 +1,5 @@
 Source: https://vercel.com/docs/domains/set-up-custom-domain
-Fetched: 2026-10-18
+Fetched: 2026-11-09
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 ## On this page
@@ -33,10 +33,10 @@ Use this block when you already know what you're doing and want the full command
 terminal
 
 # 1. Check your existing domains
-vercel domains ls
+vercel domains list
 
-# 2. Add the domain to your project (one arg when run from a linked project)
-vercel domains add example.com
+# 2. Add the domain to your project (pass the project name as the second argument)
+vercel domains add example.com my-site
 
 # 3. Check what DNS records are needed
 vercel domains verify example.com --project my-site
@@ -45,7 +45,7 @@ vercel domains verify example.com --project my-site
 vercel dns add example.com '@' A your_project_ip
 
 # 4b. OR add the subdomain to your project and configure DNS records (subdomain)
-vercel domains add www.example.com
+vercel domains add www.example.com my-site
 vercel domains verify www.example.com --project my-site
 vercel dns add example.com www CNAME your_project_cname_target
 
@@ -55,7 +55,7 @@ vercel domains verify example.com --project my-site
 # vercel domains verify www.example.com --project my-site
 
 # 6. Verify SSL certificate was provisioned
-vercel certs ls
+vercel certs list
 
 # 7. Test the domain
 vercel httpstat /
@@ -67,29 +67,31 @@ List the domains already configured on your team to avoid conflicts:
 
 terminal
 
-vercel domains ls
+vercel domains list
 
-This shows all domains across your projects, including their DNS status and verification state.
+This shows the domains on your team, including each domain's registrar, nameservers (Vercel or third party), expiration date, creator, and age.
 
 ## 2. Add the domain to your project
 
-Add your custom domain. From a linked project, vercel domains add takes a single argument (the domain). To target a different project (or when running outside of a linked directory), pass the project name as a second argument.
+Add your custom domain and pass your project name as the second argument:
 
 terminal
 
-vercel domains add example.com
+vercel domains add example.com my-site
+
+If you omit the project name, vercel domains add adds an apex domain to your team without assigning it to a project, and returns an error for a subdomain.
 
 If the domain is already assigned to another project in your team, use the --force flag to reassign it:
 
 terminal
 
-vercel domains add example.com --force
+vercel domains add example.com my-site --force
 
 For a www subdomain, add that separately:
 
 terminal
 
-vercel domains add www.example.com
+vercel domains add www.example.com my-site
 
 If you add both example.com and www.example.com, configure a redirect from one to the other in your Vercel project settings to avoid duplicate content.
 
@@ -130,7 +132,7 @@ For Vercel-managed DNS, confirm that Vercel lists the records you added:
 
 terminal
 
-vercel dns ls
+vercel dns list
 
 ## 5. Verify DNS configuration
 
@@ -148,7 +150,7 @@ Vercel automatically provisions an SSL certificate after DNS verification succee
 
 terminal
 
-vercel certs ls
+vercel certs list
 
 Look for your domain in the output. The certificate typically provisions within a few minutes of DNS verification.
 
@@ -170,9 +172,9 @@ vercel curl /
 
 If your domain's nameservers point to an external DNS provider (like Cloudflare or Route 53), you can't use vercel dns add to configure records. Instead:
 
-- Add the domain to your project with vercel domains add example.com
+- Add the domain to your project with vercel domains add example.com my-site (replace my-site with your project name)
 
-- Run vercel domains verify example.com --project my-site (replace my-site with your project name) or open your project's Settings → Domains to get the recommended records
+- Run vercel domains verify example.com --project my-site or open your project's Settings → Domains to get the recommended records
 
 - Add and save those records through your external DNS provider's interface
 

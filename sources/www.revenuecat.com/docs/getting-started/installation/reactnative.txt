@@ -1,5 +1,5 @@
 Source: https://www.revenuecat.com/docs/getting-started/installation/reactnative
-Fetched: 2026-11-02
+Fetched: 2026-11-09
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 On this page
@@ -101,6 +101,8 @@ classpath("com.android.tools:r8:8.1.44")
 }
 
 }
+
+Show more
 
 This solution forces the use of a specific R8 version that resolves the dependency conflicts. For more details, see the Google Issue Tracker.
 

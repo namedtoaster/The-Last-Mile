@@ -1,5 +1,5 @@
 Source: https://developer.apple.com/help/app-store-connect/reference/screenshot-specifications
-Fetched: 2026-10-18
+Fetched: 2026-11-09
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 # Screenshot specifications
@@ -48,7 +48,7 @@ Notes
 
 Starting in April 2027, screenshots will be required for any app using the iOS 27.1 SDK or later. Learn how to prepare your apps for launch on iPhone Duo
 
-When you submit iPhone Duo screenshots in App Store Connect, your App Store product page will display a badge to let people know your app is optimized for iPhone Duo.
+When you submit iPhone Duo screenshots in App Store Connect, your App Store product page will display a badge to let people know your app is made for iPhone Duo.
 
 iPhone with Dynamic Island (large display)
 
@@ -410,7 +410,7 @@ iPad (A16)
 
 iPad (10th generation)
 
-iPad mini (A17 Pro)
+iPad mini (A20 Pro, A17 Pro)
 
 iPad mini (6th generation)
 
@@ -421,6 +421,14 @@ Screenshot size
 (portrait)
 
 2266 x 1488 pixels
+
+(landscape)
+
+1512 x 2316 pixels
+
+(portrait)
+
+2316 x 1512 pixels
 
 (landscape)
 

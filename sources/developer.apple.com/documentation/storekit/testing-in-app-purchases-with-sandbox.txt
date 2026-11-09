@@ -1,5 +1,5 @@
 Source: https://developer.apple.com/documentation/storekit/testing-in-app-purchases-with-sandbox
-Fetched: 2026-10-19
+Fetched: 2026-11-09
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 # Testing Apple In-App Purchases with sandbox
@@ -130,6 +130,7 @@ Clearing the purchase history for Sandbox Apple Accounts with a high number of p
 - Testing an auto-renewable subscription: Verify that your app handles a subscription lapse properly using the accelerated time rates within the sandbox environment.
 - Testing resubscribing from the subscriptions page: Verify that your app can reactivate an expired subscription by receiving a transaction callback or inspecting an updated receipt.
 - Testing disabling auto-renew: Verify that your app receives subscription updates when a user cancels a subscription by verifying the receipt or receiving a notification.
+- Testing multiseat subscriptions: Test group purchases, invitations, seat changes, refunds, and purchases from organizations in the sandbox environment before you release your app.
 
 ## Family Sharing
 - Testing Family Sharing: Verify that your app handles auto-renewable subscriptions and non-consumable Apple In-App Purchases that family members share with Family Sharing.

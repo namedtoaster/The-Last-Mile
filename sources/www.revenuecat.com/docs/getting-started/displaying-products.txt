@@ -1,5 +1,5 @@
 Source: https://www.revenuecat.com/docs/getting-started/displaying-products
-Fetched: 2026-10-26
+Fetched: 2026-11-09
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 On this page
@@ -110,6 +110,8 @@ public void onError(@NonNull PurchasesError error) {
 
 });
 
+Show more
+
 try {
 
 Offerings offerings = await Purchases.getOfferings();
@@ -162,6 +164,8 @@ error => {
 
 }
 
+Show more
+
 const displayUpsellScreen = async () => {
 
 try {
@@ -181,6 +185,8 @@ if (offerings.current !== null && offerings.current.availablePackages.length !==
 }
 
 }
+
+Show more
 
 var purchases = GetComponent<Purchases>();
 
@@ -220,6 +226,8 @@ displayPackages(offerings.current.availablePackages);
 
 }
 
+Show more
+
 try {
 
 const offerings = await Purchases.getSharedInstance().getOfferings();
@@ -243,6 +251,8 @@ displayPackages(offerings.current.availablePackages);
 // Handle errors
 
 }
+
+Show more
 
 ⚠️Avoid pre-warming offerings cache in your Android's Application
 Don't call getOfferings in your Android app's Application.onCreate.
@@ -272,7 +282,7 @@ Alternatively, if your app has multiple paywall locations and you want to contro
 - Java
 - Flutter
 - React Native
-- Cordova
+- Web
 - Capacitor
 - Unity
 Purchases.shared.getOfferings { offerings, error in
@@ -337,6 +347,8 @@ public void onError(@NonNull PurchasesError error) {
 
 });
 
+Show more
+
 Offering offering = await Purchases.getCurrentOfferingForPlacement(placementIdentifier: "your-placement-identifier");
 
 if (offering != null) {
@@ -361,7 +373,7 @@ if (offering) {
 
 }
 
-const offering = await Purchases.getCurrentOfferingForPlacement("your-placement-identifier");
+const offering = await Purchases.getSharedInstance().getCurrentOfferingForPlacement("your-placement-identifier");
 
 if (offering !== null) {
 
@@ -504,6 +516,8 @@ public void onError(@NonNull PurchasesError error) {
 }
 
 });
+
+Show more
 
 try {
 
@@ -702,17 +716,17 @@ offerings.all["experiment_group"].monthly
 
 // --
 
-offerings.all["experiment_group"].availablePackages.find(package => package === "<package_id>")
+offerings.all["experiment_group"].availablePackages.find(pkg => pkg.identifier === "<package_id>")
 
 offerings.all["experiment_group"].availablePackages
 
 // --
 
-offerings.all("experiment_group").monthly
+offerings.all["experiment_group"].monthly
 
 // --
 
-offerings.all("experiment_group").package("<package_id>")
+offerings.all["experiment_group"].availablePackages.find(pkg => pkg.identifier === "<package_id>")
 
 offerings.All["experiment_group"].AvailablePackages
 
@@ -860,6 +874,8 @@ public void onError(@NonNull PurchasesError error) {
 
 });
 
+Show more
+
 // Accessing the monthly product// Displaying the monthly product
 
 try {
@@ -879,6 +895,8 @@ StoreProduct product = offerings.current.monthly.storeProduct;
 // optional error handling
 
 }
+
+Show more
 
 // Accessing the monthly product// Displaying the monthly product
 
@@ -922,6 +940,8 @@ error => {
 
 }
 
+Show more
+
 // Accessing the monthly product
 
 const displayUpsellScreen = async () => {
@@ -945,6 +965,8 @@ const product = offerings.current.monthly;
 }
 
 }
+
+Show more
 
 // Accessing the monthly product
 
@@ -990,6 +1012,8 @@ displayProduct(product);
 
 }
 
+Show more
+
 // Accessing / displaying the monthly product
 
 try {
@@ -1011,6 +1035,8 @@ displayProduct(product);
 // Handle errors
 
 }
+
+Show more
 
 ## Choosing which Offering to display​
 
@@ -1056,6 +1082,8 @@ self.display(packages)
 
 }
 
+Show more
+
 [[RCPurchases sharedPurchases] offeringsWithCompletionBlock:^(RCOfferings *offerings, NSError *error) {
 
 NSArray<RCPackage *> *packages;
@@ -1078,6 +1106,8 @@ packages = [offerings offeringWithIdentifier:"ios_subscription_offer"].available
 
 }];
 
+Show more
+
 Purchases.sharedInstance.getOfferingsWith({ error ->
 
 // An error occurred
@@ -1099,6 +1129,8 @@ else -> null
 presentPaywall(packages)
 
 }
+
+Show more
 
 Purchases.sharedInstance.getOfferings(
 
@@ -1127,6 +1159,8 @@ presentPaywall(packages)
 }
 
 )
+
+Show more
 
 Purchases.getSharedInstance().getOfferings(new ReceiveOfferingsCallback() {
 
@@ -1168,6 +1202,8 @@ public void onError(@NonNull PurchasesError error) {
 
 });
 
+Show more
+
 try {
 
 Offerings offerings = await Purchases.getOfferings();
@@ -1196,6 +1232,8 @@ presentPaywall(packages);
 
 }
 
+Show more
+
 try {
 
 const offerings = await Purchases.getOfferings();
@@ -1222,35 +1260,7 @@ presentPaywall(packages);
 
 }
 
-Purchases.getOfferings(
-
-offerings => {
-
-let packages;
-
-if (user.isPaidDownload) {
-
-packages = offerings.all["paid_download_offer"].availablePackages;
-
-} else if (user.signedUpOver30DaysAgo) {
-
-packages = offerings.all["long_term_offer"].availablePackages;
-
-} else if (user.recentlyChurned) {
-
-packages = offerings.all["ios_subscription_offer"].availablePackages;
-
-}
-
-presentPaywall(packages);
-
-},
-
-error => {
-
-}
-
-);
+Show more
 
 Purchases.getOfferings(
 
@@ -1281,6 +1291,42 @@ error => {
 }
 
 );
+
+Show more
+
+try {
+
+const offerings = await Purchases.getOfferings();
+
+let packages;
+
+if (user.isPaidDownload) {
+
+packages = offerings.all["paid_download_offer"].availablePackages;
+
+} else if (user.signedUpOver30DaysAgo) {
+
+packages = offerings.all["long_term_offer"].availablePackages;
+
+} else if (user.recentlyChurned) {
+
+packages = offerings.all["ios_subscription_offer"].availablePackages;
+
+}
+
+if (packages) {
+
+presentPaywall(packages);
+
+}
+
+} catch (error) {
+
+// Handle errors fetching offerings
+
+}
+
+Show more
 
 var purchases = GetComponent<Purchases>();
 
@@ -1307,6 +1353,8 @@ packages = offerings.All["ios_subscription_offer"].AvailablePackages;
 presentPaywall(packages);
 
 });
+
+Show more
 
 ## Best Practices​
 

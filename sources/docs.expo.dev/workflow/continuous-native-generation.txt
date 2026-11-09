@@ -1,5 +1,5 @@
 Source: https://docs.expo.dev/workflow/continuous-native-generation/
-Fetched: 2026-10-19
+Fetched: 2026-11-09
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 This documentation is available as Markdown for AI agents and LLMs. See the full Markdown index or append .md to any documentation URL.
@@ -36,7 +36,7 @@ Expo as a framework enables CNG by combining the following tools:
 
 - Native subscribers, for reducing native code side-effects in entry point files, such as MainApplication or AppDelegate.
 
-- EAS Credentials for code signing additional targets and entitlements.
+- Credentials managed by Expo Build for code signing additional targets and entitlements.
 
 The end result is a workflow where a developer can express any native application with the app config and generate that project continuously — by running npx expo prebuild.
 
@@ -58,13 +58,13 @@ This creates the android and ios directories for running your React code. If you
 
 We highly recommend using Prebuild for the reasons listed in the common questions section, but the system is fully optional, and you can stop using it at any time.
 
-### Usage with EAS Build
+### Usage with Expo Build
 
-If your project does not contain android and ios directories, EAS Build will run Prebuild to generate these native directories before compilation. This is the default behavior for any project created using npx create-expo-app.
+If your project does not contain android and ios directories, Expo Build will run Prebuild to generate these native directories before compilation. This is the default behavior for any project created using npx create-expo-app.
 
-For a project that has android and ios directories, EAS Build will not run Prebuild to avoid overwriting any changes you've made to the native directories.
+For a project that has android and ios directories, Expo Build will not run Prebuild to avoid overwriting any changes you've made to the native directories.
 
-If you troubleshoot your app by compiling it locally (running npx expo prebuild, or npx expo run:android or npx expo run:ios), you can still use Prebuild with EAS Build to generate fresh native directories during the build process. The android and ios directories are automatically added to .gitignore when you create a new project, but if you need to add them manually, you can add them to .gitignore or .easignore files:
+If you troubleshoot your app by compiling it locally (running npx expo prebuild, or npx expo run:android or npx expo run:ios), you can still use Prebuild with Expo Build to generate fresh native directories during the build process. The android and ios directories are automatically added to .gitignore when you create a new project, but if you need to add them manually, you can add them to .gitignore or .easignore files:
 
 .gitignore
 
@@ -168,7 +168,7 @@ The convenience change to the scripts field is the only side effect that alters 
 
 Prebuild is optional and works seamlessly with all Expo tools and services. For existing React Native projects, where the native projects are managed manually, do not use npx expo prebuild, as that may overwrite any manual customizations. Developers can continue to make (direct changes to their native projects) while adopting other Expo tools and workflows. Later on, they can move their manual customizations to app config and/or config plugins, and then adopt CNG.
 
-Everything offered by Expo including EAS, Expo CLI, and the libraries in the Expo SDK are built to fully support existing React Native projects as this is a minimum requirement for supporting projects using npx expo prebuild. The only exception is the Expo Go app, which can load arbitrary React Native projects only if they include JavaScript fallbacks for native code absent in the Expo Go runtime.
+Everything offered by Expo including Expo Services, Expo CLI, and the libraries in the Expo SDK are built to fully support existing React Native projects as this is a minimum requirement for supporting projects using npx expo prebuild. The only exception is the Expo Go app, which can load arbitrary React Native projects only if they include JavaScript fallbacks for native code absent in the Expo Go runtime.
 
 ## Common questions
 

@@ -1,5 +1,5 @@
 Source: https://docs.expo.dev/eas/json/
-Fetched: 2026-10-19
+Fetched: 2026-11-09
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 This documentation is available as Markdown for AI agents and LLMs. See the full Markdown index or append .md to any documentation URL.
@@ -9,16 +9,40 @@ Edit page
 
 Copy page
 
-Learn about available properties for EAS Build and EAS Submit to configure and override their default behavior from within your project.
+Learn about available properties for EAS CLI, Expo Build, and Expo Submit to configure and override their default behavior from within your project.
 Edit page
 
 Copy page
 
-eas.json is the configuration file for EAS CLI and services. You can find the complete reference of all available schema properties for EAS Build and EAS Submit on this page.
+eas.json is the configuration file for EAS CLI and services. You can find a reference of all available schema properties for EAS CLI, Expo Build, and Expo Submit on this page.
 
-To learn more about how a project using EAS services is configured with eas.json, see Configure EAS Build with eas.json and Configure EAS Submit with eas.json.
+To learn more about how a project using Expo Services is configured with eas.json, see Configure Expo Build with eas.json and Configure Expo Submit with eas.json.
 
-## EAS Build
+## EAS CLI
+
+The following properties are available in the schema for the cli key in eas.json.
+
+### Properties
+
+Property | Description |
+version
+
+| (string) - A semantic version range of EAS CLI versions that the project supports, such as >= 16.0.0. If the installed EAS CLI version is outside this range, EAS CLI stops with an error. The check is skipped when EAS_SKIP_CLI_VERSION_CHECK is set.
+|
+requireCommit
+
+| (boolean) - If true, eas build and eas update require a clean Git working tree. If EAS CLI finds uncommitted changes, it asks whether to commit them. In non-interactive mode, it stops instead. For a build, EAS CLI then uploads a shallow Git clone of your last commit. For more information, see Full Git workflow. Defaults to false.
+|
+appVersionSource
+
+| (enum: local, remote) - The source of your app's developer-facing build version (android.versionCode and ios.buildNumber). With remote, Expo servers store and manage the version. With local, Expo Build reads the version from your project files. If you omit this field, EAS CLI warns that it will be required in the future and uses local. When a build profile sets autoIncrement to true, EAS CLI asks you to choose a source and saves it to eas.json. For more information, see App version management.
+|
+promptToConfigurePushNotifications
+
+| (boolean) - If false, EAS CLI does not ask whether to set up push notification credentials when it sets up iOS credentials for a build. If you omit this field, EAS CLI asks only when the dependencies in your package.json include expo-notifications.
+|
+
+## Expo Build
 
 The following properties are available in the schema for the build key in eas.json.
 
@@ -84,7 +108,7 @@ eas.jsonCopy
 Property | Description |
 withoutCredentials
 
-| (boolean) - When set to true, EAS CLI won't require you to configure credentials when building the app. This comes in handy when using EAS Build custom builds. Defaults to false.
+| (boolean) - When set to true, EAS CLI won't require you to configure credentials when building the app. This comes in handy when using Expo Build custom builds. Defaults to false.
 |
 extends
 
@@ -96,22 +120,22 @@ credentialsSource
 
 - local - if you want to provide your own credentials.json.
 
-- remote - if you want to use the credentials managed by EAS (default option).
+- remote - if you want to use the credentials managed by Expo Services (default option).
 
 |
 releaseChannel
 
 | (string) - Deprecated: Name of the release channel for the Classic Updates service, which is only supported in SDK 49 and lower. If you do not specify a channel, your binary will pull releases from the default channel.
 
-EAS Update uses the channel field, so you can remove releaseChannel after migrating to EAS Update.
+Expo Update uses the channel field, so you can remove releaseChannel after migrating to Expo Update.
 |
 channel
 
-| (string) - The EAS Update channel where this build will look for updates. Learn more. Standalone builds will check for and download updates matching platform, native runtime, and channel.
+| (string) - The Expo Update channel where this build will look for updates. Learn more. Standalone builds will check for and download updates matching platform, native runtime, and channel.
 
 This field has no effect when developmentClient is set to true, as development builds can run updates from any channel.
 
-If you have not yet migrated from Classic Updates to EAS Update, then continue to use the releaseChannel field instead.
+If you have not yet migrated from Classic Updates to Expo Update, then continue to use the releaseChannel field instead.
 |
 distribution
 
@@ -138,7 +162,7 @@ The large resource class is not available on the free plan.
 |
 prebuildCommand
 
-| (string) - Optional override of the prebuild command used by EAS.
+| (string) - Optional override of the prebuild command used by Expo Build.
 
 For example, you can specify prebuild --template example-template to use a custom template.
 
@@ -146,13 +170,13 @@ Note: --platform and --non-interactive will be added automatically by the build 
 |
 buildArtifactPaths
 
-| (string[]) - List of paths (or patterns) where EAS Build is going to look for the build artifacts. Use applicationArchivePath for specifying the path for uploading the application archive. Build artifacts are uploaded even if the build fails. EAS Build uses glob patterns for pattern matching.
+| (string[]) - List of paths (or patterns) where Expo Build is going to look for the build artifacts. Use applicationArchivePath for specifying the path for uploading the application archive. Build artifacts are uploaded even if the build fails. Expo Build uses glob patterns for pattern matching.
 |
 uploadSourceMaps
 
-| (boolean) - If set to true, the JavaScript source map generated during the build is uploaded to EAS. Stored source maps are used by EAS Observe to symbolicate reported error stack traces. The source code embedded in the map is removed before upload. Defaults to false.
+| (boolean) - If set to true, the JavaScript source map generated during the build is uploaded to Expo servers. Stored source maps are used by Expo Observe to symbolicate reported error stack traces. The source code embedded in the map is removed before upload. Defaults to false.
 
-Note: only available for builds that run on EAS Build servers. Local builds do not upload source maps.
+Note: only available for builds that run on Expo Build servers. Local builds do not upload source maps.
 |
 node
 
@@ -178,7 +202,7 @@ expoCli
 
 | (string) - Deprecated: Version of expo-cli used to prebuild your app. It only affects managed projects on Expo SDK 45 and lower.
 
-For newer SDKs, EAS Build will use the versioned Expo CLI. It is included with expo library. You can opt out of using the versioned Expo CLI by setting the EXPO_USE_LOCAL_CLI=0 environment variable in the build profile.
+For newer SDKs, Expo Build will use the versioned Expo CLI. It is included with expo library. You can opt out of using the versioned Expo CLI by setting the EXPO_USE_LOCAL_CLI=0 environment variable in the build profile.
 |
 env
 
@@ -252,7 +276,7 @@ Allowed values:
 
 - false - versions won't be bumped automatically (default).
 
-Based on the value of cli.appVersionSource in eas.json, the values will be updated locally in your project or on EAS servers.
+Based on the value of cli.appVersionSource in eas.json, the values will be updated locally in your project or on Expo servers.
 |
 buildType
 
@@ -270,7 +294,7 @@ It's not recommended unless you need to run a task that buildType does not suppo
 |
 applicationArchivePath
 
-| (string) - Path (or pattern) where EAS Build is going to look for the application archive. EAS Build uses glob patterns for pattern matching. The default value is android/app/build/outputs/**/*.{apk,aab}.
+| (string) - Path (or pattern) where Expo Build is going to look for the application archive. Expo Build uses glob patterns for pattern matching. The default value is android/app/build/outputs/**/*.{apk,aab}.
 |
 config
 
@@ -284,7 +308,7 @@ Example: "config": "production-android.yml" will use workflow from .eas/build/pr
 Property | Description |
 withoutCredentials
 
-| (boolean) - When set to true, EAS CLI won't require you to configure credentials when building the app. This comes in handy when using EAS Build custom builds. Defaults to false.
+| (boolean) - When set to true, EAS CLI won't require you to configure credentials when building the app. This comes in handy when using Expo Build custom builds. Defaults to false.
 |
 simulator
 
@@ -306,7 +330,7 @@ Allowed values:
 
 - false - versions won't be bumped automatically (default)
 
-Based on the value of cli.appVersionSource in eas.json, the values will be updated locally in your project or on EAS servers.
+Based on the value of cli.appVersionSource in eas.json, the values will be updated locally in your project or on Expo servers.
 |
 image
 
@@ -355,7 +379,7 @@ It takes priority over developmentClient.
 |
 applicationArchivePath
 
-| (string) - Path (or pattern) where EAS Build is going to look for the application archive. EAS Build uses glob patterns for pattern matching. You should modify that path only if you are using a custom Gymfile. The default is ios/build/Build/Products/*-iphonesimulator/*.app when building for simulator and ios/build/*.ipa in other cases.
+| (string) - Path (or pattern) where Expo Build is going to look for the application archive. Expo Build uses glob patterns for pattern matching. You should modify that path only if you are using a custom Gymfile. The default is ios/build/Build/Products/*-iphonesimulator/*.app when building for simulator and ios/build/*.ipa in other cases.
 |
 config
 
@@ -364,7 +388,7 @@ config
 Example: "config": "production-ios.yml" will use workflow from .eas/build/production-ios.yml.
 |
 
-## EAS Submit
+## Expo Submit
 
 The following properties are available in the schema for the submit key in eas.json.
 
@@ -394,7 +418,7 @@ eas.jsonCopy
 Property | Description |
 serviceAccountKeyPath
 
-| (string) - Path to the JSON file with Google Service Account Key used to authenticate with Google Play. The path can include environment variables, such as $GOOGLE_SERVICE_ACCOUNT_KEY_PATH, which EAS CLI replaces with values from the environment where it runs. If you omit this field, EAS Submit uses the key that is assigned to your app on EAS servers.
+| (string) - Path to the JSON file with Google Service Account Key used to authenticate with Google Play. The path can include environment variables, such as $GOOGLE_SERVICE_ACCOUNT_KEY_PATH, which EAS CLI replaces with values from the environment where it runs. If you omit this field, Expo Submit uses the key that is assigned to your app on Expo servers.
 |
 track
 

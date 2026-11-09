@@ -1,20 +1,20 @@
 Source: https://docs.expo.dev/submit/ios/
-Fetched: 2026-10-12
+Fetched: 2026-11-09
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 This documentation is available as Markdown for AI agents and LLMs. See the full Markdown index or append .md to any documentation URL.
 
-# Submit to the Apple App Store with EAS Submit
+# Submit to the Apple App Store with Expo Submit
 Edit page
 
 Copy page
 
-Learn how to submit your iOS app to the Apple App Store with EAS Submit.
+Learn how to submit your iOS app to the Apple App Store with Expo Submit.
 Edit page
 
 Copy page
 
-EAS Submit is the recommended way to upload your iOS app to the Apple App Store. The eas submit command works the same way on your machine and inside CI/CD. EAS Workflows is the simplest way to run it automatically after a build. EAS Submit works on macOS, Linux, and Windows, so you don't need a Mac to ship iOS builds.
+Expo Submit is the recommended way to upload your iOS app to the Apple App Store. The eas submit command works the same way on your machine and inside CI/CD. Expo Workflows is the simplest way to run it automatically after a build. Expo Submit works on macOS, Linux, and Windows, so you don't need a Mac to ship iOS builds.
 
 ## Prerequisites
 
@@ -52,7 +52,7 @@ TerminalnpmyarnpnpmbunCopy
 
 ## Build a production app
 
-You need a production .ipa to submit. Create one with EAS Build:
+You need a production .ipa to submit. Create one with Expo Build:
 
 TerminalCopy
 
@@ -104,7 +104,7 @@ See the eas.json reference for every available option.
 
 ### Build and submit in one step
 
-Pass --auto-submit to eas build to hand the finished build off to EAS Submit automatically:
+Pass --auto-submit to eas build to hand the finished build off to Expo Submit automatically:
 
 TerminalCopy
 
@@ -112,9 +112,9 @@ TerminalCopy
 
 See Automate submissions for details.
 
-## Automate with EAS Workflows
+## Automate with Expo Workflows
 
-EAS Workflows runs the same submit step on EAS infrastructure, triggered by a git push or run manually from the CLI. First, configure an App Store Connect API Key so workflows can authenticate with Apple non-interactively:
+Expo Workflows runs the same submit step on Expo infrastructure, triggered by a git push or run manually from the CLI. First, configure an App Store Connect API Key so workflows can authenticate with Apple non-interactively:
 
 TerminalCopy
 
@@ -126,7 +126,7 @@ TerminalCopy
 
 - Select App Store Connect: Manage your API Key.
 
-- Select Set up your project to use an API Key for EAS Submit.
+- Select Set up your project to use an API Key for Expo Submit.
 
 Prefer to bring your own credentials?
 App Store Connect API Key: Create your own API Key and set it with the ascApiKeyPath, ascApiKeyIssuerId, and ascApiKeyId fields in eas.json.
@@ -179,10 +179,10 @@ With --non-interactive, eas submit and eas build --auto-submit cannot prompt you
 
 App Store Connect API Keys cannot be set up in --non-interactive mode.
 
-To fix this, assign a key to your app or bring your own credentials, as described in Automate with EAS Workflows. In non-interactive mode, your submission profile also needs ascAppId.
+To fix this, assign a key to your app or bring your own credentials, as described in Automate with Expo Workflows. In non-interactive mode, your submission profile also needs ascAppId.
 
 ## Manual fallback
 
-If EAS Submit is temporarily unavailable, you can upload to the Apple App Store manually from a Mac with Xcode.
+If Expo Submit is temporarily unavailable, you can upload to the Apple App Store manually from a Mac with Xcode.
 
 Manually submit an iOS app with XcodeArchive and upload an iOS app to App Store Connect using Xcode on macOS.

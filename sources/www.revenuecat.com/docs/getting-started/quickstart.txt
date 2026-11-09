@@ -1,5 +1,5 @@
 Source: https://www.revenuecat.com/docs/getting-started/quickstart
-Fetched: 2026-10-14
+Fetched: 2026-11-09
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 On this page
@@ -54,6 +54,8 @@ return true
 
 }
 
+Show more
+
 // on iOS and tvOS, use `application:didFinishLaunchingWithOptions:`
 
 // on macOS and watchOS use `applicationDidFinishLaunching:`
@@ -69,6 +71,8 @@ RCPurchases.logLevel = RCLogLevelDebug;
 return YES;
 
 }
+
+Show more
 
 // If you're targeting only Google Play Store
 
@@ -132,6 +136,8 @@ Purchases.configure(PurchasesConfiguration.Builder(this, <revenuecat_project_goo
 
 }
 
+Show more
+
 import com.revenuecat.purchases.kmp.LogLevel
 
 import com.revenuecat.purchases.kmp.Purchases
@@ -155,6 +161,8 @@ appUserId = "<app_user_id>"
 // Other configuration options.
 
 }
+
+Show more
 
 // If you're targeting only Google Play Store
 
@@ -208,6 +216,8 @@ Purchases.configure(builder.build());
 
 }
 
+Show more
+
 import 'dart:io' show Platform;
 
 //...
@@ -241,6 +251,8 @@ configuration = PurchasesConfiguration(<revenuecat_project_apple_api_key>);
 await Purchases.configure(configuration);
 
 }
+
+Show more
 
 import { Platform } from 'react-native';
 
@@ -288,6 +300,8 @@ galaxyBillingMode: GALAXY_BILLING_MODE.TEST,
 
 }
 
+Show more
+
 const onDeviceReady = async () => {
 
 await Purchases.setLogLevel({level: LOG_LEVEL.DEBUG});
@@ -307,6 +321,8 @@ await Purchases.configure({ apiKey: <public_google_api_key> });
 await Purchases.configure({ apiKey: <public_amazon_api_key>, useAmazon: true });
 
 }
+
+Show more
 
 document.addEventListener("deviceready", onDeviceReady, false);
 
@@ -329,6 +345,8 @@ await Purchases.configure({apiKey: <revenuecat_project_amazon_api_key>, useAmazo
 }
 
 }
+
+Show more
 
 See Unity installation instructions https://www.revenuecat.com/docs/getting-started/installation/unity
 
@@ -381,6 +399,8 @@ if customerInfo?.entitlements.all[<your_entitlement_id>]?.isActive == true {
 }
 
 }
+
+Show more
 
 [[RCPurchases sharedPurchases] getCustomerInfoWithCompletion:^(RCPurchaserInfo * customerInfo, NSError * error) {
 
@@ -445,6 +465,8 @@ public void onError(@NonNull PurchasesError purchasesError) {
 }
 
 });
+
+Show more
 
 try {
 
@@ -630,6 +652,8 @@ func purchases(_ purchases: Purchases, receivedUpdated customerInfo: CustomerInf
 
 }
 
+Show more
+
 // Additional configure setup
 
 // on iOS and tvOS, use `application:didFinishLaunchingWithOptions:`
@@ -655,6 +679,8 @@ return YES;
 // handle any changes to purchaserInfo
 
 }
+
+Show more
 
 class UpsellActivity : AppCompatActivity(), UpdatedCustomerInfoListener {
 

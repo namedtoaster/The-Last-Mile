@@ -1,5 +1,5 @@
 Source: https://docs.expo.dev/build/setup/
-Fetched: 2026-10-18
+Fetched: 2026-11-09
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 This documentation is available as Markdown for AI agents and LLMs. See the full Markdown index or append .md to any documentation URL.
@@ -9,18 +9,18 @@ Edit page
 
 Copy page
 
-Learn how to create a build for your app with EAS Build.
+Learn how to create a build for your app with Expo Build.
 Edit page
 
 Copy page
 
-EAS Build allows you to build a ready-to-submit binary of your app for the Google Play Store or Apple App Store. In this guide, let's learn how to do that.
+Expo Build allows you to build a ready-to-submit binary of your app for the Google Play Store or Apple App Store. In this guide, let's learn how to do that.
 
 Alternatively, if you prefer to install the app directly to your Android device/emulator or install it in the iOS Simulator, we will point you toward resources that explain how to do that.
 
 For a small app, builds for Android and iOS platforms trigger within a few minutes. If you encounter any issues along the way, you can reach out on Discord and forums.
 
-EAS Build is a rapidly evolving service. Before you set out to create a build for your project we recommend consulting the limitations and the other prerequisites below.
+Expo Build is a rapidly evolving service. Before you set out to create a build for your project we recommend consulting the limitations and the other prerequisites below.
 
 Prerequisites
 
@@ -39,17 +39,17 @@ TerminalnpmyarnpnpmbunCopy
 
 - bun create expo my-app --template default@sdk-58
 
-EAS Build also works well with projects created by npx create-react-native-app, npx react-native, ignite-cli, and other project bootstrapping tools.
+Expo Build also works well with projects created by npx create-react-native-app, npx react-native, ignite-cli, and other project bootstrapping tools.
 
 2.
 An Expo account
-EAS Build is available to anyone with an Expo account, regardless of whether you pay for EAS or use the Free plan. You can sign up at expo.dev.
-Paid subscribers get quality improvements such as additional build concurrencies, priority access to minimize the time your builds spend queueing, and increased limits on build timeouts. Learn more about different plans and benefits at EAS pricing.
+Expo Build is available to anyone with an Expo account, regardless of whether you pay for Expo Services or use the Free plan. You can sign up at expo.dev.
+Paid subscribers get quality improvements such as additional build concurrencies, priority access to minimize the time your builds spend queueing, and increased limits on build timeouts. Learn more about different plans and benefits at Expo pricing.
 
 1
 
 ## Install the latest EAS CLI
-EAS CLI is the command-line app that you will use to interact with EAS services from your terminal. To install it, run the command:
+EAS CLI is the command-line app that you will use to interact with Expo Services from your terminal. To install it, run the command:
 TerminalnpmyarnpnpmbunCopy
 
 - npm install --global eas-cli
@@ -77,7 +77,7 @@ You can check whether you are logged in by running eas whoami.
 3
 
 ## Configure the project
-To configure an Android or an iOS project for EAS Build, run the following command:
+To configure an Android or an iOS project for Expo Build, run the following command:
 TerminalCopy
 
 - eas build:configure
@@ -109,17 +109,17 @@ Additional configuration may be required for some scenarios:
 ## Run a build
 
 ### Build for Android Emulator/device or iOS Simulator
-The easiest way to try out EAS Build is to create a build that you can run on your Android device/emulator or iOS Simulator. It's quicker than uploading it to a store, and you don't need store developer membership accounts. If you'd like to try this, read about creating an installable APK for Android and creating a simulator build for iOS.
+The easiest way to try out Expo Build is to create a build that you can run on your Android device/emulator or iOS Simulator. It's quicker than uploading it to a store, and you don't need store developer membership accounts. If you'd like to try this, read about creating an installable APK for Android and creating a simulator build for iOS.
 
 ### Build for app stores
 Before the build process can start for app stores, you will need to have a store developer account and generate or provide app signing credentials.
 Whether you have experience with generating app signing credentials or not, EAS CLI does the heavy lifting. You can opt-in for EAS CLI to handle the app signing credentials process. Check out the steps for Android app signing credentials or iOS app signing credentials process below for more information.
 
 Google Play Developer membership is required to distribute to the Google Play Store.
-You can build and sign your app using EAS Build, but you can't upload it to the Google Play Store unless you have a membership, a one-time $25 USD fee.
+You can build and sign your app using Expo Build, but you can't upload it to the Google Play Store unless you have a membership, a one-time $25 USD fee.
 
 Apple Developer Program membership is required to build for the Apple App Store.
-If you are going to use EAS Build to create release builds for the Apple App Store, you need access to an account with a $99 USD Apple Developer Program membership.
+If you are going to use Expo Build to create release builds for the Apple App Store, you need access to an account with a $99 USD Apple Developer Program membership.
 
 After you have confirmed that you have a Google Play Store or Apple App Store account and decided whether or not EAS CLI should handle app signing credentials, you can proceed with the following set of commands to build for the platform's store:
 
@@ -146,7 +146,7 @@ If you have released your app to stores previously and have existing app signing
 
 #### Android app signing credentials
 
-- If you have not yet generated a keystore for your app, you can let EAS CLI take care of that for you by selecting Generate new keystore, and then you are done. The keystore is stored securely on EAS servers.
+- If you have not yet generated a keystore for your app, you can let EAS CLI take care of that for you by selecting Generate new keystore, and then you are done. The keystore is stored securely on Expo servers.
 
 - If you have previously built your app with expo build:android, you can use the same credentials here.
 
@@ -178,7 +178,7 @@ Did your build fail? Double check that you followed any applicable instructions 
 If you have made it to this step, congratulations! Depending on which path you chose, you now either have a build that is ready to upload to an app store, or you have a build that you can install directly on an Android device/iOS Simulator.
 
 ### Distribute your app to an app store
-You will only be able to submit to an app store if you built specifically for that purpose. If you created a build for a store, learn how to submit your app to app stores with EAS Submit.
+You will only be able to submit to an app store if you built specifically for that purpose. If you created a build for a store, learn how to submit your app to app stores with Expo Submit.
 
 ### Install and run the app
 You will only be able to install the app directly to your Android device/iOS Simulator if you explicitly built it for that purpose. If you built for app store distribution, you will need to upload to an app store and then install it from there (for example, from Apple's TestFlight app).
@@ -186,7 +186,7 @@ To learn how to install the app directly to your Android device/iOS Simulator, n
 
 ## Next steps
 
-We walked you through the steps to create your first build with EAS Build without going into too much depth on any particular part of the process.
+We walked you through the steps to create your first build with Expo Build without going into too much depth on any particular part of the process.
 
 When you are ready to learn more, we recommend proceeding through the following topics to learn more:
 

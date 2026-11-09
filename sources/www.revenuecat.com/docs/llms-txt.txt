@@ -1,5 +1,5 @@
 Source: https://www.revenuecat.com/docs/llms.txt
-Fetched: 2026-11-02
+Fetched: 2026-11-09
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 # RevenueCat Documentation
@@ -25,7 +25,7 @@ For the complete documentation as a single Markdown file, see [llms-full.txt](ht
 - [Subscription Guidance](https://www.revenuecat.com/docs/subscription-guidance/llms.txt): Subscription lifecycle behavior: offers, price changes, grace periods, and refunds. (11 pages)
 - [Migrating to RevenueCat](https://www.revenuecat.com/docs/migrating-to-revenuecat/llms.txt): Moving an existing app, its subscribers, and its purchase history to RevenueCat. (8 pages)
 - [Web & Alternative Platforms](https://www.revenuecat.com/docs/web/llms.txt): Web Billing, Stripe connections, and web purchase flows. (30 pages)
-- [Integrations](https://www.revenuecat.com/docs/integrations/llms.txt): Webhooks, attribution, scheduled data exports, and third-party integrations. (64 pages)
+- [Integrations](https://www.revenuecat.com/docs/integrations/llms.txt): Webhooks, attribution, scheduled data exports, and third-party integrations. (67 pages)
 - [Dashboard & Metrics](https://www.revenuecat.com/docs/dashboard-and-metrics/llms.txt): Charts, metrics, customer lists, and reconciling revenue with financial reports. (59 pages)
 - [Testing & Launch](https://www.revenuecat.com/docs/test-and-launch/llms.txt): Sandbox testing, debugging, SDK errors, and launch checklists. (12 pages)
 - [Developer Guides](https://www.revenuecat.com/docs/guides/llms.txt): Cross-cutting implementation guidance: environment strategies and promotional subscription extensions. (2 pages)

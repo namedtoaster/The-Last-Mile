@@ -1,5 +1,5 @@
 Source: https://support.google.com/googleplay/android-developer/answer/9845334
-Fetched: 2026-10-19
+Fetched: 2026-11-09
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 # Set up an open, closed, or internal test
@@ -131,7 +131,7 @@ You can create an internal testing release if your app is not fully configured. 
 
 Closed test: Manage testers by email address or Google Groups
 
-With a closed test, you can create lists of testers by email address. You can create up to 200 lists, and each list can contain up to 2,000 users. You can create up to 50 lists per track.
+With a closed test, you can manage testers with email lists or Google Groups. Use email lists for smaller tester groups that you want to save to your account and reuse across tracks and apps. You can create up to 200 lists per developer account and up to 50 lists per track. Each list can contain up to 2,000 testers. For larger tester groups, use Google Groups, which have no size limits.
 
 #### Create an email list of your testers
 
@@ -169,7 +169,8 @@ To add testers to a closed test, follow these steps:
 
 - Email: Email is selected automatically. Select the user lists you want to test your release.
 
-- Google Groups: Select Google Groups and enter the Google Group email addresses using the format yourgroupname@googlegroups.com. Only members of the specified Google Groups can join your test. For details on managing Google Groups, refer to the Google Workspace Administrator Help Center.
+- Google Groups: Select Google Groups and enter the email addresses for the Google Groups you want to add. You can add a personal group created at groups.google.com, using the format yourgroupname@googlegroups.com. Alternatively, you can use a Google Workspace group with your developer account's domain. For example, yourgroupname@yourdomain.com.
+Only members of the specified Google Groups can join your test, and there is no limit to the group’s size. For more details on creating and managing Google Groups, refer to the Google Groups Help Center or the Google Workspace Administrator Help Center.
 
 - Provide a feedback URL or email address to collect feedback from testers. Your feedback channel appears on your tester opt-in page.
 
@@ -253,7 +254,9 @@ With additional test tracks, you can create a list of testers by email address o
 
 - Email: Selected by default. Select the user lists you want to test your release.
 
-- Google Groups: Select Google Groups and enter the Google Group email addresses using the format yourgroupname@googlegroups.com. Only members of the specified Google Groups can join your test. For details on managing Google Groups, refer to the Google Workspace Administrator Help Center.
+Google Groups: Select Google Groups and enter the email addresses for the Google Groups you want to add. You can add a personal group created at groups.google.com, using the format yourgroupname@googlegroups.com. Alternatively, you can use a Google Workspace group with your developer account's domain. For example, yourgroupname@yourdomain.com.
+
+Only members of the specified Google Groups can join your test, and there is no limit to the group’s size. For more details on creating and managing Google Groups, refer to the Google Groups Help Center or the Google Workspace Administrator Help Center.
 
 - Provide a feedback URL or email address to collect feedback from testers. Your feedback channel appears on your tester opt-in page.
 

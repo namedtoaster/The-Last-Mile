@@ -1,5 +1,5 @@
 Source: https://www.revenuecat.com/docs/service-credentials/itunesconnect-app-specific-shared-secret/in-app-purchase-key-configuration
-Fetched: 2026-10-14
+Fetched: 2026-11-09
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 On this page
@@ -66,7 +66,7 @@ Once your credentials are valid, you will see a "Valid credentials" message unde
 
 Before starting to dive deeper in troubleshooting your credentials, you should confirm the following:
 
-- The P8 key file uploaded to RevenueCat is the correct file. You will be able to upload the file downloaded from App Store Connect directly into RevenueCat without changing the file name.
+- The P8 key file uploaded to RevenueCat is the correct file. You will be able to upload the file downloaded from App Store Connect directly into RevenueCat without changing the file name. Some browsers, especially on phones, save the key as a .txt file or rename repeat downloads with a suffix like (1). Your operating system may hide the .txt extension. Rename the file back to SubscriptionKey_XXXXXXXXXX.p8 exactly before uploading.
 
 - You have re-uploaded the credentials into RevenueCat
 

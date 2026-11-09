@@ -1,5 +1,5 @@
 Source: https://docs.expo.dev/develop/tools/
-Fetched: 2026-10-26
+Fetched: 2026-11-09
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 This documentation is available as Markdown for AI agents and LLMs. See the full Markdown index or append .md to any documentation URL.
@@ -36,7 +36,7 @@ In a nutshell, Expo CLI allows you to develop, compile, start your app, and more
 
 ## EAS CLI
 
-EAS CLI is used to log in to your Expo account and compile your app using different EAS services such as Build, Update, or Submit. You can also use this tool to:
+EAS CLI is used to log in to your Expo account and compile your app using different Expo Services such as Build, Update, or Submit. You can also use this tool to:
 
 - Publish your app to the app stores
 
@@ -88,15 +88,15 @@ You can also use npx expo-doctor --help to display usage information.
 
 Orbit is a macOS, Windows, and Linux app that enables:
 
-- Install and launch builds from EAS on physical devices and emulators.
+- Install and launch builds from Expo Build on physical devices and emulators.
 
-- Install and launch updates from EAS on Android Emulators or iOS Simulators.
+- Install and launch updates from Expo Update on Android Emulators or iOS Simulators.
 
 - Launch snack projects on Android Emulators or iOS Simulators.
 
 - Use local files to install and launch apps. Orbit supports any Android .apk, iOS Simulator compatible .app, or ad hoc signed apps.
 
-- See a list of pinned projects from your EAS dashboard.
+- See a list of pinned projects from your Expo dashboard.
 
 ### Installation
 
@@ -121,7 +121,7 @@ Orbit relies on the Android SDK on macOS, Windows, and Linux, and xcrun for devi
 
 ## Expo Tools for VS Code
 
-Expo Tools is a VS Code extension to improve your development experience when working with app config files. It provides features such as autocomplete and intellisense for files such as app config, EAS config, store config and Expo Module config files.
+Expo Tools is a VS Code extension to improve your development experience when working with app config files. It provides features such as autocomplete and intellisense for files such as app config, eas.json, store config and Expo Module config files.
 
 Install Expo Tools VS Code extensionUse this link to install the extension or search Expo Tools directly in your VS Code editor.
 

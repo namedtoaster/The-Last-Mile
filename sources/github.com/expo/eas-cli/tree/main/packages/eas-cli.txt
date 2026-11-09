@@ -1,5 +1,5 @@
 Source: https://github.com/expo/eas-cli/tree/main/packages/eas-cli
-Fetched: 2026-11-02
+Fetched: 2026-11-09
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 # EAS CLI
@@ -331,6 +331,8 @@ If you want to enforce the eas-cli version for your project, use the "cli.versio
 
 - eas simulator:control [ACTION]
 
+- eas simulator:control:connection OPERATION
+
 - eas simulator:egress
 
 - eas simulator:events
@@ -430,6 +432,8 @@ If you want to enforce the eas-cli version for your project, use the "cli.versio
 - eas workflow:run FILE
 
 - eas workflow:runs
+
+- eas workflow:ssh
 
 - eas workflow:status [WORKFLOW_RUN_ID]
 
@@ -2792,28 +2796,51 @@ $ eas sim:availability
 
 ## eas sim:control [ACTION]
 
-[EXPERIMENTAL] run a serve-sim action on a remote iOS simulator session on EAS. Run without an action to list the actions the session supports. To save a screenshot locally, run eas simulator:control screenshot.capture --output ./screenshot.png
+[EXPERIMENTAL] control a remote iOS simulator session on EAS
 
 USAGE
-$ eas sim:control [ACTION...] [-h] [--id <value>] [--list] [--output <value>] [--json] [--non-interactive]
+$ eas sim:control [ACTION...] [-h] [--id <value>] [--list] [--output <value>] [--import <value>]
+[--idle-timeout <value> --keep-alive] [--json] [--non-interactive]
 
 ARGUMENTS
-[ACTION...] Action to run, followed by its values in order or as name=value. Omit to list the actions. Put -- before
-values that start with --.
+[ACTION...] Action name, followed by values or name=value pairs. Omit to list actions. Use -- before values starting
+with --.
 
 FLAGS
--h, --help Show command help, or usage for the selected action from the session.
+-h, --help Show help for this command or the selected action
 --id=<value> Simulator session ID. Defaults to .env.eas-simulator.
---json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
---list List the actions the session supports.
+--idle-timeout=<value> Seconds of idle time before closing the kept-alive connection (default: 120)
+--import=<value> Run saved actions from a JSON file
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies
+--non-interactive.
+--keep-alive Keep the control connection available for subsequent commands (macOS and Linux)
+--list List available actions
 --non-interactive Run the command in non-interactive mode.
---output=<value> Local path to save a returned file. For screenshots, --output ./screenshot.png sets the local
-filename; omit it to save with a generated filename in the current directory.
+--output=<value> Local file or existing directory for saved output
 
 DESCRIPTION
-[EXPERIMENTAL] run a serve-sim action on a remote iOS simulator session on EAS. Run without an action to list the
-actions the session supports. To save a screenshot locally, run `eas simulator:control screenshot.capture --output
-./screenshot.png`
+[EXPERIMENTAL] control a remote iOS simulator session on EAS
+
+Run without an action to list available actions. Use <action> --help for usage.
+
+Use --keep-alive to reuse the connection across commands, or prepare it with simulator:control:connection open.
+Connections close after 120 seconds idle by default; use --idle-timeout to change the timeout in seconds.
+
+To save a screenshot locally, run `eas simulator:control screenshot.capture --output ./screenshot.png`.
+
+Use --import to run the actions from a JSON file. The start section is used only by simulator:start:
+
+{
+"version": 1,
+"start": {"device": "iPhone 17 Pro", "type": "web-preview-only"},
+"actions": [{"action": "appearance.set", "params": {"value": "dark"}}]
+}
+
+The file is checked before any actions run. Actions run in order and stop on the first failure. Local paths are
+relative to the JSON file; paths in params refer to the simulator host.
+
+Existing output files are overwritten. When saving to a directory, an existing file with the generated name causes the
+action to fail.
 
 ALIASES
 $ eas sim:control
@@ -2826,6 +2853,8 @@ $ eas simulator:control --id <session-id>
 $ eas simulator:control screenshot.capture --help
 
 $ eas simulator:control clipboard.write -- --some-text
+
+$ eas simulator:control --import ./simulator-control.json
 
 $ eas simulator:control hardwareKeyboard.set off
 
@@ -2971,12 +3000,12 @@ $ eas simulator:logs --json
 
 ## eas sim:start
 
-[EXPERIMENTAL] start a remote simulator session on EAS and get instructions to connect to it. The default browser preview link requires sign-in
+[EXPERIMENTAL] start a remote simulator session on EAS
 
 USAGE
-$ eas sim:start [-p android|ios] [--name <value>] [--tag <value>...] [--device <value>] [--system-image
-<value>] [--build-id <value> | --build-fingerprint <value> | --application-archive-url <value> | --expo-go]
-[--sdk-version <value>] [--launch-arg <value>...] [--open-url <value>] [--type
+$ eas sim:start [--import <value>] [-p android|ios] [--name <value>] [--tag <value>...] [--device <value>]
+[--system-image <value>] [--build-id <value> | --build-fingerprint <value> | --application-archive-url <value> |
+--expo-go] [--sdk-version <value>] [--launch-arg <value>...] [--open-url <value>] [--type
 agent-device|appium|argent|web-preview-only] [--package-version <value>] [--network-capture-field <value>...
 --network-capture] [--max-duration-minutes <value>] [--max-idle-time-minutes <value>] [--egress-allow <value>...
 --egress local] [--cors-origin <value>...] [--frame-ancestor <value>...] [--force] [--out-config-type env|dotenv]
@@ -3035,6 +3064,9 @@ Origin of a page that may embed the simulator preview in a frame, such as https:
 https://*.example.com. Repeat for multiple origins. The embedding page loads the printed preview URL, which carries
 the session token, so anyone who can read that page can also control the simulator.
 
+--import=<value>
+Load start options and actions from a JSON file
+
 --json
 Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
 
@@ -3052,7 +3084,7 @@ has no idle timeout and runs until its maximum duration.
 --name=<value>
 Human-readable name for the simulator session, shown in eas simulator:list and on expo.dev. Defaults to unnamed.
 
---network-capture
+--[no-]network-capture
 Record HTTP(S) traffic from apps on the device (iOS only). HTTPS is decrypted, so recordings contain credentials in
 cleartext and certificate-pinned apps fail to connect.
 
@@ -3074,7 +3106,7 @@ write .env.eas-simulator.
 --package-version=<value>
 Version of the package backing the simulator session (e.g. "0.1.3-alpha.3"). Defaults to "latest" when omitted.
 
---public-link
+--[no-]public-link
 Enable the simulator preview Share button and print a shareable link containing an access token. Anyone with the
 link can control the simulator. With --json, include previewApiUrl and its token for API clients when available.
 
@@ -3096,12 +3128,33 @@ appium, and argent also include an automation interface; web-preview-only includ
 <options: agent-device|appium|argent|web-preview-only>
 
 DESCRIPTION
-[EXPERIMENTAL] start a remote simulator session on EAS and get instructions to connect to it. The default browser
-preview link requires sign-in
+[EXPERIMENTAL] start a remote simulator session on EAS
+
+Preview links require sign-in by default.
+
+Use --import to load saved start options and actions. CLI flags override saved options, including lists:
+
+{
+"version": 1,
+"start": {"device": "iPhone 17 Pro", "type": "web-preview-only"},
+"actions": [{"action": "appearance.set", "params": {"value": "dark"}}]
+}
+
+The start object uses CLI flag names. Saved actions run after the session is ready. Local action paths are relative to
+the JSON file. If an action fails, the CLI tries to stop the new session. Android supports saved start options, but
+not actions yet.
+
+With local egress, actions wait for the connection and require interactive mode. In scripts, connect with
+simulator:egress, then run simulator:control --import separately.
 
 ALIASES
 $ eas simulator:start
 $ eas sim:start
+
+EXAMPLES
+$ eas simulator:start --import ./simulator.json
+
+$ eas simulator:start --import ./simulator.json --platform ios --device "iPhone 17 Pro" --json
 
 ## eas sim:stop
 
@@ -3123,12 +3176,12 @@ $ eas sim:stop
 
 ## eas simulator
 
-[EXPERIMENTAL] start a remote simulator session on EAS and get instructions to connect to it. The default browser preview link requires sign-in
+[EXPERIMENTAL] start a remote simulator session on EAS
 
 USAGE
-$ eas simulator [-p android|ios] [--name <value>] [--tag <value>...] [--device <value>] [--system-image
-<value>] [--build-id <value> | --build-fingerprint <value> | --application-archive-url <value> | --expo-go]
-[--sdk-version <value>] [--launch-arg <value>...] [--open-url <value>] [--type
+$ eas simulator [--import <value>] [-p android|ios] [--name <value>] [--tag <value>...] [--device <value>]
+[--system-image <value>] [--build-id <value> | --build-fingerprint <value> | --application-archive-url <value> |
+--expo-go] [--sdk-version <value>] [--launch-arg <value>...] [--open-url <value>] [--type
 agent-device|appium|argent|web-preview-only] [--package-version <value>] [--network-capture-field <value>...
 --network-capture] [--max-duration-minutes <value>] [--max-idle-time-minutes <value>] [--egress-allow <value>...
 --egress local] [--cors-origin <value>...] [--frame-ancestor <value>...] [--force] [--out-config-type env|dotenv]
@@ -3187,6 +3240,9 @@ Origin of a page that may embed the simulator preview in a frame, such as https:
 https://*.example.com. Repeat for multiple origins. The embedding page loads the printed preview URL, which carries
 the session token, so anyone who can read that page can also control the simulator.
 
+--import=<value>
+Load start options and actions from a JSON file
+
 --json
 Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
 
@@ -3204,7 +3260,7 @@ has no idle timeout and runs until its maximum duration.
 --name=<value>
 Human-readable name for the simulator session, shown in eas simulator:list and on expo.dev. Defaults to unnamed.
 
---network-capture
+--[no-]network-capture
 Record HTTP(S) traffic from apps on the device (iOS only). HTTPS is decrypted, so recordings contain credentials in
 cleartext and certificate-pinned apps fail to connect.
 
@@ -3226,7 +3282,7 @@ write .env.eas-simulator.
 --package-version=<value>
 Version of the package backing the simulator session (e.g. "0.1.3-alpha.3"). Defaults to "latest" when omitted.
 
---public-link
+--[no-]public-link
 Enable the simulator preview Share button and print a shareable link containing an access token. Anyone with the
 link can control the simulator. With --json, include previewApiUrl and its token for API clients when available.
 
@@ -3248,12 +3304,33 @@ appium, and argent also include an automation interface; web-preview-only includ
 <options: agent-device|appium|argent|web-preview-only>
 
 DESCRIPTION
-[EXPERIMENTAL] start a remote simulator session on EAS and get instructions to connect to it. The default browser
-preview link requires sign-in
+[EXPERIMENTAL] start a remote simulator session on EAS
+
+Preview links require sign-in by default.
+
+Use --import to load saved start options and actions. CLI flags override saved options, including lists:
+
+{
+"version": 1,
+"start": {"device": "iPhone 17 Pro", "type": "web-preview-only"},
+"actions": [{"action": "appearance.set", "params": {"value": "dark"}}]
+}
+
+The start object uses CLI flag names. Saved actions run after the session is ready. Local action paths are relative to
+the JSON file. If an action fails, the CLI tries to stop the new session. Android supports saved start options, but
+not actions yet.
+
+With local egress, actions wait for the connection and require interactive mode. In scripts, connect with
+simulator:egress, then run simulator:control --import separately.
 
 ALIASES
 $ eas simulator:start
 $ eas sim:start
+
+EXAMPLES
+$ eas simulator:start --import ./simulator.json
+
+$ eas simulator:start --import ./simulator.json --platform ios --device "iPhone 17 Pro" --json
 
 See code: packages/eas-cli/src/commands/simulator/index.ts
 
@@ -3278,28 +3355,51 @@ See code: packages/eas-cli/src/commands/simulator/availability.ts
 
 ## eas simulator:control [ACTION]
 
-[EXPERIMENTAL] run a serve-sim action on a remote iOS simulator session on EAS. Run without an action to list the actions the session supports. To save a screenshot locally, run eas simulator:control screenshot.capture --output ./screenshot.png
+[EXPERIMENTAL] control a remote iOS simulator session on EAS
 
 USAGE
-$ eas simulator:control [ACTION...] [-h] [--id <value>] [--list] [--output <value>] [--json] [--non-interactive]
+$ eas simulator:control [ACTION...] [-h] [--id <value>] [--list] [--output <value>] [--import <value>]
+[--idle-timeout <value> --keep-alive] [--json] [--non-interactive]
 
 ARGUMENTS
-[ACTION...] Action to run, followed by its values in order or as name=value. Omit to list the actions. Put -- before
-values that start with --.
+[ACTION...] Action name, followed by values or name=value pairs. Omit to list actions. Use -- before values starting
+with --.
 
 FLAGS
--h, --help Show command help, or usage for the selected action from the session.
+-h, --help Show help for this command or the selected action
 --id=<value> Simulator session ID. Defaults to .env.eas-simulator.
---json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
---list List the actions the session supports.
+--idle-timeout=<value> Seconds of idle time before closing the kept-alive connection (default: 120)
+--import=<value> Run saved actions from a JSON file
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies
+--non-interactive.
+--keep-alive Keep the control connection available for subsequent commands (macOS and Linux)
+--list List available actions
 --non-interactive Run the command in non-interactive mode.
---output=<value> Local path to save a returned file. For screenshots, --output ./screenshot.png sets the local
-filename; omit it to save with a generated filename in the current directory.
+--output=<value> Local file or existing directory for saved output
 
 DESCRIPTION
-[EXPERIMENTAL] run a serve-sim action on a remote iOS simulator session on EAS. Run without an action to list the
-actions the session supports. To save a screenshot locally, run `eas simulator:control screenshot.capture --output
-./screenshot.png`
+[EXPERIMENTAL] control a remote iOS simulator session on EAS
+
+Run without an action to list available actions. Use <action> --help for usage.
+
+Use --keep-alive to reuse the connection across commands, or prepare it with simulator:control:connection open.
+Connections close after 120 seconds idle by default; use --idle-timeout to change the timeout in seconds.
+
+To save a screenshot locally, run `eas simulator:control screenshot.capture --output ./screenshot.png`.
+
+Use --import to run the actions from a JSON file. The start section is used only by simulator:start:
+
+{
+"version": 1,
+"start": {"device": "iPhone 17 Pro", "type": "web-preview-only"},
+"actions": [{"action": "appearance.set", "params": {"value": "dark"}}]
+}
+
+The file is checked before any actions run. Actions run in order and stop on the first failure. Local paths are
+relative to the JSON file; paths in params refer to the simulator host.
+
+Existing output files are overwritten. When saving to a directory, an existing file with the generated name causes the
+action to fail.
 
 ALIASES
 $ eas sim:control
@@ -3313,6 +3413,8 @@ $ eas simulator:control screenshot.capture --help
 
 $ eas simulator:control clipboard.write -- --some-text
 
+$ eas simulator:control --import ./simulator-control.json
+
 $ eas simulator:control hardwareKeyboard.set off
 
 $ eas simulator:control permissions.set grant camera com.example.app
@@ -3324,6 +3426,34 @@ $ eas simulator:control screenshot.capture --output ./screenshot.png
 $ eas simulator:control screenshot.capture --output ./screenshot.png --id <session-id>
 
 See code: packages/eas-cli/src/commands/simulator/control.ts
+
+## eas simulator:control:connection OPERATION
+
+optionally keep a simulator control connection available between commands
+
+USAGE
+$ eas simulator:control:connection OPERATION [--id <value>] [--idle-timeout <value>] [--json] [--non-interactive]
+
+ARGUMENTS
+OPERATION (open|status|close) Open, inspect or close the local control connection
+
+FLAGS
+--id=<value> Simulator session ID. Defaults to .env.eas-simulator.
+--idle-timeout=<value> Seconds of idle time before closing the control connection (default: 120)
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+optionally keep a simulator control connection available between commands
+
+EXAMPLES
+$ eas simulator:control:connection open --idle-timeout 300
+
+$ eas simulator:control:connection status --id <session-id> --json
+
+$ eas simulator:control:connection close
+
+See code: packages/eas-cli/src/commands/simulator/control/connection.ts
 
 ## eas simulator:egress
 
@@ -3471,12 +3601,12 @@ See code: packages/eas-cli/src/commands/simulator/logs.ts
 
 ## eas simulator:start
 
-[EXPERIMENTAL] start a remote simulator session on EAS and get instructions to connect to it. The default browser preview link requires sign-in
+[EXPERIMENTAL] start a remote simulator session on EAS
 
 USAGE
-$ eas simulator:start [-p android|ios] [--name <value>] [--tag <value>...] [--device <value>] [--system-image
-<value>] [--build-id <value> | --build-fingerprint <value> | --application-archive-url <value> | --expo-go]
-[--sdk-version <value>] [--launch-arg <value>...] [--open-url <value>] [--type
+$ eas simulator:start [--import <value>] [-p android|ios] [--name <value>] [--tag <value>...] [--device <value>]
+[--system-image <value>] [--build-id <value> | --build-fingerprint <value> | --application-archive-url <value> |
+--expo-go] [--sdk-version <value>] [--launch-arg <value>...] [--open-url <value>] [--type
 agent-device|appium|argent|web-preview-only] [--package-version <value>] [--network-capture-field <value>...
 --network-capture] [--max-duration-minutes <value>] [--max-idle-time-minutes <value>] [--egress-allow <value>...
 --egress local] [--cors-origin <value>...] [--frame-ancestor <value>...] [--force] [--out-config-type env|dotenv]
@@ -3535,6 +3665,9 @@ Origin of a page that may embed the simulator preview in a frame, such as https:
 https://*.example.com. Repeat for multiple origins. The embedding page loads the printed preview URL, which carries
 the session token, so anyone who can read that page can also control the simulator.
 
+--import=<value>
+Load start options and actions from a JSON file
+
 --json
 Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
 
@@ -3552,7 +3685,7 @@ has no idle timeout and runs until its maximum duration.
 --name=<value>
 Human-readable name for the simulator session, shown in eas simulator:list and on expo.dev. Defaults to unnamed.
 
---network-capture
+--[no-]network-capture
 Record HTTP(S) traffic from apps on the device (iOS only). HTTPS is decrypted, so recordings contain credentials in
 cleartext and certificate-pinned apps fail to connect.
 
@@ -3574,7 +3707,7 @@ write .env.eas-simulator.
 --package-version=<value>
 Version of the package backing the simulator session (e.g. "0.1.3-alpha.3"). Defaults to "latest" when omitted.
 
---public-link
+--[no-]public-link
 Enable the simulator preview Share button and print a shareable link containing an access token. Anyone with the
 link can control the simulator. With --json, include previewApiUrl and its token for API clients when available.
 
@@ -3596,12 +3729,33 @@ appium, and argent also include an automation interface; web-preview-only includ
 <options: agent-device|appium|argent|web-preview-only>
 
 DESCRIPTION
-[EXPERIMENTAL] start a remote simulator session on EAS and get instructions to connect to it. The default browser
-preview link requires sign-in
+[EXPERIMENTAL] start a remote simulator session on EAS
+
+Preview links require sign-in by default.
+
+Use --import to load saved start options and actions. CLI flags override saved options, including lists:
+
+{
+"version": 1,
+"start": {"device": "iPhone 17 Pro", "type": "web-preview-only"},
+"actions": [{"action": "appearance.set", "params": {"value": "dark"}}]
+}
+
+The start object uses CLI flag names. Saved actions run after the session is ready. Local action paths are relative to
+the JSON file. If an action fails, the CLI tries to stop the new session. Android supports saved start options, but
+not actions yet.
+
+With local egress, actions wait for the connection and require interactive mode. In scripts, connect with
+simulator:egress, then run simulator:control --import separately.
 
 ALIASES
 $ eas simulator:start
 $ eas sim:start
+
+EXAMPLES
+$ eas simulator:start --import ./simulator.json
+
+$ eas simulator:start --import ./simulator.json --platform ios --device "iPhone 17 Pro" --json
 
 ## eas simulator:stop
 
@@ -4700,6 +4854,21 @@ DESCRIPTION
 list recent workflow runs for this project, with their IDs, statuses, and timestamps
 
 See code: packages/eas-cli/src/commands/workflow/runs.ts
+
+## eas workflow:ssh
+
+[EXPERIMENTAL] open an ssh session on the worker running a workflow job
+
+USAGE
+$ eas workflow:ssh [--show-connect]
+
+FLAGS
+--show-connect Print the ssh connection command (host and token) instead of opening a session
+
+DESCRIPTION
+[EXPERIMENTAL] open an ssh session on the worker running a workflow job
+
+See code: packages/eas-cli/src/commands/workflow/ssh.ts
 
 ## eas workflow:status [WORKFLOW_RUN_ID]
 
