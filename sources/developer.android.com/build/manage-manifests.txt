@@ -1,5 +1,5 @@
 Source: https://developer.android.com/build/manage-manifests
-Fetched: 2026-10-12
+Fetched: 2026-11-16
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 Android Developers
@@ -17,35 +17,31 @@ Stay organized with collections
 Save and categorize content based on your preferences.
 
 This page describes how manifest merging works and how you can apply merge
-preferences to
-resolve merge conflicts. For an introduction to the app
-manifest file, see the
-app manifest overview.
+preferences to resolve merge conflicts. For an introduction to the app manifest
+file, see the app manifest overview.
 
 ## Merge multiple manifest files
 
-Your APK or Android App Bundle file can contain just one
-AndroidManifest.xml file, but your Android Studio project may contain
-several manifest files provided by the main source set, build variants, and imported
-libraries. When building your app, the Gradle build merges
-all manifest files into a single manifest file that's packaged
-into your app.
+Your APK or Android App Bundle file can contain just one AndroidManifest.xml
+file, but your Android Studio project may contain several manifest files
+provided by the main source set, build variants, and imported libraries. When
+building your app, the Gradle build merges all manifest files into a single
+manifest file that's packaged into your app.
 
 The manifest merger tool combines all XML elements from each file by following
-merge heuristics and obeying merge preferences that you have defined
-with special XML attributes.
+merge heuristics and obeying merge preferences that you have defined with
+special XML attributes.
 
-Tip: Use the Merged Manifest
-view, described in a following section, to preview the results of your merged manifest and find conflict
-errors.
+Tip: Use the Merged Manifest view, described in a following section, to
+preview the results of your merged manifest and find conflict errors.
 
 ### Merge priorities
 
-The merger tool combines all the manifest files into one file
-sequentially, based on each manifest file's priority. For example, if you have
-three manifest files, the lowest-priority manifest is merged into the
-next-highest-priority manifest, and then that is merged into the highest-priority
-manifest, as illustrated in figure 1.
+The merger tool combines all the manifest files into one file sequentially,
+based on each manifest file's priority. For example, if you have three manifest
+files, the lowest-priority manifest is merged into the next-highest-priority
+manifest, and then that is merged into the highest-priority manifest, as
+illustrated in figure 1.
 
 Figure 1. The process to merge three manifest
 files, lowest priority into highest priority.
@@ -53,26 +49,27 @@ files, lowest priority into highest priority.
 There are three basic types of manifest files that may be merged into each
 other, and their merge priorities are as follows (highest priority first):
 
-- Manifest file for your
-build variant
-If you have multiple source sets for your variant, their
-manifest priorities are as follows:
+- Manifest file for your build variant
+
+If you have multiple source sets for your variant, their manifest priorities
+are as follows:
 
 - Build variant manifest (such as src/demoDebug/)
 
 - Build type manifest (such as src/debug/)
 
 - Product flavor manifest (such as src/demo/)
-If you're using flavor dimensions, the manifest priorities
-correspond to the order each dimension is listed in the
-flavorDimensions property (first is highest priority).
+
+If you're using flavor dimensions, the manifest priorities correspond to
+the order each dimension is listed in the flavorDimensions property
+(first is highest priority).
 
 - Main manifest file for the app module
 
 - Manifest file from an included library
-If you have multiple libraries, their manifest priorities match
-the order they appear in your Gradle
-dependencies block.
+
+If you have multiple libraries, their manifest priorities match the order
+they appear in your Gradle dependencies block.
 
 For example, a library manifest is merged into the main manifest, then the main
 manifest is merged into the build variant manifest. Note that these are the same
@@ -80,17 +77,12 @@ merge priorities for all source sets, as described in
 Build with source sets.
 
 Note: If you're building a library module, the final merged manifest does
-not include content from the manifests of the library's dependencies.
-Important: Build configurations from the
-build.gradle file override any corresponding attributes in the
-merged manifest file. For example, the
-minSdk from the build.gradle or
-build.gradle.kts file overrides the matching attribute in the
-<uses-sdk>
-manifest element. To avoid confusion, leave out the
-<uses-sdk> element and define these properties only in the
-build.gradle file. For more details, see
-Configure your build.
+not include content from the manifests of the library's dependencies.Caution: Build configurations from the build.gradle file override any
+corresponding attributes in the merged manifest file. For example, the
+minSdk from the build.gradle or build.gradle.kts file overrides the
+matching attribute in the <uses-sdk> manifest element. To avoid
+confusion, leave out the <uses-sdk> element and define these properties only
+in the build.gradle file. For more details, see Configure your build.
 
 ### Merge conflict heuristics
 
@@ -136,56 +128,41 @@ merge rule marker. |
 However, there are a few situations in which the merger tool behaves differently
 to avoid merge conflicts:
 
-- Attributes in the <manifest> element are never merged
-together; only the attributes from the highest-priority manifest are used.
+- Attributes in the <manifest> element are never merged together; only the
+attributes from the highest-priority manifest are used.
 
-- The android:required attribute in the
+- The android:required attribute in the <uses-feature> and
+<uses-library> elements use an OR merge. If there is a conflict,
+"true" is applied and the feature or library required by one manifest is
+always included.
 
-<uses-feature> and
-
-<uses-library> elements use
-an OR merge. If there is a conflict, "true" is
-applied and the feature or library required by one manifest is always included.
-
-- Attributes in the
-<uses-sdk> element always use the value from the
+- Attributes in the <uses-sdk> element always use the value from the
 higher-priority manifest, except in the following situations:
 
-- When the lower-priority manifest has a minSdk value
-that's higher, an error occurs unless you
-apply the
-overrideLibrary merge rule.
+- When the lower-priority manifest has a minSdk value that's higher, an
+error occurs unless you apply the overrideLibrary merge rule.
 
-- When the lower-priority manifest has a targetSdkVersion
-value that's lower, the merger tool uses the value
-from the higher-priority manifest, and it also adds any system permissions
-that are necessary to ensure that the imported library continues to
-function properly (for cases in which the higher Android version has
-increased permission restrictions). For more information about this
-behavior, see the section
-about implicit system
-permissions.
+- When the lower-priority manifest has a targetSdkVersion value that's
+lower, the merger tool uses the value from the higher-priority manifest,
+and it also adds any system permissions that are necessary to ensure
+that the imported library continues to function properly (for cases in
+which the higher Android version has increased permission restrictions).
+For more information about this behavior, see the section about
+implicit system permissions.
 
-- The <intent-filter> element is never matched between
-manifests. Each is treated as unique and is
-added to the common parent element in the merged manifest.
+- The <intent-filter> element is never matched between manifests. Each is
+treated as unique and is added to the common parent element in the merged
+manifest.
 
 For all other conflicts between attributes, you receive an error and you must
 instruct the merger tool how to resolve it by adding a special attribute in
 the higher-priority manifest file. See the following section about
 merge rule markers.
 
-Do not depend on default attribute values. Because all
+Caution: Don't depend on default attribute values. Because all
 unique attributes are combined into the same element, this might cause
 unexpected results if the higher-priority manifest actually depends on the
-default value of an attribute without declaring it. For example, if the higher-
-priority manifest doesn't declare the android:launchMode
-attribute, then it uses the default value of "standard"&mdash;but if the
-lower-priority manifest declares this attribute with a different value, that
-value is applied to the merged manifest, which overrides the default value. You
-should explicitly define each attribute as you want it to be. Default values
-for each attribute are documented in the
-manifest reference.
+default value of an attribute without declaring it. For example, if the higher-priority manifest doesn't declare the android:launchMode attribute, then it uses the default value of "standard"—but if the lower-priority manifest declares this attribute with a different value, that value is applied to the merged manifest, which overrides the default value. You should explicitly define each attribute as you want it to be. Default values for each attribute are documented in the manifest reference.
 
 ### Merge rule markers
 
@@ -478,7 +455,8 @@ markers to resolve the conflict. This is the default behavior, so
 the same result occurs with explicitly adding
 tools:strict="screenOrientation".
 
-You can also apply multiple markers to one element, as shown in the following example:
+You can also apply multiple markers to one element, as shown in the following
+example:
 
 Low-priority manifest:
 
@@ -659,7 +637,7 @@ conflict with each other, merge them together with the merge rule markers.
 
 Merge children only
 
-Do not combine or merge the attributes (keep only the attributes provided
+Don't combine or merge the attributes (keep only the attributes provided
 by the highest-priority manifest file) and merge
 child elements according to their merging policy.
 

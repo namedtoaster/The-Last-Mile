@@ -1,6 +1,8 @@
 Source: https://docs.netlify.com/manage/domains/configure-domains/configure-external-dns/
-Fetched: 2026-10-26
+Fetched: 2026-11-16
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
+
+Netlify goes full stack: Netlify Server is here. Run long-running backends with WebSockets, now in Early Access.
 
 # Configure external DNS for a custom domain
 

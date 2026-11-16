@@ -1,5 +1,5 @@
 Source: https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site
-Fetched: 2026-10-12
+Fetched: 2026-11-16
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 In this article
@@ -13,8 +13,6 @@ Copy markdown
 ## Who can use this feature?
 
 GitHub Pages is available in public repositories with GitHub Free and GitHub Free for organizations, and in public and private repositories with GitHub Pro, GitHub Team, GitHub Enterprise Cloud, and GitHub Enterprise Server. See GitHub's plans.
-
-## Platform navigation
 
 ## In this article
 

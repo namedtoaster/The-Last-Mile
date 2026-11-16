@@ -1,5 +1,5 @@
 Source: https://support.squarespace.com/hc/en-us/articles/31119879125645-DNS-records-for-web-hosting
-Fetched: 2026-10-12
+Fetched: 2026-11-16
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 ## Sections
@@ -131,6 +131,8 @@ To add Squarespace default records:
 
 - Select Squarespace defaults.
 
+- Click Confirm.
+
 ### Remove Squarespace default records
 You can remove the Squarespace default records to disconnect your domain from your site. Keep in mind, if you remove these records, any PayPal Payment Links won't work.
 To remove your Squarespace default records:
@@ -161,7 +163,9 @@ To add the DNS preset:
 
 - Enter your current password, or if you have two-factor authentication (2FA) enabled, reauthenticate your account using your 2FA method and click Continue.
 
-- In the preset dropdown menu, select Netlify, Railway, or Vercel.
+- Select Netlify, Railway, or Vercel.
+
+- Click Confirm.
 
 ## Troubleshooting
 For help resolving DNS record issues, visit Troubleshooting issues with DNS records.

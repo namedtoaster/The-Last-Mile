@@ -1,5 +1,5 @@
 Source: https://support.google.com/googleplay/android-developer/answer/9859455
-Fetched: 2026-11-02
+Fetched: 2026-11-16
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 # Prepare your app for review
@@ -115,27 +115,29 @@ If your entire app or parts of your app are restricted based on login credential
 
 #### Add instructions for sign-in details
 
-- Open Play Console and go to the App content page (Policy and programs > App content).
+- Sign in to Play Console, select your app, and go to the App content page (Monitor and improve > Policy and programs > App content).
 
-- Under "Sign-in details," select Start.
+- Under 'Sign-in details', click Start declaration.
 
-- Note: If you’ve previously added instructions for sign-in details and you want to make changes, you’ll see and select Manage instead of Start.
+Note: If you previously added instructions for sign-in details and you want to make changes, click Manage instead of Start declaration
 
 - Click + Add new instructions and provide your access details.
 
-- Note: Use the "Any other instructions" field to let us know if there’s anything special about your login mechanisms, such as using a one-time password, multi-factor authentication, or logins with more than two fields.
+Note: Use the 'Any other instructions' field to let us know if there is anything special about your login mechanisms, such as using a one-time password, multi-factor authentication, or logins with more than two fields.
 
 - Save your changes.
 
-If your update is rejected or your app is removed, please follow the instructions below to resubmit your app for review. You can complete these steps without contacting or waiting for a reply from the policy support team.
+If your update is rejected or your app is removed, use the following instructions to resubmit your app for review. You can complete these steps without contacting or waiting for a reply from the policy support team.
 
-- Open Play Console and go to the Sign-in details page.
+- Sign in to Play Console, select your app, and go to the App content page (Monitor and improve > Policy and programs > App content).
 
-- Update your Sign-in details information and click Save.
+- Under 'Sign-in details', click Manage.
 
-- Go to the Publishing overview page. You can find your changes in the "Changes ready to send for review" section.
+- Update your sign-in details information and click Save.
 
-- Click Send for review to submit your changes for review. Go to this Help Center article to learn more about managing when changes are reviewed and published.
+- In the main navigation menu, click Publishing overview to go to the Publishing overview page. You can find your changes in the 'Changes ready to send for review' section.
+
+- Click Send for review to submit your changes for review. To learn more about managing when changes are reviewed and published, see how to manage publishing timelines.
 
 Note: You can add up to five sets of instructions.
 

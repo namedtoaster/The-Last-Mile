@@ -1,5 +1,5 @@
 Source: https://docs.flutter.dev/deployment/android
-Fetched: 2026-10-12
+Fetched: 2026-11-16
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 To test an app, you can use flutter run at the command line,
@@ -845,6 +845,6 @@ Was this page's content helpful?
 thumb_up
 thumb_down
 
-Unless stated otherwise, the documentation on this site reflects Flutter 3.47. Page last updated on 2026-09-10.
+Unless stated otherwise, the documentation on this site reflects Flutter 3.50. Page last updated on 2026-09-10.
 View source
 or report an issue.

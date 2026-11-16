@@ -1,5 +1,5 @@
 Source: https://support.google.com/googleplay/android-developer/answer/9845334
-Fetched: 2026-11-09
+Fetched: 2026-11-16
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 # Set up an open, closed, or internal test
@@ -131,7 +131,7 @@ You can create an internal testing release if your app is not fully configured. 
 
 Closed test: Manage testers by email address or Google Groups
 
-With a closed test, you can manage testers with email lists or Google Groups. Use email lists for smaller tester groups that you want to save to your account and reuse across tracks and apps. You can create up to 200 lists per developer account and up to 50 lists per track. Each list can contain up to 2,000 testers. For larger tester groups, use Google Groups, which have no size limits.
+With a closed test, you can manage testers with email lists or Google Groups. Use email lists for tester groups that you want to save to your account and reuse across tracks and apps. You can create up to 200 lists per developer account and up to 50 lists per track. Each list can contain up to 2,000 testers. You can also create a personal group or use a Google Workspace group connected to your developer account.
 
 #### Create an email list of your testers
 

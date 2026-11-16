@@ -1,5 +1,5 @@
 Source: https://docs.flutter.dev/deployment/ios
-Fetched: 2026-10-12
+Fetched: 2026-11-16
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 This guide provides a step-by-step walkthrough of releasing a
@@ -445,6 +445,6 @@ Was this page's content helpful?
 thumb_up
 thumb_down
 
-Unless stated otherwise, the documentation on this site reflects Flutter 3.47. Page last updated on 2026-07-31.
+Unless stated otherwise, the documentation on this site reflects Flutter 3.50. Page last updated on 2026-07-31.
 View source
 or report an issue.

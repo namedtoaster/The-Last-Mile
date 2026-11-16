@@ -1,5 +1,5 @@
 Source: https://www.revenuecat.com/docs/getting-started/installation/reactnative
-Fetched: 2026-11-09
+Fetched: 2026-11-16
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 On this page
@@ -54,6 +54,10 @@ import Purchases from 'react-native-purchases';
 ## Additional iOS setup​
 
 When you're ready to distribute on the App Store, enable the In-App Purchase capability in Xcode — see the iOS install guide. Nothing else is needed to build and test with the Test Store.
+
+⚠️Don't add the RevenueCat iOS SDK separately
+This SDK already includes the RevenueCat iOS SDK, and RevenueCatUI if you install the UI package. Don't add purchases-ios or purchases-ios-spm to your Xcode project. Adding it yourself can cause duplicate package errors or version conflicts; see Duplicate RevenueCat Swift packages.
+To call RevenueCat APIs from your own native code, add import RevenueCat (or import RevenueCatUI) to your Swift files.
 
 ## Additional Android setup​
 

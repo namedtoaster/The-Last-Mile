@@ -1,5 +1,5 @@
 Source: https://github.com/expo/eas-cli/tree/main/packages/eas-cli
-Fetched: 2026-11-09
+Fetched: 2026-11-16
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 # EAS CLI
@@ -309,6 +309,8 @@ If you want to enforce the eas-cli version for your project, use the "cli.versio
 
 - eas sim:control [ACTION]
 
+- eas sim:devices
+
 - eas sim:egress
 
 - eas sim:events
@@ -332,6 +334,8 @@ If you want to enforce the eas-cli version for your project, use the "cli.versio
 - eas simulator:control [ACTION]
 
 - eas simulator:control:connection OPERATION
+
+- eas simulator:devices
 
 - eas simulator:egress
 
@@ -433,7 +437,7 @@ If you want to enforce the eas-cli version for your project, use the "cli.versio
 
 - eas workflow:runs
 
-- eas workflow:ssh
+- eas workflow:ssh [--show-connect] ID
 
 - eas workflow:status [WORKFLOW_RUN_ID]
 
@@ -2382,8 +2386,8 @@ display individual events emitted by the app via logEvent, filtered by the event
 USAGE
 $ eas observe:events [EVENTNAME] [--platform android|ios|ipados|macos|tvos|apple] [--after <value>] [--limit
 <value>] [--start <value> | --days <value>] [--end <value> | ] [--app-version <value>] [--build-number <value>]
-[--update-id <value>] [--environment <value>] [--session-id <value>] [--all-events] [--project-id <value>] [--json]
-[--non-interactive]
+[--update-id <value>] [--environment <value>] [--session-id <value>] [--property <value>...] [--all-events]
+[--project-id <value>] [--json] [--non-interactive]
 
 ARGUMENTS
 [EVENTNAME] Event name to filter by
@@ -2403,6 +2407,8 @@ summary of event names + counts.
 --platform=<option> Filter by platform ("apple" covers iOS, iPadOS, tvOS, and macOS)
 <options: android|ios|ipados|macos|tvos|apple>
 --project-id=<value> EAS project ID (defaults to the project ID of the current directory)
+--property=<value>... Filter by event property (key=value, exact match). Repeat up to 5 times to require all (each
+key may be used once). Without an event name, lists matching events.
 --session-id=<value> Filter by session ID. When no event name is given, lists the events in the session instead of
 the event-name summary.
 --start=<value> Start of time range (ISO date)
@@ -2779,7 +2785,7 @@ See code: packages/eas-cli/src/commands/project/status.ts
 
 ## eas sim:availability
 
-[EXPERIMENTAL] check whether EAS Simulator is enabled for the current project account
+check whether EAS Simulator is enabled for the current project account
 
 USAGE
 $ eas sim:availability [--json] [--non-interactive]
@@ -2789,14 +2795,14 @@ FLAGS
 --non-interactive Run the command in non-interactive mode.
 
 DESCRIPTION
-[EXPERIMENTAL] check whether EAS Simulator is enabled for the current project account
+check whether EAS Simulator is enabled for the current project account
 
 ALIASES
 $ eas sim:availability
 
 ## eas sim:control [ACTION]
 
-[EXPERIMENTAL] control a remote iOS simulator session on EAS
+control a remote iOS simulator session on EAS
 
 USAGE
 $ eas sim:control [ACTION...] [-h] [--id <value>] [--list] [--output <value>] [--import <value>]
@@ -2819,7 +2825,7 @@ FLAGS
 --output=<value> Local file or existing directory for saved output
 
 DESCRIPTION
-[EXPERIMENTAL] control a remote iOS simulator session on EAS
+control a remote iOS simulator session on EAS
 
 Run without an action to list available actions. Use <action> --help for usage.
 
@@ -2860,11 +2866,30 @@ $ eas simulator:control hardwareKeyboard.set off
 
 $ eas simulator:control permissions.set grant camera com.example.app
 
-$ eas simulator:control app.install ./MyApp.ipa
+$ eas simulator:control app.install ./MyApp.app
 
 $ eas simulator:control screenshot.capture --output ./screenshot.png
 
 $ eas simulator:control screenshot.capture --output ./screenshot.png --id <session-id>
+
+## eas sim:devices
+
+list the devices Expo suggests for a remote simulator session
+
+USAGE
+$ eas sim:devices [-p android|ios] [--json] [--non-interactive]
+
+FLAGS
+-p, --platform=<option> Show the devices of one platform
+<options: android|ios>
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+list the devices Expo suggests for a remote simulator session
+
+ALIASES
+$ eas sim:devices
 
 ## eas sim:egress
 
@@ -2887,7 +2912,7 @@ $ eas sim:egress
 
 ## eas sim:events
 
-[EXPERIMENTAL] show activity events from a remote simulator session
+show activity events from a remote simulator session
 
 USAGE
 $ eas sim:events [--id <value>] [-f] [--json] [--non-interactive]
@@ -2899,27 +2924,27 @@ FLAGS
 --non-interactive Run the command in non-interactive mode.
 
 DESCRIPTION
-[EXPERIMENTAL] show activity events from a remote simulator session
+show activity events from a remote simulator session
 
 ALIASES
 $ eas sim:events
 
 ## eas sim:exec
 
-[EXPERIMENTAL] execute a simulator command with .env.eas-simulator environment loaded
+execute a simulator command with .env.eas-simulator environment loaded
 
 USAGE
 $ eas sim:exec
 
 DESCRIPTION
-[EXPERIMENTAL] execute a simulator command with .env.eas-simulator environment loaded
+execute a simulator command with .env.eas-simulator environment loaded
 
 ALIASES
 $ eas sim:exec
 
 ## eas sim:get
 
-[EXPERIMENTAL] get info about a remote simulator session on EAS by its simulator session ID. Preview links follow the session's saved sharing preference
+get info about a remote simulator session on EAS by its simulator session ID. Preview links follow the session's saved sharing preference
 
 USAGE
 $ eas sim:get [--id <value>] [--json] [--non-interactive]
@@ -2930,15 +2955,15 @@ FLAGS
 --non-interactive Run the command in non-interactive mode.
 
 DESCRIPTION
-[EXPERIMENTAL] get info about a remote simulator session on EAS by its simulator session ID. Preview links follow the
-session's saved sharing preference
+get info about a remote simulator session on EAS by its simulator session ID. Preview links follow the session's saved
+sharing preference
 
 ALIASES
 $ eas sim:get
 
 ## eas sim:list
 
-[EXPERIMENTAL] list remote simulator sessions for the current project
+list remote simulator sessions for the current project
 
 USAGE
 $ eas sim:list [--status new|queued|starting|in-progress|stopped|errored...] [--type
@@ -2962,14 +2987,14 @@ automation interface.
 <options: agent-device|appium|argent|web-preview-only>
 
 DESCRIPTION
-[EXPERIMENTAL] list remote simulator sessions for the current project
+list remote simulator sessions for the current project
 
 ALIASES
 $ eas sim:list
 
 ## eas sim:logs
 
-[EXPERIMENTAL] show buffered logs from a remote iOS simulator session
+show buffered logs from a remote iOS simulator session
 
 USAGE
 $ eas sim:logs [--id <value>] [--artifact <value>] [-o <value>] [-f | --json] [--scope user-apps|all]
@@ -2988,7 +3013,7 @@ FLAGS
 --timestamp Show timestamps in live human-readable log output.
 
 DESCRIPTION
-[EXPERIMENTAL] show buffered logs from a remote iOS simulator session
+show buffered logs from a remote iOS simulator session
 
 ALIASES
 $ eas sim:logs
@@ -3000,16 +3025,16 @@ $ eas simulator:logs --json
 
 ## eas sim:start
 
-[EXPERIMENTAL] start a remote simulator session on EAS
+start a remote simulator session on EAS
 
 USAGE
 $ eas sim:start [--import <value>] [-p android|ios] [--name <value>] [--tag <value>...] [--device <value>]
 [--system-image <value>] [--build-id <value> | --build-fingerprint <value> | --application-archive-url <value> |
 --expo-go] [--sdk-version <value>] [--launch-arg <value>...] [--open-url <value>] [--type
-agent-device|appium|argent|web-preview-only] [--package-version <value>] [--network-capture-field <value>...
---network-capture] [--max-duration-minutes <value>] [--max-idle-time-minutes <value>] [--egress-allow <value>...
---egress local] [--cors-origin <value>...] [--frame-ancestor <value>...] [--force] [--out-config-type env|dotenv]
-[--public-link] [--json] [--non-interactive]
+agent-device|appium|argent|web-preview-only] [--package-version <value>] [--log-source
+emulator-output|device-logcat...] [--network-capture-field <value>... --network-capture] [--max-duration-minutes
+<value>] [--max-idle-time-minutes <value>] [--egress-allow <value>... --egress local] [--cors-origin <value>...]
+[--frame-ancestor <value>...] [--force] [--out-config-type env|dotenv] [--public-link] [--json] [--non-interactive]
 
 FLAGS
 -p, --platform=<option>
@@ -3033,17 +3058,19 @@ the preview in a frame does not need this; use --frame-ancestor for that. The pa
 URL and its token.
 
 --device=<value>
-Virtual device to start for the session. On iOS, a Simulator device name or UDID (e.g. "iPhone 16 Pro"). On Android,
-an AVD hardware profile id (e.g. "pixel_7"). Defaults to a device chosen by the runner.
+Virtual device to start for the session. On iOS, a Simulator device name or UDID (e.g. "iPhone 17 Pro"). On Android,
+an AVD hardware profile id (e.g. "pixel_9"). Defaults to a device chosen by the runner. eas simulator:devices lists
+the devices Expo suggests.
 
 --egress=<option>
-With "local", the simulator's network traffic exits from this machine and fails while the egress client is
-disconnected. On iOS, the simulator system proxy points at this machine: HTTP(S) and WebSocket requests that honor
-it (WebKit, URLSession) and clients that read proxy environment variables (gRPC, libcurl) use it, and connections
-that ignore both are refused inside the simulator and listed, with the library that tried, in the Logs section of
-the session page on expo.dev. On Android, all TCP traffic from the emulator goes through its proxy to this machine;
-traffic that cannot (UDP, such as QUIC) is refused and listed in the same Logs section, and DNS for apps that ignore
-the system proxy resolves on the device host. The egress client must keep running for the life of the session.
+[EXPERIMENTAL] With "local", the simulator's network traffic exits from this machine and fails while the egress
+client is disconnected. On iOS, the simulator system proxy points at this machine: HTTP(S) and WebSocket requests
+that honor it (WebKit, URLSession) and clients that read proxy environment variables (gRPC, libcurl) use it, and
+connections that ignore both are refused inside the simulator and listed, with the library that tried, in the Logs
+section of the session page on expo.dev. On Android, all TCP traffic from the emulator goes through its proxy to
+this machine; traffic that cannot (UDP, such as QUIC) is refused and listed in the same Logs section, and DNS for
+apps that ignore the system proxy resolves on the device host. The egress client must keep running for the life of
+the session.
 <options: local>
 
 --egress-allow=<value>...
@@ -3072,6 +3099,12 @@ Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-i
 
 --launch-arg=<value>...
 Argument passed to the installed application when it launches. Repeat for multiple arguments.
+
+--log-source=<option>...
+Android logs to record during the session and upload afterward. Repeat to select both sources; replaces the default
+emulator-output selection. Device-wide device-logcat may contain credentials and personal data. Logs are not
+redacted.
+<options: emulator-output|device-logcat>
 
 --max-duration-minutes=<value>
 Maximum duration of the simulator session in minutes before it is automatically stopped. Defaults to, and cannot
@@ -3128,7 +3161,7 @@ appium, and argent also include an automation interface; web-preview-only includ
 <options: agent-device|appium|argent|web-preview-only>
 
 DESCRIPTION
-[EXPERIMENTAL] start a remote simulator session on EAS
+start a remote simulator session on EAS
 
 Preview links require sign-in by default.
 
@@ -3158,7 +3191,7 @@ $ eas simulator:start --import ./simulator.json --platform ios --device "iPhone 
 
 ## eas sim:stop
 
-[EXPERIMENTAL] stop a remote simulator session on EAS by its simulator session ID
+stop a remote simulator session on EAS by its simulator session ID
 
 USAGE
 $ eas sim:stop [--id <value>] [--json] [--non-interactive]
@@ -3169,23 +3202,23 @@ FLAGS
 --non-interactive Run the command in non-interactive mode.
 
 DESCRIPTION
-[EXPERIMENTAL] stop a remote simulator session on EAS by its simulator session ID
+stop a remote simulator session on EAS by its simulator session ID
 
 ALIASES
 $ eas sim:stop
 
 ## eas simulator
 
-[EXPERIMENTAL] start a remote simulator session on EAS
+start a remote simulator session on EAS
 
 USAGE
 $ eas simulator [--import <value>] [-p android|ios] [--name <value>] [--tag <value>...] [--device <value>]
 [--system-image <value>] [--build-id <value> | --build-fingerprint <value> | --application-archive-url <value> |
 --expo-go] [--sdk-version <value>] [--launch-arg <value>...] [--open-url <value>] [--type
-agent-device|appium|argent|web-preview-only] [--package-version <value>] [--network-capture-field <value>...
---network-capture] [--max-duration-minutes <value>] [--max-idle-time-minutes <value>] [--egress-allow <value>...
---egress local] [--cors-origin <value>...] [--frame-ancestor <value>...] [--force] [--out-config-type env|dotenv]
-[--public-link] [--json] [--non-interactive]
+agent-device|appium|argent|web-preview-only] [--package-version <value>] [--log-source
+emulator-output|device-logcat...] [--network-capture-field <value>... --network-capture] [--max-duration-minutes
+<value>] [--max-idle-time-minutes <value>] [--egress-allow <value>... --egress local] [--cors-origin <value>...]
+[--frame-ancestor <value>...] [--force] [--out-config-type env|dotenv] [--public-link] [--json] [--non-interactive]
 
 FLAGS
 -p, --platform=<option>
@@ -3209,17 +3242,19 @@ the preview in a frame does not need this; use --frame-ancestor for that. The pa
 URL and its token.
 
 --device=<value>
-Virtual device to start for the session. On iOS, a Simulator device name or UDID (e.g. "iPhone 16 Pro"). On Android,
-an AVD hardware profile id (e.g. "pixel_7"). Defaults to a device chosen by the runner.
+Virtual device to start for the session. On iOS, a Simulator device name or UDID (e.g. "iPhone 17 Pro"). On Android,
+an AVD hardware profile id (e.g. "pixel_9"). Defaults to a device chosen by the runner. eas simulator:devices lists
+the devices Expo suggests.
 
 --egress=<option>
-With "local", the simulator's network traffic exits from this machine and fails while the egress client is
-disconnected. On iOS, the simulator system proxy points at this machine: HTTP(S) and WebSocket requests that honor
-it (WebKit, URLSession) and clients that read proxy environment variables (gRPC, libcurl) use it, and connections
-that ignore both are refused inside the simulator and listed, with the library that tried, in the Logs section of
-the session page on expo.dev. On Android, all TCP traffic from the emulator goes through its proxy to this machine;
-traffic that cannot (UDP, such as QUIC) is refused and listed in the same Logs section, and DNS for apps that ignore
-the system proxy resolves on the device host. The egress client must keep running for the life of the session.
+[EXPERIMENTAL] With "local", the simulator's network traffic exits from this machine and fails while the egress
+client is disconnected. On iOS, the simulator system proxy points at this machine: HTTP(S) and WebSocket requests
+that honor it (WebKit, URLSession) and clients that read proxy environment variables (gRPC, libcurl) use it, and
+connections that ignore both are refused inside the simulator and listed, with the library that tried, in the Logs
+section of the session page on expo.dev. On Android, all TCP traffic from the emulator goes through its proxy to
+this machine; traffic that cannot (UDP, such as QUIC) is refused and listed in the same Logs section, and DNS for
+apps that ignore the system proxy resolves on the device host. The egress client must keep running for the life of
+the session.
 <options: local>
 
 --egress-allow=<value>...
@@ -3248,6 +3283,12 @@ Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-i
 
 --launch-arg=<value>...
 Argument passed to the installed application when it launches. Repeat for multiple arguments.
+
+--log-source=<option>...
+Android logs to record during the session and upload afterward. Repeat to select both sources; replaces the default
+emulator-output selection. Device-wide device-logcat may contain credentials and personal data. Logs are not
+redacted.
+<options: emulator-output|device-logcat>
 
 --max-duration-minutes=<value>
 Maximum duration of the simulator session in minutes before it is automatically stopped. Defaults to, and cannot
@@ -3304,7 +3345,7 @@ appium, and argent also include an automation interface; web-preview-only includ
 <options: agent-device|appium|argent|web-preview-only>
 
 DESCRIPTION
-[EXPERIMENTAL] start a remote simulator session on EAS
+start a remote simulator session on EAS
 
 Preview links require sign-in by default.
 
@@ -3336,7 +3377,7 @@ See code: packages/eas-cli/src/commands/simulator/index.ts
 
 ## eas simulator:availability
 
-[EXPERIMENTAL] check whether EAS Simulator is enabled for the current project account
+check whether EAS Simulator is enabled for the current project account
 
 USAGE
 $ eas simulator:availability [--json] [--non-interactive]
@@ -3346,7 +3387,7 @@ FLAGS
 --non-interactive Run the command in non-interactive mode.
 
 DESCRIPTION
-[EXPERIMENTAL] check whether EAS Simulator is enabled for the current project account
+check whether EAS Simulator is enabled for the current project account
 
 ALIASES
 $ eas sim:availability
@@ -3355,7 +3396,7 @@ See code: packages/eas-cli/src/commands/simulator/availability.ts
 
 ## eas simulator:control [ACTION]
 
-[EXPERIMENTAL] control a remote iOS simulator session on EAS
+control a remote iOS simulator session on EAS
 
 USAGE
 $ eas simulator:control [ACTION...] [-h] [--id <value>] [--list] [--output <value>] [--import <value>]
@@ -3378,7 +3419,7 @@ FLAGS
 --output=<value> Local file or existing directory for saved output
 
 DESCRIPTION
-[EXPERIMENTAL] control a remote iOS simulator session on EAS
+control a remote iOS simulator session on EAS
 
 Run without an action to list available actions. Use <action> --help for usage.
 
@@ -3419,7 +3460,7 @@ $ eas simulator:control hardwareKeyboard.set off
 
 $ eas simulator:control permissions.set grant camera com.example.app
 
-$ eas simulator:control app.install ./MyApp.ipa
+$ eas simulator:control app.install ./MyApp.app
 
 $ eas simulator:control screenshot.capture --output ./screenshot.png
 
@@ -3455,6 +3496,27 @@ $ eas simulator:control:connection close
 
 See code: packages/eas-cli/src/commands/simulator/control/connection.ts
 
+## eas simulator:devices
+
+list the devices Expo suggests for a remote simulator session
+
+USAGE
+$ eas simulator:devices [-p android|ios] [--json] [--non-interactive]
+
+FLAGS
+-p, --platform=<option> Show the devices of one platform
+<options: android|ios>
+--json Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-interactive.
+--non-interactive Run the command in non-interactive mode.
+
+DESCRIPTION
+list the devices Expo suggests for a remote simulator session
+
+ALIASES
+$ eas sim:devices
+
+See code: packages/eas-cli/src/commands/simulator/devices.ts
+
 ## eas simulator:egress
 
 [EXPERIMENTAL] run the local egress client for a simulator session to route proxied HTTP(S) requests through this machine
@@ -3478,7 +3540,7 @@ See code: packages/eas-cli/src/commands/simulator/egress.ts
 
 ## eas simulator:events
 
-[EXPERIMENTAL] show activity events from a remote simulator session
+show activity events from a remote simulator session
 
 USAGE
 $ eas simulator:events [--id <value>] [-f] [--json] [--non-interactive]
@@ -3490,7 +3552,7 @@ FLAGS
 --non-interactive Run the command in non-interactive mode.
 
 DESCRIPTION
-[EXPERIMENTAL] show activity events from a remote simulator session
+show activity events from a remote simulator session
 
 ALIASES
 $ eas sim:events
@@ -3499,13 +3561,13 @@ See code: packages/eas-cli/src/commands/simulator/events.ts
 
 ## eas simulator:exec
 
-[EXPERIMENTAL] execute a simulator command with .env.eas-simulator environment loaded
+execute a simulator command with .env.eas-simulator environment loaded
 
 USAGE
 $ eas simulator:exec
 
 DESCRIPTION
-[EXPERIMENTAL] execute a simulator command with .env.eas-simulator environment loaded
+execute a simulator command with .env.eas-simulator environment loaded
 
 ALIASES
 $ eas sim:exec
@@ -3514,7 +3576,7 @@ See code: packages/eas-cli/src/commands/simulator/exec.ts
 
 ## eas simulator:get
 
-[EXPERIMENTAL] get info about a remote simulator session on EAS by its simulator session ID. Preview links follow the session's saved sharing preference
+get info about a remote simulator session on EAS by its simulator session ID. Preview links follow the session's saved sharing preference
 
 USAGE
 $ eas simulator:get [--id <value>] [--json] [--non-interactive]
@@ -3525,8 +3587,8 @@ FLAGS
 --non-interactive Run the command in non-interactive mode.
 
 DESCRIPTION
-[EXPERIMENTAL] get info about a remote simulator session on EAS by its simulator session ID. Preview links follow the
-session's saved sharing preference
+get info about a remote simulator session on EAS by its simulator session ID. Preview links follow the session's saved
+sharing preference
 
 ALIASES
 $ eas sim:get
@@ -3535,7 +3597,7 @@ See code: packages/eas-cli/src/commands/simulator/get.ts
 
 ## eas simulator:list
 
-[EXPERIMENTAL] list remote simulator sessions for the current project
+list remote simulator sessions for the current project
 
 USAGE
 $ eas simulator:list [--status new|queued|starting|in-progress|stopped|errored...] [--type
@@ -3559,7 +3621,7 @@ automation interface.
 <options: agent-device|appium|argent|web-preview-only>
 
 DESCRIPTION
-[EXPERIMENTAL] list remote simulator sessions for the current project
+list remote simulator sessions for the current project
 
 ALIASES
 $ eas sim:list
@@ -3568,7 +3630,7 @@ See code: packages/eas-cli/src/commands/simulator/list.ts
 
 ## eas simulator:logs
 
-[EXPERIMENTAL] show buffered logs from a remote iOS simulator session
+show buffered logs from a remote iOS simulator session
 
 USAGE
 $ eas simulator:logs [--id <value>] [--artifact <value>] [-o <value>] [-f | --json] [--scope user-apps|all]
@@ -3587,7 +3649,7 @@ FLAGS
 --timestamp Show timestamps in live human-readable log output.
 
 DESCRIPTION
-[EXPERIMENTAL] show buffered logs from a remote iOS simulator session
+show buffered logs from a remote iOS simulator session
 
 ALIASES
 $ eas sim:logs
@@ -3601,16 +3663,16 @@ See code: packages/eas-cli/src/commands/simulator/logs.ts
 
 ## eas simulator:start
 
-[EXPERIMENTAL] start a remote simulator session on EAS
+start a remote simulator session on EAS
 
 USAGE
 $ eas simulator:start [--import <value>] [-p android|ios] [--name <value>] [--tag <value>...] [--device <value>]
 [--system-image <value>] [--build-id <value> | --build-fingerprint <value> | --application-archive-url <value> |
 --expo-go] [--sdk-version <value>] [--launch-arg <value>...] [--open-url <value>] [--type
-agent-device|appium|argent|web-preview-only] [--package-version <value>] [--network-capture-field <value>...
---network-capture] [--max-duration-minutes <value>] [--max-idle-time-minutes <value>] [--egress-allow <value>...
---egress local] [--cors-origin <value>...] [--frame-ancestor <value>...] [--force] [--out-config-type env|dotenv]
-[--public-link] [--json] [--non-interactive]
+agent-device|appium|argent|web-preview-only] [--package-version <value>] [--log-source
+emulator-output|device-logcat...] [--network-capture-field <value>... --network-capture] [--max-duration-minutes
+<value>] [--max-idle-time-minutes <value>] [--egress-allow <value>... --egress local] [--cors-origin <value>...]
+[--frame-ancestor <value>...] [--force] [--out-config-type env|dotenv] [--public-link] [--json] [--non-interactive]
 
 FLAGS
 -p, --platform=<option>
@@ -3634,17 +3696,19 @@ the preview in a frame does not need this; use --frame-ancestor for that. The pa
 URL and its token.
 
 --device=<value>
-Virtual device to start for the session. On iOS, a Simulator device name or UDID (e.g. "iPhone 16 Pro"). On Android,
-an AVD hardware profile id (e.g. "pixel_7"). Defaults to a device chosen by the runner.
+Virtual device to start for the session. On iOS, a Simulator device name or UDID (e.g. "iPhone 17 Pro"). On Android,
+an AVD hardware profile id (e.g. "pixel_9"). Defaults to a device chosen by the runner. eas simulator:devices lists
+the devices Expo suggests.
 
 --egress=<option>
-With "local", the simulator's network traffic exits from this machine and fails while the egress client is
-disconnected. On iOS, the simulator system proxy points at this machine: HTTP(S) and WebSocket requests that honor
-it (WebKit, URLSession) and clients that read proxy environment variables (gRPC, libcurl) use it, and connections
-that ignore both are refused inside the simulator and listed, with the library that tried, in the Logs section of
-the session page on expo.dev. On Android, all TCP traffic from the emulator goes through its proxy to this machine;
-traffic that cannot (UDP, such as QUIC) is refused and listed in the same Logs section, and DNS for apps that ignore
-the system proxy resolves on the device host. The egress client must keep running for the life of the session.
+[EXPERIMENTAL] With "local", the simulator's network traffic exits from this machine and fails while the egress
+client is disconnected. On iOS, the simulator system proxy points at this machine: HTTP(S) and WebSocket requests
+that honor it (WebKit, URLSession) and clients that read proxy environment variables (gRPC, libcurl) use it, and
+connections that ignore both are refused inside the simulator and listed, with the library that tried, in the Logs
+section of the session page on expo.dev. On Android, all TCP traffic from the emulator goes through its proxy to
+this machine; traffic that cannot (UDP, such as QUIC) is refused and listed in the same Logs section, and DNS for
+apps that ignore the system proxy resolves on the device host. The egress client must keep running for the life of
+the session.
 <options: local>
 
 --egress-allow=<value>...
@@ -3673,6 +3737,12 @@ Enable JSON output, non-JSON messages will be printed to stderr. Implies --non-i
 
 --launch-arg=<value>...
 Argument passed to the installed application when it launches. Repeat for multiple arguments.
+
+--log-source=<option>...
+Android logs to record during the session and upload afterward. Repeat to select both sources; replaces the default
+emulator-output selection. Device-wide device-logcat may contain credentials and personal data. Logs are not
+redacted.
+<options: emulator-output|device-logcat>
 
 --max-duration-minutes=<value>
 Maximum duration of the simulator session in minutes before it is automatically stopped. Defaults to, and cannot
@@ -3729,7 +3799,7 @@ appium, and argent also include an automation interface; web-preview-only includ
 <options: agent-device|appium|argent|web-preview-only>
 
 DESCRIPTION
-[EXPERIMENTAL] start a remote simulator session on EAS
+start a remote simulator session on EAS
 
 Preview links require sign-in by default.
 
@@ -3759,7 +3829,7 @@ $ eas simulator:start --import ./simulator.json --platform ios --device "iPhone 
 
 ## eas simulator:stop
 
-[EXPERIMENTAL] stop a remote simulator session on EAS by its simulator session ID
+stop a remote simulator session on EAS by its simulator session ID
 
 USAGE
 $ eas simulator:stop [--id <value>] [--json] [--non-interactive]
@@ -3770,7 +3840,7 @@ FLAGS
 --non-interactive Run the command in non-interactive mode.
 
 DESCRIPTION
-[EXPERIMENTAL] stop a remote simulator session on EAS by its simulator session ID
+stop a remote simulator session on EAS by its simulator session ID
 
 ALIASES
 $ eas sim:stop
@@ -4668,10 +4738,10 @@ APP_STORE_CONNECT_APP_VERSION_STATE_CHANGED|APP_STORE_CONNECT_BETA_FEEDBACK_SUBM
 _STATE_CHANGED|APP_STORE_CONNECT_EXTERNAL_BETA_STATE_CHANGED|EAS_SUBMIT|EXPO_LAUNCH|GITHUB_PULL_REQUEST_BASE_REF_CHA
 NGED|GITHUB_PULL_REQUEST_COMMENT_CREATED|GITHUB_PULL_REQUEST_COMMENT_DELETED|GITHUB_PULL_REQUEST_COMMENT_EDITED|GITH
 UB_PULL_REQUEST_EDITED|GITHUB_PULL_REQUEST_LABELED|GITHUB_PULL_REQUEST_OPENED|GITHUB_PULL_REQUEST_READY_FOR_REVIEW|G
-ITHUB_PULL_REQUEST_REOPENED|GITHUB_PULL_REQUEST_SYNCHRONIZE|GITHUB_PUSH|GITHUB_REF_DELETE|MANUAL|REPACK_EXPO_GO|SCHE
-DULE|SENTRY_ISSUE_ARCHIVED|SENTRY_ISSUE_ASSIGNED|SENTRY_ISSUE_CREATED|SENTRY_ISSUE_RESOLVED|SENTRY_ISSUE_UNRESOLVED.
-..] [--days <value> | --start <value> | --end <value>] [--limit <value>] [--project-id <value>] [--json]
-[--non-interactive]
+ITHUB_PULL_REQUEST_REOPENED|GITHUB_PULL_REQUEST_SYNCHRONIZE|GITHUB_PUSH|GITHUB_REF_DELETE|MANUAL|OBSERVE_NEW_ERROR|R
+EPACK_EXPO_GO|SCHEDULE|SENTRY_ISSUE_ARCHIVED|SENTRY_ISSUE_ASSIGNED|SENTRY_ISSUE_CREATED|SENTRY_ISSUE_RESOLVED|SENTRY
+_ISSUE_UNRESOLVED...] [--days <value> | --start <value> | --end <value>] [--limit <value>] [--project-id <value>]
+[--json] [--non-interactive]
 
 FLAGS
 --days=<value>
@@ -4705,13 +4775,13 @@ Only include runs with this status (can be specified multiple times).
 
 --trigger=<option>...
 Only include runs started by this trigger (can be specified multiple times).
-<options:
-APP_STORE_CONNECT_APP_VERSION_STATE_CHANGED|APP_STORE_CONNECT_BETA_FEEDBACK_SUBMITTED|APP_STORE_CONNECT_BUILD_UPLOAD
-_STATE_CHANGED|APP_STORE_CONNECT_EXTERNAL_BETA_STATE_CHANGED|EAS_SUBMIT|EXPO_LAUNCH|GITHUB_PULL_REQUEST_BASE_REF_CHA
-NGED|GITHUB_PULL_REQUEST_COMMENT_CREATED|GITHUB_PULL_REQUEST_COMMENT_DELETED|GITHUB_PULL_REQUEST_COMMENT_EDITED|GITH
-UB_PULL_REQUEST_EDITED|GITHUB_PULL_REQUEST_LABELED|GITHUB_PULL_REQUEST_OPENED|GITHUB_PULL_REQUEST_READY_FOR_REVIEW|G
-ITHUB_PULL_REQUEST_REOPENED|GITHUB_PULL_REQUEST_SYNCHRONIZE|GITHUB_PUSH|GITHUB_REF_DELETE|MANUAL|REPACK_EXPO_GO|SCHE
-DULE|SENTRY_ISSUE_ARCHIVED|SENTRY_ISSUE_ASSIGNED|SENTRY_ISSUE_CREATED|SENTRY_ISSUE_RESOLVED|SENTRY_ISSUE_UNRESOLVED>
+<options: APP_STORE_CONNECT_APP_VERSION_STATE_CHANGED|APP_STORE_CONNECT_BETA_FEEDBACK_SUBMITTED|APP_STORE_CONNECT_BU
+ILD_UPLOAD_STATE_CHANGED|APP_STORE_CONNECT_EXTERNAL_BETA_STATE_CHANGED|EAS_SUBMIT|EXPO_LAUNCH|GITHUB_PULL_REQUEST_BA
+SE_REF_CHANGED|GITHUB_PULL_REQUEST_COMMENT_CREATED|GITHUB_PULL_REQUEST_COMMENT_DELETED|GITHUB_PULL_REQUEST_COMMENT_E
+DITED|GITHUB_PULL_REQUEST_EDITED|GITHUB_PULL_REQUEST_LABELED|GITHUB_PULL_REQUEST_OPENED|GITHUB_PULL_REQUEST_READY_FO
+R_REVIEW|GITHUB_PULL_REQUEST_REOPENED|GITHUB_PULL_REQUEST_SYNCHRONIZE|GITHUB_PUSH|GITHUB_REF_DELETE|MANUAL|OBSERVE_N
+EW_ERROR|REPACK_EXPO_GO|SCHEDULE|SENTRY_ISSUE_ARCHIVED|SENTRY_ISSUE_ASSIGNED|SENTRY_ISSUE_CREATED|SENTRY_ISSUE_RESOL
+VED|SENTRY_ISSUE_UNRESOLVED>
 
 --workflow=<value>...
 Only include runs of this workflow file name (can be specified multiple times).
@@ -4789,14 +4859,16 @@ See code: packages/eas-cli/src/commands/workflow/logs.ts
 run an EAS workflow. The entire local project directory will be packaged and uploaded to EAS servers for the workflow run, unless the --ref flag is used
 
 USAGE
-$ eas workflow:run FILE [--non-interactive] [--wait] [-F <value>...] [--ref <value>] [--ssh] [--ssh-idle-timeout
-<value>] [--json]
+$ eas workflow:run FILE [--non-interactive] [--wait] [-F <value>...] [--ref <value> | --git-branch <value> |
+--git-commit-hash <value>] [--ssh] [--ssh-idle-timeout <value>] [--json]
 
 ARGUMENTS
 FILE Path to the workflow file to run
 
 FLAGS
 -F, --input=<value>... Set workflow inputs
+--git-branch=<value> Git branch of the uploaded project
+--git-commit-hash=<value> Git commit of the uploaded project
 --json Enable JSON output, non-JSON messages will be printed to stderr.
 --non-interactive Run the command in non-interactive mode.
 --ref=<value> Git reference to run the workflow on
@@ -4812,6 +4884,16 @@ FLAG DESCRIPTIONS
 -F, --input=<value>... Set workflow inputs
 
 Add a parameter in key=value format. Use multiple instances of this flag to set multiple inputs.
+
+--git-branch=<value> Git branch of the uploaded project
+
+Name of the branch the uploaded project comes from, for example "main". The run is listed under this branch on the
+EAS dashboard. Requires --git-commit-hash. Cannot be used with --ref.
+
+--git-commit-hash=<value> Git commit of the uploaded project
+
+Full 40-character SHA of the commit the uploaded project comes from. The commit must exist in the project's linked
+GitHub repository. Requires --git-branch. Cannot be used with --ref.
 
 --ref=<value> Git reference to run the workflow on
 
@@ -4855,18 +4937,23 @@ list recent workflow runs for this project, with their IDs, statuses, and timest
 
 See code: packages/eas-cli/src/commands/workflow/runs.ts
 
-## eas workflow:ssh
+## eas workflow:ssh [--show-connect] ID
 
 [EXPERIMENTAL] open an ssh session on the worker running a workflow job
 
 USAGE
-$ eas workflow:ssh [--show-connect]
+$ eas workflow:ssh [--show-connect] ID
 
 FLAGS
 --show-connect Print the ssh connection command (host and token) instead of opening a session
 
 DESCRIPTION
 [EXPERIMENTAL] open an ssh session on the worker running a workflow job
+
+EXAMPLES
+$ eas workflow:ssh <ID> # Open an SSH session on the worker. Use the ID in the job logs ("Start SSH session" step)
+
+$ eas workflow:ssh --show-connect <ID> # Print the ssh command to connect, without opening the SSH session
 
 See code: packages/eas-cli/src/commands/workflow/ssh.ts
 
