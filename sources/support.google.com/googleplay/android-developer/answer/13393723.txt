@@ -1,5 +1,5 @@
 Source: https://support.google.com/googleplay/android-developer/answer/13393723
-Fetched: 2026-10-12
+Fetched: 2026-11-23
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 # Best practices for your store listing
@@ -144,6 +144,10 @@ This short text is key for attracting users. It appears in places like search re
 #### Screenshots
 
 - Reach a broader potential user base by including screenshots on all of the supported device platforms, in multiple orientations.
+
+- Showcase your app or game on foldable devices by uploading 3 to 8 dedicated foldable screenshots (960 px to 3,840 px per side) in the 'Foldable Screenshots' section on the Main store listing page (Grow users > Store presence > Main store listing), covering square (1:1) and wide (4:3 or 3:4) unfolded inner screens as well as folded outer screens (10:16 or 16:10).
+
+- Highlight adaptive foldable experiences—such as multi-pane layouts, tabletop or book postures, and full-screen visuals—without letterboxing, stretching, or cropping phone screenshots in a way that misrepresents your foldable UI.
 
 - Highlight the best features of your app using screenshots of the in-app experiences that make your app special.
 

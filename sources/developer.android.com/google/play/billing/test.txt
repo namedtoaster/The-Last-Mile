@@ -1,5 +1,5 @@
 Source: https://developer.android.com/google/play/billing/test
-Fetched: 2026-10-18
+Fetched: 2026-11-23
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 Reminder: By Aug 31, 2026, all new apps and updates to existing apps must use Billing Library version 8 or later. If you need more time to update your app, you can request an extension until Nov 1, 2026. Learn about Play Billing Library version deprecation.
@@ -444,6 +444,34 @@ First notification |
 
 Second (final) notification |
 1 minute |
+
+### Retention offers
+
+Google Play shows only active retention offers in the cancellation flow,
+and it evaluates eligibility rules, such as the minimum paid subscription
+duration, in real calendar time. To test retention offers with a license
+tester account, use one of the following methods:
+
+- Per-user retention offer: Create and activate a per-user retention
+offer by setting targeting to a retentionPerUserRule object. After the
+license tester purchases the base plan, call
+purchases.subscriptionsv2.activateOfferTargeting from your backend
+with the license tester's purchaseToken and the offerId of the
+retention offer. Google Play shows a per-user retention offer only to the
+subscriptions that you target, so production users can't see the offer.
+
+- Cohort retention offer: In a non-production test app or on a test base
+plan that production users can't access, create and activate a cohort
+retention offer by setting targeting to a retentionRule object with
+minDuration set to P0D (0 days). Because the offer doesn't require a
+minimum paid subscription duration, the license tester can open the
+cancellation flow right after purchasing the test base plan.
+
+For each method, in the Google Play Store app, go to Payments &
+subscriptions > Subscriptions, select the subscription, and click Cancel
+subscription. The retention offer appears in the cancellation flow. For
+step-by-step instructions and troubleshooting tips, see Test retention
+offers.
 
 ### Test cases
 
@@ -1005,8 +1033,16 @@ closed, open, or production track.
 
 ## Test out-of-app purchases
 
+Google Play can promote your one-time products and subscriptions on surfaces
+outside of your app, such as your app's details page in the Play Store and
+Gemini. You manage these promotions on the Merchandising and
+optimization page in Google Play Console. Because users can
+purchase these products without opening your app, your app and backend must be
+able to detect and deliver out-of-app purchases.
+
 You can use the Play Billing Lab app to test the end-to-end experience for
-entitlements acquired outside of your app. To use
+entitlements acquired outside of your app. You don't need to configure
+merchandising and optimization settings before you test. To use
 Play Billing Lab, you must be a license tester for the app you are testing.
 
 Step 1 - Configure test
@@ -1024,14 +1060,18 @@ Step 1 - Configure test
 - If you don't select a country, Play Billing Lab uses the Play Country for
 your licensed test account.
 
-- Enter the app and product (SKU) information that you want to test.
+- Enter the app's package name, select the product type (One-time product
+or Subscription), and enter the product ID (SKU) that you want to test.
 
 - Select the particular purchase option, base plan, or offer that you want to test.
+Play Billing Lab only shows the offers that your licensed tester account is
+currently eligible for.
 
 - Click Start test.
 
 Note: The test remains active for two hours. After this time, you must reconfigure
-the test.
+the test. To change or stop an active test, see Change or stop an active
+test.
 Step 2 - Acquire the out-of-app product
 
 - Featured products
@@ -1040,13 +1080,17 @@ Step 2 - Acquire the out-of-app product
 
 - Play Games Rewards
 
+- Agentic commerce (Gemini)
+
 Note: This test requires that the user is eligible to purchase the item. For
 non-consumable items, you must not currently own the product. For consumable
 items, you must consume any existing purchases before you test.
 Step 3 - Handle and deliver the entitlement
 
 Your app should detect the out-of-app purchase, and then deliver the item to the
-respective user. For the full process, see processing purchases.
+respective user. Make sure that your backend receives
+Real-time developer notifications (RTDN) and acknowledges the
+purchase. For the full process, see processing purchases.
 
 ### Featured products
 
@@ -1091,5 +1135,75 @@ Click Grant Reward to simulate Play granting the reward to the user. Existing
 rewards must be processed before additional rewards can be granted.
 
 Figure 14. Play Games Rewards testing flow.
+
+### Agentic commerce
+
+Note: Agentic commerce in Gemini supports both one-time products and
+subscriptions.
+Users can discover and purchase in-app products directly from Gemini responses.
+While an out-of-app purchase test is active, Gemini surfaces the product and
+offer that you configured in Play Billing Lab at the highest priority for your
+licensed tester account.
+
+- Open the Gemini app and sign in with the same licensed tester account that
+you used to configure the test in Play Billing Lab and to sign in to the
+Play Store.
+
+- Enter a prompt that includes @Google Play and shows a clear intent to
+purchase an in-app item, such as @Google Play buy <product name> for <app
+name>.
+
+- While the test is active, the product name and app name in the prompt
+don't affect which product Gemini shows. However, we recommend using
+valid product and app names.
+
+- Verify that Gemini shows a card with the product and offer that you
+configured in Play Billing Lab.
+
+- Tap the card to open the Google Play purchase bottom sheet in Gemini.
+
+- Review the price, payment method, and offer details, and then complete the
+purchase.
+
+Figure 15. Agentic commerce purchase flow in Gemini.
+
+If Gemini doesn't show the product that you configured, check the following:
+
+- Your prompt includes @Google Play. Without it, Gemini might not use Google
+Play to answer your prompt.
+
+- Your prompt includes a purchase keyword, such as buy, purchase, get,
+or order. Informational prompts, such as what is <app name>, don't
+surface products.
+
+- You're signed in to Gemini, the Play Store, and Play Billing Lab with the
+exact same licensed tester account.
+
+- Your test hasn't expired. In Play Billing Lab, check whether the test status
+has changed from Active. If the test has expired, start a new test.
+
+### Change or stop an active test
+
+While an out-of-app purchase test is active, you can't change the package name,
+product ID, offer, or test country. To change any of these settings, you must
+first stop the active test:
+
+- In Play Billing Lab, tap View on the active Out-of-app purchases
+card.
+
+- Tap Edit next to the setting that you want to change.
+
+- When prompted, tap Stop test. Play Billing Lab stops the test and clears
+the related test inputs.
+
+- Enter your new settings, and then tap Start test.
+
+If you try to edit the test country from the Configuration settings card
+while an out-of-app purchase test is active, Play Billing Lab also prompts you
+to stop the test first.
+
+To stop the test without changing any settings, tap Clear test on the
+Out-of-app purchase page. Play Billing Lab removes the test configuration,
+and Google Play returns to its original behavior.
 
 Send feedback

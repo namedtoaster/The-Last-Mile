@@ -1,5 +1,5 @@
 Source: https://support.google.com/googleplay/android-developer/answer/6112435
-Fetched: 2026-11-02
+Fetched: 2026-11-23
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 # Get started with Play Console
@@ -49,7 +49,7 @@ To keep Google Play a safe and trusted platform, complete the identity verificat
 
 You can add additional account information after creating your account.
 
-Note: To process your request for a Play Developer account you may be asked for a valid government ID and a credit card, both under your legal name. If this information is determined to be invalid, your registration fee will not be refunded.
+Note: To process your request for a Play Console developer account, Google may require a valid government ID and a credit card, both issued under your legal name. If this information is invalid, Google does not refund your registration fee.
 
 Optional: Step 6: Meet testing requirements and device verification requirements (Personal accounts only)
 

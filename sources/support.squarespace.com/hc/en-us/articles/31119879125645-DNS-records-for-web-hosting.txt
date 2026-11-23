@@ -1,5 +1,5 @@
 Source: https://support.squarespace.com/hc/en-us/articles/31119879125645-DNS-records-for-web-hosting
-Fetched: 2026-11-16
+Fetched: 2026-11-23
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 ## Sections
@@ -181,7 +181,7 @@ No
 
 Edit your domain's DNS records
 
-Pointing a Squarespace domain
+Point a Squarespace domain to another site
 
 Nameserver connect vs. DNS connect
 

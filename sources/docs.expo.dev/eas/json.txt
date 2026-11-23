@@ -1,5 +1,5 @@
 Source: https://docs.expo.dev/eas/json/
-Fetched: 2026-11-09
+Fetched: 2026-11-23
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 This documentation is available as Markdown for AI agents and LLMs. See the full Markdown index or append .md to any documentation URL.
@@ -235,6 +235,18 @@ config
 | (string) - Custom workflow file name that will be used to run this build. You can also specify this property on platform level for platform-specific workflows. Learn more.
 
 Example: "config": "production.yml" will use workflow from .eas/build/production.yml.
+|
+permissions
+
+| (object) - The role that the build acts with on the account. The role limits what the build's EXPO_TOKEN can do. If the role is lower than Release Manager and the build's environment has protected environment variables, the build fails. The person or robot that starts the build must have this role or a higher one in the role hierarchy, or the build fails. Without this field, the build acts with the role of the person or robot that starts it, up to Release Manager. When a build triggered from GitHub submits the app automatically, the submission also uses this role. In an Expo Workflows build job, the job's permissions take precedence. Requires EAS CLI 26.0.0 or later. Older versions report eas.json as invalid.
+|
+account
+
+| (object) - Permissions on the account that owns the project.
+|
+role
+
+| (enum: runner, developer, release_manager) - The role that the build acts with.
 |
 environment
 

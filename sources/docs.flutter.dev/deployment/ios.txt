@@ -1,5 +1,5 @@
 Source: https://docs.flutter.dev/deployment/ios
-Fetched: 2026-11-16
+Fetched: 2026-11-23
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 This guide provides a step-by-step walkthrough of releasing a
@@ -187,6 +187,7 @@ and update the following line:
 yaml
 version: 1.0.0+1
 
+-->
 content_copy
 
 The version number is three numbers separated by dots,
@@ -250,7 +251,7 @@ Drag and drop the build/ios/ipa/*.ipa app bundle into the app.
 - Or upload the app bundle from the command line by running:
 bashxcrun altool --upload-app --type ios -f build/ios/ipa/*.ipa --apiKey your_api_key --apiIssuer your_issuer_id
 
-content_copy
+-->content_copy
 
 Run man altool for details about how to authenticate with the App Store Connect API key.
 
@@ -293,7 +294,7 @@ isolated from your login keychain.
 - Install the Codemagic CLI tools:
 bashpip3 install codemagic-cli-tools
 
-content_copy
+-->content_copy
 
 - You'll need to generate an App Store Connect API Key
 with App Manager access to automate operations with App Store Connect. To make
@@ -303,26 +304,26 @@ bashexport APP_STORE_CONNECT_ISSUER_ID=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee
 export APP_STORE_CONNECT_KEY_IDENTIFIER=ABC1234567
 export APP_STORE_CONNECT_PRIVATE_KEY=`cat /path/to/api/key/AuthKey_XXXYYYZZZ.p8`
 
-content_copy
+-->content_copy
 
 - You need to export or create an iOS Distribution certificate to code sign and package a build archive.
 If you have existing certificates, you can export the
 private keys by executing the following command for each certificate:
 bashopenssl pkcs12 -in <certificate_name>.p12 -nodes -nocerts | openssl rsa -out cert_key
 
-content_copy
+-->content_copy
 
 Or you can create a new private key by executing the following command:
 bashssh-keygen -t rsa -b 2048 -m PEM -f cert_key -q -N ""
 
-content_copy
+-->content_copy
 
 Later, you can have CLI tools automatically create a new iOS Distribution from the private key.
 
 - Set up a new temporary keychain to be used for code signing:
 bashkeychain initialize
 
-content_copy
+-->content_copy
 
 infoRestore Login Keychain!
 After running keychain initialize you must run the following:
@@ -338,7 +339,7 @@ bashapp-store-connect fetch-signing-files $(xcode-project detect-bundle-id) \
 --certificate-key=@file:/path/to/cert_key \
 --create
 
-content_copy
+-->content_copy
 
 Where cert_key is either your exported iOS Distribution certificate private key
 or a new private key which automatically generates a new certificate. The certificate
@@ -347,28 +348,28 @@ will be created from the private key if it doesn't exist in App Store Connect.
 - Now add the fetched certificates to your keychain:
 bashkeychain add-certificates
 
-content_copy
+-->content_copy
 
 - Update the Xcode project settings to use fetched code signing profiles:
 bashxcode-project use-profiles
 
-content_copy
+-->content_copy
 
 - Install Flutter dependencies:
 bashflutter packages pub get
 
-content_copy
+-->content_copy
 
 - Install CocoaPods dependencies:
 bashfind . -name "Podfile" -execdir pod install \;
 
-content_copy
+-->content_copy
 
 - Build the Flutter the iOS project:
 bashflutter build ipa --release \
 --export-options-plist=$HOME/export_options.plist
 
-content_copy
+-->content_copy
 
 Note that export_options.plist is the output of the xcode-project use-profiles command.
 
@@ -376,14 +377,14 @@ Note that export_options.plist is the output of the xcode-project use-profiles c
 bashapp-store-connect publish \
 --path $(find $(pwd) -name "*.ipa")
 
-content_copy
+-->content_copy
 
 - As mentioned earlier, don't forget to set your login keychain
 as the default to avoid authentication issues
 with apps on your machine:
 bashkeychain use-login
 
-content_copy
+-->content_copy
 
 You should receive an email within 30 minutes notifying you that
 your build has been validated and is available to release to testers
@@ -439,6 +440,8 @@ Distribute an app through the App Store.
 
 # The Distribute your app guide provides a
 detailed overview of the process of releasing an app to the App Store.
+
+-->
 
 Was this page's content helpful?
 

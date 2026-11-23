@@ -1,5 +1,5 @@
 Source: https://docs.expo.dev/versions/latest/sdk/location/
-Fetched: 2026-11-16
+Fetched: 2026-11-23
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 This documentation is available as Markdown for AI agents and LLMs. See the full Markdown index or append .md to any documentation URL.
@@ -455,9 +455,15 @@ A promise which fulfills with an object of type LocationObject or
 null if it's not available or doesn't match given requirements such as maximum age or required
 accuracy.
 
-### Location.getMotionActivityAsync()
+### Location.getMotionActivityAsync(options)
 Android
 iOS
+
+Parameter | Type | Description |
+options(optional) | MotionActivityOptions | Options for the call. See MotionActivityOptions.
+Default:{}
+
+|
 
 Fetches the current motion activity status of the device by subscribing to the first available
 activity update and immediately unsubscribing afterwards.
@@ -470,7 +476,8 @@ On Android 10+, the ACTIVITY_RECOGNITION runtime permission must be granted befo
 On iOS, the system will prompt the user for Motion and Fitness access the first time this method is called.
 Returns:
 Promise<MotionActivityObject>
-a promise which fulfills with a MotionActivityObject.
+A promise which fulfills with a MotionActivityObject, or
+rejects with ERR_LOCATION_MOTION_ACTIVITY_TIMEOUT when timeout passes first.
 
 ### Location.getMotionActivityPermissionsAsync()
 Android
@@ -531,6 +538,20 @@ Returns:
 Promise<boolean>
 A promise which fulfills with boolean value indicating whether the location task is
 started or not.
+
+### Location.hasStartedMotionActivityUpdatesAsync(taskName)
+Android
+iOS
+
+Parameter | Type | Description |
+taskName | string | Name of the motion activity task to check.
+
+|
+
+Returns:
+Promise<boolean>
+A promise which fulfills with boolean value indicating whether the motion activity
+task is started or not.
 
 ### Location.installWebGeolocationPolyfill()
 Android
@@ -694,6 +715,52 @@ return;
 console.log('Received new locations', locations);
 });
 
+### Location.startMotionActivityUpdatesAsync(taskName, options)
+Android
+iOS
+
+Parameter | Type | Description |
+taskName | string | Name of the task receiving motion activity updates.
+
+|
+options(optional) | MotionActivityTaskOptions | An object of options passed to the motion activity manager. On Android, set
+foregroundService to keep the app process (and this task) alive across an app kill, the same
+way startLocationUpdatesAsync does.
+Default:{}
+
+|
+
+Registers for receiving motion activity updates that can also come when the app is in the
+background or killed, as long as the OS keeps the app process alive.
+
+On Android, this is delivered the same way as background location and geofencing updates are:
+the OS can wake the app process specifically to deliver an activity change, even if it was
+killed. On iOS, CMMotionActivityManager has no equivalent wake mechanism - updates are only
+delivered while the app process happens to be running (for example, kept alive by another
+background mode). Use this API in addition to, not instead of, watchMotionActivityAsync if
+you need updates while the app is in the foreground.
+
+#### Task parameters
+
+Background motion activity task will be receiving the following data:
+
+- activity - An object of type MotionActivityObject.
+
+Returns:
+Promise<void>
+A promise resolving once the task with motion activity updates is registered.
+
+Example
+import * as TaskManager from 'expo-task-manager';
+
+TaskManager.defineTask(YOUR_TASK_NAME, ({ data: { activity }, error }) => {
+if (error) {
+// check `error.message` for more details.
+return;
+}
+console.log('Received motion activity update', activity);
+});
+
 ### Location.stopGeofencingAsync(taskName)
 Android
 iOS
@@ -725,7 +792,21 @@ Returns:
 Promise<void>
 A promise resolving as soon as the task is unregistered.
 
-### Location.watchHeadingAsync(callback, errorHandler)
+### Location.stopMotionActivityUpdatesAsync(taskName)
+Android
+iOS
+
+Parameter | Type | Description |
+taskName | string | Name of the background motion activity task to stop.
+
+|
+
+Stops motion activity updates for specified task.
+Returns:
+Promise<void>
+A promise resolving as soon as the task is unregistered.
+
+### Location.watchHeadingAsync(callback, errorHandler, options)
 Android
 iOS
 
@@ -736,6 +817,10 @@ LocationHeadingObject as the first argument.
 |
 errorHandler(optional) | LocationErrorCallback | This function is called when an error occurs. It receives a string with the
 error message as the first argument.
+
+|
+options(optional) | LocationHeadingOptions | An object of type LocationHeadingOptions to configure
+the heading updates.
 
 |
 
@@ -931,10 +1016,28 @@ Reference for iOS:
 - 0: > 50 degrees
 
 |
+headingAccuracy(optional) | number | null | Only for: iOS
+
+Heading accuracy in degrees, or null when the reading is invalid.
+
+|
 magHeading | number | Measure of magnetic north in degrees.
 
 |
 trueHeading | number | Measure of true north in degrees (needs location permissions, will return -1 if not given).
+
+|
+
+### LocationHeadingOptions
+Android
+iOS
+Web
+
+Type representing options object that can be passed to watchHeadingAsync.
+
+Property | Type | Description |
+headingFilter(optional) | number | Minimum heading change, in degrees, between updates. Pass 0 to receive every reading.
+Default:`1` on iOS, about `2` on Android
 
 |
 
@@ -989,10 +1092,12 @@ Property | Type | Description |
 accuracy | number | null | The radius of uncertainty for the location, measured in meters. Can be null on Web if it's not available.
 
 |
-altitude | number | null | The altitude in meters above the WGS 84 reference ellipsoid. Can be null on Web if it's not available.
+altitude | number | null | The altitude in meters above the WGS 84 reference ellipsoid.
+null when the location fix has no valid altitude.
 
 |
-altitudeAccuracy | number | null | The accuracy of the altitude value, in meters. Can be null on Web if it's not available.
+altitudeAccuracy | number | null | The accuracy of altitude, in meters. On iOS, it also applies to mslAltitude.
+null when the location fix has no valid altitude.
 
 |
 heading | number | null | Horizontal direction of travel of this device, measured in degrees starting at due north and
@@ -1004,6 +1109,13 @@ latitude | number | The latitude in degrees.
 
 |
 longitude | number | The longitude in degrees.
+
+|
+mslAltitude | number | null | Only for: Android 14+
+iOS
+
+The altitude in meters above mean sea level.
+null when the location fix has no valid altitude, and always null on Web and on Android 13 and lower.
 
 |
 speed | number | null | The instantaneous speed of the device in meters per second. Can be null on Web if it's not available.
@@ -1240,6 +1352,21 @@ timestamp | number | The time at which the activity snapshot was taken, in milli
 
 |
 
+### MotionActivityOptions
+Android
+iOS
+Web
+
+Options for getMotionActivityAsync.
+
+Property | Type | Description |
+timeout(optional) | number | The maximum time to wait for an activity update, in milliseconds. When it passes, the promise
+rejects with an error whose code is ERR_LOCATION_MOTION_ACTIVITY_TIMEOUT. Without it the
+promise waits for the next activity update. That can take a long time if the device is still
+or the app is in the background.
+
+|
+
 ### MotionActivityState
 Android
 iOS
@@ -1256,6 +1383,23 @@ CMMotionActivityConfidence, shared by all detected activities.
 
 |
 detected | boolean | Whether this activity was detected.
+
+|
+
+### MotionActivityTaskOptions
+Android
+iOS
+Web
+
+Type representing background motion activity task options.
+
+Property | Type | Description |
+foregroundService(optional) | LocationTaskServiceOptions | Only for: Android
+
+Configuration for running motion activity updates through a foreground service, the same
+way LocationTaskOptions.foregroundService keeps background location updates running. When
+omitted, updates are only guaranteed to be delivered while the OS happens to keep the app
+process alive.
 
 |
 

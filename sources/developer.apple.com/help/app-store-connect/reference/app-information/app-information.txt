@@ -1,12 +1,14 @@
 Source: https://developer.apple.com/help/app-store-connect/reference/app-information/app-information
-Fetched: 2026-10-19
+Fetched: 2026-11-23
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
-# App information
+# App and compliance information
 
-App information refers to the properties that are shared across the platforms added to an app. Some of these properties are set when you add the app to your account, and later, you can edit app information as needed based on the app's status.
+App and compliance information refers to the properties that are shared across the platforms added to an app. Some of these properties are set when you add the app to your account, and later, you can edit app information as needed based on the app's status.
 
-Learn how to make the most of your product page on the App Store.
+Learn how to make the most of your product page on the App Store
+
+## App information
 
 Property
 
@@ -126,6 +128,24 @@ If you select Games or Stickers as the Primary or Secondary Category, you can al
 
 |
 
+URL for App Store Server Notifications
+
+|
+
+If your app offers In-App Purchases, you can receive server notifications from the App Store about key events by setting up an optional URL that links to your server. Learn how to enable App Store Server Notifications.
+
+|
+
+## Compliance information
+
+Property
+
+|
+
+Description
+
+|
+
 Availability in the Republic of Korea - Rating Classification Number
 
 |
@@ -160,15 +180,29 @@ China’s Ministry of Industry and Information Technology (MIIT) requires that s
 
 In addition, games must secure an approval number and apps with books and magazine content must secure an internet publishing permit from China’s National Press and Publication Administration (NPPA). Apps with religious content must secure an Internet Religious Information Permit from China’s National Religious Affairs Administration (NRAA). Apps with news content must obtain an Internet News Information Permit from the Cyberspace Administration of China (CAC). If you offer or plan to offer any of these on the App Store in China mainland, you must provide the required information along with one or more supporting documents.If applicable, provide the required ICP filing information in the designated section under the “App Information” tab. To help verify your approval number, upload your game’s ISBN Issuing Letter or Approval Reply, and a copy of your latest Business License. Additionally, you can include an authorization agreement from the matching operator. To help verify your publishing permit, upload your internet publishing permit or other relevant permit from the NPPA, a publishing permit authorization letter from the authorizing party, a business license, an ICP license, or similar supporting documentation. To help verify your Internet Religious Information Permit, upload your Internet Religious Information Permit, a permit authorization letter from the authorizing party, a business license, an ICP license, or similar supporting documentation. To help verify your Internet News Information Permit, upload your Internet News Information Permit, a permit authorization letter from the authorizing party, a business license, an ICP license, or similar supporting documentation.
 
-Learn more about approval numbers from the NPPA.
+Learn more about approval numbers from the NPPA
 
-Learn more about internet publishing permits.
+Learn more about internet publishing permits
 
-Learn more about Internet Religious Information Permits.
+Learn more about Internet Religious Information Permits
 
-Learn more about Internet News Information Permits.
+Learn more about Internet News Information Permits
 
-Learn more about ICP Filing Number.
+Learn more about ICP Filing Number
+
+In addition, Chinese laws and regulations require apps offering regulated features to submit approved filing information and Security Assessments:
+
+AI-generation or Synthetic services: In accordance with the Measures for Labeling AI-Generated or Synthetic Content law, if your app offers services such as AI chatbots, image or video generation, or voice and face alteration, you must declare whether your app offers these services and provide approved Large Language Model (LLM) or algorithm(Algo) filing information. If your app’s AI features are powered by someone else's technology, you must also provide an authorization or usage agreement.
+
+Learn more about the Measures for Labeling AI-Generated or Synthetic Content Law
+
+Features requiring a Security Assessment: In accordance with applicable local laws and regulations, if your app includes features such as distributing AI-generated or Synthetic content or enabling end-to-end encrypted instant messaging (EIM), you must submit proof of a completed Security Assessment and a copy of the Security Assessment report from the National Internet Security Management Service Platform.
+
+Learn more about the National Internet Security Management Service Platform
+
+Learn more about the Interim Measures for Generative Artificial Intelligence Service Management
+
+Learn more about the regulations on the Security Assessment of Internet Information Services with Public Opinion Attributes or Social Mobilization Ability
 
 |
 
@@ -179,14 +213,6 @@ Availability in Vietnam
 Vietnamese regulators require games distributed in Vietnam to be licensed to remain available on the App Store in Vietnam.
 
 To learn more about the game license, review the regulations on licensing game publishing in Vietnam.
-
-|
-
-URL for App Store Server Notifications
-
-|
-
-If your app offers In-App Purchases, you can receive server notifications from the App Store about key events by setting up an optional URL that links to your server. Learn how to enable App Store Server Notifications.
 
 |
 
@@ -204,11 +230,11 @@ Regulated Medical Devices
 
 Apps that are available in the EU/EEA, UK, or U.S., and have a primary or secondary category of Health & Fitness or Medical, or that have "frequent" Medical or Treatment information listed in the age rating, are required to complete this declaration.
 
-Learn more about regulated medical devices in the EU/EEA.
+Learn more about regulated medical devices in the EU/EEA
 
-Learn more about regulated medical devices in the UK.
+Learn more about regulated medical devices in the UK
 
-Learn more about regulated medical devices in the US.
+Learn more about regulated medical devices in the US
 
 |
 

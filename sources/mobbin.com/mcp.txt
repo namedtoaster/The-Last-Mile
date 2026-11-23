@@ -1,5 +1,5 @@
 Source: https://mobbin.com/mcp
-Fetched: 2026-11-16
+Fetched: 2026-11-23
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 ## The design reference your AI agents are missing.
@@ -21,14 +21,14 @@ I'll search Mobbin for proven paywall patterns from shipped products.
 Used Mobbin MCP integration
 Got 43 paywalls. Pulling the strongest for synthesis.
 
-- Revolut
+Revolut
 
 - Bundled value framingThird-party perks reframe the price as services received.
 - Personalization signal"Best for you" implies algorithmic match, not arbitrary push.
 - Price in the CTARemoves the last hesitation at click.
 - Physical product heroTangible anchor for an intangible upgrade.
 
-- Duolingo
+Duolingo
 
 - Soft rejectionEm-dashes for FREE column, not red X marks.
 - Subtle column weightingTint instead of color flooding for hierarchy.
@@ -36,7 +36,7 @@ Got 43 paywalls. Pulling the strongest for synthesis.
 - Gifting frameRepositions extraction as generosity.
 - Playful mascot stateNo emotional manipulation.
 
-- Uber
+Uber
 
 - Personalized savings hero"Save $19 every month" based on local member data — concrete, not generic.
 - Risk reversal as a benefit"$5 credit if arrival estimate is off" reframes guarantees as value.
@@ -44,14 +44,14 @@ Got 43 paywalls. Pulling the strongest for synthesis.
 - Single tier, no decision taxOne plan removes choice paralysis at the upgrade moment.
 - Icon-led benefitsVisual rhythm makes the list scannable in 3 seconds.
 
-- Revolut
+Revolut
 
 - Bundled value framingThird-party perks reframe the price as services received.
 - Personalization signal"Best for you" implies algorithmic match, not arbitrary push.
 - Price in the CTARemoves the last hesitation at click.
 - Physical product heroTangible anchor for an intangible upgrade.
 
-- Duolingo
+Duolingo
 
 - Soft rejectionEm-dashes for FREE column, not red X marks.
 - Subtle column weightingTint instead of color flooding for hierarchy.
@@ -59,7 +59,7 @@ Got 43 paywalls. Pulling the strongest for synthesis.
 - Gifting frameRepositions extraction as generosity.
 - Playful mascot stateNo emotional manipulation.
 
-- Uber
+Uber
 
 - Personalized savings hero"Save $19 every month" based on local member data — concrete, not generic.
 - Risk reversal as a benefit"$5 credit if arrival estimate is off" reframes guarantees as value.
@@ -131,6 +131,7 @@ Generated designs
 Let agents explore best practices from apps that have already figured it out.
 
 A
+
 B
 
 ### UI feels dated

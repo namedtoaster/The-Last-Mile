@@ -1,5 +1,5 @@
 Source: https://docs.flutter.dev/deployment/android
-Fetched: 2026-11-16
+Fetched: 2026-11-23
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 To test an app, you can use flutter run at the command line,
@@ -79,6 +79,8 @@ For example:
 
 Add the dependency on Android's Material in <my-app>/android/app/build.gradle.kts:
 
+-->
+
 Kotlin
 
 Groovy
@@ -90,6 +92,7 @@ implementation("com.google.android.material:material:<version>")
 // ...
 }
 
+-->
 content_copy
 
 groovy
@@ -99,6 +102,7 @@ implementation 'com.google.android.material:material:<version>'
 // ...
 }
 
+-->
 content_copy
 
 To find out the latest version, visit Google Maven.
@@ -107,13 +111,13 @@ Set the light theme in <my-app>/android/app/src/main/res/values/styles.xml:
 xml<style name="NormalTheme" parent="@android:style/Theme.Light.NoTitleBar">
 <style name="NormalTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
 
-content_copy
+-->content_copy
 
 Set the dark theme in <my-app>/android/app/src/main/res/values-night/styles.xml:
 xml<style name="NormalTheme" parent="@android:style/Theme.Black.NoTitleBar">
 <style name="NormalTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
 
-content_copy
+-->content_copy
 
 ## Sign the app
 
@@ -144,14 +148,14 @@ On macOS or Linux, use the following command:
 keytool -genkey -v -keystore ~/upload-keystore.jks -keyalg RSA \
 -storetype JKS -keysize 2048 -validity 10000 -alias upload
 
-content_copy
+-->content_copy
 
 On Windows, use the following command in PowerShell:
 keytool -genkey -v -keystore $env:USERPROFILE\upload-keystore.jks `
 -storetype JKS -keyalg RSA -keysize 2048 -validity 10000 `
 -alias upload
 
-content_copy
+-->content_copy
 
 This command stores the upload-keystore.jks file in your home
 directory. If you want to store it elsewhere, change
@@ -188,6 +192,7 @@ keyPassword=<password-from-previous-step>
 keyAlias=upload
 storeFile=<keystore-file-location>
 
+-->
 content_copy
 
 The storeFile might be located at
@@ -214,6 +219,8 @@ property block.
 
 - Set the keystoreProperties object to load the key.properties file:
 
+-->
+
 Kotlin
 
 Groovy
@@ -238,6 +245,7 @@ android {
 ...
 }
 
+-->
 content_copy
 
 [project]/android/app/build.gradle
@@ -260,10 +268,13 @@ android {
 ...
 }
 
+-->
 content_copy
 
 Add the signing configuration before the buildTypes property block
 inside the android property block:
+
+-->
 
 Kotlin
 
@@ -295,6 +306,7 @@ signingConfig = signingConfigs.getByName("release")
 ...
 }
 
+-->
 content_copy
 
 [project]/android/app/build.gradle
@@ -323,6 +335,7 @@ signingConfig = signingConfigs.release
 ...
 }
 
+-->
 content_copy
 
 Flutter now signs all release builds.
@@ -415,6 +428,7 @@ must be specified to include:
 io/flutter/embedding/engine/loader/FlutterLoader.class
 io/flutter/util/PathUtils.class
 
+-->
 content_copy
 
 Also, include any other classes used in app startup.
@@ -438,6 +452,7 @@ android:label="[project]"
 <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>
 
+-->
 content_copy
 
 Verify the following values:
@@ -505,6 +520,7 @@ buildTypes {
 }
 }
 
+-->
 content_copy
 
 ### Application ID
@@ -704,6 +720,7 @@ and update the following line:
 yaml
 version: 1.0.0+1
 
+-->
 content_copy
 
 The version number is three numbers separated by dots,
@@ -783,6 +800,7 @@ tool and list the files:
 sh
 apkanalyzer files list --files-only <SOME-APK> files list --files-only <SOME-APK>
 
+-->
 content_copy
 
 Then look for a file in /lib/<ARCH>/libflutter.so.
@@ -792,6 +810,7 @@ For example, the following should return a number greater than 0:
 sh
 apkanalyzer files list some-flutter-app.apk | grep flutter.so | wc -l
 
+-->
 content_copy
 
 Why this works
@@ -819,6 +838,7 @@ returns the following output:
 android:name="flutterEmbedding"
 android:value="2" />
 
+-->
 content_copy
 
 Why this works
@@ -840,11 +860,13 @@ on a device and let it scan local apps.
 
 - Visit the Flutter Hunt website.
 
+-->
+
 Was this page's content helpful?
 
 thumb_up
 thumb_down
 
-Unless stated otherwise, the documentation on this site reflects Flutter 3.50. Page last updated on 2026-09-10.
+Unless stated otherwise, the documentation on this site reflects Flutter 3.50. Page last updated on 2026-11-20.
 View source
 or report an issue.

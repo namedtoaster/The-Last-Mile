@@ -1,5 +1,5 @@
 Source: https://support.google.com/googleplay/android-developer/answer/9866151
-Fetched: 2026-10-12
+Fetched: 2026-11-23
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 # Add preview assets to showcase your app
@@ -187,9 +187,15 @@ Use context to identify the important part of the image, using 140 characters or
 
 Screenshots
 
-Use screenshots to convey capabilities, the look and feel, and the experience of your app to potential users for better app discovery. You can add up to 8 screenshots for each supported device type. Supported device types include phones, tablets (7-inch and 10-inch), Chromebooks, Android TVs, Wear OS watches, Android Automotive OS cars, and Android XR headsets.
+Use screenshots to convey capabilities, the look and feel, and the experience of your app to potential users for better app discovery. You can add up to 8 screenshots for each supported device type. Supported device types include phones, foldables (square 1:1 inner screens and wide 4:3 inner screens), tablets (7-inch and 10-inch), Chromebooks, Android TVs, Wear OS watches, Android Automotive OS cars, and Android XR headsets.
 
 To upload screenshots for different device types, under Graphics scroll to your device-specific section:
+
+- Phones:
+
+- Upload between 2 and 8 phone screenshots (PNG or JPEG, up to 8 MB each, with each side between 320 px and 3,840 px).
+
+- Include 9:16 portrait screenshots, 16:9 landscape screenshots, or both to show how your app adapts across orientations.
 
 - Large screens:
 
@@ -201,7 +207,23 @@ To upload screenshots for different device types, under Graphics scroll to your 
 
 - Exclude additional text that is not part of your core app experience, as this can get cut off on Play homepages on certain screen sizes
 
-- Don't forget to optimize your app quality for large screens by reviewing our app quality checklist
+- Don't forget to optimize your app quality for large screens by reviewing our app quality checklist.
+
+- Foldables: To showcase your app or game on foldable devices, add screenshots in the "Foldable Screenshots" section on the Main store listing page (Grow users > Store presence > Main store listing), the Custom store listings page (Grow users > Store presence > Custom store listings), or store listing groups:
+
+- Upload between 3 and 8 foldable screenshots (PNG or JPEG, up to 8 MB each, with each side between 960 px and 3,840 px) to show that your app uses the inner and outer screens without stretching or black bars.
+
+- Include at least one screenshot for the 1:1 unfolded square inner screen aspect ratio, between 960 px and 3,840 px.
+
+- For apps, include at least one landscape screenshot for the 4:3 unfolded wide inner screen aspect ratio and at least one portrait screenshot for the 10:16 folded outer screen aspect ratio, between 960 px and 3,840 px. Because the folded outer screen of 1:1 foldables uses a standard phone aspect ratio (9:16 or 16:9), Google Play uses your phone screenshots there.
+
+- For games, include at least one unfolded wide inner screen screenshot in 4:3 (landscape) or 3:4 (portrait) and at least one folded outer screen screenshot in 16:10 (landscape) or 10:16 (portrait), between 960 px and 3,840 px. Screenshots should match your game's primary supported orientation.
+
+- (Optional) Include up to 5 additional foldable screenshots using 4:3, 3:4, 16:10, 10:16, 1:1, 16:9, or 9:16 aspect ratios.
+
+- Capture screenshots that meet these aspect ratio and resolution specs using the "Foldable (1:1 inner display)" and "Foldable (4:3 inner display)" Android Emulator hardware profiles. To learn how, see Capture app screenshots for Google Play.
+
+- To qualify for foldable store badging and enhanced promotion on Google Play, review the Adaptive app quality guidelines and Large screen quality guidelines for games.
 
 - Wear OS: If you’re distributing an app to Wear OS devices, your Wear OS app's store listing on Google Play must:
 
@@ -271,7 +293,7 @@ You must provide a minimum of two screenshots across different device types to p
 
 - Maximum dimension: 3840px
 
-- The maximum dimension of your screenshot can't be more than twice as long as the minimum dimension.
+- For standard phone and tablet screenshots, the maximum dimension can't be more than 2.3 times as long as the minimum dimension.
 
 #### Highly recommended
 

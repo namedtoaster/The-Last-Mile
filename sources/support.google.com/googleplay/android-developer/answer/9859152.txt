@@ -1,5 +1,5 @@
 Source: https://support.google.com/googleplay/android-developer/answer/9859152
-Fetched: 2026-11-02
+Fetched: 2026-11-23
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 # Create and set up your app
@@ -141,6 +141,8 @@ Note: Repetitive or irrelevant keyword usage in your app name, short description
 Add preview assets
 
 To showcase your app, add preview assets such as screenshots and videos.
+
+On the Main store listing page (Grow users > Store presence > Main store listing), upload two to eight phone screenshots along with optional device-specific assets—such as three to eight foldable screenshots (PNG or JPEG, up to 8 MB each, with each side between 960 px and 3,840 px) in the 'Foldable Screenshots' section covering unfolded inner screens (1:1 and 4:3 or 3:4) and folded outer screens (10:16 or 16:10). For complete specifications, see Add preview assets to showcase your app.
 
 Note: By making your app available on Google Play, you grant Google a license to use your app assets (including your app icon, screenshots, and videos) for promotional purposes. This enables Google Play to showcase your app and highlight its unique features to users across Google services. For details, see Section 6 (Brand Features and Publicity) of the Developer Distribution Agreement.
 

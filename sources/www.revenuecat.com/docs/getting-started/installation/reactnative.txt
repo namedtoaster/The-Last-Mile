@@ -1,10 +1,13 @@
 Source: https://www.revenuecat.com/docs/getting-started/installation/reactnative
-Fetched: 2026-11-16
+Fetched: 2026-11-23
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 On this page
 AI agents: the complete RevenueCat documentation index is available at llms.txt. A Markdown version of this page is available at this URL.
 This tutorial shows you how to install the RevenueCat SDK in your React Native app. By the end, you'll have the SDK added to your project with npm or yarn, verified with a successful build, and be ready to configure the SDK.
+
+⚠️Upcoming CocoaPods support change
+RevenueCat React Native SDK version 12 will require Swift Package Manager (SPM) for RevenueCat's iOS dependencies. Migrate to SPM before upgrading to version 12. SPM support in React Native and Expo is currently experimental. The CocoaPods instructions below apply to SDK 11. Existing published CocoaPods versions remain available.
 
 ## Prerequisites​
 

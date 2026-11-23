@@ -1,8 +1,8 @@
 Source: https://docs.netlify.com/manage/domains/configure-domains/configure-external-dns/
-Fetched: 2026-11-16
+Fetched: 2026-11-23
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
-Netlify goes full stack: Netlify Server is here. Run long-running backends with WebSockets, now in Early Access.
+The new Netlify experience is here. Learn more or join the waitlist.
 
 # Configure external DNS for a custom domain
 
@@ -20,7 +20,7 @@ The next steps vary depending on the type of domain or subdomainsubdomainA prefi
 
 - For an apex domain with no subdomain, such as petsofnetlify.com, make sure to read our advice about using apex domains, then follow the directions below for apex domain configuration.
 
-Special handling for apex and www" class="aside aside-note astro-kxnmhzey"> Special handling for apex and www
+Special handling for apex and www" class="aside aside-note astro-p2a4gjwj"> Special handling for apex and www
 If you assign an apex domain or a www subdomain to your site, Netlify will automatically add both the apex domain and the www subdomain. This means you should follow directions for both configuring a subdomain and configuring an apex domain. For more information, visit the section on apex domains and www subdomains.
 
 Need to delegate just a subdomain?
@@ -93,3 +93,7 @@ If more than 24 hours have passed since you configured your DNS records, and you
 
 #### Did you find this doc useful?
 Your feedback helps us improve our docs.
+
+Yes
+
+No

@@ -1,5 +1,5 @@
 Source: https://docs.fastlane.tools/actions/supply/
-Fetched: 2026-10-12
+Fetched: 2026-11-23
 This is a plain text copy of the official page, made by scripts/snapshot-sources.mjs. The page itself is the rule.
 
 - Docs &raquo;
@@ -68,22 +68,7 @@ Note: if you face issues when following these instructions, you might want to re
 
 - Click DONE (don't click CREATE AND CONTINUE as the optional steps such as granting access are not needed):
 
-- Setup authentication for the service account, fastlane supports Workload Identity Federation and service account keys
-
-- When using Workload Identity Federation (such as for GitHub Actions)
-1. Create a Workload Identity Pool
-1. Get the full ID of the Workload Identity Pool, for example: projects/123456789/locations/global/workloadIdentityPools/github
-1. Create a Workload Identity Provider in that pool
-- This is how you connect Google Cloud to your external identity provider (such as GitHub, GitLab, etc.)
-- Ensure you include a condition to restrict access, for example: assertion.repository_owner == '${GITHUB_ORG}'
-1. Authenticate using this identity provider in your build workflow.
-
-- To use service account keys:
-1. Click on the Actions vertical three-dot icon of the service account you just created
-1. Select Manage keys on the menu
-1. Click ADD KEY → Create New Key
-1. Make sure JSON is selected as the Key type, and click CREATE
-1. Save the file on your computer when prompted and remember where it was saved at
+- Setup authentication using Workload Identity Federation (GitHub Actions) or Service Account Keys
 
 - Open the Google Play Console and select Users and Permissions
 
@@ -96,6 +81,36 @@ Note: if you face issues when following these instructions, you might want to re
 - Choose the permissions you'd like this account to have. We recommend Admin (all permissions), but you may want to manually select all checkboxes and leave out some of the Releases permissions such as Release to production, exclude devices, and use Play App Signing
 
 - Click on Invite User
+
+#### Authentication Methods
+
+fastlane supports two ways to authenticate the service account:
+
+##### Workload Identity Federation (GitHub Actions)
+
+- Create a Workload Identity Pool
+
+- Get the full ID of the Workload Identity Pool, for example: projects/123456789/locations/global/workloadIdentityPools/github
+
+- Create a Workload Identity Provider in that pool
+
+- This is how you connect Google Cloud to your external identity provider (such as GitHub, GitLab, etc.)
+
+- Ensure you include a condition to restrict access, for example: assertion.repository_owner == '${GITHUB_ORG}'
+
+- Authenticate using this identity provider in your build workflow.
+
+##### Service Account Keys
+
+- Click on the Actions vertical three-dot icon of the service account you just created
+
+- Select Manage keys on the menu
+
+- Click ADD KEY → Create New Key
+
+- Make sure JSON is selected as the Key type, and click CREATE
+
+- Save the file on your computer when prompted and remember where it was saved at
 
 You can use fastlane run validate_play_store_json_key json_key:/path/to/your/downloaded/file.json to test the connection to Google Play Store with the downloaded private key. Once that works, add the path to the JSON file to your Appfile:
 
